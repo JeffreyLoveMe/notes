@@ -22,11 +22,36 @@
 3.主流操作系统：iOS、Android、黑莓
 
 //iOS开发准备：
-1.编程语言：swift > O
-2.开发z工具：
-3.电脑系统：
-4.真机设备：
-5.iOS证书：
+1.编程语言：swift > Objective-C > C语言
+2.开发工具：Xcode
+3.电脑系统：MacOS
+4.真机设备：iphone|ipad
+5.iOS证书：调试证书|发布证书
+
+//硬件
+1.iPhone：xxx
+2.iPad：2010年发布iPad1(大概一年发布一款)
+3.ipad mini：2012年发布iPad mini1
+4.ipod Touch：没有打电话功能的iphone
+5.Apple TV：需要翻墙(国内被小米模仿)
+
+//
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 //抓包：
 
@@ -37,6 +62,24 @@
 
 //工具网站：
 https://xclient.info //Xclient
+
+#VC的生命周期：
+1.第一次加载vc：loadView->viewDidLoad->viewWillAppear->viewDidAppear；
+//push
+2.跳转第二个vc：viewWillDisappear->loadView->viewDidLoad->viewWillAppear->
+viewDidDisappear->viewDidAppear；
+//present
+2.跳转第二个vc：loadView->viewDidLoad->viewWillDisappear->viewWillAppear->
+viewDidAppear->viewDidDisappear；
+//pop、dismiss
+3.返回第一个vc：viewWillDisappear->viewWillAppear->viewDidDisappear->viewDidDisappear
+->dealloc；//不重新创建第一个vc，第二个vc销毁
+代码：LifetimeViewController.h/m
+https://blog.csdn.net/spicyshrimp/article/details/70886516
+
+//关于项目
+1.什么时候更新model?
+1).网络加载数据：更新model；2).本地上传数据：之后更新model；
 
 //面试题：
 1.什么是操作系统？
