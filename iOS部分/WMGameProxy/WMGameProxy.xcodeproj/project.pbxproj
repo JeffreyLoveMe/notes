@@ -17,6 +17,7 @@
 		33276DB821B2CE7300B9E3DC /* 标准json格式.png in Resources */ = {isa = PBXBuildFile; fileRef = 33276DB521B2CE7300B9E3DC /* 标准json格式.png */; };
 		33276DB921B2CE7300B9E3DC /* Safe Area.png in Resources */ = {isa = PBXBuildFile; fileRef = 33276DB621B2CE7300B9E3DC /* Safe Area.png */; };
 		33276DC321B2CEF800B9E3DC /* WMGameProxy.txt in Resources */ = {isa = PBXBuildFile; fileRef = 33276DC221B2CEF800B9E3DC /* WMGameProxy.txt */; };
+		33E7819021BF8D5500D1EE72 /* EyeeCommunity.m in Sources */ = {isa = PBXBuildFile; fileRef = 33E7818F21BF8D5500D1EE72 /* EyeeCommunity.m */; };
 		6B137BCDDEFFBE8D67946DB3 /* Pods_WMGameProxyTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AC215051860DEBC5A34B74B /* Pods_WMGameProxyTests.framework */; };
 		77D6314F211F7D72B92D53B1 /* Pods_WMGameProxy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6F36C9C33C31509245EC67F /* Pods_WMGameProxy.framework */; };
 		B205DC151DEC0D3229641AD7 /* Pods_WMGameProxyUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B338C3B488EEB4078244BB1 /* Pods_WMGameProxyUITests.framework */; };
@@ -59,6 +60,9 @@
 		33276DB521B2CE7300B9E3DC /* 标准json格式.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "标准json格式.png"; sourceTree = "<group>"; };
 		33276DB621B2CE7300B9E3DC /* Safe Area.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Safe Area.png"; sourceTree = "<group>"; };
 		33276DC221B2CEF800B9E3DC /* WMGameProxy.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = WMGameProxy.txt; sourceTree = "<group>"; };
+		33E7818D21BF8D5400D1EE72 /* WMGameProxy-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "WMGameProxy-Bridging-Header.h"; sourceTree = "<group>"; };
+		33E7818E21BF8D5500D1EE72 /* EyeeCommunity.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EyeeCommunity.h; sourceTree = "<group>"; };
+		33E7818F21BF8D5500D1EE72 /* EyeeCommunity.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EyeeCommunity.m; sourceTree = "<group>"; };
 		4AC215051860DEBC5A34B74B /* Pods_WMGameProxyTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WMGameProxyTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		86D22575B12BD22BA7FDF152 /* Pods-WMGameProxyUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WMGameProxyUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-WMGameProxyUITests/Pods-WMGameProxyUITests.release.xcconfig"; sourceTree = "<group>"; };
 		BB85EC83C4984173D3B950F8 /* Pods-WMGameProxyTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WMGameProxyTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-WMGameProxyTests/Pods-WMGameProxyTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -145,9 +149,11 @@
 			children = (
 				33276DB221B2CE5D00B9E3DC /* Res */,
 				33276DC121B2CEC900B9E3DC /* Notes */,
-				33276DB321B2CE5D00B9E3DC /* Swift */,
+				33E7818C21BF84BD00D1EE72 /* C语言 */,
 				33276DB121B2CE5D00B9E3DC /* Objective-C */,
+				33276DB321B2CE5D00B9E3DC /* Swift */,
 				33276D8321B2CDB800B9E3DC /* AppDelegate.swift */,
+				33E7818D21BF8D5400D1EE72 /* WMGameProxy-Bridging-Header.h */,
 				33276D8721B2CDB800B9E3DC /* Main.storyboard */,
 				33276D8A21B2CDBB00B9E3DC /* Assets.xcassets */,
 				33276D8C21B2CDBB00B9E3DC /* LaunchScreen.storyboard */,
@@ -204,6 +210,15 @@
 				33276DC221B2CEF800B9E3DC /* WMGameProxy.txt */,
 			);
 			path = Notes;
+			sourceTree = "<group>";
+		};
+		33E7818C21BF84BD00D1EE72 /* C语言 */ = {
+			isa = PBXGroup;
+			children = (
+				33E7818E21BF8D5500D1EE72 /* EyeeCommunity.h */,
+				33E7818F21BF8D5500D1EE72 /* EyeeCommunity.m */,
+			);
+			path = "C语言";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -277,6 +292,7 @@
 				TargetAttributes = {
 					33276D7F21B2CDB800B9E3DC = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1010;
 					};
 					33276D9321B2CDBB00B9E3DC = {
 						CreatedOnToolsVersion = 10.1;
@@ -402,6 +418,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				33276D8421B2CDB800B9E3DC /* AppDelegate.swift in Sources */,
+				33E7819021BF8D5500D1EE72 /* EyeeCommunity.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -577,6 +594,7 @@
 			baseConfigurationReference = 262BFF3C9CA10A3614A5C073 /* Pods-WMGameProxy.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = WMGameProxy/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -586,6 +604,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = org.wm.ios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "WMGameProxy/C语言/WMGameProxy-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -596,6 +616,7 @@
 			baseConfigurationReference = F95714FD6DC123A6DD328915 /* Pods-WMGameProxy.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = WMGameProxy/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -605,6 +626,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = org.wm.ios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "WMGameProxy/C语言/WMGameProxy-Bridging-Header.h";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
