@@ -1,0 +1,6 @@
+framework module Pods_WMGameProxy {
+  umbrella header "Pods-WMGameProxy-umbrella.h"
+
+  export *
+  module * { export * }
+}

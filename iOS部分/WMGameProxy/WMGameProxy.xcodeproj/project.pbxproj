@@ -17,6 +17,9 @@
 		33276DB821B2CE7300B9E3DC /* 标准json格式.png in Resources */ = {isa = PBXBuildFile; fileRef = 33276DB521B2CE7300B9E3DC /* 标准json格式.png */; };
 		33276DB921B2CE7300B9E3DC /* Safe Area.png in Resources */ = {isa = PBXBuildFile; fileRef = 33276DB621B2CE7300B9E3DC /* Safe Area.png */; };
 		33276DC321B2CEF800B9E3DC /* WMGameProxy.txt in Resources */ = {isa = PBXBuildFile; fileRef = 33276DC221B2CEF800B9E3DC /* WMGameProxy.txt */; };
+		6B137BCDDEFFBE8D67946DB3 /* Pods_WMGameProxyTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AC215051860DEBC5A34B74B /* Pods_WMGameProxyTests.framework */; };
+		77D6314F211F7D72B92D53B1 /* Pods_WMGameProxy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6F36C9C33C31509245EC67F /* Pods_WMGameProxy.framework */; };
+		B205DC151DEC0D3229641AD7 /* Pods_WMGameProxyUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B338C3B488EEB4078244BB1 /* Pods_WMGameProxyUITests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,6 +40,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0EDAFA730266A84EB2B84D2B /* Pods-WMGameProxyUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WMGameProxyUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WMGameProxyUITests/Pods-WMGameProxyUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		262BFF3C9CA10A3614A5C073 /* Pods-WMGameProxy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WMGameProxy.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WMGameProxy/Pods-WMGameProxy.debug.xcconfig"; sourceTree = "<group>"; };
+		2B338C3B488EEB4078244BB1 /* Pods_WMGameProxyUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WMGameProxyUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		33276D8021B2CDB800B9E3DC /* WMGameProxy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WMGameProxy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		33276D8321B2CDB800B9E3DC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		33276D8821B2CDB800B9E3DC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -53,6 +59,12 @@
 		33276DB521B2CE7300B9E3DC /* 标准json格式.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "标准json格式.png"; sourceTree = "<group>"; };
 		33276DB621B2CE7300B9E3DC /* Safe Area.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Safe Area.png"; sourceTree = "<group>"; };
 		33276DC221B2CEF800B9E3DC /* WMGameProxy.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = WMGameProxy.txt; sourceTree = "<group>"; };
+		4AC215051860DEBC5A34B74B /* Pods_WMGameProxyTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WMGameProxyTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		86D22575B12BD22BA7FDF152 /* Pods-WMGameProxyUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WMGameProxyUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-WMGameProxyUITests/Pods-WMGameProxyUITests.release.xcconfig"; sourceTree = "<group>"; };
+		BB85EC83C4984173D3B950F8 /* Pods-WMGameProxyTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WMGameProxyTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-WMGameProxyTests/Pods-WMGameProxyTests.release.xcconfig"; sourceTree = "<group>"; };
+		BBD5C3D22FEC1C0E5C02E37B /* Pods-WMGameProxyTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WMGameProxyTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WMGameProxyTests/Pods-WMGameProxyTests.debug.xcconfig"; sourceTree = "<group>"; };
+		C6F36C9C33C31509245EC67F /* Pods_WMGameProxy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WMGameProxy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F95714FD6DC123A6DD328915 /* Pods-WMGameProxy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WMGameProxy.release.xcconfig"; path = "Pods/Target Support Files/Pods-WMGameProxy/Pods-WMGameProxy.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +72,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				77D6314F211F7D72B92D53B1 /* Pods_WMGameProxy.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -67,6 +80,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6B137BCDDEFFBE8D67946DB3 /* Pods_WMGameProxyTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -74,12 +88,36 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B205DC151DEC0D3229641AD7 /* Pods_WMGameProxyUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1F266B150F5F1AB9ABC627DD /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				262BFF3C9CA10A3614A5C073 /* Pods-WMGameProxy.debug.xcconfig */,
+				F95714FD6DC123A6DD328915 /* Pods-WMGameProxy.release.xcconfig */,
+				BBD5C3D22FEC1C0E5C02E37B /* Pods-WMGameProxyTests.debug.xcconfig */,
+				BB85EC83C4984173D3B950F8 /* Pods-WMGameProxyTests.release.xcconfig */,
+				0EDAFA730266A84EB2B84D2B /* Pods-WMGameProxyUITests.debug.xcconfig */,
+				86D22575B12BD22BA7FDF152 /* Pods-WMGameProxyUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		2CD404572C2FFF60734C8B5A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C6F36C9C33C31509245EC67F /* Pods_WMGameProxy.framework */,
+				4AC215051860DEBC5A34B74B /* Pods_WMGameProxyTests.framework */,
+				2B338C3B488EEB4078244BB1 /* Pods_WMGameProxyUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		33276D7721B2CDB800B9E3DC = {
 			isa = PBXGroup;
 			children = (
@@ -87,6 +125,8 @@
 				33276D9721B2CDBB00B9E3DC /* WMGameProxyTests */,
 				33276DA221B2CDBB00B9E3DC /* WMGameProxyUITests */,
 				33276D8121B2CDB800B9E3DC /* Products */,
+				1F266B150F5F1AB9ABC627DD /* Pods */,
+				2CD404572C2FFF60734C8B5A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -173,6 +213,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 33276DA821B2CDBB00B9E3DC /* Build configuration list for PBXNativeTarget "WMGameProxy" */;
 			buildPhases = (
+				402778113016183D58139BCB /* [CP] Check Pods Manifest.lock */,
 				33276D7C21B2CDB800B9E3DC /* Sources */,
 				33276D7D21B2CDB800B9E3DC /* Frameworks */,
 				33276D7E21B2CDB800B9E3DC /* Resources */,
@@ -190,6 +231,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 33276DAB21B2CDBB00B9E3DC /* Build configuration list for PBXNativeTarget "WMGameProxyTests" */;
 			buildPhases = (
+				84E9CE545D4CBF0E89C5B0C2 /* [CP] Check Pods Manifest.lock */,
 				33276D9021B2CDBB00B9E3DC /* Sources */,
 				33276D9121B2CDBB00B9E3DC /* Frameworks */,
 				33276D9221B2CDBB00B9E3DC /* Resources */,
@@ -208,6 +250,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 33276DAE21B2CDBB00B9E3DC /* Build configuration list for PBXNativeTarget "WMGameProxyUITests" */;
 			buildPhases = (
+				F7FD05A9C80D0B53F962CA31 /* [CP] Check Pods Manifest.lock */,
 				33276D9B21B2CDBB00B9E3DC /* Sources */,
 				33276D9C21B2CDBB00B9E3DC /* Frameworks */,
 				33276D9D21B2CDBB00B9E3DC /* Resources */,
@@ -295,6 +338,63 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		402778113016183D58139BCB /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-WMGameProxy-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		84E9CE545D4CBF0E89C5B0C2 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-WMGameProxyTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F7FD05A9C80D0B53F962CA31 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-WMGameProxyUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		33276D7C21B2CDB800B9E3DC /* Sources */ = {
@@ -474,6 +574,7 @@
 		};
 		33276DA921B2CDBB00B9E3DC /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 262BFF3C9CA10A3614A5C073 /* Pods-WMGameProxy.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -492,6 +593,7 @@
 		};
 		33276DAA21B2CDBB00B9E3DC /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F95714FD6DC123A6DD328915 /* Pods-WMGameProxy.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -510,6 +612,7 @@
 		};
 		33276DAC21B2CDBB00B9E3DC /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BBD5C3D22FEC1C0E5C02E37B /* Pods-WMGameProxyTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -530,6 +633,7 @@
 		};
 		33276DAD21B2CDBB00B9E3DC /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BB85EC83C4984173D3B950F8 /* Pods-WMGameProxyTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -550,6 +654,7 @@
 		};
 		33276DAF21B2CDBB00B9E3DC /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0EDAFA730266A84EB2B84D2B /* Pods-WMGameProxyUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -569,6 +674,7 @@
 		};
 		33276DB021B2CDBB00B9E3DC /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 86D22575B12BD22BA7FDF152 /* Pods-WMGameProxyUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
