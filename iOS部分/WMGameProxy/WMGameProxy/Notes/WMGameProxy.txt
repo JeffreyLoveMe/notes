@@ -44,29 +44,32 @@ command+F //查找、替换
 command+shift+3/4 //截图
 command+W|Q //退出前台|退出后台
 command+S|C|V|X|A|Z //保存|复制|粘贴|剪切|全选|撤销
+command+B|R //将代码翻译成0/1|运行程序
+command+D //保存网址
 
 //计算机常识
 1.计算机只能识别0|1，计算机能识别的指令也是由0和1组成，计算机中存储和操作的数据都是由0和1组成；
 2.计算机语言：机器语言(只有0和1-0表示不加电，1表示加电)|汇编语言|高级语言
 /**************************C语言基础**************************/
+//C语言概述：
+1.C语言由很多"程序段"组成；
+2.C语言每条语句后面+";"
+3.同一个程序有且仅有一个main()函数;
+
 //main函数
 #include <stdio.h> //告诉系统printf()函数在什么地方
 int main() {
-    printf("hello world"); //执行代码
+    // \n默认换行
+    printf("hello world\n"); //执行代码
     return 0;
 }
-//
-//
+
+//C语言的执行流程：编写程序->将自定义函数进行编译->目标文件/C语言函数库进行链接->可执行文件->运行
 /**************************Objective-C基础**************************/
 /**************************UI基础**************************/
 /**************************项目实战**************************/
 /**************************swift基础**************************/
 /**************************实用技术(swift版本)**************************/
-
-//抓包：
-
-swift中main函数消失：https://blog.csdn.net/zhao18933/article/details/46640657
-
 //关于适配：
 1.系统适配：
 2.机型适配：
@@ -76,24 +79,6 @@ swift中main函数消失：https://blog.csdn.net/zhao18933/article/details/46640
 https://www.macx.cn
 https://xclient.info
 
-#VC的生命周期：
-1.第一次加载vc：loadView->viewDidLoad->viewWillAppear->viewDidAppear；
-//push
-2.跳转第二个vc：viewWillDisappear->loadView->viewDidLoad->viewWillAppear->
-viewDidDisappear->viewDidAppear；
-//present
-2.跳转第二个vc：loadView->viewDidLoad->viewWillDisappear->viewWillAppear->
-viewDidAppear->viewDidDisappear；
-//pop、dismiss
-3.返回第一个vc：viewWillDisappear->viewWillAppear->viewDidDisappear->viewDidDisappear
-->dealloc；//不重新创建第一个vc，第二个vc销毁
-代码：LifetimeViewController.h/m
-https://blog.csdn.net/spicyshrimp/article/details/70886516
-
-//关于项目
-1.什么时候更新model?
-1).网络加载数据：更新model；2).本地上传数据：之后更新model；
-
 //面试题：
 1.什么是操作系统？
 Q.直接运行在硬件上的系统软件，其他任何软件都必须在操作系统上运行；
@@ -101,4 +86,5 @@ Q.直接运行在硬件上的系统软件，其他任何软件都必须在操作
 Q.
 3.一个App可以有几个UIWindow？
 Q.
-4.
+4.view的生命周期分别是什么？
+Q.
