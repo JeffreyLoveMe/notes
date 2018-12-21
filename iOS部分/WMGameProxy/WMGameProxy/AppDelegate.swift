@@ -2,7 +2,7 @@
 //  AppDelegate.swift
 //  WMGameProxy
 //
-//  Created by 谢吴军 on 2018/12/1.
+//  Created by 谢吴军 on 2018/12/21.
 //  Copyright © 2018 zali. All rights reserved.
 //
 

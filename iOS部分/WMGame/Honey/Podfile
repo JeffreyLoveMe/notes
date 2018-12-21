@@ -1,0 +1,11 @@
+# Uncomment the next line to define a global platform for your project
+platform :ios, '8.0'
+
+target 'Honey' do
+    
+    pod 'AFNetworking' #AF/Net/working
+    pod 'SDWebImage' #SD/Web/Image
+    pod 'MJRefresh'  #MJ/Refresh
+    pod 'JSONModel'  #JSON/Model
+  
+end

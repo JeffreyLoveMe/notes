@@ -1,0 +1,9 @@
+# Uncomment the next line to define a global platform for your project
+platform :ios, '8.0'
+
+target 'HealthyLife' do
+    
+    pod  'SnapKit'  #代码布局：对AutoLayout的高度封装
+
+    
+end

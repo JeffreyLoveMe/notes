@@ -1,0 +1,687 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		338EC43221B05DF8006D2EBB /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 338EC43121B05DF8006D2EBB /* AppDelegate.m */; };
+		338EC43821B05DF8006D2EBB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 338EC43621B05DF8006D2EBB /* Main.storyboard */; };
+		338EC43A21B05DFA006D2EBB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 338EC43921B05DFA006D2EBB /* Assets.xcassets */; };
+		338EC43D21B05DFA006D2EBB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 338EC43B21B05DFA006D2EBB /* LaunchScreen.storyboard */; };
+		338EC44021B05DFA006D2EBB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 338EC43F21B05DFA006D2EBB /* main.m */; };
+		338EC44A21B05DFA006D2EBB /* HoneyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 338EC44921B05DFA006D2EBB /* HoneyTests.m */; };
+		338EC45521B05DFA006D2EBB /* HoneyUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 338EC45421B05DFA006D2EBB /* HoneyUITests.m */; };
+		338EC46721B0F447006D2EBB /* InformationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 338EC46621B0F447006D2EBB /* InformationViewController.m */; };
+		338EC46A21B10345006D2EBB /* InformationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 338EC46921B10345006D2EBB /* InformationCell.m */; };
+		338EC46D21B103F3006D2EBB /* InformationPost.m in Sources */ = {isa = PBXBuildFile; fileRef = 338EC46C21B103F3006D2EBB /* InformationPost.m */; };
+		D3C81214DD1F597D0E92FA8B /* libPods-Honey.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F782A1FC169A16A361EBC33F /* libPods-Honey.a */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		338EC44621B05DFA006D2EBB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 338EC42521B05DF8006D2EBB /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 338EC42C21B05DF8006D2EBB;
+			remoteInfo = Honey;
+		};
+		338EC45121B05DFA006D2EBB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 338EC42521B05DF8006D2EBB /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 338EC42C21B05DF8006D2EBB;
+			remoteInfo = Honey;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		2011743512AECDA8C199CAE4 /* libPods-HoneyTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-HoneyTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		338EC42D21B05DF8006D2EBB /* Honey.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Honey.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		338EC43021B05DF8006D2EBB /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		338EC43121B05DF8006D2EBB /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		338EC43721B05DF8006D2EBB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		338EC43921B05DFA006D2EBB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		338EC43C21B05DFA006D2EBB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		338EC43E21B05DFA006D2EBB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		338EC43F21B05DFA006D2EBB /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		338EC44521B05DFA006D2EBB /* HoneyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HoneyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		338EC44921B05DFA006D2EBB /* HoneyTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HoneyTests.m; sourceTree = "<group>"; };
+		338EC44B21B05DFA006D2EBB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		338EC45021B05DFA006D2EBB /* HoneyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HoneyUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		338EC45421B05DFA006D2EBB /* HoneyUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HoneyUITests.m; sourceTree = "<group>"; };
+		338EC45621B05DFA006D2EBB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		338EC46521B0F447006D2EBB /* InformationViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InformationViewController.h; sourceTree = "<group>"; };
+		338EC46621B0F447006D2EBB /* InformationViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InformationViewController.m; sourceTree = "<group>"; };
+		338EC46821B10345006D2EBB /* InformationCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InformationCell.h; sourceTree = "<group>"; };
+		338EC46921B10345006D2EBB /* InformationCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InformationCell.m; sourceTree = "<group>"; };
+		338EC46B21B103F3006D2EBB /* InformationPost.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InformationPost.h; sourceTree = "<group>"; };
+		338EC46C21B103F3006D2EBB /* InformationPost.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InformationPost.m; sourceTree = "<group>"; };
+		7E7D89BF72AD246551D226D3 /* libPods-HoneyUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-HoneyUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9A46D23C08B43E47221C6BA7 /* Pods-Honey.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Honey.release.xcconfig"; path = "Pods/Target Support Files/Pods-Honey/Pods-Honey.release.xcconfig"; sourceTree = "<group>"; };
+		C6AB81F899AA3BC5423221FF /* Pods-Honey.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Honey.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Honey/Pods-Honey.debug.xcconfig"; sourceTree = "<group>"; };
+		F782A1FC169A16A361EBC33F /* libPods-Honey.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Honey.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		338EC42A21B05DF8006D2EBB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D3C81214DD1F597D0E92FA8B /* libPods-Honey.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		338EC44221B05DFA006D2EBB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		338EC44D21B05DFA006D2EBB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		338EC42421B05DF8006D2EBB = {
+			isa = PBXGroup;
+			children = (
+				338EC42F21B05DF8006D2EBB /* Honey */,
+				338EC44821B05DFA006D2EBB /* HoneyTests */,
+				338EC45321B05DFA006D2EBB /* HoneyUITests */,
+				338EC42E21B05DF8006D2EBB /* Products */,
+				93981D9C9054E0D81273B48C /* Pods */,
+				BE8490D8BBAE117DB6D40061 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		338EC42E21B05DF8006D2EBB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				338EC42D21B05DF8006D2EBB /* Honey.app */,
+				338EC44521B05DFA006D2EBB /* HoneyTests.xctest */,
+				338EC45021B05DFA006D2EBB /* HoneyUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		338EC42F21B05DF8006D2EBB /* Honey */ = {
+			isa = PBXGroup;
+			children = (
+				338EC46221B0F3F3006D2EBB /* Models */,
+				338EC46421B0F3F3006D2EBB /* Views */,
+				338EC46321B0F3F3006D2EBB /* ViewControllers */,
+				338EC43021B05DF8006D2EBB /* AppDelegate.h */,
+				338EC43121B05DF8006D2EBB /* AppDelegate.m */,
+				338EC43621B05DF8006D2EBB /* Main.storyboard */,
+				338EC43921B05DFA006D2EBB /* Assets.xcassets */,
+				338EC43B21B05DFA006D2EBB /* LaunchScreen.storyboard */,
+				338EC43E21B05DFA006D2EBB /* Info.plist */,
+				338EC43F21B05DFA006D2EBB /* main.m */,
+			);
+			path = Honey;
+			sourceTree = "<group>";
+		};
+		338EC44821B05DFA006D2EBB /* HoneyTests */ = {
+			isa = PBXGroup;
+			children = (
+				338EC44921B05DFA006D2EBB /* HoneyTests.m */,
+				338EC44B21B05DFA006D2EBB /* Info.plist */,
+			);
+			path = HoneyTests;
+			sourceTree = "<group>";
+		};
+		338EC45321B05DFA006D2EBB /* HoneyUITests */ = {
+			isa = PBXGroup;
+			children = (
+				338EC45421B05DFA006D2EBB /* HoneyUITests.m */,
+				338EC45621B05DFA006D2EBB /* Info.plist */,
+			);
+			path = HoneyUITests;
+			sourceTree = "<group>";
+		};
+		338EC46221B0F3F3006D2EBB /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				338EC46B21B103F3006D2EBB /* InformationPost.h */,
+				338EC46C21B103F3006D2EBB /* InformationPost.m */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		338EC46321B0F3F3006D2EBB /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				338EC46521B0F447006D2EBB /* InformationViewController.h */,
+				338EC46621B0F447006D2EBB /* InformationViewController.m */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		338EC46421B0F3F3006D2EBB /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				338EC46821B10345006D2EBB /* InformationCell.h */,
+				338EC46921B10345006D2EBB /* InformationCell.m */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		93981D9C9054E0D81273B48C /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				C6AB81F899AA3BC5423221FF /* Pods-Honey.debug.xcconfig */,
+				9A46D23C08B43E47221C6BA7 /* Pods-Honey.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		BE8490D8BBAE117DB6D40061 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F782A1FC169A16A361EBC33F /* libPods-Honey.a */,
+				2011743512AECDA8C199CAE4 /* libPods-HoneyTests.a */,
+				7E7D89BF72AD246551D226D3 /* libPods-HoneyUITests.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		338EC42C21B05DF8006D2EBB /* Honey */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 338EC45921B05DFA006D2EBB /* Build configuration list for PBXNativeTarget "Honey" */;
+			buildPhases = (
+				1FA235072C69D6BEBDACAEB6 /* [CP] Check Pods Manifest.lock */,
+				338EC42921B05DF8006D2EBB /* Sources */,
+				338EC42A21B05DF8006D2EBB /* Frameworks */,
+				338EC42B21B05DF8006D2EBB /* Resources */,
+				2906CC03BF783103CD26D1A7 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Honey;
+			productName = Honey;
+			productReference = 338EC42D21B05DF8006D2EBB /* Honey.app */;
+			productType = "com.apple.product-type.application";
+		};
+		338EC44421B05DFA006D2EBB /* HoneyTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 338EC45C21B05DFA006D2EBB /* Build configuration list for PBXNativeTarget "HoneyTests" */;
+			buildPhases = (
+				338EC44121B05DFA006D2EBB /* Sources */,
+				338EC44221B05DFA006D2EBB /* Frameworks */,
+				338EC44321B05DFA006D2EBB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				338EC44721B05DFA006D2EBB /* PBXTargetDependency */,
+			);
+			name = HoneyTests;
+			productName = HoneyTests;
+			productReference = 338EC44521B05DFA006D2EBB /* HoneyTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		338EC44F21B05DFA006D2EBB /* HoneyUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 338EC45F21B05DFA006D2EBB /* Build configuration list for PBXNativeTarget "HoneyUITests" */;
+			buildPhases = (
+				338EC44C21B05DFA006D2EBB /* Sources */,
+				338EC44D21B05DFA006D2EBB /* Frameworks */,
+				338EC44E21B05DFA006D2EBB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				338EC45221B05DFA006D2EBB /* PBXTargetDependency */,
+			);
+			name = HoneyUITests;
+			productName = HoneyUITests;
+			productReference = 338EC45021B05DFA006D2EBB /* HoneyUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		338EC42521B05DF8006D2EBB /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 1010;
+				ORGANIZATIONNAME = zali;
+				TargetAttributes = {
+					338EC42C21B05DF8006D2EBB = {
+						CreatedOnToolsVersion = 10.1;
+					};
+					338EC44421B05DFA006D2EBB = {
+						CreatedOnToolsVersion = 10.1;
+						TestTargetID = 338EC42C21B05DF8006D2EBB;
+					};
+					338EC44F21B05DFA006D2EBB = {
+						CreatedOnToolsVersion = 10.1;
+						TestTargetID = 338EC42C21B05DF8006D2EBB;
+					};
+				};
+			};
+			buildConfigurationList = 338EC42821B05DF8006D2EBB /* Build configuration list for PBXProject "Honey" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 338EC42421B05DF8006D2EBB;
+			productRefGroup = 338EC42E21B05DF8006D2EBB /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				338EC42C21B05DF8006D2EBB /* Honey */,
+				338EC44421B05DFA006D2EBB /* HoneyTests */,
+				338EC44F21B05DFA006D2EBB /* HoneyUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		338EC42B21B05DF8006D2EBB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				338EC43D21B05DFA006D2EBB /* LaunchScreen.storyboard in Resources */,
+				338EC43A21B05DFA006D2EBB /* Assets.xcassets in Resources */,
+				338EC43821B05DF8006D2EBB /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		338EC44321B05DFA006D2EBB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		338EC44E21B05DFA006D2EBB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		1FA235072C69D6BEBDACAEB6 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Honey-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		2906CC03BF783103CD26D1A7 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Honey/Pods-Honey-resources.sh",
+				"${PODS_ROOT}/MJRefresh/MJRefresh/MJRefresh.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MJRefresh.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Honey/Pods-Honey-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		338EC42921B05DF8006D2EBB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				338EC46D21B103F3006D2EBB /* InformationPost.m in Sources */,
+				338EC46721B0F447006D2EBB /* InformationViewController.m in Sources */,
+				338EC44021B05DFA006D2EBB /* main.m in Sources */,
+				338EC46A21B10345006D2EBB /* InformationCell.m in Sources */,
+				338EC43221B05DF8006D2EBB /* AppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		338EC44121B05DFA006D2EBB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				338EC44A21B05DFA006D2EBB /* HoneyTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		338EC44C21B05DFA006D2EBB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				338EC45521B05DFA006D2EBB /* HoneyUITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		338EC44721B05DFA006D2EBB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 338EC42C21B05DF8006D2EBB /* Honey */;
+			targetProxy = 338EC44621B05DFA006D2EBB /* PBXContainerItemProxy */;
+		};
+		338EC45221B05DFA006D2EBB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 338EC42C21B05DF8006D2EBB /* Honey */;
+			targetProxy = 338EC45121B05DFA006D2EBB /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		338EC43621B05DF8006D2EBB /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				338EC43721B05DF8006D2EBB /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		338EC43B21B05DFA006D2EBB /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				338EC43C21B05DFA006D2EBB /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		338EC45721B05DFA006D2EBB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		338EC45821B05DFA006D2EBB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		338EC45A21B05DFA006D2EBB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C6AB81F899AA3BC5423221FF /* Pods-Honey.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = Honey/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = org.easylife.ios.Honey;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		338EC45B21B05DFA006D2EBB /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9A46D23C08B43E47221C6BA7 /* Pods-Honey.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = Honey/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = org.easylife.ios.Honey;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		338EC45D21B05DFA006D2EBB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = HoneyTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = org.easylife.ios.HoneyTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Honey.app/Honey";
+			};
+			name = Debug;
+		};
+		338EC45E21B05DFA006D2EBB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = HoneyTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = org.easylife.ios.HoneyTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Honey.app/Honey";
+			};
+			name = Release;
+		};
+		338EC46021B05DFA006D2EBB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = HoneyUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = org.easylife.ios.HoneyUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Honey;
+			};
+			name = Debug;
+		};
+		338EC46121B05DFA006D2EBB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = HoneyUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = org.easylife.ios.HoneyUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Honey;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		338EC42821B05DF8006D2EBB /* Build configuration list for PBXProject "Honey" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				338EC45721B05DFA006D2EBB /* Debug */,
+				338EC45821B05DFA006D2EBB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		338EC45921B05DFA006D2EBB /* Build configuration list for PBXNativeTarget "Honey" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				338EC45A21B05DFA006D2EBB /* Debug */,
+				338EC45B21B05DFA006D2EBB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		338EC45C21B05DFA006D2EBB /* Build configuration list for PBXNativeTarget "HoneyTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				338EC45D21B05DFA006D2EBB /* Debug */,
+				338EC45E21B05DFA006D2EBB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		338EC45F21B05DFA006D2EBB /* Build configuration list for PBXNativeTarget "HoneyUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				338EC46021B05DFA006D2EBB /* Debug */,
+				338EC46121B05DFA006D2EBB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 338EC42521B05DF8006D2EBB /* Project object */;
+}
