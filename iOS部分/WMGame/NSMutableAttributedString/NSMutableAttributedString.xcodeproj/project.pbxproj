@@ -8,12 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		3311493B21BB650A009E4C05 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3311493A21BB650A009E4C05 /* AppDelegate.swift */; };
-		3311493D21BB650A009E4C05 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3311493C21BB650A009E4C05 /* ViewController.swift */; };
 		3311494021BB650A009E4C05 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3311493E21BB650A009E4C05 /* Main.storyboard */; };
 		3311494221BB6510009E4C05 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3311494121BB6510009E4C05 /* Assets.xcassets */; };
 		3311494521BB6510009E4C05 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3311494321BB6510009E4C05 /* LaunchScreen.storyboard */; };
 		3311495021BB6510009E4C05 /* NSMutableAttributedStringTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3311494F21BB6510009E4C05 /* NSMutableAttributedStringTests.swift */; };
 		3311495B21BB6510009E4C05 /* NSMutableAttributedStringUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3311495A21BB6510009E4C05 /* NSMutableAttributedStringUITests.swift */; };
+		33B94C7021CCD8C1001A601B /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 33B94C6F21CCD8C1001A601B /* RootViewController.m */; };
+		33B94C7221CCD8E7001A601B /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33B94C7121CCD8E7001A601B /* HomeViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,7 +37,6 @@
 /* Begin PBXFileReference section */
 		3311493721BB650A009E4C05 /* NSMutableAttributedString.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NSMutableAttributedString.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3311493A21BB650A009E4C05 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		3311493C21BB650A009E4C05 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		3311493F21BB650A009E4C05 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3311494121BB6510009E4C05 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3311494421BB6510009E4C05 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -47,6 +47,10 @@
 		3311495621BB6510009E4C05 /* NSMutableAttributedStringUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NSMutableAttributedStringUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3311495A21BB6510009E4C05 /* NSMutableAttributedStringUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSMutableAttributedStringUITests.swift; sourceTree = "<group>"; };
 		3311495C21BB6510009E4C05 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		33B94C6D21CCD8C1001A601B /* NSMutableAttributedString-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSMutableAttributedString-Bridging-Header.h"; sourceTree = "<group>"; };
+		33B94C6E21CCD8C1001A601B /* RootViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
+		33B94C6F21CCD8C1001A601B /* RootViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
+		33B94C7121CCD8E7001A601B /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,7 +102,10 @@
 			isa = PBXGroup;
 			children = (
 				3311493A21BB650A009E4C05 /* AppDelegate.swift */,
-				3311493C21BB650A009E4C05 /* ViewController.swift */,
+				33B94C7121CCD8E7001A601B /* HomeViewController.swift */,
+				33B94C6E21CCD8C1001A601B /* RootViewController.h */,
+				33B94C6F21CCD8C1001A601B /* RootViewController.m */,
+				33B94C6D21CCD8C1001A601B /* NSMutableAttributedString-Bridging-Header.h */,
 				3311493E21BB650A009E4C05 /* Main.storyboard */,
 				3311494121BB6510009E4C05 /* Assets.xcassets */,
 				3311494321BB6510009E4C05 /* LaunchScreen.storyboard */,
@@ -193,6 +200,7 @@
 				TargetAttributes = {
 					3311493621BB6509009E4C05 = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1010;
 					};
 					3311494A21BB6510009E4C05 = {
 						CreatedOnToolsVersion = 10.1;
@@ -256,8 +264,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3311493D21BB650A009E4C05 /* ViewController.swift in Sources */,
 				3311493B21BB650A009E4C05 /* AppDelegate.swift in Sources */,
+				33B94C7021CCD8C1001A601B /* RootViewController.m in Sources */,
+				33B94C7221CCD8E7001A601B /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -432,6 +441,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = NSMutableAttributedString/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -440,6 +450,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = org.wm.ios.NSMutableAttributedString;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "NSMutableAttributedString/NSMutableAttributedString-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -449,6 +461,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = NSMutableAttributedString/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -457,6 +470,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = org.wm.ios.NSMutableAttributedString;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "NSMutableAttributedString/NSMutableAttributedString-Bridging-Header.h";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

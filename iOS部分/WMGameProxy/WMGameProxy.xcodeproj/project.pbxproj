@@ -18,12 +18,12 @@
 		33B94C5621CCC7CD001A601B /* EyeeHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 33B94C5521CCC7CD001A601B /* EyeeHomeViewController.m */; };
 		33B94C6521CCC7DE001A601B /* EyeeCommunity.m in Sources */ = {isa = PBXBuildFile; fileRef = 33B94C5821CCC7DD001A601B /* EyeeCommunity.m */; };
 		33B94C6621CCC7DE001A601B /* UI划分_01.png in Resources */ = {isa = PBXBuildFile; fileRef = 33B94C5B21CCC7DE001A601B /* UI划分_01.png */; };
-		33B94C6721CCC7DE001A601B /* 标准json格式.png in Resources */ = {isa = PBXBuildFile; fileRef = 33B94C5C21CCC7DE001A601B /* 标准json格式.png */; };
 		33B94C6821CCC7DE001A601B /* Safe Area.png in Resources */ = {isa = PBXBuildFile; fileRef = 33B94C5D21CCC7DE001A601B /* Safe Area.png */; };
 		33B94C6921CCC7DE001A601B /* iphone设备尺寸.png in Resources */ = {isa = PBXBuildFile; fileRef = 33B94C5E21CCC7DE001A601B /* iphone设备尺寸.png */; };
 		33B94C6A21CCC7DE001A601B /* C语言的执行流程.png in Resources */ = {isa = PBXBuildFile; fileRef = 33B94C5F21CCC7DE001A601B /* C语言的执行流程.png */; };
 		33B94C6B21CCC7DE001A601B /* 认识Autolayout.png in Resources */ = {isa = PBXBuildFile; fileRef = 33B94C6021CCC7DE001A601B /* 认识Autolayout.png */; };
 		33B94C6C21CCC7DE001A601B /* WMGameProxy.txt in Resources */ = {isa = PBXBuildFile; fileRef = 33B94C6421CCC7DE001A601B /* WMGameProxy.txt */; };
+		33B94CEA21D08276001A601B /* json解析标准版.png in Resources */ = {isa = PBXBuildFile; fileRef = 33B94CE921D08276001A601B /* json解析标准版.png */; };
 		AA4E04856236A658FF8C6B14 /* Pods_WMGameProxyUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B04C6F46241C4A909848788 /* Pods_WMGameProxyUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -66,12 +66,12 @@
 		33B94C5821CCC7DD001A601B /* EyeeCommunity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EyeeCommunity.m; sourceTree = "<group>"; };
 		33B94C5921CCC7DD001A601B /* EyeeCommunity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EyeeCommunity.h; sourceTree = "<group>"; };
 		33B94C5B21CCC7DE001A601B /* UI划分_01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "UI划分_01.png"; sourceTree = "<group>"; };
-		33B94C5C21CCC7DE001A601B /* 标准json格式.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "标准json格式.png"; sourceTree = "<group>"; };
 		33B94C5D21CCC7DE001A601B /* Safe Area.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Safe Area.png"; sourceTree = "<group>"; };
 		33B94C5E21CCC7DE001A601B /* iphone设备尺寸.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iphone设备尺寸.png"; sourceTree = "<group>"; };
 		33B94C5F21CCC7DE001A601B /* C语言的执行流程.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "C语言的执行流程.png"; sourceTree = "<group>"; };
 		33B94C6021CCC7DE001A601B /* 认识Autolayout.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "认识Autolayout.png"; sourceTree = "<group>"; };
 		33B94C6421CCC7DE001A601B /* WMGameProxy.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = WMGameProxy.txt; sourceTree = "<group>"; };
+		33B94CE921D08276001A601B /* json解析标准版.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "json解析标准版.png"; sourceTree = "<group>"; };
 		4AC8EC18CED1679BA4EF1A07 /* Pods-WMGameProxyUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WMGameProxyUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WMGameProxyUITests/Pods-WMGameProxyUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		4B04C6F46241C4A909848788 /* Pods_WMGameProxyUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WMGameProxyUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4DA4AEB18A68D9A6CEF96521 /* Pods-WMGameProxyUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WMGameProxyUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-WMGameProxyUITests/Pods-WMGameProxyUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -178,8 +178,8 @@
 		33B94C5A21CCC7DE001A601B /* Res */ = {
 			isa = PBXGroup;
 			children = (
+				33B94CE921D08276001A601B /* json解析标准版.png */,
 				33B94C5B21CCC7DE001A601B /* UI划分_01.png */,
-				33B94C5C21CCC7DE001A601B /* 标准json格式.png */,
 				33B94C5D21CCC7DE001A601B /* Safe Area.png */,
 				33B94C5E21CCC7DE001A601B /* iphone设备尺寸.png */,
 				33B94C5F21CCC7DE001A601B /* C语言的执行流程.png */,
@@ -344,9 +344,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				33B94C6821CCC7DE001A601B /* Safe Area.png in Resources */,
-				33B94C6721CCC7DE001A601B /* 标准json格式.png in Resources */,
 				33B94C6A21CCC7DE001A601B /* C语言的执行流程.png in Resources */,
 				33B94C6621CCC7DE001A601B /* UI划分_01.png in Resources */,
+				33B94CEA21D08276001A601B /* json解析标准版.png in Resources */,
 				33B94C6B21CCC7DE001A601B /* 认识Autolayout.png in Resources */,
 				33B94C3021CCC766001A601B /* LaunchScreen.storyboard in Resources */,
 				33B94C6921CCC7DE001A601B /* iphone设备尺寸.png in Resources */,
