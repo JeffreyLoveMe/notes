@@ -41,11 +41,38 @@
 //Mac快捷键
 command+空格 //切换输入法
 command+F //查找、替换
+command+N //新建
+command+tab //切换应用程序
 command+shift+3/4 //截图
+command+shift+z //恢复撤销
 command+W|Q //退出前台|退出后台
 command+S|C|V|X|A|Z //保存|复制|粘贴|剪切|全选|撤销
 command+B|R //将代码翻译成0/1|运行程序
+shift+command+N|M //创建工程|模拟内存警告
 command+D //保存网址
+F11 //进入桌面
+
+//常用终端命令
+cd 目录 //切换到指定目录
+cd .. //返回上一级目录
+cd /  //切换到root目录
+ls  //查询当前目录下子目录活文件
+pwd //查看当前路径
+ctrl+L //清屏
+
+//vi编译器的使用：用来编写c语言程序
+vi test.c //打开|新建test.c文件
+i //命令模式->编辑模式
+#include <stdio.h> //编写一段c语言代码
+int main() {
+    printf("hello world\n");
+    return 0;
+}
+esc //退出编辑模式
+:wq //保存代码：返回到命令行模式
+//通过gcc编译器编译
+gcc test.c -0 t //test.c需要编译的C语言源文件|t将要生成可执行文件
+./t //运行程序
 
 //计算机常识
 1.计算机只能识别0|1，计算机能识别的指令也是由0和1组成，计算机中存储和操作的数据都是由0和1组成；
@@ -135,9 +162,82 @@ scanf("%i,%i",&num1,&num2); //FIXME:什么情况下，scanf()函数自动终止�
 实现原理：scanf()函数只要输入缓冲区中有内容，就不会要求用户输入数据；
 3.有效位数：从第一位开始算起|float有效位数为7位(系统固定)|double有效位数位15位
 
+//运算符
+1.算术运算符：+|-|*|/|% | 相同类型变量算术运算：结果类型不变
+result = 1 + 3 + 6 * 5 / 3; //result = 14 |优先级：*|/ > +|-
+result = -10 % 3; //result = -1|result正负性取决于左边的操作数
+1).自动类型转换(隐式转化)
+int num = 10.8; //int占4个字节|double占8个字节
+2).强制类型转换(显式转化)：原表达式的值不变、强转以后结果改变
+int num = (int)10.8;
+3).自动类型提升：系统会将"小类型"->"大类型"|不会损失精度
+int result = 10+9.9; //只有相同类型的运算符才可以运算：必须"自动类型提升"
+注意：参与运算的操作数类型和结果的类型必须一致；
+2.赋值运算符：=|+=|-=|*=|/=|%=|结合性：从右到左
+result = 5; result += 5; //result = 10
+3.自增|自减运算符：
+result = 5;int sum = result++;result--; //先赋值、再result-1|result = 5|sum = 5
+int sum = ++result; //sum = 6|result = 6
+4.sizeof运算符：一个数据类型在内存中占有字节数
+int size = sizeof(10);=>int size = size 10; //()可以省略
+int x = 9.8; int size = sizeof(x);=>int size = sizeof x; // ()可以省略
+int size = sizeof(float); //不能省略
+5.逗号运算符：,
+// 一般很少使用,获取表达式的结果|一般使用,连接多个表达式
+if let count = array.count, let size = count + 1 {
+    //整个,表达式的结果==最后一个表达式的值
+}
+6.关系运算符：C语言规定：非0即真|>|<|>=|<=|==|!=
+a = 10, b = 5;
+int result = a > b;// 怎么理解：a>b吗？
+优先级：>、<、>=、<=优先级大于!=、==|先优先级、再结合性
+7.逻辑运算符：&&、||、!
+int sum = a && b;
+int sum = a || b;
+int sum = !a; // 从右至左
+注意：1.C语言规定所有的数值都有真假性，非0即真；
+2.&&、||会出现短路现象；
+8.三目运算符:
+int max = a > b ? a : b;
+
+//流程控制基本概念
+
 //值传递|指针传递
 /**************************Objective-C基础**************************/
+//认识Objective-C语言
+1.概述：面向对象的C语言|完全兼容C语言|C语言代码可以直接编译在Objective-C工程中；
+
+//面向对象：
+1.概念：
+2.特性：
+1).封装性：
+3.面向对象编程|面向过程编程的区别：
+1).
+
+
+
+
+
+
+
 /**************************UI基础**************************/
+//认识UI(User Interface)
+1.概述：用户通过UI与用户进行交互|传入用户的请求|反馈运行的结果
+
+//iOS的坐标体系
+
+//Main()函数
+
+//UIWindow
+
+//应用程序的生命周期
+
+//UIView|UIViewController
+
+//UILabel
+
+//定时器
+
 //关于适配：
 1.系统适配：
 2.机型适配：
@@ -150,6 +250,15 @@ scanf("%i,%i",&num1,&num2); //FIXME:什么情况下，scanf()函数自动终止�
 https://www.macx.cn
 https://xclient.info
 /**************************计算机基础**************************/
+1.给定链表的头指针和一个结点指针，在O(1)时间删除该结点。
+链表结点的定义如下：
+struct ListNode {
+    int m_nKey;
+    ListNode* m_pNext;
+}
+函数的声明：void DeleteNode(ListNode* pListHead, ListNode* pToBeDeleted);
+2.语句倒序：I am Bruch；（语言随意：不能使用伪代码）
+3.
 /**************************面试题部分**************************/
 1.什么是操作系统？
 Q.直接运行在硬件上的系统软件，其他任何软件都必须在操作系统上运行；
@@ -159,3 +268,15 @@ Q.
 Q.
 4.view的生命周期分别是什么？
 Q.
+5.bounds和frame的区别？
+Q.
+6.-(void)loadView {}做了什么？
+Q.
+7.NSOperation什么时候从queue中移除？
+Q.
+8.ViewController生命周期？
+Q.
+//参考网站：
+http://www.cnblogs.com/Piosa/archive/2012/02/22/2363234.html
+/**************************难点部分**************************/
+1.Objective-C项目怎么设置可以全局设置头文件；
