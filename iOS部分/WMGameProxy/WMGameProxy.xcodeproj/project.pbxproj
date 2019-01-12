@@ -175,8 +175,8 @@
 		33B94C5721CCC7DD001A601B /* C语言 */ = {
 			isa = PBXGroup;
 			children = (
-				33B94C5821CCC7DD001A601B /* EyeeCommunity.m */,
 				33B94C5921CCC7DD001A601B /* EyeeCommunity.h */,
+				33B94C5821CCC7DD001A601B /* EyeeCommunity.m */,
 			);
 			path = "C语言";
 			sourceTree = "<group>";

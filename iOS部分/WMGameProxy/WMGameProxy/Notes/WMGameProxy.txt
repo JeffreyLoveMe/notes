@@ -178,7 +178,7 @@ result = 5; result += 5; //result = 10
 3.自增|自减运算符：
 result = 5;int sum = result++;result--; //先赋值、再result-1|result = 5|sum = 5
 int sum = ++result; //sum = 6|result = 6
-4.sizeof运算符：一个数据类型在内存中占有字节数
+4.sizeof运算符：一个数据类型|常量|变量在内存中占有字节数
 int size = sizeof(10);=>int size = size 10; //()可以省略
 int x = 9.8; int size = sizeof(x);=>int size = sizeof x; // ()可以省略
 int size = sizeof(float); //不能省略
@@ -201,6 +201,24 @@ int sum = !a; // 从右至左
 int max = a > b ? a : b;
 
 //流程控制基本概念
+1.if语句：if语句可以嵌套|嵌套可以使用&&、||、!替代
+if() {
+//执行代码
+}
+if() {
+//执行代码
+} else {
+//执行代码
+}
+if() {
+//执行代码
+} else if () {
+//执行代码
+} else {
+//执行代码：可以不需要这一句|可选类型
+}
+2.switch语句：
+
 
 //值传递|指针传递
 /**************************Objective-C基础**************************/

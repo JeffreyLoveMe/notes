@@ -10,4 +10,6 @@
 
 @interface EyeeCommunity : NSObject
 
+-(void) onLine:(int)age;
+
 @end

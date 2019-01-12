@@ -10,4 +10,11 @@
 
 @implementation EyeeCommunity
 
+-(void) onLine:(int)age {
+    
+    if (age > 18) {
+        NSLog(@"开网卡");
+    }
+}
+
 @end
