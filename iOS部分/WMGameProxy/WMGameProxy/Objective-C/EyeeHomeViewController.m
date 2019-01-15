@@ -47,10 +47,28 @@
 
 #pragma mark -- UIButton
 -(void)setupButton {
+    /*
+     UIButton的四种状态：很重要
+     normal
+     highlight
+     select
+     disable
+     */
+    // 每种状态都可以设置文字|也可以不设置文字
+    // 可以根据各种状态：修改UIButton的文字|图片|颜色
     UIButton *btn = [[UIButton alloc]initWithFrame:CGRectMake(25, 150, 100, 50)];
     [self.view addSubview:btn];
+    [btn setTitle:@"normal" forState:UIControlStateNormal]; // 普通状态
+    [btn setTitle:@"highlight" forState:UIControlStateHighlighted]; // 按下的时候
+    [btn setTitle:@"select" forState:UIControlStateSelected]; // btn.selected = YES;
+    [btn setTitle:@"disable" forState:UIControlStateDisabled]; // btn.enabled = NO;
+    btn.backgroundColor = UIColor.redColor;
+    [btn addTarget:self action:@selector(btnAction:) forControlEvents:UIControlEventTouchUpInside];
+}
     
-    
+-(void)btnAction:(UIButton *)btn {
+    UILabel *label = [self.view viewWithTag:100];
+    label.text = @"xxx";
 }
 
 #pragma mark -- UIView(UIView是所有控件的父控件)
@@ -89,7 +107,7 @@
     //设置占位符：
     tf.placeholder = @"请输入名字";
 }
-
+    
 #pragma mark -- UIImageView
 -(void)setupImageView {
     UIImageView *image = [[UIImageView alloc]initWithFrame:CGRectMake(25, 150, 100, 50)];
@@ -107,7 +125,7 @@
     //帧动画
     NSMutableArray *array = [NSMutableArray array]; // NSMutableArray只用新建一个
     for (NSInteger index = 1; index <= 18; index++) {
-        UIImage *birdImage = [UIImage imageNamed:[NSString stringWithFormat:@"DOVE %ld",index]];
+        UIImage *birdImage = [UIImage imageNamed:[NSString stringWithFormat:@"DOVE %ld",(long)index]];
         [array addObject:birdImage];
     }
     image.animationImages = array; // 动画数组
@@ -116,11 +134,35 @@
     [image startAnimating]; // 开始执行动画
 //    [image stopAnimating];
 }
+    
+#pragma mark -- 图片加载
+-(void)loadPhoto {
+    UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];// 一般使用自定义UIButton
+    btn.frame = CGRectMake(25, 150, 100, 50);
+    [self.view addSubview:btn];
+    // 只能加载小图片|使用该方法加载的图片一直存在内存中、不会释放
+    UIImage *image = [UIImage imageNamed:@"1.png"];
+    [btn setImage:image forState:UIControlStateNormal];
+    // 如果图片占用内存较大，使用该方法
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"2" ofType:@"png"];
+    NSData *data = [NSData dataWithContentsOfFile:path];
+    UIImage *image_01 = [UIImage imageWithData:data];
+    [btn setImage:image_01 forState:UIControlStateHighlighted];
+}
+    
+#pragma mark -- UIScrollView
+-(void)setupUIScrollView {
+    UIScrollView *scrollView = [[UIScrollView alloc]initWithFrame:self.view.bounds];
+    [self.view addSubview:scrollView];
+    
+}
+    
+#pragma mark --
 
 #pragma mark -- NSTimer
 -(void)setupTimer {
     //1.创建NSTimer
-    NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(onTimer) userInfo:nil repeats:YES];
+//    NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(onTimer) userInfo:nil repeats:YES];
 }
 
 -(void)onTimer {

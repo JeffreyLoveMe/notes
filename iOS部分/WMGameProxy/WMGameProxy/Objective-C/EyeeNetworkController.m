@@ -23,6 +23,7 @@
     self.photos = [NSMutableArray array];// 数据源必须init
 }
 
+#pragma mark -- AF3.0最简单使用
 -(void)pulldownToRefresh {
     // 网络请求管理类
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
