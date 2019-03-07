@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		330266D121D7381E00C6505F /* App职责分配.png in Resources */ = {isa = PBXBuildFile; fileRef = 330266D021D7381E00C6505F /* App职责分配.png */; };
 		330266DA21D9BB7500C6505F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 330266D921D9BB7500C6505F /* AppDelegate.m */; };
+		3323788421EF357F008F056D /* C:OC学习路线&重难点.png in Resources */ = {isa = PBXBuildFile; fileRef = 3323788321EF357F008F056D /* C:OC学习路线&重难点.png */; };
+		3323788821EF3EF2008F056D /* UI划分_00.png in Resources */ = {isa = PBXBuildFile; fileRef = 3323788721EF3EF2008F056D /* UI划分_00.png */; };
 		3347C34621E489EE0050778E /* UIKit.png in Resources */ = {isa = PBXBuildFile; fileRef = 3347C34521E489ED0050778E /* UIKit.png */; };
 		336522E721E48E1400D41593 /* UIApplication.png in Resources */ = {isa = PBXBuildFile; fileRef = 336522E621E48E1400D41593 /* UIApplication.png */; };
 		33B83DD221E50AE600E679E8 /* 单个文件放置多个类：多用于model.png in Resources */ = {isa = PBXBuildFile; fileRef = 33B83DD121E50AE600E679E8 /* 单个文件放置多个类：多用于model.png */; };
@@ -26,7 +28,11 @@
 		33B94C6B21CCC7DE001A601B /* 认识Autolayout.png in Resources */ = {isa = PBXBuildFile; fileRef = 33B94C6021CCC7DE001A601B /* 认识Autolayout.png */; };
 		33B94C6C21CCC7DE001A601B /* WMGameProxy.txt in Resources */ = {isa = PBXBuildFile; fileRef = 33B94C6421CCC7DE001A601B /* WMGameProxy.txt */; };
 		33B94CEA21D08276001A601B /* json解析标准版.png in Resources */ = {isa = PBXBuildFile; fileRef = 33B94CE921D08276001A601B /* json解析标准版.png */; };
+		33BB43FE2206FD0500D537CD /* EyeeModels.m in Sources */ = {isa = PBXBuildFile; fileRef = 33BB43FD2206FD0500D537CD /* EyeeModels.m */; };
+		33BB440D2212A10300D537CD /* C语言:OC关键字.png in Resources */ = {isa = PBXBuildFile; fileRef = 33BB440C2212A10300D537CD /* C语言:OC关键字.png */; };
 		33E0479321E6F59600173EE2 /* EyeeNetworkController.m in Sources */ = {isa = PBXBuildFile; fileRef = 33E0479221E6F59600173EE2 /* EyeeNetworkController.m */; };
+		33E4FA6521FEFFC100D399B7 /* UIImage+animatedGIF.m in Sources */ = {isa = PBXBuildFile; fileRef = 33E4FA6421FEFFC000D399B7 /* UIImage+animatedGIF.m */; };
+		33E4FA6721FF01D600D399B7 /* FlagZombie.gif in Resources */ = {isa = PBXBuildFile; fileRef = 33E4FA6621FF01D500D399B7 /* FlagZombie.gif */; };
 		33F70CED21DDE7DB00139F21 /* UICollectionView.png in Resources */ = {isa = PBXBuildFile; fileRef = 33F70CEC21DDE7DA00139F21 /* UICollectionView.png */; };
 		7BB33BA4342649B7B61D3728 /* libPods-WMGameProxy.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D8009D27178B17FCE537BA78 /* libPods-WMGameProxy.a */; };
 /* End PBXBuildFile section */
@@ -54,6 +60,8 @@
 		330266D021D7381E00C6505F /* App职责分配.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "App职责分配.png"; sourceTree = "<group>"; };
 		330266D821D9BB7500C6505F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		330266D921D9BB7500C6505F /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		3323788321EF357F008F056D /* C:OC学习路线&重难点.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "C:OC学习路线&重难点.png"; sourceTree = "<group>"; };
+		3323788721EF3EF2008F056D /* UI划分_00.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "UI划分_00.png"; sourceTree = "<group>"; };
 		3347C34521E489ED0050778E /* UIKit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = UIKit.png; sourceTree = "<group>"; };
 		336522E621E48E1400D41593 /* UIApplication.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = UIApplication.png; sourceTree = "<group>"; };
 		33B83DD121E50AE600E679E8 /* 单个文件放置多个类：多用于model.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "单个文件放置多个类：多用于model.png"; sourceTree = "<group>"; };
@@ -80,8 +88,14 @@
 		33B94C6021CCC7DE001A601B /* 认识Autolayout.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "认识Autolayout.png"; sourceTree = "<group>"; };
 		33B94C6421CCC7DE001A601B /* WMGameProxy.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = WMGameProxy.txt; sourceTree = "<group>"; };
 		33B94CE921D08276001A601B /* json解析标准版.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "json解析标准版.png"; sourceTree = "<group>"; };
+		33BB43FC2206FD0500D537CD /* EyeeModels.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EyeeModels.h; sourceTree = "<group>"; };
+		33BB43FD2206FD0500D537CD /* EyeeModels.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EyeeModels.m; sourceTree = "<group>"; };
+		33BB440C2212A10300D537CD /* C语言:OC关键字.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "C语言:OC关键字.png"; sourceTree = "<group>"; };
 		33E0479121E6F59600173EE2 /* EyeeNetworkController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EyeeNetworkController.h; sourceTree = "<group>"; };
 		33E0479221E6F59600173EE2 /* EyeeNetworkController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EyeeNetworkController.m; sourceTree = "<group>"; };
+		33E4FA6321FEFFC000D399B7 /* UIImage+animatedGIF.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+animatedGIF.h"; sourceTree = "<group>"; };
+		33E4FA6421FEFFC000D399B7 /* UIImage+animatedGIF.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+animatedGIF.m"; sourceTree = "<group>"; };
+		33E4FA6621FF01D500D399B7 /* FlagZombie.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = FlagZombie.gif; sourceTree = "<group>"; };
 		33F70CEC21DDE7DA00139F21 /* UICollectionView.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = UICollectionView.png; sourceTree = "<group>"; };
 		4B04C6F46241C4A909848788 /* Pods_WMGameProxyUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WMGameProxyUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC7ED73C1A878A0AE3D63ECF /* Pods-WMGameProxy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WMGameProxy.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WMGameProxy/Pods-WMGameProxy.debug.xcconfig"; sourceTree = "<group>"; };
@@ -142,6 +156,7 @@
 				33B94C5A21CCC7DE001A601B /* Res */,
 				33B94C5721CCC7DD001A601B /* C语言 */,
 				33B94C6321CCC7DE001A601B /* Notes */,
+				33E4FA6121FEFF8A00D399B7 /* Libs */,
 				33B94C6221CCC7DE001A601B /* Objective-C */,
 				33B94C6121CCC7DE001A601B /* Swift */,
 				33B94C2521CCC764001A601B /* AppDelegate.swift */,
@@ -184,10 +199,14 @@
 		33B94C5A21CCC7DE001A601B /* Res */ = {
 			isa = PBXGroup;
 			children = (
+				33BB440C2212A10300D537CD /* C语言:OC关键字.png */,
+				33E4FA6621FF01D500D399B7 /* FlagZombie.gif */,
+				3323788721EF3EF2008F056D /* UI划分_00.png */,
 				33B83DD121E50AE600E679E8 /* 单个文件放置多个类：多用于model.png */,
 				336522E621E48E1400D41593 /* UIApplication.png */,
 				3347C34521E489ED0050778E /* UIKit.png */,
 				330266D021D7381E00C6505F /* App职责分配.png */,
+				3323788321EF357F008F056D /* C:OC学习路线&重难点.png */,
 				33B94CE921D08276001A601B /* json解析标准版.png */,
 				33F70CEC21DDE7DA00139F21 /* UICollectionView.png */,
 				33B94C5D21CCC7DE001A601B /* Safe Area.png */,
@@ -210,6 +229,8 @@
 			children = (
 				330266D821D9BB7500C6505F /* AppDelegate.h */,
 				330266D921D9BB7500C6505F /* AppDelegate.m */,
+				33BB43FC2206FD0500D537CD /* EyeeModels.h */,
+				33BB43FD2206FD0500D537CD /* EyeeModels.m */,
 				33B94C5421CCC7CD001A601B /* EyeeHomeViewController.h */,
 				33B94C5521CCC7CD001A601B /* EyeeHomeViewController.m */,
 				33E0479121E6F59600173EE2 /* EyeeNetworkController.h */,
@@ -224,6 +245,23 @@
 				33B94C6421CCC7DE001A601B /* WMGameProxy.txt */,
 			);
 			path = Notes;
+			sourceTree = "<group>";
+		};
+		33E4FA6121FEFF8A00D399B7 /* Libs */ = {
+			isa = PBXGroup;
+			children = (
+				33E4FA6221FEFFC000D399B7 /* AnimatedGIF */,
+			);
+			path = Libs;
+			sourceTree = "<group>";
+		};
+		33E4FA6221FEFFC000D399B7 /* AnimatedGIF */ = {
+			isa = PBXGroup;
+			children = (
+				33E4FA6321FEFFC000D399B7 /* UIImage+animatedGIF.h */,
+				33E4FA6421FEFFC000D399B7 /* UIImage+animatedGIF.m */,
+			);
+			path = AnimatedGIF;
 			sourceTree = "<group>";
 		};
 		67779ABFDC758F4C637E79E6 /* Pods */ = {
@@ -353,12 +391,16 @@
 			files = (
 				33F70CED21DDE7DB00139F21 /* UICollectionView.png in Resources */,
 				33B83DD221E50AE600E679E8 /* 单个文件放置多个类：多用于model.png in Resources */,
+				33BB440D2212A10300D537CD /* C语言:OC关键字.png in Resources */,
 				330266D121D7381E00C6505F /* App职责分配.png in Resources */,
+				3323788821EF3EF2008F056D /* UI划分_00.png in Resources */,
 				33B94C6821CCC7DE001A601B /* Safe Area.png in Resources */,
 				33B94C6A21CCC7DE001A601B /* C语言的执行流程.png in Resources */,
+				33E4FA6721FF01D600D399B7 /* FlagZombie.gif in Resources */,
 				33B94CEA21D08276001A601B /* json解析标准版.png in Resources */,
 				33B94C6B21CCC7DE001A601B /* 认识Autolayout.png in Resources */,
 				33B94C3021CCC766001A601B /* LaunchScreen.storyboard in Resources */,
+				3323788421EF357F008F056D /* C:OC学习路线&重难点.png in Resources */,
 				3347C34621E489EE0050778E /* UIKit.png in Resources */,
 				33B94C6921CCC7DE001A601B /* iphone设备尺寸.png in Resources */,
 				33B94C6C21CCC7DE001A601B /* WMGameProxy.txt in Resources */,
@@ -410,7 +452,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				33BB43FE2206FD0500D537CD /* EyeeModels.m in Sources */,
 				33B94C2621CCC764001A601B /* AppDelegate.swift in Sources */,
+				33E4FA6521FEFFC100D399B7 /* UIImage+animatedGIF.m in Sources */,
 				33B94C5621CCC7CD001A601B /* EyeeHomeViewController.m in Sources */,
 				33B94C6521CCC7DE001A601B /* EyeeCommunity.m in Sources */,
 				33E0479321E6F59600173EE2 /* EyeeNetworkController.m in Sources */,

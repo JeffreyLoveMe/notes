@@ -7,8 +7,10 @@
 //
 
 #import "EyeeHomeViewController.h"
+#import "EyeeNetworkController.h"
+#import "UIImage+animatedGIF.h" //category
 
-@interface EyeeHomeViewController ()
+@interface EyeeHomeViewController () <UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource, UIAlertViewDelegate, UIActionSheetDelegate>
 
 @end
 
@@ -62,13 +64,31 @@
     [btn setTitle:@"highlight" forState:UIControlStateHighlighted]; // 按下的时候
     [btn setTitle:@"select" forState:UIControlStateSelected]; // btn.selected = YES;
     [btn setTitle:@"disable" forState:UIControlStateDisabled]; // btn.enabled = NO;
+    [btn setTitleColor:UIColor.whiteColor forState:UIControlStateNormal];
+    btn.titleLabel.adjustsFontSizeToFitWidth = YES;
     btn.backgroundColor = UIColor.redColor;
     [btn addTarget:self action:@selector(btnAction:) forControlEvents:UIControlEventTouchUpInside];
 }
     
 -(void)btnAction:(UIButton *)btn {
+    // 获取UILabel
     UILabel *label = [self.view viewWithTag:100];
     label.text = @"xxx";
+    
+    // 模态跳转
+    EyeeNetworkController *controller = [[EyeeNetworkController alloc]init];
+    /*
+     跳转动画：
+     UIModalTransitionStyleCoverVertical = 0
+     UIModalTransitionStyleFlipHorizontal
+     UIModalTransitionStyleCrossDissolve
+     UIModalTransitionStylePartialCurl
+     */
+    controller.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+    [self presentViewController:controller animated:YES completion:^{
+        
+    }];
+    
 }
 
 #pragma mark -- UIView(UIView是所有控件的父控件)
@@ -79,8 +99,10 @@
     [self.view addSubview:view];
     //3.设置背景颜色
     view.backgroundColor = [UIColor blueColor];
-    //4.以自己为坐标系：相对于自己
-    view.bounds = CGRectMake(0, 0, 150, 100);
+    //4.0.以自己为坐标系：相对于自己
+    view.bounds = CGRectMake(0, 0, 150, 50);
+//    //4.1.以父视图为坐标原点
+//    view.frame = CGRectMake(25, 150, 100, 50);
     //5.中心点：相对于父视图
     view.center = CGPointMake(100, 200);
     //6.打印
@@ -101,11 +123,28 @@
     UITextField *tf = [[UITextField alloc]initWithFrame:CGRectMake(25, 150, 100, 50)];
     [self.view addSubview:tf];
     tf.text = @"xxx";
-    tf.font = [UIFont systemFontOfSize:15];
-    tf.textColor = [UIColor redColor];
-    tf.textAlignment = NSTextAlignmentCenter;
-    //设置占位符：
-    tf.placeholder = @"请输入名字";
+    tf.font = [UIFont systemFontOfSize:15];// 设置字体
+    tf.textColor = [UIColor redColor]; // 设置文本颜色
+    tf.textAlignment = NSTextAlignmentCenter; // 设置对齐方式
+    tf.placeholder = @"请输入名字"; // 设置占位符
+    tf.borderStyle = UITextBorderStyleBezel; // 设置边框类型
+    tf.adjustsFontSizeToFitWidth = YES; // 设置宽度自适应
+    tf.clearsOnBeginEditing = YES; // 开始编辑的时候清除文本框内容
+    tf.clearButtonMode = UITextFieldViewModeAlways; // 设置清除UIButton
+    tf.secureTextEntry = YES; // 设置密文模型
+    tf.keyboardType = UIKeyboardTypeNumberPad; // 设置键盘类型
+    tf.keyboardAppearance = UIKeyboardAppearanceDark; // 设置键盘外观
+    tf.returnKeyType = UIReturnKeyNext; // 设置返回键类型
+    tf.tag = 10;
+    tf.delegate = self;
+}
+
+#pragma mark -- UITextFieldDelegate
+// 当键盘点击return键的时候调用该方法
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    // 文本框放弃第一响应者：什么意思？
+    [textField resignFirstResponder];
+    return YES;
 }
     
 #pragma mark -- UIImageView
@@ -149,49 +188,109 @@
     UIImage *image_01 = [UIImage imageWithData:data];
     [btn setImage:image_01 forState:UIControlStateHighlighted];
 }
-    
+
+#pragma mark -- gif
+-(void)setupGif {
+    UIImageView *gifImageView = [[UIImageView alloc]initWithFrame:CGRectMake(25, 150, 100, 50)];
+    gifImageView.image = [UIImage animatedImageWithAnimatedGIFURL:[[NSBundle mainBundle] URLForResource:@"FlagZombie" withExtension:@"gif"]];
+    [self.view addSubview:gifImageView];
+}
+
+#pragma mark --基本控件
+-(void)setupUI {
+    UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"提示" message:@"请输入正确的密码" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确认", @"OK", nil];
+    alert.alertViewStyle = UIAlertViewStyleDefault; // 有多种类型
+    [alert show];
+}
+
 #pragma mark -- UIScrollView
--(void)setupUIScrollView {
+-(void)setupScrollView {
     UIScrollView *scrollView = [[UIScrollView alloc]initWithFrame:self.view.bounds];
     [self.view addSubview:scrollView];
+}
+
+#pragma mark -- UITableView
+-(void)setupTableView {
+    UITableView *tableView = [[UITableView alloc]initWithFrame:self.view.bounds style:UITableViewStyleGrouped];
+    tableView.rowHeight = 200; // 一般不要设置：内容自适应
     
+    tableView.separatorColor = UIColor.lightGrayColor; // 设置分割线颜色
+    tableView.separatorStyle = UITableViewCellSeparatorStyleNone; // 设置分割线样式
+    // 设置UITableViewd头部视图：高度起作用
+    tableView.tableHeaderView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 100, 100)];
+    // 设置UITableViewd尾部视图：高度|横坐标起作用
+    tableView.tableFooterView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 0, 100)];
+    
+    tableView.delegate = self;
+    tableView.dataSource = self;
 }
     
-#pragma mark --
+#pragma mark -- UITableViewDelegate|UITableViewDataSource
+
+// 返回分区个数
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 1;
+}
+
+// 返回分区有几行
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return 5;
+}
+
+- (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
+    UITableViewCell *cell = [[UITableViewCell alloc]init];
+    return cell;
+}
+
+// 返回row的高度
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 80;
+}
+
+// 设置分区头标题的高度
+-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    return 100;
+}
+
+// 设置分区尾标题的高度
+-(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
+    return 100;
+}
+
+// 设置分区的头标题
+-(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    return @"大佬";
+}
+
+// 设置分区的尾标题
+- (NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section {
+    return @"我是谢吴军";
+}
+
+// 设置右侧索引
+-(NSArray<NSString *> *)sectionIndexTitlesForTableView:(UITableView *)tableView {
+    return @[@"A",@"V",@"F"];
+}
+
+// 响应事件
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSLog(@"点击row");
+}
+
+// 取消选中状态
+-(void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:true]; // 取消选中状态：这个会发生死循环？？？
+}
 
 #pragma mark -- NSTimer
 -(void)setupTimer {
     //1.创建NSTimer
-//    NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(onTimer) userInfo:nil repeats:YES];
+    //    NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(onTimer) userInfo:nil repeats:YES];
 }
 
 -(void)onTimer {
     UILabel *label = [self.view viewWithTag:1];
     label.text = @"定时器";
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 @end
