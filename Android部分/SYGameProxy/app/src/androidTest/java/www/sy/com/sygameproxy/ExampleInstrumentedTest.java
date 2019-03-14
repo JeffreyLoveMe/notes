@@ -1,4 +1,4 @@
-package www.eyee.com.sygameproxy;
+package www.sy.com.sygameproxy;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("www.eyee.com.sygameproxy", appContext.getPackageName());
+        assertEquals("www.sy.com.sygameproxy", appContext.getPackageName());
     }
 }

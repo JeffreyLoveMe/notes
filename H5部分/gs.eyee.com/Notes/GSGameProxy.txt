@@ -2,5 +2,28 @@
 名称：H5笔记
 作者：谢吴军
 */
-//HTML5
-定义：
+//了解HTML5
+1.定义：超文本标记语言/实质就是文本，由浏览器负责将它解析成网页内容/由标签组成
+2.作用：跨平台（利用h5编写的UI界面能够运行在所有拥有浏览器的平台）
+如何使用h5：1.自己编写h5代码；2.使用现成的h5框架：sencha-touch、
+phoneGap、jQuery mobile、Bootstrap
+3.App开发模式：
+1>.原生开发：维护成本高、效率高、不能热更新
+2>.纯HTML开发：
+3>.原生+HTML开发：
+4.开发工具：
+1>.Android：eclipse、MyEclipse、android studio
+2>.iOS：Xcode
+3>.HTML5：eclipse|MyEclipse、Dreamwaver、WebStorm
+5.web开发发展：
+1>.web1.0时代HTML+CSS
+2>.web2.0时代Ajax
+3>.web3.0时代HTML5+CSS3
+
+//网页的组成
+1.HTML网页具体内容和结构
+2.CSS网页的样式
+3.js网页的交互效果
+http://www.w3school.com.cn
+
+//

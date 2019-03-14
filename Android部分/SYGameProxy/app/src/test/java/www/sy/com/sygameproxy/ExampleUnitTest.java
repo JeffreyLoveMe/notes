@@ -1,4 +1,4 @@
-package www.eyee.com.sygameproxy;
+package www.sy.com.sygameproxy;
 
 import org.junit.Test;
 
