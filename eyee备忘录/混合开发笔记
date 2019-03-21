@@ -1,0 +1,46 @@
+//javaScprit
+1.什么是javaScript?
+js是web的编程语言；所有的html语言都需要js
+
+2.js是脚本语言：特别容易学习
+
+3.为什么要学习js?
+js是web开发者必须要学习的一门语言：html定义网页内容、css描述网页的布局、js网页的行为
+
+4.js简介：
+1>.js是互联网最流行的脚本语言：可以用于h5和web，也可以用于服务端|pc|笔记本电脑|平板|智能手机
+2>.首先js脚本语言|轻量级的编程语言|可以插入HTML页面
+3>.javaScript用法：在html页面中，必须在script中或者在js文件中
+4>.js是所有现代浏览器以及html5中的默认脚本语言
+
+5.js函数和事件：
+1>.js中没有任何打印或者输出函数
+
+
+//Hybird
+
+
+//React Native：利用js实现全栈
+1.概述：
+1>.rn利用js实现全栈
+2>.rn提供组件化开发/支持热修复
+3>.rn支持iOS7.1/Android4.1
+
+2.配置rn的开发环境
+1>.安装Homebrew
+2>.安装node.js->安装npm
+3>.安装watchman/非必须、用于监测bug
+4>.安装flow
+
+3.运行：安卓运行需要安装jdk/使用第三方Genymotion
+
+4.管理rn库的版本：
+1>.作用：在开发过程中，经常会控制rn的版本库可以适配各种条件下的开发
+2>.查看rn的版本：
+react-native --version   // 查看rn的版本
+npm update -g react-native -cli  // 更新本地的rn版本
+npm info react-native  // 查询npm包地址
+npm install --save react-native@0.18 // 降级
+
+
+//flutter

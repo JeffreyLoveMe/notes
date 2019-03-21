@@ -1,0 +1,60 @@
+/**************************计算机基础**************************/
+1.给定链表的头指针和一个结点指针，在O(1)时间删除该结点。
+链表结点的定义如下：
+struct ListNode {
+    int m_nKey;
+    ListNode* m_pNext;
+}
+函数的声明：void DeleteNode(ListNode* pListHead, ListNode* pToBeDeleted);
+2.语句倒序：I am Bruch；（语言随意：不能使用伪代码）
+3.
+
+
+/**************************面试题：技术部分**************************/
+1.什么是操作系统？
+Q.直接运行在硬件上的系统软件，其他任何软件都必须在操作系统上运行；
+2.iOS程序在执行main函数之前做了哪些操作？
+Q.
+3.一个App可以有几个UIWindow？
+Q.
+4.view的生命周期分别是什么？
+Q.
+5.bounds和frame的区别？
+Q.
+6.-(void)loadView {}做了什么？
+Q.
+7.NSOperation什么时候从queue中移除？
+Q.
+8.ViewController生命周期？
+Q.
+9.NSInteger|CGFloat和int|double有什么区别？
+Q.
+10.atomic/nonatomic之间的区别？
+Q.atomic表示原子操作：set/get方法不能被其他线程中断(线程安全)|缺省属性；
+nonatomic表示非原子操作|atomic修饰的属性只表示set/get方法线程安全：不是真正的线程安全；
+11.static的作用：
+Q.static修饰的变量是静态变量，存储在数据段，在函数结束后变量不释放；
+12.单例方法的原理：
+ Q.首次调用单例方法时会创建对象，函数结束时指针和对象都不会消失；之后每次调用该方法都不会创建对象；
+13.#include/#import的联系和区别：
+Q.import的功能和include一样：将右边的文件copy到当前import的位置；
+import优点：自动防止重复拷贝|include避免重复导入需要加“头文件卫士”；
+14.printf和NSLog的区别：
+Q.NSLog可以自动换行|NSLog会输出内容时会附加一些系统信息|接受的参数不一样；
+15.#import ""和#import <>的区别：
+Q.""-当前文件->开发工具->系统/<>-编译器环境->系统环境
+16.MVC和MVVM的联系和区别：
+Q.
+17.iOS中常见的单例有哪些？弄懂每一个作用
+Q.应用程序实例：UIApplication|消息中心：NSNotificationCenter|文件管理：NSFileManager|应用
+程序设置：NSUserDefaults|请求缓存：NSURLCache|应用程序Cookies池：NSHTTPCookieStorage
+
+//参考网站：
+http://www.cnblogs.com/Piosa/archive/2012/02/22/2363234.html
+/**************************面试题：非技术部分**************************/
+1.你昨天/本周学习了什么知识？
+Q.
+2.你为什么热衷软件开发？为什么入行？
+Q.
+/**************************难点部分**************************/
+1.Objective-C项目怎么设置可以全局设置头文件；

@@ -23,7 +23,7 @@
     /*
      所有的ViewController命名：名称+Controller|controller
      */
-    EyeeHomeViewController *homeController = [[EyeeHomeViewController alloc]init];
+    EyeeHomeViewController *homeController = [[EyeeHomeViewController alloc]init]; // 创建对象的同时直接init
     self.window.rootViewController = homeController;
     [self.window makeKeyAndVisible];
     
