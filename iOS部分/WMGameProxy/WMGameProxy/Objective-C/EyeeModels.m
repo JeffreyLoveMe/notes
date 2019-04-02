@@ -11,6 +11,24 @@
 
 @implementation EyeeModels
 
+// 数组
+-(void)showArray {
+    // init创建空数组
+    NSMutableArray *array01 = [NSMutableArray array];
+    NSMutableArray *array02 = [[NSMutableArray alloc]init];
+    // nil表示结束
+    // 对于可变数组nil不能省略
+    array01 = [[NSMutableArray alloc]initWithObjects:@"123",@"144", nil];
+    // 类方法
+    array02 = [NSMutableArray arrayWithObject:@"s1"];
+    array02 = [NSMutableArray arrayWithObjects:@"s1",@"s2",@"s3",nil];
+    // 添加元素：最后面添加
+    [array01 addObject:@"123"];
+    // 插入元素：向可变数组插入
+    [array01 insertObject:@"123" atIndex:1];
+    
+}
+
 -(void)showAll {
     /*
      [EyeeCommunity alloc] // 创建对象：返回对象的地址|堆空间

@@ -324,6 +324,17 @@ for(int i = 0;i < 2; i++) {
 1.NSString：不可变字符串
 1).
 
+//数组
+1.NSArray：不可变数组/数组的长度确定
+
+2.NSMutableArray：可变数组/数组的长度不确定/类
+1).NSMutableArray是一个类
+2).数组元素不能是基本数据类型int，必须是对象的引用(指针)
+3).
+
+//字典
+1.NSDictionary
+
 //网络基础
 
 //内存管理

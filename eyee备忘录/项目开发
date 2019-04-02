@@ -770,3 +770,5 @@ iOS/Android/web/小程序/rn/flutter/php
 // UICollectionView的自适应：
 1.我们可以现在外部给cell一个预估的宽/高
 2.然后在内部给cell进行内容向外部撑开
+
+https://github.com/duf1991/DYFBuyApp

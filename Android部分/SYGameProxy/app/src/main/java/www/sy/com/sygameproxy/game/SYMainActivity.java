@@ -70,6 +70,20 @@ public class SYMainActivity extends AppCompatActivity {
         * Notification 消息/通知
         * */
 
+        /*
+        * Activity manager 管理运行App
+        * Content Provider 各应用之间共享数据
+        * Resource Manager 管理非代码资源
+        * Notification Manager 显示用户提示/状态栏
+        * Views System 可以构建UI
+        * */
+
+        /*
+        * activity-最基本的android组件
+        * 1.生命周期：onCreate()
+        * onStart()
+        * onReStart()
+        * */
 
 
 

@@ -7,9 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
+// 声明类
+@interface EyeeModels : NSObject {
+    // 成员变量
+}
 
-@interface EyeeModels : NSObject
-
+-(void)showArray;
 -(void)showAll;
 
 @end

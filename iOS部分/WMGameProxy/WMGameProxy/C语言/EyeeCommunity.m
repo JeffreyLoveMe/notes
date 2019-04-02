@@ -10,6 +10,10 @@
 
 @implementation EyeeCommunity
 
+/*
+ 方法名称 onLine:
+ 冒号也是方法名称的一部分
+ */
 -(void) onLine:(int)age {
     
     if (age > 18) {
