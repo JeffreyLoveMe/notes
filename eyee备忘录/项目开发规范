@@ -1,0 +1,10 @@
+///
+UIFont.pingfangRegular(size: 12.up)
+UIFont.pingfangSemibold(size: 12.up)
+UIFont.dinot(size: 20.up)
+///
+PageLayout.pageLeftInset
+PageLayout.pageRightInset
+PageLayout.pageItemVerticalGap
+
+目前项目需要规范处理：后续要怎么做？
