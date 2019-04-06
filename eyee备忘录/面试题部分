@@ -20,6 +20,24 @@
 6.对象什么时候被release?
 7.iphone OS有没有垃圾回收机制：没有。对比一下java的垃圾回收机制
 8.controller中：didReceiveMemoryWaning是在什么时候调用，默认操作是什么？
+9.深拷贝/浅拷贝的区别？
+10.类别的作用？继承/类别在实现中有什么区别？
+11.类别/类扩展的区别？
+12.代理delegate/通知/block之间有什么区别？
+13.iOS怎么做数据持久化？coredata/sqlite之间又什么联系？coredata是关系型数据库吗？
+14.说说Objective-C管理内存有几种方法？
+15.说说iOS中常用的多线程？最好能结合代码好好说；在哪里用到了多线程？
+16.block在ARC/MRC中用法有什么区别和联系？
+17.常用的iOS设计模式有哪些？
+18.简述苹果开发者的认证过程：申请账号/打包/上传/打回/提交/开服都要懂；
+19.使用过哪些第三方库？jsonKit/AFNetworking/SnapKit/MJRefresh///要有针对性，涉及到每个方面；
+20.怎么实现UITableView的懒加载？
+21.iOS开发中常见的异常有哪些？
+22.什么时候使用栈/队列？什么时候使用链表/数组？
+23.什么是LRU算法？实现缓存/怎么操作？
+24.UITableView的重用机制：描述/好处
+25.简述objc的内存管理：这个真的是重点/需要好好理解组织语言
+26.
 
 
 
@@ -32,6 +50,10 @@ struct ListNode {
 }
 函数的声明：void DeleteNode(ListNode* pListHead, ListNode* pToBeDeleted);
 2.语句倒序：I am Bruch；（语言随意：不能使用伪代码）
+3.手写“冒泡排序”/“堆排序”/“选择排序”/“插入排序”/“二分查找”
+4.将一个链表逆序？/输出一个字符串是否对称？/输出树的深度？
+5.定义一个标准宏MIN：输入两个参数并返回最小值？
+6.C语言中默认的随机数random()是从x->y?
 
 
 //面试题：技术部分
@@ -67,11 +89,11 @@ import优点：自动防止重复拷贝|include避免重复导入需要加“头
 Q.NSLog可以自动换行|NSLog会输出内容时会附加一些系统信息|接受的参数不一样；
 15.#import ""和#import <>的区别：
 Q.""-当前文件->开发工具->系统/<>-编译器环境->系统环境
-16.MVC和MVVM的联系和区别：
-Q.
+16.MVC和MVVM的联系和区别：哈哈哈
 17.iOS中常见的单例有哪些？弄懂每一个作用
 Q.应用程序实例：UIApplication|消息中心：NSNotificationCenter|文件管理：NSFileManager|应用
 程序设置：NSUserDefaults|请求缓存：NSURLCache|应用程序Cookies池：NSHTTPCookieStorage
+18.怎么提高客户端的性能？（这点需要深入研究一番）
 
 //参考网站：
 http://www.cnblogs.com/Piosa/archive/2012/02/22/2363234.html
@@ -82,3 +104,6 @@ Q.
 Q.
 //难点部分
 1.Objective-C项目怎么设置可以全局设置头文件；
+
+数据结构/数据库/操作系统/openGL/ES/计算机网络/软件工程(工作中重要)
+编译原理：Xcode/OC/Swift/安卓
