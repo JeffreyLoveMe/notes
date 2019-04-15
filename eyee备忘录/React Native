@@ -1,0 +1,30 @@
+http://www.cnblogs.com/gdsblog/p/8025092.html
+
+yarn//npm已经不再重要
+
+crna
+学习新东西的时候：如果环境一时半会不会操作。。。可以先学习代码。。。入门了在考虑环境的问题  
+不然你一辈子都在搞环境
+
+基本常用js语法：
+null undefined boolean number string object symbol
+null // 就是空
+undefined // 不同定义
+boolean 
+number 
+ECMAScript  ES6  js
+让js可以开发大型应用-》var function let const import(require) class
+
+var 1 = 0
+var b = 0
+var arr = []
+var obj = {
+    age = 10
+    year = 10
+}
+不加var   就是在全局对象中的最顶层的对象-》在浏览器中指向window中对象
+node.js指的是global对象
+const就是常量。。不能改变的常量
+export 对外部暴漏的接口
+import 引用外部的接口
+class很简单：就是面向对象的语言中的类
