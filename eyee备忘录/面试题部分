@@ -42,6 +42,8 @@
 28.写入一个插入排序：一般使用C语言/Java写
 29.obj-c有私用方法吗？有私有变量吗？没有私用方法/有私有变量
 30.什么是目标-动作机制？
+31.readwrite/readonly的使用？
+31.ViewController的loadView是在什么时候被调用的？
 
 
 //笔试题
@@ -57,6 +59,9 @@ struct ListNode {
 4.将一个链表逆序？/输出一个字符串是否对称？/输出树的深度？
 5.定义一个标准宏MIN：输入两个参数并返回最小值？
 6.C语言中默认的随机数random()是从x->y?
+7.IBOutlet UIView *view;
+@property (nonatomic,retain) UIView *view;
+以上view对象需要release吗？
 
 
 //面试题：技术部分
@@ -97,14 +102,12 @@ Q.""-当前文件->开发工具->系统/<>-编译器环境->系统环境
 Q.应用程序实例：UIApplication|消息中心：NSNotificationCenter|文件管理：NSFileManager|应用
 程序设置：NSUserDefaults|请求缓存：NSURLCache|应用程序Cookies池：NSHTTPCookieStorage
 18.怎么提高客户端的性能？（这点需要深入研究一番）
+19.描述UIViewController的生命周期（深入细致描述）
+20.列举熟悉cocoa touch框架？AVFoundation/...
+21.自动释放池是什么？如果工作？
 
 //参考网站：
 http://www.cnblogs.com/Piosa/archive/2012/02/22/2363234.html
-//面试题：非技术部分
-1.你昨天/本周学习了什么知识？
-Q.
-2.你为什么热衷软件开发？为什么入行？
-Q.
 //难点部分
 1.Objective-C项目怎么设置可以全局设置头文件；
 
@@ -167,5 +170,16 @@ MVC是一个框架模式 Model View Controller  模型--视图--控制器  各�
     耦合性低   重用性高  生命周期成本低
 
 最典型的MVC就是JSP + servlet + javabean的模式
+
+
+
+//面试题：非技术部分
+1.你昨天/本周学习了什么知识？
+Q.
+2.你为什么热衷软件开发？为什么入行？
+Q.
+3.5年规划？今年的目标分别是什么？
+4.希望从公司学习到什么？
+5.工作中遇到什么技术难点
 
 
