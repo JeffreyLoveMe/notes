@@ -44,6 +44,26 @@
 30.什么是目标-动作机制？
 31.readwrite/readonly的使用？
 31.ViewController的loadView是在什么时候被调用的？
+32.app之间怎么做跳转？一个app就是一个进程/所以进程/线程之间都是可以通信；
+怎么在浏览器中返回App；
+33.iOS有哪些性能分析工具？（这些基本没有接触过）
+34.性能优化：重点
+35.静态初始化什么场合可以使用？什么场合不能使用？
+36.导致app异常假死的情况有哪些？有什么解决方案？
+37.NSNotifacation(通知)是同步/异步？
+38.怎么为App设计缓存？
+39.比较两个版本号的大小？（比较字符串之间的大小）
+40.obc中可修改/不可修改类型？
+41.与property结合的时候怎么有效的避免内存泄漏？
+42.Objective-C可以多重继承吗？不能/可以实现多个接口吗？能
+重写类的方法用继承extend好还是分类category好？
+43.线程/进程之间的区别和联系？
+44.堆/栈的区别？
+45.为什么内置类的Delegate要使用assign，而不使用retain? //防止循环引用
+46.
+
+
+关于View的一些高级动画：目前是一点都不会
 
 
 //笔试题
@@ -62,7 +82,21 @@ struct ListNode {
 7.IBOutlet UIView *view;
 @property (nonatomic,retain) UIView *view;
 以上view对象需要release吗？
-
+8.手写Objective-C的单例？
+9.id obj = [[NSMutableArray alloc]init];/id obj = [NSMutableArray array];初始化
+有什么不同？
+10.在ARC模式下，autoreleasepool的使用？（使用伪代码）
+11.id obj = [[[NSMutableArray alloc]init] autorelease];obj在什么时候释放？有什么
+方法可以让obj马上释放？（用伪代码表示）
+12.for(int index = 0; index < 20; index++) {
+    NSString *tempStr = @"tempStr";
+    NSLog(tempStr)
+    NSNumber *tempNumber = [NSNumber numberWithInt:2];
+    NSLog(tempNumber)
+}
+这段代码有什么问题？会不会导致内存泄漏(多线程)/在内存紧张的设备上做大循环时
+自动释放池是写在循环内好还是循环外好？为什么？
+13.使用loadView/viewDidLoad/viewDidUnload分别在什么地方调用？做什么工作？
 
 //面试题：技术部分
 1.什么是操作系统？
@@ -105,6 +139,12 @@ Q.应用程序实例：UIApplication|消息中心：NSNotificationCenter|文件�
 19.描述UIViewController的生命周期（深入细致描述）
 20.列举熟悉cocoa touch框架？AVFoundation/...
 21.自动释放池是什么？如果工作？
+22.关键字const/volatile有什么含义？
+23.普通屏幕/Retina屏幕适配有什么好方法？
+24.IBOutlet/IBAction的作用？
+25.有哪些方法可以启动一个线程？
+26.xib/nib之间的区别？
+27.
 
 //参考网站：
 http://www.cnblogs.com/Piosa/archive/2012/02/22/2363234.html
@@ -171,8 +211,6 @@ MVC是一个框架模式 Model View Controller  模型--视图--控制器  各�
 
 最典型的MVC就是JSP + servlet + javabean的模式
 
-
-
 //面试题：非技术部分
 1.你昨天/本周学习了什么知识？
 Q.
@@ -180,6 +218,33 @@ Q.
 Q.
 3.5年规划？今年的目标分别是什么？
 4.希望从公司学习到什么？
-5.工作中遇到什么技术难点
+5.工作中遇到什么技术难点（这个一般不是人事问题、但是需要好好总结）
+6.你为什么要离职？（这个问题问的还是很多的）
+7.上一家公司的工资多少？照实说16k/下一家20k
+8.在公司中iOS中有多少人？上家公司的工作流程？自己负责的是什么？（需要好好总结）
+9.你拿到几家的offer？（一般建议说1～3家）
 
+CGFloat/Float之间的区别？
+NSInteger/int之间的区别？
 
+总结一下UITableView的重用机制？//重点说明
+
+总结一下iOS的内存管理：
+1.release/autorelease分别在什么情况下使用？
+2.block的内存管理需要注意什么？
+3.对象在什么时候会被release？
+
+总结提高客户端性能的方法？
+//UI方法：
+//网络方法：
+//方法规范方法：
+
+赶集网的面试：1.传值 2.推送 3.数据存储 4.代理/单例
+第一轮：推送机制->多线程->开发流程
+第二轮：支付
+
+重点：手动内存管理/自动内存管理的原理&步骤&应用
+
+1.读写文件的例子？
+2.读写数据库的例子？
+3.异步加载网络图片的例子？
