@@ -30,7 +30,28 @@ public class MainActivity extends AppCompatActivity {
         // xx.java -java源文件 --java编译器--> xx.class -字节码文件
         System.out.println("hello world");
 
-        // page22
+        /*
+        * 标识符：类名/变量名/方法名/类型名
+        * 以字母/下划线/$开头
+        * 不能把关键字/保留字作为标识符
+        * java使用Unicode编码：所以支持使用汉字作为标识符
+        * */
 
+        /*
+        * 关键字：boolean import...
+        * 注释：//
+        * java是强类型语言，java只有两种数据类型：引用数据类型/基本数据类型
+        * */
+
+        /*
+        * 基本数据类型：byte8 short16 int32 long64 float32
+        * double64 char16 boolean8
+        * 常量（始终不变的量）""也是字符串常量/变量：基本存储单元、先声明在使用
+        * 类变量系统自动init/局部变量必须init
+        * */
+
+        /*
+        * 表达式：算术运算符、p29
+        * */
     }
 }

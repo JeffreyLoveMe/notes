@@ -637,10 +637,6 @@ UIImage.resiezableImage(with: UIImage(named: "calendar_bg_white"), edgeInsets: U
 1.需求讨论阶段：
 
 
-
-
-
-
 OC中可以为nil \\\\那么swift必须用可选类型接受
 
 0.账号：zaliebusiness@126.com|Eyee@934934
@@ -798,8 +794,9 @@ https://github.com/duf1991/DYFBuyApp
 24小时制：“yyyy-MM-dd hh:mm:ss”
 
 //任何功能都需要跟安卓对比
-1.
-2.
-3.
-4.
+1.对比之间的显示有没有什么问题；
+2.对比数据刷新以后有没有什么问题；
+3.对比点击/挑转/分享等操作有什么问题；
+
+
 
