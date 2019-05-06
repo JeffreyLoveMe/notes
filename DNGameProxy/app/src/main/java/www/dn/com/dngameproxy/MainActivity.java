@@ -206,8 +206,8 @@ public class MainActivity extends AppCompatActivity {
 //        static final int MAX = 18;  // 常量
 
         /*
-        * abstract关键字：抽象
-        * p94*/
+        * abstract关键字：抽象 -位于顶层
+        * 抽象类：不能创建实例、*/
 
 
 
@@ -299,5 +299,12 @@ public class MainActivity extends AppCompatActivity {
         public void log() {
             System.out.println("");
         }
+    }
+
+    /// 抽象类
+    // 不能被实例化、
+    // p95
+    abstract class xxx {
+
     }
 }
