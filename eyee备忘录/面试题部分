@@ -26,7 +26,8 @@
 12.代理delegate/通知/block之间有什么区别？
 13.iOS怎么做数据持久化？coredata/sqlite之间又什么联系？coredata是关系型数据库吗？
 14.说说Objective-C管理内存有几种方法？
-15.说说iOS中常用的多线程？最好能结合代码好好说；在哪里用到了多线程？三种多线程在哪里会比较全面一些
+15.说说iOS中常用的多线程？最好能结合代码好好说；在哪里用到了多线程？三种多线程在哪里会比较全面一些，
+然后谈一谈线程安全问题的解决方案？
 16.block在ARC/MRC中用法有什么区别和联系？
 17.常用的iOS设计模式有哪些？
 18.简述苹果开发者的认证过程：申请账号/打包/上传/打回/提交/开服都要懂；
@@ -62,6 +63,8 @@
 45.为什么内置类的Delegate要使用assign，而不使用retain? //防止循环引用
 46.Objective-C语言有什么特点？swift语言有什么特点？
 47.iOS中类有哪些通讯方式？
+48.alloc/dealloc...retain/release之间的区别是什么？
+49.简述Objective-C的内存管理机制：如何检测内存泄漏？
 
 
 关于View的一些高级动画：目前是一点都不会
@@ -96,8 +99,17 @@ struct ListNode {
     NSLog(tempNumber)
 }
 这段代码有什么问题？会不会导致内存泄漏(多线程)/在内存紧张的设备上做大循环时
-自动释放池是写在循环内好还是循环外好？为什么？
+简述自动释放池的工作原理？自动释放池是写在循环内好还是循环外好？为什么？
 13.使用loadView/viewDidLoad/viewDidUnload分别在什么地方调用？做什么工作？
+14.程序运行报错：请找出错误并改正
+#include <stdio.h>
+#include <malloc.h>
+
+typedef struct {
+	TNode* left;
+	TNode* right;
+	int value;
+} TNode;
 
 //面试题：技术部分
 1.什么是操作系统？
@@ -145,7 +157,18 @@ Q.应用程序实例：UIApplication|消息中心：NSNotificationCenter|文件�
 24.IBOutlet/IBAction的作用？
 25.有哪些方法可以启动一个线程？
 26.xib/nib之间的区别？
-27.
+27.@synthesize xxx是怎么实现的？
+28.json解析内部是怎么实现的？
+29.试说明SEL和@selector的用途？
+30.iOS中App数据持久化机制有哪几种方案？（详细说明）
+31.请说明Touch和非Touch事件发生时在系统中的传递过程？（事件传递hitest）
+32.怎么获取磁盘空间（How to get disk space left）
+33.对象在什么时候会被release？
+34.如果开启异步线程？如果想要延迟执行某个线程怎么实现？
+35.Oobjective-C语言：数据对象有哪些？与基本数据类型有什么区别？
+36.什么是动态绑定？
+
+
 
 //参考网站：
 http://www.cnblogs.com/Piosa/archive/2012/02/22/2363234.html
@@ -252,8 +275,11 @@ NSInteger/int之间的区别？
 
 总结苹果开发者相关：
 1.开发者账号生成的测试证书有效期：1年
+关于苹果上架流程：企业证书/个人证书/testflight等
 
 总结推送：
 1.从APNS获取device token作为设备唯一标识符
 
 UIImage读取图片：怎么可以避免内存
+
+数据结构；树

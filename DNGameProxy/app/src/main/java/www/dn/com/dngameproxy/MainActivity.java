@@ -1,6 +1,7 @@
 package www.dn.com.dngameproxy; // 包名
 
 // 引用的包名/类名
+import android.accounts.Account;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
@@ -165,10 +166,48 @@ public class MainActivity extends AppCompatActivity {
 
         /*
         * 成员变量的隐藏：如果子类定义与父类相同的成员变量，父类成员变量需要隐藏
+        * "就近原则"一致
+        * 子类方法的重写：父类完全不存在、必须super显式调用
+        * 重载/重写之间的区别？？？静态方法不能被重写
+        * 向上转型：默认、安全的-父类引用指向子类对象
+        * 向下转型：强制类型转换-子类引用指向父类对象
         * */
+        Employee employee;  // 父类
+        HourlyEmployee hourlyEmployee = new HourlyEmployee(); // 子类
+        employee = hourlyEmployee; // 子类->父类/向上转型
+        if (employee instanceof HourlyEmployee) { // 父类对象名 子类类名
+            //
+        }
 
+        /*
+        * static关键字：
+        * 静态变量：static修饰的成员变量/类变量
+        * 静态变量只在系统加载类进行一次空间分配和init、创建对象实例不再init、类名/
+        * 对象名调用静态变量都是对这个共享空间的操作
+        * */
+        Account account = new Account("","");
+        account.log();
 
+        /*
+        * 静态方法一般使用工具类、无法访问任何对象的对象成员、属于类本身
+        * 静态访问不能访问非静态成员、所以不能访问this/super
+        * */
+//        // 静态语句块
+//        static {
+//
+//        }
 
+        /*
+        * final修饰符：
+        * final类：最终类、不能派生类
+        * final变量： 最终变量、一旦初始化就不会再改变、常量
+        * final成员方法：最终方法、可以继承、但不能重写
+        * */
+//        static final int MAX = 18;  // 常量
+
+        /*
+        * abstract关键字：抽象
+        * p94*/
 
 
 
@@ -241,6 +280,24 @@ public class MainActivity extends AppCompatActivity {
         // 构造方法不能被继承
         public HourlyEmployee() {
 
+        }
+    }
+
+    /// 例4.1
+    class Account {
+        private String AccountNumber;
+        private String AccountName;
+        private double balance;
+//        static double interest = 0.1; // 年利率
+
+        public Account(String number, String name) {
+            AccountNumber = number;
+            AccountName = name;
+            balance = 0.0;
+        }
+
+        public void log() {
+            System.out.println("");
         }
     }
 }

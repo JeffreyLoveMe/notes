@@ -252,8 +252,6 @@ C语言-OC-swift-java-kotlin-h5-rn
 //工作中遇到的困难：
 - UI太难了：
 - 游戏和原生的交互
-- 
-
 
 https://www.jianshu.com/u/e15d1f644bea
 
@@ -320,7 +318,6 @@ https://www.jianshu.com/u/e15d1f644bea
 - 开放者经验分享
 
 
-
 //使用SnapKit给控件添加约束常见错误：https://blog.csdn.net/Haikuotiankong11111/article/details/51800761
 1.简单的约束冲突不能有：比如控制了左边和把右边就不能在设置宽度
 
@@ -340,7 +337,6 @@ iPad尺寸
 UILabel在Autolayout中可以自动设置高度
 
 开发者关注的问题：
-
 
 
 {
@@ -442,8 +438,6 @@ swift中：如果是String = ""
 
 
 给对象赋值不需要初始化
-给
-
 
 
 1.什么时候更新model?
