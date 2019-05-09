@@ -28,3 +28,9 @@ const就是常量。。不能改变的常量
 export 对外部暴漏的接口
 import 引用外部的接口
 class很简单：就是面向对象的语言中的类
+
+
+///React Native
+1.使用rn使用js就可以编写原生移动应用
+2.rn完美兼容oc/java/swift组件
+3.可以使用rn/原生混合开发
