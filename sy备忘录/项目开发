@@ -1,50 +1,7 @@
-### DouNew(原蜂潮)
-//概述：Objective-C与swift混编：
-- swift怎么调用Objective-C？
-- Objective-C怎么调用swift？
-
-//整体布局：
-- Objective-C部分：masonry
-- swift部分：snapKit
-- 部分页面：xib
-
-//数据本地化存储：
-
-
-//网络请求：
-
-
-//框架：
-社区|商城|球鞋|消息|我的
-
-//具体开发：
-- 整体分析UI稿：该怎么进行UI切割
-- UI布局：进行UI布局+点击事件传递
-- 新建Model：与后台进行数据联调
-- 集成同事代码：上测试
-- 修复bug：送审
-
-
-### NBSDK
-//概述：Objective-C编写|SDK
-
-//整体布局：xib
-
-
-### 优生活
-//概述：Objective-C编写|SDK
-
-//整体布局：masonry
-
-
 ### 项目细节
 - 自己的事情自己做：
-业务参数最好在model中先处理好|View需要改变状态最好在View内部先处理好逻辑，外部使用数据去驱动
-
-### 项目难点
-
-### 面试难点
-
+1).业务参数最好在model中先处理好
+2).View需要改变状态最好在View内部先处理好逻辑，外部使用数据去驱动
 
 所有vc应该有一个基类：DNBaseViewController
 自定义customView|customModel
@@ -52,12 +9,10 @@ Objective-C语言中：UI控件|数组也可以直接用懒加载
 设置UI控件：setupUI
 custom|system
 
-
 swift中enum/struct都是比类更厉害
 section|switch
 
 App中哪些需要存放在本机|App中的缓存机制
-
 
 隐藏View：1.使用隐藏属性、2.将View的宽和高设置为0
 
@@ -68,10 +23,8 @@ historyMonth // 历史月份
 
 如果是字典就是DateModel
 
-
 safeArea // 这是什么意思
 constrain to magins //没有作用：为了plus/iPhone X布局尽量到中间
-
 
 对于swift:我们对所有的vc都需要lazy
 
@@ -79,30 +32,22 @@ constrain to magins //没有作用：为了plus/iPhone X布局尽量到中间
 
 对于cell  我们一般不需要把model传进去  再传出来  我们一般是把cell传出来    然后通过cell拿到indexPath  再通过indexPath拿到model
 
-
-站内信：xxx
-
 - 创建UILabel/UIButton有固定方法(不使用系统方法)；
 - 封装可以使用的BadgeView；
 - 学习snapkit使用方法；
 - UIView中不能跳转：使用代理让实现在VC中进行；
-
 
 ## snapkit中有三个方法
 - makeConstraints  //设置布局
 - remakeConstraints  //移除以前的布局、重新布局
 - updateConstraints //更新布局
 
-
 # cell上的数据必须放在contentView上面
-
 
 App开发不能限制用户的操作
 
-
 ### 加载刷新
 /***********************json按页下载数据******************************/
-
 //1.声明当前页数、总页数
 
 self.page = 1
@@ -134,7 +79,6 @@ V - View：可以加一个取cellID的方法
 
 C-大布局：代理方法
 - 通过sendRequest获取model
-- 
 
 1. 一般项目都是使用cocoaPods管理：更加方便；
 2. 一般使用Assets管理图片：自己试试；
@@ -167,25 +111,8 @@ YYText怎么使用、有什么作用？？？
 
 常见App一些功能需要怎么做：业务方面(服务端、客户端之间的通信)
 
-
 开发静态库和动态库：
 静态库解决不了第三方库的重复代码问题；
-
-### 开发项目之前需要确定：
-- 使用什么开发框架：
-- 使用什么设计模式：
-- 使用什么数据库：
-- 使用什么适配：
-
-### 项目分类
-- GitHub  个人项目
-- Gitee   项目总结
-
-### 项目模块
-- 首页：
-- 直播：
-- 发现：
-- 我的：
 
 ### SDK项目功能
 - 初始化
@@ -246,7 +173,6 @@ YYText怎么使用、有什么作用？？？
 - C++：
 - 运维/IT：
 
-
 C语言-OC-swift-java-kotlin-h5-rn
 
 //工作中遇到的困难：
@@ -256,7 +182,6 @@ C语言-OC-swift-java-kotlin-h5-rn
 https://www.jianshu.com/u/e15d1f644bea
 
 ///////  常用的json格式
-
 {
 
     "code":1511200,
@@ -304,7 +229,6 @@ https://www.jianshu.com/u/e15d1f644bea
     }
 }
 
-
 开放者官网：https://developer.apple.com/cn/
 苹果官方API：
 - 面向iPad的App开发；
@@ -317,14 +241,11 @@ https://www.jianshu.com/u/e15d1f644bea
 - WWDC18
 - 开放者经验分享
 
-
 //使用SnapKit给控件添加约束常见错误：https://blog.csdn.net/Haikuotiankong11111/article/details/51800761
 1.简单的约束冲突不能有：比如控制了左边和把右边就不能在设置宽度
 
 //cell的自适应：https://www.jianshu.com/p/aee265022414
 1. 设置estimatedRowHeight(预估高度)：必须设置
-2. 
-
 
 CGFloat的意思是什么？
 
@@ -337,7 +258,6 @@ iPad尺寸
 UILabel在Autolayout中可以自动设置高度
 
 开发者关注的问题：
-
 
 {
     "code":1511200,
@@ -383,9 +303,6 @@ UILabel在Autolayout中可以自动设置高度
         }
     }
 }
-#
-
-
 
 必须要看：https://www.cnblogs.com/lihaibo-Leao/p/3471556.html
 
@@ -406,7 +323,6 @@ cell内部如果某一个控件不需要我们可以更新布局为0
 3.抓包https还需要安装证书
 4.开始抓包
 
-
 //可以通过mock修改数据
 5.保存返回数据：然后修改数据 Save Response...
 6.使用本地数据：Map Local
@@ -419,16 +335,13 @@ https://www.growingio.com/projects/QRe05n9q/homepage
 dana@eyee.com
 Guhun123
 
-
 swift中：if可以,判断多个条件
 _Nullable //可以为空
 _Nonnull //不能为空
 
 自定义UI：如果你希望整个UI都可以点击：可以直接在整个UI上面添加touch方法
 
-
 http://tool.oschina.net 工具网站
-
 
 Xcode中有：打开"Main Thread Checker"可以判断线程是否使用合理
 
@@ -436,9 +349,7 @@ swift中：如果是String = ""
 如果是类：一般会怎么样？？
 一般会声明+实现
 
-
 给对象赋值不需要初始化
-
 
 1.什么时候更新model?
 1).网络加载数据：更新model；2).本地上传数据：之后更新model；
@@ -447,9 +358,7 @@ swift中：如果是String = ""
 对象赋值不需要init
 给对象属性赋值：必须要init
 
-
-不能欺负Apple
-
+不能欺骗Apple
 
 对于布局：一般不建议写死
 
@@ -464,7 +373,6 @@ swift中：如果是String = ""
  - swift部分
  - UI部分
  
-
 间距：一般不用up|all
 
 尺寸：一般使用up|all
@@ -475,11 +383,9 @@ swift中：如果是String = ""
 
 自己的代码必须有足够的兼容性   
 
-
 git上面的：stash
 fir的使用：怎么使用
 一般公司打包：怎么打包
-
 
     /*
     屏幕宽度：screenWidth
@@ -504,31 +410,18 @@ fir的使用：怎么使用
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
     }
-    
-    
-    
-    
-    
-    https://xclient.info
-    
-    
-    
-bilibili的开源框架
 
+https://xclient.info
+       
+bilibili的开源框架
 
 SnapKit布局：我们不用按顺序布局|可以直接先布局底下的样式   再布局上部的样式
 
-
 可选类型 ?? "" //防止可选类型为nil
-
 
 可以规定约束的优先级
 
-
-
-
 OC|Swift相互调用：
-
 https://blog.csdn.net/yishengzhiai005/article/details/53927569
 
 // 组件化开发实践
@@ -549,12 +442,9 @@ weex
 
 vue
 
-
 自己的问题自己把关：不能让别人给自己把关
 
 别人的事
-
-
 
 找问题一定要从外向内找、找不到在找旁边的
 千万不要还没有找进去  就开始在旁边找
@@ -566,70 +456,38 @@ pod repo update // 更新电脑本地保存的版本库中的版本信息
 
 遇到{就会给它分配一个存储空间、直到遇到}该存储空间会被释放
 
-
 如果只需要上拉加载、不需要下拉刷新
 
 这时候可以把下拉刷新不写：直接在viewDidLoad() {
     中网络请求：然后执行上拉加载：最开始的网络请求可以设置为page = 1
 }
 
-
 swift怎么写网络请求：
-
 
 OC怎么处理网络请求：
 
-
-
 UITableViewHeaderFooterView这个UIView怎么说？
-
-
-
-
-
-2018年终总结及2019年工作计划报告
-回首2018年，感慨万千。在过去的一年里，我经历了两份工作，从最开始的游戏公司到现在的电商业务，
-自己不仅经历了找工作的艰辛，更是经历了工作性质转变的历程。虽然过程很艰辛，但是我也是收获良多。
-整个2018年，从业务的角度。我配合业务部门讨论、评估、开发了发售活动、登录|注册改版、拉新抢购活动...等一系列工作。从技术角度，更是让我学会很多技术。实践了很多技能、尝试了很多可能。成果也是固然很多，特别是我们的社区顺利上线、各种功能日趋完善。希望我们的社区能在新年期间迎来大爆发。
-展望2019年，任重道远。在新的一年中，我最首要的是要正视自己的问题，通过过去一年的经历(面试&工作)也深感自己的不足，不论是专业技能方面。还是业务方面都还有更大的进步空间。这块我也会在2019年的工作中重点针对去弥补，快速跟上工作发展的步伐。对于2019年。工作计划方面：对社区内容的开发跟进上面、特别是增长方面摆在重点方位上，包括后期社区的内容优化、新增社区可玩性内容、增长方面、配合工作从事砍价、拉新等活动。工作安排方面：主要还是以公司领导安排为主，重点参与到工作中去，然后在重点配合完成各种工作。
-
-
-
 
 // 将一个图片位于什么部位开始拉伸(以原点为中心点)
 // 返回一个UIImage
 UIImage.resiezableImage(with: UIImage(named: "calendar_bg_white"), edgeInsets: UIEdgeInsets(top: 0.5, left: 0.5, bottom: 0.5, right: 0.5))
 
-
 拿到页面首先分析UI布局  写出UI界面    然后再分析要不要分页加载
-
-
 
 每次写代码如果有疑问  或者测试改了代码   都需要做标记：// FIXME  然后最重要的是
 必须在发版的时候全局搜索FIXME
-
-
-都是经验不足吃的亏
-
-
-技术不行  做个程序员真不行
 
 1.严格按照设计稿设计UI
 2.一般设置UI的时候一定要想到怎么当文字过长会怎么样
 
 如果UI显示不正确  变小了    考虑可能的原因   图片压缩了   图片有边角   但是UI没有给图片   这样一般让图片和UI一样大
 
-
 如果App的跳转比较像（就是model不一样）
 我们可以对model进行赋值
 新建一个model   对model进行赋值
 
-
-
-
 一个需求的开发过程：
 1.需求讨论阶段：
-
 
 OC中可以为nil \\\\那么swift必须用可选类型接受
 
@@ -640,53 +498,29 @@ OC中可以为nil \\\\那么swift必须用可选类型接受
 huarentrade@126.com
 Eyee@934
 
-
 swift中_代表调用的时候可以忽略参数名称
 
-// 滑动视图展示
-1.需要一个UIScrollView|UIView|UIButton|
-
-
-
-
-// flutter
-
-
-// dart
-
-
 以后涉及到分页加载......必须参考使用dana的CommunityDiscoverViewController页面
-
-
 
 第一：分页加载问题：怎么做分页
 参考CommunityDiscoverViewController
 第二：data后面紧跟[]、证明后面是数组、需要转换成array   然后把这个数组作为数据源   开始操作代码
 
-
 // Mock数据网址
 http://mock.api.eyee.com/editor
 
-
 在xib中，command选中两个控件   可以让他们等宽、然后修改比例
-
 
 GIO转化变量指的是：支付成功以后   这个是通过什么方式转化过来的
 先选择C2C支付成功->然后选择转化变量  看数据
 
-
-
 数据库问的问题：数据的增删改查、
 多表的链接查询、数据回滚
-
-cell的复用：哈哈哈
 
 内部用的什么类型数据
 外部就必须用什么类型的数据接受
 
-
-不能内部是字典   外部是数组
-
+不能内部是字典/外部是数组
 
 如果json是一个model   你就用字典接受
 然后传出来的必须也是model
@@ -694,7 +528,6 @@ cell的复用：哈哈哈
     // 这是一个字典
 }
 外层也必须使用model去接收->然后取出来model里面的list->如果需要分页还需要拼接list
-
 
 如果json是数组的话。必须用数组接受
 "data"[{
@@ -704,11 +537,9 @@ cell的复用：哈哈哈
 }]
 必须使用数组去接受-> 然后外层也必须使用数组来接受：可以直接等于
 
-
 抓包的原理
 
 https可以被抓包吗
-
 
 抓包：怎么配置：记录下来
 
@@ -718,12 +549,7 @@ http://idea.lanyus.com/
 
 swift中main函数消失：https://blog.csdn.net/zhao18933/article/details/46640657
 
-UITableView调用reloadData()会发生什么问题
-
-
-### mac装机必备
-- command + D   //收藏书签
-- 
+command + D   //收藏书签
 
 https://github.com/celiaDeveloper?tab=repositories
 
@@ -736,54 +562,35 @@ https://github.com/celiaDeveloper?tab=repositories
 
 发版本...把1，2，3，4合并到发版分支->新建v3.3.x发版本分支
 
-cell因为是复用的   所以cell有if/就必须有else
+cell因为是复用的、所以cell有if/就必须有else
 不让做不到让数据->驱动->UI
-
 
 [A hasPrefix:B]; // A是否是以B字符开头的
 
 程序间通信：第一我们需要把string->url
-我们需要判断是否可以打开url->可以打开我们在打开->打开以后，我们再通过AppDelegate中代理回传。
-
-
-短信验证很简单：只用你输入手机号码 、   然后请求网络 、 获取到验证码 、输入验证码    再次请求网络 、就是所谓的登录成功
-
+我们需要判断是否可以打开url->可以打开我们在打开->打开以后，我们再通过AppDelegate中代理回传
 
 国际化：文字的国际化、图片的国际化 ////重点追踪
 
-//RunTime  运行时：NSString  编译时：NSData
-NSData *data = [NSString stringWithFormat:@"%d", 12];
-
 iOS/Android/web/小程序/rn/flutter/php
 
-
-// UICollectionView的自适应：
+// UICollectionViewCell的自适应：
 1.我们可以现在外部给cell一个预估的宽/高
 2.然后在内部给cell进行内容向外部撑开
+3.cell内部的UILabel不要设置高度
 
 https://github.com/duf1991/DYFBuyApp
 
-// 代码规范
-1.类名/枚举名称都要首字母大写
-2.变量名/方法名第一个字母小写。从第二个字母开始大写
-3.通用写成全局、不通用写成局部
-4.单项数据：Item/Info。。。数据模型：Model。。。数组List
-
-如果某一个页面接口很多：1.可以让后台做接口的聚合
-2.可以把每个接口的model整合到一个接口中
-
-
-写App之前：必须要先封装好所有的东西。。。再开始开发
+//写App之前
 1.确定App的整体框架；
 2.封装各种UI（图片+文字的btn/toast/alert）
 3.网络请求封装
 4.确定各种数字/文字等UI显示
 5.确定开发需要的适配代码(怎么做适配)
 6.设置BaseViewController
-以上就是最基本的一些封装和前期准备。。。然后再考虑你要写App。。。
-你要做业务开发。
+以上就是最基本的一些封装和前期准备。。。然后再考虑你要写App。。。你要做业务开发
 
-时间格式：
+//时间格式
 12小时制："yyyy-MM-dd HH:mm:ss"
 24小时制：“yyyy-MM-dd hh:mm:ss”
 
@@ -792,5 +599,18 @@ https://github.com/duf1991/DYFBuyApp
 2.对比数据刷新以后有没有什么问题；
 3.对比点击/挑转/分享等操作有什么问题；
 
+///V3.4.3商品评论增加消息提醒
+//后台需要修改内容
+1.roottype：增加一个类型/帖子、日历、3是商品
+2.当roottype是3的时候rootid相应需要传productId
+3.然后是商品类型：需要新增字段是否是预授券advancesale
+4.如果是预售券商品：需要再加上一个字段：productsize
+5.然后在二级评论页面：需要新增一个接口/升级接口需要传入评论model
 
+capi/community/message/unreadattitudemessageV321
+capi/community/message/historyattitudemessageV321
 
+capi/community/message/unreadreplymessageV321
+capi/community/message/historyreplymessageV321
+
+capi/product/open/secondlist

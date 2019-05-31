@@ -5,6 +5,9 @@ import android.accounts.Account;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import java.util.Date;
+import java.util.Scanner;
+
 // 类定义：
 // 只有一个主类public class xxx
 // xxx与源文件名称必须一致
@@ -270,8 +273,138 @@ public class MainActivity extends AppCompatActivity {
         * 4.*/
 
         /*
-        * 匿名类：
+        * 匿名类：没有类名的特殊内部类
         * */
+
+        /*
+        * Java API是java应用程序编程接口
+        * */
+        // 包装类：实现基本数据类型->对象
+        /*
+        * boolean/Boolean
+        * char/Character
+        * double/Double
+        * float/Float
+        * int/Integer
+        * long/Long
+        * */
+        // Integer
+        // 1.构造函数
+        Integer integer = new Integer("123");
+        Integer integer1 = new Integer(123);
+        // 2.字符串->整数/整数类
+        Integer.parseInt("123"); // 转换成整数
+        Integer.valueOf("123"); // 转换成整数类
+        // 3.整数-> 字符串
+        Integer.toString(123); // 转化成字符串
+        integer.intValue();  // 转换成整数返回
+
+        // Double
+        // 1.构造函数
+        Double d = new Double(123);
+        Double stringD = new Double("123");
+        // 2.字符串->double
+        double m2 = Double.parseDouble("123");
+        // 3.浮点数->字符串
+        String m3 = Double.toHexString(123);
+        // 4.浮点数/字符串->Double
+        Double m4 = Double.valueOf(123);
+        Double m5 = Double.valueOf("123");
+        // 5.Double->浮点数
+        m5.doubleValue();
+
+        // 常见Math
+        double n1 = Math.E + Math.PI;  //java需要等号两边类型一致
+        int n2 = Math.max(10,12);   // 最大值
+        int n3 = Math.min(10,12);   // 最小值
+        int n4 = Math.abs(-10);     // 绝对值
+
+        // String类/StringBuffer类
+        // java把字符串当作对象处理
+        String s1 = new String();
+        String s2 = new String("123");
+        StringBuffer ms1 = new StringBuffer("123");
+        String s3 = new String(ms1);
+        String s4 = "hello world";
+        char c1 = s1.charAt(1); // 返回字符串指定位置的字符
+        // 如果超过字符串长度、会抛出异常
+        s4.substring(1,4);  // 截断字符串：必须有开始位置、可以没有结束位置
+        s4.indexOf('a'); // 指定字符在s4中第一次出现的位置、没有返回-1
+        s4.indexOf("as"); // 指定字符串在s4中第一次出现的位置、没有返回-1
+        // java中提供关于字符串的比较方法
+        int sum = s1.compareTo(s2); // 返回int
+        boolean isEquals = s1.equals(s2); // 区分大小写
+        boolean isCast = s1.equalsIgnoreCase(s2); // 不区分大小写
+        boolean isObject = s1 == s2; // 判断两个字符串是否指向同一个对象
+        // 获取该字符长度
+        for (int temp = 0; temp < s1.length(); temp++) {
+            temp++;
+            System.out.println(temp);
+        }
+        // 静态方法
+        String s5 = String.valueOf(true);  // 把true转化成字符串
+        String s6 = String.valueOf(123); //  把123转化成字符串
+        s1.toLowerCase(); // 转换成小写字符串
+        s2.toUpperCase(); // 转换成大写字符串
+        s2.trim(); // 移除字符串首尾空格
+
+        /// StringBuffer类
+        // 用于创建可变字符串对象
+        // StringBuffer类默认16个字符长度、如果不超过16位、则不需要分配新的
+        // 超过16位，容量自动增大
+        StringBuffer sb = new StringBuffer(); // 初始化16个字符长度的空对象
+        StringBuffer sb1 = new StringBuffer(12); // 初始化12个字符长度的对象
+        StringBuffer sb2 = new StringBuffer("xwj"); // 利用字符串创建对象
+        sb1.length(); // 获取对象包含的有效字符个数
+        sb1.capacity(); // 获取当前对象的容量
+        sb1.setLength(12); // 修改对象的容量、如果当前对象有效位数>12,则多余部分被删除，负数会抛出异常
+        // 增删改查
+        // 增
+        StringBuffer sb5 = new StringBuffer();
+        sb5.append('5');
+        sb5.append("xwj");
+        /// 插入
+        // 0 <= offset <= sb5.length()
+        sb5.insert(1, "dnf");
+        // 删除
+        sb5.delete(1,3);
+        // 替换
+        sb5.replace(1,5,"xwj");
+        // 逆序
+        sb5.reverse();
+        // StringBuffer -> String
+        sb5.toString();
+        // Scanner类
+        // 具体怎么使用：还不会
+        Scanner sc = new Scanner("file://xxx");
+        // 日期类：Date
+        // Data数据/Date日期
+        // 默认模式：星期、月、日、小时、分、秒、年
+        // 跟iOS一致
+        Date nowDate = new Date(); // 获取当前日期/时间的Date对象
+        Date longDate = new Date(1000); // 表示距离格林尼治标准时间1970年1月1日00:00:00的偏移量
+        Boolean isBefore = nowDate.before(longDate); // 是否早
+        Boolean isEqual = nowDate.equals(longDate); // 是否相等
+        Boolean isAfter = nowDate.after(longDate);  // 是否晚
+        // 自定义模式
+        // iOS中：yyyy-MM-dd HH:mm:ss/hh:mm:ss
+        // p130
+
+
+
+
+
+        
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -419,5 +552,28 @@ public class MainActivity extends AppCompatActivity {
     }
 
     // 外部类
-    
+    class OuterClass {
+        private int x;  // 定义一个私有变量
+        int y;     // 定义一个默认变量
+
+        void showInner() {
+            System.out.println("我是外部类成员方法");
+        }
+        // 内部类
+        class InnerClass {
+            int y;   //  可以定义同名的成员属性
+
+            void showOuter() {
+                System.out.println("我是内部类成员方法");
+            }
+        }
+    }
+
+    // Double包装类
+    // 主要掌握"包装类"/基础数据类型/字符串之间的转换
+    // 所有包装类都是final类型、不能派生子类
+    public class DoubleDemo {
+
+    }
+
 }

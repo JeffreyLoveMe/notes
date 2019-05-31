@@ -1,5 +1,0 @@
-interface/abstrct   但是可以继承多个接口 
-接口/抽象类   类讲究继承/extents implements
-interface/abstrct   implements 
-接口不能被实例化
-//kt的基础知识：

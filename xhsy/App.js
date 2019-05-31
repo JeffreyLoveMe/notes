@@ -6,44 +6,39 @@
  * @flow
  */
 
+ // ES6
 import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, View} from 'react-native';
+import {Platform, Text, View, Image} from 'react-native';
 
 const instructions = Platform.select({
-  ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
+  ios: '你好，世界',
   android:
-    'Double tap R on your keyboard to reload,\n' +
-    'haha',
+    'hello world',
 });
 
-type Props = {};
-export default class App extends Component<Props> {
+class Greeting extends Component {
   render() {
     return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>Welcome to React Native!</Text>
-        <Text style={styles.instructions}>To get started, edit App.js</Text>
-        <Text style={styles.instructions}>{instructions}</Text>
+      <View style={{alignItems: 'center', marginTop: 50}}>
+        <Text>hello</Text>
       </View>
     );
   }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
-});
+export default class App extends Component {
+  render() {
+    let pic = {
+      uri: 'https://upload.wikimedia.org/wikipedia/commons/d/de/Bananavarieties.jpg'
+    }
+    return (
+      // <View style={{flex:1, justifyContent:"center", alignItems: "center"}}>
+      //   <Text>你好</Text>
+      // </View>
+
+      // 我们可以利用{}把js表达式嵌入到JSX语句中
+      // 第四章：State（状态）
+      <Image source={pic} style={{width: 193, height: 110}}/>
+    );
+  }
+}
