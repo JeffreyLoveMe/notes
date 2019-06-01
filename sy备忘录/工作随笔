@@ -23,10 +23,10 @@
 //5月31号
 1.预售券开始联调、加入UI调整
 2.日历改版：加入跳转逻辑
-3.加入牛牛提醒：还有2个类型
-4.测试代码逻辑
+3.埋点：进入鞋券详情页加入新类型
+4.加入牛牛提醒：还有6个类型
 
-/// 第一次code review
+###code review
 /// 关于ShoesSaleInfoController.swift页面
 // 缺点
 1.首先指出部分bug和缺陷(个人观点)：1121行设置offset为-10没有必要|1130行 bottomSafeArea = 34，不是35
@@ -76,13 +76,13 @@ xiewujun1993
 https://developer.android.com 
 https://developer.apple.com
 
-//A站点
-番号：http://www.qiuav.com/portal.php 
-p2p：https://btdigg.cc/ 
-https://www.btcili.org
-
 //UDID
 a6695a20647ead03bc220812ca56fe78b59644fa
 
 //安卓巴士
 http://www.apkbus.com/code.php
+
+//A站点
+番号：http://www.qiuav.com/portal.php 
+p2p：https://btdigg.cc/ 
+https://www.btcili.org
