@@ -5,8 +5,10 @@ import android.accounts.Account;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Scanner;
+import java.util.logging.SimpleFormatter;
 
 // 类定义：
 // 只有一个主类public class xxx
@@ -374,9 +376,11 @@ public class MainActivity extends AppCompatActivity {
         sb5.reverse();
         // StringBuffer -> String
         sb5.toString();
+
         // Scanner类
         // 具体怎么使用：还不会
         Scanner sc = new Scanner("file://xxx");
+
         // 日期类：Date
         // Data数据/Date日期
         // 默认模式：星期、月、日、小时、分、秒、年
@@ -387,8 +391,38 @@ public class MainActivity extends AppCompatActivity {
         Boolean isEqual = nowDate.equals(longDate); // 是否相等
         Boolean isAfter = nowDate.after(longDate);  // 是否晚
         // 自定义模式
-        // iOS中：yyyy-MM-dd HH:mm:ss/hh:mm:ss
-        // p130
+        // iOS中：yyyy-MM-dd HH:mm:ss/hh:mm:ss z
+        /*
+        * G - 年代标识、公元前/公元后
+        * y - 表示年
+        * M - 表示年中的月份
+        * w/W - 表示一年中的第几周
+        * d/D - 表示一年中的第几天
+        * F - 表示一月中的第几个星期几
+        * E - 表示星期中的天数
+        * a - 表示上午/下午
+        * H - 表示一天中的小时数(00~23)
+        * h - 表示am/pm中的小时数(01~12)
+        * K - 表示am/pm中的小时数
+        * k - 表示一天中的小时数(1~24)
+        * m - 表示小时中的分钟数
+        * s - 表示分钟数
+        * S - 表示毫秒数
+        * z - 表示时区
+        * */
+        SimpleDateFormat format = new SimpleDateFormat();
+        try {
+            Date date = format.parse("2009-11-19");
+            format.format(date);
+        } catch (Exception exception) {
+            System.out.println(exception);
+        };
+
+        // 向量类/枚举接口
+
+
+
+
 
 
 

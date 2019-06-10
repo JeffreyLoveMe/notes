@@ -7,278 +7,231 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		330266D121D7381E00C6505F /* App职责分配.png in Resources */ = {isa = PBXBuildFile; fileRef = 330266D021D7381E00C6505F /* App职责分配.png */; };
-		330266DA21D9BB7500C6505F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 330266D921D9BB7500C6505F /* AppDelegate.m */; };
-		3323788421EF357F008F056D /* C:OC学习路线&重难点.png in Resources */ = {isa = PBXBuildFile; fileRef = 3323788321EF357F008F056D /* C:OC学习路线&重难点.png */; };
-		3323788821EF3EF2008F056D /* UI划分_00.png in Resources */ = {isa = PBXBuildFile; fileRef = 3323788721EF3EF2008F056D /* UI划分_00.png */; };
-		3347C34621E489EE0050778E /* UIKit.png in Resources */ = {isa = PBXBuildFile; fileRef = 3347C34521E489ED0050778E /* UIKit.png */; };
-		336522E721E48E1400D41593 /* UIApplication.png in Resources */ = {isa = PBXBuildFile; fileRef = 336522E621E48E1400D41593 /* UIApplication.png */; };
-		33B83DD221E50AE600E679E8 /* 单个文件放置多个类：多用于model.png in Resources */ = {isa = PBXBuildFile; fileRef = 33B83DD121E50AE600E679E8 /* 单个文件放置多个类：多用于model.png */; };
-		33B94C2621CCC764001A601B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33B94C2521CCC764001A601B /* AppDelegate.swift */; };
-		33B94C2B21CCC764001A601B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 33B94C2921CCC764001A601B /* Main.storyboard */; };
-		33B94C2D21CCC766001A601B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 33B94C2C21CCC766001A601B /* Assets.xcassets */; };
-		33B94C3021CCC766001A601B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 33B94C2E21CCC766001A601B /* LaunchScreen.storyboard */; };
-		33B94C3B21CCC766001A601B /* WMGameProxyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33B94C3A21CCC766001A601B /* WMGameProxyTests.swift */; };
-		33B94C4621CCC766001A601B /* WMGameProxyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33B94C4521CCC766001A601B /* WMGameProxyUITests.swift */; };
-		33B94C5621CCC7CD001A601B /* EyeeHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 33B94C5521CCC7CD001A601B /* EyeeHomeViewController.m */; };
-		33B94C6521CCC7DE001A601B /* EyeeCommunity.m in Sources */ = {isa = PBXBuildFile; fileRef = 33B94C5821CCC7DD001A601B /* EyeeCommunity.m */; };
-		33B94C6821CCC7DE001A601B /* Safe Area.png in Resources */ = {isa = PBXBuildFile; fileRef = 33B94C5D21CCC7DE001A601B /* Safe Area.png */; };
-		33B94C6921CCC7DE001A601B /* iphone设备尺寸.png in Resources */ = {isa = PBXBuildFile; fileRef = 33B94C5E21CCC7DE001A601B /* iphone设备尺寸.png */; };
-		33B94C6A21CCC7DE001A601B /* C语言的执行流程.png in Resources */ = {isa = PBXBuildFile; fileRef = 33B94C5F21CCC7DE001A601B /* C语言的执行流程.png */; };
-		33B94C6B21CCC7DE001A601B /* 认识Autolayout.png in Resources */ = {isa = PBXBuildFile; fileRef = 33B94C6021CCC7DE001A601B /* 认识Autolayout.png */; };
-		33B94C6C21CCC7DE001A601B /* WMGameProxy.txt in Resources */ = {isa = PBXBuildFile; fileRef = 33B94C6421CCC7DE001A601B /* WMGameProxy.txt */; };
-		33B94CEA21D08276001A601B /* json解析标准版.png in Resources */ = {isa = PBXBuildFile; fileRef = 33B94CE921D08276001A601B /* json解析标准版.png */; };
-		33BB43FE2206FD0500D537CD /* EyeeModels.m in Sources */ = {isa = PBXBuildFile; fileRef = 33BB43FD2206FD0500D537CD /* EyeeModels.m */; };
-		33BB440D2212A10300D537CD /* C语言:OC关键字.png in Resources */ = {isa = PBXBuildFile; fileRef = 33BB440C2212A10300D537CD /* C语言:OC关键字.png */; };
-		33E0479321E6F59600173EE2 /* EyeeNetworkController.m in Sources */ = {isa = PBXBuildFile; fileRef = 33E0479221E6F59600173EE2 /* EyeeNetworkController.m */; };
-		33E4FA6521FEFFC100D399B7 /* UIImage+animatedGIF.m in Sources */ = {isa = PBXBuildFile; fileRef = 33E4FA6421FEFFC000D399B7 /* UIImage+animatedGIF.m */; };
-		33E4FA6721FF01D600D399B7 /* FlagZombie.gif in Resources */ = {isa = PBXBuildFile; fileRef = 33E4FA6621FF01D500D399B7 /* FlagZombie.gif */; };
-		33F70CED21DDE7DB00139F21 /* UICollectionView.png in Resources */ = {isa = PBXBuildFile; fileRef = 33F70CEC21DDE7DA00139F21 /* UICollectionView.png */; };
-		7BB33BA4342649B7B61D3728 /* libPods-WMGameProxy.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D8009D27178B17FCE537BA78 /* libPods-WMGameProxy.a */; };
+		06BBBBD467690F2951AB700B /* Pods_WMGameProxy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D3D3EDD51B0F251CBF64154 /* Pods_WMGameProxy.framework */; };
+		33068EB822AE665000D044EE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 33068EB722AE665000D044EE /* AppDelegate.m */; };
+		33068EBE22AE665000D044EE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 33068EBC22AE665000D044EE /* Main.storyboard */; };
+		33068EC022AE665600D044EE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 33068EBF22AE665600D044EE /* Assets.xcassets */; };
+		33068EC322AE665600D044EE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 33068EC122AE665600D044EE /* LaunchScreen.storyboard */; };
+		33068EC622AE665600D044EE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 33068EC522AE665600D044EE /* main.m */; };
+		33068ED022AE665600D044EE /* WMGameProxyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 33068ECF22AE665600D044EE /* WMGameProxyTests.m */; };
+		33068EDB22AE665600D044EE /* WMGameProxyUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 33068EDA22AE665600D044EE /* WMGameProxyUITests.m */; };
+		33068EEA22AE66A800D044EE /* MainController.m in Sources */ = {isa = PBXBuildFile; fileRef = 33068EE922AE66A800D044EE /* MainController.m */; };
+		33068EED22AE66CB00D044EE /* WMGameProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 33068EEC22AE66CB00D044EE /* WMGameProxy.m */; };
+		33068EF022AE66EC00D044EE /* WMController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33068EEF22AE66EC00D044EE /* WMController.swift */; };
+		33068EF222AE670200D044EE /* WMGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33068EF122AE670200D044EE /* WMGame.swift */; };
+		33068F0322AE67C800D044EE /* 单个文件放置多个类：多用于model.png in Resources */ = {isa = PBXBuildFile; fileRef = 33068EF322AE67C700D044EE /* 单个文件放置多个类：多用于model.png */; };
+		33068F0422AE67C800D044EE /* Safe Area.png in Resources */ = {isa = PBXBuildFile; fileRef = 33068EF422AE67C700D044EE /* Safe Area.png */; };
+		33068F0522AE67C800D044EE /* UIApplication.png in Resources */ = {isa = PBXBuildFile; fileRef = 33068EF522AE67C700D044EE /* UIApplication.png */; };
+		33068F0622AE67C800D044EE /* FlagZombie.gif in Resources */ = {isa = PBXBuildFile; fileRef = 33068EF622AE67C700D044EE /* FlagZombie.gif */; };
+		33068F0722AE67C800D044EE /* 认识Autolayout.png in Resources */ = {isa = PBXBuildFile; fileRef = 33068EF722AE67C700D044EE /* 认识Autolayout.png */; };
+		33068F0822AE67C800D044EE /* json解析标准版.png in Resources */ = {isa = PBXBuildFile; fileRef = 33068EF822AE67C700D044EE /* json解析标准版.png */; };
+		33068F0922AE67C800D044EE /* UI划分_00.png in Resources */ = {isa = PBXBuildFile; fileRef = 33068EF922AE67C700D044EE /* UI划分_00.png */; };
+		33068F0A22AE67C800D044EE /* UICollectionView.png in Resources */ = {isa = PBXBuildFile; fileRef = 33068EFA22AE67C700D044EE /* UICollectionView.png */; };
+		33068F0B22AE67C800D044EE /* 下拉刷新:上拉加载_标准版.png in Resources */ = {isa = PBXBuildFile; fileRef = 33068EFB22AE67C700D044EE /* 下拉刷新:上拉加载_标准版.png */; };
+		33068F0C22AE67C800D044EE /* App职责分配.png in Resources */ = {isa = PBXBuildFile; fileRef = 33068EFC22AE67C700D044EE /* App职责分配.png */; };
+		33068F0D22AE67C800D044EE /* UIKit.png in Resources */ = {isa = PBXBuildFile; fileRef = 33068EFD22AE67C700D044EE /* UIKit.png */; };
+		33068F0E22AE67C800D044EE /* C语言的执行流程.png in Resources */ = {isa = PBXBuildFile; fileRef = 33068EFE22AE67C700D044EE /* C语言的执行流程.png */; };
+		33068F0F22AE67C800D044EE /* C语言:OC关键字.png in Resources */ = {isa = PBXBuildFile; fileRef = 33068EFF22AE67C800D044EE /* C语言:OC关键字.png */; };
+		33068F1022AE67C800D044EE /* error_01：找不到AppDelegate类.png in Resources */ = {isa = PBXBuildFile; fileRef = 33068F0022AE67C800D044EE /* error_01：找不到AppDelegate类.png */; };
+		33068F1122AE67C800D044EE /* C:OC学习路线&重难点.png in Resources */ = {isa = PBXBuildFile; fileRef = 33068F0122AE67C800D044EE /* C:OC学习路线&重难点.png */; };
+		33068F1222AE67C800D044EE /* iphone设备尺寸.png in Resources */ = {isa = PBXBuildFile; fileRef = 33068F0222AE67C800D044EE /* iphone设备尺寸.png */; };
+		33068F1422AE67DB00D044EE /* WMGameProxy.txt in Resources */ = {isa = PBXBuildFile; fileRef = 33068F1322AE67DB00D044EE /* WMGameProxy.txt */; };
+		60B17560F167E4FE18028608 /* Pods_WMGameProxyUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F497949D35C1F02C4BAE1F7A /* Pods_WMGameProxyUITests.framework */; };
+		CD760D165A9CBF60796300E5 /* Pods_WMGameProxyTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 407416DA15016E2C557ADCE1 /* Pods_WMGameProxyTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		33B94C3721CCC766001A601B /* PBXContainerItemProxy */ = {
+		33068ECC22AE665600D044EE /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 33B94C1A21CCC764001A601B /* Project object */;
+			containerPortal = 33068EAB22AE665000D044EE /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 33B94C2121CCC764001A601B;
+			remoteGlobalIDString = 33068EB222AE665000D044EE;
 			remoteInfo = WMGameProxy;
 		};
-		33B94C4221CCC766001A601B /* PBXContainerItemProxy */ = {
+		33068ED722AE665600D044EE /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 33B94C1A21CCC764001A601B /* Project object */;
+			containerPortal = 33068EAB22AE665000D044EE /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 33B94C2121CCC764001A601B;
+			remoteGlobalIDString = 33068EB222AE665000D044EE;
 			remoteInfo = WMGameProxy;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0A0500B605DD05F378F03D98 /* Pods_WMGameProxyTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WMGameProxyTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		135E246FCA960AA7D821E790 /* Pods-WMGameProxy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WMGameProxy.release.xcconfig"; path = "Pods/Target Support Files/Pods-WMGameProxy/Pods-WMGameProxy.release.xcconfig"; sourceTree = "<group>"; };
-		330266D021D7381E00C6505F /* App职责分配.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "App职责分配.png"; sourceTree = "<group>"; };
-		330266D821D9BB7500C6505F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		330266D921D9BB7500C6505F /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		3323788321EF357F008F056D /* C:OC学习路线&重难点.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "C:OC学习路线&重难点.png"; sourceTree = "<group>"; };
-		3323788721EF3EF2008F056D /* UI划分_00.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "UI划分_00.png"; sourceTree = "<group>"; };
-		3347C34521E489ED0050778E /* UIKit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = UIKit.png; sourceTree = "<group>"; };
-		336522E621E48E1400D41593 /* UIApplication.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = UIApplication.png; sourceTree = "<group>"; };
-		33B83DD121E50AE600E679E8 /* 单个文件放置多个类：多用于model.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "单个文件放置多个类：多用于model.png"; sourceTree = "<group>"; };
-		33B94C2221CCC764001A601B /* WMGameProxy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WMGameProxy.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		33B94C2521CCC764001A601B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		33B94C2A21CCC764001A601B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		33B94C2C21CCC766001A601B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		33B94C2F21CCC766001A601B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		33B94C3121CCC766001A601B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		33B94C3621CCC766001A601B /* WMGameProxyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WMGameProxyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		33B94C3A21CCC766001A601B /* WMGameProxyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WMGameProxyTests.swift; sourceTree = "<group>"; };
-		33B94C3C21CCC766001A601B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		33B94C4121CCC766001A601B /* WMGameProxyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WMGameProxyUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		33B94C4521CCC766001A601B /* WMGameProxyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WMGameProxyUITests.swift; sourceTree = "<group>"; };
-		33B94C4721CCC766001A601B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		33B94C5321CCC7CD001A601B /* WMGameProxy-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "WMGameProxy-Bridging-Header.h"; sourceTree = "<group>"; };
-		33B94C5421CCC7CD001A601B /* EyeeHomeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EyeeHomeViewController.h; sourceTree = "<group>"; };
-		33B94C5521CCC7CD001A601B /* EyeeHomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EyeeHomeViewController.m; sourceTree = "<group>"; };
-		33B94C5821CCC7DD001A601B /* EyeeCommunity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EyeeCommunity.m; sourceTree = "<group>"; };
-		33B94C5921CCC7DD001A601B /* EyeeCommunity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EyeeCommunity.h; sourceTree = "<group>"; };
-		33B94C5D21CCC7DE001A601B /* Safe Area.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Safe Area.png"; sourceTree = "<group>"; };
-		33B94C5E21CCC7DE001A601B /* iphone设备尺寸.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iphone设备尺寸.png"; sourceTree = "<group>"; };
-		33B94C5F21CCC7DE001A601B /* C语言的执行流程.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "C语言的执行流程.png"; sourceTree = "<group>"; };
-		33B94C6021CCC7DE001A601B /* 认识Autolayout.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "认识Autolayout.png"; sourceTree = "<group>"; };
-		33B94C6421CCC7DE001A601B /* WMGameProxy.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = WMGameProxy.txt; sourceTree = "<group>"; };
-		33B94CE921D08276001A601B /* json解析标准版.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "json解析标准版.png"; sourceTree = "<group>"; };
-		33BB43FC2206FD0500D537CD /* EyeeModels.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EyeeModels.h; sourceTree = "<group>"; };
-		33BB43FD2206FD0500D537CD /* EyeeModels.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EyeeModels.m; sourceTree = "<group>"; };
-		33BB440C2212A10300D537CD /* C语言:OC关键字.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "C语言:OC关键字.png"; sourceTree = "<group>"; };
-		33E0479121E6F59600173EE2 /* EyeeNetworkController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EyeeNetworkController.h; sourceTree = "<group>"; };
-		33E0479221E6F59600173EE2 /* EyeeNetworkController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EyeeNetworkController.m; sourceTree = "<group>"; };
-		33E4FA6321FEFFC000D399B7 /* UIImage+animatedGIF.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+animatedGIF.h"; sourceTree = "<group>"; };
-		33E4FA6421FEFFC000D399B7 /* UIImage+animatedGIF.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+animatedGIF.m"; sourceTree = "<group>"; };
-		33E4FA6621FF01D500D399B7 /* FlagZombie.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = FlagZombie.gif; sourceTree = "<group>"; };
-		33F70CEC21DDE7DA00139F21 /* UICollectionView.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = UICollectionView.png; sourceTree = "<group>"; };
-		4B04C6F46241C4A909848788 /* Pods_WMGameProxyUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WMGameProxyUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		AC7ED73C1A878A0AE3D63ECF /* Pods-WMGameProxy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WMGameProxy.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WMGameProxy/Pods-WMGameProxy.debug.xcconfig"; sourceTree = "<group>"; };
-		D8009D27178B17FCE537BA78 /* libPods-WMGameProxy.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-WMGameProxy.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		1ADA9780669429E132079BD5 /* Pods-WMGameProxyUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WMGameProxyUITests.release.xcconfig"; path = "Target Support Files/Pods-WMGameProxyUITests/Pods-WMGameProxyUITests.release.xcconfig"; sourceTree = "<group>"; };
+		33068EB322AE665000D044EE /* WMGameProxy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WMGameProxy.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		33068EB622AE665000D044EE /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		33068EB722AE665000D044EE /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		33068EBD22AE665000D044EE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		33068EBF22AE665600D044EE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		33068EC222AE665600D044EE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		33068EC422AE665600D044EE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		33068EC522AE665600D044EE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		33068ECB22AE665600D044EE /* WMGameProxyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WMGameProxyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		33068ECF22AE665600D044EE /* WMGameProxyTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WMGameProxyTests.m; sourceTree = "<group>"; };
+		33068ED122AE665600D044EE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		33068ED622AE665600D044EE /* WMGameProxyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WMGameProxyUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		33068EDA22AE665600D044EE /* WMGameProxyUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WMGameProxyUITests.m; sourceTree = "<group>"; };
+		33068EDC22AE665600D044EE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		33068EE822AE66A800D044EE /* MainController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainController.h; sourceTree = "<group>"; };
+		33068EE922AE66A800D044EE /* MainController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainController.m; sourceTree = "<group>"; };
+		33068EEB22AE66CB00D044EE /* WMGameProxy.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WMGameProxy.h; sourceTree = "<group>"; };
+		33068EEC22AE66CB00D044EE /* WMGameProxy.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WMGameProxy.m; sourceTree = "<group>"; };
+		33068EEE22AE66EB00D044EE /* WMGameProxy-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "WMGameProxy-Bridging-Header.h"; sourceTree = "<group>"; };
+		33068EEF22AE66EC00D044EE /* WMController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WMController.swift; sourceTree = "<group>"; };
+		33068EF122AE670200D044EE /* WMGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WMGame.swift; sourceTree = "<group>"; };
+		33068EF322AE67C700D044EE /* 单个文件放置多个类：多用于model.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "单个文件放置多个类：多用于model.png"; sourceTree = "<group>"; };
+		33068EF422AE67C700D044EE /* Safe Area.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Safe Area.png"; sourceTree = "<group>"; };
+		33068EF522AE67C700D044EE /* UIApplication.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = UIApplication.png; sourceTree = "<group>"; };
+		33068EF622AE67C700D044EE /* FlagZombie.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = FlagZombie.gif; sourceTree = "<group>"; };
+		33068EF722AE67C700D044EE /* 认识Autolayout.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "认识Autolayout.png"; sourceTree = "<group>"; };
+		33068EF822AE67C700D044EE /* json解析标准版.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "json解析标准版.png"; sourceTree = "<group>"; };
+		33068EF922AE67C700D044EE /* UI划分_00.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "UI划分_00.png"; sourceTree = "<group>"; };
+		33068EFA22AE67C700D044EE /* UICollectionView.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = UICollectionView.png; sourceTree = "<group>"; };
+		33068EFB22AE67C700D044EE /* 下拉刷新:上拉加载_标准版.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "下拉刷新:上拉加载_标准版.png"; sourceTree = "<group>"; };
+		33068EFC22AE67C700D044EE /* App职责分配.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "App职责分配.png"; sourceTree = "<group>"; };
+		33068EFD22AE67C700D044EE /* UIKit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = UIKit.png; sourceTree = "<group>"; };
+		33068EFE22AE67C700D044EE /* C语言的执行流程.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "C语言的执行流程.png"; sourceTree = "<group>"; };
+		33068EFF22AE67C800D044EE /* C语言:OC关键字.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "C语言:OC关键字.png"; sourceTree = "<group>"; };
+		33068F0022AE67C800D044EE /* error_01：找不到AppDelegate类.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "error_01：找不到AppDelegate类.png"; sourceTree = "<group>"; };
+		33068F0122AE67C800D044EE /* C:OC学习路线&重难点.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "C:OC学习路线&重难点.png"; sourceTree = "<group>"; };
+		33068F0222AE67C800D044EE /* iphone设备尺寸.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iphone设备尺寸.png"; sourceTree = "<group>"; };
+		33068F1322AE67DB00D044EE /* WMGameProxy.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = WMGameProxy.txt; sourceTree = "<group>"; };
+		3D3D3EDD51B0F251CBF64154 /* Pods_WMGameProxy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WMGameProxy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3ECEA7B1BF7650220E4B5C11 /* Pods-WMGameProxy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WMGameProxy.debug.xcconfig"; path = "Target Support Files/Pods-WMGameProxy/Pods-WMGameProxy.debug.xcconfig"; sourceTree = "<group>"; };
+		407416DA15016E2C557ADCE1 /* Pods_WMGameProxyTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WMGameProxyTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		58C591C9EF6F56269F27F36C /* Pods-WMGameProxyTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WMGameProxyTests.debug.xcconfig"; path = "Target Support Files/Pods-WMGameProxyTests/Pods-WMGameProxyTests.debug.xcconfig"; sourceTree = "<group>"; };
+		6FD6244A6ED58669C28BD67F /* Pods-WMGameProxy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WMGameProxy.release.xcconfig"; path = "Target Support Files/Pods-WMGameProxy/Pods-WMGameProxy.release.xcconfig"; sourceTree = "<group>"; };
+		A28A52F04DA8BE90B2995DA6 /* Pods-WMGameProxyTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WMGameProxyTests.release.xcconfig"; path = "Target Support Files/Pods-WMGameProxyTests/Pods-WMGameProxyTests.release.xcconfig"; sourceTree = "<group>"; };
+		F37E0EED3E58BCFCD0B57AEA /* Pods-WMGameProxyUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WMGameProxyUITests.debug.xcconfig"; path = "Target Support Files/Pods-WMGameProxyUITests/Pods-WMGameProxyUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		F497949D35C1F02C4BAE1F7A /* Pods_WMGameProxyUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WMGameProxyUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		33B94C1F21CCC764001A601B /* Frameworks */ = {
+		33068EB022AE665000D044EE /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7BB33BA4342649B7B61D3728 /* libPods-WMGameProxy.a in Frameworks */,
+				06BBBBD467690F2951AB700B /* Pods_WMGameProxy.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		33B94C3321CCC766001A601B /* Frameworks */ = {
+		33068EC822AE665600D044EE /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CD760D165A9CBF60796300E5 /* Pods_WMGameProxyTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		33B94C3E21CCC766001A601B /* Frameworks */ = {
+		33068ED322AE665600D044EE /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				60B17560F167E4FE18028608 /* Pods_WMGameProxyUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		33B94C1921CCC764001A601B = {
+		33068EAA22AE665000D044EE = {
 			isa = PBXGroup;
 			children = (
-				33B94C2421CCC764001A601B /* WMGameProxy */,
-				33B94C3921CCC766001A601B /* WMGameProxyTests */,
-				33B94C4421CCC766001A601B /* WMGameProxyUITests */,
-				33B94C2321CCC764001A601B /* Products */,
-				67779ABFDC758F4C637E79E6 /* Pods */,
-				910C2FF831CD8E1052769267 /* Frameworks */,
+				33068EB522AE665000D044EE /* WMGameProxy */,
+				33068ECE22AE665600D044EE /* WMGameProxyTests */,
+				33068ED922AE665600D044EE /* WMGameProxyUITests */,
+				33068EB422AE665000D044EE /* Products */,
+				847644AA974755E1C4E1BA89 /* Pods */,
+				D3DD31FA2108741B9320675C /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
-		33B94C2321CCC764001A601B /* Products */ = {
+		33068EB422AE665000D044EE /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				33B94C2221CCC764001A601B /* WMGameProxy.app */,
-				33B94C3621CCC766001A601B /* WMGameProxyTests.xctest */,
-				33B94C4121CCC766001A601B /* WMGameProxyUITests.xctest */,
+				33068EB322AE665000D044EE /* WMGameProxy.app */,
+				33068ECB22AE665600D044EE /* WMGameProxyTests.xctest */,
+				33068ED622AE665600D044EE /* WMGameProxyUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		33B94C2421CCC764001A601B /* WMGameProxy */ = {
+		33068EB522AE665000D044EE /* WMGameProxy */ = {
 			isa = PBXGroup;
 			children = (
-				33B94C5A21CCC7DE001A601B /* Res */,
-				33B94C5721CCC7DD001A601B /* C语言 */,
-				33B94C6321CCC7DE001A601B /* Notes */,
-				33E4FA6121FEFF8A00D399B7 /* Libs */,
-				33B94C6221CCC7DE001A601B /* Objective-C */,
-				33B94C6121CCC7DE001A601B /* Swift */,
-				33B94C2521CCC764001A601B /* AppDelegate.swift */,
-				33B94C5321CCC7CD001A601B /* WMGameProxy-Bridging-Header.h */,
-				33B94C2921CCC764001A601B /* Main.storyboard */,
-				33B94C2C21CCC766001A601B /* Assets.xcassets */,
-				33B94C2E21CCC766001A601B /* LaunchScreen.storyboard */,
-				33B94C3121CCC766001A601B /* Info.plist */,
+				33068EF322AE67C700D044EE /* 单个文件放置多个类：多用于model.png */,
+				33068EF722AE67C700D044EE /* 认识Autolayout.png */,
+				33068EFB22AE67C700D044EE /* 下拉刷新:上拉加载_标准版.png */,
+				33068EFC22AE67C700D044EE /* App职责分配.png */,
+				33068F0122AE67C800D044EE /* C:OC学习路线&重难点.png */,
+				33068EFF22AE67C800D044EE /* C语言:OC关键字.png */,
+				33068EFE22AE67C700D044EE /* C语言的执行流程.png */,
+				33068F0022AE67C800D044EE /* error_01：找不到AppDelegate类.png */,
+				33068EF622AE67C700D044EE /* FlagZombie.gif */,
+				33068F0222AE67C800D044EE /* iphone设备尺寸.png */,
+				33068EF822AE67C700D044EE /* json解析标准版.png */,
+				33068EF422AE67C700D044EE /* Safe Area.png */,
+				33068EF922AE67C700D044EE /* UI划分_00.png */,
+				33068EF522AE67C700D044EE /* UIApplication.png */,
+				33068EFA22AE67C700D044EE /* UICollectionView.png */,
+				33068EFD22AE67C700D044EE /* UIKit.png */,
+				33068F1322AE67DB00D044EE /* WMGameProxy.txt */,
+				33068EB622AE665000D044EE /* AppDelegate.h */,
+				33068EB722AE665000D044EE /* AppDelegate.m */,
+				33068EEB22AE66CB00D044EE /* WMGameProxy.h */,
+				33068EEC22AE66CB00D044EE /* WMGameProxy.m */,
+				33068EE822AE66A800D044EE /* MainController.h */,
+				33068EE922AE66A800D044EE /* MainController.m */,
+				33068EF122AE670200D044EE /* WMGame.swift */,
+				33068EEF22AE66EC00D044EE /* WMController.swift */,
+				33068EEE22AE66EB00D044EE /* WMGameProxy-Bridging-Header.h */,
+				33068EBC22AE665000D044EE /* Main.storyboard */,
+				33068EBF22AE665600D044EE /* Assets.xcassets */,
+				33068EC122AE665600D044EE /* LaunchScreen.storyboard */,
+				33068EC422AE665600D044EE /* Info.plist */,
+				33068EC522AE665600D044EE /* main.m */,
 			);
 			path = WMGameProxy;
 			sourceTree = "<group>";
 		};
-		33B94C3921CCC766001A601B /* WMGameProxyTests */ = {
+		33068ECE22AE665600D044EE /* WMGameProxyTests */ = {
 			isa = PBXGroup;
 			children = (
-				33B94C3A21CCC766001A601B /* WMGameProxyTests.swift */,
-				33B94C3C21CCC766001A601B /* Info.plist */,
+				33068ECF22AE665600D044EE /* WMGameProxyTests.m */,
+				33068ED122AE665600D044EE /* Info.plist */,
 			);
 			path = WMGameProxyTests;
 			sourceTree = "<group>";
 		};
-		33B94C4421CCC766001A601B /* WMGameProxyUITests */ = {
+		33068ED922AE665600D044EE /* WMGameProxyUITests */ = {
 			isa = PBXGroup;
 			children = (
-				33B94C4521CCC766001A601B /* WMGameProxyUITests.swift */,
-				33B94C4721CCC766001A601B /* Info.plist */,
+				33068EDA22AE665600D044EE /* WMGameProxyUITests.m */,
+				33068EDC22AE665600D044EE /* Info.plist */,
 			);
 			path = WMGameProxyUITests;
 			sourceTree = "<group>";
 		};
-		33B94C5721CCC7DD001A601B /* C语言 */ = {
+		847644AA974755E1C4E1BA89 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				33B94C5921CCC7DD001A601B /* EyeeCommunity.h */,
-				33B94C5821CCC7DD001A601B /* EyeeCommunity.m */,
+				3ECEA7B1BF7650220E4B5C11 /* Pods-WMGameProxy.debug.xcconfig */,
+				6FD6244A6ED58669C28BD67F /* Pods-WMGameProxy.release.xcconfig */,
+				58C591C9EF6F56269F27F36C /* Pods-WMGameProxyTests.debug.xcconfig */,
+				A28A52F04DA8BE90B2995DA6 /* Pods-WMGameProxyTests.release.xcconfig */,
+				F37E0EED3E58BCFCD0B57AEA /* Pods-WMGameProxyUITests.debug.xcconfig */,
+				1ADA9780669429E132079BD5 /* Pods-WMGameProxyUITests.release.xcconfig */,
 			);
-			path = "C语言";
+			path = Pods;
 			sourceTree = "<group>";
 		};
-		33B94C5A21CCC7DE001A601B /* Res */ = {
+		D3DD31FA2108741B9320675C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				33BB440C2212A10300D537CD /* C语言:OC关键字.png */,
-				33E4FA6621FF01D500D399B7 /* FlagZombie.gif */,
-				3323788721EF3EF2008F056D /* UI划分_00.png */,
-				33B83DD121E50AE600E679E8 /* 单个文件放置多个类：多用于model.png */,
-				336522E621E48E1400D41593 /* UIApplication.png */,
-				3347C34521E489ED0050778E /* UIKit.png */,
-				330266D021D7381E00C6505F /* App职责分配.png */,
-				3323788321EF357F008F056D /* C:OC学习路线&重难点.png */,
-				33B94CE921D08276001A601B /* json解析标准版.png */,
-				33F70CEC21DDE7DA00139F21 /* UICollectionView.png */,
-				33B94C5D21CCC7DE001A601B /* Safe Area.png */,
-				33B94C5E21CCC7DE001A601B /* iphone设备尺寸.png */,
-				33B94C5F21CCC7DE001A601B /* C语言的执行流程.png */,
-				33B94C6021CCC7DE001A601B /* 认识Autolayout.png */,
-			);
-			path = Res;
-			sourceTree = "<group>";
-		};
-		33B94C6121CCC7DE001A601B /* Swift */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Swift;
-			sourceTree = "<group>";
-		};
-		33B94C6221CCC7DE001A601B /* Objective-C */ = {
-			isa = PBXGroup;
-			children = (
-				330266D821D9BB7500C6505F /* AppDelegate.h */,
-				330266D921D9BB7500C6505F /* AppDelegate.m */,
-				33BB43FC2206FD0500D537CD /* EyeeModels.h */,
-				33BB43FD2206FD0500D537CD /* EyeeModels.m */,
-				33B94C5421CCC7CD001A601B /* EyeeHomeViewController.h */,
-				33B94C5521CCC7CD001A601B /* EyeeHomeViewController.m */,
-				33E0479121E6F59600173EE2 /* EyeeNetworkController.h */,
-				33E0479221E6F59600173EE2 /* EyeeNetworkController.m */,
-			);
-			path = "Objective-C";
-			sourceTree = "<group>";
-		};
-		33B94C6321CCC7DE001A601B /* Notes */ = {
-			isa = PBXGroup;
-			children = (
-				33B94C6421CCC7DE001A601B /* WMGameProxy.txt */,
-			);
-			path = Notes;
-			sourceTree = "<group>";
-		};
-		33E4FA6121FEFF8A00D399B7 /* Libs */ = {
-			isa = PBXGroup;
-			children = (
-				33E4FA6221FEFFC000D399B7 /* AnimatedGIF */,
-			);
-			path = Libs;
-			sourceTree = "<group>";
-		};
-		33E4FA6221FEFFC000D399B7 /* AnimatedGIF */ = {
-			isa = PBXGroup;
-			children = (
-				33E4FA6321FEFFC000D399B7 /* UIImage+animatedGIF.h */,
-				33E4FA6421FEFFC000D399B7 /* UIImage+animatedGIF.m */,
-			);
-			path = AnimatedGIF;
-			sourceTree = "<group>";
-		};
-		67779ABFDC758F4C637E79E6 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				AC7ED73C1A878A0AE3D63ECF /* Pods-WMGameProxy.debug.xcconfig */,
-				135E246FCA960AA7D821E790 /* Pods-WMGameProxy.release.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
-		910C2FF831CD8E1052769267 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				0A0500B605DD05F378F03D98 /* Pods_WMGameProxyTests.framework */,
-				4B04C6F46241C4A909848788 /* Pods_WMGameProxyUITests.framework */,
-				D8009D27178B17FCE537BA78 /* libPods-WMGameProxy.a */,
+				3D3D3EDD51B0F251CBF64154 /* Pods_WMGameProxy.framework */,
+				407416DA15016E2C557ADCE1 /* Pods_WMGameProxyTests.framework */,
+				F497949D35C1F02C4BAE1F7A /* Pods_WMGameProxyUITests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -286,14 +239,14 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		33B94C2121CCC764001A601B /* WMGameProxy */ = {
+		33068EB222AE665000D044EE /* WMGameProxy */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 33B94C4A21CCC766001A601B /* Build configuration list for PBXNativeTarget "WMGameProxy" */;
+			buildConfigurationList = 33068EDF22AE665600D044EE /* Build configuration list for PBXNativeTarget "WMGameProxy" */;
 			buildPhases = (
-				4CBBF9110CBB37C489BD3FE1 /* [CP] Check Pods Manifest.lock */,
-				33B94C1E21CCC764001A601B /* Sources */,
-				33B94C1F21CCC764001A601B /* Frameworks */,
-				33B94C2021CCC764001A601B /* Resources */,
+				35709F724E2A17B74EB977A5 /* [CP] Check Pods Manifest.lock */,
+				33068EAF22AE665000D044EE /* Sources */,
+				33068EB022AE665000D044EE /* Frameworks */,
+				33068EB122AE665000D044EE /* Resources */,
 			);
 			buildRules = (
 			);
@@ -301,70 +254,71 @@
 			);
 			name = WMGameProxy;
 			productName = WMGameProxy;
-			productReference = 33B94C2221CCC764001A601B /* WMGameProxy.app */;
+			productReference = 33068EB322AE665000D044EE /* WMGameProxy.app */;
 			productType = "com.apple.product-type.application";
 		};
-		33B94C3521CCC766001A601B /* WMGameProxyTests */ = {
+		33068ECA22AE665600D044EE /* WMGameProxyTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 33B94C4D21CCC766001A601B /* Build configuration list for PBXNativeTarget "WMGameProxyTests" */;
+			buildConfigurationList = 33068EE222AE665600D044EE /* Build configuration list for PBXNativeTarget "WMGameProxyTests" */;
 			buildPhases = (
-				33B94C3221CCC766001A601B /* Sources */,
-				33B94C3321CCC766001A601B /* Frameworks */,
-				33B94C3421CCC766001A601B /* Resources */,
+				3A46D8D4A790101EEEEA9C03 /* [CP] Check Pods Manifest.lock */,
+				33068EC722AE665600D044EE /* Sources */,
+				33068EC822AE665600D044EE /* Frameworks */,
+				33068EC922AE665600D044EE /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				33B94C3821CCC766001A601B /* PBXTargetDependency */,
+				33068ECD22AE665600D044EE /* PBXTargetDependency */,
 			);
 			name = WMGameProxyTests;
 			productName = WMGameProxyTests;
-			productReference = 33B94C3621CCC766001A601B /* WMGameProxyTests.xctest */;
+			productReference = 33068ECB22AE665600D044EE /* WMGameProxyTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		33B94C4021CCC766001A601B /* WMGameProxyUITests */ = {
+		33068ED522AE665600D044EE /* WMGameProxyUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 33B94C5021CCC766001A601B /* Build configuration list for PBXNativeTarget "WMGameProxyUITests" */;
+			buildConfigurationList = 33068EE522AE665600D044EE /* Build configuration list for PBXNativeTarget "WMGameProxyUITests" */;
 			buildPhases = (
-				33B94C3D21CCC766001A601B /* Sources */,
-				33B94C3E21CCC766001A601B /* Frameworks */,
-				33B94C3F21CCC766001A601B /* Resources */,
+				D018C2070F750743BBA718B8 /* [CP] Check Pods Manifest.lock */,
+				33068ED222AE665600D044EE /* Sources */,
+				33068ED322AE665600D044EE /* Frameworks */,
+				33068ED422AE665600D044EE /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				33B94C4321CCC766001A601B /* PBXTargetDependency */,
+				33068ED822AE665600D044EE /* PBXTargetDependency */,
 			);
 			name = WMGameProxyUITests;
 			productName = WMGameProxyUITests;
-			productReference = 33B94C4121CCC766001A601B /* WMGameProxyUITests.xctest */;
+			productReference = 33068ED622AE665600D044EE /* WMGameProxyUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		33B94C1A21CCC764001A601B /* Project object */ = {
+		33068EAB22AE665000D044EE /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1010;
-				LastUpgradeCheck = 1010;
+				LastUpgradeCheck = 1020;
 				ORGANIZATIONNAME = zali;
 				TargetAttributes = {
-					33B94C2121CCC764001A601B = {
-						CreatedOnToolsVersion = 10.1;
-						LastSwiftMigration = 1010;
+					33068EB222AE665000D044EE = {
+						CreatedOnToolsVersion = 10.2.1;
+						LastSwiftMigration = 1020;
 					};
-					33B94C3521CCC766001A601B = {
-						CreatedOnToolsVersion = 10.1;
-						TestTargetID = 33B94C2121CCC764001A601B;
+					33068ECA22AE665600D044EE = {
+						CreatedOnToolsVersion = 10.2.1;
+						TestTargetID = 33068EB222AE665000D044EE;
 					};
-					33B94C4021CCC766001A601B = {
-						CreatedOnToolsVersion = 10.1;
-						TestTargetID = 33B94C2121CCC764001A601B;
+					33068ED522AE665600D044EE = {
+						CreatedOnToolsVersion = 10.2.1;
+						TestTargetID = 33068EB222AE665000D044EE;
 					};
 				};
 			};
-			buildConfigurationList = 33B94C1D21CCC764001A601B /* Build configuration list for PBXProject "WMGameProxy" */;
+			buildConfigurationList = 33068EAE22AE665000D044EE /* Build configuration list for PBXProject "WMGameProxy" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -372,52 +326,54 @@
 				en,
 				Base,
 			);
-			mainGroup = 33B94C1921CCC764001A601B;
-			productRefGroup = 33B94C2321CCC764001A601B /* Products */;
+			mainGroup = 33068EAA22AE665000D044EE;
+			productRefGroup = 33068EB422AE665000D044EE /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				33B94C2121CCC764001A601B /* WMGameProxy */,
-				33B94C3521CCC766001A601B /* WMGameProxyTests */,
-				33B94C4021CCC766001A601B /* WMGameProxyUITests */,
+				33068EB222AE665000D044EE /* WMGameProxy */,
+				33068ECA22AE665600D044EE /* WMGameProxyTests */,
+				33068ED522AE665600D044EE /* WMGameProxyUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		33B94C2021CCC764001A601B /* Resources */ = {
+		33068EB122AE665000D044EE /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				33F70CED21DDE7DB00139F21 /* UICollectionView.png in Resources */,
-				33B83DD221E50AE600E679E8 /* 单个文件放置多个类：多用于model.png in Resources */,
-				33BB440D2212A10300D537CD /* C语言:OC关键字.png in Resources */,
-				330266D121D7381E00C6505F /* App职责分配.png in Resources */,
-				3323788821EF3EF2008F056D /* UI划分_00.png in Resources */,
-				33B94C6821CCC7DE001A601B /* Safe Area.png in Resources */,
-				33B94C6A21CCC7DE001A601B /* C语言的执行流程.png in Resources */,
-				33E4FA6721FF01D600D399B7 /* FlagZombie.gif in Resources */,
-				33B94CEA21D08276001A601B /* json解析标准版.png in Resources */,
-				33B94C6B21CCC7DE001A601B /* 认识Autolayout.png in Resources */,
-				33B94C3021CCC766001A601B /* LaunchScreen.storyboard in Resources */,
-				3323788421EF357F008F056D /* C:OC学习路线&重难点.png in Resources */,
-				3347C34621E489EE0050778E /* UIKit.png in Resources */,
-				33B94C6921CCC7DE001A601B /* iphone设备尺寸.png in Resources */,
-				33B94C6C21CCC7DE001A601B /* WMGameProxy.txt in Resources */,
-				336522E721E48E1400D41593 /* UIApplication.png in Resources */,
-				33B94C2D21CCC766001A601B /* Assets.xcassets in Resources */,
-				33B94C2B21CCC764001A601B /* Main.storyboard in Resources */,
+				33068EC322AE665600D044EE /* LaunchScreen.storyboard in Resources */,
+				33068F0422AE67C800D044EE /* Safe Area.png in Resources */,
+				33068F1122AE67C800D044EE /* C:OC学习路线&重难点.png in Resources */,
+				33068EC022AE665600D044EE /* Assets.xcassets in Resources */,
+				33068F0822AE67C800D044EE /* json解析标准版.png in Resources */,
+				33068F0F22AE67C800D044EE /* C语言:OC关键字.png in Resources */,
+				33068EBE22AE665000D044EE /* Main.storyboard in Resources */,
+				33068F0922AE67C800D044EE /* UI划分_00.png in Resources */,
+				33068F0722AE67C800D044EE /* 认识Autolayout.png in Resources */,
+				33068F0C22AE67C800D044EE /* App职责分配.png in Resources */,
+				33068F1022AE67C800D044EE /* error_01：找不到AppDelegate类.png in Resources */,
+				33068F0D22AE67C800D044EE /* UIKit.png in Resources */,
+				33068F0522AE67C800D044EE /* UIApplication.png in Resources */,
+				33068F0A22AE67C800D044EE /* UICollectionView.png in Resources */,
+				33068F0B22AE67C800D044EE /* 下拉刷新:上拉加载_标准版.png in Resources */,
+				33068F1222AE67C800D044EE /* iphone设备尺寸.png in Resources */,
+				33068F0E22AE67C800D044EE /* C语言的执行流程.png in Resources */,
+				33068F1422AE67DB00D044EE /* WMGameProxy.txt in Resources */,
+				33068F0322AE67C800D044EE /* 单个文件放置多个类：多用于model.png in Resources */,
+				33068F0622AE67C800D044EE /* FlagZombie.gif in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		33B94C3421CCC766001A601B /* Resources */ = {
+		33068EC922AE665600D044EE /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		33B94C3F21CCC766001A601B /* Resources */ = {
+		33068ED422AE665600D044EE /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -427,18 +383,66 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		4CBBF9110CBB37C489BD3FE1 /* [CP] Check Pods Manifest.lock */ = {
+		35709F724E2A17B74EB977A5 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			inputFileListPaths = (
 			);
 			inputPaths = (
 				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
 				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-WMGameProxy-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		3A46D8D4A790101EEEEA9C03 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-WMGameProxyTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D018C2070F750743BBA718B8 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-WMGameProxyUITests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -448,64 +452,63 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		33B94C1E21CCC764001A601B /* Sources */ = {
+		33068EAF22AE665000D044EE /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				33BB43FE2206FD0500D537CD /* EyeeModels.m in Sources */,
-				33B94C2621CCC764001A601B /* AppDelegate.swift in Sources */,
-				33E4FA6521FEFFC100D399B7 /* UIImage+animatedGIF.m in Sources */,
-				33B94C5621CCC7CD001A601B /* EyeeHomeViewController.m in Sources */,
-				33B94C6521CCC7DE001A601B /* EyeeCommunity.m in Sources */,
-				33E0479321E6F59600173EE2 /* EyeeNetworkController.m in Sources */,
-				330266DA21D9BB7500C6505F /* AppDelegate.m in Sources */,
+				33068EF022AE66EC00D044EE /* WMController.swift in Sources */,
+				33068EED22AE66CB00D044EE /* WMGameProxy.m in Sources */,
+				33068EC622AE665600D044EE /* main.m in Sources */,
+				33068EF222AE670200D044EE /* WMGame.swift in Sources */,
+				33068EEA22AE66A800D044EE /* MainController.m in Sources */,
+				33068EB822AE665000D044EE /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		33B94C3221CCC766001A601B /* Sources */ = {
+		33068EC722AE665600D044EE /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				33B94C3B21CCC766001A601B /* WMGameProxyTests.swift in Sources */,
+				33068ED022AE665600D044EE /* WMGameProxyTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		33B94C3D21CCC766001A601B /* Sources */ = {
+		33068ED222AE665600D044EE /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				33B94C4621CCC766001A601B /* WMGameProxyUITests.swift in Sources */,
+				33068EDB22AE665600D044EE /* WMGameProxyUITests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		33B94C3821CCC766001A601B /* PBXTargetDependency */ = {
+		33068ECD22AE665600D044EE /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 33B94C2121CCC764001A601B /* WMGameProxy */;
-			targetProxy = 33B94C3721CCC766001A601B /* PBXContainerItemProxy */;
+			target = 33068EB222AE665000D044EE /* WMGameProxy */;
+			targetProxy = 33068ECC22AE665600D044EE /* PBXContainerItemProxy */;
 		};
-		33B94C4321CCC766001A601B /* PBXTargetDependency */ = {
+		33068ED822AE665600D044EE /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 33B94C2121CCC764001A601B /* WMGameProxy */;
-			targetProxy = 33B94C4221CCC766001A601B /* PBXContainerItemProxy */;
+			target = 33068EB222AE665000D044EE /* WMGameProxy */;
+			targetProxy = 33068ED722AE665600D044EE /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		33B94C2921CCC764001A601B /* Main.storyboard */ = {
+		33068EBC22AE665000D044EE /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				33B94C2A21CCC764001A601B /* Base */,
+				33068EBD22AE665000D044EE /* Base */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
-		33B94C2E21CCC766001A601B /* LaunchScreen.storyboard */ = {
+		33068EC122AE665600D044EE /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				33B94C2F21CCC766001A601B /* Base */,
+				33068EC222AE665600D044EE /* Base */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -513,7 +516,7 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		33B94C4821CCC766001A601B /* Debug */ = {
+		33068EDD22AE665600D044EE /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -564,17 +567,15 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
-		33B94C4921CCC766001A601B /* Release */ = {
+		33068EDE22AE665600D044EE /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -619,65 +620,60 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
-				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
-		33B94C4B21CCC766001A601B /* Debug */ = {
+		33068EE022AE665600D044EE /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = AC7ED73C1A878A0AE3D63ECF /* Pods-WMGameProxy.debug.xcconfig */;
+			baseConfigurationReference = 3ECEA7B1BF7650220E4B5C11 /* Pods-WMGameProxy.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = "";
+				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = WMGameProxy/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = org.wm.ios.WMGameProxy;
+				PRODUCT_BUNDLE_IDENTIFIER = org.wm.ios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "WMGameProxy/WMGameProxy-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
-		33B94C4C21CCC766001A601B /* Release */ = {
+		33068EE122AE665600D044EE /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 135E246FCA960AA7D821E790 /* Pods-WMGameProxy.release.xcconfig */;
+			baseConfigurationReference = 6FD6244A6ED58669C28BD67F /* Pods-WMGameProxy.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = "";
+				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = WMGameProxy/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = org.wm.ios.WMGameProxy;
+				PRODUCT_BUNDLE_IDENTIFIER = org.wm.ios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "WMGameProxy/WMGameProxy-Bridging-Header.h";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
-		33B94C4E21CCC766001A601B /* Debug */ = {
+		33068EE322AE665600D044EE /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 58C591C9EF6F56269F27F36C /* Pods-WMGameProxyTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -690,14 +686,14 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = org.wm.ios.WMGameProxyTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WMGameProxy.app/WMGameProxy";
 			};
 			name = Debug;
 		};
-		33B94C4F21CCC766001A601B /* Release */ = {
+		33068EE422AE665600D044EE /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A28A52F04DA8BE90B2995DA6 /* Pods-WMGameProxyTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -710,14 +706,14 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = org.wm.ios.WMGameProxyTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WMGameProxy.app/WMGameProxy";
 			};
 			name = Release;
 		};
-		33B94C5121CCC766001A601B /* Debug */ = {
+		33068EE622AE665600D044EE /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F37E0EED3E58BCFCD0B57AEA /* Pods-WMGameProxyUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -729,14 +725,14 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = org.wm.ios.WMGameProxyUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = WMGameProxy;
 			};
 			name = Debug;
 		};
-		33B94C5221CCC766001A601B /* Release */ = {
+		33068EE722AE665600D044EE /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1ADA9780669429E132079BD5 /* Pods-WMGameProxyUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -748,7 +744,6 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = org.wm.ios.WMGameProxyUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = WMGameProxy;
 			};
@@ -757,43 +752,43 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		33B94C1D21CCC764001A601B /* Build configuration list for PBXProject "WMGameProxy" */ = {
+		33068EAE22AE665000D044EE /* Build configuration list for PBXProject "WMGameProxy" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				33B94C4821CCC766001A601B /* Debug */,
-				33B94C4921CCC766001A601B /* Release */,
+				33068EDD22AE665600D044EE /* Debug */,
+				33068EDE22AE665600D044EE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		33B94C4A21CCC766001A601B /* Build configuration list for PBXNativeTarget "WMGameProxy" */ = {
+		33068EDF22AE665600D044EE /* Build configuration list for PBXNativeTarget "WMGameProxy" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				33B94C4B21CCC766001A601B /* Debug */,
-				33B94C4C21CCC766001A601B /* Release */,
+				33068EE022AE665600D044EE /* Debug */,
+				33068EE122AE665600D044EE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		33B94C4D21CCC766001A601B /* Build configuration list for PBXNativeTarget "WMGameProxyTests" */ = {
+		33068EE222AE665600D044EE /* Build configuration list for PBXNativeTarget "WMGameProxyTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				33B94C4E21CCC766001A601B /* Debug */,
-				33B94C4F21CCC766001A601B /* Release */,
+				33068EE322AE665600D044EE /* Debug */,
+				33068EE422AE665600D044EE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		33B94C5021CCC766001A601B /* Build configuration list for PBXNativeTarget "WMGameProxyUITests" */ = {
+		33068EE522AE665600D044EE /* Build configuration list for PBXNativeTarget "WMGameProxyUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				33B94C5121CCC766001A601B /* Debug */,
-				33B94C5221CCC766001A601B /* Release */,
+				33068EE622AE665600D044EE /* Debug */,
+				33068EE722AE665600D044EE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 33B94C1A21CCC764001A601B /* Project object */;
+	rootObject = 33068EAB22AE665000D044EE /* Project object */;
 }

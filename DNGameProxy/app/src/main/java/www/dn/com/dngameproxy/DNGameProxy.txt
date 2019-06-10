@@ -1,0 +1,5 @@
+/**
+名称：Android笔记
+作者：谢吴军
+*/
+//java代码：参考MainActivity
