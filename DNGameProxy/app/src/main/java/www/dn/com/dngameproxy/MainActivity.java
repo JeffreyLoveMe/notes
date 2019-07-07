@@ -5,10 +5,13 @@ import android.accounts.Account;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Enumeration;
 import java.util.Scanner;
-import java.util.logging.SimpleFormatter;
+import java.util.Vector;
+
 
 // 类定义：
 // 只有一个主类public class xxx
@@ -418,39 +421,170 @@ public class MainActivity extends AppCompatActivity {
             System.out.println(exception);
         };
 
-        // 向量类/枚举接口
+        // 向量类
+        // Java中的数组是不变的、对于可变数组、Java使用向量类
+        // 只能存放引用/对象、不能存放基本数据类型
+        Vector<String> vector = new Vector<>();
+        Vector<String> stringVector = new Vector<>(10);
 
+        vector.addElement("xwj");  // 增
+        vector.insertElementAt("cfj", 1); // 如果试图在某个不存在的位置上插入一个元素、会抛出异常、查找
+        vector.setElementAt("thh",1); // 位置不存在、抛出异常、改
+        vector.removeElement("xwj"); // 删
+        vector.removeElementAt(1);
+        vector.removeAllElements();
+        String obj = vector.elementAt(1); // 查找某个位置的obj
+        vector.indexOf("xwj", 1); // 从index开始查找"xwj"、返回第一个、若没有、返回-1
+        vector.firstElement();
+        vector.lastElement();
+        vector.elements(); // 返回Vector中所有的枚举对象
+        // 向量类的大小
+        // 1.存储向量中实际元素的个数
+        // 2.向量的最大容量
+        vector.trimToSize(); // 压缩向量容积、让1==2
+        vector.setSize(10); // 设置向量大小：>向量中实际元素的个数\多余置于null、<向量中实际元素的个数向量类被截断
+        vector.capacity(); // 向量类容量
+        vector.size(); // 向量类大小
 
+        // 枚举接口
+        // 提取枚举对象包含的枚举元素的方法
+        // 判断枚举对象中是否含有枚举元素的方法
+        // 实现该接口的对象会产生一个枚举元素集合
+        Enumeration<String> enumeration = new Enumeration<String>() {
+            @Override
+            public boolean hasMoreElements() {  // 判断Enumeration对象中是否含有元素
+                return false;
+            }
 
+            @Override
+            public String nextElement() {   // 返回Enumeration对象中的下一个元素
+                return null;
+            }
+        };
+        // 经典
+        Enumeration<String> enumString = vector.elements();
+        while (enumString.hasMoreElements()) {
+            System.out.print(enumString.nextElement());
+        }
 
+        /// 异常处理
+        // 加强程序的健壮性、面向对象的异常处理机制
+        // 异常有两种：编译错误、运行时错误
+        // 常见运行时异常：
+        // 1.空指针异常NullPointerException-调用不存在的对象、没有初始化的对象
+        // 2.索引越界异常IndexOutOfBoundException-数组下标越界、字符串下标越界
+        // 3.类型转换异常ClassCastException-类型转换异常
+        // 4.算数运算异常ArithmeticException
+        // 处理异常的办法：1.捕获并处理异常、2.将方法中产生的异常抛出
+        try {
+            // 可能出现异常的代码
+            // 如果发生异常、进入catch、不执行后续代码
+            // 如果不发生异常、不会进入catch、继续执行后续代码
+        } catch (NullPointerException e1) {
+            // 捕获一个异常、进行异常处理
+            e1.printStackTrace(); // 追踪异常事件发生时执行堆栈的内容
+        } catch (Exception e1) {  // Exception一般作为最后一个catch
+            // 捕获一个异常、进行异常处理
+            // 多个catch的时候：异常范围必须从小到大
+            // 如果只想知道程序是否出现异常、不在乎异常类型、可以直接使用Exception
+            e1.printStackTrace();
+        } finally {
+            // 提供统一出口
+            // 无论是否发生异常、都需要执行的代码
+            // 最后只能有一个、也可以没有
+            // 一般这里进行资源的释放工作：关闭打开文件、关闭打开数据库连接
+        }
+        //demo
+        int[] x = {-1,0,1,2}; // 创建数组
+        int y = 10;
 
+        try {
+            // 可以会发生异常的代码
+            for (int index = 0;index<x.length;index++) {
+                System.out.println("y = "+ y + "x = "+ x[index]);
+                int divide = y / x[index];   // 计算y和数组元素的值
+                System.out.println("divide = "+ divide);
+            }
+        } catch (NullPointerException exception) {
+            exception.printStackTrace();  // 追踪异常事件发生时执行堆栈的内容
+        } catch (Exception exception) {
+            exception.printStackTrace();
+        } finally {
+            System.out.println("这里一定会执行");
+        }
+        // 异常声明
+        // 如果一个方法在执行时会发生异常或者调用某一个抛出异常的方法，但是该方法并没有进行异常处理、而是调用他的方法或方法栈来处理异常，这种方式叫做异常声明。
+        try {
+            this.exceptionDemo();
+        } catch (NullPointerException exception) {
+            exception.printStackTrace();
+        } catch (NumberFormatException exception) {
+            exception.printStackTrace();
+        } catch (Exception exception) {
+            exception.printStackTrace();
+        }
+        // 抛出异常
+        // 为了使程序更容易检测并处理可能出现的错误，Java提供了一种面向对象的异常处理机制来处理程序运行时产生的异常
 
+        // I/O流
+        // Java提供功能完善的用于处理输入输出操作的包
+        // 1.文件类：File代表一个文件、目录
+        File file = new File("xxx"); // 通过路径创建文件
+        File file1 = new File("/mybook","Sample");
+        file.getName(); // 获取File对象表示的文件/目录名称
+        file.getParent(); // 获取File对象表示的文件或父目录、没有父目录、返回null
+        file.getPath(); // 获取文件/目录的路径名
+        file.getAbsoluteFile();
+        file.getAbsolutePath(); // 获取文件/目录的绝对路径名
+        file.length(); // 获取文件/目录的大小、以字节为单位
+        file.lastModified(); // 文件/目录最后一次修改的时间
+        System.out.print(file.exists()); // 文件/目录是否存在
+        System.out.print(file.isDirectory()); // 是否代表一个目录
+        System.out.print(file.isFile()); // 是否是文件
+        System.out.print(file.canRead()); // 是否可读性
+        System.out.print(file.canWrite()); // 是否可写
+        System.out.print(file.isHidden()); // 是否隐藏
+        System.out.print(file.isAbsolute()); // 是否采用绝对路径
+        file.mkdirs();
+        file.delete();
+        // 流：Java把不同类型的输入/输出抽象为流、用统一的接口来表示
+        // 流：是一组有顺序、有起点和终点的数据集合、依据先进先出原则
+        // 流：有方向的，输入流读数据/输出流写数据
+        // 1.字节流
+        // 2.字符流
+        // 3.文件流
+        // 4.缓冲流
+        // 5.标准流
+        // 6.管道流
 
+        // 多线程
+        // 程序是一段静态的代码、进程是程序的一次动态执行过程
+        // 每个进程的内部数据和状态都是完全独立的、由OS调度
+        // 线程是比进程更小的执行单位、线程是进程中可独立执行的子task
+        // 进程之间是相互独立的、线程除了栈区是独立的、其他的不独立、所以线程切换很简单
+        // 允许单个进程创建多个并行执行的线程来完成多个子任务
+        MyThread thread = new MyThread(); // 创建多线程对象
+        thread.start(); // 启动多线程
+        thread.isAlive(); // 返回boolean、线程是否处于活动状态
+        thread.setName("线程1"); // 设置线程名称
+        String threadName = thread.getName();
+        thread.setPriority(1000); // 设置线程优先级
+        int priority = thread.getPriority();
+        try {
+            Thread.sleep(20); // 让多线程睡眠一段时间
+            Thread.currentThread();  // 获取当前线程对象
+            Thread.yield();  // 将CPU控制权移交到下一个可运行线程
+            thread.interrupt(); // 中断线程对象所处状态
+        } catch (Exception exception) {
+            exception.printStackTrace();
+        }
 
+        // 线程2
+        YourThread one = new YourThread();
+        Thread t = new Thread(one);
+        t.start();
 
-        
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        // Java网络编程
     }
 
     // 类
@@ -610,4 +744,33 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    // 异常声明
+    // 只要方法声明了异常就需要调用他的方法处理异常
+    int exceptionDemo() throws NullPointerException, NumberFormatException {
+        return 2;
+    }
+
+    // 多线程1
+    // 继承Thread
+    // 直接继承Thread类代码简单、可以直接操作多线程、但是缺点很明显
+    // 不能再继承其他类
+    class MyThread extends Thread {
+        // 重载run()方法
+        @Override
+        public void run() {
+            super.run();
+            // 执行多线程
+        }
+    }
+
+    // 多线程2
+    // 使用Runnable接口可以将Thread类与所要处理的任务的类分开、形成清晰的模型
+    // 还可以继承其他类
+    class YourThread implements Runnable {
+
+        @Override
+        public void run() {
+            // 执行多线程代码
+        }
+    }
 }

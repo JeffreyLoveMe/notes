@@ -27,7 +27,6 @@
 		33068F0822AE67C800D044EE /* json解析标准版.png in Resources */ = {isa = PBXBuildFile; fileRef = 33068EF822AE67C700D044EE /* json解析标准版.png */; };
 		33068F0922AE67C800D044EE /* UI划分_00.png in Resources */ = {isa = PBXBuildFile; fileRef = 33068EF922AE67C700D044EE /* UI划分_00.png */; };
 		33068F0A22AE67C800D044EE /* UICollectionView.png in Resources */ = {isa = PBXBuildFile; fileRef = 33068EFA22AE67C700D044EE /* UICollectionView.png */; };
-		33068F0B22AE67C800D044EE /* 下拉刷新:上拉加载_标准版.png in Resources */ = {isa = PBXBuildFile; fileRef = 33068EFB22AE67C700D044EE /* 下拉刷新:上拉加载_标准版.png */; };
 		33068F0C22AE67C800D044EE /* App职责分配.png in Resources */ = {isa = PBXBuildFile; fileRef = 33068EFC22AE67C700D044EE /* App职责分配.png */; };
 		33068F0D22AE67C800D044EE /* UIKit.png in Resources */ = {isa = PBXBuildFile; fileRef = 33068EFD22AE67C700D044EE /* UIKit.png */; };
 		33068F0E22AE67C800D044EE /* C语言的执行流程.png in Resources */ = {isa = PBXBuildFile; fileRef = 33068EFE22AE67C700D044EE /* C语言的执行流程.png */; };
@@ -36,6 +35,12 @@
 		33068F1122AE67C800D044EE /* C:OC学习路线&重难点.png in Resources */ = {isa = PBXBuildFile; fileRef = 33068F0122AE67C800D044EE /* C:OC学习路线&重难点.png */; };
 		33068F1222AE67C800D044EE /* iphone设备尺寸.png in Resources */ = {isa = PBXBuildFile; fileRef = 33068F0222AE67C800D044EE /* iphone设备尺寸.png */; };
 		33068F1422AE67DB00D044EE /* WMGameProxy.txt in Resources */ = {isa = PBXBuildFile; fileRef = 33068F1322AE67DB00D044EE /* WMGameProxy.txt */; };
+		33068F1622B0955200D044EE /* 下拉加载范例.png in Resources */ = {isa = PBXBuildFile; fileRef = 33068F1522B0955200D044EE /* 下拉加载范例.png */; };
+		3340B2E722C0D9AC00111228 /* 代码标准h文件.png in Resources */ = {isa = PBXBuildFile; fileRef = 3340B2E522C0D9AB00111228 /* 代码标准h文件.png */; };
+		3340B2E822C0D9AC00111228 /* 代码标准m文件.png in Resources */ = {isa = PBXBuildFile; fileRef = 3340B2E622C0D9AC00111228 /* 代码标准m文件.png */; };
+		339A3D7D22BBB3F4007DD37D /* 下拉刷新_上拉加载_标准版.png in Resources */ = {isa = PBXBuildFile; fileRef = 339A3D7C22BBB3F4007DD37D /* 下拉刷新_上拉加载_标准版.png */; };
+		339A3D8022BBBBC9007DD37D /* SyGameProxy.c in Sources */ = {isa = PBXBuildFile; fileRef = 339A3D7F22BBBBC9007DD37D /* SyGameProxy.c */; };
+		339A3D8222BBBE5D007DD37D /* Xcode新建项目.png in Resources */ = {isa = PBXBuildFile; fileRef = 339A3D8122BBBE5D007DD37D /* Xcode新建项目.png */; };
 		60B17560F167E4FE18028608 /* Pods_WMGameProxyUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F497949D35C1F02C4BAE1F7A /* Pods_WMGameProxyUITests.framework */; };
 		CD760D165A9CBF60796300E5 /* Pods_WMGameProxyTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 407416DA15016E2C557ADCE1 /* Pods_WMGameProxyTests.framework */; };
 /* End PBXBuildFile section */
@@ -88,7 +93,6 @@
 		33068EF822AE67C700D044EE /* json解析标准版.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "json解析标准版.png"; sourceTree = "<group>"; };
 		33068EF922AE67C700D044EE /* UI划分_00.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "UI划分_00.png"; sourceTree = "<group>"; };
 		33068EFA22AE67C700D044EE /* UICollectionView.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = UICollectionView.png; sourceTree = "<group>"; };
-		33068EFB22AE67C700D044EE /* 下拉刷新:上拉加载_标准版.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "下拉刷新:上拉加载_标准版.png"; sourceTree = "<group>"; };
 		33068EFC22AE67C700D044EE /* App职责分配.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "App职责分配.png"; sourceTree = "<group>"; };
 		33068EFD22AE67C700D044EE /* UIKit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = UIKit.png; sourceTree = "<group>"; };
 		33068EFE22AE67C700D044EE /* C语言的执行流程.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "C语言的执行流程.png"; sourceTree = "<group>"; };
@@ -97,6 +101,14 @@
 		33068F0122AE67C800D044EE /* C:OC学习路线&重难点.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "C:OC学习路线&重难点.png"; sourceTree = "<group>"; };
 		33068F0222AE67C800D044EE /* iphone设备尺寸.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iphone设备尺寸.png"; sourceTree = "<group>"; };
 		33068F1322AE67DB00D044EE /* WMGameProxy.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = WMGameProxy.txt; sourceTree = "<group>"; };
+		33068F1522B0955200D044EE /* 下拉加载范例.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "下拉加载范例.png"; sourceTree = "<group>"; };
+		3340B2E522C0D9AB00111228 /* 代码标准h文件.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "代码标准h文件.png"; sourceTree = "<group>"; };
+		3340B2E622C0D9AC00111228 /* 代码标准m文件.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "代码标准m文件.png"; sourceTree = "<group>"; };
+		339A3D7C22BBB3F4007DD37D /* 下拉刷新_上拉加载_标准版.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "下拉刷新_上拉加载_标准版.png"; sourceTree = "<group>"; };
+		339A3D7E22BBBBC9007DD37D /* SyGameProxy.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SyGameProxy.h; sourceTree = "<group>"; };
+		339A3D7F22BBBBC9007DD37D /* SyGameProxy.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = SyGameProxy.c; sourceTree = "<group>"; };
+		339A3D8122BBBE5D007DD37D /* Xcode新建项目.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Xcode新建项目.png"; sourceTree = "<group>"; };
+		33A9F0B722B4D4C5007985BF /* 怎么称为一名优秀leader.xmind */ = {isa = PBXFileReference; lastKnownFileType = file; path = "怎么称为一名优秀leader.xmind"; sourceTree = "<group>"; };
 		3D3D3EDD51B0F251CBF64154 /* Pods_WMGameProxy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WMGameProxy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3ECEA7B1BF7650220E4B5C11 /* Pods-WMGameProxy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WMGameProxy.debug.xcconfig"; path = "Target Support Files/Pods-WMGameProxy/Pods-WMGameProxy.debug.xcconfig"; sourceTree = "<group>"; };
 		407416DA15016E2C557ADCE1 /* Pods_WMGameProxyTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WMGameProxyTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -160,9 +172,14 @@
 		33068EB522AE665000D044EE /* WMGameProxy */ = {
 			isa = PBXGroup;
 			children = (
+				3340B2E522C0D9AB00111228 /* 代码标准h文件.png */,
+				3340B2E622C0D9AC00111228 /* 代码标准m文件.png */,
+				339A3D8122BBBE5D007DD37D /* Xcode新建项目.png */,
+				339A3D7C22BBB3F4007DD37D /* 下拉刷新_上拉加载_标准版.png */,
+				33A9F0B722B4D4C5007985BF /* 怎么称为一名优秀leader.xmind */,
+				33068F1522B0955200D044EE /* 下拉加载范例.png */,
 				33068EF322AE67C700D044EE /* 单个文件放置多个类：多用于model.png */,
 				33068EF722AE67C700D044EE /* 认识Autolayout.png */,
-				33068EFB22AE67C700D044EE /* 下拉刷新:上拉加载_标准版.png */,
 				33068EFC22AE67C700D044EE /* App职责分配.png */,
 				33068F0122AE67C800D044EE /* C:OC学习路线&重难点.png */,
 				33068EFF22AE67C800D044EE /* C语言:OC关键字.png */,
@@ -179,6 +196,8 @@
 				33068F1322AE67DB00D044EE /* WMGameProxy.txt */,
 				33068EB622AE665000D044EE /* AppDelegate.h */,
 				33068EB722AE665000D044EE /* AppDelegate.m */,
+				339A3D7E22BBBBC9007DD37D /* SyGameProxy.h */,
+				339A3D7F22BBBBC9007DD37D /* SyGameProxy.c */,
 				33068EEB22AE66CB00D044EE /* WMGameProxy.h */,
 				33068EEC22AE66CB00D044EE /* WMGameProxy.m */,
 				33068EE822AE66A800D044EE /* MainController.h */,
@@ -348,16 +367,20 @@
 				33068F1122AE67C800D044EE /* C:OC学习路线&重难点.png in Resources */,
 				33068EC022AE665600D044EE /* Assets.xcassets in Resources */,
 				33068F0822AE67C800D044EE /* json解析标准版.png in Resources */,
+				33068F1622B0955200D044EE /* 下拉加载范例.png in Resources */,
 				33068F0F22AE67C800D044EE /* C语言:OC关键字.png in Resources */,
 				33068EBE22AE665000D044EE /* Main.storyboard in Resources */,
+				3340B2E722C0D9AC00111228 /* 代码标准h文件.png in Resources */,
+				3340B2E822C0D9AC00111228 /* 代码标准m文件.png in Resources */,
 				33068F0922AE67C800D044EE /* UI划分_00.png in Resources */,
 				33068F0722AE67C800D044EE /* 认识Autolayout.png in Resources */,
+				339A3D8222BBBE5D007DD37D /* Xcode新建项目.png in Resources */,
 				33068F0C22AE67C800D044EE /* App职责分配.png in Resources */,
 				33068F1022AE67C800D044EE /* error_01：找不到AppDelegate类.png in Resources */,
 				33068F0D22AE67C800D044EE /* UIKit.png in Resources */,
 				33068F0522AE67C800D044EE /* UIApplication.png in Resources */,
+				339A3D7D22BBB3F4007DD37D /* 下拉刷新_上拉加载_标准版.png in Resources */,
 				33068F0A22AE67C800D044EE /* UICollectionView.png in Resources */,
-				33068F0B22AE67C800D044EE /* 下拉刷新:上拉加载_标准版.png in Resources */,
 				33068F1222AE67C800D044EE /* iphone设备尺寸.png in Resources */,
 				33068F0E22AE67C800D044EE /* C语言的执行流程.png in Resources */,
 				33068F1422AE67DB00D044EE /* WMGameProxy.txt in Resources */,
@@ -462,6 +485,7 @@
 				33068EF222AE670200D044EE /* WMGame.swift in Sources */,
 				33068EEA22AE66A800D044EE /* MainController.m in Sources */,
 				33068EB822AE665000D044EE /* AppDelegate.m in Sources */,
+				339A3D8022BBBBC9007DD37D /* SyGameProxy.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -635,6 +659,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
 				INFOPLIST_FILE = WMGameProxy/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -657,6 +682,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
 				INFOPLIST_FILE = WMGameProxy/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (

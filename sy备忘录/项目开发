@@ -136,6 +136,9 @@ https://www.jianshu.com/u/e15d1f644bea
 
 CGFloat的意思是什么？
 
+在swift中enum名称大写、元素小写
+在oc中enum名称大写、元素大写
+
 iOS中关于图片缓存和缓存cell的高度
 
 适配：系统适配
@@ -154,6 +157,10 @@ cell内部如果某一个控件不需要我们可以更新布局为0
 在开发中，我们一般UIButton会使用custom、而不使用system
 
 代码修改以后：必须要测试
+
+NSNotFound
+int和NSInteger都是基本数据类型、一般OC使用NSInteger代替int/Swift使用Int、然后需要放在
+字典中的话：需要包装：@(NSInteger)
 
 抓包：
 1.把电脑的网络共享出来：一般使用网线(网速快)、也可以使用Wi-Fi
@@ -441,3 +448,14 @@ https://github.com/duf1991/DYFBuyApp
 2.加载xib的时候关联的IBOutlet组件未被加载到内存的时候直接
 调用会导致nil
 //self.view被使用会调用loadView()创建并执行viewDidLoad()
+
+占位图：全局占位图、底部占位图
+实现方式不一样：全局占位图隐藏UITableView、底部占位图直接使用cell
+
+//怎么称为一个优秀的leader
+iOS开发工程师->iOS开发主管->iOS开发leader/移动端开发leader->大前端开发leader/副研发总监->CTO
+产品专员->产品经理->高级产品经理->产品总监->COO
+数据分析师->数据工程师->数据架构师/数据挖掘工程师->CTO/数据科学家
+
+//职业路线
+iOS->Android->flutter/RN->H5/.->php->go->java
