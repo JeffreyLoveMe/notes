@@ -7,7 +7,29 @@
 //
 
 #import "WMGameProxy.h"
+#import "MainController.h"
 
 @implementation WMGameProxy
+
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        MainController *vc = [MainController alloc]; // 分配内存
+        vc = [vc init]; // 初始化
+    }
+    return self;
+}
+
+-(void)initWithGameId:(NSString *)gameId GameKey:(NSString *)gameKey {
+    NSLog(@"xxxxx");
+}
+
+// 不会输出self/会死循环
+// NSLog()输出<类名:地址>/<Person: 0x100202310>
+- (NSString *)description
+{
+    return [NSString stringWithFormat:@"%@", height];
+}
 
 @end

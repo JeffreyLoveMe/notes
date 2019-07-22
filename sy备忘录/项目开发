@@ -409,6 +409,8 @@ cell因为是复用的、所以cell有if/就必须有else
 
 [A hasPrefix:B]; // A是否是以B字符开头的
 
+截屏引流
+
 程序间通信：第一我们需要把string->url
 我们需要判断是否可以打开url->可以打开我们在打开->打开以后，我们再通过AppDelegate中代理回传
 
@@ -451,6 +453,8 @@ https://github.com/duf1991/DYFBuyApp
 
 占位图：全局占位图、底部占位图
 实现方式不一样：全局占位图隐藏UITableView、底部占位图直接使用cell
+
+UICollectionViewCell如果需要等间距显示的话：需要重写UICollectionFlowLayout
 
 //怎么称为一个优秀的leader
 iOS开发工程师->iOS开发主管->iOS开发leader/移动端开发leader->大前端开发leader/副研发总监->CTO

@@ -24,6 +24,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        Bundle bundle = this.getIntent().getExtras();
+        System.out.println(bundle.get("age"));
+
     }
 
     public void javaFunction() {

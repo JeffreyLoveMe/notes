@@ -65,10 +65,24 @@
 2.iphoneX确认一遍UI显示
 3.有哪些页面可以跳到鞋券订单
 4.赔付页面添加数据再试一遍
+//7月18号
+1.“查看往期”/分类/参与话题/设置
+2.“分享卡片”UI发生改变/看涨看跌加入登录判断
+3.“评论部分”内容有问题：与Android对比
+4.“快讯”增加“关注人数”/字体大小调整
+5.“牛市”首页增加弹窗
+6.“寄存”搜索页面：进入搜索
+7.增加“牛牛提醒”/推送落地页
+8.牛市首页增加“预售抢购”/“寄存现货”的跳转逻辑
+9.牛市首页“埋点”：10条
+10.“快讯”页面有评论不出现
+11.帖子详情页加入占位符
+12.对比牛牛提醒参数：与Android对比、小红点
+13.没有登录状态下：有哪些功能不能点击/进入
 
 ### 工作账号
 //企业邮箱
-Jeffrey@eyee.com 
+Jeffrey@eyee.com
 Xiewujun123
 bDu2qyGYEuAaJQub 
 
@@ -76,6 +90,10 @@ bDu2qyGYEuAaJQub
 Jeffrey@eyee.com 
 xiewujun123 
 http://git.eyee.com/
+
+//极光推送
+zaliebusiness@126.com
+EmW3W1rmirY2BN3i
 
 //GitHub 
 https://github.com/ 
