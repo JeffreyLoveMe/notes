@@ -46,6 +46,7 @@
 		33A8FD7722D48125004AECBA /* 快捷键.png in Resources */ = {isa = PBXBuildFile; fileRef = 33A8FD7622D48125004AECBA /* 快捷键.png */; };
 		33A8FD7A22D481B4004AECBA /* SyTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 33A8FD7922D481B4004AECBA /* SyTableViewController.m */; };
 		33A8FD7D22D48237004AECBA /* SyCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 33A8FD7C22D48237004AECBA /* SyCollectionViewController.m */; };
+		33BE31BF22E5890A0073E35B /* FoundationNSObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 33BE31BE22E5890A0073E35B /* FoundationNSObject.m */; };
 		60B17560F167E4FE18028608 /* Pods_WMGameProxyUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F497949D35C1F02C4BAE1F7A /* Pods_WMGameProxyUITests.framework */; };
 		CD760D165A9CBF60796300E5 /* Pods_WMGameProxyTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 407416DA15016E2C557ADCE1 /* Pods_WMGameProxyTests.framework */; };
 /* End PBXBuildFile section */
@@ -122,6 +123,8 @@
 		33A8FD7B22D48237004AECBA /* SyCollectionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SyCollectionViewController.h; sourceTree = "<group>"; };
 		33A8FD7C22D48237004AECBA /* SyCollectionViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SyCollectionViewController.m; sourceTree = "<group>"; };
 		33A9F0B722B4D4C5007985BF /* 怎么称为一名优秀leader.xmind */ = {isa = PBXFileReference; lastKnownFileType = file; path = "怎么称为一名优秀leader.xmind"; sourceTree = "<group>"; };
+		33BE31BD22E5890A0073E35B /* FoundationNSObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FoundationNSObject.h; sourceTree = "<group>"; };
+		33BE31BE22E5890A0073E35B /* FoundationNSObject.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FoundationNSObject.m; sourceTree = "<group>"; };
 		3D3D3EDD51B0F251CBF64154 /* Pods_WMGameProxy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WMGameProxy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3ECEA7B1BF7650220E4B5C11 /* Pods-WMGameProxy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WMGameProxy.debug.xcconfig"; path = "Target Support Files/Pods-WMGameProxy/Pods-WMGameProxy.debug.xcconfig"; sourceTree = "<group>"; };
 		407416DA15016E2C557ADCE1 /* Pods_WMGameProxyTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WMGameProxyTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -209,22 +212,24 @@
 				33068EFA22AE67C700D044EE /* UICollectionView.png */,
 				33068EFD22AE67C700D044EE /* UIKit.png */,
 				33068F1322AE67DB00D044EE /* WMGameProxy.txt */,
+				33068EF122AE670200D044EE /* WMGame.swift */,
+				33068EEF22AE66EC00D044EE /* WMController.swift */,
 				33068EB622AE665000D044EE /* AppDelegate.h */,
 				33068EB722AE665000D044EE /* AppDelegate.m */,
 				339A3D7E22BBBBC9007DD37D /* SyGameProxy.h */,
 				339A3D7F22BBBBC9007DD37D /* SyGameProxy.c */,
 				33068EEB22AE66CB00D044EE /* WMGameProxy.h */,
 				33068EEC22AE66CB00D044EE /* WMGameProxy.m */,
-				33068EE822AE66A800D044EE /* MainController.h */,
-				33068EE922AE66A800D044EE /* MainController.m */,
-				33068EF122AE670200D044EE /* WMGame.swift */,
-				33068EEF22AE66EC00D044EE /* WMController.swift */,
+				33BE31BD22E5890A0073E35B /* FoundationNSObject.h */,
+				33BE31BE22E5890A0073E35B /* FoundationNSObject.m */,
 				33A8FD7822D481B4004AECBA /* SyTableViewController.h */,
 				33A8FD7922D481B4004AECBA /* SyTableViewController.m */,
 				33A8FD7B22D48237004AECBA /* SyCollectionViewController.h */,
 				33A8FD7C22D48237004AECBA /* SyCollectionViewController.m */,
 				3324D54922DED4BF0066241F /* WMWebViewController.h */,
 				3324D54A22DED4BF0066241F /* WMWebViewController.m */,
+				33068EE822AE66A800D044EE /* MainController.h */,
+				33068EE922AE66A800D044EE /* MainController.m */,
 				33068EEE22AE66EB00D044EE /* WMGameProxy-Bridging-Header.h */,
 				33068EBC22AE665000D044EE /* Main.storyboard */,
 				33068EBF22AE665600D044EE /* Assets.xcassets */,
@@ -512,6 +517,7 @@
 				33068EB822AE665000D044EE /* AppDelegate.m in Sources */,
 				339A3D8022BBBBC9007DD37D /* SyGameProxy.c in Sources */,
 				3324D54B22DED4BF0066241F /* WMWebViewController.m in Sources */,
+				33BE31BF22E5890A0073E35B /* FoundationNSObject.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

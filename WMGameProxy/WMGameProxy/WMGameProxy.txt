@@ -119,8 +119,8 @@ int main() {
 //C语言的执行流程：编写程序->将自定义函数进行编译->目标文件/C语言函数库进行链接->可执行文件->运行
 
 //关键字
-1.特征：全部小写|在Xcode中显示不同的颜色|一共32个
-2.分类：流程控制关键字+数据类型关键字
+1.特征：全部小写/在Xcode中显示不同的颜色/一共32个
+2.分类：流程控制关键字+数据类型关键字/unsigned|signed
 
 //标识符
 1.概念：程序员自己在项目中起的名字/不能与关键字同名
@@ -156,15 +156,15 @@ ps.'\n'虽然有两个字符组成、但是还是字符型常量/转义字符
 1.使用变量之前必须先定义变量(申请一块存储空间)
 int sum; //定义变量：分配唯一的存储空间/申请内存
 sum = 9; //给变量赋值：给存储空间存储数据|变量的第一次赋值称为初始化init|使用变量之前必须init、不然存储的都是垃圾数据
-int value,number; //连续定义：开辟两块存储空间
+int value,number; //连续定义：开辟两块存储空间/声明的时候就会开辟存储空间
 printf("value = %i",value); //获取value：占位符|编译期间才知道具体数值
-int number = 10; //定义同时初始化
+int number = 10; //定义同时初始化：变量第一次赋值称为init/先init、才能使用
 //完全初始化
 int value,number;
 value = number = 10;
-//部分初始化：value没有init|number = 10
+//部分初始化：value没有init/number = 10
 int value,number = 10;
-2.作用域：从定义的那一行开始直到大括号/遇到return结束
+2.作用域：从"定义的那一行"开始直到大括号/遇到return结束/return和"}"一样的效果/一对"{}"可以看做一个"存储空间"
 1).局部变量：定义在{//...}内部的变量
 2).全局变量：xxx
 3.内存分析：
@@ -438,3 +438,15 @@ https://xclient.info
 1).你平时在工作中使用过抓包工具吗？一般是用来干嘛的？
 2).抓包的步骤是怎么样的？通过步骤你能猜测一下抓包的工作原理吗？
 3).抓包可以抓https吗？怎么才可以让https不被抓包工具抓取？
+
+#知识点速查：
+WMGame.swift  // swift基础知识
+WMController.swift // swiftUI知识
+AppDelegate.h/m   // 常见系统问题查询
+SyGameProxy.h/c   // C语言基础知识
+WMGameProxy.h/m   // OC基础知识
+FoundationNSObject.h/c // Foundation常见类
+SyTableViewController.h/m  // UITableView详解
+SyCollectionViewController.h/m // UICollectionViewController详解
+WMWebViewController.h/m  // js和原生交互详解
+MainController.h/m  // 事例代码

@@ -25,6 +25,11 @@
     NSLog(@"xxxxx");
 }
 
++(instancetype)getInstance {
+    WMGameProxy *instance = [[WMGameProxy alloc]init];
+    return instance;
+}
+
 // 不会输出self/会死循环
 // NSLog()输出<类名:地址>/<Person: 0x100202310>
 - (NSString *)description

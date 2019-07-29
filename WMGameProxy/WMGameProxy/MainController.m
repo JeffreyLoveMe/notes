@@ -8,6 +8,11 @@
 
 #import "MainController.h"
 
+/// 常见设置常量的办法
+// 1.宏定义
+// 2.static xxx
+// 3.枚举：OC语言的枚举 == 常量
+#define NAME @"谢吴军"
 @interface MainController ()
 
 @end
@@ -46,6 +51,16 @@
         [pics addObject:pic];
     }
     //接下来怎么执行
+}
+
+-(void)selected {
+    NSString *key = @"key";
+    NSString *childSelectorName = [NSString stringWithFormat:@"add%@", key];
+    SEL childSelector = NSSelectorFromString(childSelectorName);
+    if ([self respondsToSelector:childSelector]) {
+        // 这行代码有问题？？？
+        [self performSelector:childSelector withObject:nil];
+    }
 }
 
 #pragma mark - Objective-C语言专用注释
