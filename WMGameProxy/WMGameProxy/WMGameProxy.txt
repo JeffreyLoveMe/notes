@@ -171,8 +171,15 @@ int value,number = 10;
 1).字节地址是连续的/内存是由字节地址组成的
 2).内存寻址：从大到小|&变量名称：变量的详细地址
 printf("%p\n",&number) //输出变量的详细地址：十六进制
+4.字符
+char A; // 错误：A没有 '' 表示标识符
+char "A" // 错误： " " 表示字符串
+char '12' // 错误： " " 表示2个字符
+char '中' // 错误：不能存放中文/中文2个字节
+char 'a'  // 正确
+char ch = 10; // 正确
 
-//printf()函数|scanf()函数
+//printf()函数/scanf()函数
 1.printf()函数：输出函数
 1).格式符：%i、%f、%c、%lf
 2).指定位宽：%mf、%mi //m就是位宽(占据几列)|默认右对齐、左边补空格
@@ -183,29 +190,29 @@ printf("%-5i***",number);//99   ***
 printf("%05i",number); //宽度不够补0、够了按照实际输出|宽度够直接显示|0表示补充0、5表示占5列
 printf("%.2f",value); //保留两位小数
 printf("%.*f",n,value); //保留n位小数
-2.scanf()函数：输入函数|阻塞式函数|敲击\n告诉系统输入完毕
+2.scanf()函数：输入函数/阻塞式函数/敲击\n告诉系统输入完毕
 int number; //定义number接收数据
 printf("请输入一个数据：")
 scanf("%i",&number); //必须加上&
 scanf("%i,%i",&num1,&num2); //FIXME:什么情况下，scanf()函数自动终止？
 实现原理：scanf()函数只要输入缓冲区中有内容，就不会要求用户输入数据；
-3.有效位数：从第一位开始算起|float有效位数为7位(系统固定)|double有效位数位15位
+3.有效位数：从第一位开始算起/float有效位数为7位(系统固定)/double有效位数位15位
 
 //运算符
-1.算术运算符：+|-|*|/|%  //相同类型变量算术运算：结果类型不变
+1.算术运算符：+|-|*|/|%  //相同类型变量才能算术运算：结果类型不变
 result = 1 + 3 + 6 * 5 / 3; //result = 14 |优先级：*|/ > +|-
 result = -10 % 3; //result = -1|result正负性取决于左边的操作数
 1).自动类型转换(隐式转化)
 int num = 10.8; //int占4个字节/double占8个字节
 2).强制类型转换(显式转化)：原表达式的值不变、强转以后结果改变
 int num = (int)10.8;
-3).自动类型提升：系统会将"小类型"->"大类型"|不会损失精度
+3).自动类型提升：系统会将"小类型"->"大类型"/不会损失精度
 int result = 10+9.9; //只有相同类型的运算符才可以运算：必须"自动类型提升"
 注意：参与运算的操作数类型和结果的类型必须一致；
 2.赋值运算符：=|+=|-=|*=|/=|%=|结合性：从右到左
 result = 5; result += 5; //result = 10
 3.自增/自减运算符：
-result = 5;int sum = result++; //先赋值、再result-1/result = 6/sum = 5
+result = 5;int sum = result++; //先赋值、再result+1/result = 6/sum = 5
 int sum = ++result; //sum = 6/result = 6
 4.sizeof运算符：一个数据类型/常量/变量在内存中占有字节数
 int size = sizeof(10);=>int size = size 10; //()可以省略
@@ -224,8 +231,11 @@ int result = a > b;// 怎么理解：a>b吗？
 int sum = a && b; // 与
 int sum = a || b; // 或
 int sum = !a; // 从右至左
+int result = 4 < 5 < 6  // 错误：(5 > 4) && (5 < 6)
 注意：1.C语言规定所有的数值都有真假性，非0即真；
-2.&&、||会出现短路现象；
+2.&&、||会出现短路现象：只要前面的条件为假、真，后面的不再执行；
+int x = 100; int result = (x > 200) && (++x == 0);   // x = 100
+int y = 100; int result = ( y < 200) || (++y == 0);  // y = 100
 8.三目运算符:
 int max = a > b ? a : b;
 
@@ -368,7 +378,7 @@ for(int i = 0;i < 2; i++) {
 @try...@catch...@finally
 /**************************UI基础**************************/
 //认识UI(User Interface)
-1.概述：用户通过UI与用户进行交互|传入用户的请求|反馈运行的结果
+1.概述：用户通过UI与用户进行交互|传入用户的请求/反馈运行的结果
 
 //iOS的坐标体系
 
@@ -405,6 +415,9 @@ for(int i = 0;i < 2; i++) {
 //自动布局：
 1.autosizing：设置视图和父视图的尺寸关系/iOS6.x以前
 2.
+
+//Xib：
+1.UIStackViewDemo
 
 //通信：
 1.程序之间通信：
@@ -446,6 +459,7 @@ AppDelegate.h/m   // 常见系统问题查询
 SyGameProxy.h/c   // C语言基础知识
 WMGameProxy.h/m   // OC基础知识
 FoundationNSObject.h/c // Foundation常见类
+ComponentController.h/m // UI组件库
 SyTableViewController.h/m  // UITableView详解
 SyCollectionViewController.h/m // UICollectionViewController详解
 WMWebViewController.h/m  // js和原生交互详解

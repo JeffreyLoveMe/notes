@@ -47,6 +47,7 @@
 		33A8FD7A22D481B4004AECBA /* SyTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 33A8FD7922D481B4004AECBA /* SyTableViewController.m */; };
 		33A8FD7D22D48237004AECBA /* SyCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 33A8FD7C22D48237004AECBA /* SyCollectionViewController.m */; };
 		33BE31BF22E5890A0073E35B /* FoundationNSObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 33BE31BE22E5890A0073E35B /* FoundationNSObject.m */; };
+		33ED93E022F12E77006ABD28 /* ComponentController.m in Sources */ = {isa = PBXBuildFile; fileRef = 33ED93DF22F12E77006ABD28 /* ComponentController.m */; };
 		60B17560F167E4FE18028608 /* Pods_WMGameProxyUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F497949D35C1F02C4BAE1F7A /* Pods_WMGameProxyUITests.framework */; };
 		CD760D165A9CBF60796300E5 /* Pods_WMGameProxyTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 407416DA15016E2C557ADCE1 /* Pods_WMGameProxyTests.framework */; };
 /* End PBXBuildFile section */
@@ -125,6 +126,9 @@
 		33A9F0B722B4D4C5007985BF /* 怎么称为一名优秀leader.xmind */ = {isa = PBXFileReference; lastKnownFileType = file; path = "怎么称为一名优秀leader.xmind"; sourceTree = "<group>"; };
 		33BE31BD22E5890A0073E35B /* FoundationNSObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FoundationNSObject.h; sourceTree = "<group>"; };
 		33BE31BE22E5890A0073E35B /* FoundationNSObject.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FoundationNSObject.m; sourceTree = "<group>"; };
+		33ED93C922F03E69006ABD28 /* Zapfino.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Zapfino.ttf; sourceTree = "<group>"; };
+		33ED93DE22F12E77006ABD28 /* ComponentController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ComponentController.h; sourceTree = "<group>"; };
+		33ED93DF22F12E77006ABD28 /* ComponentController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ComponentController.m; sourceTree = "<group>"; };
 		3D3D3EDD51B0F251CBF64154 /* Pods_WMGameProxy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WMGameProxy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3ECEA7B1BF7650220E4B5C11 /* Pods-WMGameProxy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WMGameProxy.debug.xcconfig"; path = "Target Support Files/Pods-WMGameProxy/Pods-WMGameProxy.debug.xcconfig"; sourceTree = "<group>"; };
 		407416DA15016E2C557ADCE1 /* Pods_WMGameProxyTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WMGameProxyTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -188,6 +192,7 @@
 		33068EB522AE665000D044EE /* WMGameProxy */ = {
 			isa = PBXGroup;
 			children = (
+				33ED93C922F03E69006ABD28 /* Zapfino.ttf */,
 				33A8FD7622D48125004AECBA /* 快捷键.png */,
 				33A8FD7422D480F2004AECBA /* 线程的生命周期.png */,
 				3340B2E522C0D9AB00111228 /* 代码标准h文件.png */,
@@ -222,6 +227,8 @@
 				33068EEC22AE66CB00D044EE /* WMGameProxy.m */,
 				33BE31BD22E5890A0073E35B /* FoundationNSObject.h */,
 				33BE31BE22E5890A0073E35B /* FoundationNSObject.m */,
+				33ED93DE22F12E77006ABD28 /* ComponentController.h */,
+				33ED93DF22F12E77006ABD28 /* ComponentController.m */,
 				33A8FD7822D481B4004AECBA /* SyTableViewController.h */,
 				33A8FD7922D481B4004AECBA /* SyTableViewController.m */,
 				33A8FD7B22D48237004AECBA /* SyCollectionViewController.h */,
@@ -518,6 +525,7 @@
 				339A3D8022BBBBC9007DD37D /* SyGameProxy.c in Sources */,
 				3324D54B22DED4BF0066241F /* WMWebViewController.m in Sources */,
 				33BE31BF22E5890A0073E35B /* FoundationNSObject.m in Sources */,
+				33ED93E022F12E77006ABD28 /* ComponentController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

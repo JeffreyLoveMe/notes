@@ -7,13 +7,14 @@
 //
 
 #import "MainController.h"
+#import <MessageUI/MessageUI.h>
 
 /// 常见设置常量的办法
 // 1.宏定义
 // 2.static xxx
 // 3.枚举：OC语言的枚举 == 常量
 #define NAME @"谢吴军"
-@interface MainController ()
+@interface MainController () <MFMailComposeViewControllerDelegate>
 
 @end
 
@@ -58,9 +59,61 @@
     NSString *childSelectorName = [NSString stringWithFormat:@"add%@", key];
     SEL childSelector = NSSelectorFromString(childSelectorName);
     if ([self respondsToSelector:childSelector]) {
-        // 这行代码有问题？？？
-        [self performSelector:childSelector withObject:nil];
+//        // 这行代码有问题？？？
+//        // https://www.jianshu.com/p/6517ab655be7
+//        [self performSelector:childSelector withObject:nil];
     }
+}
+/// 发送邮件
+-(void)sendEmail {
+    if ([MFMailComposeViewController canSendMail]) {
+        /// 用户已设置邮件账户
+        // 邮件服务器
+        MFMailComposeViewController *controller = [[MFMailComposeViewController alloc]init];
+        // 设置邮件代理
+        [controller setMailComposeDelegate:self];
+        // 设置邮件主题
+        [controller setSubject:@"邮件主题"];
+        // 设置收件人
+        [controller setToRecipients:@[@"15601749931@163.com"]];
+        // 设置抄送人
+        [controller setCcRecipients:@[@"18642963201@163.com"]];
+        // 设置密抄
+        [controller setBccRecipients:@[@"1822512598@qq.com"]];
+        // 设置邮件的正文内容/是否为HTML格式
+        [controller setMessageBody:@"邮件的正文内容" isHTML:false];
+        // 弹出邮件发送视图
+        [self presentViewController:controller animated:true completion:nil];
+    }
+}
+
+- (void)mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(nullable NSError *)error {
+    [self dismissViewControllerAnimated:true completion:^{
+        switch (result) {
+            case MFMailComposeResultCancelled: {
+                NSLog(@"用户取消编辑");
+            }
+                break;
+            case MFMailComposeResultSaved: {
+                NSLog(@"用户保存邮件");
+            }
+                break;
+            case MFMailComposeResultSent: {
+                NSLog(@"用户点击发送");
+            }
+                break;
+            case MFMailComposeResultFailed: {
+                NSLog(@"尝试保存或发送邮件失败：%@", [error localizedDescription]);
+            }
+            default:
+                break;
+        }
+    }];
+}
+/// 添加字体
+-(void)addFont {
+    UILabel *label = [[UILabel alloc]init];
+    label.font = [UIFont fontWithName:@"Zapfino" size:15];
 }
 
 #pragma mark - Objective-C语言专用注释
