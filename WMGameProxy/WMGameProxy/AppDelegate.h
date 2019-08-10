@@ -10,6 +10,7 @@
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
+/// 一个App有且仅有一个UIWindow
 @property (strong, nonatomic) UIWindow *window;
 
 

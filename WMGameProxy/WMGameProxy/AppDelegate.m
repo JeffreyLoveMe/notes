@@ -17,10 +17,11 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    
+    /// 程序启动后调用
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.backgroundColor = UIColor.whiteColor;
     UINavigationController *navigationController = [[UINavigationController alloc]initWithRootViewController:[[MainController alloc]init]];
+    /// 当前UIWindow的根视图控制器rootViewController
     self.window.rootViewController = navigationController;
     [self.window makeKeyAndVisible];
     
