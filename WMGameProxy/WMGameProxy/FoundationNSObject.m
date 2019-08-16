@@ -11,7 +11,7 @@
 @implementation FoundationNSObject
 
 /// Foundation框架提供很多官方Api
-// 1.字符串
+// 1.NSString
 -(void)showString {
     // 1).不可变字符串
     // 只有官方类才能这样创建
@@ -32,7 +32,7 @@
     // 2).可变字符串
 }
 
-// 2.数组
+// 2.NSArray
 -(void)showArray {
     // 1).不可变数组
     // OC数组和C数组有什么区别？
@@ -53,9 +53,10 @@
     NSArray *array5 = [[NSArray alloc]initWithArray:array1];
     NSArray *array6 = [NSArray arrayWithArray:array2];
     NSArray *array7 = @[@(1),@(2)]; // 这样数字int就可以放入数组中
+    NSLog(@"%@ == %@ == %@ == %@ == %@", array3, array4, array5, array6, array7);
 }
 
-// 3.字典
+// 3.NSDictionary
 -(void)showDictionary {
     
 }

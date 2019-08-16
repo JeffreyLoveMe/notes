@@ -132,6 +132,7 @@
 		33ED93C922F03E69006ABD28 /* Zapfino.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Zapfino.ttf; sourceTree = "<group>"; };
 		33ED93DE22F12E77006ABD28 /* ComponentController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ComponentController.h; sourceTree = "<group>"; };
 		33ED93DF22F12E77006ABD28 /* ComponentController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ComponentController.m; sourceTree = "<group>"; };
+		33F67EDB2304F98D006F7DD6 /* WMGameProxy.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WMGameProxy.pch; sourceTree = "<group>"; };
 		3D3D3EDD51B0F251CBF64154 /* Pods_WMGameProxy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WMGameProxy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3ECEA7B1BF7650220E4B5C11 /* Pods-WMGameProxy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WMGameProxy.debug.xcconfig"; path = "Target Support Files/Pods-WMGameProxy/Pods-WMGameProxy.debug.xcconfig"; sourceTree = "<group>"; };
 		407416DA15016E2C557ADCE1 /* Pods_WMGameProxyTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WMGameProxyTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -242,6 +243,7 @@
 				330C15C822F801F700CD84CA /* SySkillController.m */,
 				33068EE822AE66A800D044EE /* MainController.h */,
 				33068EE922AE66A800D044EE /* MainController.m */,
+				33F67EDB2304F98D006F7DD6 /* WMGameProxy.pch */,
 				33068EEE22AE66EB00D044EE /* WMGameProxy-Bridging-Header.h */,
 				33068EBC22AE665000D044EE /* Main.storyboard */,
 				33068EBF22AE665600D044EE /* Assets.xcassets */,

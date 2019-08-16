@@ -28,6 +28,14 @@ int call() {
 //    return 0;
 //}
 
+
+void xxx() {
+    
+}
+
+
+
+
 #include "SyGameProxy.h"
 
 

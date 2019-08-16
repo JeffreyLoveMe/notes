@@ -42,7 +42,7 @@
 //Mac快捷键
 command+空格 //切换输入法
 command+F //查找、替换
-command+N //新建
+command+N //新建文件
 command+tab //切换应用程序
 command+shift+3/4 //截图
 command+shift+z //恢复撤销
@@ -232,7 +232,8 @@ if let count = array.count, let size = count + 1 {
 6.关系运算符：>|<|>=|<=|==|!= // C语言规定：非0即真
 a = 10, b = 5; // "="/"=="的区别
 int result = a > b;// 怎么理解：a>b吗？
-优先级：>、<、>=、<=优先级大于!=、==先优先级、再结合性
+优先级：1.>、<、>=、<=优先级大于!=、==先优先级、再结合性；
+2.算术运算符 > 关系运算符 > 逻辑运算符/先"优先级" --> 再"结合性"
 7.逻辑运算符：&&、||、!
 int sum = a && b; // 与
 int sum = a || b; // 或
@@ -282,7 +283,7 @@ default: {
 }
 
 //循环语句：反复执行某一段代码
-1.循环格式：
+1.循环格式：都是不满足条件停止执行
 1).while()语句：当条件满足开始执行循环体直到不满足条件停止执行
 2).do-while()语句：先执行循环体直到不满足条件停止执行
 3).for()语句：最常使用的循环语句
@@ -318,9 +319,10 @@ for(int i = 0;i < 2; i++) {
 //认识Objective-C语言
 1.概述：面向对象的C语言/完全兼容C语言/C语言代码可以直接编译在Objective-C工程中；
 2.源文件：.h/.m/.mm；
-3.关键字：C语言关键字在oc中都可以使用/新增部分关键字：@interface、@public等；
+3.关键字：C语言关键字在oc中都可以使用/新增部分关键字：@interface、@public、@implementation等；
 4.数据类型：BOOL/Block/SEL/null
 5.#include -可能会出现重复包含头文件/#import -可以避免重复包含头文件
+6.C语言：int <==> OC语言：NSInteger <==> swift语言：Int
 
 //面向对象OOP
 1.概念：OOP是把问题里拥有相同属性的东西建立一个类
@@ -467,6 +469,9 @@ StoreKit-为App提供在程序运行中消费的支持
 /**************************swift基础**************************/
 /**************************实用技术(swift版本)**************************/
 /**************************补充部分**************************/
+//知识点：
+https://www.cnblogs.com/W-Kr/p/5248316.html //解析html
+
 //工具网站：
 https://soft.macx.cn
 https://xclient.info
@@ -496,3 +501,5 @@ SyCollectionViewController.h/m // UICollectionViewController详解
 WMWebViewController.h/m  // js和原生交互详解
 SySkillController.h/m // 技能事例
 MainController.h/m  // 事例代码
+WMGameProxy.pch // 预编译
+WMGameProxy-Bridging-Header.h // 桥接文件

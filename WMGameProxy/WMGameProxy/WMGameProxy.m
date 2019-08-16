@@ -22,7 +22,7 @@
 }
 
 -(void)initWithGameId:(NSString *)gameId GameKey:(NSString *)gameKey {
-    NSLog(@"xxxxx");
+    NSLog(@"hello world");
 }
 
 +(instancetype)getInstance {
@@ -35,6 +35,15 @@
 - (NSString *)description
 {
     return [NSString stringWithFormat:@"%@", height];
+}
+
+// 整型NSInteger
+// 布尔类型BOOL
+// 结构体NSRange
+-(void)showRange {
+    NSRange range0 = {1,5};
+    NSRange range1 = NSMakeRange(1, 5);
+    NSLog(@"%ld,%ld", range0.length, range1.location);
 }
 
 @end
