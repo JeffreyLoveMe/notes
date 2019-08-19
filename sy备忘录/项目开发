@@ -467,3 +467,14 @@ iOS->Android->flutter/RN->H5/.->php->go->java
 冒烟测试
 渠道归因
 截屏引流
+
+对象想要使用：要不初始化/要不直接赋值、不然不能是使用
+如果一个对象没有被销毁、则这个对象带着的属性和方法一致存在、保持不变
+
+id/Class/SEL之间的区别？分别代表什么意思？
+格式化：obj/String -> %@ / float -> %f
+NSPredicate //过滤
+NSAssert //代码调试
+
+
+怎么监听UIScollView以及子视图的上滑/下滑(百分百准备的那种)

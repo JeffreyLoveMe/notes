@@ -40,6 +40,10 @@
 		3324D54B22DED4BF0066241F /* WMWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3324D54A22DED4BF0066241F /* WMWebViewController.m */; };
 		3340B2E722C0D9AC00111228 /* 代码标准h文件.png in Resources */ = {isa = PBXBuildFile; fileRef = 3340B2E522C0D9AB00111228 /* 代码标准h文件.png */; };
 		3340B2E822C0D9AC00111228 /* 代码标准m文件.png in Resources */ = {isa = PBXBuildFile; fileRef = 3340B2E622C0D9AC00111228 /* 代码标准m文件.png */; };
+		3361E40E2308F3DF00A03B7D /* 常见系统库01.png in Resources */ = {isa = PBXBuildFile; fileRef = 3361E40C2308F3DF00A03B7D /* 常见系统库01.png */; };
+		3361E40F2308F3DF00A03B7D /* 常见系统库00.png in Resources */ = {isa = PBXBuildFile; fileRef = 3361E40D2308F3DF00A03B7D /* 常见系统库00.png */; };
+		3361E4182309A37D00A03B7D /* image_demo.png in Resources */ = {isa = PBXBuildFile; fileRef = 3361E4172309A37D00A03B7D /* image_demo.png */; };
+		3361E41A230A43EA00A03B7D /* DOVE.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 3361E419230A43EA00A03B7D /* DOVE.bundle */; };
 		339A3D7D22BBB3F4007DD37D /* 下拉刷新_上拉加载_标准版.png in Resources */ = {isa = PBXBuildFile; fileRef = 339A3D7C22BBB3F4007DD37D /* 下拉刷新_上拉加载_标准版.png */; };
 		339A3D8022BBBBC9007DD37D /* SyGameProxy.c in Sources */ = {isa = PBXBuildFile; fileRef = 339A3D7F22BBBBC9007DD37D /* SyGameProxy.c */; };
 		339A3D8222BBBE5D007DD37D /* Xcode新建项目.png in Resources */ = {isa = PBXBuildFile; fileRef = 339A3D8122BBBE5D007DD37D /* Xcode新建项目.png */; };
@@ -116,6 +120,10 @@
 		3324D54A22DED4BF0066241F /* WMWebViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WMWebViewController.m; sourceTree = "<group>"; };
 		3340B2E522C0D9AB00111228 /* 代码标准h文件.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "代码标准h文件.png"; sourceTree = "<group>"; };
 		3340B2E622C0D9AC00111228 /* 代码标准m文件.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "代码标准m文件.png"; sourceTree = "<group>"; };
+		3361E40C2308F3DF00A03B7D /* 常见系统库01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "常见系统库01.png"; sourceTree = "<group>"; };
+		3361E40D2308F3DF00A03B7D /* 常见系统库00.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "常见系统库00.png"; sourceTree = "<group>"; };
+		3361E4172309A37D00A03B7D /* image_demo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = image_demo.png; sourceTree = "<group>"; };
+		3361E419230A43EA00A03B7D /* DOVE.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = DOVE.bundle; sourceTree = "<group>"; };
 		339A3D7C22BBB3F4007DD37D /* 下拉刷新_上拉加载_标准版.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "下拉刷新_上拉加载_标准版.png"; sourceTree = "<group>"; };
 		339A3D7E22BBBBC9007DD37D /* SyGameProxy.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SyGameProxy.h; sourceTree = "<group>"; };
 		339A3D7F22BBBBC9007DD37D /* SyGameProxy.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = SyGameProxy.c; sourceTree = "<group>"; };
@@ -196,6 +204,10 @@
 		33068EB522AE665000D044EE /* WMGameProxy */ = {
 			isa = PBXGroup;
 			children = (
+				3361E419230A43EA00A03B7D /* DOVE.bundle */,
+				3361E4172309A37D00A03B7D /* image_demo.png */,
+				3361E40D2308F3DF00A03B7D /* 常见系统库00.png */,
+				3361E40C2308F3DF00A03B7D /* 常见系统库01.png */,
 				33ED93C922F03E69006ABD28 /* Zapfino.ttf */,
 				33A8FD7622D48125004AECBA /* 快捷键.png */,
 				33A8FD7422D480F2004AECBA /* 线程的生命周期.png */,
@@ -403,6 +415,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				33068EC322AE665600D044EE /* LaunchScreen.storyboard in Resources */,
+				3361E41A230A43EA00A03B7D /* DOVE.bundle in Resources */,
 				33068F0422AE67C800D044EE /* Safe Area.png in Resources */,
 				33068F1122AE67C800D044EE /* C:OC学习路线&重难点.png in Resources */,
 				33068EC022AE665600D044EE /* Assets.xcassets in Resources */,
@@ -410,17 +423,20 @@
 				33068F1622B0955200D044EE /* 下拉加载范例.png in Resources */,
 				33068F0F22AE67C800D044EE /* C语言:OC关键字.png in Resources */,
 				33068EBE22AE665000D044EE /* Main.storyboard in Resources */,
+				3361E4182309A37D00A03B7D /* image_demo.png in Resources */,
 				3340B2E722C0D9AC00111228 /* 代码标准h文件.png in Resources */,
 				3340B2E822C0D9AC00111228 /* 代码标准m文件.png in Resources */,
 				33068F0922AE67C800D044EE /* UI划分_00.png in Resources */,
 				33068F0722AE67C800D044EE /* 认识Autolayout.png in Resources */,
 				339A3D8222BBBE5D007DD37D /* Xcode新建项目.png in Resources */,
+				3361E40E2308F3DF00A03B7D /* 常见系统库01.png in Resources */,
 				33068F0C22AE67C800D044EE /* App职责分配.png in Resources */,
 				33068F1022AE67C800D044EE /* error_01：找不到AppDelegate类.png in Resources */,
 				33068F0D22AE67C800D044EE /* UIKit.png in Resources */,
 				33068F0522AE67C800D044EE /* UIApplication.png in Resources */,
 				33A8FD7522D480F2004AECBA /* 线程的生命周期.png in Resources */,
 				33A8FD7722D48125004AECBA /* 快捷键.png in Resources */,
+				3361E40F2308F3DF00A03B7D /* 常见系统库00.png in Resources */,
 				339A3D7D22BBB3F4007DD37D /* 下拉刷新_上拉加载_标准版.png in Resources */,
 				33068F0A22AE67C800D044EE /* UICollectionView.png in Resources */,
 				33068F1222AE67C800D044EE /* iphone设备尺寸.png in Resources */,

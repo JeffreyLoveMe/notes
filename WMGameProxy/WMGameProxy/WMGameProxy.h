@@ -12,7 +12,13 @@ NS_ASSUME_NONNULL_BEGIN
 /// .h文件用来声明类
 // NSObject是基类、顶级父类
 // 父类的属性可以继承、但是方法只能通过super调用
+// WMGameProxy类名
+// NSObject父类
 @interface WMGameProxy : NSObject {
+    /// 定义属性
+    // 实例变量
+    // 在OC中：定义属性不能直接赋值、swift可以
+    // 注意：定义成员变量：变量必须使用下划线
     @private  // 私有成员：只能被本类访问、不能被子类访问、不能被外部访问
     NSString *_name;
     @protected  // 受保护的属性：默认属性、可以被本类访问、也能为子类访问、不能被外部访问
@@ -21,13 +27,21 @@ NS_ASSUME_NONNULL_BEGIN
     NSString *height;
 }
 
+@property (strong, nonatomic) NSString *sdk;
+
+/// 定义方法/行为
 // 冒号也是方法名的一部分
 // 定义在.h文件中的方法都会公有的、不能使用@private/@protected/@public修饰
 // 对象方法：只能被对象名调用
 -(void)initWithGameId:(NSString *)gameId GameKey:(NSString *)gameKey;
 
 // 类方法：只能被类名调用
+// 注意：类方法中无法使用属性？？？
 +(instancetype)getInstance;
+
+// 不推荐直接给属性赋值
+// 如果需要给属性赋值、可以使用set方法
+// 获取属性内容、可以使用get方法
 
 @end
 

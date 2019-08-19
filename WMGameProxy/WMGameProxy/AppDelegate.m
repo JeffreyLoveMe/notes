@@ -7,7 +7,8 @@
 //
 
 #import "AppDelegate.h"
-#import "MainController.h"
+#import "ComponentController.h"
+#import "WMGameProxy.h"
 
 @interface AppDelegate ()
 
@@ -20,11 +21,17 @@
     /// 程序启动后调用
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.backgroundColor = UIColor.whiteColor;
-    UINavigationController *navigationController = [[UINavigationController alloc]initWithRootViewController:[[MainController alloc]init]];
+    UINavigationController *navigationController = [[UINavigationController alloc]initWithRootViewController:[[ComponentController alloc]init]];
     /// 当前UIWindow的根视图控制器rootViewController
     self.window.rootViewController = navigationController;
     [self.window makeKeyAndVisible];
     
+//    // WMGameProxy借用地盘
+//    WMGameProxy *wm = [[WMGameProxy alloc]init];
+//    WMGameProxy *wm = [WMGameProxy new]; // 不推荐使用new
+//    wm.sdk = @"sdk"; // 不推荐直接赋值
+//    [wm setSdk:@"sdk"];
+//    NSString *sdk = wm.sdk; // 点语法就是get方法
     return YES;
 }
 

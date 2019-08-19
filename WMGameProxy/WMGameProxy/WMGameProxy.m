@@ -8,9 +8,9 @@
 
 #import "WMGameProxy.h"
 #import "MainController.h"
-
+// 类名
 @implementation WMGameProxy
-
+// 方法实现
 - (instancetype)init
 {
     self = [super init];

@@ -270,7 +270,7 @@ if(表达式1) {
 }
 2.switch语句：C语言中'条件表达式'的返回值只支持整数/switch的效率比if高/注意格式
 switch (条件表达式) {
-// case不能重复|不能放置变量
+// case不能重复/不能放置变量/没有if灵活
 case 整数: {
     //执行代码
 }
@@ -337,7 +337,7 @@ for(int i = 0;i < 2; i++) {
 2).面向对象编程注重生活逻辑、面向过程编程注重数学逻辑；
 
 //类：属性+行为(谁最清楚这个行为，那么行为就属于谁)
-1.定义：具有相同和相似性质对象的抽象就是类；对象的抽象就是类，类的具体化就是对象；
+1.定义：具有相同和相似性质对象的抽象就是类；对象的抽象就是类，类的具体化就是对象（堆内存）；
 2.类 = 结构体(存储数据) + 函数(管理数据)；swift中结构体作用很大！！！
 
 //类方法
@@ -397,26 +397,17 @@ for(int i = 0;i < 2; i++) {
 
 //应用程序的生命周期
 
+//定时器
 //UIView
-1.概述：UIView是所有视图的父类，界面可以看得见、摸得着；
-2.UIView四个属性是所有视图共同拥有的：
-@property (strong,nonatomic) CGRect frame; // 坐标：相对于父视图
-@property (strong,nonatomic) CGRect bounds; // 坐标：相对于自己
-@property (strong,nonatomic) CGPoint center; // 中心点
-@property (strong,nonatomic) CGAffineTransform transform; // 拉伸形变
+//UILabel
 
 //UIViewController
 1.负责管理UIView：创建/销毁UIView、显示/隐藏UIView、处理UIView和用户之间的交互
 
-
-//UILabel
-
 //Gif
 
-//定时器
-
 //UITableView
-一定要搞懂UITableViewDataSource|UITableViewDelegate的所有方法！！！
+一定要搞懂UITableViewDataSource/UITableViewDelegate的所有方法
 
 //关于适配
 1.系统适配：
@@ -425,7 +416,6 @@ for(int i = 0;i < 2; i++) {
 
 //自动布局：
 1.autosizing：设置视图和父视图的尺寸关系/iOS6.x以前
-2.
 
 //Xib：
 1.UIStackViewDemo
@@ -435,16 +425,10 @@ for(int i = 0;i < 2; i++) {
 /**************************项目实战**************************/
 //数据的持久化
 
-//常见三方libs
-Masonry/SnapKit-用于屏幕适配
-MagicRecord-用于简化CoreData
-CSStickyHeaderFlowLayout-实现头部悬停
-FLAnimatedImage-让GIF播放不卡
-SVPullToRefresh-上拉加载/下拉刷新控件
-Reachability-用于检测网络类型
-SAMKeychain-keyChain保存
+//常见类库：需要分析源码
+NSObject
 
-//常见系统库
+//常见系统库：需要理解怎么用
 Foundation-提供OC的基础类
 UIKit-创建和管理App的UI
 QuartzCore-提供动画特效以及通过硬件进行渲染能力
@@ -464,6 +448,15 @@ MediaPlayer-提供播放视频和音频的功能
 MessageUI-提供视图控制接口用以处理E-mail和短信
 OpenGLES-提供动画特效以及通过硬件进行渲染的能力
 StoreKit-为App提供在程序运行中消费的支持
+
+//常见三方libs：需要分析源码
+Masonry/SnapKit-用于屏幕适配
+MagicRecord-用于简化CoreData
+CSStickyHeaderFlowLayout-实现头部悬停
+FLAnimatedImage-让GIF播放不卡
+SVPullToRefresh-上拉加载/下拉刷新控件
+Reachability-用于检测网络类型
+SAMKeychain-keyChain保存
 
 //真机调试
 /**************************swift基础**************************/
