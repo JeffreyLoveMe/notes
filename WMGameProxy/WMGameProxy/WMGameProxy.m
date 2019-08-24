@@ -11,8 +11,9 @@
 // 类名
 @implementation WMGameProxy
 // 方法实现
-- (instancetype)init
-{
+// 对象的初始化方法/以init开头的方法
+// 只能调用一次、从父类继承
+- (instancetype)init {
     self = [super init];
     if (self) {
         MainController *vc = [MainController alloc]; // 分配内存

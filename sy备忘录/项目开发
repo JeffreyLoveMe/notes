@@ -476,5 +476,6 @@ id/Class/SEL之间的区别？分别代表什么意思？
 NSPredicate //过滤
 NSAssert //代码调试
 
-
+积分墙
+atomic表示原子操作，即set方法get方法不可被其他线程中断/但是不一定线程安全/缺省属性
 怎么监听UIScollView以及子视图的上滑/下滑(百分百准备的那种)
