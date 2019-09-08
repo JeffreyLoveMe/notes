@@ -8,7 +8,7 @@
 
 #import "ComponentController.h"
 
-@interface ComponentController ()
+@interface ComponentController () <UITextFieldDelegate, UIScrollViewDelegate>
 
 @end
 
@@ -20,6 +20,7 @@
     
 }
 
+#pragma mark - 基础属性
 // 定时器
 -(void)createTimer {
     NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(onTimer) userInfo:nil repeats:true];
@@ -145,6 +146,10 @@
     label.shadowColor = UIColor.grayColor;// 设置阴影颜色
 }
 // UIButton
+// 有那些类可以"事件监听"
+// 继承于UIControl都可以"事件监听"
+// UIButton/UITextField/UISlider/UISwitch...
+// ！！！需求：将常见UI控件分类（按照父类）！！！
 -(void)setupButton {
 //    // 尽量使用快速定义方法、如果没有快速定义方法、再考虑init
 //    UIButton *btn = [[UIButton alloc]init];
@@ -166,7 +171,9 @@
     btn.selected = false; // 选择状态
     [btn setTitleColor:UIColor.greenColor forState:UIControlStateNormal];
     btn.enabled = true; // 非禁用状态
-    btn.backgroundColor = UIColor.grayColor; // 背景颜色
+    /// 背景颜色
+    // 仅仅自定义类型有效
+    btn.backgroundColor = UIColor.grayColor;
     /// 设置button图像
     // 居中显示在button中央位置
     // 如果按钮足够大、同时设置文字和图片、文字/图片会并列显示
@@ -177,12 +184,14 @@
     [btn setBackgroundImage:[UIImage imageNamed:@""] forState:UIControlStateNormal];
     // 点击事件：记下来就好
     // 最多只能携带一个参数
+    // TouchUpInside
     [btn addTarget:self action:@selector(btnAction:) forControlEvents:UIControlEventTouchUpInside];
 }
 -(void)btnAction:(UIButton *)btn {
     NSLog(@"button被点击");
 }
-// UIImageView/UIImage
+// UIImageView -控件
+// UIImage -二进制的图像数据
 -(void)setupImageView {
     /// 创建图片对象
     // 该方法只能加载占用内存小的图片
@@ -227,30 +236,103 @@
 //    // 停止动画
 //    [imageView stopAnimating];
 }
-// UITextField
+// UITextField/文本框控件
+-(void)setupTextField {
+    UITextField *tf = [[UITextField alloc]init];
+    tf.frame = CGRectMake(100, 100, 100, 50);
+    [self.view addSubview:tf];
+//    // 这两个方法正好相反
+//    [tf removeFromSuperview];
+    tf.text = @"我是文本框";
+    tf.font = [UIFont systemFontOfSize:20];
+    // 文本颜色
+    tf.textColor = UIColor.redColor;
+    // 文本对齐方式
+    tf.textAlignment = NSTextAlignmentLeft;
+    // 占位符
+    tf.placeholder = @"请输入用户名";
+    // 边框类型
+    tf.borderStyle = UITextBorderStyleBezel;
+    // 宽度自适应
+    tf.adjustsFontSizeToFitWidth = true;
+    // 开始编辑的时候清除文本框文字
+    tf.clearsOnBeginEditing = true;
+    // 设置清除UIButton
+    tf.clearButtonMode = UITextFieldViewModeAlways;
+    // 设置键盘外观
+    tf.keyboardAppearance = UIKeyboardAppearanceDark;
+    // 设置键盘类型
+    tf.returnKeyType = UIReturnKeyDone;
+    // 设置密文显示
+    tf.secureTextEntry = true;
+    // 设置代理
+    tf.delegate = self;
+    // 变成第一响应者
+    [tf becomeFirstResponder];
+}
 // UITextView
-// UISlider
-// UISwitch
+// UISlider/滑块
+// UISwitch/开关
 // UIStepper
-// UISegmentControl
-// UIAlertView
-// UIActionSheet
+// UISegmentControl/选项卡
+// UIAlertView/中间弹窗
+// UIActionSheet/底部弹窗
 // UIProgressView
-// UIActivityIndicatorView
+// UIActivityIndicatorView/圈圈
 // UIWebView/WKWebView
 // UIMenuController
-// UIPageControl
+// UIPageControl/分页控件
 // UIRefreshControl
 // UIAlertController
 // UIImagePickerController
-// UIPickView
-// UIDatePicker
-// UIToolBar
-// UINavigationBar
-// 键盘
+// UIPickView/选择器
+// UIDatePicker/时间选择器
+// UIToolBar/工具条
+// UINavigationBar/导航条
+// UIScrollView/滚动视图
+-(void)setupScrollView {
+    UIScrollView *scrollView = [[UIScrollView alloc]initWithFrame:self.view.bounds];
+    scrollView.delegate = self;
+    [self.view addSubview:scrollView];
+}
+// UIStackView
+// keyBoard
 -(void)keyBoard {
-    // 让视图关闭键盘
+    // 强行关闭键盘：设置为YES/NO都可以关闭键盘
+    // 但是发生界面死锁NO可能不会关闭、永远设置为NO
+    // 只要调用：就可以强制退出键盘
     [self.view endEditing:YES];
+}
+// UIViewControllView
+-(void)setupController {
+    // 颜色
+    self.view.backgroundColor = UIColor.grayColor;
+    /// 跳转
+    // 模态跳转
+}
+
+
+#pragma mark - UITextFieldDelegate
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    /// 点击return的时候调用该方法
+    // 放弃第一响应者
+    [textField resignFirstResponder];
+    return true;
+}
+
+
+#pragma mark - UIScrollViewDelegate
+/// 通过这三个代理方法可以唯一确定上滑/下滑
+-(void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    // 不管怎么操作：只要拥有偏移量就执行
+}
+
+-(void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
+    // 停止拖拽的时候执行
+}
+
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
+    // 减速结束的时候执行
 }
 
 @end

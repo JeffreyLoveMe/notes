@@ -11,7 +11,7 @@
 @implementation FoundationNSObject
 
 /// Foundation框架提供很多官方Api
-// 1.NSString
+// NSString/NSMutableString/字符串
 -(void)showString {
     // 1).不可变字符串
     // 只有官方类才能这样创建
@@ -32,7 +32,7 @@
     // 2).可变字符串
 }
 
-// 2.NSArray
+// NSArray/NSMutableArray/数组
 -(void)showArray {
     // 1).不可变数组
     // OC数组和C数组有什么区别？
@@ -56,11 +56,17 @@
     NSLog(@"%@ == %@ == %@ == %@ == %@", array3, array4, array5, array6, array7);
 }
 
-// 3.NSDictionary
+// NSDictionary/NSMutableDictionary/字典
 -(void)showDictionary {
     
 }
 
-// 4.NSSet
+// NSSet/集合
+-(void)showSet {
+    
+}
+
+// NSNumber
+// NSDate
 
 @end

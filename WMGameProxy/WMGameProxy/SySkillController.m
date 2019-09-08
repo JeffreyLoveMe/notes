@@ -20,6 +20,8 @@
     
 }
 
-// MPMoviePlayerController
+/// MPMoviePlayerController
+/// iOS自动布局框架 - Masonry详解
+// https://www.jianshu.com/p/ea74b230c70d
 
 @end
