@@ -28,7 +28,40 @@
     // 字符串长度：汉字长度也的是1
     NSUInteger str4Count = [str4 length];
     NSLog(@"%lu", (unsigned long)str4Count);
-    
+    // 通过索引获取相应字符
+    unichar c1 = [str4 characterAtIndex:1];
+    NSLog(@"%c", c1);
+    // unicode万国码：使用更大的存储空间存储各国字符
+    // mac默认编码格式：UTF-8
+    /// 字符串判断
+    // 1.判断字符串内容是否相同
+    if ([str0 isEqualToString:str1]) {
+        NSLog(@"内容相同");
+    } else {
+        NSLog(@"内容不相同");
+    }
+    // 2.判断字符串是否属于同一个对象
+    if (str1 == str0) {
+        NSLog(@"属于同一对象");
+    } else {
+        NSLog(@"不属于同一对象");
+    }
+    // 3.字符串比较
+    NSComparisonResult result = [str0 compare:str1];
+    switch (result) {
+        case NSOrderedAscending: {
+            NSLog(@"升序");
+        }
+            break;
+        case NSOrderedSame: {
+            NSLog(@"相同");
+        }
+            break;
+        case NSOrderedDescending: {
+            NSLog(@"降序");
+        }
+            break;
+    }
     // 2).可变字符串
 }
 
@@ -41,7 +74,6 @@
     // NSInteger不是类吗？
     // 3.C数组是相同类型变量的有序集合，可以保存任意类型的数据
     // 4.NSArray下标越界不会有警告（运行会报错）
-    
     // 创建数组
     // 1.创建空数组
     NSArray *array1 = [[NSArray array]init];
@@ -54,6 +86,36 @@
     NSArray *array6 = [NSArray arrayWithArray:array2];
     NSArray *array7 = @[@(1),@(2)]; // 这样数字int就可以放入数组中
     NSLog(@"%@ == %@ == %@ == %@ == %@", array3, array4, array5, array6, array7);
+    
+    // 2).可变数组NSMutableArray：
+    // 概念：数组的长度不确定
+    // 数组元素：不能是基本数据类型(int/float)/只能是对象的引用(指针)
+    // 继承NSArray
+    // 1.创建空数组
+    NSMutableArray *mArray1 = [[NSMutableArray alloc]init];
+    NSMutableArray *mArray2 = [NSMutableArray array];
+    // 2.创建有数据的数组
+    NSMutableArray *mArray3 = [[NSMutableArray alloc]initWithObjects:@"data1", @"data2", @"data3", nil];
+    // 数组允许数组重复
+    NSMutableArray *mArray4 = [NSMutableArray arrayWithObjects:@"data",@"data", nil];
+    // 添加元素
+    [mArray1 addObject:@"data1"];
+    // 插入元素
+    [mArray3 insertObject:@"data1" atIndex:1];
+    // 删除元素
+    [mArray4 removeObjectAtIndex:0]; // 删除指定元素
+    [mArray2 removeAllObjects]; // 删除所有元素
+    [mArray1 removeLastObject]; // 删除最后一个元素
+    [mArray3 removeObject:@"data"]; // 删除指定元素：如果数组中有两个呢？都删除吗？如果数组没有该元素呢？一个都不删除吗？
+    // 替换指定下标元素
+    [mArray3 replaceObjectAtIndex:0 withObject:@"hello"];
+    // 查找
+    NSLog(@"%@", [mArray3 objectAtIndex:0]);
+    // 元素个数
+    NSUInteger count = [mArray3 count];
+    NSLog(@"%lu", count);
+    // 交换元素
+    [mArray3 exchangeObjectAtIndex:0 withObjectAtIndex:1];
 }
 
 // NSDictionary/NSMutableDictionary/字典

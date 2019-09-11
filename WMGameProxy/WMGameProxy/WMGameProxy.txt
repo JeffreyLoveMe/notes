@@ -24,8 +24,8 @@
 1).编程语言：swift > Objective-C > C语言 > C++
 2).开发工具：Xcode
 3).电脑系统：MacOS
-4).真机设备：iphone|ipad
-5).iOS证书：调试证书|发布证书
+4).真机设备：iphone/ipad
+5).iOS证书：调试证书/发布证书
 3.Apple硬件：
 1).iPhone：2007年发布iphone1/2008年发布iphone2(3G)
 2).iPad：2010年发布iPad1(大概一年发布一款)
@@ -335,9 +335,23 @@ for(int i = 0;i < 2; i++) {
 6.分析内存管理：指定一块内存空间代表该项目 --> 遇到"声明属性"需要开辟内存空间 --> 遇到 {} 需要开辟内存空间
 
 //数组
-1.概念：数组是有序的数据集合，用来存放同一种类型数据的集合
-int array[5];
-array[5] = {1, 8, 9, 10, 18, 25};
+1.概念：数组是一组有序的数据集合，数组中每个元素都具有相同的数据类型
+// 一维数组
+int array[5]; // 定义一个长度为5的数组
+array[5] = {1, 8, 9, 10, 18, 25}; // 数组元素init：可以部分init/未init的元素为0
+int count = array[5]; // 数组访问越界/Segmentation fault
+2.冒泡排序
+3.选择排序
+4.堆排序
+5.二分查找
+//二维数组
+1.概念：元素是一维数组的数组称为二维数组
+int array[5][4]; // 定义
+array[5][4] = {
+    {1,4,6},
+    {1,7,8},
+    {8,5,6}
+}; // init
 
 //函数
 
@@ -414,6 +428,11 @@ array[5] = {1, 8, 9, 10, 18, 25};
 //类别/扩展
 
 //点语法和属性
+1.概念：属性可以在不使用[对象指针 方法名称]的情况下使用点语法
+2.注意：点语法只是访问setter/getter方法，不是使用成员变量
+//这里不是使用成员变量
+xiaoMing.name = @"小明"; <==> [xiaoMing setName:@"小明"];
+NSString *name = xiaoMing.name; <==> NSString *name = [xiaoMing getName];
 
 //封装、继承、多态
 
@@ -545,5 +564,6 @@ SyCollectionViewController.h/m // UICollectionViewController详解
 WMWebViewController.h/m  // js和原生交互详解
 SySkillController.h/m // 技能事例
 MainController.h/m  // 事例代码
+DemoController.h/m // 作业
 WMGameProxy.pch // 预编译
 WMGameProxy-Bridging-Header.h // 桥接文件
