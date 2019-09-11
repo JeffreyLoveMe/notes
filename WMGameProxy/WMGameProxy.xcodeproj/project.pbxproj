@@ -44,6 +44,7 @@
 		3361E40F2308F3DF00A03B7D /* 常见系统库00.png in Resources */ = {isa = PBXBuildFile; fileRef = 3361E40D2308F3DF00A03B7D /* 常见系统库00.png */; };
 		3361E4182309A37D00A03B7D /* image_demo.png in Resources */ = {isa = PBXBuildFile; fileRef = 3361E4172309A37D00A03B7D /* image_demo.png */; };
 		3361E41A230A43EA00A03B7D /* DOVE.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 3361E419230A43EA00A03B7D /* DOVE.bundle */; };
+		3372CD542325F92500E7307B /* SYGameProxy.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3372CD532325F92400E7307B /* SYGameProxy.txt */; };
 		3397EBAE23119A1C00522E72 /* iOS学习路线图.png in Resources */ = {isa = PBXBuildFile; fileRef = 3397EBAD23119A1B00522E72 /* iOS学习路线图.png */; };
 		339A3D7D22BBB3F4007DD37D /* 下拉刷新_上拉加载_标准版.png in Resources */ = {isa = PBXBuildFile; fileRef = 339A3D7C22BBB3F4007DD37D /* 下拉刷新_上拉加载_标准版.png */; };
 		339A3D8022BBBBC9007DD37D /* SyGameProxy.c in Sources */ = {isa = PBXBuildFile; fileRef = 339A3D7F22BBBBC9007DD37D /* SyGameProxy.c */; };
@@ -128,6 +129,7 @@
 		3361E40D2308F3DF00A03B7D /* 常见系统库00.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "常见系统库00.png"; sourceTree = "<group>"; };
 		3361E4172309A37D00A03B7D /* image_demo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = image_demo.png; sourceTree = "<group>"; };
 		3361E419230A43EA00A03B7D /* DOVE.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = DOVE.bundle; sourceTree = "<group>"; };
+		3372CD532325F92400E7307B /* SYGameProxy.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SYGameProxy.txt; sourceTree = "<group>"; };
 		3397EBAD23119A1B00522E72 /* iOS学习路线图.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iOS学习路线图.png"; sourceTree = "<group>"; };
 		339A3D7C22BBB3F4007DD37D /* 下拉刷新_上拉加载_标准版.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "下拉刷新_上拉加载_标准版.png"; sourceTree = "<group>"; };
 		339A3D7E22BBBBC9007DD37D /* SyGameProxy.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SyGameProxy.h; sourceTree = "<group>"; };
@@ -245,6 +247,7 @@
 				33068EFA22AE67C700D044EE /* UICollectionView.png */,
 				33068EFD22AE67C700D044EE /* UIKit.png */,
 				33068F1322AE67DB00D044EE /* WMGameProxy.txt */,
+				3372CD532325F92400E7307B /* SYGameProxy.txt */,
 				33068EF122AE670200D044EE /* WMGame.swift */,
 				33068EEF22AE66EC00D044EE /* WMController.swift */,
 				33068EB622AE665000D044EE /* AppDelegate.h */,
@@ -434,6 +437,7 @@
 				33068F0822AE67C800D044EE /* json解析标准版.png in Resources */,
 				33D730A6231925AC0024D34E /* UIView常见属性和方法.png in Resources */,
 				33068F1622B0955200D044EE /* 下拉加载范例.png in Resources */,
+				3372CD542325F92500E7307B /* SYGameProxy.txt in Resources */,
 				33068F0F22AE67C800D044EE /* C语言:OC关键字.png in Resources */,
 				33068EBE22AE665000D044EE /* Main.storyboard in Resources */,
 				3361E4182309A37D00A03B7D /* image_demo.png in Resources */,

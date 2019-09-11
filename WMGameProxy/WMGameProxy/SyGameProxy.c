@@ -74,6 +74,10 @@ int xxx(int n) {
         // 2.自己调用自己
         return xxx(n-1);
     }
+    // 给关键字取别名：int还是可以使用
+    typedef int Integer;
+    Integer m = 10;
+    n = m;
 }
 
 #include "SyGameProxy.h"

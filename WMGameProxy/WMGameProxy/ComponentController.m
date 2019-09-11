@@ -112,6 +112,20 @@
     [UIView animateWithDuration:2 animations:^{
         // 这里还可以设置形变属性
         NSLog(@"这里可以改变坐标/色彩/透明度");
+    }];
+    [UIView animateWithDuration:2 animations:^{
+        // 这里还可以设置形变属性
+        NSLog(@"这里可以改变坐标/色彩/透明度");
+    } completion:^(BOOL finished) {
+        if (finished) {
+            NSLog(@"动画完成");
+        }
+    }];
+    /// UIViewAnimationOptions - 动画属性设置
+    // https://www.jianshu.com/p/ec73573e112a
+    [UIView animateWithDuration:2 delay:0.5 options:UIViewAnimationOptionOverrideInheritedCurve animations:^{
+        // 这里还可以设置形变属性
+        NSLog(@"这里可以改变坐标/色彩/透明度");
     } completion:^(BOOL finished) {
         if (finished) {
             NSLog(@"动画完成");
@@ -211,8 +225,8 @@
     imageView.image = [UIImage imageNamed:@"image_demo"];
     /*
      填充模式：
-     UIViewContentModeScaleToFill -拉伸填充/图片会变形/默认
-     UIViewContentModeScaleAspectFit -按比例填充/宽|高一边靠近
+     UIViewContentModeScaleToFill - 拉伸填满/不会超出：图片会变形/默认
+     UIViewContentModeScaleAspectFit -按比例填充/宽、高一边靠近
      UIViewContentModeScaleAspectFill -按比例填满/宽&高全部靠近/会超出
      */
     // 裁剪超出部分
@@ -322,17 +336,17 @@
 
 
 #pragma mark - UIScrollViewDelegate
-/// 通过这三个代理方法可以唯一确定上滑/下滑
+/// 1&2&3 -通过这三个代理方法可以唯一确定上滑/下滑
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    // 不管怎么操作：只要拥有偏移量就执行
+    // 1.不管怎么操作：只要拥有偏移量就执行
 }
 
 -(void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
-    // 停止拖拽的时候执行
+    // 2.停止拖拽的时候执行
 }
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
-    // 减速结束的时候执行
+    // 3.减速结束的时候执行
 }
 
 @end
