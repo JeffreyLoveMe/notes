@@ -1,0 +1,25 @@
+# Uncomment the next line to define a global platform for your project
+platform :ios, '8.0'
+
+target 'RxSwiftDemo' do
+  # Comment the next line if you don't want to use dynamic frameworks
+  use_frameworks!
+
+  pod 'RxSwift', '~> 5.0'
+  pod 'RxCocoa', '~> 5.0'
+  
+
+  target 'RxSwiftDemoTests' do
+    inherit! :search_paths
+    
+    pod 'RxBlocking', '~> 5.0'
+    pod 'RxTest', '~> 5.0'
+    
+  end
+
+  target 'RxSwiftDemoUITests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
+end
