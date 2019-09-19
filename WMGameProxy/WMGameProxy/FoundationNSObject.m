@@ -62,7 +62,38 @@
         }
             break;
     }
+    // 转化为基本数据类型
+    [str0 intValue]; // 字符串转化为数字
+    [str0 integerValue]; // 字符串转化为数字
+    [str0 floatValue];   // 字符串转化为浮点数
+    [str0 boolValue];    // 字符串转化为布尔类型
+    [str0 doubleValue]; // 字符串转化为double
+    [str0 longLongValue]; // 字符串转化为长整型
     // 2).可变字符串
+    // NSMutableString继承于NSString
+    // 初始化字符串：必须初始化
+    NSMutableString *mStr0 = [[NSMutableString alloc]init];
+    NSMutableString *mStr1 = [NSMutableString string];
+    // 可以初始化带有字符串的可变字符串
+    NSMutableString *mStr2 = [NSMutableString stringWithFormat:@"%@", [NSString stringWithFormat:@"%@", mStr0]];
+    NSMutableString *mStr3 = [NSMutableString stringWithFormat:@"%@", [NSString stringWithFormat:@"%@", mStr1]];
+    // 重置字符串
+    [mStr2 setString:@"xwj"];
+    // 指定位置插入字符串
+    [mStr3 insertString:mStr2 atIndex:0];
+    // 追加部分字符串
+    [mStr3 appendString:mStr2];
+    // 追加部分内容
+    [mStr3 appendFormat:@"%@", mStr2];
+    // 删除字符串部分
+    // 1.找到删除的范围
+    // NSRange是一个结构体
+    NSRange range0 = [mStr3 rangeOfString:@"222"];
+    NSRange range1 = {1, 2};
+    // 2.删除
+    [mStr3 deleteCharactersInRange:range0];
+    // 替换字符串
+    [mStr3 replaceCharactersInRange:range1 withString:@"xxx"];
 }
 
 // NSArray/NSMutableArray/数组

@@ -10,5 +10,7 @@
 #define SyGameProxy_h
 
 #include <stdio.h>
+// 1.声明函数
+void Log(int m);
 
 #endif /* SyGameProxy_h */
