@@ -8,7 +8,7 @@
 
 #import "ComponentController.h"
 
-@interface ComponentController () <UITextFieldDelegate, UIScrollViewDelegate>
+@interface ComponentController () <UITextFieldDelegate, UIAlertViewDelegate, UIScrollViewDelegate>
 
 @end
 
@@ -289,13 +289,20 @@
 // UISwitch/开关
 // UIStepper
 // UISegmentControl/选项卡
-// UIAlertView/中间弹窗
+
+///// UIAlertView/中间弹窗
+//// 不需要添加到父试图/不需要设置坐标
+//-(void)setupAlertView {
+//    UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"提示" message:@"输入密码错误" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定",@"OK", nil];
+//    alert.alertViewStyle = UIAlertViewStyleLoginAndPasswordInput;
+//    [alert show];
+//}
 // UIActionSheet/底部弹窗
+
 // UIProgressView
 // UIActivityIndicatorView/圈圈
 // UIWebView/WKWebView
 // UIMenuController
-// UIPageControl/分页控件
 // UIRefreshControl
 // UIAlertController
 // UIImagePickerController
@@ -303,11 +310,56 @@
 // UIDatePicker/时间选择器
 // UIToolBar/工具条
 // UINavigationBar/导航条
-// UIScrollView/滚动视图
+/// UIScrollView/滚动视图
+// 用于显示超出App程序窗口大小的内容
+// 允许用户通过拖动手势滚动查看内容
+// 允许用户通过捏合手势缩放内容
 -(void)setupScrollView {
     UIScrollView *scrollView = [[UIScrollView alloc]initWithFrame:self.view.bounds];
     scrollView.delegate = self;
+    scrollView.backgroundColor = UIColor.grayColor; // 设置颜色
+    scrollView.contentOffset = CGPointZero; // 偏移量：内容和控件的距离/记录滚动的位置
+    scrollView.contentInset = UIEdgeInsetsMake(10, 10, 10, 10);  // 内边距：cell到边的距离/增加
+    scrollView.contentSize = CGSizeMake([[UIScreen mainScreen] bounds].size.width * 2, [[UIScreen mainScreen] bounds].size.height);  // 设置内容大小
+    scrollView.bounces = NO;  // 设置是否反弹
+    scrollView.pagingEnabled = NO; // 设置按页滚动
+    scrollView.indicatorStyle = UIScrollViewIndicatorStyleWhite; // 设置滚动条样式
+    scrollView.scrollIndicatorInsets = UIEdgeInsetsMake(0, 0, 0, 30); // 一般不需要设置
+    // 设置隐藏滚动条
+    scrollView.showsVerticalScrollIndicator = NO;
+    scrollView.showsHorizontalScrollIndicator = NO;
+    scrollView.scrollEnabled = true; // 设置是否可以滚动
+    scrollView.scrollsToTop = true;  // 是否滚动到顶部
+    scrollView.delegate = self;
+    //！！！以下一般不设置！！！//
+    /// 设置缩放功能：需要两步
+    // 1.设置缩放属性
+    scrollView.minimumZoomScale = 0.5; // 缩小的最小比例
+    scrollView.maximumZoomScale = 5;    // 放大的最大比例
+    // 减速率：一般数值越大、停下来的时间越长
+    scrollView.decelerationRate = 0;
+    // 按住手指还没有开始拖动是YES
+    // 是否正在被拖拽
+    // 是否正在减速
+    // 是否正在缩放
+    NSLog(@"%d, %d, %d, %d", scrollView.tracking, scrollView.dragging, scrollView.decelerating, scrollView.zooming);
     [self.view addSubview:scrollView];
+}
+// UIPageControl/分页控件
+-(void)setupPageControl {
+    // UIPasteboard
+    UIPageControl *pc = [[UIPageControl alloc]initWithFrame:CGRectMake(100, 100, 100, 50)];
+    pc.currentPage = 5;  // 当前页码
+    pc.numberOfPages = 10; // 总共页码
+    pc.hidesForSinglePage = YES; // 只有一页时是否隐藏视图
+    pc.pageIndicatorTintColor = UIColor.greenColor; // 控件颜色
+    pc.currentPageIndicatorTintColor = UIColor.orangeColor; // 当前选中颜色
+    [pc addTarget:self action:@selector(updatePageChanged:) forControlEvents:UIControlEventValueChanged];
+    pc.tag = 100;
+    [self.view addSubview:pc];
+}
+-(void)updatePageChanged:(UIPageControl *)pc {
+    NSLog(@"%ld", (long)pc.currentPage);
 }
 // UIStackView
 // keyBoard
@@ -334,6 +386,10 @@
     return true;
 }
 
+//#pragma mark - UIAlertViewDelegate
+//- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+//    // 点击第一个button
+//}
 
 #pragma mark - UIScrollViewDelegate
 /// 1&2&3 -通过这三个代理方法可以唯一确定上滑/下滑
@@ -347,6 +403,41 @@
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
     // 3.减速结束的时候执行
+}
+
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
+    // 将要拖动的时候执行
+}
+
+- (void)scrollViewWillBeginDecelerating:(UIScrollView *)scrollView {
+    // 将要减速的时候执行
+}
+
+- (BOOL)scrollViewShouldScrollToTop:(UIScrollView *)scrollView {
+    // 是否允许回到顶部：一般不用设置
+    return YES;
+}
+
+- (void)scrollViewDidScrollToTop:(UIScrollView *)scrollView {
+    // 已经回到顶部开始执行
+}
+
+//！！！以下处理缩放逻辑！！！//
+- (UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView {
+    // 2.设置对哪个视图缩放、返回缩放的视图对象
+    return scrollView.subviews.firstObject;
+}
+
+- (void)scrollViewWillBeginZooming:(UIScrollView *)scrollView withView:(UIView *)view {
+    // 将要开始缩放
+}
+
+- (void)scrollViewDidZoom:(UIScrollView *)scrollView {
+    // 已经开始缩放/正在缩放
+}
+
+- (void)scrollViewDidEndZooming:(UIScrollView *)scrollView withView:(UIView *)view atScale:(CGFloat)scale {
+    // 已经结束缩放
 }
 
 @end

@@ -103,7 +103,10 @@ short int m1;  // 2个字节
 long int m2;   // 8个字节
 long long m3; // xx个字节
 // 2.说明符号位：可以用于修改符号位
-signed int m4; // 正数/负数/零
+signed int m4; // 正数/负数/零、有符号整数、默认
+unsigned int m5; // 正数/零、无符号整数、不把二进制的最高位当作符号位
+// 不用类型的类型说明符可以混合使用
+unsigned long int m6;
 
 #include "SyGameProxy.h"
 

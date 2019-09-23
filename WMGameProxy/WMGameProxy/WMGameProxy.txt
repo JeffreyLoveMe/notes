@@ -489,6 +489,8 @@ NSString *name = xiaoMing.name; <==> NSString *name = [xiaoMing getName];
 
 //Gif
 
+//传值
+
 //UITableView
 一定要搞懂UITableViewDataSource/UITableViewDelegate的所有方法
 
@@ -506,6 +508,11 @@ NSString *name = xiaoMing.name; <==> NSString *name = [xiaoMing getName];
 //通信：
 1.程序之间通信：
 /**************************项目实战**************************/
+// 开发App
+1.模块分析：
+2.
+3.
+
 //数据的持久化
 
 //常见类库：需要分析源码
@@ -543,6 +550,14 @@ SAMKeychain-keyChain保存
 
 //真机调试
 1.bundle ID：一般是“反向域名+产品名称”cn.com.donew.easy/不支持中文
+2.
+3.
+4.
+
+// 上架AppStore
+1.
+2.
+3.
 /**************************swift基础**************************/
 /**************************实用技术(swift版本)**************************/
 /**************************补充部分**************************/
@@ -567,14 +582,14 @@ https://xclient.info
 
 // 开发工具的使用
 1.CocoaPods的使用：
-2.VSCode的使用：
+2.VSCode的使用：https://code.visualstudio.com/docs
 
 // Xcode编译原理
 1.GCC编译器：
 2.LLVM(Clang前端专门用来编译代码)：
 
 // 名词术语
-WWDC // 全球开发者大会
+WWDC - 全球开发者大会
 
 //知识点速查：
 WMGame.swift  // swift基础知识
@@ -592,3 +607,39 @@ MainController.h/m  // 事例代码
 DemoController.h/m // 作业
 WMGameProxy.pch // 预编译
 WMGameProxy-Bridging-Header.h // 桥接文件
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
