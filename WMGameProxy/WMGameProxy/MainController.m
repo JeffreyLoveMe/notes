@@ -8,13 +8,14 @@
 
 #import "MainController.h"
 #import <MessageUI/MessageUI.h>
+#import "SySkillController.h"
 
 /// 常见设置常量的办法
 // 1.宏定义
 // 2.static xxx
 // 3.枚举：OC语言的枚举 == 常量
 #define NAME @"谢吴军"
-@interface MainController () <MFMailComposeViewControllerDelegate>
+@interface MainController () <MFMailComposeViewControllerDelegate, SySkillControllerDelegate>
 
 @end
 
@@ -114,6 +115,18 @@
 -(void)addFont {
     UILabel *label = [[UILabel alloc]init];
     label.font = [UIFont fontWithName:@"Zapfino" size:15];
+}
+/// 3.遵循代理、实现方法
+-(void)followDelegate {
+    SySkillController *controller = [[SySkillController alloc]init];
+    controller.delegate = self;
+    controller.myBlock = ^(BOOL isBlue) {
+        // 执行代码
+    };
+}
+#pragma mark - SySkillControllerDelegate
+- (void)jumpPage:(NSString *)text {
+    
 }
 
 #pragma mark - Objective-C语言专用注释
