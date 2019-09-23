@@ -96,6 +96,15 @@ void Log(int m) {
 // 有参有返回值/有参无返回值/无参有返回值/无参无返回值
 // 形参&实参
 
+/// 类型说明符
+// 1.说明长度：可以用来修改类型所占用的存储空间大小
+int m0;   // 4个字节
+short int m1;  // 2个字节
+long int m2;   // 8个字节
+long long m3; // xx个字节
+// 2.说明符号位：可以用于修改符号位
+signed int m4; // 正数/负数/零
+
 #include "SyGameProxy.h"
 
 
