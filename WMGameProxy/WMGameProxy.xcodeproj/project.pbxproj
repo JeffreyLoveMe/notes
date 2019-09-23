@@ -55,6 +55,8 @@
 		33A8FD7A22D481B4004AECBA /* SyTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 33A8FD7922D481B4004AECBA /* SyTableViewController.m */; };
 		33A8FD7D22D48237004AECBA /* SyCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 33A8FD7C22D48237004AECBA /* SyCollectionViewController.m */; };
 		33BE31BF22E5890A0073E35B /* FoundationNSObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 33BE31BE22E5890A0073E35B /* FoundationNSObject.m */; };
+		33BFBBEF23387ECB00DA9C6D /* FlagZombie.gif in Resources */ = {isa = PBXBuildFile; fileRef = 33BFBBEE23387ECB00DA9C6D /* FlagZombie.gif */; };
+		33BFBBF723387F6900DA9C6D /* UIImage+animatedGIF.m in Sources */ = {isa = PBXBuildFile; fileRef = 33BFBBF623387F6900DA9C6D /* UIImage+animatedGIF.m */; };
 		33D730A42319229D0024D34E /* 退出键盘的两种方式.png in Resources */ = {isa = PBXBuildFile; fileRef = 33D730A32319229D0024D34E /* 退出键盘的两种方式.png */; };
 		33D730A6231925AC0024D34E /* UIView常见属性和方法.png in Resources */ = {isa = PBXBuildFile; fileRef = 33D730A5231925AC0024D34E /* UIView常见属性和方法.png */; };
 		33D730B3231B82270024D34E /* plist知识点.png in Resources */ = {isa = PBXBuildFile; fileRef = 33D730B2231B82270024D34E /* plist知识点.png */; };
@@ -147,6 +149,9 @@
 		33A9F0B722B4D4C5007985BF /* 怎么称为一名优秀leader.xmind */ = {isa = PBXFileReference; lastKnownFileType = file; path = "怎么称为一名优秀leader.xmind"; sourceTree = "<group>"; };
 		33BE31BD22E5890A0073E35B /* FoundationNSObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FoundationNSObject.h; sourceTree = "<group>"; };
 		33BE31BE22E5890A0073E35B /* FoundationNSObject.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FoundationNSObject.m; sourceTree = "<group>"; };
+		33BFBBEE23387ECB00DA9C6D /* FlagZombie.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = FlagZombie.gif; path = "../../../../💗复习/资源简易版/个人版/UI-3周/笔记/day38/gifDemo/FlagZombie/FlagZombie.gif"; sourceTree = "<group>"; };
+		33BFBBF523387F6900DA9C6D /* UIImage+animatedGIF.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+animatedGIF.h"; sourceTree = "<group>"; };
+		33BFBBF623387F6900DA9C6D /* UIImage+animatedGIF.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+animatedGIF.m"; sourceTree = "<group>"; };
 		33D730A32319229D0024D34E /* 退出键盘的两种方式.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "退出键盘的两种方式.png"; sourceTree = "<group>"; };
 		33D730A5231925AC0024D34E /* UIView常见属性和方法.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "UIView常见属性和方法.png"; sourceTree = "<group>"; };
 		33D730B2231B82270024D34E /* plist知识点.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "plist知识点.png"; sourceTree = "<group>"; };
@@ -217,10 +222,12 @@
 		33068EB522AE665000D044EE /* WMGameProxy */ = {
 			isa = PBXGroup;
 			children = (
+				33BFBBF023387F0E00DA9C6D /* libs */,
 				3361E419230A43EA00A03B7D /* DOVE.bundle */,
 				3361E4172309A37D00A03B7D /* image_demo.png */,
 				3361E40D2308F3DF00A03B7D /* 常见系统库00.png */,
 				3361E40C2308F3DF00A03B7D /* 常见系统库01.png */,
+				33BFBBEE23387ECB00DA9C6D /* FlagZombie.gif */,
 				33ED93C922F03E69006ABD28 /* Zapfino.ttf */,
 				33D730A5231925AC0024D34E /* UIView常见属性和方法.png */,
 				33A8FD7622D48125004AECBA /* 快捷键.png */,
@@ -302,6 +309,23 @@
 				33068EDC22AE665600D044EE /* Info.plist */,
 			);
 			path = WMGameProxyUITests;
+			sourceTree = "<group>";
+		};
+		33BFBBF023387F0E00DA9C6D /* libs */ = {
+			isa = PBXGroup;
+			children = (
+				33BFBBF423387F6900DA9C6D /* UIImage+animatedGIF */,
+			);
+			path = libs;
+			sourceTree = "<group>";
+		};
+		33BFBBF423387F6900DA9C6D /* UIImage+animatedGIF */ = {
+			isa = PBXGroup;
+			children = (
+				33BFBBF523387F6900DA9C6D /* UIImage+animatedGIF.h */,
+				33BFBBF623387F6900DA9C6D /* UIImage+animatedGIF.m */,
+			);
+			path = "UIImage+animatedGIF";
 			sourceTree = "<group>";
 		};
 		847644AA974755E1C4E1BA89 /* Pods */ = {
@@ -436,6 +460,7 @@
 			files = (
 				33068EC322AE665600D044EE /* LaunchScreen.storyboard in Resources */,
 				3361E41A230A43EA00A03B7D /* DOVE.bundle in Resources */,
+				33BFBBEF23387ECB00DA9C6D /* FlagZombie.gif in Resources */,
 				33068F0422AE67C800D044EE /* Safe Area.png in Resources */,
 				33068F1122AE67C800D044EE /* C:OC学习路线&重难点.png in Resources */,
 				33068EC022AE665600D044EE /* Assets.xcassets in Resources */,
@@ -575,6 +600,7 @@
 				339A3D8022BBBBC9007DD37D /* SyGameProxy.c in Sources */,
 				3324D54B22DED4BF0066241F /* WMWebViewController.m in Sources */,
 				33BE31BF22E5890A0073E35B /* FoundationNSObject.m in Sources */,
+				33BFBBF723387F6900DA9C6D /* UIImage+animatedGIF.m in Sources */,
 				33ED93E022F12E77006ABD28 /* ComponentController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
