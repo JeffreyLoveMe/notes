@@ -160,9 +160,9 @@
     label.shadowColor = UIColor.grayColor;// 设置阴影颜色
 }
 // UIButton
-// 有那些类可以"事件监听"
+// 有那些类可以"事件监听"？？？
 // 继承于UIControl都可以"事件监听"
-// UIButton/UITextField/UISlider/UISwitch...
+// UIButton/UIDatePicker/UIPageControl/UISegmentControl/UITextField/UISlider/UISwitch
 // ！！！需求：将常见UI控件分类（按照父类）！！！
 -(void)setupButton {
 //    // 尽量使用快速定义方法、如果没有快速定义方法、再考虑init
@@ -289,7 +289,6 @@
 // UISwitch/开关
 // UIStepper
 // UISegmentControl/选项卡
-
 ///// UIAlertView/中间弹窗
 //// 不需要添加到父试图/不需要设置坐标
 //-(void)setupAlertView {
@@ -298,7 +297,6 @@
 //    [alert show];
 //}
 // UIActionSheet/底部弹窗
-
 // UIProgressView
 // UIActivityIndicatorView/圈圈
 // UIWebView/WKWebView

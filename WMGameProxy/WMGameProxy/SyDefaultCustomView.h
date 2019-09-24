@@ -1,8 +1,8 @@
 //
-//  SyTableViewController.h
+//  SyDefaultCustomView.h
 //  WMGameProxy
 //
-//  Created by 谢吴军 on 2019/7/9.
+//  Created by 谢吴军 on 2019/9/24.
 //  Copyright © 2019 zali. All rights reserved.
 //
 
@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface SyTableViewController : UIViewController
+@interface SyDefaultCustomView : UIView
 
 @end
 

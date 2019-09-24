@@ -340,10 +340,6 @@ for(int i = 0;i < 2; i++) {
 int array[5]; // 定义一个长度为5的数组
 array[5] = {1, 8, 9, 10, 18, 25}; // 数组元素init：可以部分init/未init的元素为0
 int count = array[5]; // 数组访问越界/Segmentation fault
-2.冒泡排序
-3.选择排序
-4.堆排序
-5.二分查找
 //二维数组
 1.概念：元素是一维数组的数组称为二维数组
 int array[5][4]; // 定义
@@ -362,11 +358,11 @@ int p = 10;
 printf("int类型的p内存地址：%p", &p); // &p取出地址
 3.以"补码"形式存储/从高位->低位/一个字节存储8位
 
+//字符串
+
 //指针
 
 //值传递/指针传递
-
-//字符串
 
 //结构体
 /**************************Objective-C基础**************************/
@@ -380,8 +376,9 @@ printf("int类型的p内存地址：%p", &p); // &p取出地址
 
 //面向对象OOP
 1.概念：OOP是把问题里拥有相同属性的东西建立一个类
-2.特性：1)封装：将数据和基于数据的操作封装在一起，数据被保护在类的内部，系统的其它部分只有通过被授权的操作才可以访问数据；将不需要对外提供的内容隐藏起来：把属性隐藏起来，提供公共方法对外访问；
-2)继承：又称为派生
+2.特性：1)封装：将数据和基于数据的操作封装在一起，数据被保护在类的内部，系统的其它部分只有通过被授权的
+操作才可以访问数据；将不需要对外提供的内容隐藏起来：把属性隐藏起来，提供公共方法对外访问；
+2)继承：又称为派生；
 1.定义：父类的属性(成员变量：不包括私有)和方法，子类可以直接获取；
 2.派生：子类保持父类中的行为和属性，新增其它功能；
 3).多态：程序中可以有同名的不同方法共存，利用子类对父类方法的覆盖和重载在同一个类中定义多个同名的方法来实现；
@@ -443,7 +440,6 @@ printf("int类型的p内存地址：%p", &p); // &p取出地址
 -(void)song;
 @end
 
-
 //点语法和属性
 1.概念：属性可以在不使用[对象指针 方法名称]的情况下使用点语法
 2.注意：点语法只是访问setter/getter方法，不是使用成员变量
@@ -468,6 +464,14 @@ NSString *name = xiaoMing.name; <==> NSString *name = [xiaoMing getName];
 
 //异常处理
 @try...@catch...@finally
+
+// RunLoop
+
+// Runtime
+
+// KVC、KVO
+
+// 多线程
 /**************************UI基础**************************/
 //认识UI(User Interface)
 1.概述：用户通过UI与App进行交互/传入用户的请求/反馈运行的结果
@@ -503,10 +507,6 @@ NSString *name = xiaoMing.name; <==> NSString *name = [xiaoMing getName];
 1.autosizing：设置视图和父视图的尺寸关系/iOS6.x以前
 
 //Xib/Interface Builder：
-1.UIStackViewDemo
-
-//通信：
-1.程序之间通信：
 /**************************项目实战**************************/
 // 开发App
 1.模块分析：
@@ -514,6 +514,12 @@ NSString *name = xiaoMing.name; <==> NSString *name = [xiaoMing getName];
 3.
 
 //数据的持久化
+1.沙盒：
+2.
+3.
+
+//通信：
+1.程序之间通信：
 
 //常见类库：需要分析源码
 NSObject
@@ -563,6 +569,7 @@ SAMKeychain-keyChain保存
 /**************************补充部分**************************/
 //知识点：
 https://www.cnblogs.com/W-Kr/p/5248316.html //解析html
+http://modelend.com // 在线json转模型
 
 //工具网站：
 https://soft.macx.cn
@@ -592,11 +599,17 @@ https://xclient.info
 WWDC - 全球开发者大会
 
 //知识点速查：
+libs // 常见第三方库
+WMGameProxy.txt  // 常见知识点/初中级工程师
+SYGameProxy.txt  // 常见面试题/中高级工程师
+DNGameProxy.txt  // 项目管理/资深工程师
 WMGame.swift  // swift基础知识
+SyCustomView.swift // swift自定义控件
 WMController.swift // swiftUI知识
 AppDelegate.h/m   // 常见系统问题查询
 SyGameProxy.h/c   // C语言基础知识
 WMGameProxy.h/m   // OC基础知识
+SyDefaultCustomView.h/c // OC自定义控件
 FoundationNSObject.h/c // Foundation常见类
 ComponentController.h/m // UI组件库
 SyTableViewController.h/m  // UITableView详解
@@ -607,39 +620,3 @@ MainController.h/m  // 事例代码
 DemoController.h/m // 作业
 WMGameProxy.pch // 预编译
 WMGameProxy-Bridging-Header.h // 桥接文件
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
