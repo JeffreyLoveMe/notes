@@ -360,6 +360,14 @@
     NSLog(@"%ld", (long)pc.currentPage);
 }
 // UIStackView
+-(void)setupStackView {
+    
+}
+/// UIPopoverContrller
+// 继承于NSObject
+-(void)setupPopoverContrller {
+    
+}
 // keyBoard
 -(void)keyBoard {
     // 强行关闭键盘：设置为YES/NO都可以关闭键盘

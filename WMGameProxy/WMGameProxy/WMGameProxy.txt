@@ -342,11 +342,14 @@ array[5] = {1, 8, 9, 10, 18, 25}; // 数组元素init：可以部分init/未init
 int count = array[5]; // 数组访问越界/Segmentation fault
 //二维数组
 1.概念：元素是一维数组的数组称为二维数组
-int array[5][4]; // 定义
-array[5][4] = {
+int array[4][3]; // 定义
+// 4;二维数组中一维数组的个数/行数
+// 3;每个一维数组的元素个数/列数
+array[4][3] = {
     {1,4,6},
     {1,7,8},
-    {8,5,6}
+    {8,5,6},
+    {4,5,7}
 }; // init
 
 //函数：见SyGameProxy.h/c
@@ -359,6 +362,29 @@ printf("int类型的p内存地址：%p", &p); // &p取出地址
 3.以"补码"形式存储/从高位->低位/一个字节存储8位
 
 //字符串
+1.概念：由字符组成的串""/可以使用数组来保存字符串/%s
+2.“字符串”和“普通字符数组”的区别：字符串以“\0”结尾，字符串比字符数组多一个元素
+char str[] = "xwj";
+printf("---%s---", str);
+3.了解的方法：#include <ctype.h>
+int isalpha(int c); //判断单个字符是否是字母
+int isnumber(int c); //判断单个字符是否是表示数字
+int isupper(int c); //判断单个字符是否是大写字母
+int islower(int c); //判断单个字符是否是小写字母
+int toupper(int c); //将单个字符转换为大写字母
+int tolower(int c); //将单个字符转换为小写字母
+4.掌握的方法：#include<string.h>
+//sizeof(const char *s)占用字节大小
+size_t strlen(const char *s); //！！！返回字符串的有效字符个数：与sizeof()区别？！！！
+char *strcat(char *s1,const char *s2); //！！！将s2的内容拼接到s1后面形成新的字符串s1！！！
+//返回子串在s1中首次出现位置的第一个字符的地址
+char *strstr(const char *s1, const char *s2); //在字符串s1中，寻找子串s2首次出现的位置
+//s1必须有足够大的空间，如果数组越界，可能导致未知的错误
+char *strcpy(char *s1,const char *s2); //将字符串s2拷贝到字符数组s1，返回s1
+char *strchr(const char *s,char c); //查找字符串s中首次出现字符c的位置，不存在c,返回NULL
+//s1 > s2 -> 返回正数，s1 < s2 -> 返回负数，s1 == s2 -> 返回0
+int strcmp(const char* s1,const char* s2); //比较两个字符串的大小关系
+char *strrchr(char *str, char c); //在串中查找指定字符的最后一个出现，失败返回NULL
 
 //指针
 
@@ -400,11 +426,12 @@ printf("int类型的p内存地址：%p", &p); // &p取出地址
 1.定义：OC中称所有init开头的方法为构造方法/只能被调用一次；
 2.作用：初始化对象/初始化对象的成员变量；
 3.-(instancetype)init {
-    // 保留父类初始化操作
+    /// 保留父类初始化操作：调用父类方法
     // 如果调用对象方法：super就是指向父类对象的指针
     // 如果调用类方法：super就是指向父类的指针
     self = [super init];
-    // 重写构造方法
+    /// 重写构造方法
+    // 子类方法会覆盖父类方法
     if (self) {
         // 初始化对象的成员变量
         _name = "10";
@@ -559,17 +586,13 @@ SAMKeychain-keyChain保存
 2.
 3.
 4.
-
-// 上架AppStore
-1.
-2.
-3.
 /**************************swift基础**************************/
 /**************************实用技术(swift版本)**************************/
 /**************************补充部分**************************/
 //知识点：
-https://www.cnblogs.com/W-Kr/p/5248316.html //解析html
-http://modelend.com // 在线json转模型
+https://www.cnblogs.com/W-Kr/p/5248316.html  //解析html
+http://modelend.com  //在线json转模型
+https://mp.weixin.qq.com/s/ynkun7E1niuXfnnNBRap8Q  //iOS13
 
 //工具网站：
 https://soft.macx.cn
@@ -586,6 +609,11 @@ https://xclient.info
 1).你平时在工作中使用过抓包工具吗？一般是用来干嘛的？
 2).抓包的步骤是怎么样的？通过步骤你能猜测一下抓包的工作原理吗？
 3).抓包可以抓https吗？怎么才可以让https不被抓包工具抓取？
+
+// iOS13、ipadOS、MacOS
+1.
+2.
+3.
 
 // 开发工具的使用
 1.CocoaPods的使用：
