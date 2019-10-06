@@ -7,6 +7,7 @@
 //
 
 #import "ComponentController.h"
+#import "SySkillController.h"
 
 @interface ComponentController () <UITextFieldDelegate, UIAlertViewDelegate, UIScrollViewDelegate>
 
@@ -17,7 +18,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    
+    [self setupTextField];
 }
 
 #pragma mark - 基础属性
@@ -156,17 +157,19 @@
     // 指定换行模式
     label.lineBreakMode = NSLineBreakByWordWrapping;
     /// 阴影
+    // 必须设置偏移量
     label.shadowOffset = CGSizeMake(5, 5); // 阴影的偏移量
     label.shadowColor = UIColor.grayColor;// 设置阴影颜色
 }
 // UIButton
 // 有那些类可以"事件监听"
 // 继承于UIControl都可以"事件监听"
-// UIButton/UITextField/UISlider/UISwitch...
+// UIButton/UITextField/UISlider/UISwitch/
 // ！！！需求：将常见UI控件分类（按照父类）！！！
 -(void)setupButton {
 //    // 尽量使用快速定义方法、如果没有快速定义方法、再考虑init
 //    UIButton *btn = [[UIButton alloc]init];
+    /// 工厂方法
     UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
     btn.frame = CGRectMake(100, 100, 100, 50);
     [self.view addSubview:btn];
@@ -182,9 +185,9 @@
     [btn setTitle:@"高亮" forState:UIControlStateHighlighted];
     [btn setTitle:@"选择" forState:UIControlStateSelected];
     [btn setTitle:@"禁用" forState:UIControlStateDisabled];
-    btn.selected = false; // 选择状态
+    btn.selected = YES; // 选择状态
     [btn setTitleColor:UIColor.greenColor forState:UIControlStateNormal];
-    btn.enabled = true; // 非禁用状态
+    btn.enabled = NO; // 非禁用状态
     /// 背景颜色
     // 仅仅自定义类型有效
     btn.backgroundColor = UIColor.grayColor;
@@ -196,10 +199,34 @@
     /// 设置背景图像
     // 根据按钮的尺寸拉伸
     [btn setBackgroundImage:[UIImage imageNamed:@""] forState:UIControlStateNormal];
-    // 点击事件：记下来就好
+    /// 点击事件：记下来就好
     // 最多只能携带一个参数
     // TouchUpInside
+    /*
+     // 基于触摸
+     UIControlEventTouchDown // 用户按下时触发
+     UIControlEventTouchDownRepeat // 点击次数大于1时触发
+     UIControlEventTouchDragInside // 当触摸在控件内拖动时触发
+     UIControlEventTouchDragOutside // 当触摸在控件外拖动时触发
+     UIControlEventTouchDragEnter // 当触摸在控件外拖动到控件内时触发
+     UIControlEventTouchDragExit // 当触摸在控件内拖动到控件外时触发
+     UIControlEventTouchUpInside // 控件内部触摸抬起时(☑️)
+     UIControlEventTouchUpOutside // 控件外部触摸抬起时
+     UIControlEventTouchCancel // 触摸取消事件：设置上锁、电话呼叫中断等
+     // 基于值
+     UIControlEventValueChanged // 当控件的值发生改变：一般用于滑块和分段视图(☑️)
+     // 基于编辑
+     UIControlEventEditingDidBegin // 文本控件开始编辑时
+     UIControlEventEditingChanged  // 文本控件中文本发生改变时
+     UIControlEventEditingDidEnd // 文本控件中编辑结束时
+     UIControlEventEditingDidEndOnExit // 文本控件内通过按下回车键结束编辑时
+     UIControlEventAllTouchEvents // 所有触摸事件
+     UIControlEventAllEditingEvents //文本编辑的所有事件
+     UIControlEventAllEvents // 所有事件
+     */
     [btn addTarget:self action:@selector(btnAction:) forControlEvents:UIControlEventTouchUpInside];
+    // 移除某个事件
+    [btn removeTarget:self action:@selector(btnAction:) forControlEvents:UIControlEventTouchUpInside];
 }
 -(void)btnAction:(UIButton *)btn {
     NSLog(@"button被点击");
@@ -276,20 +303,39 @@
     // 设置键盘外观
     tf.keyboardAppearance = UIKeyboardAppearanceDark;
     // 设置键盘类型
+    tf.keyboardType = UIKeyboardTypeNumberPad;
     tf.returnKeyType = UIReturnKeyDone;
     // 设置密文显示
     tf.secureTextEntry = true;
+    // 自动大写类型
+    tf.autocapitalizationType = UITextAutocapitalizationTypeNone;
     // 设置代理
     tf.delegate = self;
     // 变成第一响应者
     [tf becomeFirstResponder];
+    /// 自定义清除按钮
+    UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 20, 20)];
+    view.backgroundColor = UIColor.yellowColor;
+    tf.rightView = view;
+    tf.rightViewMode = UITextFieldViewModeWhileEditing;
+    /// 自定义键盘
+    // 一般银行App使用较多
+    UIView *csView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width, 20)];
+    csView.backgroundColor = UIColor.redColor;
+    tf.inputView = csView;
+    // 自定义键盘Bar
+    UIView *barView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width, 44)];
+    barView.backgroundColor = UIColor.blueColor;
+    tf.inputAccessoryView = barView;
 }
 // UITextView
 // UISlider/滑块
 // UISwitch/开关
 // UIStepper
 // UISegmentControl/选项卡
-
+-(void)setupSegmentControl {
+    
+}
 ///// UIAlertView/中间弹窗
 //// 不需要添加到父试图/不需要设置坐标
 //-(void)setupAlertView {
@@ -298,7 +344,9 @@
 //    [alert show];
 //}
 // UIActionSheet/底部弹窗
-
+-(void)setupActionSheet {
+    
+}
 // UIProgressView
 // UIActivityIndicatorView/圈圈
 // UIWebView/WKWebView
@@ -375,16 +423,58 @@
     self.view.backgroundColor = UIColor.grayColor;
     /// 跳转
     // 模态跳转
+    SySkillController *conroller = [[SySkillController alloc]init];
+    conroller.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+    [self presentViewController:conroller animated:YES completion:^{
+        NSLog(@"模态跳转");
+    }];
+    // push
+}
+/// UIGestureRecognizer
+// 事件传递流程：当前视图->视图控制器->窗口->UIApplication对象->不处理
+-(void)setupGestureRecognizer {
+    
 }
 
 
 #pragma mark - UITextFieldDelegate
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
+    /// 能否能够开始编辑
+    // YES代表可以成为第一响应者
+    return YES;
+}
+
+- (void)textFieldDidBeginEditing:(UITextField *)textField {
+    // 开始编辑
+}
+
+- (BOOL)textFieldShouldEndEditing:(UITextField *)textField {
+    /// 是否能够结束编辑
+    // NO代表可以失去第一响应者
+    return NO;
+}
+
+- (void)textFieldDidEndEditing:(UITextField *)textField {
+    // 结束编辑
+}
+
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
     /// 点击return的时候调用该方法
     // 放弃第一响应者
     [textField resignFirstResponder];
     return true;
 }
+
+- (BOOL)textFieldShouldClear:(UITextField *)textField {
+    return YES;
+}
+
+/// ！！！重点！！！
+// xxx
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
+    return YES;
+}
+
 
 //#pragma mark - UIAlertViewDelegate
 //- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
