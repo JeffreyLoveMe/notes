@@ -11,6 +11,9 @@
 
 @interface WMWebViewController () <UIWebViewDelegate, UIScrollViewDelegate, WKUIDelegate, WKNavigationDelegate>
 
+/// UIWebView/WKWebView
+// 一般WebView
+// 与js交互的WebView
 // 在iOS开发过程中、经常会用到一些h5交互
 // 继承UIView
 // 加载网页数据的框架
@@ -39,7 +42,6 @@
     NSURL *remoteUrl = [NSURL URLWithString:@"http://www.baidu.com"];
     // 3.创建NSURLRequest
     NSURLRequest *request = [NSURLRequest requestWithURL:remoteUrl];
-    [self.webView loadRequest:request];
     // 4.加载url
     [self.webView loadRequest:request];
     // 5.添加到父视图

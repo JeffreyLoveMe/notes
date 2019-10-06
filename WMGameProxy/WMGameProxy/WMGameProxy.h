@@ -19,12 +19,15 @@ NS_ASSUME_NONNULL_BEGIN
     // 实例变量
     // 在OC中：定义属性不能直接赋值、swift可以
     // ！！！定义成员变量：变量必须使用下划线！！！
+    // Objective-C语言没有真正意义的私有方法、只是一个约定而已、也是可以调用
+    // 引用私用api（苹果官方私有方法）不能上架AppStore
     @private  // 私有成员：只能被本类访问、不能被子类访问、不能被外部访问
     NSString *_name;
     @protected  // 受保护的属性：默认属性、可以被本类访问、也能为子类访问、不能被外部访问
     NSString *_age;
     @public   // 公共成员：能被本类访问、能为子类访问、能被外部访问
     NSString *_height;
+    @package  // 只能在当前框架中才能被访问
 }
 
 // 如果类中成员方法太多：setter/getter方法非常臃肿
@@ -44,9 +47,9 @@ NS_ASSUME_NONNULL_BEGIN
 // 给getter方法取别名
 @property (getter = myWeight) NSInteger weight;
 // 给setter方法取别名
-@property (setter=myHeight:) NSInteger mheight;
+@property (setter = myHeight:) NSInteger mheight;
 // 多个属性使用","隔开
-@property (setter=setUserName:, getter=getUserNmae, strong, nonatomic) NSString *mName;
+@property (setter = setUserName:, getter = getUserNmae, strong, nonatomic) NSString *mName;
 
 /// 定义方法/行为
 // 冒号也是方法名的一部分

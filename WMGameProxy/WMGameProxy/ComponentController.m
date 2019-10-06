@@ -8,7 +8,7 @@
 
 #import "ComponentController.h"
 
-@interface ComponentController () <UITextFieldDelegate, UIAlertViewDelegate, UIScrollViewDelegate>
+@interface ComponentController () <UITextFieldDelegate, UIAlertViewDelegate, UIActionSheetDelegate, UIScrollViewDelegate>
 
 @end
 
@@ -21,7 +21,7 @@
 }
 
 #pragma mark - 基础属性
-// 定时器
+/// 定时器
 -(void)createTimer {
     NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(onTimer) userInfo:nil repeats:true];
     [timer invalidate];
@@ -32,6 +32,7 @@
 }
 /// UIView
 // UIView是所有视图的父类/UIView的属性是子视图共有的
+// 0.以父视图左上角为原点
 // 1.UIView的基本属性
 // 2.父视图/子视图之间的转化
 // 3.形变属性
@@ -39,12 +40,19 @@
 // 5.停靠模式
 -(void)setupView {
     UIView *view = [[UIView alloc]init];
+    /// 坐标系
+    // 结构体
+//    CGPoint point = CGPointMake(100, 100);
+//    CGSize size = CGSizeMake(100, 100);
+//    CGRect rect = CGRectMake(100, 100, 100, 100);
     /// 设置是否能接受事件/UIView默认是true
     // 如果父视图不能接受事件、则子视图不能接受事件
     // 子视图超出父视图部分不能接受事件
     // 如果覆盖上面的视图可以接受事件、则下面视图不会再收到事件
     // UILabel/UIImageView默认是false
     view.userInteractionEnabled = true;
+    // 是否开启多点触摸
+    view.multipleTouchEnabled = true;
     // 可以控制位置&尺寸
     // 以父控件的左上角为原点
     view.frame = CGRectMake(100, 100, 100, 50);
@@ -53,13 +61,18 @@
     view.bounds = CGRectMake(0, 0, 100, 50);
     // 可以控制位置
     // 控件的中心点：以父控件左上角为坐标原点
+    // 默认情况下：子视图的边框不会被父视图的边框裁剪
     view.center = CGPointMake(100, 40);
     // 获取父视图对象：一个视图最多只有一个父视图
     // 一旦一个视图被添加到一个父视图上就会从上一个父视图移除
     UIView *superView = [view superview];
     NSLog(@"%@", NSStringFromCGRect(superView.bounds));
-    // 背景颜色
-    view.backgroundColor = UIColor.redColor;
+    /// 背景颜色
+    // 这个已经封装
+    view.backgroundColor = [UIColor colorWithRed:0.1 green:0.1 blue:0.1 alpha:1];
+    /// 0-透明、1-不透明
+    // 如果设置为0则不响应事件：所以一般不设置View透明度、而设置View背景透明度
+    view.alpha = 0;
     // 获取子控件对象：一个视图可以有多个子视图
     NSArray *subViews = [view subviews];
     // 如果父视图隐藏，子视图也会隐藏
@@ -132,7 +145,7 @@
         }
     }];
 }
-// UILabel
+/// UILabel
 -(void)setupLabel {
     UILabel *label = [[UILabel alloc]init];
     label.frame = CGRectMake(100, 100, 100, 50);
@@ -159,7 +172,7 @@
     label.shadowOffset = CGSizeMake(5, 5); // 阴影的偏移量
     label.shadowColor = UIColor.grayColor;// 设置阴影颜色
 }
-// UIButton
+/// UIButton
 // 有那些类可以"事件监听"？？？
 // 继承于UIControl都可以"事件监听"
 // UIButton/UIDatePicker/UIPageControl/UISegmentControl/UITextField/UISlider/UISwitch
@@ -183,12 +196,12 @@
     [btn setTitle:@"选择" forState:UIControlStateSelected];
     [btn setTitle:@"禁用" forState:UIControlStateDisabled];
     btn.selected = false; // 选择状态
-    [btn setTitleColor:UIColor.greenColor forState:UIControlStateNormal];
+    [btn setTitleColor:UIColor.greenColor forState:UIControlStateNormal]; // 文字颜色
     btn.enabled = true; // 非禁用状态
     /// 背景颜色
     // 仅仅自定义类型有效
     btn.backgroundColor = UIColor.grayColor;
-    /// 设置button图像
+    /// 设置button图像：内容图像
     // 居中显示在button中央位置
     // 如果按钮足够大、同时设置文字和图片、文字/图片会并列显示
     // 如果按钮不够大、优先显示图像
@@ -196,6 +209,10 @@
     /// 设置背景图像
     // 根据按钮的尺寸拉伸
     [btn setBackgroundImage:[UIImage imageNamed:@""] forState:UIControlStateNormal];
+    // 内边距
+    btn.contentEdgeInsets = UIEdgeInsetsMake(-20, 0, 0, 0); // 内容
+    btn.imageEdgeInsets = UIEdgeInsetsMake(-20, 0, 0, 0); // 图片
+    btn.titleEdgeInsets = UIEdgeInsetsMake(-20, 0, 0, 0); // title
     // 点击事件：记下来就好
     // 最多只能携带一个参数
     // TouchUpInside
@@ -204,7 +221,7 @@
 -(void)btnAction:(UIButton *)btn {
     NSLog(@"button被点击");
 }
-// UIImageView -控件
+/// UIImageView -控件
 // UIImage -二进制的图像数据
 -(void)setupImageView {
     /// 创建图片对象
@@ -250,7 +267,7 @@
 //    // 停止动画
 //    [imageView stopAnimating];
 }
-// UITextField/文本框控件
+/// UITextField/文本框控件
 -(void)setupTextField {
     UITextField *tf = [[UITextField alloc]init];
     tf.frame = CGRectMake(100, 100, 100, 50);
@@ -284,11 +301,59 @@
     // 变成第一响应者
     [tf becomeFirstResponder];
 }
-// UITextView
-// UISlider/滑块
-// UISwitch/开关
-// UIStepper
-// UISegmentControl/选项卡
+/// UITextView
+-(void)setupTextView {
+    
+}
+/// UISlider/滑块
+-(void)setupSlider {
+    UISlider *slider = [[UISlider alloc]init];
+    slider.frame = CGRectMake(100, 100, 100, 50);
+    slider.maximumValue = 100; // 设置最大值
+    slider.minimumValue = 0;   // 设置最小值
+    slider.value = 20;  // 设置当前值
+    // 设置颜色
+    slider.maximumTrackTintColor = UIColor.purpleColor;
+    slider.minimumTrackTintColor = UIColor.blueColor;
+    slider.thumbTintColor = UIColor.greenColor;
+    // 设置图片
+    slider.maximumValueImage = [UIImage imageNamed:@""]; // 右边（最大）图片
+    slider.minimumValueImage = [UIImage imageNamed:@""]; // 左边（最小）图片
+    [slider setThumbImage:[UIImage imageNamed:@""] forState:UIControlStateHighlighted];
+    slider.continuous = NO; // 不接受连续点击
+    // 滑块拖动时的事件
+    [slider addTarget:self action:@selector(onSliderChanged:) forControlEvents:UIControlEventValueChanged];
+    // 滑块拖动后的事件
+    // 一般都选择UIControlEventTouchUpInside
+    [slider addTarget:self action:@selector(onSliderUp:) forControlEvents:UIControlEventTouchUpInside];
+}
+-(void)onSliderChanged:(UISlider *)slider {
+    NSLog(@"滑块拖动时的事件");
+}
+-(void)onSliderUp:(UISlider *)slider {
+    NSLog(@"滑块拖动后的事件");
+}
+/// UISwitch/开关
+-(void)setupSwitch {
+    UISwitch *sw = [[UISwitch alloc]init];
+    sw.frame = CGRectMake(100, 100, 100, 50);
+    sw.on = true; // 是否打开
+    sw.onTintColor = UIColor.orangeColor;
+    sw.tintColor = UIColor.greenColor;
+    sw.thumbTintColor = UIColor.purpleColor;
+    [sw addTarget:self action:@selector(onSwitchChange:) forControlEvents:UIControlEventTouchUpInside];
+}
+-(void)onSwitchChange:(UISwitch *)sw {
+    NSLog(@"打开开关");
+}
+/// UIStepper/步数器
+-(void)setupStepper {
+    
+}
+/// UISegmentControl/多段选择视图
+-(void)setupSegmentControl {
+    
+}
 ///// UIAlertView/中间弹窗
 //// 不需要添加到父试图/不需要设置坐标
 //-(void)setupAlertView {
@@ -296,18 +361,40 @@
 //    alert.alertViewStyle = UIAlertViewStyleLoginAndPasswordInput;
 //    [alert show];
 //}
-// UIActionSheet/底部弹窗
-// UIProgressView
-// UIActivityIndicatorView/圈圈
-// UIWebView/WKWebView
-// UIMenuController
-// UIRefreshControl
-// UIAlertController
-// UIImagePickerController
-// UIPickView/选择器
-// UIDatePicker/时间选择器
-// UIToolBar/工具条
-// UINavigationBar/导航条
+///// UIActionSheet/底部弹窗
+//-(void)setupActionSheet {
+//    UIActionSheet *alert = [[UIActionSheet alloc]initWithTitle:@"你确定需要删除吗？" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:@"删除" otherButtonTitles:@"确定", nil];
+//    [alert showInView:self.view];
+//}
+/// UIProgressView/进度条
+-(void)setupProgressView {
+    UIProgressView *progressView = [[UIProgressView alloc]initWithProgressViewStyle:UIProgressViewStyleDefault];
+    progressView.frame = CGRectMake(100, 100, 100, 50);
+    [self.view addSubview:progressView];
+    // 当前进度
+    progressView.progress = 0.5;
+    progressView.tag = 0;
+    progressView.progressTintColor = UIColor.orangeColor;
+}
+/// UIActivityIndicatorView/活动指示器
+-(void)setupActivityIndicatorView {
+    UIActivityIndicatorView *view = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    view.frame = CGRectMake(100, 100, 100, 50);
+    [self.view addSubview:view];
+    view.hidesWhenStopped = YES;
+    // 开始动画
+    [view startAnimating];
+//    // 结束动画
+//    [view stopAnimating];
+}
+/// UIMenuController
+/// UIRefreshControl
+/// UIAlertController
+/// UIImagePickerController
+/// UIPickView/选择器
+/// UIDatePicker/时间选择器
+/// UIToolBar/工具条
+/// UINavigationBar/导航条
 /// UIScrollView/滚动视图
 // 用于显示超出App程序窗口大小的内容
 // 允许用户通过拖动手势滚动查看内容
@@ -331,7 +418,7 @@
     scrollView.delegate = self;
     //！！！以下一般不设置！！！//
     /// 设置缩放功能：需要两步
-    // 1.设置缩放属性
+    // 1.设置pinch缩放属性
     scrollView.minimumZoomScale = 0.5; // 缩小的最小比例
     scrollView.maximumZoomScale = 5;    // 放大的最大比例
     // 减速率：一般数值越大、停下来的时间越长
@@ -343,7 +430,7 @@
     NSLog(@"%d, %d, %d, %d", scrollView.tracking, scrollView.dragging, scrollView.decelerating, scrollView.zooming);
     [self.view addSubview:scrollView];
 }
-// UIPageControl/分页控件
+/// UIPageControl/分页控件
 -(void)setupPageControl {
     // UIPasteboard
     UIPageControl *pc = [[UIPageControl alloc]initWithFrame:CGRectMake(100, 100, 100, 50)];
@@ -359,7 +446,7 @@
 -(void)updatePageChanged:(UIPageControl *)pc {
     NSLog(@"%ld", (long)pc.currentPage);
 }
-// UIStackView
+/// UIStackView
 -(void)setupStackView {
     
 }
@@ -368,19 +455,37 @@
 -(void)setupPopoverContrller {
     
 }
-// keyBoard
+/// keyBoard
 -(void)keyBoard {
     // 强行关闭键盘：设置为YES/NO都可以关闭键盘
     // 但是发生界面死锁NO可能不会关闭、永远设置为NO
     // 只要调用：就可以强制退出键盘
     [self.view endEditing:YES];
 }
-// UIViewControllView
+/// UIViewControllView
+// UITabBarController
+// UINavigationController
+// ？？？先执行init()方法、还是先执行loadView()？？？
 -(void)setupController {
     // 颜色
     self.view.backgroundColor = UIColor.grayColor;
     /// 跳转
     // 模态跳转
+    
+}
+/// 停靠模式
+// 主要处理父子视图
+-(void)setupAutoresize {
+    // 创建父视图
+    UIView *superView = [[UIView alloc] init];
+    superView.frame = CGRectMake(100, 100, 100, 50);
+    [self.view addSubview:superView];
+    // 创建子视图
+    UIView *subView = [[UIView alloc] init];
+    subView.frame = CGRectMake(0, 0, 50, 25);
+    [superView addSubview:subView];
+    // 设置停靠模式
+    subView.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin;
 }
 
 
@@ -394,7 +499,16 @@
 
 //#pragma mark - UIAlertViewDelegate
 //- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
-//    // 点击第一个button
+//    // 点击第几个button
+//}
+
+//#pragma mark - UIActionSheetDelegate
+//- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+//    // 点击第几个button
+//}
+//
+//- (void)actionSheetCancel:(UIActionSheet *)actionSheet {
+//    // 有系统事件（来电）时调用
 //}
 
 #pragma mark - UIScrollViewDelegate
