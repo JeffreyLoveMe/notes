@@ -32,7 +32,7 @@
     unichar c1 = [str4 characterAtIndex:1];
     NSLog(@"%c", c1);
     // unicode万国码：使用更大的存储空间存储各国字符
-    // mac默认编码格式：UTF-8
+    // mac默认编码格式：UTF-8/unicode的分支
     /// 字符串判断
     // 1.判断字符串内容是否相同
     if ([str0 isEqualToString:str1]) {

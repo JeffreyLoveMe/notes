@@ -37,6 +37,9 @@
 		33068F1422AE67DB00D044EE /* WMGameProxy.txt in Resources */ = {isa = PBXBuildFile; fileRef = 33068F1322AE67DB00D044EE /* WMGameProxy.txt */; };
 		33068F1622B0955200D044EE /* 下拉加载范例.png in Resources */ = {isa = PBXBuildFile; fileRef = 33068F1522B0955200D044EE /* 下拉加载范例.png */; };
 		330C15C922F801F700CD84CA /* SySkillController.m in Sources */ = {isa = PBXBuildFile; fileRef = 330C15C822F801F700CD84CA /* SySkillController.m */; };
+		331283182339B6DD005D55E2 /* SyDefaultCustomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 331283172339B6DD005D55E2 /* SyDefaultCustomView.m */; };
+		3312831A2339B6FC005D55E2 /* SyCustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 331283192339B6FC005D55E2 /* SyCustomView.swift */; };
+		3312831C2339D2E3005D55E2 /* DNGameProxy.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3312831B2339D2E3005D55E2 /* DNGameProxy.txt */; };
 		3324D54B22DED4BF0066241F /* WMWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3324D54A22DED4BF0066241F /* WMWebViewController.m */; };
 		3340B2E722C0D9AC00111228 /* 代码标准h文件.png in Resources */ = {isa = PBXBuildFile; fileRef = 3340B2E522C0D9AB00111228 /* 代码标准h文件.png */; };
 		3340B2E822C0D9AC00111228 /* 代码标准m文件.png in Resources */ = {isa = PBXBuildFile; fileRef = 3340B2E622C0D9AC00111228 /* 代码标准m文件.png */; };
@@ -124,6 +127,10 @@
 		33068F1522B0955200D044EE /* 下拉加载范例.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "下拉加载范例.png"; sourceTree = "<group>"; };
 		330C15C722F801F700CD84CA /* SySkillController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SySkillController.h; sourceTree = "<group>"; };
 		330C15C822F801F700CD84CA /* SySkillController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SySkillController.m; sourceTree = "<group>"; };
+		331283162339B6DD005D55E2 /* SyDefaultCustomView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SyDefaultCustomView.h; sourceTree = "<group>"; };
+		331283172339B6DD005D55E2 /* SyDefaultCustomView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SyDefaultCustomView.m; sourceTree = "<group>"; };
+		331283192339B6FC005D55E2 /* SyCustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyCustomView.swift; sourceTree = "<group>"; };
+		3312831B2339D2E3005D55E2 /* DNGameProxy.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = DNGameProxy.txt; sourceTree = "<group>"; };
 		3324D54922DED4BF0066241F /* WMWebViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WMWebViewController.h; sourceTree = "<group>"; };
 		3324D54A22DED4BF0066241F /* WMWebViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WMWebViewController.m; sourceTree = "<group>"; };
 		3340B2E522C0D9AB00111228 /* 代码标准h文件.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "代码标准h文件.png"; sourceTree = "<group>"; };
@@ -258,7 +265,9 @@
 				33068EFD22AE67C700D044EE /* UIKit.png */,
 				33068F1322AE67DB00D044EE /* WMGameProxy.txt */,
 				3372CD532325F92400E7307B /* SYGameProxy.txt */,
+				3312831B2339D2E3005D55E2 /* DNGameProxy.txt */,
 				33068EF122AE670200D044EE /* WMGame.swift */,
+				331283192339B6FC005D55E2 /* SyCustomView.swift */,
 				33068EEF22AE66EC00D044EE /* WMController.swift */,
 				33068EB622AE665000D044EE /* AppDelegate.h */,
 				33068EB722AE665000D044EE /* AppDelegate.m */,
@@ -266,6 +275,8 @@
 				339A3D7F22BBBBC9007DD37D /* SyGameProxy.c */,
 				33068EEB22AE66CB00D044EE /* WMGameProxy.h */,
 				33068EEC22AE66CB00D044EE /* WMGameProxy.m */,
+				331283162339B6DD005D55E2 /* SyDefaultCustomView.h */,
+				331283172339B6DD005D55E2 /* SyDefaultCustomView.m */,
 				33BE31BD22E5890A0073E35B /* FoundationNSObject.h */,
 				33BE31BE22E5890A0073E35B /* FoundationNSObject.m */,
 				33ED93DE22F12E77006ABD28 /* ComponentController.h */,
@@ -486,6 +497,7 @@
 				3361E40F2308F3DF00A03B7D /* 常见系统库00.png in Resources */,
 				339A3D7D22BBB3F4007DD37D /* 下拉刷新_上拉加载_标准版.png in Resources */,
 				33068F0A22AE67C800D044EE /* UICollectionView.png in Resources */,
+				3312831C2339D2E3005D55E2 /* DNGameProxy.txt in Resources */,
 				33068F1222AE67C800D044EE /* iphone设备尺寸.png in Resources */,
 				33068F0E22AE67C800D044EE /* C语言的执行流程.png in Resources */,
 				33068F1422AE67DB00D044EE /* WMGameProxy.txt in Resources */,
@@ -592,8 +604,10 @@
 				3372CD5B2328AC9A00E7307B /* DemoController.m in Sources */,
 				33068EC622AE665600D044EE /* main.m in Sources */,
 				330C15C922F801F700CD84CA /* SySkillController.m in Sources */,
+				3312831A2339B6FC005D55E2 /* SyCustomView.swift in Sources */,
 				33068EF222AE670200D044EE /* WMGame.swift in Sources */,
 				33A8FD7D22D48237004AECBA /* SyCollectionViewController.m in Sources */,
+				331283182339B6DD005D55E2 /* SyDefaultCustomView.m in Sources */,
 				33068EEA22AE66A800D044EE /* MainController.m in Sources */,
 				33A8FD7A22D481B4004AECBA /* SyTableViewController.m in Sources */,
 				33068EB822AE665000D044EE /* AppDelegate.m in Sources */,

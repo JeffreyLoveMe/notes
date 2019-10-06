@@ -10,7 +10,11 @@
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
-/// 一个App有且仅有一个UIWindow
+/// 每个App至少一个UIWindow：一般只创建一个
+// 包含App中的可视化内容
+// keyWindow：用来管理键盘以及非触摸类的消息、只能有一个
+// UIWindow *keyWindow = [UIApplication sharedApplication].keyWindow;
+// UIWindow有3个级别：UIWindowLevelAlert > UIWindowLevelStatusBar > UIWindowLevelNormal
 @property (strong, nonatomic) UIWindow *window;
 
 

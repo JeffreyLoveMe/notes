@@ -18,8 +18,9 @@
 1.概述：
 1).iOS是一款由苹果公司开发的操作系统(OS)
 2).什么是iOS开发：开发iphone/iPad手机软件开发
-3).主流操作系统：iOS、Android、黑莓
+3).主流操作系统：iOS、Android、黑莓、WP、Symbian
 4).什么是操作系统：直接运行在硬件上的最基本的系统软件，其他软件必须依赖操作系统才能运行
+5).iOS(基于UNIX、不开源、AppStore)/Android(基于Linux的虚拟机、开源、GooglePlay)
 2.准备：
 1).编程语言：swift > Objective-C > C语言 > C++
 2).开发工具：Xcode
@@ -53,21 +54,27 @@ shift+command+N/M //创建工程/模拟内存警告
 command+D //保存网址
 command+I //排版
 command+\ //设置断点
+command+press //查看方法名
+command+option+左/右 // 折叠/展开代码
+option+press // 查看文档
 F11 //进入桌面
 
 //常用终端命令
-cd 目录 //切换到指定目录
-cd ../ //返回上一级目录
-cd /  //切换到root目录
+cd+目录 //切换到指定目录
+cd+../ //返回上一级目录
+cd+/  //切换到root目录
 ls  //查询当前目录下子目录活文件
 pwd //查看当前路径
-clear //清屏
+clear+l //清屏
 mkdir+文件夹名称 // 新建文件夹
 rmdir+文件夹名称 // 删除文件夹
 open+文件名称 // 打开文件
+touch+xxx.txt // 在当前文件夹下新建文件
+cat+文件名 //查看文件
+
 
 //vi编译器的使用：用来编写c语言程序
-vi test.c //打开|新建test.c文件
+vi test.c //打开/新建test.c文件
 i //命令模式->编辑模式
 #include <stdio.h> //编写一段c语言代码
 int main() {
@@ -126,7 +133,7 @@ printf("%x", num);
 6.函数：已掌握
 7.指针：一级指针、多级指针、指针和数组/函数/结构体之间的关系XXX
 8.内存管理：内存泄漏、野指针XXX
-9.预处理指令：宏、条件编译XXX
+9.预处理指令：宏、条件编译
 10.多文件开发：已掌握
 11.字符串/枚举/指针：XXX
 
@@ -153,12 +160,16 @@ int main() {
 //标识符
 1.概念：程序员自己在项目中起的名字/不能与关键字同名
 2.命名规则：由字母、数字、下划线组成/严格区分大小写、不能以数字开头/必须遵守
-3.命名规范：1.有意义的名字/2.驼峰命名(除首单词以外其他单词首字母大写)sendMessage/不是必须遵守
+3.命名规范：1.有意义的名字/2.驼峰命名（除首单词以外其他单词首字母大写）sendMessage/不是必须遵守
+4.常见命名：1).包：域名倒过来（全部小写）cn.com.itcast.javabean
+2).类/接口：首字母大写
+3).方法：驼峰法sendMessage
+4).常量：所有字母大写GET_MAX
 
-//注释：不会参与编译(不会被翻译成0和1)/可以用来找代码段
+//注释：不会参与编译(不会被翻译成0和1)/可以用来查看代码段
 1.单行注释：// 单行注释
 2.多行注释：/*多行注释*/
-3.文档注释：/**文档注释*/
+3.文档注释：/**文档注释 @brief*/
 ps.对于很难的逻辑：可以先写注释、再写代码
 
 //数据类型：
@@ -238,7 +249,7 @@ result = -10 % 3; //result = -1/result正负性取决于左边的操作数
 int num = 10.8; //int占4个字节/double占8个字节
 printf("number = %i\n", num); //number = 10
 2).强制类型转换(显式转化)：原表达式的值不变、强转以后结果改变
-int num = (int)10.8;
+int num = (int)10.8; // 有可能丢失精度
 3).自动类型提升：系统会将"小类型"->"大类型"/不会损失精度
 int result = 10+9.9; //只有相同类型的数据才可以运算：必须"自动类型提升"
 注意：参与运算的操作数类型和结果的类型必须一致；
@@ -258,7 +269,7 @@ int size = sizeof(float); //()不能省略
 if let count = array.count, let size = count + 1 {
     //整个 , 表达式的结果等于最后一个表达式的值
 }
-6.关系运算符：>|<|>=|<=|==|!= // C语言规定：非0即真
+6.关系运算符：>|<|>=|<=|==|!= // C语言规定：非0即真、0为假
 a = 10, b = 5; // "="/"=="的区别
 int result = a > b;// 怎么理解：a>b吗？
 优先级：1.>、<、>=、<=优先级大于!=、==先优先级、再结合性；
@@ -283,20 +294,23 @@ printf(“%d”,a); // "\n"不能用在scanf()函数中/只能用在printf()函�
 //流程控制基本概念
 1.if语句：if语句可以嵌套/嵌套可以使用&&、||、!替代/互斥
 if(表达式1) {
-//执行代码
+    //执行代码
 }
+//必有一个执行
 if(表达式1) {
-//执行代码
+    //执行代码
 } else {
-//执行代码/必有一个执行
+    //执行代码
 }
 if(表达式1) {
-//执行代码
+    //执行代码
 } else if (表达式2) {
-//执行代码
+    //执行代码
 } else {
-//执行代码：可以不需要这一句/可选类型
+    ///执行代码
+    //可以不需要这一句/可选类型
 }
+if(表达式1) //执行代码：只能执行第一句
 2.switch语句：C语言中'条件表达式'的返回值只支持整数/switch的效率比if高/注意格式
 switch (条件表达式) {
 // case不能重复/不能放置变量/没有if灵活
@@ -314,13 +328,25 @@ default: {
 //循环语句：反复执行某一段代码
 1.循环格式：都是不满足条件停止执行
 1).while()语句：当条件满足开始执行循环体直到不满足条件停止执行
+while(表达式) {
+    //循环体
+}
 2).do-while()语句：先执行循环体直到不满足条件停止执行/最少执行一次循环体
+do {
+    //循环体
+} while(表达式)
 3).for()语句：最常使用的循环语句/企业级开发只要会使用for()足够
-2.死循环：
-1).for (;1;) {
+for(语句1;表达式;语句2) {
+    //循环体
+}
+2.死循环：下面不允许写无法访问的语句
+1).while (YES) {
     // 循环体
 }
-2).RunLoop
+2).for (;1;) {
+    // 循环体
+}
+3).RunLoop
 3.循环嵌套：
 for(int i = 0;i < 2; i++) {
     for(int j = 0; j < 5; j++) {
@@ -340,17 +366,16 @@ for(int i = 0;i < 2; i++) {
 int array[5]; // 定义一个长度为5的数组
 array[5] = {1, 8, 9, 10, 18, 25}; // 数组元素init：可以部分init/未init的元素为0
 int count = array[5]; // 数组访问越界/Segmentation fault
-2.冒泡排序
-3.选择排序
-4.堆排序
-5.二分查找
 //二维数组
 1.概念：元素是一维数组的数组称为二维数组
-int array[5][4]; // 定义
-array[5][4] = {
+int array[4][3]; // 定义
+// 4;二维数组中一维数组的个数/行数
+// 3;每个一维数组的元素个数/列数
+array[4][3] = {
     {1,4,6},
     {1,7,8},
-    {8,5,6}
+    {8,5,6},
+    {4,5,7}
 }; // init
 
 //函数：见SyGameProxy.h/c
@@ -362,11 +387,40 @@ int p = 10;
 printf("int类型的p内存地址：%p", &p); // &p取出地址
 3.以"补码"形式存储/从高位->低位/一个字节存储8位
 
+//字符串
+1.概念：由字符组成的串""/可以使用数组来保存字符串/%s
+2.“字符串”和“普通字符数组”的区别：字符串以“\0”结尾，字符串比字符数组多一个元素
+char str[] = "xwj";
+printf("---%s---", str);
+3.了解的方法：#include <ctype.h>
+int isalpha(int c); //判断单个字符是否是字母
+int isnumber(int c); //判断单个字符是否是表示数字
+int isupper(int c); //判断单个字符是否是大写字母
+int islower(int c); //判断单个字符是否是小写字母
+int toupper(int c); //将单个字符转换为大写字母
+int tolower(int c); //将单个字符转换为小写字母
+4.掌握的方法：#include<string.h>
+//sizeof(const char *s)占用字节大小
+size_t strlen(const char *s); //！！！返回字符串的有效字符个数：与sizeof()区别？！！！
+char *strcat(char *s1,const char *s2); //！！！将s2的内容拼接到s1后面形成新的字符串s1！！！
+//返回子串在s1中首次出现位置的第一个字符的地址
+char *strstr(const char *s1, const char *s2); //在字符串s1中，寻找子串s2首次出现的位置
+//s1必须有足够大的空间，如果数组越界，可能导致未知的错误
+char *strcpy(char *s1,const char *s2); //将字符串s2拷贝到字符数组s1，返回s1
+char *strchr(const char *s,char c); //查找字符串s中首次出现字符c的位置，不存在c,返回NULL
+//s1 > s2 -> 返回正数，s1 < s2 -> 返回负数，s1 == s2 -> 返回0
+int strcmp(const char* s1,const char* s2); //比较两个字符串的大小关系
+char *strrchr(char *str, char c); //在串中查找指定字符的最后一个出现，失败返回NULL
+
+//预处理指令
+1.概念：均以"#"开头，不要分号/包含"宏定义"、"文件包含"、"条件编译"/编译之前会执行
+2.宏定义：#define MAX= 10  // 不要分号、一般需要大写、编译预处理时将源代码中"宏名"替换成"宏内容"
+3.文件包含：#include "xxx.h"   // 将xxx.h复制到当前文件中
+4.条件编译：见SyGameProxy.h/c
+
 //指针
 
 //值传递/指针传递
-
-//字符串
 
 //结构体
 /**************************Objective-C基础**************************/
@@ -380,8 +434,9 @@ printf("int类型的p内存地址：%p", &p); // &p取出地址
 
 //面向对象OOP
 1.概念：OOP是把问题里拥有相同属性的东西建立一个类
-2.特性：1)封装：将数据和基于数据的操作封装在一起，数据被保护在类的内部，系统的其它部分只有通过被授权的操作才可以访问数据；将不需要对外提供的内容隐藏起来：把属性隐藏起来，提供公共方法对外访问；
-2)继承：又称为派生
+2.特性：1)封装：将数据和基于数据的操作封装在一起，数据被保护在类的内部，系统的其它部分只有通过被授权的
+操作才可以访问数据；将不需要对外提供的内容隐藏起来：把属性隐藏起来，提供公共方法对外访问；
+2)继承：又称为派生；
 1.定义：父类的属性(成员变量：不包括私有)和方法，子类可以直接获取；
 2.派生：子类保持父类中的行为和属性，新增其它功能；
 3).多态：程序中可以有同名的不同方法共存，利用子类对父类方法的覆盖和重载在同一个类中定义多个同名的方法来实现；
@@ -403,11 +458,12 @@ printf("int类型的p内存地址：%p", &p); // &p取出地址
 1.定义：OC中称所有init开头的方法为构造方法/只能被调用一次；
 2.作用：初始化对象/初始化对象的成员变量；
 3.-(instancetype)init {
-    // 保留父类初始化操作
+    /// 保留父类初始化操作：调用父类方法
     // 如果调用对象方法：super就是指向父类对象的指针
     // 如果调用类方法：super就是指向父类的指针
     self = [super init];
-    // 重写构造方法
+    /// 重写构造方法
+    // 子类方法会覆盖父类方法
     if (self) {
         // 初始化对象的成员变量
         _name = "10";
@@ -419,8 +475,16 @@ printf("int类型的p内存地址：%p", &p); // &p取出地址
     // 自定义构造方法
 }
 
-//字符串
-1.NSString：不可变字符串
+//多态：同一个接口不同的实现、父类指针指向子类对象
+1.重写：重新实现子类方法（子类最终执行重写以后得方法）
+2.重载：在同一个类定义多个同名方法（每个方法具有不同参数类型和个数）
+注意：！！！Objective-C语言没有严格的方法重载！！！
+3.实现条件：1).继承关系；2).重写；3).父类指针指向子类对象
+4.应用场景：可以减少代码量、避免调用子类特有方法需要强制类型转换
+
+//权限修饰：见WMController.swift/WMGameProxy.h/m
+
+//字符串：FoundationNSObject.h/m
 
 //数组
 1.NSArray：不可变数组/数组的长度确定
@@ -467,6 +531,14 @@ NSString *name = xiaoMing.name; <==> NSString *name = [xiaoMing getName];
 
 //异常处理
 @try...@catch...@finally
+
+// RunLoop
+
+// Runtime
+
+// KVC、KVO
+
+// 多线程
 /**************************UI基础**************************/
 //认识UI(User Interface)
 1.概述：用户通过UI与App进行交互/传入用户的请求/反馈运行的结果
@@ -477,11 +549,36 @@ NSString *name = xiaoMing.name; <==> NSString *name = [xiaoMing getName];
 
 //UIWindow
 
-//应用程序的生命周期
+//ViewController的生命周期
+1.第一次加载vc：loadView->viewDidLoad->viewWillAppear->viewDidAppear；
+//push
+2.跳转第二个vc：viewWillDisappear->loadView->viewDidLoad->viewWillAppear->
+viewDidDisappear->viewDidAppear；
+//present
+2.跳转第二个vc：loadView->viewDidLoad->viewWillDisappear->viewWillAppear->
+viewDidAppear->viewDidDisappear；
+//pop、dismiss
+3.返回第一个vc：viewWillDisappear->viewWillAppear->viewDidDisappear->viewDidDisappear
+->dealloc；//不重新创建第一个vc，第二个vc销毁
+参考：SySkillController.h/m
+https://blog.csdn.net/spicyshrimp/article/details/70886516
 
 //定时器
 //UIView
 //UILabel
+
+//停靠模式Autoresize
+1.概念：控制父视图改变大小时，子视图的变化方式；服务于父视图边界修改后，子视图的重新布局
+2.作用：等比例缩放、横竖屏旋转
+@property (strong,nonatomic) UIViewAutoresizing autoresizingMask;
+UIViewAutoresizingNone      = 0  //NO
+UIViewAutoresizingFlexibleLeftMargin   = 1 << 0  //右边界和父视图的距离不变，左边界自由
+UIViewAutoresizingFlexibleWidth    = 1 << 1  //自由的宽度：左右边距与父视图保持不变
+UIViewAutoresizingFlexibleRightMargin  = 1 << 2  //左边界和父视图的距离不变，右边界自由
+UIViewAutoresizingFlexibleTopMargin   = 1 << 3  //下边界和父视图的距离不变，上边界自由
+UIViewAutoresizingFlexibleHeight    = 1 << 4  //自由的高度，上下边距保持不变
+UIViewAutoresizingFlexibleBottomMargin  = 1 << 5  //上边界和父视图的距离不变，下边界自由
+3.在xib中怎么使用autoresizingMask：外部4根线固定边距、内部2根线固定宽高和父视图的比例
 
 //UIViewController
 1.负责管理UIView：创建/销毁UIView、显示/隐藏UIView、处理UIView和用户之间的交互
@@ -502,10 +599,6 @@ NSString *name = xiaoMing.name; <==> NSString *name = [xiaoMing getName];
 1.autosizing：设置视图和父视图的尺寸关系/iOS6.x以前
 
 //Xib/Interface Builder：
-1.UIStackViewDemo
-
-//通信：
-1.程序之间通信：
 /**************************项目实战**************************/
 // 开发App
 1.模块分析：
@@ -513,6 +606,12 @@ NSString *name = xiaoMing.name; <==> NSString *name = [xiaoMing getName];
 3.
 
 //数据的持久化
+1.沙盒：
+2.
+3.
+
+//通信：
+1.程序之间通信：
 
 //常见类库：需要分析源码
 NSObject
@@ -552,16 +651,13 @@ SAMKeychain-keyChain保存
 2.
 3.
 4.
-
-// 上架AppStore
-1.
-2.
-3.
 /**************************swift基础**************************/
 /**************************实用技术(swift版本)**************************/
 /**************************补充部分**************************/
 //知识点：
-https://www.cnblogs.com/W-Kr/p/5248316.html //解析html
+https://www.cnblogs.com/W-Kr/p/5248316.html  //解析html
+http://modelend.com  //在线json转模型
+https://mp.weixin.qq.com/s/ynkun7E1niuXfnnNBRap8Q  //iOS13
 
 //工具网站：
 https://soft.macx.cn
@@ -579,6 +675,11 @@ https://xclient.info
 2).抓包的步骤是怎么样的？通过步骤你能猜测一下抓包的工作原理吗？
 3).抓包可以抓https吗？怎么才可以让https不被抓包工具抓取？
 
+// iOS13、ipadOS、MacOS
+1.
+2.
+3.
+
 // 开发工具的使用
 1.CocoaPods的使用：
 2.VSCode的使用：https://code.visualstudio.com/docs
@@ -591,11 +692,17 @@ https://xclient.info
 WWDC - 全球开发者大会
 
 //知识点速查：
+libs // 常见第三方库
+WMGameProxy.txt  // 常见知识点/初中级工程师
+SYGameProxy.txt  // 常见面试题/中高级工程师
+DNGameProxy.txt  // 项目管理/资深工程师
 WMGame.swift  // swift基础知识
+SyCustomView.swift // swift自定义控件
 WMController.swift // swiftUI知识
 AppDelegate.h/m   // 常见系统问题查询
 SyGameProxy.h/c   // C语言基础知识
 WMGameProxy.h/m   // OC基础知识
+SyDefaultCustomView.h/c // OC自定义控件
 FoundationNSObject.h/c // Foundation常见类
 ComponentController.h/m // UI组件库
 SyTableViewController.h/m  // UITableView详解
@@ -606,39 +713,3 @@ MainController.h/m  // 事例代码
 DemoController.h/m // 作业
 WMGameProxy.pch // 预编译
 WMGameProxy-Bridging-Header.h // 桥接文件
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

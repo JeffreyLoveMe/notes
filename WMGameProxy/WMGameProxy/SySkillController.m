@@ -15,11 +15,56 @@
 @end
 
 @implementation SySkillController
+/// ViewController的生命周期
+- (void)loadView {
+    [super loadView];
+    // 初始化控制器的self.view/创建self.view
+    // 当self.view第一次使用的时候调用
+    // self.view是lazy
+    // ！！！self.view还没有加载完成！！！
+    /*
+     底层原理：
+     先判断当前VC是不是从storyboard中加载的？
+     1.如果是：把storyboard中的view设置为self.view
+     2.如果不是：创建一个空白的View
+     */
+    /// 一旦重写该方法：需要自定义View
+    self.view = [[UIView alloc]init];
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    
+    // 2.控制器View加载完毕：创建所有子视图
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    // 3.视图将要出现
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    // 4.视图已经出现
+}
+
+- (void)viewWillLayoutSubviews {
+    [super viewWillLayoutSubviews];
+    // 5.控制器的View将要布局子视图
+}
+
+- (void)viewDidLayoutSubviews {
+    [super viewDidLayoutSubviews];
+    // 6.控制器的View布局子视图结束
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    // 7.视图将要消失
+}
+
+- (void)viewDidDisappear:(BOOL)animated {
+    [super viewDidDisappear:animated];
+    // 8.视图已经消失
 }
 
 /// MPMoviePlayerController
