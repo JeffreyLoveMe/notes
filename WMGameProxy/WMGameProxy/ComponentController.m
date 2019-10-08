@@ -17,8 +17,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    [self setupTextField];
+
 }
 
 #pragma mark - 基础属性
@@ -345,22 +344,18 @@
     barView.backgroundColor = UIColor.blueColor;
     tf.inputAccessoryView = barView;
 }
-// UITextView
-// UISlider/滑块
-// UISwitch/开关
-// UIStepper
-// UISegmentControl/选项卡
 /// UITextView
 -(void)setupTextView {
     
 }
 /// UISlider/滑块
+// 作用：控制系统声音/表示播放进度
 -(void)setupSlider {
     UISlider *slider = [[UISlider alloc]init];
     slider.frame = CGRectMake(100, 100, 100, 50);
     slider.maximumValue = 100; // 设置最大值
     slider.minimumValue = 0;   // 设置最小值
-    slider.value = 20;  // 设置当前值
+    slider.value = 20;  // 设置当前值：必须设置最大值和最小值以后才可以设置value
     // 设置颜色
     slider.maximumTrackTintColor = UIColor.purpleColor;
     slider.minimumTrackTintColor = UIColor.blueColor;
@@ -370,6 +365,8 @@
     slider.minimumValueImage = [UIImage imageNamed:@""]; // 左边（最小）图片
     [slider setThumbImage:[UIImage imageNamed:@""] forState:UIControlStateHighlighted];
     slider.continuous = NO; // 不接受连续点击
+    // 设置UISlider的值
+    [slider setValue:10 animated:YES];
     // 滑块拖动时的事件
     [slider addTarget:self action:@selector(onSliderChanged:) forControlEvents:UIControlEventValueChanged];
     // 滑块拖动后的事件
@@ -400,7 +397,6 @@
     
 }
 /// UISegmentControl/多段选择视图
->>>>>>> a948d57d93e373466ffd1feda10064e35f0eaee0
 -(void)setupSegmentControl {
     
 }
@@ -415,17 +411,6 @@
 -(void)setupActionSheet {
     
 }
-// UIProgressView
-// UIActivityIndicatorView/圈圈
-// UIWebView/WKWebView
-// UIMenuController
-// UIRefreshControl
-// UIAlertController
-// UIImagePickerController
-// UIPickView/选择器
-// UIDatePicker/时间选择器
-// UIToolBar/工具条
-// UINavigationBar/导航条
 ///// UIActionSheet/底部弹窗
 //-(void)setupActionSheet {
 //    UIActionSheet *alert = [[UIActionSheet alloc]initWithTitle:@"你确定需要删除吗？" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:@"删除" otherButtonTitles:@"确定", nil];
@@ -446,11 +431,12 @@
     UIActivityIndicatorView *view = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
     view.frame = CGRectMake(100, 100, 100, 50);
     [self.view addSubview:view];
-    view.hidesWhenStopped = YES;
+    view.hidesWhenStopped = YES; // 动画停止：是否隐藏视图、默认为YES
     // 开始动画
     [view startAnimating];
 //    // 结束动画
 //    [view stopAnimating];
+    NSLog(@"当前动画的状态：%d", view.isAnimating);
 }
 /// UIMenuController
 /// UIRefreshControl
@@ -460,7 +446,6 @@
 /// UIDatePicker/时间选择器
 /// UIToolBar/工具条
 /// UINavigationBar/导航条
->>>>>>> a948d57d93e373466ffd1feda10064e35f0eaee0
 /// UIScrollView/滚动视图
 // 用于显示超出App程序窗口大小的内容
 // 允许用户通过拖动手势滚动查看内容
@@ -505,8 +490,10 @@
     pc.hidesForSinglePage = YES; // 只有一页时是否隐藏视图
     pc.pageIndicatorTintColor = UIColor.greenColor; // 控件颜色
     pc.currentPageIndicatorTintColor = UIColor.orangeColor; // 当前选中颜色
+    pc.enabled = NO; // 一般都是屏蔽事件
     [pc addTarget:self action:@selector(updatePageChanged:) forControlEvents:UIControlEventValueChanged];
     pc.tag = 100;
+    [pc updateCurrentPageDisplay]; // 刷新当前视图
     [self.view addSubview:pc];
 }
 -(void)updatePageChanged:(UIPageControl *)pc {
@@ -548,8 +535,6 @@
 // 事件传递流程：当前视图->视图控制器->窗口->UIApplication对象->不处理
 -(void)setupGestureRecognizer {
     
-
-    
 }
 /// 停靠模式
 // 主要处理父子视图
@@ -564,7 +549,6 @@
     [superView addSubview:subView];
     // 设置停靠模式
     subView.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin;
->>>>>>> a948d57d93e373466ffd1feda10064e35f0eaee0
 }
 
 
@@ -606,8 +590,7 @@
     return YES;
 }
 
-
-//#pragma mark - UIAlertViewDelegate
+#pragma mark - UIAlertViewDelegate
 //- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
 //    // 点击第几个button
 //}
