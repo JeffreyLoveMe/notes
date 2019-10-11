@@ -67,6 +67,16 @@
     // 8.视图已经消失
 }
 
+/// 定时器
+-(void)createTimer {
+    NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(onTimer) userInfo:nil repeats:true];
+    [timer invalidate];
+}
+-(void)onTimer {
+    UILabel *myLabel = [self.view viewWithTag:0];
+    myLabel.text = @"我过分";
+}
+
 /// MPMoviePlayerController
 
 /// iOS自动布局框架 - Masonry详解

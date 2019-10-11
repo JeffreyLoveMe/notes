@@ -23,14 +23,6 @@ typedef enum {
 
 @interface FoundationNSObject : NSObject
 
--(void)showString;
-
--(void)showArray;
-
--(void)showDictionary;
-
--(void)showSet;
-
 @end
 
 NS_ASSUME_NONNULL_END

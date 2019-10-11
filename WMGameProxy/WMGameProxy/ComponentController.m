@@ -17,20 +17,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
+    
 }
-
-#pragma mark - 基础属性
-/// 定时器
--(void)createTimer {
-    NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(onTimer) userInfo:nil repeats:true];
-    [timer invalidate];
-}
--(void)onTimer {
-    UILabel *myLabel = [self.view viewWithTag:0];
-    myLabel.text = @"我过分";
-}
-/// UIView
+#pragma mark - UIView视图
 // UIView是所有视图的父类/UIView的属性是子视图共有的
 // 0.以父视图左上角为原点
 // 1.UIView的基本属性
@@ -145,7 +134,9 @@
         }
     }];
 }
-/// UILabel
+
+
+#pragma mark - UILabel文本框
 -(void)setupLabel {
     UILabel *label = [[UILabel alloc]init];
     label.frame = CGRectMake(100, 100, 100, 50);
@@ -173,7 +164,9 @@
     label.shadowOffset = CGSizeMake(5, 5); // 阴影的偏移量
     label.shadowColor = UIColor.grayColor;// 设置阴影颜色
 }
-/// UIButton
+
+
+#pragma mark - UIButton按钮
 // 有那些类可以"事件监听"？？？
 // 继承于UIControl都可以"事件监听"
 // UIButton/UIDatePicker/UIPageControl/UISegmentControl/UITextField/UISlider/UISwitch
@@ -247,7 +240,9 @@
 -(void)btnAction:(UIButton *)btn {
     NSLog(@"button被点击");
 }
-/// UIImageView -控件
+
+
+#pragma mark - UIImageView图片视图
 // UIImage -二进制的图像数据
 -(void)setupImageView {
     /// 创建图片对象
@@ -266,6 +261,8 @@
     [self.view addSubview:imageView];
     imageView.backgroundColor = UIColor.redColor;
     imageView.image = [UIImage imageNamed:@"image_demo"];
+    imageView.highlightedImage = image0; // 设置高亮图片
+    imageView.userInteractionEnabled = YES; // 默认为NO
     /*
      填充模式：
      UIViewContentModeScaleToFill - 拉伸填满/不会超出：图片会变形/默认
@@ -293,7 +290,9 @@
 //    // 停止动画
 //    [imageView stopAnimating];
 }
-/// UITextField/文本框控件
+
+
+#pragma mark - UITextField文本框控件
 -(void)setupTextField {
     UITextField *tf = [[UITextField alloc]init];
     tf.frame = CGRectMake(100, 100, 100, 50);
@@ -344,8 +343,136 @@
     barView.backgroundColor = UIColor.blueColor;
     tf.inputAccessoryView = barView;
 }
-/// UITextView
+
+
+#pragma mark - UITextView文本编辑框
+// 可以滚动
 -(void)setupTextView {
+    
+}
+
+
+#pragma mark - UINavigationBar导航条/UIToolBar工具条
+-(void)setupNavigationBar {
+    /// 创建导航栏控制器
+    // 必须指定RootViewController
+    // 继承UIViewController
+    UINavigationController *navigationController = [[UINavigationController alloc]initWithRootViewController:self];
+    NSLog(@"获取导航控制器的顶部控制器=%@、获取导航控制器的可视控制器=%@、获取导航控制器的子控制器=%@", navigationController.topViewController, navigationController.visibleViewController, navigationController.childViewControllers);
+    /// 导航条
+    // 继承UIView
+    
+    /// 工具条
+    // 继承UIView
+    
+}
+
+
+#pragma mark - UIScrollView滚动视图
+// 用于显示超出App程序窗口大小的内容
+// 允许用户通过拖动手势滚动查看内容
+// 允许用户通过捏合手势缩放内容
+-(void)setupScrollView {
+    UIScrollView *scrollView = [[UIScrollView alloc]initWithFrame:self.view.bounds];
+    scrollView.delegate = self;
+    scrollView.backgroundColor = UIColor.grayColor; // 设置颜色
+    scrollView.contentOffset = CGPointZero; // 偏移量：内容和控件的距离/记录滚动的位置
+    scrollView.contentInset = UIEdgeInsetsMake(10, 10, 10, 10);  // 内边距：cell到边的距离/增加
+    scrollView.contentSize = CGSizeMake([[UIScreen mainScreen] bounds].size.width * 2, [[UIScreen mainScreen] bounds].size.height);  // 设置内容大小
+    scrollView.bounces = NO;  // 设置是否反弹
+    scrollView.pagingEnabled = NO; // 设置按页滚动
+    scrollView.indicatorStyle = UIScrollViewIndicatorStyleWhite; // 设置滚动条样式
+    scrollView.scrollIndicatorInsets = UIEdgeInsetsMake(0, 0, 0, 30); // 一般不需要设置
+    // 设置隐藏滚动条
+    scrollView.showsVerticalScrollIndicator = NO;
+    scrollView.showsHorizontalScrollIndicator = NO;
+    scrollView.scrollEnabled = true; // 设置是否可以滚动
+    scrollView.scrollsToTop = true;  // 是否滚动到顶部
+    scrollView.delegate = self;
+    //！！！以下一般不设置！！！//
+    /// 设置缩放功能：需要两步
+    // 1.设置pinch缩放属性
+    scrollView.minimumZoomScale = 0.5; // 缩小的最小比例
+    scrollView.maximumZoomScale = 5;    // 放大的最大比例
+    // 减速率：一般数值越大、停下来的时间越长
+    scrollView.decelerationRate = 0;
+    // 按住手指还没有开始拖动是YES
+    // 是否正在被拖拽
+    // 是否正在减速
+    // 是否正在缩放
+    NSLog(@"%d, %d, %d, %d", scrollView.tracking, scrollView.dragging, scrollView.decelerating, scrollView.zooming);
+    [self.view addSubview:scrollView];
+}
+
+
+#pragma mark - UIPageControl分页控件
+-(void)setupPageControl {
+    // UIPasteboard
+    UIPageControl *pc = [[UIPageControl alloc]initWithFrame:CGRectMake(100, 100, 100, 50)];
+    pc.currentPage = 5;  // 当前页码
+    pc.numberOfPages = 10; // 总共页码
+    pc.hidesForSinglePage = YES; // 只有一页时是否隐藏视图
+    pc.pageIndicatorTintColor = UIColor.greenColor; // 控件颜色
+    pc.currentPageIndicatorTintColor = UIColor.orangeColor; // 当前选中颜色
+    pc.enabled = NO; // 一般都是屏蔽事件
+    [pc addTarget:self action:@selector(updatePageChanged:) forControlEvents:UIControlEventValueChanged];
+    pc.tag = 100;
+    [pc updateCurrentPageDisplay]; // 刷新当前视图
+    [self.view addSubview:pc];
+}
+-(void)updatePageChanged:(UIPageControl *)pc {
+    NSLog(@"%ld", (long)pc.currentPage);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/// UIMenuController菜单
+// https://blog.csdn.net/woyangyi/article/details/45896859
+-(void)setupMenuController {
+    
+}
+/// UIRefreshControl下拉刷新控件
+// 不能上拉加载
+-(void)setupRefreshControl {
+    
+}
+/// UIAlertController
+// iOS8.0以上推荐使用
+-(void)setupAlertController {
+    
+}
+/// UIImagePickerController
+// 相机、相册
+-(void)setupImagePickerController {
+    
+}
+/// UIPickView/选择器
+-(void)setupPickView {
+    
+}
+/// UIDatePicker/时间选择器
+-(void)setupDatePicker {
+    
+}
+/// UIStackView
+-(void)setupStackView {
+    
+}
+/// UIPopoverContrller
+// 继承于NSObject
+-(void)setupPopoverContrller {
     
 }
 /// UISlider/滑块
@@ -394,10 +521,37 @@
 }
 /// UIStepper/步数器
 -(void)setupStepper {
+    UIStepper *step = [[UIStepper alloc]initWithFrame:CGRectMake(100, 100, 100, 50)];
+    [self.view addSubview:step];
+    step.stepValue = 5;
+    step.minimumValue = 0;
+    step.maximumValue = 20;
+    // 当前值
+    step.value = 0;
+    step.tintColor = UIColor.greenColor;
+    // 可以从头开始
+    step.wraps = YES;
+    step.continuous = NO;
+    step.autorepeat = YES;
+    [step addTarget:self action:@selector(onStep:) forControlEvents:UIControlEventValueChanged];
+}
+-(void)onStep:(UIStepper *)step {
     
 }
 /// UISegmentControl/多段选择视图
 -(void)setupSegmentControl {
+    NSArray *array = @[@"居左", @"居中", @"居右"];
+    UISegmentedControl *segmentControl = [[UISegmentedControl alloc]initWithItems:array];
+    segmentControl.frame = CGRectMake(100, 100, 100, 50);
+    [self.view addSubview:segmentControl];
+    segmentControl.tintColor = UIColor.orangeColor;
+    segmentControl.selectedSegmentIndex = 0;  // 选中状态
+    //segmentControl.segmentedControlStyle = UISegmentedControlStyleBar;
+    [segmentControl insertSegmentWithTitle:@"下一页" atIndex:1 animated:NO];
+    segmentControl.momentary = YES;
+    [segmentControl addTarget:self action:@selector(onSegmentControl:) forControlEvents:UIControlEventValueChanged];
+}
+-(void)onSegmentControl:(UISegmentedControl *)segmentControl {
     
 }
 ///// UIAlertView/中间弹窗
@@ -407,10 +561,6 @@
 //    alert.alertViewStyle = UIAlertViewStyleLoginAndPasswordInput;
 //    [alert show];
 //}
-// UIActionSheet/底部弹窗
--(void)setupActionSheet {
-    
-}
 ///// UIActionSheet/底部弹窗
 //-(void)setupActionSheet {
 //    UIActionSheet *alert = [[UIActionSheet alloc]initWithTitle:@"你确定需要删除吗？" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:@"删除" otherButtonTitles:@"确定", nil];
@@ -434,79 +584,9 @@
     view.hidesWhenStopped = YES; // 动画停止：是否隐藏视图、默认为YES
     // 开始动画
     [view startAnimating];
-//    // 结束动画
-//    [view stopAnimating];
+    //    // 结束动画
+    //    [view stopAnimating];
     NSLog(@"当前动画的状态：%d", view.isAnimating);
-}
-/// UIMenuController
-/// UIRefreshControl
-/// UIAlertController
-/// UIImagePickerController
-/// UIPickView/选择器
-/// UIDatePicker/时间选择器
-/// UIToolBar/工具条
-/// UINavigationBar/导航条
-/// UIScrollView/滚动视图
-// 用于显示超出App程序窗口大小的内容
-// 允许用户通过拖动手势滚动查看内容
-// 允许用户通过捏合手势缩放内容
--(void)setupScrollView {
-    UIScrollView *scrollView = [[UIScrollView alloc]initWithFrame:self.view.bounds];
-    scrollView.delegate = self;
-    scrollView.backgroundColor = UIColor.grayColor; // 设置颜色
-    scrollView.contentOffset = CGPointZero; // 偏移量：内容和控件的距离/记录滚动的位置
-    scrollView.contentInset = UIEdgeInsetsMake(10, 10, 10, 10);  // 内边距：cell到边的距离/增加
-    scrollView.contentSize = CGSizeMake([[UIScreen mainScreen] bounds].size.width * 2, [[UIScreen mainScreen] bounds].size.height);  // 设置内容大小
-    scrollView.bounces = NO;  // 设置是否反弹
-    scrollView.pagingEnabled = NO; // 设置按页滚动
-    scrollView.indicatorStyle = UIScrollViewIndicatorStyleWhite; // 设置滚动条样式
-    scrollView.scrollIndicatorInsets = UIEdgeInsetsMake(0, 0, 0, 30); // 一般不需要设置
-    // 设置隐藏滚动条
-    scrollView.showsVerticalScrollIndicator = NO;
-    scrollView.showsHorizontalScrollIndicator = NO;
-    scrollView.scrollEnabled = true; // 设置是否可以滚动
-    scrollView.scrollsToTop = true;  // 是否滚动到顶部
-    scrollView.delegate = self;
-    //！！！以下一般不设置！！！//
-    /// 设置缩放功能：需要两步
-    // 1.设置pinch缩放属性
-    scrollView.minimumZoomScale = 0.5; // 缩小的最小比例
-    scrollView.maximumZoomScale = 5;    // 放大的最大比例
-    // 减速率：一般数值越大、停下来的时间越长
-    scrollView.decelerationRate = 0;
-    // 按住手指还没有开始拖动是YES
-    // 是否正在被拖拽
-    // 是否正在减速
-    // 是否正在缩放
-    NSLog(@"%d, %d, %d, %d", scrollView.tracking, scrollView.dragging, scrollView.decelerating, scrollView.zooming);
-    [self.view addSubview:scrollView];
-}
-/// UIPageControl/分页控件
--(void)setupPageControl {
-    // UIPasteboard
-    UIPageControl *pc = [[UIPageControl alloc]initWithFrame:CGRectMake(100, 100, 100, 50)];
-    pc.currentPage = 5;  // 当前页码
-    pc.numberOfPages = 10; // 总共页码
-    pc.hidesForSinglePage = YES; // 只有一页时是否隐藏视图
-    pc.pageIndicatorTintColor = UIColor.greenColor; // 控件颜色
-    pc.currentPageIndicatorTintColor = UIColor.orangeColor; // 当前选中颜色
-    pc.enabled = NO; // 一般都是屏蔽事件
-    [pc addTarget:self action:@selector(updatePageChanged:) forControlEvents:UIControlEventValueChanged];
-    pc.tag = 100;
-    [pc updateCurrentPageDisplay]; // 刷新当前视图
-    [self.view addSubview:pc];
-}
--(void)updatePageChanged:(UIPageControl *)pc {
-    NSLog(@"%ld", (long)pc.currentPage);
-}
-/// UIStackView
--(void)setupStackView {
-    
-}
-/// UIPopoverContrller
-// 继承于NSObject
--(void)setupPopoverContrller {
-    
 }
 /// keyBoard
 -(void)keyBoard {
@@ -590,12 +670,14 @@
     return YES;
 }
 
+
 #pragma mark - UIAlertViewDelegate
 //- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
 //    // 点击第几个button
 //}
 
-//#pragma mark - UIActionSheetDelegate
+
+#pragma mark - UIActionSheetDelegate
 //- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
 //    // 点击第几个button
 //}
@@ -603,6 +685,7 @@
 //- (void)actionSheetCancel:(UIActionSheet *)actionSheet {
 //    // 有系统事件（来电）时调用
 //}
+
 
 #pragma mark - UIScrollViewDelegate
 /// 1&2&3 -通过这三个代理方法可以唯一确定上滑/下滑
