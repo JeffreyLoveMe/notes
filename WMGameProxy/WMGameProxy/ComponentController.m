@@ -352,22 +352,6 @@
 }
 
 
-#pragma mark - UINavigationBar导航条/UIToolBar工具条
--(void)setupNavigationBar {
-    /// 创建导航栏控制器
-    // 必须指定RootViewController
-    // 继承UIViewController
-    UINavigationController *navigationController = [[UINavigationController alloc]initWithRootViewController:self];
-    NSLog(@"获取导航控制器的顶部控制器=%@、获取导航控制器的可视控制器=%@、获取导航控制器的子控制器=%@", navigationController.topViewController, navigationController.visibleViewController, navigationController.childViewControllers);
-    /// 导航条
-    // 继承UIView
-    
-    /// 工具条
-    // 继承UIView
-    
-}
-
-
 #pragma mark - UIScrollView滚动视图
 // 用于显示超出App程序窗口大小的内容
 // 允许用户通过拖动手势滚动查看内容
@@ -425,56 +409,52 @@
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 /// UIMenuController菜单
 // https://blog.csdn.net/woyangyi/article/details/45896859
 -(void)setupMenuController {
     
 }
+
+
 /// UIRefreshControl下拉刷新控件
 // 不能上拉加载
 -(void)setupRefreshControl {
     
 }
+
+
 /// UIAlertController
 // iOS8.0以上推荐使用
 -(void)setupAlertController {
     
 }
-/// UIImagePickerController
-// 相机、相册
--(void)setupImagePickerController {
-    
-}
+
+
 /// UIPickView/选择器
 -(void)setupPickView {
     
 }
+
+
 /// UIDatePicker/时间选择器
 -(void)setupDatePicker {
     
 }
+
+
 /// UIStackView
 -(void)setupStackView {
     
 }
+
+
 /// UIPopoverContrller
 // 继承于NSObject
 -(void)setupPopoverContrller {
     
 }
+
+
 /// UISlider/滑块
 // 作用：控制系统声音/表示播放进度
 -(void)setupSlider {
@@ -506,6 +486,8 @@
 -(void)onSliderUp:(UISlider *)slider {
     NSLog(@"滑块拖动后的事件");
 }
+
+
 /// UISwitch/开关
 -(void)setupSwitch {
     UISwitch *sw = [[UISwitch alloc]init];
@@ -519,6 +501,8 @@
 -(void)onSwitchChange:(UISwitch *)sw {
     NSLog(@"打开开关");
 }
+
+
 /// UIStepper/步数器
 -(void)setupStepper {
     UIStepper *step = [[UIStepper alloc]initWithFrame:CGRectMake(100, 100, 100, 50)];
@@ -538,6 +522,8 @@
 -(void)onStep:(UIStepper *)step {
     
 }
+
+
 /// UISegmentControl/多段选择视图
 -(void)setupSegmentControl {
     NSArray *array = @[@"居左", @"居中", @"居右"];
@@ -554,6 +540,8 @@
 -(void)onSegmentControl:(UISegmentedControl *)segmentControl {
     
 }
+
+
 ///// UIAlertView/中间弹窗
 //// 不需要添加到父试图/不需要设置坐标
 //-(void)setupAlertView {
@@ -566,6 +554,8 @@
 //    UIActionSheet *alert = [[UIActionSheet alloc]initWithTitle:@"你确定需要删除吗？" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:@"删除" otherButtonTitles:@"确定", nil];
 //    [alert showInView:self.view];
 //}
+
+
 /// UIProgressView/进度条
 -(void)setupProgressView {
     UIProgressView *progressView = [[UIProgressView alloc]initWithProgressViewStyle:UIProgressViewStyleDefault];
@@ -576,6 +566,8 @@
     progressView.tag = 0;
     progressView.progressTintColor = UIColor.orangeColor;
 }
+
+
 /// UIActivityIndicatorView/活动指示器
 -(void)setupActivityIndicatorView {
     UIActivityIndicatorView *view = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
@@ -588,6 +580,8 @@
     //    [view stopAnimating];
     NSLog(@"当前动画的状态：%d", view.isAnimating);
 }
+
+
 /// keyBoard
 -(void)keyBoard {
     // 强行关闭键盘：设置为YES/NO都可以关闭键盘
@@ -595,28 +589,16 @@
     // 只要调用：就可以强制退出键盘
     [self.view endEditing:YES];
 }
-/// UIViewControllView
-// UITabBarController
-// UINavigationController
-// ？？？先执行init()方法、还是先执行loadView()？？？
--(void)setupController {
-    // 颜色
-    self.view.backgroundColor = UIColor.grayColor;
-    /// 跳转
-    // 模态跳转
-    SySkillController *conroller = [[SySkillController alloc]init];
-    conroller.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
-    [self presentViewController:conroller animated:YES completion:^{
-        NSLog(@"模态跳转");
-    }];
-    // push
-}
-/// UIGestureRecognizer
+
+
+#pragma mark - UIGestureRecognizer
 // 事件传递流程：当前视图->视图控制器->窗口->UIApplication对象->不处理
 -(void)setupGestureRecognizer {
     
 }
-/// 停靠模式
+
+
+#pragma mark - 停靠模式
 // 主要处理父子视图
 -(void)setupAutoresize {
     // 创建父视图
@@ -630,6 +612,82 @@
     // 设置停靠模式
     subView.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin;
 }
+
+
+#pragma mark - UIViewControllView
+// UITabBarController/UINavigationController/UITableViewController
+// ？？？先执行init()方法、还是先执行loadView()？？？
+-(void)setupController {
+    // 颜色
+    self.view.backgroundColor = UIColor.grayColor;
+    /// 跳转
+    // 模态跳转
+    SySkillController *conroller = [[SySkillController alloc]init];
+    conroller.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+    [self presentViewController:conroller animated:YES completion:^{
+        NSLog(@"模态跳转");
+    }];
+    // push
+}
+
+
+#pragma mark - UINavigationBar导航条/UIToolBar工具条
+-(void)setupNavigationBar {
+    /// 创建导航视图控制器
+    // 必须指定RootViewController：通过push/pop管理UIViewController
+    // 继承UIViewController
+    /*
+     需要理解的内容：
+     1.UINavigationController的常见属性和方法
+     2.UINavigationController的层级关系
+     3.UINavigationBar的常见属性和方法
+     4.UINavigationItem的常见属性和方法
+     */
+    // 1.UINavigationController的常见属性和方法
+    UINavigationController *navigationController = [[UINavigationController alloc]initWithRootViewController:self];
+    NSLog(@"获取导航控制器的顶部控制器=%@、获取导航控制器的可视控制器=%@、获取导航控制器的子控制器=%@、获取栈中视图控制器=%@", navigationController.topViewController, navigationController.visibleViewController, navigationController.childViewControllers, navigationController.viewControllers);
+    /// 跳转
+    // 跳转到下一个UIViewController
+    [self.navigationController pushViewController:self animated:YES];
+    // 返回到上一个UIViewController
+    [self.navigationController popViewControllerAnimated:YES];
+    [self.navigationController popToViewController:self animated:YES];
+    [self.navigationController popToRootViewControllerAnimated:YES];
+    /// 导航条
+    // 继承UIView
+    navigationController.navigationBarHidden = YES;  // 导航条隐藏：默认不隐藏
+//    UINavigationBar *bar = navigationController.navigationBar; // 获取导航栏：只读变量
+    /// 工具条：默认隐藏
+    // 继承UIView
+    [self.navigationController setToolbarHidden:NO animated:YES];  // 设置UIToolBar工具条是否隐藏
+    if (self.navigationController.toolbarHidden) {
+        // UIToolBar工具条是否隐藏
+    }
+    
+    // 2.UINavigationController的层级关系
+    // 参见UINavigationController的层级结构.png
+    
+    // 3.UINavigationBar的常见属性和方法
+    
+    // 4.UINavigationItem的常见属性和方法
+    // 看到08:00
+    self.navigationItem.title = @"导航视图控制器";  // 标题
+    self.navigationItem.titleView = [[UIView alloc]init]; // 标题视图
+}
+
+
+#pragma mark - TabBar
+-(void)setupTabBar {
+    
+}
+
+#pragma mark - UIImagePickerController
+// 相机、相册
+-(void)setupImagePickerController {
+    
+}
+
+
 
 
 #pragma mark - UITextFieldDelegate
