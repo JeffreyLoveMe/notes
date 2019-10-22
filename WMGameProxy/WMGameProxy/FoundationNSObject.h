@@ -23,6 +23,26 @@ typedef enum {
 
 @interface FoundationNSObject : NSObject
 
+-(void)showObject;
+-(void)log;
+-(void)logger:(NSString *)text;
+
+-(void)showString;
+
+-(void)showArray;
+
+-(void)showDictionary;
+
+-(void)showSet;
+
+-(void)showNumber;
+
+-(void)showValue;
+
+-(void)showNull;
+
+-(void)showDate;
+
 @end
 
 NS_ASSUME_NONNULL_END

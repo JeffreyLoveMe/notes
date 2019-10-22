@@ -112,4 +112,19 @@
     self.myBlock(YES);
 }
 
+/// 异常处理
+-(void)hock {
+    NSArray *array = [NSArray array];
+    @try {
+        // 可能会出现异常的代码
+        [array objectAtIndex:5];
+    } @catch (NSException *exception) {
+        // 如果捕捉到错误：执行此处的代码
+        NSLog(@"%@", exception);
+    } @finally {
+        // 可选：必执行代码
+        NSLog(@"finally");
+    }
+}
+
 @end

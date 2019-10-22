@@ -61,6 +61,14 @@ Objective-C语言/Swift语言->iOS业务逻辑->iOS底层原理->网络协议->�
 //Apple为什么设计元类？
 1.
 2.
+//extern和static的区别？
+1.extern的作用：
+1).修饰全局变量：表示声明一个全局变量，仅仅是告诉系统我们有这个全局变量，不开辟内存空间；
+2).修饰函数：表示声明/定义一个外部函数（可以被其他文件访问的函数）；
+2.static的作用：
+1).修饰局部变量：当执行到定义局部变量的代码就会分配存储空间，但只有程序结束才会释放该存储空间；
+2).修饰全局变量：表示定义一个内部全局变量，只能被当前文件访问，开辟内存空间；
+3).修饰函数：表示定义一个内部函数（只能被当前文件访问的函数）；
 /**************************UI基础**************************/
 /**************************swift基础**************************/
 /**************************项目部分**************************/
@@ -86,7 +94,31 @@ int main() {
     }
     return 0;
 }
-// 选择排序
+// 选择排序：从下标0开始，依次作为待比较的元素，然后遍历数组找到最小的元素与待比较的元素
+交换，一共需要(N-1)轮排序
+#include <stdio.h>
+int main() {
+    int arr[5]={2,6,4,7,3};
+    int max;
+    int pos;
+    //外层循环控制排序轮数
+    for(int i=0;i<4;i++) {
+        max = arr[i];
+        pos = i;
+        //里层循环控制选择一个值最大的元素
+        for(int j=i;j<5;j++) {
+            if(max < arr[j]) {
+                max = arr[j];
+                pos = j;
+            }
+        }
+        //用值最大的元素与待比较元素进行交换
+        arr[pos] = arr[i];
+        arr[i] = max;
+    }
+    printf("%d\n",arr[1]*arr[2]);
+    return 0;
+}
 // 快速排序
 // 堆排序
 // 二分查找
@@ -148,9 +180,10 @@ QRCoder二维码
 Result结果/Router路由/Report举报
 // S
 Start开始/Source资源/Splash闪屏/Success成功/Super父类/SortByXxx按xxx排序/Summary总结
-Security安全性/Storage存储/Space空间/ScreenShot截图/Should应该/Search搜索/Score分数
+Security安全性/Storage存储/Space空间/ScreenShot截图/Should应该/Search搜索/Score分数/
+Statistic/Stat统计
 // T
-Table表格/Tag标签/Test测试/Time时间/Task任务/Toast提示框/Tool工具/Temp临时/Theme主题
+Table表格/Tag标签/Test测试/Time时间/Task任务/Toast提示框/Tool工具/Temp/Tmp临时/Theme主题
 // U
 Update更新/UserName用户名/Utils工具
 // V

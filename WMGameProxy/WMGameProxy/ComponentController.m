@@ -8,6 +8,7 @@
 
 #import "ComponentController.h"
 #import "SySkillController.h"
+#import "FoundationNSObject.h"
 
 @interface ComponentController () <UITextFieldDelegate, UIAlertViewDelegate, UIActionSheetDelegate, UIScrollViewDelegate>
 
@@ -18,6 +19,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    FoundationNSObject *f = [[FoundationNSObject alloc]init];
+    [f showDate];
 }
 #pragma mark - UIView视图
 // UIView是所有视图的父类/UIView的属性是子视图共有的
@@ -319,6 +322,7 @@
     tf.keyboardAppearance = UIKeyboardAppearanceDark;
     // 设置键盘类型
     tf.keyboardType = UIKeyboardTypeNumberPad;
+    // 设置返回键类型
     tf.returnKeyType = UIReturnKeyDone;
     // 设置密文显示
     tf.secureTextEntry = true;
@@ -532,9 +536,8 @@
     [self.view addSubview:segmentControl];
     segmentControl.tintColor = UIColor.orangeColor;
     segmentControl.selectedSegmentIndex = 0;  // 选中状态
-    //segmentControl.segmentedControlStyle = UISegmentedControlStyleBar;
-    [segmentControl insertSegmentWithTitle:@"下一页" atIndex:1 animated:NO];
-    segmentControl.momentary = YES;
+    [segmentControl insertSegmentWithTitle:@"下一页" atIndex:1 animated:NO]; // 插入新段
+    segmentControl.momentary = YES; // 默认为NO（YES表示一会儿以后不显示被选中状态）
     [segmentControl addTarget:self action:@selector(onSegmentControl:) forControlEvents:UIControlEventValueChanged];
 }
 -(void)onSegmentControl:(UISegmentedControl *)segmentControl {
@@ -653,28 +656,48 @@
     [self.navigationController popViewControllerAnimated:YES];
     [self.navigationController popToViewController:self animated:YES];
     [self.navigationController popToRootViewControllerAnimated:YES];
-    /// 导航条
+    // 2.UINavigationController的层级关系
+    // 参见UINavigationController的层级结构.png
+    // 3.UINavigationBar的常见属性和方法
+    /// 导航条（只有一个、默认不隐藏）
     // 继承UIView
+    // UINavigationBar *bar = navigationController.navigationBar; // 获取导航栏：只读变量
+    navigationController.navigationBar.barStyle = UIBarStyleBlack; // 导航条样式
     navigationController.navigationBarHidden = YES;  // 导航条隐藏：默认不隐藏
-//    UINavigationBar *bar = navigationController.navigationBar; // 获取导航栏：只读变量
+    navigationController.navigationBar.translucent = YES; // YES半透明（表示坐标原点在屏幕左上角）/NO不透明（表示坐标原点在导航条左下角）
+    navigationController.navigationBar.tintColor = UIColor.whiteColor; // 左上角返回键字体颜色
+    navigationController.navigationBar.barTintColor = UIColor.yellowColor; // 导航条颜色
     /// 工具条：默认隐藏
+    // 一般不用
+    navigationController.toolbarHidden = NO;
+    navigationController.toolbar.barStyle = UIBarStyleBlack;
+    navigationController.toolbar.translucent = NO;
+    navigationController.toolbar.tintColor = UIColor.yellowColor;
     // 继承UIView
     [self.navigationController setToolbarHidden:NO animated:YES];  // 设置UIToolBar工具条是否隐藏
     if (self.navigationController.toolbarHidden) {
         // UIToolBar工具条是否隐藏
     }
-    
-    // 2.UINavigationController的层级关系
-    // 参见UINavigationController的层级结构.png
-    
-    // 3.UINavigationBar的常见属性和方法
-    
     // 4.UINavigationItem的常见属性和方法
+    // 每个UIViewController都有一个UINavigationItem
     // 看到08:00
     self.navigationItem.title = @"导航视图控制器";  // 标题
     self.navigationItem.titleView = [[UIView alloc]init]; // 标题视图
+    UIBarButtonItem *item0 = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(onAdd)];
+    UIBarButtonItem *customItem0 = [[UIBarButtonItem alloc]initWithCustomView:[UIButton buttonWithType:UIButtonTypeCustom]];
+    self.navigationItem.leftBarButtonItem = item0;
+    self.navigationItem.rightBarButtonItem = customItem0;
+    self.navigationItem.leftBarButtonItems = @[item0, customItem0];
+    self.navigationItem.rightBarButtonItems = @[item0, customItem0];
+    /// 默认图片/title都是蓝色
+    // 如果不需要图片蓝色使用UIImageRenderingModeAlwaysOriginal
+    // 如果不需要设置文字蓝色：目前还不知道？？？
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithImage:[[UIImage imageNamed:@"image_demo"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] style:UIBarButtonItemStylePlain target:self action:@selector(onAdd)];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"添加" style:UIBarButtonItemStylePlain target:self action:@selector(onAdd)];
 }
-
+-(void)onAdd {
+    
+}
 
 #pragma mark - TabBar
 -(void)setupTabBar {

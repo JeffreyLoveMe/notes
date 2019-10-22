@@ -260,35 +260,45 @@
                           @"key0", @"value0",
                           @"key1", @"value1",
                           nil];
-    NSDictionary *dic2 = @{@"key0":@"value0", @"key1":@"value1"};
+    // 优化语法
+    NSDictionary *dic2 = @{@"key0":@"value0", @"key1":@"value1",
+                           @"key2":@"value2", @"key3":@"value3",
+                           @"key4":@"value4"};
     // 获取value
     NSString *value0 = [dic1 objectForKey:@"key0"];
     // 返回键值总数
     NSUInteger count = [dic1 count];
     // 返回所有的键
+    // key必须是唯一的
     NSArray *keys = [dic0 allKeys];
     // 返回所有的值
     NSArray *values = [dic2 allValues];
-    NSLog(@"%ld==%@==%@==%@", count, value0, keys, values);
+    NSLog(@"%ld==%@==%@==%@==%@==%@", count, value0, keys, values,[dic1 objectForKey:@"key0"], dic1[@"key1"]);
     
     /// 2).可变字典
     // 如果key同名则后面的会覆盖前面的
     NSMutableDictionary *mDict = [[NSMutableDictionary alloc]init];
     // 重置字典
     [mDict setDictionary:dic2];
-    // 修改
+    // 将dic2中所有的数据添加到mDict中
+    // 相同key的元素在字典中不能重复添加：会被覆盖
+    [mDict addEntriesFromDictionary:dic2];
+    // 修改、添加
     [mDict setObject:@"key1" forKey:@"value"];
-    // 删除
+    // 根据key删除数据
     [mDict removeObjectForKey:@"key1"];
     // 全部删除
     [mDict removeAllObjects];
     
     /// 遍历字典
-    // 第一种方法
+    // 第一种方法（快速遍历：推荐使用）
     for (NSString *key in mDict) {
         NSLog(@"%@", [mDict objectForKey:key]);
     }
-    // 第二种方法
+    // 第二种方法（普通遍历）
+    for (int index = 0; index < mDict.allKeys.count; index++) {
+        NSLog(@"%@", [mDict objectForKey:[mDict.allKeys objectAtIndex:index]]);
+    }
 }
 
 
@@ -319,9 +329,116 @@
 }
 
 
+/// 5.NSNumber
+// 1.明白什么是NSNumber、为什么要引入NSNumber？
+// 2.NSNumber/NSInteger/int三者之间的区别？
+// 3.NSNumber怎么包装？怎么解包？怎么简化写法@()
+// NSNumber是类：可以设置nil
+-(void)showNumber {
+    /// 包装基本数据类型
+    // 包含int/float/long/bool
+    NSNumber *intNumber0 = [NSNumber numberWithInt:100];
+    NSNumber *floatNumber0 = [NSNumber numberWithDouble:100.00];
+    // 包装以后可以存入数组
+    NSArray *array0 = @[intNumber0, floatNumber0];
+    NSLog(@"%@", [array0 description]);
+    // 解包
+    int intValue = [intNumber0 intValue];
+    float floatValue = [floatNumber0 floatValue];
+    NSLog(@"%d, %f", intValue, floatValue);
+    // 优化语法
+    NSNumber *intNumber1 = @(12); // 等价于[NSNumber numberWithInt:100]
+    NSNumber *floatNumber1 = @(3.14f); // 等价于[NSNumber numberWithDouble:100.00]
+    NSArray *array1 = @[intNumber1, floatNumber1];
+    NSLog(@"%@", [array1 description]);
+}
 
-// 5.NSValue
-// 6.NSNumber
-// 7.NSDate
+
+/// 6.NSValue（了解）
+// 可以对结构体进行包装
+// NSValue是NSNumber的父类
+-(void)showValue {
+    // 结构体能不能存入数组：不能
+    // 包装结构体
+    // 封包
+    NSRange range0 = {10, 20};
+    NSValue *value = [NSValue valueWithRange:range0];
+    // 解包
+    NSRange range1 = [value rangeValue];
+    NSLog(@"%lu, %lu", (unsigned long)range1.location, range0.length);
+    /// 自定义结构体
+    // &p -结构体的指针
+    // @encode(struct WXPoint) -结构体的类型
+    struct WXPoint {
+        float x;
+        float y;
+    };
+    struct WXPoint p = {1, 2};
+    NSValue *pointValue = [NSValue value:&p withObjCType:@encode(struct WXPoint)];
+    [pointValue getValue:&p];
+    NSLog(@"%f, %f", p.x, p.y);
+}
+
+
+/// 7.NSNull
+// 万物皆对象：空也是对象
+// nil不能存入字典/数组中
+-(void)showNull {
+    // 将nil封装成对象
+    NSNull *null = [NSNull null];
+    NSArray *array = @[null, @(12)];
+    NSLog(@"%@", [array description]);
+}
+
+
+/// 8.NSDate
+-(void)showDate {
+    // 1.当前设备的时间点
+    // 北京时间：东八区
+    NSDate *date0 =[NSDate date];
+    NSDate *date1 = [[NSDate alloc]init];
+    // 明天 = 当前设备的时间点 + 24小时
+    NSDate *date2 = [NSDate dateWithTimeIntervalSinceNow:24 * 60 * 60];
+    // 昨天 = 当前设备的时间点 - 24小时
+    NSDate *date3 = [NSDate dateWithTimeIntervalSinceNow:-(24 * 60 * 60)];
+    NSLog(@"%@===%@===%@===%@", date0, date1, date2, date3);
+    // 2.时间戳：某一日期到1970年的秒数大小成为该日期的时间戳
+    // 通过时间戳创建一个NSDate
+    NSDate *date4 = [NSDate dateWithTimeIntervalSince1970:0];
+    // 获取日期的时间戳
+    NSTimeInterval t0 = [date0 timeIntervalSince1970];
+    // 明天到现在的i秒数
+    NSTimeInterval t1 = [date2 timeIntervalSinceNow];
+    NSLog(@"%f===%f", t0, t1);
+    // 3.日期的比较
+    // 第一种方式
+    NSComparisonResult result = [date3 compare:date4];
+    if (result == NSOrderedAscending) {
+        NSLog(@"date3 < date4");
+    } else if (result == NSOrderedSame) {
+        
+    } else {
+        
+    }
+    // 第二种方式：比较时间戳
+    // 4.日期的格式化
+    NSDate *nowDate = [NSDate date];
+    NSString *defaultStr = nowDate.description;
+    NSLog(@"%@", defaultStr);
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc]init];
+    // 参考"时间格式说明符对照统一表.png"
+    // zz时区
+    [dateFormatter setDateFormat:@"yyyy年MM月dd日 HH:mm:ss zz"];
+    // 设置时区
+    NSTimeZone *timeZone = [NSTimeZone timeZoneWithName:@"Pacific/Funafuti"];
+    [dateFormatter setTimeZone:timeZone];
+    // 获取所有时区的名称
+    for (NSString *timeZone in [NSTimeZone knownTimeZoneNames]) {
+        NSLog(@"%@", timeZone);
+    }
+    // 字符串 -> 日期对象
+    NSString *dateStr = @"2013年04月08日 18:30:25";
+    NSLog(@"时间===%@/对象===%@", [dateFormatter stringFromDate:nowDate], [dateFormatter dateFromString:dateStr]);
+}
 
 @end

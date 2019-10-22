@@ -495,16 +495,7 @@ char *strrchr(char *str, char c); //在串中查找指定字符的最后一个�
 
 //权限修饰：见WMController.swift/WMGameProxy.h/m
 
-//字符串：FoundationNSObject.h/m
-
-//数组
-1.NSArray：不可变数组/数组的长度确定
-2.NSMutableArray：可变数组/数组的长度不确定/类
-1).NSMutableArray是一个类
-2).数组元素不能是基本数据类型int，必须是对象的引用(指针)
-
-//字典
-1.NSDictionary
+//字符串、数组、字典（FoundationNSObject.h/m）
 
 //类别/扩展
 1.一旦使用类别给已有的类增补方法，那么这个类的对象就可以使用该方法；
@@ -543,7 +534,17 @@ NSString *name = xiaoMing.name; <==> NSString *name = [xiaoMing getName];
 //文件操作
 
 //异常处理
-@try...@catch...@finally
+NSArray *array = [NSArray array];
+@try {
+    // 可能会出现异常的代码
+    [array objectAtIndex:5];
+} @catch (NSException *exception) {
+    // 如果捕捉到错误：执行此处的代码
+    NSLog(@"%@", exception);
+} @finally {
+    // 可选：必执行代码
+    NSLog(@"finally");
+}
 
 // RunLoop
 
