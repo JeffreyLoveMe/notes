@@ -7,7 +7,9 @@
 //
 
 #import "SyTableViewController.h"
-
+/// 匿名类别
+// 可以定义属性和方法
+// 可以声明私有方法和私有变量
 @interface SyTableViewController () <UITableViewDelegate, UITableViewDataSource>
 
 @end
@@ -17,7 +19,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    
+    [self setupTableView];
 }
 
 

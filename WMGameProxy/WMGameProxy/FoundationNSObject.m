@@ -93,9 +93,9 @@
     // 2.判断字符串是否属于同一个对象：不是比较内容是否相同
     // swift可以这样比较字符串内容是否相同
     if (str1 == str0) {
-        NSLog(@"属于同一对象");
+        NSLog(@"属于同一对象（地址相同）");
     } else {
-        NSLog(@"不属于同一对象");
+        NSLog(@"不属于同一对象（地址不同）");
     }
     // 3.字符串比较
 //    NSComparisonResult result0 = [str0 caseInsensitiveCompare:str1]; // 忽略大小写比较大小
@@ -131,9 +131,21 @@
     /// 字符串的查找
     NSString *str5 = @"www.iphone.com";
     NSRange range3 = [str5 rangeOfString:@"ios"];
-    if (range3.location != NSNotFound) {
+    if (range3.location == NSNotFound) {
         // 没有找到这个数
+    } else {
+        NSLog(@"%lu === %lu", range3.location, range3.length);
     }
+    // 字符串替换
+    // A被B替换
+    // 不会改变str5
+    NSString *str6 = [str5 stringByReplacingOccurrencesOfString:@"A" withString:@"B"];
+    // 应用：去掉空格
+    str6 = [str5 stringByReplacingOccurrencesOfString:@" " withString:@""];
+    // 去掉首尾空格
+    str3 = [str5 stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+    NSLog(@"%@", str6);
+    
     
     /// 2).可变字符串
     // NSMutableString继承于NSString
@@ -155,7 +167,7 @@
     // 1.找到删除的范围
     // NSRange是一个结构体
     NSRange range0 = [mStr3 rangeOfString:@"222"];
-    NSRange range1 = {1, 2};
+    NSRange range1 = {1, 2}; // { 位置 , 长度 }
     // 2.删除
     [mStr3 deleteCharactersInRange:range0];
     // 替换字符串
@@ -166,6 +178,7 @@
 
 /// 2.NSArray/NSMutableArray/数组
 // 有序的对象集合：不能存放基本数据类型（如果需要存放只能通过NSNumber、NSValue进行数据的封装）
+// 有序、不唯一
 -(void)showArray {
     /// 1).不可变数组
     // OC数组和C数组有什么区别？
@@ -173,7 +186,7 @@
     // 2.NSArray不能存放简单的基本数据类型（int、float、NSInteger）
     // NSInteger不是类吗？
     // 3.C数组是相同类型变量的有序集合，可以保存任意类型的数据
-    // 4.NSArray下标越界不会有警告（运行会报错）
+    // 4.NSArray下标越界不会有警告（运行直接会报错）
     // 创建数组
     // 1.创建空数组
     NSArray *array1 = [[NSArray array]init];
@@ -197,10 +210,15 @@
     if (index == NSNotFound) {
         // 没有找到
     }
-    /// 将数组中的字符串用 , 连接
+    /// ！！！很重要 - start - ！！！
+    // 将数组中的字符串用 , 连接
     // 要求：数组中的元素必须全部是字符串
     NSString *str0 = [array4 componentsJoinedByString:@","];
-    NSLog(@"%@", str0);
+    // 将字符串分割创建数组
+    // 原字符串不变（str0不变）
+    NSArray *componentArray = [str0 componentsSeparatedByString:@","];
+    NSLog(@"%@", componentArray);
+    /// ！！！很重要 - end - ！！！
     // 数组中第一个元素、最后一个元素
     NSString *firstStr = [array4 firstObject];
     NSString *lastStr = [array4 lastObject];
@@ -214,11 +232,15 @@
     NSMutableArray *mArray1 = [[NSMutableArray alloc]init]; // 默认会开辟多个（具体几个不知道）
     NSMutableArray *mArray2 = [NSMutableArray array];
     // 2.创建有数据的数组
-    NSMutableArray *mArray3 = [[NSMutableArray alloc]initWithObjects:@"data1", @"data2", @"data3", nil];
+    NSMutableArray *mArray3 = [[NSMutableArray alloc]initWithObjects:
+                               @"data1",
+                               @"data2",
+                               @"data3", nil];
     // 数组允许数组重复
     NSMutableArray *mArray4 = [NSMutableArray arrayWithObjects:@"data",@"data", nil];
     NSMutableArray *mArray5 = [NSMutableArray arrayWithCapacity:5]; // 默认会开辟5个（超过5个会自动增大）
     // 添加元素
+    // 添加在最后一个元素后面
     [mArray1 addObject:@"data1"];
     // 添加数组
     [mArray5 addObjectsFromArray:mArray1];
@@ -231,8 +253,12 @@
     [mArray3 removeObject:@"data"]; // 删除指定元素：如果数组中有两个呢？都删除吗？如果数组没有该元素呢？一个都不删除吗？
     // 替换指定下标元素
     [mArray3 replaceObjectAtIndex:0 withObject:@"hello"];
+    // 重置数组
+    [mArray1 setArray:mArray2];
     /// 查找
     // 防止数组越界：严谨写法
+    // 不可变数组也可以直接使用下标取
+    // id obj = array4[5];
     NSUInteger index0 = 5;
     if (index0 < array4.count) {
         [array4 objectAtIndex:index0];
@@ -245,17 +271,42 @@
     [mArray3 exchangeObjectAtIndex:0 withObjectAtIndex:1];
     /// 数组遍历
     // 1.普通遍历
+    for (int index = 0; index < mArray3.count; index++) {
+        
+    }
     // 2.快速遍历
+    for (NSString *obj in mArray3) {
+        NSLog(@"%@", obj);
+    }
+    // 3.枚举器法
+    // 获取一个枚举器
+    NSEnumerator *enumerator = [mArray3 objectEnumerator];
+    while ([enumerator nextObject]) {
+        
+    }
+    // 正序
+    for (id obj in [mArray3 objectEnumerator]) {
+        [mArray3 addObject:obj];
+    }
+    // 逆序
+    for (id obj in [mArray3 reverseObjectEnumerator]) {
+        [mArray3 addObject:obj];
+    }
 }
 
 
 
 /// 3.NSDictionary/NSMutableDictionary/字典
 // dictionary的数据是无序的
+// 字典：任何类型的对象地址构成键值对的集合结构
+// 键值对key/value必须一一对应
+// key必须保持唯一
 -(void)showDictionary {
     /// 1).不可变字典
     // 创建NSDictionary
     NSDictionary *dic0 = [[NSDictionary alloc]init];
+//    NSDictionary *dic = [NSDictionary dictionary];
+    // 全部是","
     NSDictionary *dic1 = [[NSDictionary alloc]initWithObjectsAndKeys:
                           @"key0", @"value0",
                           @"key1", @"value1",
@@ -266,6 +317,7 @@
                            @"key4":@"value4"};
     // 获取value
     NSString *value0 = [dic1 objectForKey:@"key0"];
+    NSLog(@"obj == %@", dic1[@"key0"]);
     // 返回键值总数
     NSUInteger count = [dic1 count];
     // 返回所有的键
@@ -299,6 +351,12 @@
     for (int index = 0; index < mDict.allKeys.count; index++) {
         NSLog(@"%@", [mDict objectForKey:[mDict.allKeys objectAtIndex:index]]);
     }
+    // 第三种方法（枚举器法）
+    // 获取所有的key
+    NSEnumerator *enumerator = [mDict keyEnumerator];
+    while ([enumerator nextObject]) {
+        // 循环体
+    }
 }
 
 
@@ -326,6 +384,9 @@
     NSLog(@"%@==%ld==%@", array1, count, s3);
     
     /// 1).可变集合
+    
+    
+    // 遍历集合
 }
 
 

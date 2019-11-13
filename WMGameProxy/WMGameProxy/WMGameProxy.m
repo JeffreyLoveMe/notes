@@ -31,6 +31,9 @@
 /// 初始化方法
 // id/instancetype有什么区别？？？
 -(id)initWithSdk:(NSString *)sdk {
+    // 子类重写父类方法想要保留父类的对象方法
+    // super在类方法中调用父类方法
+    // super在对象方法中调用父类对象方法
     self = [super init];
     if (self) {
         _name = @"";
@@ -46,7 +49,8 @@
 // 以单例->全局变量
 // 面试：手写单例方法
 +(instancetype)getInstance {
-    static WMGameProxy *instance; // static声明静态变量：在函数结束变量不消失
+    // static声明静态变量：在函数结束变量不消失
+    static WMGameProxy *instance;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         instance = [[WMGameProxy alloc]init];
@@ -78,6 +82,12 @@
 // 如果需要给属性赋值、可以使用set方法
 -(void)setSdk:(NSString * _Nonnull)sdk {
     _sdk = sdk;
+//    // set方法的实质
+//    // 可以自己操作一把
+//    if (_sdk != sdk) {
+//        [_sdk release];
+//        _sdk = [sdk retain];
+//    }
 }
 // 获取属性内容、可以使用get方法
 -(NSString * _Nonnull)getSdk {

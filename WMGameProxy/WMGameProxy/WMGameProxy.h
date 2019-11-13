@@ -11,6 +11,7 @@
 NS_ASSUME_NONNULL_BEGIN
 /// .h文件用来声明类
 // NSObject是基类、顶级父类
+// 子类可以继承父类的所有方法和非私有成员变量
 // 父类的属性可以继承、但是方法只能通过super调用
 // WMGameProxy类名
 // NSObject父类
@@ -50,6 +51,19 @@ NS_ASSUME_NONNULL_BEGIN
 @property (setter = myHeight:) NSInteger mheight;
 // 多个属性使用","隔开
 @property (setter = setUserName:, getter = getUserNmae, strong, nonatomic) NSString *mName;
+/**
+ 1.原子性
+ atomic // 多线程环境下存在线程保护（默认）
+ nonatomic // 多线程环境下不存在线程保护
+ 2.赋值
+ assign // 直接赋值（默认）
+ retain // 保留对象
+ copy     // 拷贝对象
+ 3.读写
+ readwrite  // 生成getting/setting方法
+ readonly   // 只生成getting方法
+ */
+@property (nonatomic, retain, readonly) NSString *userName;
 
 /// 定义方法/行为
 // 冒号也是方法名的一部分
@@ -57,7 +71,7 @@ NS_ASSUME_NONNULL_BEGIN
 // 对象方法：只能被对象名调用
 -(void)loginWithGameId:(NSString *)gameId GameKey:(NSString *)gameKey;
 
-// 类方法：只能被类名调用
+// 类方法：不属于任何对象，只能被类名调用
 // 注意：类方法中无法使用属性？？？
 +(instancetype)getInstance;
 

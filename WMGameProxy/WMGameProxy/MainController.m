@@ -15,7 +15,7 @@
 // 2.static xxx
 // 3.枚举：OC语言的枚举 == 常量
 #define NAME @"谢吴军"
-@interface MainController () <MFMailComposeViewControllerDelegate, SySkillControllerDelegate>
+@interface MainController () <MFMailComposeViewControllerDelegate>
 
 @end
 
@@ -35,7 +35,7 @@
 }
 // 3D
 -(void)iphone3D {
-    // 创建一个多度动画
+    // 创建一个过渡动画
     CATransition *animation = [CATransition animation];
     // 设置动画类型
     animation.type = @"cube";
@@ -43,16 +43,6 @@
     animation.duration = 5;
     // 添加动画
     [self.view.layer addAnimation:animation forKey:nil];
-}
-// 帧动画
-// UIImageView
--(void)frameAnimation {
-    NSMutableArray *pics = [NSMutableArray array];
-    for (int i=1; i<=36; i++) {
-        NSString *pic = [[NSString alloc]initWithFormat:@"xxx_%d", i];
-        [pics addObject:pic];
-    }
-    //接下来怎么执行
 }
 
 -(void)selected {

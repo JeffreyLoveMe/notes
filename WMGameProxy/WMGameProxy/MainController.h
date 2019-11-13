@@ -7,10 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SySkillController.h"
 
 NS_ASSUME_NONNULL_BEGIN
-
-@interface MainController : UIViewController
+// 中间不需要 ,
+@interface MainController : UIViewController <SySkillControllerDelegate>
 
 @property (strong, nonatomic) NSString *mainText;
 

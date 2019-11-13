@@ -39,7 +39,6 @@ class WMGame: NSObject {
         myVariable = 12
         print("\(myConstant) + \(myVariable)")
         // 类型推导
-        
         // 类型别名
         // typedef
         typealias NSInteger = Int
@@ -55,10 +54,38 @@ class WMGame: NSObject {
     }
     
     /// 字符串
+    // swift中字符串不是指针而是实际的值
+    // 常见的特殊字符串常量
+    // 空字符 \0 反斜杠 \ 制表符 \t 换行符 \n 回车符 \r 双引号 \" 单引号 \'
     func FString() {
+//        // 基本用不到
+//        let char: Character = "A"
         let width = "The width is " // 定义字符串
+        let widthButton = String()
         let widthLabel = 56
-        print("\(width)\(widthLabel)")
+        // 前面是大写
+        // 后面是小写
+        print("\(width.uppercased())\(widthLabel)\(widthButton.lowercased())")
+        // 判断字符串是否有特定前缀
+        if width.hasPrefix("The") {
+            
+        }
+        // 判断字符串是否有特定后缀
+        if width.hasSuffix("width") {
+            
+        }
+        // 判断字符串是否相等
+        // 因为swift中字符串不是指针
+        // 如果是指针 == 表明指针地址相等
+        if width == "The width is " {
+            
+        }
+        // 判断字符串是否为空
+        if widthButton.isEmpty {
+            // widthButton.count/NSString的length不一定相同
+            // widthButton.count基于Unicode编码
+            // NSString的length基于UTF-16编码
+        }
     }
     
     /// 数组
@@ -105,7 +132,11 @@ class WMGame: NSObject {
     func FDictionary() {
         /// 定义
         var emptyDic0: Dictionary<String, String> = [:]
-        var dic0 = ["key0":"value0", "key1":"value1"]
+        // 冒号
+        var dic0 = [
+            "key0":"value0",
+            "key1":"value1"
+        ]
         /// 添加/修改
         // 如果存在key0则修改value
         // 如果不存在key0则添加value
@@ -122,10 +153,77 @@ class WMGame: NSObject {
     }
     
     /// 元组
+    // 一般用于函数返回值
     func FTuple() {
-        // 定义
+        /// 定义
+        // 1.定义一个简单的元组
         let (x0, y0) = (1, 2)
-        let (x1, y1) = (404, "Not Found")
-        // 
+        print("x is \(x0), y is \(y0)")
+        // 2.定义一个由Int和String组成的元组
+        let httpError = (404, "Not Found")
+        print("\(httpError.0) is \(httpError.1)")
+        // 3.定义取别名的元组
+        let httpSuccess = (statusCode: 200, des: "success")
+        print("\(httpSuccess.statusCode) is \(httpSuccess.des)")
     }
+    
+    /// 可选类型
+    // Objective-C中nil是一个指针指向不存在的对象
+    // swift中nil不是指针而是一个特定类型空值（nil不能用于非可选类型）
+    func FOptional() {
+        // 要不存在、要不存在为nil
+        // swift中nil不能赋值非可选类型
+        // 默认值为nil
+        // 调用方法返回值为nil
+        var strValue: String?
+        strValue = ""
+        let hashValue = strValue?.hashValue
+        if let hashValue = hashValue {
+            print("\(hashValue)")
+        }
+//        /// 隐式解包
+//        // 这样会存在崩溃吗?
+//        // swift变量必须先init再使用
+//        let window: UIWindow!
+//        window.makeKeyAndVisible()
+    }
+    
+    /// 运算符
+    // 与OC不同：swift语言并不会把赋值运算符(=)作为一个值返回
+    // 默认情况下Swift的运算符不允许值溢出
+    /*
+     区间
+     a...b  // a到b（包含a和b）
+     a..<b  // a到b（包含a不包含b）
+     */
+    // 流程控制
+    func FOperator() {
+        // switch语句
+        // case后面可以匹配"区间"
+        // case后面可以匹配"元组"
+        // case分支允许"值绑定"
+        
+//        // 控制传递语句
+//        fallthrough
+//        break
+//        continue
+//        return
+    }
+    
+    /// 函数的定义和调用
+    // Void是空元组
+    // 函数可以返回一个元组/可以返回多个值
+    func FSwitchController(controller: UIViewController) -> Void {
+        
+    }
+    
+    // 可变参数
+    // 可变参数一定要放在参数表中最后的位置
+    func FChange(controller: UIViewController, number: Double...) {
+        
+    }
+    
+    // 闭包
+    var list: [String?] = []
+    
 }

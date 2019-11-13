@@ -58,7 +58,9 @@
 		33A8FD7722D48125004AECBA /* 快捷键.png in Resources */ = {isa = PBXBuildFile; fileRef = 33A8FD7622D48125004AECBA /* 快捷键.png */; };
 		33A8FD7A22D481B4004AECBA /* SyTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 33A8FD7922D481B4004AECBA /* SyTableViewController.m */; };
 		33A8FD7D22D48237004AECBA /* SyCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 33A8FD7C22D48237004AECBA /* SyCollectionViewController.m */; };
+		33AD3E38236062830092C389 /* NSString+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 33AD3E37236062830092C389 /* NSString+Extension.m */; };
 		33B434452338E910007CE373 /* UIScrollView.png in Resources */ = {isa = PBXBuildFile; fileRef = 33B434442338E910007CE373 /* UIScrollView.png */; };
+		33BD4379237A94CD007B8002 /* error_02：调用一个野指针.png in Resources */ = {isa = PBXBuildFile; fileRef = 33BD4378237A94CD007B8002 /* error_02：调用一个野指针.png */; };
 		33BE31BF22E5890A0073E35B /* FoundationNSObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 33BE31BE22E5890A0073E35B /* FoundationNSObject.m */; };
 		33BFBBF723387F6900DA9C6D /* UIImage+animatedGIF.m in Sources */ = {isa = PBXBuildFile; fileRef = 33BFBBF623387F6900DA9C6D /* UIImage+animatedGIF.m */; };
 		33D730A42319229D0024D34E /* 退出键盘的两种方式.png in Resources */ = {isa = PBXBuildFile; fileRef = 33D730A32319229D0024D34E /* 退出键盘的两种方式.png */; };
@@ -158,7 +160,10 @@
 		33A8FD7B22D48237004AECBA /* SyCollectionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SyCollectionViewController.h; sourceTree = "<group>"; };
 		33A8FD7C22D48237004AECBA /* SyCollectionViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SyCollectionViewController.m; sourceTree = "<group>"; };
 		33A9F0B722B4D4C5007985BF /* 怎么称为一名优秀leader.xmind */ = {isa = PBXFileReference; lastKnownFileType = file; path = "怎么称为一名优秀leader.xmind"; sourceTree = "<group>"; };
+		33AD3E36236062830092C389 /* NSString+Extension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+Extension.h"; sourceTree = "<group>"; };
+		33AD3E37236062830092C389 /* NSString+Extension.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+Extension.m"; sourceTree = "<group>"; };
 		33B434442338E910007CE373 /* UIScrollView.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = UIScrollView.png; sourceTree = "<group>"; };
+		33BD4378237A94CD007B8002 /* error_02：调用一个野指针.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "error_02：调用一个野指针.png"; sourceTree = "<group>"; };
 		33BE31BD22E5890A0073E35B /* FoundationNSObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FoundationNSObject.h; sourceTree = "<group>"; };
 		33BE31BE22E5890A0073E35B /* FoundationNSObject.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FoundationNSObject.m; sourceTree = "<group>"; };
 		33BFBBF523387F6900DA9C6D /* UIImage+animatedGIF.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+animatedGIF.h"; sourceTree = "<group>"; };
@@ -262,6 +267,7 @@
 				33068EFF22AE67C800D044EE /* C语言:OC关键字.png */,
 				33068EFE22AE67C700D044EE /* C语言的执行流程.png */,
 				33068F0022AE67C800D044EE /* error_01：找不到AppDelegate类.png */,
+				33BD4378237A94CD007B8002 /* error_02：调用一个野指针.png */,
 				33068EF622AE67C700D044EE /* FlagZombie.gif */,
 				33068F0222AE67C800D044EE /* iphone设备尺寸.png */,
 				33068EF822AE67C700D044EE /* json解析标准版.png */,
@@ -300,6 +306,8 @@
 				330C15C822F801F700CD84CA /* SySkillController.m */,
 				33068EE822AE66A800D044EE /* MainController.h */,
 				33068EE922AE66A800D044EE /* MainController.m */,
+				33AD3E36236062830092C389 /* NSString+Extension.h */,
+				33AD3E37236062830092C389 /* NSString+Extension.m */,
 				3372CD592328AC9A00E7307B /* DemoController.h */,
 				3372CD5A2328AC9A00E7307B /* DemoController.m */,
 				33F67EDB2304F98D006F7DD6 /* WMGameProxy.pch */,
@@ -498,6 +506,7 @@
 				339A3D8222BBBE5D007DD37D /* Xcode新建项目.png in Resources */,
 				3361E40E2308F3DF00A03B7D /* 常见系统库01.png in Resources */,
 				33068F0C22AE67C800D044EE /* App职责分配.png in Resources */,
+				33BD4379237A94CD007B8002 /* error_02：调用一个野指针.png in Resources */,
 				33B434452338E910007CE373 /* UIScrollView.png in Resources */,
 				33068F1022AE67C800D044EE /* error_01：找不到AppDelegate类.png in Resources */,
 				33068F0D22AE67C800D044EE /* UIKit.png in Resources */,
@@ -618,6 +627,7 @@
 				330C15C922F801F700CD84CA /* SySkillController.m in Sources */,
 				3312831A2339B6FC005D55E2 /* SyCustomView.swift in Sources */,
 				33068EF222AE670200D044EE /* WMGame.swift in Sources */,
+				33AD3E38236062830092C389 /* NSString+Extension.m in Sources */,
 				33A8FD7D22D48237004AECBA /* SyCollectionViewController.m in Sources */,
 				331283182339B6DD005D55E2 /* SyDefaultCustomView.m in Sources */,
 				33068EEA22AE66A800D044EE /* MainController.m in Sources */,

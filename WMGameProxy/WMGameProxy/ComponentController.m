@@ -10,8 +10,8 @@
 #import "SySkillController.h"
 #import "FoundationNSObject.h"
 
-@interface ComponentController () <UITextFieldDelegate, UIAlertViewDelegate, UIActionSheetDelegate, UIScrollViewDelegate>
-
+@interface ComponentController () <UITextFieldDelegate, UIAlertViewDelegate, UIActionSheetDelegate, UIScrollViewDelegate, UITabBarControllerDelegate, UIGestureRecognizerDelegate>
+ 
 @end
 
 @implementation ComponentController
@@ -62,6 +62,8 @@
     /// 背景颜色
     // 这个已经封装
     view.backgroundColor = [UIColor colorWithRed:0.1 green:0.1 blue:0.1 alpha:1];
+//    // 这里怎么理解？？？
+//    view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@""]];
     /// 0-透明、1-不透明
     // 如果设置为0则不响应事件：所以一般不设置View透明度、而设置View背景透明度
     view.alpha = 0;
@@ -136,6 +138,7 @@
             NSLog(@"动画完成");
         }
     }];
+    /// 核心动画
 }
 
 
@@ -249,11 +252,14 @@
 // UIImage -二进制的图像数据
 -(void)setupImageView {
     /// 创建图片对象
-    // 该方法只能加载占用内存小的图片
+    // 该方法只能加载占用内存小的图片：因为这种方式加载的图片会一直保存在内存中，不会释放
+    // Assets.xcassets中的图片只能通过该方法设置
+    // 一般经常使用的图片会通过该方式加载
     UIImage *image0 = [UIImage imageNamed:@"image_demo"];
     // 打印图片大小
     NSLog(@"%@", NSStringFromCGSize(image0.size));
     /// 如果图片占用内存较大、使用下列方法
+    // 一般不经常使用的图片会通过该方式加载
     NSString *path = [[NSBundle mainBundle] pathForResource:@"image_demo" ofType:@"png"];
     NSData *data = [NSData dataWithContentsOfFile:path];
     UIImage *image1 = [UIImage imageWithData:data];
@@ -266,11 +272,12 @@
     imageView.image = [UIImage imageNamed:@"image_demo"];
     imageView.highlightedImage = image0; // 设置高亮图片
     imageView.userInteractionEnabled = YES; // 默认为NO
+    imageView.clipsToBounds = YES;  // 裁减超出部分
     /*
      填充模式：
      UIViewContentModeScaleToFill - 拉伸填满/不会超出：图片会变形/默认
-     UIViewContentModeScaleAspectFit -按比例填充/宽、高一边靠近
-     UIViewContentModeScaleAspectFill -按比例填满/宽&高全部靠近/会超出
+     UIViewContentModeScaleAspectFit -按比例填充/宽 || 高一边靠近/不会超出
+     UIViewContentModeScaleAspectFill -按比例填满/宽 & 高全部靠近/会超出
      */
     // 裁剪超出部分
     imageView.clipsToBounds = true;
@@ -290,6 +297,9 @@
     imageView.animationRepeatCount = 0;
     // 启动动画
     [imageView startAnimating];
+    if (imageView.isAnimating) {
+        // 正在执行动画
+    }
 //    // 停止动画
 //    [imageView stopAnimating];
 }
@@ -360,13 +370,17 @@
 // 用于显示超出App程序窗口大小的内容
 // 允许用户通过拖动手势滚动查看内容
 // 允许用户通过捏合手势缩放内容
+// 用来滚动的视图，可以用来展示大量内容
 -(void)setupScrollView {
     UIScrollView *scrollView = [[UIScrollView alloc]initWithFrame:self.view.bounds];
     scrollView.delegate = self;
     scrollView.backgroundColor = UIColor.grayColor; // 设置颜色
     scrollView.contentOffset = CGPointZero; // 偏移量：内容和控件的距离/记录滚动的位置
     scrollView.contentInset = UIEdgeInsetsMake(10, 10, 10, 10);  // 内边距：cell到边的距离/增加
-    scrollView.contentSize = CGSizeMake([[UIScreen mainScreen] bounds].size.width * 2, [[UIScreen mainScreen] bounds].size.height);  // 设置内容大小
+    // 可滚动尺寸： contentSize的尺寸 - scrollView的尺寸
+    // 不可以滚动： contentSize的尺寸 <= scrollView的尺寸
+    scrollView.contentSize = CGSizeMake([[UIScreen mainScreen] bounds].size.width * 2, [[UIScreen mainScreen] bounds].size.height);  // 设置内容大小（左右滚动）
+    scrollView.contentSize = CGSizeMake([[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height * 2);  // 设置内容大小（上下滚动）
     scrollView.bounces = NO;  // 设置是否反弹
     scrollView.pagingEnabled = NO; // 设置按页滚动
     scrollView.indicatorStyle = UIScrollViewIndicatorStyleWhite; // 设置滚动条样式
@@ -376,6 +390,9 @@
     scrollView.showsHorizontalScrollIndicator = NO;
     scrollView.scrollEnabled = true; // 设置是否可以滚动
     scrollView.scrollsToTop = true;  // 是否滚动到顶部
+    scrollView.userInteractionEnabled = NO; // 是否可以响应与用户的交互
+    scrollView.alwaysBounceHorizontal = YES; // 不管有没有设置contentSize，总有弹簧效果
+    scrollView.alwaysBounceVertical = YES;
     scrollView.delegate = self;
     //！！！以下一般不设置！！！//
     /// 设置缩放功能：需要两步
@@ -400,13 +417,16 @@
     pc.currentPage = 5;  // 当前页码
     pc.numberOfPages = 10; // 总共页码
     pc.hidesForSinglePage = YES; // 只有一页时是否隐藏视图
-    pc.pageIndicatorTintColor = UIColor.greenColor; // 控件颜色
+    pc.pageIndicatorTintColor = UIColor.greenColor; // 控件颜色（未选中颜色）
     pc.currentPageIndicatorTintColor = UIColor.orangeColor; // 当前选中颜色
     pc.enabled = NO; // 一般都是屏蔽事件
     [pc addTarget:self action:@selector(updatePageChanged:) forControlEvents:UIControlEventValueChanged];
     pc.tag = 100;
     [pc updateCurrentPageDisplay]; // 刷新当前视图
     [self.view addSubview:pc];
+    //自定义UIPageControl样式
+    [pc setValue:[UIImage imageNamed:@"xxx"] forKeyPath:@"_currentPageImage"];
+    [pc setValue:[UIImage imageNamed:@"xxx"] forKeyPath:@"_pageImage"];
 }
 -(void)updatePageChanged:(UIPageControl *)pc {
     NSLog(@"%ld", (long)pc.currentPage);
@@ -416,6 +436,23 @@
 /// UIMenuController菜单
 // https://blog.csdn.net/woyangyi/article/details/45896859
 -(void)setupMenuController {
+    UIMenuController *menu = [[UIMenuController alloc]init];
+    UIMenuItem *copyItem = [[UIMenuItem alloc]initWithTitle:@"copy" action:@selector(onCopy:)];
+    UIMenuItem *deleteItem = [[UIMenuItem alloc]initWithTitle:@"delete" action:@selector(onDelete:)];
+    menu.menuItems = @[copyItem, deleteItem];
+    // 设置坐标
+    [menu setTargetRect:CGRectMake(100, 100, 80, 50) inView:self.view];
+    // 显示menu
+    [menu setMenuVisible:YES animated:YES];
+    // 设置当前UIViewController为第一响应者
+    [self becomeFirstResponder];
+}
+
+-(void)onCopy:(UIMenuItem *)item {
+    
+}
+
+-(void)onDelete:(UIMenuItem *)item {
     
 }
 
@@ -495,6 +532,9 @@
 /// UISwitch/开关
 -(void)setupSwitch {
     UISwitch *sw = [[UISwitch alloc]init];
+    // 因为iOS内置size（默认width51.0/height31.0）
+    // 设置frame没有效果
+    // 可以通过缩放来设置大小
     sw.frame = CGRectMake(100, 100, 100, 50);
     sw.on = true; // 是否打开
     sw.onTintColor = UIColor.orangeColor;
@@ -596,10 +636,99 @@
 
 #pragma mark - UIGestureRecognizer
 // 事件传递流程：当前视图->视图控制器->窗口->UIApplication对象->不处理
+// hitTest
 -(void)setupGestureRecognizer {
+    UIImageView *imageView = [[UIImageView alloc]init];
+    imageView.frame = CGRectMake(100, 100, 100, 50);
+    [self.view addSubview:imageView];
+    imageView.backgroundColor = UIColor.redColor;
+    imageView.userInteractionEnabled = YES;
+    // 一个视图可以附着多个视图/一个手势只能附着一个视图
+    /// 单击
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(onTap:)];
+    tap.numberOfTapsRequired = 1;  // 单击次数
+    tap.numberOfTouchesRequired = 1; // 需要几根手指
+    [imageView addGestureRecognizer:tap];
+    /// 双击
+    UITapGestureRecognizer *doubleTap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(onTap:)];
+    doubleTap.numberOfTapsRequired = 2;
+    [imageView addGestureRecognizer:doubleTap];
+    [tap requireGestureRecognizerToFail:doubleTap]; // 单击会在双击失败以后才会识别单击手势
+    /// 按压手势
+    UILongPressGestureRecognizer *longPress = [[UILongPressGestureRecognizer alloc]initWithTarget:self action:@selector(onLongPress:)];
+    longPress.minimumPressDuration = 1;  // 最小按压时间
+    [imageView addGestureRecognizer:longPress];
+    /// 拖动手势
+    UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc]initWithTarget:self action:@selector(onPan:)];
+    [imageView addGestureRecognizer:pan];
+    /// 捏合手势
+    UIPinchGestureRecognizer *pinch = [[UIPinchGestureRecognizer alloc]initWithTarget:self action:@selector(onPinch:)];
+    pinch.delegate = self;
+    [imageView addGestureRecognizer:pinch];
+    /// 旋转手势
+    UIRotationGestureRecognizer *rotation = [[UIRotationGestureRecognizer alloc]initWithTarget:self action:@selector(onRotation:)];
+    rotation.delegate = self;
+    [imageView addGestureRecognizer:rotation];
+    /// 清扫手势（可以用于视频/直播方面）
+    UISwipeGestureRecognizer *swipe = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(onSwipe:)];
+    // NS_OPTIONS
+    swipe.direction = UISwipeGestureRecognizerDirectionUp | UISwipeGestureRecognizerDirectionRight;
+    [imageView addGestureRecognizer:swipe];
+}
+
+/// 事件处理
+-(void)onTap:(UITapGestureRecognizer *)tap {
+
+}
+
+-(void)onLongPress:(UILongPressGestureRecognizer *)press {
     
 }
 
+-(void)onPan:(UIPanGestureRecognizer *)pan {
+    
+}
+
+-(void)onPinch:(UIPinchGestureRecognizer *)pinch {
+    
+}
+
+-(void)onRotation:(UIRotationGestureRecognizer *)rotation {
+    
+}
+
+-(void)onSwipe:(UISwipeGestureRecognizer *)swipe {
+    
+}
+
+#pragma mark -触摸
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    NSLog(@"touch begin");
+    // 单点触摸：使用第一个参数
+    UITouch *touch = [touches anyObject];
+    // CGRect CGSize CGPoint CGFloat
+    // 都不是类
+    CGPoint point = [touch locationInView:self.view];
+    NSLog(@"%@", NSStringFromCGPoint(point));
+    // 多点触摸：使用第二个参数
+    NSSet *touchSet = [event allTouches];
+    for (UITouch *touch in touchSet) {
+        CGPoint point = [touch locationInView:self.view];
+        NSLog(@"%@", NSStringFromCGPoint(point));
+    }
+}
+
+- (void)touchesMoved:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    NSLog(@"touch move");
+}
+
+- (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    NSLog(@"touch end");
+}
+
+-(void)touchesCancelled:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    NSLog(@"touch cancel");
+}
 
 #pragma mark - 停靠模式
 // 主要处理父子视图
@@ -634,6 +763,18 @@
 }
 
 
+#pragma mark - 状态栏
+// 设置状态栏样式
+-(UIStatusBarStyle)preferredStatusBarStyle {
+    return UIStatusBarStyleLightContent;
+}
+
+// 设置状态栏的可见性
+-(BOOL)prefersStatusBarHidden {
+    return true;
+}
+
+
 #pragma mark - UINavigationBar导航条/UIToolBar工具条
 -(void)setupNavigationBar {
     /// 创建导航视图控制器
@@ -661,14 +802,19 @@
     // 3.UINavigationBar的常见属性和方法
     /// 导航条（只有一个、默认不隐藏）
     // 继承UIView
+    // 设置导航控制器的风格
     // UINavigationBar *bar = navigationController.navigationBar; // 获取导航栏：只读变量
+    /*
+     UIBarStyleDefault  // 默认白色
+     UIBarStyleBlack     // 黑色
+     */
     navigationController.navigationBar.barStyle = UIBarStyleBlack; // 导航条样式
     navigationController.navigationBarHidden = YES;  // 导航条隐藏：默认不隐藏
     navigationController.navigationBar.translucent = YES; // YES半透明（表示坐标原点在屏幕左上角）/NO不透明（表示坐标原点在导航条左下角）
-    navigationController.navigationBar.tintColor = UIColor.whiteColor; // 左上角返回键字体颜色
-    navigationController.navigationBar.barTintColor = UIColor.yellowColor; // 导航条颜色
+    navigationController.navigationBar.tintColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"image_demo"]]; // 左上角返回键字体颜色/以图片做为颜色
+    navigationController.navigationBar.barTintColor = [UIColor colorWithRed:125.0/255.0 green:125.0/255.0 blue:125.0/255.0 alpha:1]; // 导航条颜色
     /// 工具条：默认隐藏
-    // 一般不用
+    // 一般不用（默认就是隐藏）
     navigationController.toolbarHidden = NO;
     navigationController.toolbar.barStyle = UIBarStyleBlack;
     navigationController.toolbar.translucent = NO;
@@ -680,15 +826,28 @@
     }
     // 4.UINavigationItem的常见属性和方法
     // 每个UIViewController都有一个UINavigationItem
-    // 看到08:00
+    // 重点：UINavigationItem在UINavigationBar上面，但是是由UIViewController控制UINavigationItem
     self.navigationItem.title = @"导航视图控制器";  // 标题
     self.navigationItem.titleView = [[UIView alloc]init]; // 标题视图
+    // 定制系统UIBarButtonItem
     UIBarButtonItem *item0 = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(onAdd)];
+    // 可以自定义UIBarButtonItem
     UIBarButtonItem *customItem0 = [[UIBarButtonItem alloc]initWithCustomView:[UIButton buttonWithType:UIButtonTypeCustom]];
-    self.navigationItem.leftBarButtonItem = item0;
+    // 这两种写法有什么不同
+    /*
+     一个UINavigationController有若干个UIViewController
+     一个UINavigationController包含一个navigationBar/toolbar
+     navigationItem在navigationBar的上面
+     但是navigationItem不是由navigationBar控制、也不是由UINavigationController控制
+     navigationItem是由当前UIViewController控制
+     */
+//    self.navigationController.navigationItem.leftBarButtonItem = item0;  // 错误写法
+    self.navigationItem.leftBarButtonItem = item0;   // 正确写法
     self.navigationItem.rightBarButtonItem = customItem0;
     self.navigationItem.leftBarButtonItems = @[item0, customItem0];
     self.navigationItem.rightBarButtonItems = @[item0, customItem0];
+    self.navigationItem.hidesBackButton = YES;  // 隐藏返回按钮
+//    self.navigationItem.prompt = @"加载中..."; // 一般不使用
     /// 默认图片/title都是蓝色
     // 如果不需要图片蓝色使用UIImageRenderingModeAlwaysOriginal
     // 如果不需要设置文字蓝色：目前还不知道？？？
@@ -696,11 +855,34 @@
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"添加" style:UIBarButtonItemStylePlain target:self action:@selector(onAdd)];
 }
 -(void)onAdd {
-    
+    /// 导航栏的跳转
+    // 1.跳转到下一页
+    SySkillController *controller = [[SySkillController alloc]init];
+    [self.navigationController pushViewController:controller animated:true];
+    // 2.返回上一页
+    [self.navigationController popToViewController:controller animated:true];
+    // 3.返回到任意页面
+    int index = 5;
+    if (index < self.navigationController.viewControllers.count) {
+        [self.navigationController popToViewController:self.navigationController.viewControllers[index] animated:true];
+    }
+    // 4.回到根视图控制器
+    [self.navigationController popToRootViewControllerAnimated:true];
 }
 
 #pragma mark - TabBar
 -(void)setupTabBar {
+    // 分栏控制器
+    // 继承UIViewController
+    // 最多显示5个
+    UITabBarController *tabBarController = [[UITabBarController alloc]init];
+    tabBarController.selectedIndex = 0;  // 选中的index
+    tabBarController.tabBar.barStyle = UIBarStyleDefault; // UITabBar的样式
+    tabBarController.tabBar.tintColor = UIColor.redColor;
+    tabBarController.tabBar.barTintColor = UIColor.yellowColor;
+    tabBarController.tabBar.translucent = true;  // true透明/false不透明
+    tabBarController.delegate = self;
+    self.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"首页" image:[UIImage imageNamed:@""] selectedImage:[UIImage imageNamed:@""]];
     
 }
 
@@ -710,8 +892,11 @@
     
 }
 
-
-
+#pragma mark - XIB
+-(void)setupXib {
+//    // 通过XIB新建UIViewController
+//    SySkillController *controller = [[SySkillController alloc]initWithNibName:@"SySkillController" bundle:nil];
+}
 
 #pragma mark - UITextFieldDelegate
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
@@ -768,10 +953,23 @@
 //}
 
 
+#pragma mark - UIGestureRecognizerDelegate
+- (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer {
+    // 是否允许触发手势
+    return YES;
+}
+
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
+    // 是否允许同时支持多个手势：默认不支持
+    return YES;
+}
+
+
 #pragma mark - UIScrollViewDelegate
 /// 1&2&3 -通过这三个代理方法可以唯一确定上滑/下滑
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView {
     // 1.不管怎么操作：只要拥有偏移量就执行
+    // 实时监测滚动变化
 }
 
 -(void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
@@ -815,6 +1013,25 @@
 
 - (void)scrollViewDidEndZooming:(UIScrollView *)scrollView withView:(UIView *)view atScale:(CGFloat)scale {
     // 已经结束缩放
+}
+
+#pragma mark - UITabBarControllerDelegate
+- (BOOL)tabBarController:(UITabBarController *)tabBarController shouldSelectViewController:(UIViewController *)viewController {
+    // 是否可以选择这个控制器
+    // YES可以/NO不可以
+    return YES;
+}
+
+- (void)tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController {
+    // 选中某一个控制器
+}
+
+- (void)tabBarController:(UITabBarController *)tabBarController willBeginCustomizingViewControllers:(NSArray<__kindof UIViewController *> *)viewControllers {
+    // 将要开始编辑
+}
+
+- (void)tabBarController:(UITabBarController *)tabBarController didEndCustomizingViewControllers:(NSArray<__kindof UIViewController *> *)viewControllers changed:(BOOL)changed {
+    // 结束编辑
 }
 
 @end

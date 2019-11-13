@@ -127,4 +127,96 @@
     }
 }
 
+/// 数据持久化
+// 1.NSUserDefaults
+// 保存一些简单数据
+-(void)showNSUserDefaults {
+    /// 写入数据
+    // 实例化
+    [[NSUserDefaults standardUserDefaults] setObject:@"value" forKey:@"key0"];
+    [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"key1"];
+    [[NSUserDefaults standardUserDefaults] setValue:@(10) forKey:@"key2"];
+    [[NSUserDefaults standardUserDefaults] setInteger:10 forKey:@"key3"];
+    // 同步到持久状态
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    /// 读取数据
+    NSString *value = [[NSUserDefaults standardUserDefaults] objectForKey:@"key0"];
+    BOOL shouldHide = [[NSUserDefaults standardUserDefaults] boolForKey:@"key1"];
+    NSInteger count = [[NSUserDefaults standardUserDefaults] integerForKey:@"key2"];
+    NSLog(@"%@===%d===%ld", value, shouldHide, count);
+}
+// 2.plist
+// 1).plist的手动创建
+// 2).plist用什么接收
+// 3).存储在沙盒中
+-(void)showPlist {
+#warning - 代码过几天补充
+    // 获取文件路径
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"myConfig" ofType:@"plist"];
+    // 通过路径转化数组（字典）
+    // 如果root是dic使用NSMutableDictionary接收
+    NSMutableDictionary *dic = [[NSMutableDictionary alloc]initWithContentsOfFile:path];
+    // 如果root是Array使用NSMutableArray接收
+    NSMutableArray *array = [[NSMutableArray alloc]initWithContentsOfFile:path];
+    NSLog(@"%@===%@", dic, array);
+}
+/// 协议protocol一般是用来增加类方法
+-(void)showProtocol {
+    MainController *controller = [[MainController alloc]init];
+    // 必须实现方法
+    [controller jumpPage:@""];
+    // 可选方法
+    if ([self respondsToSelector:@selector(finishTask)]) {
+        [controller finishTask];
+    }
+}
+/// 内存管理
+// 自动调用dealloc方法
+// ARC/MRC混合编程-选中工程->TARGET->Build Settings->Automatic Reference Counting->NO
+-(void)memoryManager {
+//    /// 基本对象的内存管理
+//    MainController *controller = [[MainController alloc]init];  // 引用计数为1
+//    NSLog(@"1.引用计数：%ld", [controller retainCount]);
+//    [controller retain];  // 引用计数+1
+//    NSLog(@"2.引用计数：%ld", [controller retainCount]);
+//    [controller retain];  // 引用计数+1
+//    NSLog(@"3.引用计数：%ld", [controller retainCount]);
+//    [controller release]; // 引用计数-1
+//    NSLog(@"4.引用计数：%ld", [controller retainCount]);
+//    [controller release]; // 引用计数-1
+//    [controller release]; // 引用计数-1（自动调用dealloc方法）
+    /// 多个对象的持有某一个对象
+    // 当你不再使用某一个对象引用计数-1
+    // 对象所有权：当一个所有者（Objective-C对象）做出alloc/retain/copy操作就会拥有该对象的所有权
+    // 释放对象所有权：做出release/autorelease操作就会 释放该对象的所有权
+    // 内存管理的黄金法则：如果对一个对象使用了alloc/copy/retain那么必须使用release/autorelease释放
+    // 怎么持有对象？？？
+    // 对象销毁相当于野指针：调用野指针会crash
+    /*
+     1.多release导致野指针程序crash
+     2.少release导致内存泄漏对象不会被销毁
+     */
+    /// 数组的内存管理
+    // 向一个数组中加入一个元素，数组会对元素retain(引用计数+1)
+    // 数组销毁的时候会将数组中每个元素release(引用计数-1)
+    // 将元素移除数组会对元素release(引用计数-1)
+    /// 自动释放池
+    // 定义：oc的一种内存管理机制
+    // 当自动释放池销毁时会对池子中每一个对象调用一次release方法
+}
+/// 逆序一个字符串
+-(NSString *)reverseWord:(NSString *)word Oprater:(NSString *)oprater {
+    NSArray *array = [word componentsSeparatedByString:oprater];
+    NSMutableArray *mArray = [NSMutableArray array];
+    for (NSString *str in [array reverseObjectEnumerator]) {
+        [mArray addObject:str];
+    }
+    return [mArray componentsJoinedByString:oprater];
+}
+
+- (void)dealloc {
+    // 对象销毁之前自动调用该方法
+    
+}
+
 @end
