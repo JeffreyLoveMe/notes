@@ -171,6 +171,7 @@
     }
 }
 /// 内存管理
+// 基本数据类型不需要管理内存
 // 自动调用dealloc方法
 // ARC/MRC混合编程-选中工程->TARGET->Build Settings->Automatic Reference Counting->NO
 -(void)memoryManager {

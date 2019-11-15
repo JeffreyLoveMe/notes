@@ -14,7 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 // 子类可以继承父类的所有方法和非私有成员变量
 // 父类的属性可以继承、但是方法只能通过super调用
 // WMGameProxy类名
-// NSObject父类
+// NSObject父类（顶级父类）
 @interface WMGameProxy : NSObject {
     /// 定义属性
     // 实例变量
@@ -30,10 +30,9 @@ NS_ASSUME_NONNULL_BEGIN
     NSString *_height;
     @package  // 只能在当前框架中才能被访问
 }
-
+/// @property编译器指令
 // 如果类中成员方法太多：setter/getter方法非常臃肿
-// @property让编译器自动生成setter/getter方法
-// 声明一个属性：1.生成setter/getter方法/2.生成_sdk成员变量
+// 让编译器自动声明setter/getter方法/生成_sdk成员变量
 @property (strong, nonatomic) NSString *sdk;
 // @synthesize让编译器自动实现setter/getter方法/Xcode4.6以后可以省略
 // atomic缺省/原子性：对当前属性进行加锁、线程安全、消耗性能、访问速度慢
@@ -46,23 +45,27 @@ NS_ASSUME_NONNULL_BEGIN
 // readwrite缺省
 @property (readonly, strong, nonatomic) NSString *GameKey;
 // 给getter方法取别名
+// 一般使用于BOOL
 @property (getter = myWeight) NSInteger weight;
 // 给setter方法取别名
+// 一般不使用
 @property (setter = myHeight:) NSInteger mheight;
 // 多个属性使用","隔开
 @property (setter = setUserName:, getter = getUserNmae, strong, nonatomic) NSString *mName;
 /**
  1.原子性
- atomic // 多线程环境下存在线程保护（默认）
- nonatomic // 多线程环境下不存在线程保护
+ atomic // 加锁/消耗性能、访问速度慢/多线程环境下存在线程保护（默认/原子性）
+ nonatomic // 不加锁/访问速度快/多线程环境下不存在线程保护/非原子性
  2.赋值
- assign // 直接赋值（默认）
+ assign // 一般用于基本类型/直接赋值（默认）
  retain // 保留对象
- copy     // 拷贝对象
+ copy    // 拷贝对象/修饰字符串（不可变字符串可以直接使用strong）
  3.读写
  readwrite  // 生成getting/setting方法
  readonly   // 只生成getting方法
  */
+// 如果想对传入的数据进行过滤需要重写getting/setting方法
+// 如果重写getting/setting方法，@property将不再生成getting/setting方法
 @property (nonatomic, retain, readonly) NSString *userName;
 
 /// 定义方法/行为

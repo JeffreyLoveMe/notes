@@ -11,6 +11,22 @@
 // 类名
 @implementation WMGameProxy
 // 方法实现
+
+/// 程序启动就会将所有类的代码加载到内存中
+// 放在代码区
++ (void)load {
+    // 先调用父类的load()->子类的load()
+    // 有且仅有一次：加载到内存
+}
+
+/// 创建类对象的时候调用
++ (void)initialize {
+    if (self == [WMGameProxy class]) {
+        // 有且仅有一次
+        // 先调用父类的load()->子类的load()
+    }
+}
+
 /// 对象的初始化方法/以init开头的方法（必须的）
 // 只能调用一次、从父类继承
 // id类型通用类型：一般用于"参数类型"/"返回值类型"
@@ -103,7 +119,6 @@
     NSString *name = wm.sdk; // getting方法
     NSLog(@"%@", name);
 }
-
 
 // 实现类结束的标志
 @end

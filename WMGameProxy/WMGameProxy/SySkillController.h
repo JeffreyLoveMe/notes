@@ -29,8 +29,8 @@ NS_ASSUME_NONNULL_BEGIN
 @end
 
 @interface SySkillController : UIViewController
-// 委托方：持有协议
-// 使用weak防止内存泄漏
+// 委托方：持有协议/该类就是委托方
+// 使用weak防止内存泄漏？？？说明原因？？？
 // 代理方：遵从协议、实现方法
 // 持有协议的id指针
 @property (weak, nonatomic) id <SySkillControllerDelegate> delegate;

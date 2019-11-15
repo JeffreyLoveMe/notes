@@ -67,19 +67,22 @@
     /// 0-透明、1-不透明
     // 如果设置为0则不响应事件：所以一般不设置View透明度、而设置View背景透明度
     view.alpha = 0;
+    // 根据内容（图片/文字）计算出最优size
+    // 根据最优size改变自己的size
+    [self.view sizeToFit];
     // 获取子控件对象：一个视图可以有多个子视图
     NSArray *subViews = [view subviews];
     // 如果父视图隐藏，子视图也会隐藏
     // 设置父视图alpha = 0.5/子视图alpha = 0.8，则真实alpha = 0.5 * 0.8 = 0.4
     // 一般我们是相对父视图布局：所以父视图移动，子视图跟着移动
     // 先添加到父视图的子视图会被后添加的视图覆盖
-    // 一个父视图会有多个子视图、一个子视图只能有一个父视图
+    // 一个父视图会有多个子视图、一个子视图只能有一个父视图、任何视图都可以添加到另一个视图
     for (view in subViews) {
-       NSLog(@"%@", NSStringFromCGRect(view.bounds));
+       NSLog(@"%@", NSStringFromCGRect(view.superview.bounds));
     }
-    // 把视图放在最上面
+    // 把子视图放在最上面
     [self.view bringSubviewToFront:superView];
-    // 把视图放在最下面
+    // 把子视图放在最下面
     [self.view sendSubviewToBack:superView];
     // 交换两个视图位置
     [self.view exchangeSubviewAtIndex:0 withSubviewAtIndex:2];
@@ -91,8 +94,12 @@
     [self.view insertSubview:superView atIndex:0];
     // 注意：父视图不能移除子视图
     // 子视图可以从父视图中移除
+    // 只要有父视图就可以移除
     [superView removeFromSuperview];
     view.tag = 0;
+    /// 图层
+    self.view.layer.cornerRadius = 5;
+    self.view.layer.masksToBounds = true;
     /// 形变属性：一次只能利用一个形变属性
     // xxxMakexxx相对于UIView的初始状态进行形变
     // 可以用于动画
@@ -139,11 +146,14 @@
         }
     }];
     /// 核心动画
+    /// 转场动画
 }
 
 
 #pragma mark - UILabel文本框
 -(void)setupLabel {
+    /// UILabel的包裹模式
+    // UILabel的高度是随着文字内容的增加而拉伸
     UILabel *label = [[UILabel alloc]init];
     label.frame = CGRectMake(100, 100, 100, 50);
     [self.view addSubview:label];
@@ -445,6 +455,8 @@
     // 显示menu
     [menu setMenuVisible:YES animated:YES];
     // 设置当前UIViewController为第一响应者
+    // UIMenuController的显示依赖第一响应者
+    //当UIViewController取消第一响应者，UIMenuController自动消失
     [self becomeFirstResponder];
 }
 
@@ -636,14 +648,18 @@
 
 #pragma mark - UIGestureRecognizer
 // 事件传递流程：当前视图->视图控制器->窗口->UIApplication对象->不处理
+// 父视图不能监听事件，则子视图无法监听事件/子视图超出父视图的部分，不能监听事件
+// 同一个父视图：最上面的视图首先监听事件，如果能够响应，则不再向下传递事件，如果不能响应，则向下传递事件
 // hitTest
+//https://www.jianshu.com/p/b1eaeff5ec81
+//https://www.jb51.net/article/108236.htm
 -(void)setupGestureRecognizer {
     UIImageView *imageView = [[UIImageView alloc]init];
     imageView.frame = CGRectMake(100, 100, 100, 50);
     [self.view addSubview:imageView];
     imageView.backgroundColor = UIColor.redColor;
     imageView.userInteractionEnabled = YES;
-    // 一个视图可以附着多个视图/一个手势只能附着一个视图
+    // 一个视图可以附着多个手势/一个手势只能附着一个视图
     /// 单击
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(onTap:)];
     tap.numberOfTapsRequired = 1;  // 单击次数
@@ -654,7 +670,7 @@
     doubleTap.numberOfTapsRequired = 2;
     [imageView addGestureRecognizer:doubleTap];
     [tap requireGestureRecognizerToFail:doubleTap]; // 单击会在双击失败以后才会识别单击手势
-    /// 按压手势
+    /// 按压手势/拖动的时候会持续调用
     UILongPressGestureRecognizer *longPress = [[UILongPressGestureRecognizer alloc]initWithTarget:self action:@selector(onLongPress:)];
     longPress.minimumPressDuration = 1;  // 最小按压时间
     [imageView addGestureRecognizer:longPress];
@@ -686,7 +702,9 @@
 }
 
 -(void)onPan:(UIPanGestureRecognizer *)pan {
-    
+    // 可以拿到拖动的位置
+    CGPoint point = [pan locationInView:self.view];
+    NSLog(@"%@", NSStringFromCGPoint(point));
 }
 
 -(void)onPinch:(UIPinchGestureRecognizer *)pinch {
@@ -711,6 +729,7 @@
     CGPoint point = [touch locationInView:self.view];
     NSLog(@"%@", NSStringFromCGPoint(point));
     // 多点触摸：使用第二个参数
+    // 每产生一个事件就会产生一个UIEvent对象
     NSSet *touchSet = [event allTouches];
     for (UITouch *touch in touchSet) {
         CGPoint point = [touch locationInView:self.view];
@@ -810,6 +829,7 @@
      */
     navigationController.navigationBar.barStyle = UIBarStyleBlack; // 导航条样式
     navigationController.navigationBarHidden = YES;  // 导航条隐藏：默认不隐藏
+    [navigationController setNavigationBarHidden:YES animated:YES];
     navigationController.navigationBar.translucent = YES; // YES半透明（表示坐标原点在屏幕左上角）/NO不透明（表示坐标原点在导航条左下角）
     navigationController.navigationBar.tintColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"image_demo"]]; // 左上角返回键字体颜色/以图片做为颜色
     navigationController.navigationBar.barTintColor = [UIColor colorWithRed:125.0/255.0 green:125.0/255.0 blue:125.0/255.0 alpha:1]; // 导航条颜色
@@ -964,6 +984,17 @@
     return YES;
 }
 
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch {
+    // 是否允许接受手势
+    // 一边可以接受手势
+    // 另一边不可以接受手势
+    CGPoint point = [touch locationInView:self.view];
+    if (point.x > self.view.frame.size.width / 2) {
+        return NO;
+    } else {
+        return YES;
+    }
+}
 
 #pragma mark - UIScrollViewDelegate
 /// 1&2&3 -通过这三个代理方法可以唯一确定上滑/下滑

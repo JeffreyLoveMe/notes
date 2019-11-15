@@ -34,6 +34,10 @@ Objective-C语言/Swift语言->iOS业务逻辑->iOS底层原理->网络协议->�
 3.
 //常见的七种数据结构
 1.冒泡排序、2.选择排序、3.插入排序、4.希尔排序、5.快速排序、6.归并排序、7.堆排序
+//ARC和java的垃圾回收机制有什么不同？
+1.
+2.
+3.
 /**************************Objective-C基础**************************/
 //#include和#import的区别？@class呢？
 1.#include/#import将xxx.h复制到当前文件中，#import不会重复copy、#include会重复copy
@@ -43,6 +47,9 @@ Objective-C语言/Swift语言->iOS业务逻辑->iOS底层原理->网络协议->�
 //self.name和_name的区别?
 1.self.name是对set/get方法的简单操作：引用计数 + 1
 2._name是直接操作变量：引用计数不变
+//assign和weak的区别？
+1.weak声明的变量在栈中会自动清空：赋值为nil；
+2.用assign声明的变量在栈中可能不会自动赋值为nil：造成野指针；
 //runloop常驻线程NSURLConnection：为什么AF2.0使用常驻线程？AF3.0就抛弃了？
 1.
 2.
@@ -79,10 +86,16 @@ Objective-C语言/Swift语言->iOS业务逻辑->iOS底层原理->网络协议->�
 1).修饰局部变量：当执行到定义局部变量的代码就会分配存储空间，但只有程序结束才会释放该存储空间；
 2).修饰全局变量：表示定义一个内部全局变量，只能被当前文件访问，开辟内存空间；
 3).修饰函数：表示定义一个内部函数（只能被当前文件访问的函数）；
-// block为什么会导致循环引用？举例子说明。
+// block为什么会导致循环引用？weak怎么防止循环引用？举例子说明。
 1.
 2.
 3.
+// GET/POST的区别？
+1.GET用于从服务端获取数据，请求的数据会明文出现在url中，没有请求体（不安全）；
+http://www.baidu.com/login?wd=ios开发&id=changmeng&name=畅梦
+2.POST既可以上传数据也可以获取数据，有请求体，请求的数据会封装在请求体中（相对安全）；
+http://www.baidu.com/login
+3.GET请求的数据根据浏览器/服务器对url长度有限制，POST对url没有限制；
 /**************************UI基础**************************/
 /**************************swift基础**************************/
 /**************************项目部分**************************/
@@ -169,6 +182,11 @@ int main() {
 // 戴铭
 https://github.com/ming1016
 https://ming1016.github.io/categories/Programming
+
+// 职业规划
+Objective语言->iOS(1年/8-9K)->swift->iOS(1-3年/15-18K)->flutter(3-5年/20-25K)->Java->Android(5年以上/25-30K)->
+kotlin->Android(5-8年/25-30K)->h5/css/js->React Native(8年以上/30K以上)->Java/php->后端(8-10年/30K-50K)->
+word/excel/ppt->IT->运维->python(10年以上/年薪100W)
 /**************************计算机常用单词**************************/
 // A
 Activity活动/Action动作/Animations动画/Audio音频/AutoLogin自动登录/Analysis分析
