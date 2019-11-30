@@ -20,6 +20,7 @@ NS_ASSUME_NONNULL_BEGIN
 // 父类遵循某个协议子类也遵循该协议
 @protocol SySkillControllerDelegate <NSObject>
 // 必须实现协议
+// 缺省
 @required
 -(void)jumpPage:(NSString *)text;
 // 可选实现协议
@@ -30,9 +31,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface SySkillController : UIViewController
 // 委托方：持有协议/该类就是委托方
-// 使用weak防止内存泄漏？？？说明原因？？？
+// 使用weak防止内存泄漏？？？说明原因？？？/会被赋值成xxx
 // 代理方：遵从协议、实现方法
 // 持有协议的id指针
+// 不能retain
 @property (weak, nonatomic) id <SySkillControllerDelegate> delegate;
 
 // 1.定义block

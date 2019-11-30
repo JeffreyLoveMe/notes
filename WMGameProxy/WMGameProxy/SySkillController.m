@@ -69,7 +69,9 @@
 
 /// 定时器
 -(void)createTimer {
+    // 创建定时器
     NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(onTimer) userInfo:nil repeats:true];
+    // 停止定时器
     [timer invalidate];
 }
 -(void)onTimer {
@@ -190,7 +192,8 @@
     // 当你不再使用某一个对象引用计数-1
     // 对象所有权：当一个所有者（Objective-C对象）做出alloc/retain/copy操作就会拥有该对象的所有权
     // 释放对象所有权：做出release/autorelease操作就会 释放该对象的所有权
-    // 内存管理的黄金法则：如果对一个对象使用了alloc/copy/retain那么必须使用release/autorelease释放
+///     内存管理的黄金法则：如果对一个对象使用了alloc/copy[mutable]/retain那么必须使用release/autorelease释放
+///     ！！！反之如果没有使用alloc/copy/retain就不能使用release/autorelease！！！
     // 怎么持有对象？？？
     // 对象销毁相当于野指针：调用野指针会crash
     /*

@@ -30,15 +30,21 @@ class WMGame: NSObject {
     /// 常量和变量
     // swift不会自动给变量赋初始值
     // swift中必须告诉编译器这是一个常量还是变量
+    // 语句结束以后可以不跟 ; 如果一行有多条语句(不建议)需要加 ;
     func variable() {
         // 常量：值不能够被修改的量
-        let myConstant = 12
+        // 优先使用常量
+        let myConstant: Int = 12
 //        myConstant = 13 错误
+        let uMyConstant: UInt = 13
         // 变量：值可以根据需要不断修改
         var myVariable = 42
+        // 定义以后可以改变
         myVariable = 12
-        print("\(myConstant) + \(myVariable)")
-        // 类型推导
+        print("\(myConstant) + \(myVariable) + \(uMyConstant)")
+        /// 类型推导
+        // swift是强类型语言
+        // 根据后面值的类型推导出前面标识符的类型
         // 类型别名
         // typedef
         typealias NSInteger = Int

@@ -30,8 +30,16 @@
     
 //    // WMGameProxy借用地盘
 //    WMGameProxy *wm = [[WMGameProxy alloc]init];
-//    WMGameProxy *wm = [WMGameProxy new]; // 不推荐使用new
+//    /**
+//     不推荐使用new
+//     1.为WMGameProxy类创建出来的对象分配存储空间
+//     2.初始化WMGameProxy类创建出来的对象的属性
+//     3.返回WMGameProxy类创建出来的对象对应的地址
+//     */
+//    WMGameProxy *wm = [WMGameProxy new];
 //    wm.sdk = @"sdk"; // 不推荐直接赋值
+//    /// 调用方法：在OC中叫做发送消息
+//    // ？？？OC中调用方法的原理？？？
 //    [wm setSdk:@"sdk"];
 //    NSString *sdk = wm.sdk; // 点语法就是get方法
     return YES;

@@ -51,6 +51,8 @@
     // super在类方法中调用父类方法
     // super在对象方法中调用父类对象方法
     self = [super init];
+    // self在对象方法中指向当前对象
+    // self在类方法中指向当前类
     if (self) {
         _name = @"";
         _age = @"";

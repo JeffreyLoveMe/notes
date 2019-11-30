@@ -13,7 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 // NSObject是基类、顶级父类
 // 子类可以继承父类的所有方法和非私有成员变量
 // 父类的属性可以继承、但是方法只能通过super调用
-// WMGameProxy类名
+// WMGameProxy类名/类名必须大写
 // NSObject父类（顶级父类）
 @interface WMGameProxy : NSObject {
     /// 定义属性
@@ -33,6 +33,8 @@ NS_ASSUME_NONNULL_BEGIN
 /// @property编译器指令
 // 如果类中成员方法太多：setter/getter方法非常臃肿
 // 让编译器自动声明setter/getter方法/生成_sdk成员变量
+// 持有的对象sdk引用计算 + 1
+// 通过自动释放池管理内存
 @property (strong, nonatomic) NSString *sdk;
 // @synthesize让编译器自动实现setter/getter方法/Xcode4.6以后可以省略
 // atomic缺省/原子性：对当前属性进行加锁、线程安全、消耗性能、访问速度慢

@@ -381,12 +381,14 @@
 // 允许用户通过拖动手势滚动查看内容
 // 允许用户通过捏合手势缩放内容
 // 用来滚动的视图，可以用来展示大量内容
+// 普通UIView不具备滚动功能
 -(void)setupScrollView {
     UIScrollView *scrollView = [[UIScrollView alloc]initWithFrame:self.view.bounds];
     scrollView.delegate = self;
     scrollView.backgroundColor = UIColor.grayColor; // 设置颜色
     scrollView.contentOffset = CGPointZero; // 偏移量：内容和控件的距离/记录滚动的位置
-    scrollView.contentInset = UIEdgeInsetsMake(10, 10, 10, 10);  // 内边距：cell到边的距离/增加
+    scrollView.contentInset = UIEdgeInsetsMake(10, 10, 10, 10);  // 内边距：cell到边的距离/增加额外区域
+    /// 内容实际大小
     // 可滚动尺寸： contentSize的尺寸 - scrollView的尺寸
     // 不可以滚动： contentSize的尺寸 <= scrollView的尺寸
     scrollView.contentSize = CGSizeMake([[UIScreen mainScreen] bounds].size.width * 2, [[UIScreen mainScreen] bounds].size.height);  // 设置内容大小（左右滚动）
@@ -407,6 +409,7 @@
     //！！！以下一般不设置！！！//
     /// 设置缩放功能：需要两步
     // 1.设置pinch缩放属性
+    // scrollView.minimumZoomScale == scrollView.maximumZoomScale不能缩放
     scrollView.minimumZoomScale = 0.5; // 缩小的最小比例
     scrollView.maximumZoomScale = 5;    // 放大的最大比例
     // 减速率：一般数值越大、停下来的时间越长
