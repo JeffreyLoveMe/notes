@@ -25,6 +25,7 @@ typedef enum {
 
 -(void)showObject;
 -(void)log;
+// OC中的()只有一个作用：用来括住数据类型
 -(void)logger:(NSString *)text;
 
 -(void)showString;

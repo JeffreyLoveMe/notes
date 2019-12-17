@@ -15,13 +15,16 @@ NS_ASSUME_NONNULL_BEGIN
 // 父类的属性可以继承、但是方法只能通过super调用
 // WMGameProxy类名/类名必须大写
 // NSObject父类（顶级父类）
+// .h/.m相互切换：command + control + 👆
 @interface WMGameProxy : NSObject {
     /// 定义属性
-    // 实例变量
-    // 在OC中：定义属性不能直接赋值、swift可以
+    // 实例变量/成员变量/属性
+    // 成员变量不能离开类：只能写在类内部
+    // 在OC中：成员变量不能直接赋值（不能直接初始化）、swift可以
     // ！！！定义成员变量：变量必须使用下划线！！！
     // Objective-C语言没有真正意义的私有方法、只是一个约定而已、也是可以调用
     // 引用私用api（苹果官方私有方法）不能上架AppStore
+    // 存储在堆区（当前对象对应的堆的存储空间中）：不会被自动释放（程序员手动释放）
     @private  // 私有成员：只能被本类访问、不能被子类访问、不能被外部访问
     NSString *_name;
     @protected  // 受保护的属性：默认属性、可以被本类访问、也能为子类访问、不能被外部访问
@@ -43,16 +46,16 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong, atomic) NSString *publishName;
 // assign一般用于基础数据类型
 @property (assign, nonatomic) NSInteger *publishAge;
-// readonly只读：只生成getter方法
+// readonly只读：只生成 getter 方法
 // readwrite缺省
 @property (readonly, strong, nonatomic) NSString *GameKey;
-// 给getter方法取别名
+// 给 getter 方法取别名
 // 一般使用于BOOL
 @property (getter = myWeight) NSInteger weight;
-// 给setter方法取别名
+// 给 setter 方法取别名
 // 一般不使用
 @property (setter = myHeight:) NSInteger mheight;
-// 多个属性使用","隔开
+// 多个属性使用" , "隔开
 @property (setter = setUserName:, getter = getUserNmae, strong, nonatomic) NSString *mName;
 /**
  1.原子性
@@ -63,21 +66,21 @@ NS_ASSUME_NONNULL_BEGIN
  retain // 保留对象
  copy    // 拷贝对象/修饰字符串（不可变字符串可以直接使用strong）
  3.读写
- readwrite  // 生成getting/setting方法
- readonly   // 只生成getting方法
+ readwrite  // 生成 getter/setter 方法
+ readonly   // 只生成 getter 方法
  */
-// 如果想对传入的数据进行过滤需要重写getting/setting方法
-// 如果重写getting/setting方法，@property将不再生成getting/setting方法
+// 如果想对传入的数据进行过滤需要重写 getter/setter 方法
+// 如果重写 getter/setter 方法，@property将不再生成 getter/setter 方法
 @property (nonatomic, retain, readonly) NSString *userName;
 
 /// 定义方法/行为
 // 冒号也是方法名的一部分
 // 定义在.h文件中的方法都会公有的、不能使用@private/@protected/@public修饰
 // 对象方法：只能被对象名调用
+// 方法属于类
 -(void)loginWithGameId:(NSString *)gameId GameKey:(NSString *)gameKey;
 
 // 类方法：不属于任何对象，只能被类名调用
-// 注意：类方法中无法使用属性？？？
 +(instancetype)getInstance;
 
 // 初始化方法

@@ -6,6 +6,8 @@
 //  Copyright © 2019 zali. All rights reserved.
 //
 
+// 需要使用 xxx 文件就导入 xxx.h
+// 实际是将 WMGameProxy.h 文件拷贝到当前文件
 #import "WMGameProxy.h"
 #import "MainController.h"
 // 类名
@@ -17,9 +19,18 @@
 + (void)load {
     // 先调用父类的load()->子类的load()
     // 有且仅有一次：加载到内存
+    /////////////////////////////////
+    // 匿名对象：当对象只需要使用一次的时候/对象作为实参传入方法中
+    // 每次使用 new 都会创建一个新对象
+    [MainController new];
 }
 
 /// 创建类对象的时候调用
+// 不需要创建对象（不需要开辟存储空间/优化性能）
+// ？？？类方法为什么不能直接访问属性？？？
+// ？？？类方法怎么访问属性？？？（可以通过类方法调用对象方法间接调用属性/不建议这样写）
+// 如果方法中没有使用到成员变量，尽量使用类方法。因为类方法执行效率高（为什么？）
+// 类方法一般用于工具方法的定义
 + (void)initialize {
     if (self == [WMGameProxy class]) {
         // 有且仅有一次
@@ -33,12 +44,22 @@
 - (instancetype)init {
     self = [super init]; // self代表当前对象本身
     if (self) {
+        // 写在函数或者代码块中的变量称为局部变量
+        // 作用域：从定义开始到函数结束（遇到 {} / return）
+        // 可以先定义再初始化也可以定义的同时初始化
+        // 存储在栈区：系统会自动释放
+        /////////////////////////////////////////////////
+        // 写在函数和大括号外部的变量称为全局变量
+        // 作用域：从定义的那一行开始到文件末尾
+        // 可以先定义再初始化也可以定义的同时初始化
+        // 存储在静态区：程序一启动就会分配存储空间，直到程序结束才会释放
         MainController *vc = [MainController alloc]; // 分配内存：创建对象后返回对象地址/堆空间
         vc = [vc init]; // 初始化
     }
     return self;
 }
 
+// 对象方法中访问当前对象的属性_xxx
 -(void)loginWithGameId:(NSString *)gameId GameKey:(NSString *)gameKey {
     NSLog(@"login");
 }
@@ -51,8 +72,10 @@
     // super在类方法中调用父类方法
     // super在对象方法中调用父类对象方法
     self = [super init];
-    // self在对象方法中指向当前对象
+    // self不能离开类
+    // self在对象方法中指向当前对象（谁调用对象方法 self指向谁）
     // self在类方法中指向当前类
+    // 不能在对象方法/类方法中使用 self调用自身（死循环）
     if (self) {
         _name = @"";
         _age = @"";
@@ -98,6 +121,8 @@
 }
 
 // 如果需要给属性赋值、可以使用set方法
+// 封装：屏蔽内部实现细节，对外提供共有的方法和接口
+// 一定是对象方法：有参数无返回值
 -(void)setSdk:(NSString * _Nonnull)sdk {
     _sdk = sdk;
 //    // set方法的实质
@@ -108,17 +133,20 @@
 //    }
 }
 // 获取属性内容、可以使用get方法
+// 一定是对象方法：无参数有返回值
 -(NSString * _Nonnull)getSdk {
     return _sdk;
 }
 
 /// 点语法
-// 点语法的实质：是调用setting/getting方法
+// 点语法的实质：是调用 setter/getter 方法
 // 仅仅可以调用这两个方法、别的方法不可以调用
+// 点语法是一个编译器的特征：会在程序翻译成二进制的时候转换成 setter/getter 方法
+// 给成员变量赋值：一般情况下如果不是给成员变量赋值不建议使用点语法
 -(void)pointWay {
     WMGameProxy *wm = [[WMGameProxy alloc]init];
-    wm.sdk = @"xxx"; // setting方法
-    NSString *name = wm.sdk; // getting方法
+    wm.sdk = @"xxx"; // 在等号左边：编译器自动转换成 setter方法
+    NSString *name = wm.sdk; // 在等号右边：编译器自动转换成 getter方法
     NSLog(@"%@", name);
 }
 

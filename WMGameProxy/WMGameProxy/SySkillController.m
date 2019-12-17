@@ -9,6 +9,7 @@
 #import "SySkillController.h"
 #import "UIImage+animatedGIF.h"
 #import "MainController.h"
+#import "WMGameProxy.h"
 
 @interface SySkillController ()
 
@@ -177,6 +178,27 @@
 // 自动调用dealloc方法
 // ARC/MRC混合编程-选中工程->TARGET->Build Settings->Automatic Reference Counting->NO
 -(void)memoryManager {
+    // 对象的内存存储细节
+    // 内存分成三个区域：栈/堆/代码区
+    // 程序加载到内存中：存放在"代码区(存放二进制代码)"
+    /*
+     通过类创建对象：
+     1.开辟内存空间（在堆中开辟内存空间、存放对象和对象属性）
+     2.初始化所有属性
+     3.返回指针地址（指针地址保存在栈区）
+     */
+    // 创建对象的时候返回的地址其实就是类的第0个属性的地址
+    // 类的第0个属性是一个叫 isa 的属性
+    // 其实类也是对象（类对象存放着当前类的所有方法，由系统自动创建）
+    // 类对象通过 new 可以创建实例对象
+    // 实例对象中有一个 isa 指针就会指向创建它的那个类对象
+    /*
+     对象方法：对象p -> 属性 -> 类对象 -> 调用方法
+     类方法：类对象 -> 调用方法
+     类对象的执行效率更高
+     */
+    WMGameProxy *proxy = [[WMGameProxy alloc]init];
+    proxy.mheight = 100;
 //    /// 基本对象的内存管理
 //    MainController *controller = [[MainController alloc]init];  // 引用计数为1
 //    NSLog(@"1.引用计数：%ld", [controller retainCount]);

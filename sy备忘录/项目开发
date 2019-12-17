@@ -76,6 +76,8 @@ V - View：可以加一个取cellID的方法
 C-大布局：代理方法
 - 通过sendRequest获取model
 
+15.什么是"Jenkins"/TabBar这么实现动画效果/hook
+
 1. 一般项目都是使用cocoaPods管理：更加方便；
 2. 一般使用Assets管理图片：自己试试；
 3. 一般技术用来看后台接口的工具App是什么？？？
