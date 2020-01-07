@@ -30,10 +30,19 @@
 // 3.形变属性
 // 4.动画
 // 5.停靠模式
+/*
+ 总结一下 UIView 的属性：基础控件都可以使用
+ 1.subviews
+ 2.superview
+ 3.tag
+ 4.transform
+ 5.frame
+ 6.backgroundColor
+ 7.alpha
+ */
 -(void)setupView {
     UIView *view = [[UIView alloc]init];
     /// 坐标系
-    // 结构体
 //    CGPoint point = CGPointMake(100, 100);
 //    CGSize size = CGSizeMake(100, 100);
 //    CGRect rect = CGRectMake(100, 100, 100, 100);
@@ -48,7 +57,19 @@
     // 可以控制位置&尺寸
     // 以父控件的左上角为原点
     view.frame = CGRectMake(100, 100, 100, 50);
+    /// 结构体
+    // 结构体是值传递
+    // 类是对象传递
+    // 怎么改变控件的 frame
+    // https://www.jianshu.com/p/b6ddfdef4147
+    CGRect tempRect = view.frame;
+    tempRect.origin.x = 100;  // 改变x
+    tempRect.origin.y += 100; // 改变y
+    tempRect.size.height += 50; // 改变height
+    tempRect.size.width += 50;  // 改变width
+    view.frame = tempRect;
     // 可以控制尺寸
+    // 不可以控制位置
     // 以自己左上角为坐标原点：x和y永远为0
     view.bounds = CGRectMake(0, 0, 100, 50);
     // 可以控制位置
@@ -71,6 +92,7 @@
     // 根据最优size改变自己的size
     [self.view sizeToFit];
     // 获取子控件对象：一个视图可以有多个子视图
+    // 在 xib 中只有 UIView 可以承载子视图
     NSArray *subViews = [view subviews];
     // 如果父视图隐藏，子视图也会隐藏
     // 设置父视图alpha = 0.5/子视图alpha = 0.8，则真实alpha = 0.5 * 0.8 = 0.4
@@ -175,12 +197,12 @@
     label.numberOfLines = 0;
     // 指定换行模式
     label.lineBreakMode = NSLineBreakByWordWrapping;
-    /// 阴影
-    // 必须设置偏移量
-    label.shadowOffset = CGSizeMake(5, 5); // 阴影的偏移量
-    label.shadowColor = UIColor.grayColor;// 设置阴影颜色
 }
 
+#pragma mark - 阴影
+-(void)setupShadow {
+    
+}
 
 #pragma mark - UIButton按钮
 // 有那些类可以"事件监听"？？？
@@ -262,22 +284,33 @@
 // UIImage -二进制的图像数据
 -(void)setupImageView {
     /// 创建图片对象
+    // 图片加载方式
     // 该方法只能加载占用内存小的图片：因为这种方式加载的图片会一直保存在内存中，不会释放
     // Assets.xcassets中的图片只能通过该方法设置
     // 一般经常使用的图片会通过该方式加载
+    // png不需要后缀
     UIImage *image0 = [UIImage imageNamed:@"image_demo"];
     // 打印图片大小
     NSLog(@"%@", NSStringFromCGSize(image0.size));
-    /// 如果图片占用内存较大、使用下列方法
+    /// 如果图片占用内存较大：使用下列方法
     // 一般不经常使用的图片会通过该方式加载
+    // 进入 "资源包" 获取资源
     NSString *path = [[NSBundle mainBundle] pathForResource:@"image_demo" ofType:@"png"];
     NSData *data = [NSData dataWithContentsOfFile:path];
     UIImage *image1 = [UIImage imageWithData:data];
     NSLog(@"%@", image1);
     /// UIImageView
     UIImageView *imageView = [[UIImageView alloc]init];
-    imageView.frame = CGRectMake(100, 100, 100, 50);
-    [self.view addSubview:imageView];
+//    // 第一种设置位置（常用）
+//    imageView.frame = CGRectMake(100, 100, 100, 50);
+//    // 第二种设置位置（常用）
+//    // 根据图片动态获取尺寸
+//    imageView.frame = CGRectMake(0, 0, image0.size.width, image0.size.height);
+//    // 第三种设置位置（骚操作）
+//    // 有默认尺寸
+//    UIImageView *defaultImageView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"image_demo"]];
+//    defaultImageView.center = CGPointMake(100, 100);
+//    [self.view addSubview:defaultImageView];
     imageView.backgroundColor = UIColor.redColor;
     imageView.image = [UIImage imageNamed:@"image_demo"];
     imageView.highlightedImage = image0; // 设置高亮图片
@@ -285,17 +318,19 @@
     imageView.clipsToBounds = YES;  // 裁减超出部分
     /*
      填充模式：
-     UIViewContentModeScaleToFill - 拉伸填满/不会超出：图片会变形/默认
-     UIViewContentModeScaleAspectFit -按比例填充/宽 || 高一边靠近/不会超出
-     UIViewContentModeScaleAspectFill -按比例填满/宽 & 高全部靠近/会超出
+     UIViewContentModeRedraw - 重新绘制（核心动画 drawRect）
+     UIViewContentModeScaleToFill - 拉伸填满/默认/不会超出：图片会变形
+     UIViewContentModeScaleAspectFit -按比例填充/宽或高一边靠近/不会超出
+     UIViewContentModeScaleAspectFill -按比例填满/宽和高全部靠近/会超出
      */
-    // 裁剪超出部分
-    imageView.clipsToBounds = true;
+    imageView.contentMode = UIViewContentModeScaleAspectFit;
     /// 帧动画
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"DOVE/image_bg.jpg"]];
     // 拿到数组
-    NSMutableArray *photos = [NSMutableArray array];
+    NSMutableArray<UIImage *> *photos = [NSMutableArray array];
     for (NSInteger i = 1; i < 19; i++) {
+        // 获取图片对象
+        // 好好研究 UIImage
         UIImage *birdImaga = [UIImage imageNamed:[NSString stringWithFormat:@"DOVE.bundle/DOVE %ld", (long)i]];
         [photos addObject:birdImaga];
     }
@@ -312,10 +347,22 @@
     }
 //    // 停止动画
 //    [imageView stopAnimating];
+    // 毛玻璃
+    UIToolbar *toolBar = [[UIToolbar alloc]init];
+    // A沾满B全屏幕
+    toolBar.frame = imageView.bounds;
+    /*
+     UIBarStyleDefault
+     UIBarStyleBlack
+     */
+    toolBar.barStyle = UIBarStyleBlack;
+    // 设置透明度
+    toolBar.alpha = 0.5;
+    [imageView addSubview:toolBar];
 }
 
 
-#pragma mark - UITextField文本框控件
+#pragma mark - UITextField文本输入框
 -(void)setupTextField {
     UITextField *tf = [[UITextField alloc]init];
     tf.frame = CGRectMake(100, 100, 100, 50);
@@ -369,7 +416,7 @@
 }
 
 
-#pragma mark - UITextView文本编辑框
+#pragma mark - UITextView能滚动的文本显示控件
 // 可以滚动
 -(void)setupTextView {
     
@@ -486,8 +533,8 @@
 }
 
 
-/// UIPickView/选择器
--(void)setupPickView {
+/// UIPickerView/选择器
+-(void)setupPickerView {
     
 }
 
@@ -556,6 +603,7 @@
     sw.tintColor = UIColor.greenColor;
     sw.thumbTintColor = UIColor.purpleColor;
     [sw addTarget:self action:@selector(onSwitchChange:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:sw];
 }
 -(void)onSwitchChange:(UISwitch *)sw {
     NSLog(@"打开开关");
@@ -583,7 +631,7 @@
 }
 
 
-/// UISegmentControl/多段选择视图
+/// UISegmentControl/多段选择视图、选项卡
 -(void)setupSegmentControl {
     NSArray *array = @[@"居左", @"居中", @"居右"];
     UISegmentedControl *segmentControl = [[UISegmentedControl alloc]initWithItems:array];

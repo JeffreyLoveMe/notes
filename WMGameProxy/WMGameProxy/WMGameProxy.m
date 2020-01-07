@@ -42,7 +42,11 @@
 // 只能调用一次、从父类继承
 // id类型通用类型：一般用于"参数类型"/"返回值类型"
 - (instancetype)init {
-    self = [super init]; // self代表当前对象本身
+    // super -编译器符号
+    // 子类调用父类方法
+    // 在对象方法中调用父类的对象方法
+    // 在类方法中调用父类的对象方法
+    self = [super init]; // self代表当前对象本身：容易死循环
     if (self) {
         // 写在函数或者代码块中的变量称为局部变量
         // 作用域：从定义开始到函数结束（遇到 {} / return）
@@ -104,10 +108,34 @@
     return instance;
 }
 
+// 多态
+-(void)polyMore {
+//    // 有继承关系
+//    // 重写
+//    // 父类指针 a 指向子类对象
+//    Animal *a = [Dog new];
+//    // 编译期：检查当前类型 Animal 有没有该方法
+//    // 运行时：系统会判断 a 的真实类型
+//    [a eat];
+//    // 想要调用子类特有方法需要强制转换成子类
+//    Dog *d = (Dog *)a;
+//    [d eat];
+}
+
 // 不会输出self/会死循环
 // NSLog()输出<类名:地址>/<Person: 0x100202310>
-- (NSString *)description
-{
+// 输出 self 就是调用 [self description]
+- (NSString *)description {
+    // 调用方法
+    // 先从自己类中找->再去父类中找
+    // 返回当前对象
+    // 调用 - (NSString *)description {}
+    // 默认返回：<类名: 地址>
+    NSLog(@"%@", self);
+    // 返回当前类对象
+    // 调用 + (NSString *)description {}
+    // 默认返回：xxx
+    NSLog(@"%@", [self class]);
     return [NSString stringWithFormat:@"%@", _height];
 }
 
@@ -148,6 +176,17 @@
     wm.sdk = @"xxx"; // 在等号左边：编译器自动转换成 setter方法
     NSString *name = wm.sdk; // 在等号右边：编译器自动转换成 getter方法
     NSLog(@"%@", name);
+    // 预置在编译器中的宏
+    // __func__是一个字符串
+    // 输出调用 __func__ 的函数的函数名
+    NSLog(@"%s", __func__);
+    /*
+     访问属性的方式：
+     p->_age;
+     [p age];
+     p.age;
+     */
+//    Interface Builder实际就是xib
 }
 
 // 实现类结束的标志

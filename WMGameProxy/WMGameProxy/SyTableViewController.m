@@ -22,25 +22,56 @@
     [self setupTableView];
 }
 
-
+// 表格视图
 -(void)setupTableView {
     /// 两种类型
-    // UITableViewStylePlain
+    // UITableViewStylePlain-顶部有滞留效果
     // UITableViewStyleGrouped
     UITableView *tableView = [[UITableView alloc]initWithFrame:self.view.bounds style:UITableViewStyleGrouped];
+    //// 真实高度
+    // 也可以通过 delegate 设置：以 delegate 设置为主
+    /// 设置行高：如果不设置使用默认值
+    // 默认行高44
+    tableView.rowHeight = 40;
+    /// 设置区头高度
+    // 可以设置 0.001 让区头隐藏
+    tableView.sectionHeaderHeight = 25;
+    /// 设置区尾高度
+    tableView.sectionFooterHeight = 25;
+    //// 预估高度
+    /// 预估行高
+    /// 预估区头高度
+    /// 预估区尾高度
     // 设置背景视图
     UIView *bgView = [[UIView alloc]initWithFrame:self.view.bounds];
     bgView.backgroundColor = UIColor.whiteColor;
     tableView.backgroundView = bgView;
     /// 设置表头/表尾
     // 如果需要动态修改表头高度：可以再次设置表头
+    // 尝试用表尾做 "加载更多 loading"？？？
     UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width, 100)];
     tableView.tableHeaderView = view;
     tableView.tableFooterView = view;
-    // 设置delegate
+    /// 设置分割线
+    // 分割线可以用 UIView代替
+    // 颜色
+    tableView.separatorColor = UIColor.redColor;
+    // 样式
+    tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
+    // 位置
+    tableView.separatorInset = UIEdgeInsetsMake(0, 15, 0, 15);
+    /// 滚动条
+    // 样式
+    tableView.indicatorStyle = UIScrollViewIndicatorStyleBlack;
+    // 是否展示滚动条
+    tableView.showsVerticalScrollIndicator = false;
+    /// 设置delegate
     tableView.delegate = self;
     tableView.dataSource = self;
     tableView.tag = 10;
+//    /// 两种模式
+//    // 普通模式
+//    tableView.editing = false;
 //    // 编辑模式
 //    tableView.editing = true;
     [self.view addSubview:tableView];
@@ -70,12 +101,12 @@
 ///// 很少使用
 //// 一般通过自定义控件实现
 //- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-//    /// 设置区头title
+//    /// 设置区头 title
 //    return @"好男人";
 //}
 //
 //- (NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section {
-//    /// 设置区尾title
+//    /// 设置区尾 title
 //    return @"好男人";
 //}
 
@@ -114,6 +145,7 @@
     return 1;
 }
 
+#pragma mark - 必须实现的方法
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // 区中有多少行
     return 10;

@@ -17,7 +17,10 @@
 
 @implementation SySkillController
 /// ViewController的生命周期
+// 系统调用
 - (void)loadView {
+    // 保留父类方法
+    // 一般都需要调用
     [super loadView];
     // 初始化控制器的self.view/创建self.view
     // 当self.view第一次使用的时候调用
@@ -36,6 +39,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // 2.控制器View加载完毕：创建所有子视图
+    // 控件的初始化
+    // 数据的初始化
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -46,6 +51,10 @@
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     // 4.视图已经出现
+    // 只能在这里移除 self.view
+    // 只有有父视图都可以移除
+    // self.view的父视图是 self.window
+    [self.view removeFromSuperview];
 }
 
 - (void)viewWillLayoutSubviews {
@@ -76,6 +85,9 @@
     [timer invalidate];
 }
 -(void)onTimer {
+    // 比较消耗性能
+    // 容易乱
+    // 会递归一直遍历
     UILabel *myLabel = [self.view viewWithTag:0];
     myLabel.text = @"我过分";
 }
@@ -243,6 +255,12 @@
 - (void)dealloc {
     // 对象销毁之前自动调用该方法
     
+}
+
+- (void)didReceiveMemoryWarning {
+    // 系统调用
+    // 当控制器接收到内存警告调用
+    // 去掉一些不必要/耗时的内存
 }
 
 @end

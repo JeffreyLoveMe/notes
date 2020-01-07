@@ -5,7 +5,7 @@
 /**************************前期概述**************************/
 //开班须知
 1.建议学习时间：
-上午9:00-12:00 | 下午14:00-18:00 | 晚上19:30-21:30
+上午9:00-12:00 | 下午14:00-18:00 | 晚上19:30-21:30 | 最晚不能超过凌晨2点
 2.学习内容：
 基础班(4周)：C语言 | Objective-C | swift语言
 就业班(4个月)：多线程 | iOS开发 | HTML | React Native
@@ -455,10 +455,10 @@ char *strrchr(char *str, char c); //在串中查找指定字符的最后一个�
 2.特性：1)封装：利用类将数据和基于数据的操作封装在一起，数据被保护在类的内部，系统的其它部分只有通过
 被授权的操作才可以访问数据；将不需要对外提供的内容隐藏起来：把属性隐藏起来，提供公共方法对外访问；
 2)继承/派生：
-1.继承：父类的属性(成员变量：不包括私有)和方法，子类可以直接获取；
-2.派生：子类保持父类中的行为和属性，新增其它功能；
-3.提示：每个类都有一个super class指针指向自己父类（OC只支持单继承）
-4.好处：1).创建大量类抽取重复代码；2).建立类与类之间的关系；3).耦合性太强
+1.继承：父类的属性（成员变量：不包括私有）和方法（对象方法 & 类方法），子类可以直接获取；
+2.派生：子类保持父类中的行为和属性，新增其它功能（对象方法 & 类方法可以重写、属性不能重写）；
+3.提示：每个类都有一个[super class]指针指向自己父类（OC只支持单继承）；
+4.好处：1).创建大量类抽取重复代码；2).建立类与类之间的关系；3).耦合性（依赖性）太强；
 3).多态：程序中可以有同名的不同方法共存，利用子类对父类方法的覆盖和重载在同一个类中定义多个同名的方法来实现；
 3.面向对象编程/面向过程编程的区别：
 1)面向对象编程是把问题中拥有相同属性的东西建立一个类，然后创建类的对象；
@@ -534,8 +534,6 @@ char *strrchr(char *str, char c); //在串中查找指定字符的最后一个�
 xiaoMing.name = @"小明"; <==> [xiaoMing setName:@"小明"];
 NSString *name = xiaoMing.name; <==> NSString *name = [xiaoMing getName];
 2.点语法是一个编译器特征：在程序翻译成二进制的时候自动转换成getter/setter方法
-
-//封装、继承、多态
 
 //类的消息机制
 
@@ -624,7 +622,7 @@ UIViewAutoresizingFlexibleBottomMargin  = 1 << 5  //上边界和父视图的距�
 //传值
 
 //UITableView
-一定要搞懂UITableViewDataSource/UITableViewDelegate的所有方法
+一定要搞懂 UITableViewDataSource/UITableViewDelegate 的所有方法
 
 //关于适配
 1.系统适配：
@@ -635,6 +633,8 @@ UIViewAutoresizingFlexibleBottomMargin  = 1 << 5  //上边界和父视图的距�
 1.autosizing：设置视图和父视图的尺寸关系/iOS6.x以前
 
 //Xib/Interface Builder
+1.IBAction和IBOutlet的区别？？？
+IBAction用于方法/IBOutlet用于属性
 /**************************网络基础**************************/
 // 网络概述
 1.基础概念：
@@ -696,22 +696,26 @@ https://www.jianshu.com/p/c7a6408410aa
 // 应用发布（打包测试/TestFlight/企业包/AppStore）
 // 组件化（静态库）
 
-//常见系统库：需要理解怎么用
+///常见系统库：需要理解怎么用
+//1.基础框架
 Foundation-提供OC的基础类
 UIKit-创建和管理App的UI
+//2.核心框架
 QuartzCore-提供动画特效以及通过硬件进行渲染能力/画图相关库
 CoreGraphics-提供2D绘制的基于C的API/画图相关库
 SystemConfiguration-检测当前网络是否可用和硬件设备状态
-AVFoundation-提供音频录制和回放的c底层API，同时负责管理音频硬件
 CFNetwork-访问和配置网络
 CoreFoundation-提供抽象的常用数据类型
-CoreLocation-使用GPS和WI-FI获取位置信息
 GameKit-为游戏提供网络功能：点对点互联和游戏中的语音交流
 AddressBook-提供访问用户联系人信息的功能
 AddressBookUI-提供用户界面：显示存储在地址簿中的联系人信息
 AudioToolBox-提供音频录制和回放的底层API，同时负责管理音频硬件
 AudioUnit-提供一个接口，让App可以对音频进行处理
+//地图框架
 MapKit-为App提供内嵌地图的接口
+CoreLocation-使用GPS和WI-FI获取位置信息
+//音视频框架
+AVFoundation-提供音频录制和回放的c底层API，同时负责管理音频硬件
 MediaPlayer-提供播放视频和音频的功能
 MessageUI-提供视图控制接口用以处理E-mail和短信
 OpenGLES-提供动画特效以及通过硬件进行渲染的能力

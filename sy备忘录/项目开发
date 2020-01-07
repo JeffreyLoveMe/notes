@@ -158,6 +158,8 @@ cell内部如果某一个控件不需要我们可以更新布局为0
 
 在开发中，我们一般UIButton会使用custom、而不使用system
 
+看控制器会不会走 deinit方法，有内存泄漏 deinit这个方法是不会走的
+
 代码修改以后：必须要测试
 
 NSNotFound
@@ -439,6 +441,8 @@ https://github.com/duf1991/DYFBuyApp
 //时间格式
 12小时制："yyyy-MM-dd HH:mm:ss"
 24小时制：“yyyy-MM-dd hh:mm:ss”
+
+通过基本UI去渲染控件和直接用图片去渲染界面对性能而言谁更优异
 
 //任何功能都需要跟安卓对比
 1.对比之间的显示有没有什么问题；

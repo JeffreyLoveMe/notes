@@ -9,6 +9,7 @@
 import UIKit
 
 class WMController: UIViewController {
+    /// swift修饰符
     // 最高权限：一般sdk提供外部使用、可继承
     open var p1: String?
     // 比open小一点、不可继承
