@@ -13,6 +13,8 @@
 
 @interface SySkillController ()
 
+@property (strong, nonatomic) NSArray *dataArray;
+
 @end
 
 @implementation SySkillController
@@ -162,10 +164,13 @@
 }
 // 2.plist
 // 1).plist的手动创建
+// 右键 -> New File -> Resource -> Property List
 // 2).plist用什么接收
 // 3).存储在沙盒中
+// 一般存放 NSArray/NSDictionary
 -(void)showPlist {
 #warning - 代码过几天补充
+    /// 获取 myConfig.plist 数据
     // 获取文件路径
     NSString *path = [[NSBundle mainBundle] pathForResource:@"myConfig" ofType:@"plist"];
     // 通过路径转化数组（字典）
@@ -174,6 +179,9 @@
     // 如果root是Array使用NSMutableArray接收
     NSMutableArray *array = [[NSMutableArray alloc]initWithContentsOfFile:path];
     NSLog(@"%@===%@", dic, array);
+    /// 写入数据 myConfig.plist
+    NSArray *names = @[@"yjn", @"mj", @"gxq", @"nj"];
+    [names writeToFile:@"../myConfig.plist" atomically:YES];
 }
 /// 协议protocol一般是用来增加类方法
 -(void)showProtocol {
@@ -185,6 +193,17 @@
         [controller finishTask];
     }
 }
+
+// id动态类型
+// 可以调用任何方法（包括私有方法）
+-(void)dynamic {
+    id obj = [WMGameProxy new];
+    // 这样可以避免调用方法出现崩溃
+    if ([obj isKindOfClass:[WMGameProxy class]]) {
+        [obj loginWithGameId:@"" GameKey:@""];
+    }
+}
+
 /// 内存管理
 // 基本数据类型不需要管理内存
 // 自动调用dealloc方法
@@ -251,6 +270,35 @@
     }
     return [mArray componentsJoinedByString:oprater];
 }
+
+/// 几种延迟的对比
+-(void)afterDelay {
+    /// 第一种延迟方法
+    // @selector(onStand) Selector方法
+    // nil 参数
+    // 0.5 延迟时间
+    [self performSelector:@selector(onStand) withObject:nil afterDelay:0.5];
+}
+-(void)onStand {
+    
+}
+
+/// 懒加载：重写 getter 方法/如果为空加载数据/如果不为空直接返回数据
+// 1.用到的时候再加载
+// 2.全局只会被加载一次
+// 3.全局都可以使用
+- (NSArray *)dataArray {
+    if (_dataArray == nil) {
+        _dataArray = @[@"", @"", @""];
+    }
+    return _dataArray;
+}
+
+/// 架构思想
+/// MVC
+// 在 Controller 中进行网络请求
+/// MVP
+/// MVVM
 
 - (void)dealloc {
     // 对象销毁之前自动调用该方法

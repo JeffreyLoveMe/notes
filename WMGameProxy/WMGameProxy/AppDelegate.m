@@ -16,7 +16,8 @@
 
 @implementation AppDelegate
 
-
+/// SceneDelegate
+// https://blog.csdn.net/weixin_38735568/article/details/101266408
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     /// 程序启动时首先调用该方法
     // [[UIScreen mainScreen] bounds]只能使用该方法获取设备尺寸

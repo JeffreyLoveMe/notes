@@ -63,6 +63,8 @@ self.maxPage = self.maxPage(byTotalSize: model.total, pageSize: model.size)
 判断当前页面是否大于最大页面：大于停止刷新
 /////CommunityCommentDetailController.swift
 
+iOS中每个专有名词的读音都需要学会
+
 - MVC模型：
 M - 写模型：按照文档写属性一一对应；
 

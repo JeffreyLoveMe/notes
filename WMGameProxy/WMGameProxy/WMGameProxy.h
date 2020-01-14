@@ -37,12 +37,15 @@ NS_ASSUME_NONNULL_BEGIN
     @package  // 只能在当前框架中才能被访问
 }
 /// @property编译器指令
-// 如果类中成员方法太多：setter/getter方法非常臃肿
-// 让编译器自动声明setter/getter方法/生成_sdk成员变量
+// 如果类中成员方法太多： setter/getter方法非常臃肿
+// 1.让编译器自动声明 setter/getter方法/2.生成_sdk成员变量
 // 持有的对象sdk引用计算 + 1
 // 通过自动释放池管理内存
+// 如果重写 setter/getter方法 则以重写的为主 / @property就不会（自动声明 setter/getter方法 / 生成_sdk成员变量）
+// 自动生成的变量 _sdk 是私有变量
 @property (strong, nonatomic) NSString *sdk;
-// @synthesize让编译器自动实现setter/getter方法/Xcode4.6以后可以省略
+// @synthesize编译器指令（孙色size）
+// 让编译器自动实现 setter/getter方法 | Xcode4.6以后可以省略
 // atomic缺省/原子性：对当前属性进行加锁、线程安全、消耗性能、访问速度慢
 // nonatomic非原子性：不加锁、线程不安全、访问速度快
 // 面试题：atomic可以保证100%安全吗？为什么？
@@ -52,8 +55,9 @@ NS_ASSUME_NONNULL_BEGIN
 // readonly只读：只生成 getter 方法
 // readwrite缺省
 @property (readonly, strong, nonatomic) NSString *GameKey;
+/// 可以增强代码的可读性
 // 给 getter 方法取别名
-// 一般使用于BOOL
+// 一般使用于BOOL：改成 isXxx
 @property (getter = myWeight) NSInteger weight;
 // 给 setter 方法取别名
 // 一般不使用

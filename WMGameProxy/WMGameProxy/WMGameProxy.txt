@@ -800,8 +800,10 @@ WMGame.swift  // swift基础知识
 SyCustomView.swift // swift自定义控件
 WMController.swift // swiftUI知识
 AppDelegate.h/m   // 常见系统问题查询
+SceneDelegate.h/m // iOS13新特性
 SyGameProxy.h/c   // C语言基础知识
 WMGameProxy.h/m   // OC基础知识
+WMGameView.h/m    // OC自定义控件
 SyDefaultCustomView.h/c // OC自定义控件
 FoundationNSObject.h/c // Foundation常见类
 ComponentController.h/m // UI组件库

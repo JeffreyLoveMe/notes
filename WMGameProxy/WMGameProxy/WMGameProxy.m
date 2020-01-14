@@ -71,6 +71,11 @@
 
 /// 初始化方法
 // id/instancetype有什么区别？？？
+// 1.id是一个动态数据类型
+// 通过动态数据类型定义变量可以调用子类特有方法
+// 通过动态数据类型定义变量可以调用私有方法
+// 可以调用到不是自己的方法（编译不报错、运行报错）
+// 2.instancetype
 -(id)initWithSdk:(NSString *)sdk {
     // 子类重写父类方法想要保留父类的对象方法
     // super在类方法中调用父类方法
@@ -188,6 +193,11 @@
      */
 //    Interface Builder实际就是xib
 }
+
+/// json解析
+// 把 dict 传入 model
+// model 内部赋值
+// 返回 model
 
 // 实现类结束的标志
 @end

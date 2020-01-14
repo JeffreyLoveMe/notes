@@ -16,6 +16,7 @@
 
 @implementation ComponentController
 
+// 这里做很多事情会导致页面加载的很慢
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -138,13 +139,14 @@
     // 2 -相对于水平x方向平移
     // 5 -相对于垂直y方向平移
     view.transform = CGAffineTransformMakeTranslation(2, 5);
-    /// 渐变动画
+    /// 2.渐变动画
     // 只能修改关于坐标系的属性、色彩和透明度
     // 第一种方式：通过delegate/先不实现
     // 第二种方式：通过block
     // 这里不会引起循环引用：为什么？组织一下语言
     // 目前有三种形式：应用也很多
     // 支持嵌套
+    // 不会发生循环引用
     [UIView animateWithDuration:2 animations:^{
         // 这里还可以设置形变属性
         NSLog(@"这里可以改变坐标/色彩/透明度");
@@ -160,15 +162,16 @@
     /// UIViewAnimationOptions - 动画属性设置
     // https://www.jianshu.com/p/ec73573e112a
     [UIView animateWithDuration:2 delay:0.5 options:UIViewAnimationOptionOverrideInheritedCurve animations:^{
-        // 这里还可以设置形变属性
+        // 1.这里还可以设置形变属性
         NSLog(@"这里可以改变坐标/色彩/透明度");
+        // 2.如果使用 masonry 则需要 [xxx layoutIfNeeded];
     } completion:^(BOOL finished) {
         if (finished) {
             NSLog(@"动画完成");
         }
     }];
-    /// 核心动画
-    /// 转场动画
+    /// 3.核心动画
+    /// 4.转场动画
 }
 
 
@@ -213,39 +216,63 @@
 //    // 尽量使用快速定义方法、如果没有快速定义方法、再考虑init
 //    UIButton *btn = [[UIButton alloc]init];
     /// 工厂方法
+    // 既可以显示文字也可以显示图片
+    // 可以随时调整内部图片/文字的位置
+    // 通过重写 UIButton
     UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
     btn.frame = CGRectMake(100, 100, 100, 50);
     [self.view addSubview:btn];
     /*
      button有四种状态
      这个很重要：可以用来做很多事情
-     UIControlStateNormal -正常状态
-     UIControlStateHighlighted -高亮状态/长按
+     UIControlStateNormal -正常状态/默认状态
+     UIControlStateHighlighted -高亮状态/长按未松手
      UIControlStateSelected -选择状态
-     UIControlStateDisabled -禁用状态
+     UIControlStateDisabled -禁用状态/不可以点击
      */
+    // 设置文字
     [btn setTitle:@"普通" forState:UIControlStateNormal];
     [btn setTitle:@"高亮" forState:UIControlStateHighlighted];
     [btn setTitle:@"选择" forState:UIControlStateSelected];
     [btn setTitle:@"禁用" forState:UIControlStateDisabled];
     btn.selected = YES; // 选择状态
-    [btn setTitleColor:UIColor.greenColor forState:UIControlStateNormal]; // 文字颜色
+    // 文字颜色
+    [btn setTitleColor:UIColor.greenColor forState:UIControlStateNormal];
     btn.enabled = NO; // 非禁用状态
     /// 背景颜色
     // 仅仅自定义类型有效
     btn.backgroundColor = UIColor.grayColor;
     /// 设置button图像：内容图像
-    // 居中显示在button中央位置
-    // 如果按钮足够大、同时设置文字和图片、文字/图片会并列显示
-    // 如果按钮不够大、优先显示图像
+    // 1.只有图片/文字居中显示在button中央位置
+    // 2.如果按钮足够大、同时设置文字和图片、文字/图片会并列显示
+    // 3.如果按钮不够大、优先显示图像
+    // 居中不拉伸
+    // 如果按钮小于图片会拉伸按钮
     [btn setImage:[UIImage imageNamed:@""] forState:UIControlStateNormal];
     /// 设置背景图像
+    // 1.创建 UIImage 对象
+    UIImage *bgImage = [UIImage imageNamed:@"image_demo"];
+    /// 2.返回一张受保护而且拉伸的图片
+    // 第一种方式
+    // ！！！可以保证纯色图片拉伸不变形！！！
+    // UIImageResizingModeTile（默认：平铺）
+    // UIImageResizingModeStretch（拉伸）
+    UIImage *resizableImage = [bgImage resizableImageWithCapInsets: UIEdgeInsetsMake(bgImage.size.height / 2,
+                                                                                     bgImage.size.width / 2, bgImage.size.height / 2 - 1, bgImage.size.width / 2 - 1)
+                                                      resizingMode: UIImageResizingModeTile];
+//    // 第二种方式
+//    [bgImage stretchableImageWithLeftCapWidth:bgImage.size.width / 2 topCapHeight:bgImage.size.height / 2];
     // 根据按钮的尺寸拉伸
-    [btn setBackgroundImage:[UIImage imageNamed:@""] forState:UIControlStateNormal];
+    [btn setBackgroundImage:resizableImage forState:UIControlStateNormal];
     // 内边距
-    btn.contentEdgeInsets = UIEdgeInsetsMake(-20, 0, 0, 0); // 内容
+    // 上左下右
+    btn.contentEdgeInsets = UIEdgeInsetsMake(-20, 0, 0, 0); // 内容（图片 + title）
     btn.imageEdgeInsets = UIEdgeInsetsMake(-20, 0, 0, 0); // 图片
     btn.titleEdgeInsets = UIEdgeInsetsMake(-20, 0, 0, 0); // title
+//    // 获取属性
+//    // nullable -可以为空/可选类型
+//    NSString *title = [btn titleForState:UIControlStateNormal];
+//    UIImage *image = [btn imageForState:UIControlStateNormal];
     // 点击事件：记下来就好
     // 最多只能携带一个参数
     // TouchUpInside
@@ -286,13 +313,14 @@
     /// 创建图片对象
     // 图片加载方式
     // 该方法只能加载占用内存小的图片：因为这种方式加载的图片会一直保存在内存中，不会释放
-    // Assets.xcassets中的图片只能通过该方法设置
+    // Assets.xcassets中的图片只能通过该方法设置，默认就有缓存
     // 一般经常使用的图片会通过该方式加载
     // png不需要后缀
     UIImage *image0 = [UIImage imageNamed:@"image_demo"];
     // 打印图片大小
     NSLog(@"%@", NSStringFromCGSize(image0.size));
-    /// 如果图片占用内存较大：使用下列方法
+    /// 如果图片占用内存较大：使用下列方法（没有缓存）
+    // 会从内存中释放
     // 一般不经常使用的图片会通过该方式加载
     // 进入 "资源包" 获取资源
     NSString *path = [[NSBundle mainBundle] pathForResource:@"image_demo" ofType:@"png"];
@@ -311,22 +339,26 @@
 //    UIImageView *defaultImageView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"image_demo"]];
 //    defaultImageView.center = CGPointMake(100, 100);
 //    [self.view addSubview:defaultImageView];
-    imageView.backgroundColor = UIColor.redColor;
+    /// 开发中常见的颜色
+    // 颜色通道：ARGB/32位颜色 | RGB/24位颜色 | RGB/12位
+    // 颜色通道越多，质量就越高，占用尺寸就越大，图像就越清晰
+    imageView.backgroundColor = [UIColor.redColor colorWithAlphaComponent:1];
+    imageView.backgroundColor = [UIColor colorWithRed:0.5 green:0.5 blue:0.5 alpha:1];
     imageView.image = [UIImage imageNamed:@"image_demo"];
     imageView.highlightedImage = image0; // 设置高亮图片
     imageView.userInteractionEnabled = YES; // 默认为NO
     imageView.clipsToBounds = YES;  // 裁减超出部分
     /*
      填充模式：
-     UIViewContentModeRedraw - 重新绘制（核心动画 drawRect）
-     UIViewContentModeScaleToFill - 拉伸填满/默认/不会超出：图片会变形
+     UIViewContentModeRedraw -重新绘制（核心动画 drawRect）
+     UIViewContentModeScaleToFill -拉伸填满/默认/不会超出：图片会变形
      UIViewContentModeScaleAspectFit -按比例填充/宽或高一边靠近/不会超出
      UIViewContentModeScaleAspectFill -按比例填满/宽和高全部靠近/会超出
      */
     imageView.contentMode = UIViewContentModeScaleAspectFit;
-    /// 帧动画
+    /// 1.帧动画
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"DOVE/image_bg.jpg"]];
-    // 拿到数组
+    /// 1.拿到数组
     NSMutableArray<UIImage *> *photos = [NSMutableArray array];
     for (NSInteger i = 1; i < 19; i++) {
         // 获取图片对象
@@ -334,6 +366,10 @@
         UIImage *birdImaga = [UIImage imageNamed:[NSString stringWithFormat:@"DOVE.bundle/DOVE %ld", (long)i]];
         [photos addObject:birdImaga];
     }
+    /// 2.设置动画
+    // 动画需要时间前面一个动画会覆盖后面一个动画
+    // 甚至会发生未知的错误
+    // 所以一般需要前面一个动画结束再执行后一个动画
     // 动画数组
     imageView.animationImages = photos;
     // 动画执行时间
@@ -349,7 +385,7 @@
 //    [imageView stopAnimating];
     // 毛玻璃
     UIToolbar *toolBar = [[UIToolbar alloc]init];
-    // A沾满B全屏幕
+    // toolBar沾满imageView全屏幕
     toolBar.frame = imageView.bounds;
     /*
      UIBarStyleDefault
@@ -967,6 +1003,21 @@
 -(void)setupXib {
 //    // 通过XIB新建UIViewController
 //    SySkillController *controller = [[SySkillController alloc]initWithNibName:@"SySkillController" bundle:nil];
+    
+    /// 第一种方式：创建一个 xib
+    // 拿到的可能多个
+    // 默认选中第一个
+    NSArray *nibs = [[NSBundle mainBundle] loadNibNamed:@"xib名称" owner:nil options:nil];
+    UIView *customView = nibs.firstObject;
+    NSLog(@"%@", customView);
+    // 第二种方式：创建一个 xib
+    UINib *nib = [UINib nibWithNibName:@"xib名称" bundle:nil];
+    UIView *view = [nib instantiateWithOwner:nil options:nil].firstObject;
+    NSLog(@"%@", view);
+    // xib不支持[[XMGShopView alloc]init]创建
+    // xib创建的UIView不进入 -(instancetype)init {} 方法
+    // xib创建的UIView进入 -(instancetype)initWithCoder:(NSCoder *)aDecoder{} 方法
+    // 用代码给 "xib 创建的子控件"添加子控件需要先唤醒
 }
 
 #pragma mark - UITextFieldDelegate
