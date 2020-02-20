@@ -10,7 +10,7 @@
 #import "SySkillController.h"
 #import "FoundationNSObject.h"
 
-@interface ComponentController () <UITextFieldDelegate, UIAlertViewDelegate, UIActionSheetDelegate, UIScrollViewDelegate, UITabBarControllerDelegate, UIGestureRecognizerDelegate>
+@interface ComponentController () <UITextFieldDelegate, UIAlertViewDelegate, UIActionSheetDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UIScrollViewDelegate, UITabBarControllerDelegate, UIGestureRecognizerDelegate>
  
 @end
 
@@ -51,7 +51,7 @@
     // 如果父视图不能接受事件、则子视图不能接受事件
     // 子视图超出父视图部分不能接受事件
     // 如果覆盖上面的视图可以接受事件、则下面视图不会再收到事件
-    // UILabel/UIImageView默认是false
+    // UILabel/UIImageView 默认是 false
     view.userInteractionEnabled = true;
     // 是否开启多点触摸
     view.multipleTouchEnabled = true;
@@ -124,54 +124,26 @@
     self.view.layer.cornerRadius = 5;
     self.view.layer.masksToBounds = true;
     /// 形变属性：一次只能利用一个形变属性
-    // xxxMakexxx相对于UIView的初始状态进行形变
+    // 1.！！！xxxMakexxx相对于UIView的初始状态进行形变！！！
+    // 2.！！！xxxxxx相对于传入的初始状态进行形变！！！
     // 可以用于动画
-    // 缩放形变
+    // 一、缩放形变
     // 0.5 -相对于水平x方向缩放的比例
     // 2 -相对于垂直y方向缩放的比例
     view.transform = CGAffineTransformMakeScale(0.5, 2);
-    // 相对于superView进行形变
+    // 相对于 superView 进行形变
     view.transform = CGAffineTransformScale(superView.transform, 0.5, 2);
-    // 旋转形变
+    // 二、旋转形变
     // 参数是弧度
     view.transform = CGAffineTransformMakeRotation(M_PI);
-    /// 平移形变
+    view.transform = CGAffineTransformRotate(view.transform, M_PI);
+    /// 三、平移形变
+    // 结构体
     // 2 -相对于水平x方向平移
     // 5 -相对于垂直y方向平移
-    view.transform = CGAffineTransformMakeTranslation(2, 5);
-    /// 2.渐变动画
-    // 只能修改关于坐标系的属性、色彩和透明度
-    // 第一种方式：通过delegate/先不实现
-    // 第二种方式：通过block
-    // 这里不会引起循环引用：为什么？组织一下语言
-    // 目前有三种形式：应用也很多
-    // 支持嵌套
-    // 不会发生循环引用
-    [UIView animateWithDuration:2 animations:^{
-        // 这里还可以设置形变属性
-        NSLog(@"这里可以改变坐标/色彩/透明度");
-    }];
-    [UIView animateWithDuration:2 animations:^{
-        // 这里还可以设置形变属性
-        NSLog(@"这里可以改变坐标/色彩/透明度");
-    } completion:^(BOOL finished) {
-        if (finished) {
-            NSLog(@"动画完成");
-        }
-    }];
-    /// UIViewAnimationOptions - 动画属性设置
-    // https://www.jianshu.com/p/ec73573e112a
-    [UIView animateWithDuration:2 delay:0.5 options:UIViewAnimationOptionOverrideInheritedCurve animations:^{
-        // 1.这里还可以设置形变属性
-        NSLog(@"这里可以改变坐标/色彩/透明度");
-        // 2.如果使用 masonry 则需要 [xxx layoutIfNeeded];
-    } completion:^(BOOL finished) {
-        if (finished) {
-            NSLog(@"动画完成");
-        }
-    }];
-    /// 3.核心动画
-    /// 4.转场动画
+    // 负数表示向上平移
+    view.transform = CGAffineTransformMakeTranslation(2, -5);
+    view.transform = CGAffineTransformTranslate(view.transform, 2, -5);
 }
 
 
@@ -195,6 +167,7 @@
     // 自适应宽度：字体会缩小、不会放大
     label.adjustsFontSizeToFitWidth = true;
     label.tag = 0;
+    // ！！！父控件隐藏会导致所有的子控件都隐藏！！！
     label.hidden = false;
     // 指定label的行数
     label.numberOfLines = 0;
@@ -208,9 +181,14 @@
 }
 
 #pragma mark - UIButton按钮
-// 有那些类可以"事件监听"？？？
-// 继承于UIControl都可以"事件监听"
-// UIButton/UIDatePicker/UIPageControl/UISegmentControl/UITextField/UISlider/UISwitch
+/// 有那些类可以"事件监听"？？？:继承于UIControl都可以"事件监听"
+// UIButton
+// UIDatePicker
+// UIPageControl
+// UISegmentControl
+// UITextField
+// UISlider
+// UISwitch
 // ！！！需求：将常见UI控件分类（按照父类）！！！
 -(void)setupButton {
 //    // 尽量使用快速定义方法、如果没有快速定义方法、再考虑init
@@ -236,6 +214,8 @@
     [btn setTitle:@"选择" forState:UIControlStateSelected];
     [btn setTitle:@"禁用" forState:UIControlStateDisabled];
     btn.selected = YES; // 选择状态
+    // 字体字重
+    btn.titleLabel.font = [UIFont systemFontOfSize:15 weight:5];
     // 文字颜色
     [btn setTitleColor:UIColor.greenColor forState:UIControlStateNormal];
     btn.enabled = NO; // 非禁用状态
@@ -290,6 +270,7 @@
      // 基于值
      UIControlEventValueChanged // 当控件的值发生改变：一般用于滑块和分段视图(☑️)
      // 基于编辑
+     // 一般 UITextField 使用较多
      UIControlEventEditingDidBegin // 文本控件开始编辑时
      UIControlEventEditingChanged  // 文本控件中文本发生改变时
      UIControlEventEditingDidEnd // 文本控件中编辑结束时
@@ -340,7 +321,7 @@
 //    defaultImageView.center = CGPointMake(100, 100);
 //    [self.view addSubview:defaultImageView];
     /// 开发中常见的颜色
-    // 颜色通道：ARGB/32位颜色 | RGB/24位颜色 | RGB/12位
+    // 颜色通道： ARGB/32位颜色 | RGB/24位颜色 | RGB/12位
     // 颜色通道越多，质量就越高，占用尺寸就越大，图像就越清晰
     imageView.backgroundColor = [UIColor.redColor colorWithAlphaComponent:1];
     imageView.backgroundColor = [UIColor colorWithRed:0.5 green:0.5 blue:0.5 alpha:1];
@@ -356,9 +337,10 @@
      UIViewContentModeScaleAspectFill -按比例填满/宽和高全部靠近/会超出
      */
     imageView.contentMode = UIViewContentModeScaleAspectFit;
+    //// ！！！动画部分！！！
     /// 1.帧动画
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"DOVE/image_bg.jpg"]];
-    /// 1.拿到数组
+    // 1).拿到数组
     NSMutableArray<UIImage *> *photos = [NSMutableArray array];
     for (NSInteger i = 1; i < 19; i++) {
         // 获取图片对象
@@ -366,15 +348,15 @@
         UIImage *birdImaga = [UIImage imageNamed:[NSString stringWithFormat:@"DOVE.bundle/DOVE %ld", (long)i]];
         [photos addObject:birdImaga];
     }
-    /// 2.设置动画
+    // 2).设置动画
     // 动画需要时间前面一个动画会覆盖后面一个动画
     // 甚至会发生未知的错误
     // 所以一般需要前面一个动画结束再执行后一个动画
     // 动画数组
     imageView.animationImages = photos;
-    // 动画执行时间
+    // 动画执行时间/动画时长
     imageView.animationDuration = 0.5;
-    // 播放动画次数/0为无数次
+    // 播放动画次数 / 0为无数次
     imageView.animationRepeatCount = 0;
     // 启动动画
     [imageView startAnimating];
@@ -383,6 +365,39 @@
     }
 //    // 停止动画
 //    [imageView stopAnimating];
+    /// 2.渐变动画
+    // 只能修改关于坐标系的属性、色彩和透明度
+    // 第一种方式：通过 delegate/先不实现
+    // 第二种方式：通过 block
+    // 这里不会引起循环引用：为什么？组织一下语言
+    // 目前有三种形式：应用也很多
+    // 支持嵌套
+    // 不会发生循环引用
+    [UIView animateWithDuration:2 animations:^{
+        // 这里还可以设置形变属性
+        NSLog(@"这里可以改变坐标/色彩/透明度");
+    }];
+    [UIView animateWithDuration:2 animations:^{
+        // 这里还可以设置形变属性
+        NSLog(@"这里可以改变坐标/色彩/透明度");
+    } completion:^(BOOL finished) {
+        if (finished) {
+            NSLog(@"动画完成");
+        }
+    }];
+    // UIViewAnimationOptions - 动画属性设置
+    // https://www.jianshu.com/p/ec73573e112a
+    [UIView animateWithDuration:2 delay:0.5 options:UIViewAnimationOptionOverrideInheritedCurve animations:^{
+        // 1.这里还可以设置形变属性
+        NSLog(@"这里可以改变坐标/色彩/透明度");
+        // 2.如果使用 masonry 则需要 [xxx layoutIfNeeded];
+    } completion:^(BOOL finished) {
+        if (finished) {
+            NSLog(@"动画完成");
+        }
+    }];
+    /// 3.核心动画
+    /// 4.转场动画
     // 毛玻璃
     UIToolbar *toolBar = [[UIToolbar alloc]init];
     // toolBar沾满imageView全屏幕
@@ -434,7 +449,12 @@
     // 设置代理
     tf.delegate = self;
     // 变成第一响应者
+    // 只有成为"第一响应者"才可以弹出键盘
+    // 结束编辑实际就是失去"第一响应者"
     [tf becomeFirstResponder];
+    // 可以达到 delegate 一样的效果
+    // 监听文本改变
+    [tf addTarget:self action:@selector(editDidChanged:) forControlEvents:UIControlEventEditingChanged];
     /// 自定义清除按钮
     UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 20, 20)];
     view.backgroundColor = UIColor.yellowColor;
@@ -450,12 +470,15 @@
     barView.backgroundColor = UIColor.blueColor;
     tf.inputAccessoryView = barView;
 }
+/// editDidChanged:是方法名称
+-(void)editDidChanged:(UITextField *)textField {
+    NSLog(@"文字改变");
+}
 
 
 #pragma mark - UITextView能滚动的文本显示控件
-// 可以滚动
 -(void)setupTextView {
-    
+    // 可以滚动
 }
 
 
@@ -465,32 +488,47 @@
 // 允许用户通过捏合手势缩放内容
 // 用来滚动的视图，可以用来展示大量内容
 // 普通UIView不具备滚动功能
+// ！！！不要通过索引去访问 UIScrollView 子控件！！！
 -(void)setupScrollView {
+    /// UIScrollView不可滚动的原因有哪些？？？
+    // 1.没有设置contentSize
+    // 2.设置scrollEnabled = NO
+    // 3.设置userInteractionEnabled = NO
     UIScrollView *scrollView = [[UIScrollView alloc]initWithFrame:self.view.bounds];
     scrollView.delegate = self;
     scrollView.backgroundColor = UIColor.grayColor; // 设置颜色
-    scrollView.contentOffset = CGPointZero; // 偏移量：内容和控件的距离/记录滚动的位置
-    scrollView.contentInset = UIEdgeInsetsMake(10, 10, 10, 10);  // 内边距：cell到边的距离/增加额外区域
+//    scrollView.clipsToBounds = YES;  // 默认该属性为 YES
+    /// 可视范围： scrollView的尺寸
     /// 内容实际大小
     // 可滚动尺寸： contentSize的尺寸 - scrollView的尺寸
     // 不可以滚动： contentSize的尺寸 <= scrollView的尺寸
-    scrollView.contentSize = CGSizeMake([[UIScreen mainScreen] bounds].size.width * 2, [[UIScreen mainScreen] bounds].size.height);  // 设置内容大小（左右滚动）
-    scrollView.contentSize = CGSizeMake([[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height * 2);  // 设置内容大小（上下滚动）
+    scrollView.contentSize = CGSizeMake([[UIScreen mainScreen] bounds].size.width * 2, [[UIScreen mainScreen] bounds].size.height);  // 设置内容大小（左右滚动）/这里 [[UIScreen mainScreen] bounds].size.height 也可以设置为0
+    scrollView.contentSize = CGSizeMake([[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height * 2);  // 设置内容大小（上下滚动）/这里 [[UIScreen mainScreen] bounds].size.width 也可以设置为0
+    // 结构体 x|y
+    // 内容偏移量 = UIScrollView左上角 - 内容左上角
+    // 可以控制滚动的位置
+    scrollView.contentOffset = CGPointZero; // 内容偏移量：内容和控件的距离/记录滚动的位置
+    // 增加额外滚动区域
+    scrollView.contentInset = UIEdgeInsetsMake(10, 10, 10, 10);  // 内边距：cell到边的距离
     scrollView.bounces = NO;  // 设置是否反弹
-    scrollView.pagingEnabled = NO; // 设置按页滚动
+    scrollView.pagingEnabled = NO; // 设置按页滚动（以 UIScrollView 尺寸为一页）
     scrollView.indicatorStyle = UIScrollViewIndicatorStyleWhite; // 设置滚动条样式
     scrollView.scrollIndicatorInsets = UIEdgeInsetsMake(0, 0, 0, 30); // 一般不需要设置
+    scrollView.userInteractionEnabled = NO; // 能否响应用户交互
     // 设置隐藏滚动条
     scrollView.showsVerticalScrollIndicator = NO;
     scrollView.showsHorizontalScrollIndicator = NO;
     scrollView.scrollEnabled = true; // 设置是否可以滚动
     scrollView.scrollsToTop = true;  // 是否滚动到顶部
     scrollView.userInteractionEnabled = NO; // 是否可以响应与用户的交互
-    scrollView.alwaysBounceHorizontal = YES; // 不管有没有设置contentSize，总有弹簧效果
-    scrollView.alwaysBounceVertical = YES;
+    scrollView.alwaysBounceHorizontal = YES; // 水平方向不管有没有设置 contentSize，总有弹簧效果
+    scrollView.alwaysBounceVertical = YES; // 垂直方向不管有没有设置 contentSize，总有弹簧效果
+    // UIScrollView通过delegate对ComponentController弱引用
+    // ComponentController对UIScrollView强引用（这里只是一个局部变量）
     scrollView.delegate = self;
     //！！！以下一般不设置！！！//
-    /// 设置缩放功能：需要两步
+    /// UIScrollView很容易实现内容缩放
+    /// ！！！设置缩放功能：需要两步！！！
     // 1.设置pinch缩放属性
     // scrollView.minimumZoomScale == scrollView.maximumZoomScale不能缩放
     scrollView.minimumZoomScale = 0.5; // 缩小的最小比例
@@ -503,12 +541,17 @@
     // 是否正在缩放
     NSLog(@"%d, %d, %d, %d", scrollView.tracking, scrollView.dragging, scrollView.decelerating, scrollView.zooming);
     [self.view addSubview:scrollView];
+    // 原则：遍历一个数组最好要保证该数组不变
+    // ！！！这里目前是没有问题的！！！
+    for (UIView *subView in scrollView.subviews) {
+        [subView removeFromSuperview];
+    }
 }
 
 
 #pragma mark - UIPageControl分页控件
 -(void)setupPageControl {
-    // UIPasteboard
+    // 高度默认37（不能修改）
     UIPageControl *pc = [[UIPageControl alloc]initWithFrame:CGRectMake(100, 100, 100, 50)];
     pc.currentPage = 5;  // 当前页码
     pc.numberOfPages = 10; // 总共页码
@@ -520,7 +563,8 @@
     pc.tag = 100;
     [pc updateCurrentPageDisplay]; // 刷新当前视图
     [self.view addSubview:pc];
-    //自定义UIPageControl样式
+    // 自定义UIPageControl样式
+    // 利用KVC访问私有变量（KVC的强大）
     [pc setValue:[UIImage imageNamed:@"xxx"] forKeyPath:@"_currentPageImage"];
     [pc setValue:[UIImage imageNamed:@"xxx"] forKeyPath:@"_pageImage"];
 }
@@ -565,13 +609,34 @@
 /// UIAlertController
 // iOS8.0以上推荐使用
 -(void)setupAlertController {
-    
+    // 1.创建控制器
+    UIAlertController *alertVC = [UIAlertController alertControllerWithTitle:@"确定删除？" message:@"删除以后别人将看不到你的动态" preferredStyle: UIAlertControllerStyleActionSheet];
+    // 2.创建按钮
+    UIAlertAction *sureAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        NSLog(@"你点击了确认");
+    }];
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        NSLog(@"你点击了取消");
+    }];
+    // 3.添加按钮
+    [alertVC addAction:sureAction];
+    [alertVC addAction:cancelAction];
+    // 还可以添加文本框
+    [alertVC addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
+        
+    }];
+    // 4.显示弹窗
+    [self presentViewController:alertVC animated:YES completion:nil];
 }
 
 
 /// UIPickerView/选择器
 -(void)setupPickerView {
-    
+    UIPickerView *pickerView = [[UIPickerView alloc]init];
+    pickerView.dataSource = self;
+    pickerView.delegate = self;
+    // 默认选中
+    [self pickerView:pickerView didSelectRow:0 inComponent:0];
 }
 
 
@@ -628,10 +693,14 @@
 
 
 /// UISwitch/开关
+// 不能设置尺寸的控件（只能通过缩放设置尺寸）
+// UISwitch
+// UIActivityIndicatorView
+// UISegmentControl
 -(void)setupSwitch {
     UISwitch *sw = [[UISwitch alloc]init];
-    // 因为iOS内置size（默认width51.0/height31.0）
-    // 设置frame没有效果
+    // 因为iOS内置 size（默认width51.0/height31.0）
+    // 设置 frame 没有效果
     // 可以通过缩放来设置大小
     sw.frame = CGRectMake(100, 100, 100, 50);
     sw.on = true; // 是否打开
@@ -640,6 +709,7 @@
     sw.thumbTintColor = UIColor.purpleColor;
     [sw addTarget:self action:@selector(onSwitchChange:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:sw];
+    [sw setOn:YES animated:true];
 }
 -(void)onSwitchChange:(UISwitch *)sw {
     NSLog(@"打开开关");
@@ -671,7 +741,8 @@
 -(void)setupSegmentControl {
     NSArray *array = @[@"居左", @"居中", @"居右"];
     UISegmentedControl *segmentControl = [[UISegmentedControl alloc]initWithItems:array];
-    segmentControl.frame = CGRectMake(100, 100, 100, 50);
+//    segmentControl.frame = CGRectMake(100, 100, 100, 50);
+    segmentControl.center = CGPointMake(100, 50);
     [self.view addSubview:segmentControl];
     segmentControl.tintColor = UIColor.orangeColor;
     segmentControl.selectedSegmentIndex = 0;  // 选中状态
@@ -713,7 +784,11 @@
 /// UIActivityIndicatorView/活动指示器
 -(void)setupActivityIndicatorView {
     UIActivityIndicatorView *view = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    // 不需要设置尺寸
+    // 只需要设置位置
+    // 可以通过缩放来设置大小
     view.frame = CGRectMake(100, 100, 100, 50);
+    view.center = CGPointMake(100, 50);
     [self.view addSubview:view];
     view.hidesWhenStopped = YES; // 动画停止：是否隐藏视图、默认为YES
     // 开始动画
@@ -732,14 +807,41 @@
     [self.view endEditing:YES];
 }
 
-
+/**
+ iOS中事件分类：
+ 1.触摸事件（点击按钮、长按）/ UIGestureRecognizer
+ 2.加速计事件（摇一摇）/ 还没有看
+ 3.远程控制事件（遥控）/ 还没有看
+ */
 #pragma mark - UIGestureRecognizer
+// 响应者：在 iOS 中不是所有对象都可以处理事件，只有继承 UIResponder 对象才可以接收并处理对象，我们称为“响应者对象”
+// UIApplication/UIViewController/UIView都是“响应者对象”（能够接收并处理对象）
+// UIResponder 内部提供了很多方法来处理事件
 // 事件传递流程：当前视图->视图控制器->窗口->UIApplication对象->不处理
 // 父视图不能监听事件，则子视图无法监听事件/子视图超出父视图的部分，不能监听事件
 // 同一个父视图：最上面的视图首先监听事件，如果能够响应，则不再向下传递事件，如果不能响应，则向下传递事件
-// hitTest
-//https://www.jianshu.com/p/b1eaeff5ec81
-//https://www.jb51.net/article/108236.htm
+// https://www.jianshu.com/p/b1eaeff5ec81
+// https://www.jb51.net/article/108236.htm
+/**
+ 控件不能接受事件的三种可能性：
+ 1.userInteractionEnabled = NO;
+ 2.hidden = YES;
+ 3.alpha = 0.0 ~ 0.01;
+ 4.父控件不能接受事件;
+ */
+/**
+ 事件传递：
+ UIApplication -> UIWindow -> 父控件 -> 子控件
+ 1.如果“父控件”不能响应事件：事件中断
+ 2.如果“子控件”不能响应事件：事件传递到“父控件”终止/“父控件”响应事件
+ */
+/**
+ 如何找到最合适的控件来处理事件？（有没有比自身控件更合适的控件）
+ 1.自己是否能够接收触摸事件；
+ 2.触摸点是否在自己身上；
+ 3.从后往前遍历子控件：重复步骤 1/2；
+ 4.如果没有符合条件 1/2 的子控件就自己最适合处理；
+ */
 -(void)setupGestureRecognizer {
     UIImageView *imageView = [[UIImageView alloc]init];
     imageView.frame = CGRectMake(100, 100, 100, 50);
@@ -778,43 +880,48 @@
     swipe.direction = UISwipeGestureRecognizerDirectionUp | UISwipeGestureRecognizerDirectionRight;
     [imageView addGestureRecognizer:swipe];
 }
-
 /// 事件处理
 -(void)onTap:(UITapGestureRecognizer *)tap {
-
+    NSLog(@"点击");
 }
-
 -(void)onLongPress:(UILongPressGestureRecognizer *)press {
-    
+    NSLog(@"长按");
 }
-
 -(void)onPan:(UIPanGestureRecognizer *)pan {
+    NSLog(@"");
     // 可以拿到拖动的位置
     CGPoint point = [pan locationInView:self.view];
     NSLog(@"%@", NSStringFromCGPoint(point));
 }
-
 -(void)onPinch:(UIPinchGestureRecognizer *)pinch {
-    
+    NSLog(@"");
 }
-
 -(void)onRotation:(UIRotationGestureRecognizer *)rotation {
-    
+    NSLog(@"");
+}
+-(void)onSwipe:(UISwipeGestureRecognizer *)swipe {
+    NSLog(@"");
 }
 
--(void)onSwipe:(UISwipeGestureRecognizer *)swipe {
-    
-}
 
 #pragma mark -触摸
+/// 点击控制器 View 系统会自动调用
+// 1.一根/多根手指开始触摸 view
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     NSLog(@"touch begin");
     // 单点触摸：使用第一个参数
+    // 一根手指对应一个 UITouch 对象
+    // 保存着与手指有关的信息（触摸的位置、时间、阶段）
+    // 当手指移动的过程中 UITouch 对象也会随之改变
+    // ！！！好好研究一下 UITouch 对象！！！
+    // iOS开发中避免使用双击
     UITouch *touch = [touches anyObject];
-    // CGRect CGSize CGPoint CGFloat
-    // 都不是类
-    CGPoint point = [touch locationInView:self.view];
-    NSLog(@"%@", NSStringFromCGPoint(point));
+    // CGRect/CGSize/CGPoint/CGFloat都不是类
+    CGPoint currentPoint = [touch locationInView:self.view];
+    CGPoint lastPoint = [touch previousLocationInView:self.view];
+    NSLog(@"当前触摸点%@=上次触摸点%@", NSStringFromCGPoint(currentPoint), NSStringFromCGPoint(lastPoint));
+    NSLog(@"触摸产生时所处的窗口%@=触摸产生时所处的视图%@=短时间内点击屏幕的次数%lu=触摸时间%f",
+          touch.window, touch.view, touch.tapCount, touch.timestamp);
     // 多点触摸：使用第二个参数
     // 每产生一个事件就会产生一个UIEvent对象
     NSSet *touchSet = [event allTouches];
@@ -822,16 +929,28 @@
         CGPoint point = [touch locationInView:self.view];
         NSLog(@"%@", NSStringFromCGPoint(point));
     }
+    /**
+     事件的产生和传递：
+     第一步：
+     1.发生触摸事件以后，系统会将该事件加入到一个由 UIApplication 管理的事件队列中
+     2.UIApplication 会从事件队列中取出最前面的事件分发一下以便处理，通常先发送事件到 App 主窗口 / keyWindow
+     3.主窗口会在视图层次结构中找到“一个最合适的视图”来处理触摸事件
+     第二步：
+     1.找到合适的视图控件以后就会调用视图控件的 touches 方法来做具体的事件处理
+     2.触摸事件的传递是从父控件传递到子控件的（最后传递到自身控件）
+     */
 }
-
+// 2. 一根/多根手指在 view 中移动
+// 会持续调用
 - (void)touchesMoved:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     NSLog(@"touch move");
+    // 手指移动的同时让 UIView 移动可以实现 UIView 拖拽
 }
-
+// 3.一根/多根手指离开 view
 - (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     NSLog(@"touch end");
 }
-
+// 4.某个系统事件（电话呼入）打断触摸过程
 -(void)touchesCancelled:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     NSLog(@"touch cancel");
 }
@@ -860,12 +979,17 @@
     self.view.backgroundColor = UIColor.grayColor;
     /// 跳转
     // 模态跳转
+    // 任何控制器都可以通过 “模态跳转”
     SySkillController *conroller = [[SySkillController alloc]init];
     conroller.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+    // 弹出
     [self presentViewController:conroller animated:YES completion:^{
-        NSLog(@"模态跳转");
+        NSLog(@"模态弹出");
     }];
-    // push
+    // 消失
+    [self dismissViewControllerAnimated:YES completion:^{
+        NSLog(@"模态消失");
+    }];
 }
 
 
@@ -884,8 +1008,8 @@
 #pragma mark - UINavigationBar导航条/UIToolBar工具条
 -(void)setupNavigationBar {
     /// 创建导航视图控制器
-    // 必须指定RootViewController：通过push/pop管理UIViewController
-    // 继承UIViewController
+    // 必须指定 RootViewController：通过push/pop管理UIViewController
+    // 继承 UIViewController
     /*
      需要理解的内容：
      1.UINavigationController的常见属性和方法
@@ -895,25 +1019,32 @@
      */
     // 1.UINavigationController的常见属性和方法
     UINavigationController *navigationController = [[UINavigationController alloc]initWithRootViewController:self];
+   // navigationController.childViewControllers, navigationController.viewControllers 有什么区别
     NSLog(@"获取导航控制器的顶部控制器=%@、获取导航控制器的可视控制器=%@、获取导航控制器的子控制器=%@、获取栈中视图控制器=%@", navigationController.topViewController, navigationController.visibleViewController, navigationController.childViewControllers, navigationController.viewControllers);
     /// 跳转
-    // 跳转到下一个UIViewController
+    // 跳转到下一个 UIViewController
+    // 压入栈
     [self.navigationController pushViewController:self animated:YES];
-    // 返回到上一个UIViewController
-    [self.navigationController popViewControllerAnimated:YES];
-    [self.navigationController popToViewController:self animated:YES];
-    [self.navigationController popToRootViewControllerAnimated:YES];
-    // 2.UINavigationController的层级关系
-    // 参见UINavigationController的层级结构.png
+    // 返回到上一个 UIViewController
+    // 会将上面的控制器移除：移除的控制器会销毁
+    [self.navigationController popViewControllerAnimated:YES]; // 移除栈顶控制器
+    [self.navigationController popToViewController:self animated:YES]; // 移除指定控制器
+    [self.navigationController popToRootViewControllerAnimated:YES];  // 移除栈底控制器
+    // 2.UINavigationController的层级关系：参见 UINavigationController 的层级结构 .png
+    /**
+     1.UIWindow -> UINavigationController() -> 存放子控制器（通过栈的形式）
+     2.rootViewController 的 view 添加到 UIWindow
+     */
     // 3.UINavigationBar的常见属性和方法
     /// 导航条（只有一个、默认不隐藏）
-    // 继承UIView
+    // 继承 UIView
     // 设置导航控制器的风格
     // UINavigationBar *bar = navigationController.navigationBar; // 获取导航栏：只读变量
     /*
      UIBarStyleDefault  // 默认白色
      UIBarStyleBlack     // 黑色
      */
+    // 坐标 {0, 20}
     navigationController.navigationBar.barStyle = UIBarStyleBlack; // 导航条样式
     navigationController.navigationBarHidden = YES;  // 导航条隐藏：默认不隐藏
     [navigationController setNavigationBarHidden:YES animated:YES];
@@ -926,31 +1057,47 @@
     navigationController.toolbar.barStyle = UIBarStyleBlack;
     navigationController.toolbar.translucent = NO;
     navigationController.toolbar.tintColor = UIColor.yellowColor;
-    // 继承UIView
+    // 继承 UIView
     [self.navigationController setToolbarHidden:NO animated:YES];  // 设置UIToolBar工具条是否隐藏
     if (self.navigationController.toolbarHidden) {
         // UIToolBar工具条是否隐藏
     }
-    // 4.UINavigationItem的常见属性和方法
-    // 每个UIViewController都有一个UINavigationItem
-    // 重点：UINavigationItem在UINavigationBar上面，但是是由UIViewController控制UINavigationItem
+    // 4.UINavigationItem 的常见属性和方法
+    // 每个 UIViewController 都有一个 UINavigationItem
+    // UINavigationItem 在 UINavigationBar上面，但是是由 UIViewController 控制 UINavigationItem
+    // ！！！导航栏的内容取决于栈顶控制器的 UINavigationItem 属性/需要在 栈顶控制器 中设置！！！
+    // self.navigationItem.backBarButtonItem - 左上角的返回按钮
     self.navigationItem.title = @"导航视图控制器";  // 标题
     self.navigationItem.titleView = [[UIView alloc]init]; // 标题视图
-    // 定制系统UIBarButtonItem
+    /// 初始化 UIBarButtonItem 有多种方法
+    // 1.定制系统 UIBarButtonItem
     UIBarButtonItem *item0 = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(onAdd)];
-    // 可以自定义UIBarButtonItem
-    UIBarButtonItem *customItem0 = [[UIBarButtonItem alloc]initWithCustomView:[UIButton buttonWithType:UIButtonTypeCustom]];
+    // 2.设置有图片的 UIBarButtonItem
+    // 设置图片让图片不要渲染就可以保持图片颜色不会变成蓝色而保持原色
+    // 可以直接在 Assets.xcassets 中设置/也可以通过代码设置
+    UIImage *image1 = [UIImage imageNamed:@"image_demo"];
+    [image1 imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    UIBarButtonItem *item1 = [[UIBarButtonItem alloc] initWithImage:image1 style:UIBarButtonItemStylePlain target:self action:@selector(onImage)];
+    // 3.设置有文字的：省略
+    // 怎么让文字不要默认蓝色？？？
+    // 4.自定义 UIBarButtonItem
+    // 位置不需要设置/大小需要自己设置
+    UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
+    UIBarButtonItem *customItem0 = [[UIBarButtonItem alloc]initWithCustomView: btn];
+    // 让按钮自适应大小
+    [btn sizeToFit];
     // 这两种写法有什么不同
     /*
-     一个UINavigationController有若干个UIViewController
-     一个UINavigationController包含一个navigationBar/toolbar
-     navigationItem在navigationBar的上面
-     但是navigationItem不是由navigationBar控制、也不是由UINavigationController控制
-     navigationItem是由当前UIViewController控制
+     一个 UINavigationController 有若干个 UIViewController
+     一个 UINavigationController 包含一个 navigationBar/toolbar
+     navigationItem 在 navigationBar 的上面
+     navigationItem 不是由 navigationBar 控制、也不是由 UINavigationController 控制
+     navigationItem 是由当前 UIViewController 控制
      */
+    // ！！！UIBarButtonItem 可以自定义！！！
 //    self.navigationController.navigationItem.leftBarButtonItem = item0;  // 错误写法
     self.navigationItem.leftBarButtonItem = item0;   // 正确写法
-    self.navigationItem.rightBarButtonItem = customItem0;
+    self.navigationItem.rightBarButtonItem = item1;
     self.navigationItem.leftBarButtonItems = @[item0, customItem0];
     self.navigationItem.rightBarButtonItems = @[item0, customItem0];
     self.navigationItem.hidesBackButton = YES;  // 隐藏返回按钮
@@ -963,12 +1110,14 @@
 }
 -(void)onAdd {
     /// 导航栏的跳转
+    // self.navigationController 是否有值？？？取决于 self 是否加入导航控制器
     // 1.跳转到下一页
     SySkillController *controller = [[SySkillController alloc]init];
     [self.navigationController pushViewController:controller animated:true];
     // 2.返回上一页
     [self.navigationController popToViewController:controller animated:true];
     // 3.返回到任意页面
+    // 这个页面必须是导航控制器的子控制器
     int index = 5;
     if (index < self.navigationController.viewControllers.count) {
         [self.navigationController popToViewController:self.navigationController.viewControllers[index] animated:true];
@@ -976,22 +1125,48 @@
     // 4.回到根视图控制器
     [self.navigationController popToRootViewControllerAnimated:true];
 }
+-(void)onImage {}
+/**
+ 非主流框架搭建：
+ UIWindow -> UINavigationController -> UITabBarController -> ChildViewControllers
+ */
+
 
 #pragma mark - TabBar
 -(void)setupTabBar {
     // 分栏控制器
-    // 继承UIViewController
-    // 最多显示5个
+    // 继承 UIViewController
+    // 最多显示 5 个
+    // 1.创建 UITabBarController
+    // 这里也有一个 UIView
     UITabBarController *tabBarController = [[UITabBarController alloc]init];
-    tabBarController.selectedIndex = 0;  // 选中的index
+    tabBarController.view.backgroundColor = UIColor.redColor;
+    // 2.添加子控制器
+    [tabBarController addChildViewController:self];
+    // 3.设置属性
+    tabBarController.selectedIndex = 0;  // 选中的 index
+    /// tabBar
+    // 只有一个
+//    UITarBar *bar = tabBarController.tabBar;  // 获取 UITarBar
     tabBarController.tabBar.barStyle = UIBarStyleDefault; // UITabBar的样式
     tabBarController.tabBar.tintColor = UIColor.redColor;
     tabBarController.tabBar.barTintColor = UIColor.yellowColor;
     tabBarController.tabBar.translucent = true;  // true透明/false不透明
     tabBarController.delegate = self;
+    /// tabBarItem
+    // 决定着每个 UITabBarButton 内容
+    // 每个 "子控制器" 都有一个 tabBarItem
+    // 添加完成 "子控制器" 就需要设置下面属性
     self.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"首页" image:[UIImage imageNamed:@""] selectedImage:[UIImage imageNamed:@""]];
-    
+    self.tabBarItem.title = @"";  // 标题文字
+    self.tabBarItem.image = [UIImage imageNamed:@""]; // 图标
+    self.tabBarItem.selectedImage = [UIImage imageNamed:@""]; // 选中的图标
+    self.tabBarItem.badgeValue = @"5";  // 提醒数字
 }
+/**
+主流框架搭建：
+UIWindow -> UITabBarController -> UINavigationController -> ChildViewControllers
+*/
 
 #pragma mark - UIImagePickerController
 // 相机、相册
@@ -1001,7 +1176,7 @@
 
 #pragma mark - XIB
 -(void)setupXib {
-//    // 通过XIB新建UIViewController
+//    // 通过 xib 新建 UIViewController
 //    SySkillController *controller = [[SySkillController alloc]initWithNibName:@"SySkillController" bundle:nil];
     
     /// 第一种方式：创建一个 xib
@@ -1017,18 +1192,33 @@
     // xib不支持[[XMGShopView alloc]init]创建
     // xib创建的UIView不进入 -(instancetype)init {} 方法
     // xib创建的UIView进入 -(instancetype)initWithCoder:(NSCoder *)aDecoder{} 方法
-    // 用代码给 "xib 创建的子控件"添加子控件需要先唤醒
+    // 用代码给 "xib创建的子控件" 添加子控件需要先唤醒
+    
+    // Segue
+    // xxx 需要在 xib 中设置
+    [self performSegueWithIdentifier:@"xxx" sender:nil];
+}
+// 准备跳转前调用
+// 这样就可以实现跳转
+// 一般不使用 xib 做跳转
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+//    NSLog(@"%@=====%@", segue.destinationViewController, segue.sourceViewController);
+//    SySkillController *controller = (SySkillController *)segue.destinationViewController;
 }
 
 #pragma mark - UITextFieldDelegate
+- (void)textFieldDidBeginEditing:(UITextField *)textField {
+    // 开始编辑
+}
+
+- (void)textFieldDidEndEditing:(UITextField *)textField {
+    // 结束编辑
+}
+
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
     /// 能否能够开始编辑
     // YES代表可以成为第一响应者
     return YES;
-}
-
-- (void)textFieldDidBeginEditing:(UITextField *)textField {
-    // 开始编辑
 }
 
 - (BOOL)textFieldShouldEndEditing:(UITextField *)textField {
@@ -1036,11 +1226,7 @@
     // NO代表可以失去第一响应者
     return NO;
 }
-
-- (void)textFieldDidEndEditing:(UITextField *)textField {
-    // 结束编辑
-}
-
+ 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
     /// 点击return的时候调用该方法
     // 放弃第一响应者
@@ -1053,8 +1239,9 @@
 }
 
 /// ！！！重点！！！
-// xxx
+// 当 textField 文字发生改变就会调用该方法
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
+    // 是否允许用户输入
     return YES;
 }
 
@@ -1073,6 +1260,50 @@
 //- (void)actionSheetCancel:(UIActionSheet *)actionSheet {
 //    // 有系统事件（来电）时调用
 //}
+
+
+#pragma mark - UIPickerViewDataSource, UIPickerViewDelegate
+/// UIPickerViewDataSource
+/// 必须实现
+- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
+    // 总共多少列
+    return 1;
+}
+
+- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
+    // 每列展示多少行
+    return 10;
+}
+
+/// UIPickerViewDelegate
+/// 非必须实现
+// 返回每一列的宽度
+- (CGFloat)pickerView:(UIPickerView *)pickerView widthForComponent:(NSInteger)component {
+    return self.view.frame.size.width / 2;
+}
+
+// 返回每一行的高度
+- (CGFloat)pickerView:(UIPickerView *)pickerView rowHeightForComponent:(NSInteger)component {
+    return 45;
+}
+
+/// 返回每一行的内容
+// 1.字符串
+- (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
+    return @"xmg";
+}
+// 2.带属性字符串（大小、颜色、阴影、描边）
+- (nullable NSAttributedString *)pickerView:(UIPickerView *)pickerView attributedTitleForRow:(NSInteger)row forComponent:(NSInteger)component {
+    return nil;
+}
+// 3.视图
+- (UIView *)pickerView:(UIPickerView *)pickerView viewForRow:(NSInteger)row forComponent:(NSInteger)component reusingView:(nullable UIView *)view {
+    return [[UIView alloc] init];
+}
+// 当前选中的哪一行哪一列
+- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
+    
+}
 
 
 #pragma mark - UIGestureRecognizerDelegate
@@ -1099,40 +1330,55 @@
 }
 
 #pragma mark - UIScrollViewDelegate
-/// 1&2&3 -通过这三个代理方法可以唯一确定上滑/下滑
+/// 1 & 2 & 4 -可以唯一确定上滑/下滑
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView {
     // 1.不管怎么操作：只要拥有偏移量就执行
     // 实时监测滚动变化
 }
 
+/// 2 & 4 -可以唯一确定停止滚动
 -(void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
-    // 2.停止拖拽的时候执行
+    // 2.已经停止拖拽的时候执行
+    if (decelerate == NO) {
+        // 没有减速
+        // 表示已经停止滚动
+        // 4 & 5不会执行
+    } else {
+        // 停止拖拽：会减速
+        // 4 & 5会执行
+    }
+}
+
+- (void)scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset {
+    // 3.将要停止拖拽的时候执行
 }
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
-    // 3.减速结束的时候执行
-}
-
-- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
-    // 将要拖动的时候执行
+    // 4.已经减速结束的时候执行
 }
 
 - (void)scrollViewWillBeginDecelerating:(UIScrollView *)scrollView {
-    // 将要减速的时候执行
+    // 5.将要减速的时候执行
+}
+
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
+    // 6.将要拖动的时候执行
 }
 
 - (BOOL)scrollViewShouldScrollToTop:(UIScrollView *)scrollView {
-    // 是否允许回到顶部：一般不用设置
+    // 7.是否允许回到顶部：一般不用设置
     return YES;
 }
 
 - (void)scrollViewDidScrollToTop:(UIScrollView *)scrollView {
-    // 已经回到顶部开始执行
+    // 8.已经回到顶部开始执行
 }
 
 //！！！以下处理缩放逻辑！！！//
 - (UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView {
     // 2.设置对哪个视图缩放、返回缩放的视图对象
+    // ！！！不能用索引去查找 UIScrollView 的子控件！！！
+    // 所以此处写法有问题
     return scrollView.subviews.firstObject;
 }
 

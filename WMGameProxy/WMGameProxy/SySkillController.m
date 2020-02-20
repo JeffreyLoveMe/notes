@@ -19,13 +19,12 @@
 
 @implementation SySkillController
 /// ViewController的生命周期
-// 系统调用
 - (void)loadView {
     // 保留父类方法
     // 一般都需要调用
     [super loadView];
-    // 初始化控制器的self.view/创建self.view
-    // 当self.view第一次使用的时候调用
+    // 0.初始化控制器的 self.view/创建self.view
+    // 当 self.view 第一次使用的时候调用
     // self.view是lazy
     // ！！！self.view还没有加载完成！！！
     /*
@@ -34,25 +33,30 @@
      1.如果是：把storyboard中的view设置为self.view
      2.如果不是：创建一个空白的View
      */
-    /// 一旦重写该方法：需要自定义View
+    // 系统调用：当控制器 View 第一次使用的时候调用该方法
+    // 一旦重写该方法：需要自定义View
     self.view = [[UIView alloc]init];
+    // 通过该方法设置 alpha = 0 不能响应事件
+    self.view.alpha = 0;
+    // 如果需要透明控件响应事件：颜色透明/可以处理事件
+    self.view.backgroundColor = [UIColor colorWithRed:1 green:1 blue:1 alpha:0];
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // 2.控制器View加载完毕：创建所有子视图
+    // 1.控制器View加载完毕：创建所有子视图
     // 控件的初始化
     // 数据的初始化
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    // 3.视图将要出现
+    // 2.视图将要出现
 }
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    // 4.视图已经出现
+    // 5.视图已经出现/显示完毕
     // 只能在这里移除 self.view
     // 只有有父视图都可以移除
     // self.view的父视图是 self.window
@@ -61,32 +65,43 @@
 
 - (void)viewWillLayoutSubviews {
     [super viewWillLayoutSubviews];
-    // 5.控制器的View将要布局子视图
+    // 3.控制器的View将要布局子视图
+    // 会调用多次
 }
 
 - (void)viewDidLayoutSubviews {
     [super viewDidLayoutSubviews];
-    // 6.控制器的View布局子视图结束
+    // 4.控制器的View布局子视图结束
+    // 会调用多次
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
-    // 7.视图将要消失
+    // 6.视图将要消失
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
     [super viewDidDisappear:animated];
-    // 8.视图已经消失
+    // 7.视图已经消失
 }
 
+
 /// 定时器
+// 频繁的销毁和创建"定时器"
 -(void)createTimer {
-    // 创建定时器
-    NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(onTimer) userInfo:nil repeats:true];
+    /// 创建定时器
+    // NSTimer可以直接用 weak
+    NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(onTimer:) userInfo:nil repeats:YES];
     // 停止定时器
+    // NSTimer 停止以后就不能再使用（需要再重新创建一个）
     [timer invalidate];
+    // 开启定时器
+    // 骚操作
+    timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(onTimer:)
+                                           userInfo:@"123" repeats:YES];
 }
--(void)onTimer {
+-(void)onTimer:(NSTimer *)timer {
+    NSLog(@"%@", timer.userInfo);
     // 比较消耗性能
     // 容易乱
     // 会递归一直遍历
@@ -94,12 +109,15 @@
     myLabel.text = @"我过分";
 }
 
+
 /// MPMoviePlayerController
+
 
 /// iOS自动布局框架 - Masonry详解
 // https://www.jianshu.com/p/ea74b230c70d
 
-/// 使用gif
+
+/// 使用 gif
 // 一般使用"帧动画"替代gif
 -(void)shouGIF {
     // 每个本地文件都可以通过该方法转换成url
@@ -111,6 +129,7 @@
     [self.view addSubview:gifImageView];
 }
 
+
 /// 传值
 // 1.普通传值
 // 2.delegate传值
@@ -121,13 +140,14 @@
     controller.mainText = @"普通传值";
     [self.navigationController pushViewController:controller animated:YES];
     /// 2.delegate传值
-    // 那个页面需要调用该方法就需要遵循该delegate
+    // 那个页面需要调用该方法就需要遵循该 delegate
     // 2.调用delegate
     [_delegate jumpPage:@"delegate传值"];
     /// bolck（与delegate一样）
     // 调用block
     self.myBlock(YES);
 }
+
 
 /// 异常处理
 -(void)hock {
@@ -143,6 +163,7 @@
         NSLog(@"finally");
     }
 }
+
 
 /// 数据持久化
 // 1.NSUserDefaults
@@ -189,10 +210,11 @@
     // 必须实现方法
     [controller jumpPage:@""];
     // 可选方法
-    if ([self respondsToSelector:@selector(finishTask)]) {
-        [controller finishTask];
+    if ([self respondsToSelector:@selector(finishTask:)]) {
+        [controller finishTask:self];
     }
 }
+
 
 // id动态类型
 // 可以调用任何方法（包括私有方法）
@@ -203,6 +225,7 @@
         [obj loginWithGameId:@"" GameKey:@""];
     }
 }
+
 
 /// 内存管理
 // 基本数据类型不需要管理内存
@@ -283,6 +306,7 @@
     
 }
 
+
 /// 懒加载：重写 getter 方法/如果为空加载数据/如果不为空直接返回数据
 // 1.用到的时候再加载
 // 2.全局只会被加载一次
@@ -294,16 +318,72 @@
     return _dataArray;
 }
 
+
+/// UIApplication
+// UIApplication对象是应用程序的象征
+// iOS程序启动以后创建的第一个对象就是UIApplication对象
+- (void)showApplication {
+    // 单例
+    UIApplication *app = [UIApplication sharedApplication];
+    // 设置App图标右上角的红色提醒数字
+    // 之前必须注册用户通知
+    // 会弹出 “是否允许通知”弹窗
+    UIUserNotificationSettings *notice = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeBadge categories:nil];
+    [app registerUserNotificationSettings:notice];
+    app.applicationIconBadgeNumber = 400;
+    // 设置联网指示器的可见性
+    // 状态栏会出现一个"菊花"
+    app.networkActivityIndicatorVisible = YES;
+    // 设置状态栏
+    // iOS7.0以后系统提供2种管理状态栏的方法
+    // 1.通过 UIViewController 管理：每个 UIViewController 可以拥有自己不同的状态栏
+    // 2.通过 UIApplication 管理：一个App的状态栏统一管理
+    // 默认通过 “方法1” 管理状态栏
+    // 如果使用 “方法2” 需要配置 info.plist 文件
+    app.statusBarHidden = YES;
+    app.statusBarStyle = UIStatusBarStyleLightContent;
+    // 打开其他App
+    [app openURL:[NSURL URLWithString:@"https://www.baidu.com"]];
+    // App很容易受到打扰
+    // 来电、锁屏
+    
+}
+/// 方法1
+// 状态栏样式
+// UIStatusBarStyleDarkContent黑色
+// UIStatusBarStyleLightContent白色
+- (UIStatusBarStyle)preferredStatusBarStyle {
+    return UIStatusBarStyleLightContent;
+}
+// 是否隐藏状态栏
+- (BOOL)prefersStatusBarHidden {
+    return YES;
+}
+
+
+/// 程序崩溃
+// NSException
+-(void)showException {
+    // 新建异常
+    NSException * exception = [NSException exceptionWithName:@"异常名称" reason:@"异常原因" userInfo:nil];
+    // 抛出异常
+    // 就会崩溃
+    [exception raise];
+}
+
+
 /// 架构思想
 /// MVC
 // 在 Controller 中进行网络请求
 /// MVP
 /// MVVM
 
+
 - (void)dealloc {
     // 对象销毁之前自动调用该方法
     
 }
+
 
 - (void)didReceiveMemoryWarning {
     // 系统调用

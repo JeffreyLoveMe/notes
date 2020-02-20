@@ -17,8 +17,11 @@ int main(int argc, char * argv[]) {
      自动释放池可以嵌套使用
      就近原则-向上查找
      */
-    // 第一种方式
+    /// 第一种方式
+    // 第三个参数：设置 App 对象的名称（如果是nil/默认是UIApplication）
+    // 第四个参数：设置 App 的 delegate 名称
     @autoreleasepool {   // NSAutoreleasePool *pool = [[NSAutoreleasePool alloc]init];
+        // NSStringFromClass([AppDelegate class]将类名转换成NSString
         return UIApplicationMain(argc, argv, nil, NSStringFromClass([AppDelegate class]));
     }   // [pool release];
     
@@ -45,4 +48,20 @@ int main(int argc, char * argv[]) {
      */
     // 加入到自动释放池以后可以接着使用该对象
     // release以后不可以接着使用该对象
+    
+    /// App启动原理
+    // 1.执行 main 函数
+    // 2.执行 UIApplicationMain：创建UIApplication对象，设置UIApplication代理
+    // 3.开启一个事件循环（主运行循环、保证App不退出）/死循环
+    // 4.加载 info.plist 文件（判断 info.plist 文件中是否有 main 参数：是否加载 xib）
+    // 5.应用程序启动完毕（通知 delegate）
+    
+    
+    
+    
+    
+    
+    
+    
+    
 }

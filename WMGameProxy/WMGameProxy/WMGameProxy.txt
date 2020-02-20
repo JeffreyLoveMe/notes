@@ -489,17 +489,19 @@ char *strrchr(char *str, char c); //在串中查找指定字符的最后一个�
     /// 重写构造方法
     // 子类方法会覆盖父类方法
     if (self) {   // 2.判断父类是否初始化成功
+        // 只有父类初始化成功才可以初始化子类
         // 初始化对象的成员变量
+        // 除了这里其他地方都是固定方法
         _name = "10";  // 3.初始化子类
         _age = 12;
     }
-    return self;  // 4.返回地址
+    return self;  // 4.返回当前对象地址
 }
 4.-(instancetype)initWithName:(NSString *)name withAge:(NSInteger)age {
     self = [super initWithName:name withAge:age]; // 调用父类
     // 自定义构造方法
 }
-特点：一个类中可以自定义零到多个构造方法
+特点：一个类中可以自定义零到多个构造方法；构造方法可以有一个到多个参数
 
 //多态：同一个接口不同的实现、父类指针指向子类对象
 1.重写：重新实现子类方法（子类最终执行重写以后得方法）
@@ -594,7 +596,7 @@ viewDidAppear->viewDidDisappear；
 //pop、dismiss
 3.返回第一个vc：viewWillDisappear->viewWillAppear->viewDidDisappear->viewDidAppear
 ->dealloc；//不重新创建第一个vc，第二个vc销毁
-参考：SySkillController.h/m
+参考： SySkillController.h/m
 https://blog.csdn.net/spicyshrimp/article/details/70886516
 
 //NSTimer定时器
@@ -623,6 +625,8 @@ UIViewAutoresizingFlexibleBottomMargin  = 1 << 5  //上边界和父视图的距�
 
 //UITableView
 一定要搞懂 UITableViewDataSource/UITableViewDelegate 的所有方法
+
+//UIPasteboard
 
 //关于适配
 1.系统适配：

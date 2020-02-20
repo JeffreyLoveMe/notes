@@ -33,8 +33,9 @@
 // 类方法一般用于工具方法的定义
 + (void)initialize {
     if (self == [WMGameProxy class]) {
-        // 有且仅有一次
-        // 先调用父类的load()->子类的load()
+        // 第一次新建该类的时候调用：有且仅有一次
+        // 先调用父类的 load() -> 子类的 load()
+        // 用于 init 某些静态变量
     }
 }
 
@@ -71,15 +72,26 @@
 
 /// 初始化方法
 // id/instancetype有什么区别？？？
+// 都是万能指针 == 指向同一个类型
 // 1.id是一个动态数据类型
 // 通过动态数据类型定义变量可以调用子类特有方法
 // 通过动态数据类型定义变量可以调用私有方法
 // 可以调用到不是自己的方法（编译不报错、运行报错）
 // 2.instancetype
--(id)initWithSdk:(NSString *)sdk {
+// instancetype 做为返回值赋值给一个其他类型会报警告
+// id 做为返回值赋值给一个其他类型不会报警告
+// instancetype 只能做为返回值
+// id 可以定义变量/做为返回值/形参
+// 自定义构造方法尽量使用 instancetype
+//// 自定义构造方法强制格式：大小写敏感
+//-(instancetype)initWithXxx {
+//}
+// 属性名/方法名都尽量不要以 new 开头
+-(instancetype)initWithSdk:(NSString *)sdk {
     // 子类重写父类方法想要保留父类的对象方法
     // super在类方法中调用父类方法
     // super在对象方法中调用父类对象方法
+    // ！！！必须先赋值 self！！！
     self = [super init];
     // self不能离开类
     // self在对象方法中指向当前对象（谁调用对象方法 self指向谁）
@@ -111,6 +123,21 @@
         instance = [[WMGameProxy alloc]init];
     }
     return instance;
+}
+
+// 类工厂方法
+// 自定义类工厂方法是 Apple 规范
+// 不要使用 WMGameProxy：这样在继承的时候会出现问题
+// 改成 self
+// self 在 “类方法” 中代表 “类”：谁调用该方法 self 就代表谁
++(instancetype)wmGameProxy {
+    return [[self alloc] init];
+}
+
++(instancetype)wmGameProxyWithSdk:(NSString *)sdk {
+    WMGameProxy *p = [[self alloc] init];
+    p.sdk = sdk;
+    return p;
 }
 
 // 多态
@@ -195,9 +222,16 @@
 }
 
 /// json解析
+// 实质：将所有的 dict 都转化成 model 放到对应 NSArray 中
 // 把 dict 传入 model
 // model 内部赋值
 // 返回 model
++(instancetype)gameWithDict:(NSDictionary *)dict {
+    // 保证字典键 (key) 和模型的属性一致才可以使用 KVC
+    WMGameProxy *proxy = [[WMGameProxy alloc]init];
+    [proxy setValuesForKeysWithDictionary:dict];
+    return proxy;
+}
 
 // 实现类结束的标志
 @end

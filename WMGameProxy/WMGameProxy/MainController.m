@@ -8,6 +8,7 @@
 
 #import "MainController.h"
 #import <MessageUI/MessageUI.h>
+// 2.在这里使用到 SySkillController.h/m 的地方才需要导入 SySkillController.h
 #import "SySkillController.h"
 
 /// 常见设置常量的办法
@@ -114,7 +115,7 @@
         // 执行代码
     };
 }
-#pragma mark - SySkillControllerDelegate
+#pragma mark - SySkillControllerProtocol
 - (void)jumpPage:(NSString *)text {
     
 }

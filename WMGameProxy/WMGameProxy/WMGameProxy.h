@@ -41,7 +41,7 @@ NS_ASSUME_NONNULL_BEGIN
 // 1.让编译器自动声明 setter/getter方法/2.生成_sdk成员变量
 // 持有的对象sdk引用计算 + 1
 // 通过自动释放池管理内存
-// 如果重写 setter/getter方法 则以重写的为主 / @property就不会（自动声明 setter/getter方法 / 生成_sdk成员变量）
+// 如果重写 setter/getter方法 则以重写的为主 / @property就不会（自动声明 setter/getter 方法 / 生成 _sdk 成员变量）
 // 自动生成的变量 _sdk 是私有变量
 @property (strong, nonatomic) NSString *sdk;
 // @synthesize编译器指令（孙色size）
@@ -62,7 +62,7 @@ NS_ASSUME_NONNULL_BEGIN
 // 给 setter 方法取别名
 // 一般不使用
 @property (setter = myHeight:) NSInteger mheight;
-// 多个属性使用" , "隔开
+// 多个属性使用 "," 隔开
 @property (setter = setUserName:, getter = getUserNmae, strong, nonatomic) NSString *mName;
 /**
  1.原子性
@@ -90,6 +90,16 @@ NS_ASSUME_NONNULL_BEGIN
 // 类方法：不属于任何对象，只能被类名调用
 +(instancetype)getInstance;
 
+/**
+ 类工厂方法
+ 1.一定是类方法 +
+ 2.方法名称以 “类名” 开头，首字母小写
+ 3.一定有返回值 id/instancetype
+ */
++(instancetype)wmGameProxy;
+
++(instancetype)wmGameProxyWithSdk:(NSString *)sdk;
+
 // 初始化方法
 -(id)initWithSdk:(NSString *)sdk;
 
@@ -98,9 +108,15 @@ NS_ASSUME_NONNULL_BEGIN
 // 修改实例变量
 // 面试题：get/set方法的实质是什么？
 -(void)setSdk:(NSString * _Nonnull)sdk;
+
 // 获取属性内容、可以使用get方法
 // 读取实例变量
 -(NSString * _Nonnull)getSdk;
+
+// 通过传入 NSDictionary 赋值模型
+// 返回的 model 放在数组
++(instancetype)gameWithDict:(NSDictionary *)dict;
+
 // 声明类结束的标志
 @end
 

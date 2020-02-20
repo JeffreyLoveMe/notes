@@ -73,7 +73,7 @@
     self.webView.scalesPageToFit = NO;
     // delegate
     self.webView.delegate = self;
-    // 可以通过处理这个属性处理webView的滚动事件
+    // 可以通过处理这个属性处理 webView 的滚动事件
     self.webView.scrollView.delegate = self;
     // 执行js方法
     // UIWebView可以主动调用js

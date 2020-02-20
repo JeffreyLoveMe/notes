@@ -35,6 +35,7 @@
 		33068F1222AE67C800D044EE /* iphone设备尺寸.png in Resources */ = {isa = PBXBuildFile; fileRef = 33068F0222AE67C800D044EE /* iphone设备尺寸.png */; };
 		33068F1422AE67DB00D044EE /* WMGameProxy.txt in Resources */ = {isa = PBXBuildFile; fileRef = 33068F1322AE67DB00D044EE /* WMGameProxy.txt */; };
 		33068F1622B0955200D044EE /* 下拉加载范例.png in Resources */ = {isa = PBXBuildFile; fileRef = 33068F1522B0955200D044EE /* 下拉加载范例.png */; };
+		33085DBE23D00EC300F88897 /* UITableViewCell样式.png in Resources */ = {isa = PBXBuildFile; fileRef = 33085DBD23D00EC300F88897 /* UITableViewCell样式.png */; };
 		330C15C922F801F700CD84CA /* SySkillController.m in Sources */ = {isa = PBXBuildFile; fileRef = 330C15C822F801F700CD84CA /* SySkillController.m */; };
 		331283182339B6DD005D55E2 /* SyDefaultCustomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 331283172339B6DD005D55E2 /* SyDefaultCustomView.m */; };
 		3312831A2339B6FC005D55E2 /* SyCustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 331283192339B6FC005D55E2 /* SyCustomView.swift */; };
@@ -46,8 +47,10 @@
 		3361E40F2308F3DF00A03B7D /* 常见系统库00.png in Resources */ = {isa = PBXBuildFile; fileRef = 3361E40D2308F3DF00A03B7D /* 常见系统库00.png */; };
 		3361E4182309A37D00A03B7D /* image_demo.png in Resources */ = {isa = PBXBuildFile; fileRef = 3361E4172309A37D00A03B7D /* image_demo.png */; };
 		3361E41A230A43EA00A03B7D /* DOVE.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 3361E419230A43EA00A03B7D /* DOVE.bundle */; };
+		33646DBD23FE5D4A00CE99CF /* 事件传递示例-第一步.png in Resources */ = {isa = PBXBuildFile; fileRef = 33646DBC23FE5D4A00CE99CF /* 事件传递示例-第一步.png */; };
 		3372CD542325F92500E7307B /* SYGameProxy.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3372CD532325F92400E7307B /* SYGameProxy.txt */; };
 		3372CD5B2328AC9A00E7307B /* DemoController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3372CD5A2328AC9A00E7307B /* DemoController.m */; };
+		3394874623F11C5700A2C525 /* SyCustomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3394874523F11C5700A2C525 /* SyCustomCell.m */; };
 		3397EBAE23119A1C00522E72 /* iOS学习路线图.png in Resources */ = {isa = PBXBuildFile; fileRef = 3397EBAD23119A1B00522E72 /* iOS学习路线图.png */; };
 		339A3D7D22BBB3F4007DD37D /* 下拉刷新_上拉加载_标准版.png in Resources */ = {isa = PBXBuildFile; fileRef = 339A3D7C22BBB3F4007DD37D /* 下拉刷新_上拉加载_标准版.png */; };
 		339A3D8022BBBBC9007DD37D /* SyGameProxy.c in Sources */ = {isa = PBXBuildFile; fileRef = 339A3D7F22BBBBC9007DD37D /* SyGameProxy.c */; };
@@ -69,12 +72,16 @@
 		33D730A42319229D0024D34E /* 退出键盘的两种方式.png in Resources */ = {isa = PBXBuildFile; fileRef = 33D730A32319229D0024D34E /* 退出键盘的两种方式.png */; };
 		33D730A6231925AC0024D34E /* UIView常见属性和方法.png in Resources */ = {isa = PBXBuildFile; fileRef = 33D730A5231925AC0024D34E /* UIView常见属性和方法.png */; };
 		33D730B3231B82270024D34E /* plist知识点.png in Resources */ = {isa = PBXBuildFile; fileRef = 33D730B2231B82270024D34E /* plist知识点.png */; };
+		33D7768423FA7142001BF56E /* Sy-项目添加类前缀.png in Resources */ = {isa = PBXBuildFile; fileRef = 33D7768323FA7142001BF56E /* Sy-项目添加类前缀.png */; };
 		33E5895E2350ACBE00D92DB7 /* iphone设备各种空间尺寸.png in Resources */ = {isa = PBXBuildFile; fileRef = 33E5895D2350ACBE00D92DB7 /* iphone设备各种空间尺寸.png */; };
 		33E589602350B32C00D92DB7 /* UINavigationController的层级结构.png in Resources */ = {isa = PBXBuildFile; fileRef = 33E5895F2350B32C00D92DB7 /* UINavigationController的层级结构.png */; };
 		33ED93E022F12E77006ABD28 /* ComponentController.m in Sources */ = {isa = PBXBuildFile; fileRef = 33ED93DF22F12E77006ABD28 /* ComponentController.m */; };
 		33F1D58523C9FE5B001AC221 /* 真实文件夹:虚拟文件夹.png in Resources */ = {isa = PBXBuildFile; fileRef = 33F1D58423C9FE5B001AC221 /* 真实文件夹:虚拟文件夹.png */; };
 		33F1D58723CC4364001AC221 /* 给文件名（类名）加前缀.png in Resources */ = {isa = PBXBuildFile; fileRef = 33F1D58623CC4364001AC221 /* 给文件名（类名）加前缀.png */; };
 		33F1D58C23CC4B7E001AC221 /* WMGameView.m in Sources */ = {isa = PBXBuildFile; fileRef = 33F1D58B23CC4B7E001AC221 /* WMGameView.m */; };
+		33FCEB7A23CDD93100A30C77 /* UIScrollView的常见属性.png in Resources */ = {isa = PBXBuildFile; fileRef = 33FCEB7923CDD93100A30C77 /* UIScrollView的常见属性.png */; };
+		33FEF93423D18E65004169AB /* LaunchScreen简介.png in Resources */ = {isa = PBXBuildFile; fileRef = 33FEF93323D18E65004169AB /* LaunchScreen简介.png */; };
+		33FEF93623D191C8004169AB /* info.plist简介.png in Resources */ = {isa = PBXBuildFile; fileRef = 33FEF93523D191C8004169AB /* info.plist简介.png */; };
 		60B17560F167E4FE18028608 /* Pods_WMGameProxyUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F497949D35C1F02C4BAE1F7A /* Pods_WMGameProxyUITests.framework */; };
 		CD760D165A9CBF60796300E5 /* Pods_WMGameProxyTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 407416DA15016E2C557ADCE1 /* Pods_WMGameProxyTests.framework */; };
 /* End PBXBuildFile section */
@@ -135,6 +142,7 @@
 		33068F0222AE67C800D044EE /* iphone设备尺寸.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iphone设备尺寸.png"; sourceTree = "<group>"; };
 		33068F1322AE67DB00D044EE /* WMGameProxy.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = WMGameProxy.txt; sourceTree = "<group>"; };
 		33068F1522B0955200D044EE /* 下拉加载范例.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "下拉加载范例.png"; sourceTree = "<group>"; };
+		33085DBD23D00EC300F88897 /* UITableViewCell样式.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "UITableViewCell样式.png"; sourceTree = "<group>"; };
 		330C15C722F801F700CD84CA /* SySkillController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SySkillController.h; sourceTree = "<group>"; };
 		330C15C822F801F700CD84CA /* SySkillController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SySkillController.m; sourceTree = "<group>"; };
 		331283162339B6DD005D55E2 /* SyDefaultCustomView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SyDefaultCustomView.h; sourceTree = "<group>"; };
@@ -149,9 +157,12 @@
 		3361E40D2308F3DF00A03B7D /* 常见系统库00.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "常见系统库00.png"; sourceTree = "<group>"; };
 		3361E4172309A37D00A03B7D /* image_demo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = image_demo.png; sourceTree = "<group>"; };
 		3361E419230A43EA00A03B7D /* DOVE.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = DOVE.bundle; sourceTree = "<group>"; };
+		33646DBC23FE5D4A00CE99CF /* 事件传递示例-第一步.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "事件传递示例-第一步.png"; sourceTree = "<group>"; };
 		3372CD532325F92400E7307B /* SYGameProxy.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SYGameProxy.txt; sourceTree = "<group>"; };
 		3372CD592328AC9A00E7307B /* DemoController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DemoController.h; sourceTree = "<group>"; };
 		3372CD5A2328AC9A00E7307B /* DemoController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DemoController.m; sourceTree = "<group>"; };
+		3394874423F11C5700A2C525 /* SyCustomCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SyCustomCell.h; sourceTree = "<group>"; };
+		3394874523F11C5700A2C525 /* SyCustomCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SyCustomCell.m; sourceTree = "<group>"; };
 		3397EBAD23119A1B00522E72 /* iOS学习路线图.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iOS学习路线图.png"; sourceTree = "<group>"; };
 		339A3D7C22BBB3F4007DD37D /* 下拉刷新_上拉加载_标准版.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "下拉刷新_上拉加载_标准版.png"; sourceTree = "<group>"; };
 		339A3D7E22BBBBC9007DD37D /* SyGameProxy.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SyGameProxy.h; sourceTree = "<group>"; };
@@ -181,6 +192,7 @@
 		33D730A32319229D0024D34E /* 退出键盘的两种方式.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "退出键盘的两种方式.png"; sourceTree = "<group>"; };
 		33D730A5231925AC0024D34E /* UIView常见属性和方法.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "UIView常见属性和方法.png"; sourceTree = "<group>"; };
 		33D730B2231B82270024D34E /* plist知识点.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "plist知识点.png"; sourceTree = "<group>"; };
+		33D7768323FA7142001BF56E /* Sy-项目添加类前缀.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Sy-项目添加类前缀.png"; sourceTree = "<group>"; };
 		33E5895D2350ACBE00D92DB7 /* iphone设备各种空间尺寸.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iphone设备各种空间尺寸.png"; sourceTree = "<group>"; };
 		33E5895F2350B32C00D92DB7 /* UINavigationController的层级结构.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "UINavigationController的层级结构.png"; sourceTree = "<group>"; };
 		33ED93C922F03E69006ABD28 /* Zapfino.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Zapfino.ttf; sourceTree = "<group>"; };
@@ -191,6 +203,9 @@
 		33F1D58A23CC4B7E001AC221 /* WMGameView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WMGameView.h; sourceTree = "<group>"; };
 		33F1D58B23CC4B7E001AC221 /* WMGameView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WMGameView.m; sourceTree = "<group>"; };
 		33F67EDB2304F98D006F7DD6 /* WMGameProxy.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WMGameProxy.pch; sourceTree = "<group>"; };
+		33FCEB7923CDD93100A30C77 /* UIScrollView的常见属性.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "UIScrollView的常见属性.png"; sourceTree = "<group>"; };
+		33FEF93323D18E65004169AB /* LaunchScreen简介.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LaunchScreen简介.png"; sourceTree = "<group>"; };
+		33FEF93523D191C8004169AB /* info.plist简介.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "info.plist简介.png"; sourceTree = "<group>"; };
 		3D3D3EDD51B0F251CBF64154 /* Pods_WMGameProxy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WMGameProxy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3ECEA7B1BF7650220E4B5C11 /* Pods-WMGameProxy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WMGameProxy.debug.xcconfig"; path = "Target Support Files/Pods-WMGameProxy/Pods-WMGameProxy.debug.xcconfig"; sourceTree = "<group>"; };
 		407416DA15016E2C557ADCE1 /* Pods_WMGameProxyTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WMGameProxyTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -260,11 +275,13 @@
 				3361E40D2308F3DF00A03B7D /* 常见系统库00.png */,
 				3361E40C2308F3DF00A03B7D /* 常见系统库01.png */,
 				33ED93C922F03E69006ABD28 /* Zapfino.ttf */,
+				33646DBC23FE5D4A00CE99CF /* 事件传递示例-第一步.png */,
 				33E5895D2350ACBE00D92DB7 /* iphone设备各种空间尺寸.png */,
 				33E5895F2350B32C00D92DB7 /* UINavigationController的层级结构.png */,
 				33D730A5231925AC0024D34E /* UIView常见属性和方法.png */,
 				33A8FD7622D48125004AECBA /* 快捷键.png */,
 				33F1D58623CC4364001AC221 /* 给文件名（类名）加前缀.png */,
+				33D7768323FA7142001BF56E /* Sy-项目添加类前缀.png */,
 				33F1D58423C9FE5B001AC221 /* 真实文件夹:虚拟文件夹.png */,
 				33D730A32319229D0024D34E /* 退出键盘的两种方式.png */,
 				3397EBAD23119A1B00522E72 /* iOS学习路线图.png */,
@@ -272,8 +289,12 @@
 				3340B2E522C0D9AB00111228 /* 代码标准h文件.png */,
 				3340B2E622C0D9AC00111228 /* 代码标准m文件.png */,
 				33D730B2231B82270024D34E /* plist知识点.png */,
+				33FCEB7923CDD93100A30C77 /* UIScrollView的常见属性.png */,
+				33085DBD23D00EC300F88897 /* UITableViewCell样式.png */,
+				33FEF93523D191C8004169AB /* info.plist简介.png */,
 				339A3D8122BBBE5D007DD37D /* Xcode新建项目.png */,
 				339A3D7C22BBB3F4007DD37D /* 下拉刷新_上拉加载_标准版.png */,
+				33FEF93323D18E65004169AB /* LaunchScreen简介.png */,
 				33A9F0B722B4D4C5007985BF /* 怎么称为一名优秀leader.xmind */,
 				33068F1522B0955200D044EE /* 下拉加载范例.png */,
 				33068EF322AE67C700D044EE /* 单个文件放置多个类：多用于model.png */,
@@ -322,6 +343,8 @@
 				33A8FD7922D481B4004AECBA /* SyTableViewController.m */,
 				33A8FD7B22D48237004AECBA /* SyCollectionViewController.h */,
 				33A8FD7C22D48237004AECBA /* SyCollectionViewController.m */,
+				3394874423F11C5700A2C525 /* SyCustomCell.h */,
+				3394874523F11C5700A2C525 /* SyCustomCell.m */,
 				3324D54922DED4BF0066241F /* WMWebViewController.h */,
 				3324D54A22DED4BF0066241F /* WMWebViewController.m */,
 				330C15C722F801F700CD84CA /* SySkillController.h */,
@@ -512,10 +535,14 @@
 				3361E41A230A43EA00A03B7D /* DOVE.bundle in Resources */,
 				33068F0422AE67C800D044EE /* Safe Area.png in Resources */,
 				33ABE2AC23BC538800A75CE5 /* Xib常见两个问题.png in Resources */,
+				33D7768423FA7142001BF56E /* Sy-项目添加类前缀.png in Resources */,
 				33068F1122AE67C800D044EE /* C:OC学习路线&重难点.png in Resources */,
+				33FEF93623D191C8004169AB /* info.plist简介.png in Resources */,
 				33068EC022AE665600D044EE /* Assets.xcassets in Resources */,
 				33C9258D23A110A000F2212E /* error_调用了一个没有实现的方法.png in Resources */,
 				33068F0822AE67C800D044EE /* json解析标准版.png in Resources */,
+				33646DBD23FE5D4A00CE99CF /* 事件传递示例-第一步.png in Resources */,
+				33FCEB7A23CDD93100A30C77 /* UIScrollView的常见属性.png in Resources */,
 				33C9259123A1119900F2212E /* error_调用一个野指针.png in Resources */,
 				33D730A6231925AC0024D34E /* UIView常见属性和方法.png in Resources */,
 				33068F1622B0955200D044EE /* 下拉加载范例.png in Resources */,
@@ -533,6 +560,7 @@
 				33068F0C22AE67C800D044EE /* App职责分配.png in Resources */,
 				33B434452338E910007CE373 /* UIScrollView.png in Resources */,
 				33068F0D22AE67C800D044EE /* UIKit.png in Resources */,
+				33085DBE23D00EC300F88897 /* UITableViewCell样式.png in Resources */,
 				33068F0522AE67C800D044EE /* UIApplication.png in Resources */,
 				33A8FD7522D480F2004AECBA /* 线程的生命周期.png in Resources */,
 				33A8FD7722D48125004AECBA /* 快捷键.png in Resources */,
@@ -549,6 +577,7 @@
 				33E589602350B32C00D92DB7 /* UINavigationController的层级结构.png in Resources */,
 				33C9259023A1119900F2212E /* error_找不到AppDelegate类.png in Resources */,
 				33D730B3231B82270024D34E /* plist知识点.png in Resources */,
+				33FEF93423D18E65004169AB /* LaunchScreen简介.png in Resources */,
 				3397EBAE23119A1C00522E72 /* iOS学习路线图.png in Resources */,
 				33D730A42319229D0024D34E /* 退出键盘的两种方式.png in Resources */,
 				33068F0322AE67C800D044EE /* 单个文件放置多个类：多用于model.png in Resources */,
@@ -662,6 +691,7 @@
 				339A3D8022BBBBC9007DD37D /* SyGameProxy.c in Sources */,
 				3324D54B22DED4BF0066241F /* WMWebViewController.m in Sources */,
 				33BE31BF22E5890A0073E35B /* FoundationNSObject.m in Sources */,
+				3394874623F11C5700A2C525 /* SyCustomCell.m in Sources */,
 				33F1D58C23CC4B7E001AC221 /* WMGameView.m in Sources */,
 				33BFBBF723387F6900DA9C6D /* UIImage+animatedGIF.m in Sources */,
 				339C0A9F23C6167000C3A144 /* SceneDelegate.m in Sources */,

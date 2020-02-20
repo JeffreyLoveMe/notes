@@ -54,4 +54,12 @@
     // 在这里布局
 }
 
+///// 处理是手势事件部分 - start
+//// 与上面部分内容无关
+//// 怎么找到最适合的控件？？？
+//// 什么时候调用：当一个事件传递给当前 View
+//- (UIView *)hitTest:(CGPoint)point withEvent:(UIEvent *)event {
+//
+//}
+
 @end

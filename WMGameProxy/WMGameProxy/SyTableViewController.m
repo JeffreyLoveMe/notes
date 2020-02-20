@@ -25,8 +25,8 @@
 // 表格视图
 -(void)setupTableView {
     /// 两种类型
-    // UITableViewStylePlain-顶部有滞留效果
-    // UITableViewStyleGrouped
+    // UITableViewStylePlain普通样式（顶部有滞留效果）/tableView.tableHeaderView = [[UIView alloc]init];
+    // UITableViewStyleGrouped分组样式（数据少的时候下面不会有分割线）
     UITableView *tableView = [[UITableView alloc]initWithFrame:self.view.bounds style:UITableViewStyleGrouped];
     //// 真实高度
     // 也可以通过 delegate 设置：以 delegate 设置为主
@@ -40,8 +40,12 @@
     tableView.sectionFooterHeight = 25;
     //// 预估高度
     /// 预估行高
+    tableView.rowHeight = UITableViewAutomaticDimension;
+    tableView.estimatedRowHeight = 40;
     /// 预估区头高度
+    tableView.estimatedSectionHeaderHeight = 0;
     /// 预估区尾高度
+    tableView.estimatedSectionFooterHeight = 0;
     // 设置背景视图
     UIView *bgView = [[UIView alloc]initWithFrame:self.view.bounds];
     bgView.backgroundColor = UIColor.whiteColor;
@@ -53,7 +57,7 @@
     tableView.tableHeaderView = view;
     tableView.tableFooterView = view;
     /// 设置分割线
-    // 分割线可以用 UIView代替
+    // 分割线可以用 UIView 代替
     // 颜色
     tableView.separatorColor = UIColor.redColor;
     // 样式
@@ -69,36 +73,76 @@
     tableView.delegate = self;
     tableView.dataSource = self;
     tableView.tag = 10;
+    // 设置索引字体颜色
+    tableView.sectionIndexColor = UIColor.redColor;
+    // 设置索引背景颜色
+    tableView.sectionIndexBackgroundColor = UIColor.grayColor;
 //    /// 两种模式
 //    // 普通模式
 //    tableView.editing = false;
 //    // 编辑模式
 //    tableView.editing = true;
     [self.view addSubview:tableView];
+    // 通过 ID 标识注册对应的 cell 类型
+    // 只需要注册一次
+    [tableView registerClass:[UITableView class] forCellReuseIdentifier:@"cell"];
 }
 
 
 #pragma mark - UITableViewDelegate, UITableViewDataSource
-/// UITableViewDelegate
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    /// 设置行高
-    // 默认设置44
-    return 44;
+/// UITableViewDataSource
+// 调用顺序
+// 1.UITableView有多少组
+// 默认就是 1 组
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 1;
 }
-
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    /// 设置区头
-    // 默认设置44
-    return 44;
+#pragma mark - 必须实现的方法
+// 自动调用下列方法
+// 2.组中有多少行
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return 10;
 }
-
-- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
-    /// 设置区尾
-    // 默认设置44
-    return 44;
+// 3.赋值
+// 只要一个 cell 出现在视野范围内就会调用一次该方法
+// 缓存池中 cell 的值还是老的
+// 去缓存池中拿到 cell 必须要改数据
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    // 静态局部变量
+    // 不改变作用域/改变生命周期
+    // 全局一直存在
+    // 1.定义重用标识
+    static NSString *ID = @"cell";
+    /// UITableViewCell默认提供四种样式
+    // 详情见 UITableViewCell样式.png
+    // cell最好自定义
+    // 2.去缓存池中取到可循环利用的 cell
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:ID forIndexPath:indexPath];
+    // 3.如果缓存池没有可以循环利用的 cell 需要自己创建
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:ID];
+    }
+    // 4.设置数据
+    /// cell的属性
+    // 控件属性
+    cell.textLabel.text = @"好男人";
+    cell.detailTextLabel.text = @"绿帽子";
+    cell.backgroundColor = UIColor.lightGrayColor;
+    // 设置 cell 的背景 UIView
+    cell.backgroundView = [[UIView alloc] init];
+    // 设置 cell 的选中背景 UIView
+    cell.selectedBackgroundView = [[UIView alloc] init];
+    cell.imageView.image = [UIImage imageNamed:@"image_demo"];
+    NSLog(@"%@", cell.contentView.subviews);
+    /// 真正属性
+    // 这些都可以自定义完成
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator; // 样式
+    cell.accessoryView = [[UISwitch alloc] init]; // 控件（优先显示）
+    cell.selectionStyle = UITableViewCellSelectionStyleNone; // 选中样式
+    return cell;
 }
-
-///// 很少使用
+/// 不强制实现的方法
+///// 4.很少使用
 //// 一般通过自定义控件实现
 //- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
 //    /// 设置区头 title
@@ -110,6 +154,10 @@
 //    return @"好男人";
 //}
 
+
+
+/// UITableViewDelegate
+// 1.选中的事件
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     /// 某一行被选中
     // 通过NSIndexPath可以拿到UITableViewCell
@@ -120,11 +168,37 @@
         
     }
 }
-
+// 2.取消选中某一行
 - (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath {
     /// 某一行取消选中
+    // 先选中第 0 行 -> 取消选中第 0 行 -> 再选中第 1 行
+}
+// 3.返回某一行头部 UIView
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    return [[UIView alloc] init];
+}
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    /// 设置区头
+    // 默认设置44
+    return 44;
+}
+// 4.返回某一行尾部 UIView
+- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
+    return [[UIView alloc] init];
+}
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
+    /// 设置区尾
+    // 默认设置44
+    return 44;
+}
+// 5.返回某一行行高
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    /// 设置行高
+    // 默认设置44
+    return 44;
 }
 
+/// 实现删除、移动
 - (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath {
     /// 返回编辑类型
     // 支持删除和插入
@@ -138,34 +212,11 @@
 - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath {
     // ？？？实现行的移动？？？
 }
-
-/// UITableViewDataSource
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    // UITableView有多少分区
-    return 1;
-}
-
-#pragma mark - 必须实现的方法
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    // 区中有多少行
-    return 10;
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    /// UITableViewCell默认提供四种类型
-    // cell最好自定义
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
-    if (cell == nil) {
-        cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
-    }
-    /// cell的属性
-    // 控件属性
-    cell.textLabel.text = @"好男人";
-    cell.detailTextLabel.text = @"绿帽子";
-    cell.imageView.image = [UIImage imageNamed:@"image_demo"];
-    // 真正属性
-    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-    return cell;
+/// 设置右边索引
+// 按照 index 匹配
+// 不是按照字符串匹配
+- (NSArray<NSString *> *)sectionIndexTitlesForTableView:(UITableView *)tableView {
+    return @[@"A", @"B", @"C"];
 }
 
 @end
