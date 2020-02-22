@@ -108,6 +108,7 @@
 // 缓存池中 cell 的值还是老的
 // 去缓存池中拿到 cell 必须要改数据
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    /// 第一种方式：无需注册
     // 静态局部变量
     // 不改变作用域/改变生命周期
     // 全局一直存在
@@ -127,10 +128,11 @@
     // 控件属性
     cell.textLabel.text = @"好男人";
     cell.detailTextLabel.text = @"绿帽子";
+    // 设置 cell 的背景 backgroundColor
     cell.backgroundColor = UIColor.lightGrayColor;
-    // 设置 cell 的背景 UIView
+    // 设置 cell 的背景 UIView（优先级高于 cell.backgroundColor）
     cell.backgroundView = [[UIView alloc] init];
-    // 设置 cell 的选中背景 UIView
+    // 设置 cell 的选中背景 UIView/可以设置颜色
     cell.selectedBackgroundView = [[UIView alloc] init];
     cell.imageView.image = [UIImage imageNamed:@"image_demo"];
     NSLog(@"%@", cell.contentView.subviews);
@@ -139,6 +141,13 @@
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator; // 样式
     cell.accessoryView = [[UISwitch alloc] init]; // 控件（优先显示）
     cell.selectionStyle = UITableViewCellSelectionStyleNone; // 选中样式
+    /**
+     ！！！为防止 “复用” 导致 cell 的数据发生混乱：有 if 的地方必须有 else 衔接！！！
+     保证 cell 每次进入屏幕都会得到改变
+     */
+    
+    /// 第二种方式：（常用）
+    
     return cell;
 }
 /// 不强制实现的方法
@@ -160,9 +169,9 @@
 // 1.选中的事件
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     /// 某一行被选中
-    // 通过NSIndexPath可以拿到UITableViewCell
+    // 通过 NSIndexPath 可以拿到 UITableViewCell
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-    // 通过UITableViewCell可以拿到NSIndexPath
+    // 通过 UITableViewCell 可以拿到 NSIndexPath
     NSIndexPath *index = [tableView indexPathForCell:cell];
     if (index.row == indexPath.row) {
         
@@ -206,7 +215,19 @@
 }
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    // 编辑以后更新数据源
+    // 点击删除或插入调用该方法
+    // 一般用来更新数据源
+    switch (editingStyle) {
+        case UITableViewCellEditingStyleNone:
+            // 未知
+            break;
+        case UITableViewCellEditingStyleDelete:
+            // 删除
+            break;
+        case UITableViewCellEditingStyleInsert:
+            // 插入
+            break;
+    }
 }
 
 - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath {

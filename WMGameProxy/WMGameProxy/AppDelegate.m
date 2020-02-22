@@ -49,19 +49,24 @@
     [self.window makeKeyAndVisible];
     
 //    // WMGameProxy借用地盘
+//    /**
+//     [WMGameProxy alloc] // 创建对象并返回对象地址/堆内存/类方法
+//     [WMGameProxy init]   // 初始化对象并返回对象地址/对象方法
+//     */
 //    WMGameProxy *wm = [[WMGameProxy alloc]init];
 //    /**
-//     不推荐使用new
+//     不推荐使用 new
 //     1.为WMGameProxy类创建出来的对象分配存储空间 + alloc()方法/1.开辟存储空间；2.将所有属性设置为0
 //     2.初始化WMGameProxy类创建出来的对象的属性 + init()方法/1.初始化成员变量（默认情况下什么都没做）；2.返回初始化后的实例对象地址
 //     3.返回WMGameProxy类创建出来的对象对应的地址
 //     */
 //    WMGameProxy *wm = [WMGameProxy new];
 //    wm.sdk = @"sdk"; // 不推荐直接赋值
-//    /// 调用方法：在OC中叫做发送消息
+//    /// "调用方法"在OC中叫做"发送消息"
 //    // ？？？OC中调用方法的原理？？？
 //    [wm setSdk:@"sdk"];
 //    NSString *sdk = wm.sdk; // 点语法就是调用 setter / getter方法
+    
     return YES;
 }
 

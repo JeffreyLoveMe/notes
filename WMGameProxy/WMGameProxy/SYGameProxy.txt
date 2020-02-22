@@ -17,28 +17,35 @@ Objective-C语言/Swift语言->iOS业务逻辑->iOS底层原理->网络协议->�
 作用域：存储在静态区，在整个文件内有效；
 生命周期：从变量定义开始，到程序结束；
 存储位置：全局变量存储在静态区中，随着程序的启动而创建，随着程序的结束而结束；
+
 // 类方法和对象方法的区别？
 1.类方法必须使用类名调用（+开头）/对象方法必须使用对象调用（-开头）；
 2.类方法不可以直接访问属性/对象方法可以直接访问属性；
 3.调用类方法的效率比调用对象方法高；
 4.类方法和对象方法可以相互调用；（不建议类方法调用对象方法）
+
 // 继承和组合的区别？
 1.继承：当两个类拥有相同的属性和方法可以将相同的属性和方法抽取（###是xxx）
 2.组合：让某个类做为另一个类的属性（###拥有xxx）
+
 //http/https有什么区别？socket/http数据交互有什么区别？
 1.
 2.
 3.
+
 //json解析和XML解析的区别？
 1.
 2.
 3.
+
 //值传递和引用传递的区别？
 1.
 2.
 3.
+
 //常见的七种数据结构
 1.冒泡排序、2.选择排序、3.插入排序、4.希尔排序、5.快速排序、6.归并排序、7.堆排序
+
 //ARC和java的垃圾回收机制有什么不同？
 1.
 2.
@@ -48,41 +55,58 @@ Objective-C语言/Swift语言->iOS业务逻辑->iOS底层原理->网络协议->�
 1.#include/#import将xxx.h复制到当前文件中，#import不会重复copy、#include会重复copy
 2.@class仅仅是告诉编译器xxx是一个类，至于这个类如何定义的，有什么属性和方法当前类不知道（无法使用）；可以解决#import引起的相互导入问题
 3.@class一般用于.h文件（除了继承关系）/#import一般用于.m文件
+
 //self.name和_name的区别?
 1.self.name是对set/get方法的简单操作：引用计数 + 1
 2._name是直接操作变量：引用计数不变
+
 //assign和weak的区别？
 1.weak声明的变量在栈中会自动清空：赋值为nil；
 2.用assign声明的变量在栈中可能不会自动赋值为nil：造成野指针；
+
+// NSString为什么使用Strong而不使用Copy?
+1.
+2.
+3.
+
 //runloop常驻线程NSURLConnection：为什么AF2.0使用常驻线程？AF3.0就抛弃了？
 1.
 2.
 3.
+
 //保证多线程数据安全又什么办法？
 1.加锁：
 2.再写一个？？？
+
 //怎么获取app的全量日志（如何实现一套和业务解耦的日志系统）
 1.
 2.
+
 //App启动优化：有哪些建议？了解过dyld吗？
 1.
 2.
 3.
+
 //符号是怎么绑定在地址上的？能写一个hotReload框架吗？
 1.
 2.
+
 //iOS崩溃是什么导致的？如何监控不同类型的崩溃？
 1.
 2.
+
 //如何获取详细的内存分配信息：比如不同线程的堆栈调用？
 1.
 2.
+
 //iOS有哪些UI开发框架？
 1.Cocoa
 2.再写一个？？？
+
 //Apple为什么设计元类？
 1.
 2.
+
 //extern和static的区别？
 1.extern的作用：
 1).修饰全局变量：表示声明一个全局变量，仅仅是告诉系统我们有这个全局变量，不开辟内存空间；
@@ -91,25 +115,34 @@ Objective-C语言/Swift语言->iOS业务逻辑->iOS底层原理->网络协议->�
 1).修饰局部变量：当执行到定义局部变量的代码就会分配存储空间，但只有程序结束才会释放该存储空间；
 2).修饰全局变量：表示定义一个内部全局变量，只能被当前文件访问，开辟内存空间；
 3).修饰函数：表示定义一个内部函数（只能被当前文件访问的函数）；
+
 // 什么是循环引用？block为什么会导致循环引用？weak怎么防止循环引用？举例子说明。
 1.对象A持有对象B的同时对象B持有对象A，这种情况我们称为循环引用，循环引用会导致两个对象都无法销毁；
 2.
 3.
+
 // 什么是拷贝？深拷贝和浅拷贝有什么区别？
 1.拷贝：复制一个对象，会开辟一块新的内存存放复制的对象；
 2.
 3.
+
 //retain、copy/mutableCopy、release有什么区别？
 1.retain引用计数+1，没有创建新对象；
 2.copy（不可变对象）/mutableCopy（可变对象）引用计数+1，创建新对象；/不是所有
 对象都具备copy功能：必须实现<NSCopying/NSMutableCoping>协议
 3.release
+
 // GET/POST的区别？
 1.GET用于从服务端获取数据，请求的数据会明文出现在url中，没有请求体（不安全）；
 http://www.baidu.com/login?wd=ios开发&id=changmeng&name=畅梦
 2.POST既可以上传数据也可以获取数据，有请求体，请求的数据会封装在请求体中（相对安全）；
 http://www.baidu.com/login
 3.GET请求的数据根据浏览器/服务器对url长度有限制，POST对url没有限制；
+
+// KVC、KVO的底层实现和应用？
+1.
+2.
+3.
 /**************************UI基础**************************/
 /**************************swift基础**************************/
 /**************************项目部分**************************/
@@ -140,6 +173,7 @@ int main() {
     }
     return 0;
 }
+
 // 选择排序：从下标0开始，依次作为待比较的元素，从待比较的元素开始向后遍历数组找到最小的
 元素与待比较的元素交换，一共需要(N-1)轮排序
 4 8 7 2 6  // 原始数据
@@ -170,8 +204,11 @@ int main() {
     printf("%d\n",arr[1]*arr[2]);
     return 0;
 }
+
 // 快速排序
+
 // 堆排序
+
 // 二分查找
 /**************************项目优化**************************/
 // 平时工作中遇到过哪些内存crash/泄漏的情况
@@ -179,34 +216,37 @@ int main() {
 2.
 3.
 4.
+
 // 包体大小优化
 1.图片格式的存储算法
 2.图片格式的识别算法
 3.源码格式的二进制内容
 4.CocoaPods打包方式
+
 // 组件化
 1.全量组件化：划分相关的层级（业务组件按照粒子划分），通过“路由中间件”进行解耦调用
 2.
 3.
 4.
+
 // 热修复
+
 // 动态化
-// 大前端flutter：https://book.flutterchina.club
+
+// 大前端
+1.flutter：https://book.flutterchina.club
 /**************************补充部分**************************/
 // 戴铭
 https://github.com/ming1016
 https://ming1016.github.io/categories/Programming
 
 // 职业规划
-Objective语言->iOS(1年/8-9K)->swift->iOS(1-3年/15-18K)->flutter(3-5年/20-25K)->Java->Android(5年以上/25-30K)->
-kotlin->Android(5-8年/25-30K)->h5/css/js->React Native(8年以上/30K以上)->Java/php->后端(8-10年/30K-50K)->
-word/excel/ppt->IT->运维->python(10年以上/年薪100W)
 /**************************计算机常用单词**************************/
 // A
 Activity活动/Action动作/Animations动画/Audio音频/AutoLogin自动登录/Analysis分析
 Alert警告
 // B
-Bean/Domain/Model/Item实体类/Button按钮/Bluetooth蓝牙/Back返回
+Bean/Domain/Model/Item实体类/Button按钮/Bluetooth蓝牙/Back返回/Bool是否/Begin开始
 // C
 Code代码/Content内容/Common公共的/CheckBox复选框/Component组件/Category类别/Chart图表
 Comment评论/Calendar日历/Custom自定义/Cache缓存/Coupon优惠券
@@ -241,7 +281,7 @@ QRCoder二维码
 Result结果/Router路由/Report举报
 // S
 Start开始/Source资源/Splash闪屏/Success成功/Super父类/SortByXxx按xxx排序/Summary总结
-Security安全性/Storage存储/Space空间/ScreenShot截图/Should应该/Search搜索/Score分数/
+Security安全性/Storage存储/Space空间/ScreenShot截图/Should允许/Search搜索/Score分数/
 Statistic/Stat统计
 // T
 Table表格/Tag标签/Test测试/Time时间/Task任务/Toast提示框/Tool工具/Temp/Tmp临时/Theme主题

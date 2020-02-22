@@ -71,19 +71,22 @@
 
 
 /// 初始化方法
-// id/instancetype有什么区别？？？
+// 1.id/instancetype有什么区别？？？
 // 都是万能指针 == 指向同一个类型
-// 1.id是一个动态数据类型
+// 1).id是一个动态数据类型
 // 通过动态数据类型定义变量可以调用子类特有方法
 // 通过动态数据类型定义变量可以调用私有方法
 // 可以调用到不是自己的方法（编译不报错、运行报错）
-// 2.instancetype
+// 2).instancetype
 // instancetype 做为返回值赋值给一个其他类型会报警告
 // id 做为返回值赋值给一个其他类型不会报警告
 // instancetype 只能做为返回值
 // id 可以定义变量/做为返回值/形参
-// 自定义构造方法尽量使用 instancetype
-//// 自定义构造方法强制格式：大小写敏感
+
+// 2.自定义构造方法尽量使用 instancetype
+// 自定义构造方法强制格式：大小写敏感
+// Objective-C中称所有 init 开头的方法为构造方法
+// 构造方法用于 “初始化对象” 和 “初始化对象的属性”
 //-(instancetype)initWithXxx {
 //}
 // 属性名/方法名都尽量不要以 new 开头
@@ -171,9 +174,9 @@
     return [NSString stringWithFormat:@"%@", _height];
 }
 
-// 整型NSInteger
-// 布尔类型BOOL
-// 结构体NSRange
+// 整型 NSInteger
+// 布尔类型 BOOL
+// 结构体 NSRange
 -(void)showRange {
     NSRange range0 = {1,5};
     NSRange range1 = NSMakeRange(1, 5);

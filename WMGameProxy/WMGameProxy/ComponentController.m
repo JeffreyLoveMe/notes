@@ -80,6 +80,7 @@
     // 获取父视图对象：一个视图最多只有一个父视图
     // 一旦一个视图被添加到一个父视图上就会从上一个父视图移除
     UIView *superView = [view superview];
+    // 打印 CGRect
     NSLog(@"%@", NSStringFromCGRect(superView.bounds));
     /// 背景颜色
     // 这个已经封装
@@ -90,8 +91,9 @@
     // 如果设置为0则不响应事件：所以一般不设置View透明度、而设置View背景透明度
     view.alpha = 0;
     // 根据内容（图片/文字）计算出最优size
-    // 根据最优size改变自己的size
+    // 根据最优 size 改变自己的 size
     [self.view sizeToFit];
+    
     // 获取子控件对象：一个视图可以有多个子视图
     // 在 xib 中只有 UIView 可以承载子视图
     NSArray *subViews = [view subviews];
@@ -123,6 +125,7 @@
     /// 图层
     self.view.layer.cornerRadius = 5;
     self.view.layer.masksToBounds = true;
+    
     /// 形变属性：一次只能利用一个形变属性
     // 1.！！！xxxMakexxx相对于UIView的初始状态进行形变！！！
     // 2.！！！xxxxxx相对于传入的初始状态进行形变！！！
@@ -141,7 +144,8 @@
     // 结构体
     // 2 -相对于水平x方向平移
     // 5 -相对于垂直y方向平移
-    // 负数表示向上平移
+    // x 负数代表向左平移
+    // y 负数表示向上平移
     view.transform = CGAffineTransformMakeTranslation(2, -5);
     view.transform = CGAffineTransformTranslate(view.transform, 2, -5);
 }
@@ -434,7 +438,7 @@
     tf.adjustsFontSizeToFitWidth = true;
     // 开始编辑的时候清除文本框文字
     tf.clearsOnBeginEditing = true;
-    // 设置清除UIButton
+    // 设置清除 UIButton
     tf.clearButtonMode = UITextFieldViewModeAlways;
     // 设置键盘外观
     tf.keyboardAppearance = UIKeyboardAppearanceDark;
@@ -460,12 +464,12 @@
     view.backgroundColor = UIColor.yellowColor;
     tf.rightView = view;
     tf.rightViewMode = UITextFieldViewModeWhileEditing;
-    /// 自定义键盘
-    // 一般银行App使用较多
+    /// 自定义文本框弹出键盘
+    // 一般银行 App 使用较多
     UIView *csView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width, 20)];
     csView.backgroundColor = UIColor.redColor;
     tf.inputView = csView;
-    // 自定义键盘Bar
+    // 自定义文本框弹出键盘 Bar
     UIView *barView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width, 44)];
     barView.backgroundColor = UIColor.blueColor;
     tf.inputAccessoryView = barView;
@@ -641,8 +645,22 @@
 
 
 /// UIDatePicker/时间选择器
+// date/data区别
 -(void)setupDatePicker {
-    
+    UIDatePicker *datePicker = [[UIDatePicker alloc]init];
+    // 修改 datePicker 日期格式
+    datePicker.datePickerMode = UIDatePickerModeDate;
+    // ISO 639语言编码
+    datePicker.locale = [NSLocale localeWithLocaleIdentifier:@"zh"];
+    // 监听日期改变
+    [datePicker addTarget:self action:@selector(dateChange:) forControlEvents:UIControlEventValueChanged];
+}
+-(void)dateChange:(UIDatePicker *)datePicker {
+    // 获取当前选中的日期
+    // NSDate 和 NSString 相互转换
+    NSDateFormatter *fmt = [[NSDateFormatter alloc] init];
+    fmt.dateFormat = @"yyyy-MM-dd";
+    [fmt stringFromDate:datePicker.date];
 }
 
 
@@ -653,7 +671,7 @@
 
 
 /// UIPopoverContrller
-// 继承于NSObject
+// 继承于 NSObject
 -(void)setupPopoverContrller {
     
 }
@@ -699,7 +717,7 @@
 // UISegmentControl
 -(void)setupSwitch {
     UISwitch *sw = [[UISwitch alloc]init];
-    // 因为iOS内置 size（默认width51.0/height31.0）
+    // 因为 iOS 内置 size（默认width51.0/height31.0）
     // 设置 frame 没有效果
     // 可以通过缩放来设置大小
     sw.frame = CGRectMake(100, 100, 100, 50);
@@ -1197,6 +1215,10 @@ UIWindow -> UITabBarController -> UINavigationController -> ChildViewControllers
     // Segue
     // xxx 需要在 xib 中设置
     [self performSegueWithIdentifier:@"xxx" sender:nil];
+    /**
+     1.command + D可以在 xib 中复制控件
+     2.删除 xib 需要删除 “代码”/“xib” 两处
+     */
 }
 // 准备跳转前调用
 // 这样就可以实现跳转
@@ -1207,28 +1229,29 @@ UIWindow -> UITabBarController -> UINavigationController -> ChildViewControllers
 }
 
 #pragma mark - UITextFieldDelegate
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
+    /// 是否允许开始编辑
+    // YES代表可以成为第一响应者
+    return YES;
+}
+
 - (void)textFieldDidBeginEditing:(UITextField *)textField {
     // 开始编辑
+    // 成为 “第一响应者” 开始调用
+}
+
+- (BOOL)textFieldShouldEndEditing:(UITextField *)textField {
+    /// 是否允许结束编辑
+    // NO代表不可以失去第一响应者
+    return NO;
 }
 
 - (void)textFieldDidEndEditing:(UITextField *)textField {
     // 结束编辑
 }
 
-- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
-    /// 能否能够开始编辑
-    // YES代表可以成为第一响应者
-    return YES;
-}
-
-- (BOOL)textFieldShouldEndEditing:(UITextField *)textField {
-    /// 是否能够结束编辑
-    // NO代表可以失去第一响应者
-    return NO;
-}
- 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
-    /// 点击return的时候调用该方法
+    /// 点击 return 的时候调用该方法
     // 放弃第一响应者
     [textField resignFirstResponder];
     return true;
@@ -1240,8 +1263,10 @@ UIWindow -> UITabBarController -> UINavigationController -> ChildViewControllers
 
 /// ！！！重点！！！
 // 当 textField 文字发生改变就会调用该方法
+// 拦截用户输入
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
-    // 是否允许用户输入
+    // 是否允许改变文本框内容
+    // 是否允许 string 去改变文本框内容
     return YES;
 }
 

@@ -551,6 +551,7 @@
 
 
 /// 8.NSDate
+// 日期对象
 -(void)showDate {
     // 1.当前设备的时间点
     // 北京时间：东八区
@@ -585,7 +586,7 @@
     NSString *defaultStr = nowDate.description;
     NSLog(@"%@", defaultStr);
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc]init];
-    // 参考"时间格式说明符对照统一表.png"
+    // 参考 "时间格式说明符对照统一表.png"
     // zz时区
     [dateFormatter setDateFormat:@"yyyy年MM月dd日 HH:mm:ss zz"];
     // 设置时区

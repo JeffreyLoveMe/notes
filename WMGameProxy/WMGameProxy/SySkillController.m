@@ -88,10 +88,14 @@
 
 /// 定时器
 // 频繁的销毁和创建"定时器"
+// https://blog.csdn.net/zhuzhihai1988/article/details/7742881
 -(void)createTimer {
     /// 创建定时器
     // NSTimer可以直接用 weak
+    // 定时器会在 1s 以后开始
     NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(onTimer:) userInfo:nil repeats:YES];
+    // 立即开始
+    [timer fire];
     // 停止定时器
     // NSTimer 停止以后就不能再使用（需要再重新创建一个）
     [timer invalidate];
@@ -322,12 +326,14 @@
 /// UIApplication
 // UIApplication对象是应用程序的象征
 // iOS程序启动以后创建的第一个对象就是UIApplication对象
+// https://www.cnblogs.com/wendingding/p/3766347.html
 - (void)showApplication {
     // 单例
+    // 不可以手动创建
     UIApplication *app = [UIApplication sharedApplication];
-    // 设置App图标右上角的红色提醒数字
+    // 设置 “App图标” 右上角的红色提醒数字
     // 之前必须注册用户通知
-    // 会弹出 “是否允许通知”弹窗
+    // 会弹出 “是否允许通知” 弹窗
     UIUserNotificationSettings *notice = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeBadge categories:nil];
     [app registerUserNotificationSettings:notice];
     app.applicationIconBadgeNumber = 400;
@@ -346,7 +352,6 @@
     [app openURL:[NSURL URLWithString:@"https://www.baidu.com"]];
     // App很容易受到打扰
     // 来电、锁屏
-    
 }
 /// 方法1
 // 状态栏样式

@@ -82,7 +82,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// 定义方法/行为
 // 冒号也是方法名的一部分
-// 定义在.h文件中的方法都会公有的、不能使用@private/@protected/@public修饰
+// 定义在.h文件中的方法都会公有的、不能使用 @private/@protected/@public 修饰
 // 对象方法：只能被对象名调用
 // 方法属于类
 -(void)loginWithGameId:(NSString *)gameId GameKey:(NSString *)gameKey;

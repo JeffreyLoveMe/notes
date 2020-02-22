@@ -48,6 +48,7 @@
 		3361E4182309A37D00A03B7D /* image_demo.png in Resources */ = {isa = PBXBuildFile; fileRef = 3361E4172309A37D00A03B7D /* image_demo.png */; };
 		3361E41A230A43EA00A03B7D /* DOVE.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 3361E419230A43EA00A03B7D /* DOVE.bundle */; };
 		33646DBD23FE5D4A00CE99CF /* 事件传递示例-第一步.png in Resources */ = {isa = PBXBuildFile; fileRef = 33646DBC23FE5D4A00CE99CF /* 事件传递示例-第一步.png */; };
+		33646DC023FFD4A700CE99CF /* SyMemoryManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 33646DBF23FFD4A700CE99CF /* SyMemoryManager.m */; };
 		3372CD542325F92500E7307B /* SYGameProxy.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3372CD532325F92400E7307B /* SYGameProxy.txt */; };
 		3372CD5B2328AC9A00E7307B /* DemoController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3372CD5A2328AC9A00E7307B /* DemoController.m */; };
 		3394874623F11C5700A2C525 /* SyCustomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3394874523F11C5700A2C525 /* SyCustomCell.m */; };
@@ -158,6 +159,8 @@
 		3361E4172309A37D00A03B7D /* image_demo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = image_demo.png; sourceTree = "<group>"; };
 		3361E419230A43EA00A03B7D /* DOVE.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = DOVE.bundle; sourceTree = "<group>"; };
 		33646DBC23FE5D4A00CE99CF /* 事件传递示例-第一步.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "事件传递示例-第一步.png"; sourceTree = "<group>"; };
+		33646DBE23FFD4A700CE99CF /* SyMemoryManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SyMemoryManager.h; sourceTree = "<group>"; };
+		33646DBF23FFD4A700CE99CF /* SyMemoryManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SyMemoryManager.m; sourceTree = "<group>"; };
 		3372CD532325F92400E7307B /* SYGameProxy.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SYGameProxy.txt; sourceTree = "<group>"; };
 		3372CD592328AC9A00E7307B /* DemoController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DemoController.h; sourceTree = "<group>"; };
 		3372CD5A2328AC9A00E7307B /* DemoController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DemoController.m; sourceTree = "<group>"; };
@@ -331,6 +334,8 @@
 				339A3D7F22BBBBC9007DD37D /* SyGameProxy.c */,
 				33068EEB22AE66CB00D044EE /* WMGameProxy.h */,
 				33068EEC22AE66CB00D044EE /* WMGameProxy.m */,
+				33646DBE23FFD4A700CE99CF /* SyMemoryManager.h */,
+				33646DBF23FFD4A700CE99CF /* SyMemoryManager.m */,
 				33F1D58A23CC4B7E001AC221 /* WMGameView.h */,
 				33F1D58B23CC4B7E001AC221 /* WMGameView.m */,
 				331283162339B6DD005D55E2 /* SyDefaultCustomView.h */,
@@ -693,6 +698,7 @@
 				33BE31BF22E5890A0073E35B /* FoundationNSObject.m in Sources */,
 				3394874623F11C5700A2C525 /* SyCustomCell.m in Sources */,
 				33F1D58C23CC4B7E001AC221 /* WMGameView.m in Sources */,
+				33646DC023FFD4A700CE99CF /* SyMemoryManager.m in Sources */,
 				33BFBBF723387F6900DA9C6D /* UIImage+animatedGIF.m in Sources */,
 				339C0A9F23C6167000C3A144 /* SceneDelegate.m in Sources */,
 				33ED93E022F12E77006ABD28 /* ComponentController.m in Sources */,
