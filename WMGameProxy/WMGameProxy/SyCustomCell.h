@@ -12,6 +12,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface SyTableViewCell : UITableViewCell
 
+// 赋值方法
+// 此处可以使用该方法，也可以使用 setter 方法
+-(void)config;
+
 @end
 
 NS_ASSUME_NONNULL_END

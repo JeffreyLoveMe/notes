@@ -169,10 +169,54 @@
 }
 
 
-/// 数据持久化
-// 1.NSUserDefaults
+#pragma mark - 数据持久化
+/// 0.为什么有 “数据持久化”？
+// 通常程序在运行中或者程序结束以后，需要保存一些信息（登录信息、播放记录）
+/// 1.“数据持久化” 存放的位置？
+// 数据存放在 “沙盒” 中
+/// 2.沙盒机制？
+// 定义：“沙盒机制”是一种安全体系，规定应用程序只能在该应用程序创建的文件夹内读取文件，不可以访问其他地方的内容。
+// 所有的非代码文件都保存在沙盒：比如图片、声音、属性列表和文本文件等
+// Documents-保存应用程序运行时生成的需要持久化的数据（持久化数据/会备份）
+// tmp-保存应用程序运行时所需要的临时数据（临时文件/不会备份）
+// Library/Caches-保存应用程序运行时生成的需要持久化的数据（不会备份/缓存/一般较大）
+// Library/Preference-保存应用的所有偏好设置（缓存/会备份）
+/**
+ 1.每个应用程序都有自己的沙盒；
+ 2.不能随意跨越自己的沙盒去访问别的应用程序沙盒的内容；
+ 3.应用程序向外请求或接收数据都需要经过权限认证；
+ */
+-(void)showSandBox {
+    NSLog(@"获取该应用沙盒根目录===%@", NSHomeDirectory());
+    NSString *string = @"我的小可爱";
+    /**
+     获取 ../Documents
+     第一个参数：搜索的目录
+     第二个参数：搜索的范围
+     第三个参数：是否展开路径
+     */
+    NSString *documentPath = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,
+                                        NSUserDomainMask, YES).firstObject;
+//    // 获取 ../Library
+//    NSString *libarayPath = NSSearchPathForDirectoriesInDomains(NSLibraryDirectory,
+//    NSUserDomainMask, YES).firstObject;
+//    // 获取 ../tmp
+//    NSString *tempPath = NSTemporaryDirectory();
+    // 拼接一个文件名
+    NSString *filePath = [documentPath stringByAppendingPathComponent: @"nick.txt"];
+    // 路径是沙盒路径
+    if ([string writeToFile:filePath atomically:YES encoding:NSUTF8StringEncoding error:nil]) {
+        NSLog(@"存储成功");
+    }
+}
+/// 3.“数据持久化” 常用方法
+// 0.文件操作
+-(void)showFile {
+    
+}
+// 1.Preference偏好设置
 // 保存一些简单数据
--(void)showNSUserDefaults {
+-(void)showPreference {
     /// 写入数据
     // 实例化
     [[NSUserDefaults standardUserDefaults] setObject:@"value" forKey:@"key0"];
@@ -187,29 +231,46 @@
     NSInteger count = [[NSUserDefaults standardUserDefaults] integerForKey:@"key2"];
     NSLog(@"%@===%d===%ld", value, shouldHide, count);
 }
-// 2.plist
-// 1).plist的手动创建
-// 右键 -> New File -> Resource -> Property List
-// 2).plist用什么接收
-// 3).存储在沙盒中
-// 一般存放 NSArray/NSDictionary
+// 2.XML属性列表归档plist
+// 只能存放 NSString/NSNumber/NSDate/NSArray/NSDictionary
+// plist的手动创建（右键 -> New File -> Resource -> Property List）
 -(void)showPlist {
-#warning - 代码过几天补充
-    /// 获取 myConfig.plist 数据
+    /// 1.写入数据 myConfig.plist
+    NSArray *names = @[@"yjn", @"mj", @"gxq", @"nj"];
+    NSString *documentPath = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,
+                                            NSUserDomainMask, YES).firstObject;
+    // 拼接一个文件名
+    NSString *filePath = [documentPath stringByAppendingPathComponent: @"myConfig.plist"];
+    // 路径是沙盒路径
+    [names writeToFile:filePath atomically:YES];
+    
+    /// 2.获取 myConfig.plist 数据
     // 获取文件路径
     NSString *path = [[NSBundle mainBundle] pathForResource:@"myConfig" ofType:@"plist"];
     // 通过路径转化数组（字典）
-    // 如果root是dic使用NSMutableDictionary接收
+    // 如果 root 是 dic 使用 NSMutableDictionary 接收
     NSMutableDictionary *dic = [[NSMutableDictionary alloc]initWithContentsOfFile:path];
-    // 如果root是Array使用NSMutableArray接收
+    // 如果 root 是 Array 使用 NSMutableArray 接收
     NSMutableArray *array = [[NSMutableArray alloc]initWithContentsOfFile:path];
     NSLog(@"%@===%@", dic, array);
-    /// 写入数据 myConfig.plist
-    NSArray *names = @[@"yjn", @"mj", @"gxq", @"nj"];
-    [names writeToFile:@"../myConfig.plist" atomically:YES];
 }
-/// 协议protocol一般是用来增加类方法
+// 3.归档NSCoding
+-(void)showCoding {
+    
+}
+// 4.数据库SQLite3
+-(void)showSqlite {
+    
+}
+// 5.Core Data
+-(void)showCoreData {
+    
+}
+
+
+/// 协议 protocol 一般是用来增加类方法
 -(void)showProtocol {
+#warning - 代码过几天补充
     MainController *controller = [[MainController alloc]init];
     // 必须实现方法
     [controller jumpPage:@""];

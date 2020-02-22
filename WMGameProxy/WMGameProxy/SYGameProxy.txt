@@ -54,7 +54,7 @@ Objective-C语言/Swift语言->iOS业务逻辑->iOS底层原理->网络协议->�
 //#include和#import的区别？@class呢？
 1.#include/#import将xxx.h复制到当前文件中，#import不会重复copy、#include会重复copy
 2.@class仅仅是告诉编译器xxx是一个类，至于这个类如何定义的，有什么属性和方法当前类不知道（无法使用）；可以解决#import引起的相互导入问题
-3.@class一般用于.h文件（除了继承关系）/#import一般用于.m文件
+3.@class一般用于.h文件（除继承关系）/#import一般用于.m文件
 
 //self.name和_name的区别?
 1.self.name是对set/get方法的简单操作：引用计数 + 1

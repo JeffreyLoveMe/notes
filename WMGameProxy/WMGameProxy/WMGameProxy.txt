@@ -818,6 +818,8 @@ FoundationNSObject.h/c // Foundation常见类
 ComponentController.h/m // UI组件库
 SyTableViewController.h/m  // UITableView详解
 SyCollectionViewController.h/m // UICollectionViewController详解
+SyCustomCell.h/m // 自定义 Cell
+SyPostItem.h/m // 自定义 Model
 WMWebViewController.h/m  // js和原生交互详解
 SySkillController.h/m // 技能事例
 MainController.h/m  // 事例代码

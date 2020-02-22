@@ -51,6 +51,7 @@
 		33646DC023FFD4A700CE99CF /* SyMemoryManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 33646DBF23FFD4A700CE99CF /* SyMemoryManager.m */; };
 		3372CD542325F92500E7307B /* SYGameProxy.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3372CD532325F92400E7307B /* SYGameProxy.txt */; };
 		3372CD5B2328AC9A00E7307B /* DemoController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3372CD5A2328AC9A00E7307B /* DemoController.m */; };
+		337358A22400EECF000507CC /* SyPostItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 337358A12400EECF000507CC /* SyPostItem.m */; };
 		3394874623F11C5700A2C525 /* SyCustomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3394874523F11C5700A2C525 /* SyCustomCell.m */; };
 		3397EBAE23119A1C00522E72 /* iOS学习路线图.png in Resources */ = {isa = PBXBuildFile; fileRef = 3397EBAD23119A1B00522E72 /* iOS学习路线图.png */; };
 		339A3D7D22BBB3F4007DD37D /* 下拉刷新_上拉加载_标准版.png in Resources */ = {isa = PBXBuildFile; fileRef = 339A3D7C22BBB3F4007DD37D /* 下拉刷新_上拉加载_标准版.png */; };
@@ -164,6 +165,8 @@
 		3372CD532325F92400E7307B /* SYGameProxy.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SYGameProxy.txt; sourceTree = "<group>"; };
 		3372CD592328AC9A00E7307B /* DemoController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DemoController.h; sourceTree = "<group>"; };
 		3372CD5A2328AC9A00E7307B /* DemoController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DemoController.m; sourceTree = "<group>"; };
+		337358A02400EECF000507CC /* SyPostItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SyPostItem.h; sourceTree = "<group>"; };
+		337358A12400EECF000507CC /* SyPostItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SyPostItem.m; sourceTree = "<group>"; };
 		3394874423F11C5700A2C525 /* SyCustomCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SyCustomCell.h; sourceTree = "<group>"; };
 		3394874523F11C5700A2C525 /* SyCustomCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SyCustomCell.m; sourceTree = "<group>"; };
 		3397EBAD23119A1B00522E72 /* iOS学习路线图.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iOS学习路线图.png"; sourceTree = "<group>"; };
@@ -350,6 +353,8 @@
 				33A8FD7C22D48237004AECBA /* SyCollectionViewController.m */,
 				3394874423F11C5700A2C525 /* SyCustomCell.h */,
 				3394874523F11C5700A2C525 /* SyCustomCell.m */,
+				337358A02400EECF000507CC /* SyPostItem.h */,
+				337358A12400EECF000507CC /* SyPostItem.m */,
 				3324D54922DED4BF0066241F /* WMWebViewController.h */,
 				3324D54A22DED4BF0066241F /* WMWebViewController.m */,
 				330C15C722F801F700CD84CA /* SySkillController.h */,
@@ -697,6 +702,7 @@
 				3324D54B22DED4BF0066241F /* WMWebViewController.m in Sources */,
 				33BE31BF22E5890A0073E35B /* FoundationNSObject.m in Sources */,
 				3394874623F11C5700A2C525 /* SyCustomCell.m in Sources */,
+				337358A22400EECF000507CC /* SyPostItem.m in Sources */,
 				33F1D58C23CC4B7E001AC221 /* WMGameView.m in Sources */,
 				33646DC023FFD4A700CE99CF /* SyMemoryManager.m in Sources */,
 				33BFBBF723387F6900DA9C6D /* UIImage+animatedGIF.m in Sources */,

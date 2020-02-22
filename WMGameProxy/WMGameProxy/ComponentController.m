@@ -641,6 +641,10 @@
     pickerView.delegate = self;
     // 默认选中
     [self pickerView:pickerView didSelectRow:0 inComponent:0];
+    [pickerView selectRow:0 inComponent:1 animated:true];
+    // 刷新数据
+    [pickerView reloadAllComponents];
+    [pickerView reloadComponent:0];
 }
 
 
