@@ -111,17 +111,18 @@
 
 /// 单例方法：程序运行过程中，对象只有一个
 // swift可以声明全局静态变量/OC不允许声明全局变量
-// 以单例->全局变量
+// 单例->全局变量
 // 面试：手写单例方法
+// 单例的创建方法通常以 default/shared 开头
 +(instancetype)getInstance {
-    // static声明静态变量：在函数结束变量不消失
+    // static声明静态变量：在函数结束变量不销毁
     static WMGameProxy *instance;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         instance = [[WMGameProxy alloc]init];
     });
     // 第一次进入创建对象
-    // 后续调用：不需要再创建对象、因为static修饰的对象在函数结束不消失
+    // 后续调用：不需要再创建对象，因为 static 修饰的对象在函数结束不销毁
     if (instance == nil) {
         instance = [[WMGameProxy alloc]init];
     }
@@ -234,6 +235,26 @@
     WMGameProxy *proxy = [[WMGameProxy alloc]init];
     [proxy setValuesForKeysWithDictionary:dict];
     return proxy;
+}
+
+/// 归档
+// 告诉需要保存当前对象的哪些属性
+- (void)encodeWithCoder:(NSCoder *)coder {
+    [coder encodeObject:self.userName forKey:@"username"];
+    [coder encodeInteger:self.weight forKey:@"weight"];
+    [coder encodeObject:self.item forKey:@"item"];
+}
+// 当解析一个文件的时候调用
+- (instancetype)initWithCoder:(NSCoder *)coder {
+//    // 只有遵循 “NSCoding协议” 才可以调用
+//    self = [super initWithCoder:coder];
+    self = [super init];
+    if (self) {
+        self.userName = [coder decodeObjectForKey:@"username"];
+        self.weight = [coder decodeIntegerForKey:@"weight"];
+        self.item = [coder decodeObjectForKey:@"item"];
+    }
+    return self;
 }
 
 // 实现类结束的标志

@@ -21,4 +21,23 @@
 //    return item;
 }
 
+
+/// 归档部分 - start - 与上面部分内容无关
+/// 归档
+// 告诉需要保存当前对象的哪些属性
+- (void)encodeWithCoder:(NSCoder *)coder {
+    [coder encodeObject:self.citys forKey:@"citys"];
+    [coder encodeObject:self.name forKey:@"name"];
+}
+// 当解析一个文件的时候调用
+- (instancetype)initWithCoder:(NSCoder *)coder {
+    self = [super init];
+    if (self) {
+        self.citys = [coder decodeObjectForKey:@"citys"];
+        self.name = [coder decodeObjectForKey:@"name"];
+    }
+    return self;
+}
+/// 归档部分 - end - 与下面部分内容无关
+
 @end

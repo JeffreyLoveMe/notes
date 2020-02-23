@@ -6,7 +6,8 @@
 //  Copyright © 2019 zali. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>  // 由于继承NSObject、所以导入Foundation
+#import <Foundation/Foundation.h>  // 由于继承 NSObject、所以导入 Foundation
+#import "SyPostItem.h"
 
 NS_ASSUME_NONNULL_BEGIN
 /// .h文件用来声明类
@@ -16,7 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 // WMGameProxy类名/类名必须大写
 // NSObject父类（顶级父类）
 // .h/.m相互切换：command + control + 👆
-@interface WMGameProxy : NSObject {
+@interface WMGameProxy : NSObject <NSCoding> {
     /// 定义属性
     // 实例变量/成员变量/属性
     // 成员变量不能离开类：只能写在类内部
@@ -64,6 +65,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (setter = myHeight:) NSInteger mheight;
 // 多个属性使用 "," 隔开
 @property (setter = setUserName:, getter = getUserNmae, strong, nonatomic) NSString *mName;
+
+@property (strong, nonatomic) SyPostItem *item;
 /**
  1.原子性
  atomic // 加锁/消耗性能、访问速度慢/多线程环境下存在线程保护（默认/原子性）

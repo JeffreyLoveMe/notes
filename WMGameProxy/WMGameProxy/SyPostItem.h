@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface SyPostItem : NSObject
+@interface SyPostItem : NSObject <NSCopying>
 // 1.新建字段
 // 保持 "属性" 和 "字段" 保持一致
 @property (strong, nonatomic) NSArray *citys;

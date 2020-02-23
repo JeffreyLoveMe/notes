@@ -33,7 +33,7 @@
     // 让执行过程停在此处
     [[NSRunLoop currentRunLoop] run];
     /// 两者有什么不同？？？
-    // 判断obj0对象是否NSObject类的子类创建
+    // 判断 obj0对象 是否 NSObject类的子类 创建
     if ([obj0 isKindOfClass:[NSObject class]]) {
         
     }
@@ -41,7 +41,7 @@
     if ([obj0 isMemberOfClass:[NSObject class]]) {
         
     }
-    /// 判断obj0对象中是否实现了log方法
+    /// 判断 obj0对象 中是否实现了 log方法
     // 包括父类继承下来的方法
     if ([obj0 respondsToSelector:@selector(log)]) {
         

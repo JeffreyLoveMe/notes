@@ -209,6 +209,7 @@
         NSLog(@"存储成功");
     }
 }
+
 /// 3.“数据持久化” 常用方法
 // 0.文件操作
 -(void)showFile {
@@ -216,6 +217,7 @@
 }
 // 1.Preference偏好设置
 // 保存一些简单数据
+// 不能保存自定义对象（自定义对象使用 “归档” 保存）
 -(void)showPreference {
     /// 写入数据
     // 实例化
@@ -233,6 +235,7 @@
 }
 // 2.XML属性列表归档plist
 // 只能存放 NSString/NSNumber/NSDate/NSArray/NSDictionary
+// 不能保存自定义对象（自定义对象使用 “归档” 保存）
 // plist的手动创建（右键 -> New File -> Resource -> Property List）
 -(void)showPlist {
     /// 1.写入数据 myConfig.plist
@@ -255,8 +258,33 @@
     NSLog(@"%@===%@", dic, array);
 }
 // 3.归档NSCoding
+// 一种序列化与反序列化
+// 可以用来保存对象
+// 对象必须实现 "NSCoding协议" 才可以
+// https://www.jianshu.com/p/3e08fa21316d
 -(void)showCoding {
-    
+    // 新建对象
+    WMGameProxy *wm0 = [WMGameProxy new];
+    wm0.userName = @"谢吴军";
+    wm0.weight = 150;
+    // 如果需要保存 SyPostItem 对象
+    // SyPostItem也需要实现 “NSCoding协议”
+    // 实现 "NSCoding协议" 就是告诉用户：我准备存储哪个属性
+    SyPostItem *item = [SyPostItem new];
+    item.citys = @[@"A", @"B", @"C"];
+    item.name = @"安庆";
+    wm0.item = item;
+    // 获取 “沙盒目录”
+    NSString *tempPath = NSTemporaryDirectory();
+    // 拼接文件
+    NSString *filePath = [tempPath stringByAppendingPathComponent:@"sdk.data"];
+    // 归档
+    // 会调用 - (void)encodeWithCoder:(NSCoder *)coder 方法
+    [NSKeyedArchiver archiveRootObject:wm0 toFile:filePath];
+    // 解档
+    // 会调用 - (instancetype)initWithCoder:(NSCoder *)coder 方法
+    WMGameProxy *wm1 = [NSKeyedUnarchiver unarchiveObjectWithFile:filePath];
+    NSLog(@"%@", wm1.userName);
 }
 // 4.数据库SQLite3
 -(void)showSqlite {

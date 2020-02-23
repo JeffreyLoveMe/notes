@@ -586,9 +586,9 @@
     menu.menuItems = @[copyItem, deleteItem];
     // 设置坐标
     [menu setTargetRect:CGRectMake(100, 100, 80, 50) inView:self.view];
-    // 显示menu
+    // 显示 menu
     [menu setMenuVisible:YES animated:YES];
-    // 设置当前UIViewController为第一响应者
+    // 设置当前 UIViewController 为第一响应者
     // UIMenuController的显示依赖第一响应者
     //当UIViewController取消第一响应者，UIMenuController自动消失
     [self becomeFirstResponder];
@@ -976,6 +976,7 @@
 -(void)touchesCancelled:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     NSLog(@"touch cancel");
 }
+
 
 #pragma mark - 停靠模式
 // 主要处理父子视图
