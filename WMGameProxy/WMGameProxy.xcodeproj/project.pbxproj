@@ -81,6 +81,7 @@
 		33F1D58523C9FE5B001AC221 /* 真实文件夹:虚拟文件夹.png in Resources */ = {isa = PBXBuildFile; fileRef = 33F1D58423C9FE5B001AC221 /* 真实文件夹:虚拟文件夹.png */; };
 		33F1D58723CC4364001AC221 /* 给文件名（类名）加前缀.png in Resources */ = {isa = PBXBuildFile; fileRef = 33F1D58623CC4364001AC221 /* 给文件名（类名）加前缀.png */; };
 		33F1D58C23CC4B7E001AC221 /* WMGameView.m in Sources */ = {isa = PBXBuildFile; fileRef = 33F1D58B23CC4B7E001AC221 /* WMGameView.m */; };
+		33F735AC24036DE5005AC30D /* ProvincesAndCities.plist in Resources */ = {isa = PBXBuildFile; fileRef = 33F735AB24036DE5005AC30D /* ProvincesAndCities.plist */; };
 		33FCEB7A23CDD93100A30C77 /* UIScrollView的常见属性.png in Resources */ = {isa = PBXBuildFile; fileRef = 33FCEB7923CDD93100A30C77 /* UIScrollView的常见属性.png */; };
 		33FEF93423D18E65004169AB /* LaunchScreen简介.png in Resources */ = {isa = PBXBuildFile; fileRef = 33FEF93323D18E65004169AB /* LaunchScreen简介.png */; };
 		33FEF93623D191C8004169AB /* info.plist简介.png in Resources */ = {isa = PBXBuildFile; fileRef = 33FEF93523D191C8004169AB /* info.plist简介.png */; };
@@ -209,6 +210,7 @@
 		33F1D58A23CC4B7E001AC221 /* WMGameView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WMGameView.h; sourceTree = "<group>"; };
 		33F1D58B23CC4B7E001AC221 /* WMGameView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WMGameView.m; sourceTree = "<group>"; };
 		33F67EDB2304F98D006F7DD6 /* WMGameProxy.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WMGameProxy.pch; sourceTree = "<group>"; };
+		33F735AB24036DE5005AC30D /* ProvincesAndCities.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ProvincesAndCities.plist; sourceTree = "<group>"; };
 		33FCEB7923CDD93100A30C77 /* UIScrollView的常见属性.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "UIScrollView的常见属性.png"; sourceTree = "<group>"; };
 		33FEF93323D18E65004169AB /* LaunchScreen简介.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LaunchScreen简介.png"; sourceTree = "<group>"; };
 		33FEF93523D191C8004169AB /* info.plist简介.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "info.plist简介.png"; sourceTree = "<group>"; };
@@ -277,6 +279,7 @@
 			children = (
 				33BFBBF023387F0E00DA9C6D /* libs */,
 				3361E419230A43EA00A03B7D /* DOVE.bundle */,
+				33F735AB24036DE5005AC30D /* ProvincesAndCities.plist */,
 				3361E4172309A37D00A03B7D /* image_demo.png */,
 				3361E40D2308F3DF00A03B7D /* 常见系统库00.png */,
 				3361E40C2308F3DF00A03B7D /* 常见系统库01.png */,
@@ -564,6 +567,7 @@
 				3340B2E722C0D9AC00111228 /* 代码标准h文件.png in Resources */,
 				3340B2E822C0D9AC00111228 /* 代码标准m文件.png in Resources */,
 				33068F0922AE67C800D044EE /* UI划分_00.png in Resources */,
+				33F735AC24036DE5005AC30D /* ProvincesAndCities.plist in Resources */,
 				33068F0722AE67C800D044EE /* 认识Autolayout.png in Resources */,
 				339A3D8222BBBE5D007DD37D /* Xcode新建项目.png in Resources */,
 				3361E40E2308F3DF00A03B7D /* 常见系统库01.png in Resources */,

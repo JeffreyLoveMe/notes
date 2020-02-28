@@ -44,9 +44,9 @@
 -(void)setupView {
     UIView *view = [[UIView alloc]init];
     /// 坐标系
-//    CGPoint point = CGPointMake(100, 100);
-//    CGSize size = CGSizeMake(100, 100);
-//    CGRect rect = CGRectMake(100, 100, 100, 100);
+//    CGPoint point = CGPointMake(100, 100); // 坐标
+//    CGSize size = CGSizeMake(100, 100);  // 尺寸
+//    CGRect rect = CGRectMake(100, 100, 100, 100); // 矩形
     /// 设置是否能接受事件/UIView默认是true
     // 如果父视图不能接受事件、则子视图不能接受事件
     // 子视图超出父视图部分不能接受事件
@@ -177,6 +177,9 @@
     label.numberOfLines = 0;
     // 指定换行模式
     label.lineBreakMode = NSLineBreakByWordWrapping;
+    // 设置文字的最大宽度
+    // 让 UILabel 能够计算出自己最真实的尺寸
+    label.preferredMaxLayoutWidth = [UIScreen mainScreen].bounds.size.width - 15 * 2;
 }
 
 #pragma mark - 阴影
@@ -513,7 +516,10 @@
     // 可以控制滚动的位置
     scrollView.contentOffset = CGPointZero; // 内容偏移量：内容和控件的距离/记录滚动的位置
     // 增加额外滚动区域
+    // 凡是在导航条下面的 UIScrollView 默认会设置偏移量
+    // 可以通过 self.automaticallyAdjustsScrollViewInsets = NO; 设置
     scrollView.contentInset = UIEdgeInsetsMake(10, 10, 10, 10);  // 内边距：cell到边的距离
+    self.automaticallyAdjustsScrollViewInsets = NO; // 不要自动设置偏移量
     scrollView.bounces = NO;  // 设置是否反弹
     scrollView.pagingEnabled = NO; // 设置按页滚动（以 UIScrollView 尺寸为一页）
     scrollView.indicatorStyle = UIScrollViewIndicatorStyleWhite; // 设置滚动条样式
@@ -527,13 +533,13 @@
     scrollView.userInteractionEnabled = NO; // 是否可以响应与用户的交互
     scrollView.alwaysBounceHorizontal = YES; // 水平方向不管有没有设置 contentSize，总有弹簧效果
     scrollView.alwaysBounceVertical = YES; // 垂直方向不管有没有设置 contentSize，总有弹簧效果
-    // UIScrollView通过delegate对ComponentController弱引用
+    // UIScrollView通过 delegate 对 ComponentController 弱引用
     // ComponentController对UIScrollView强引用（这里只是一个局部变量）
     scrollView.delegate = self;
     //！！！以下一般不设置！！！//
     /// UIScrollView很容易实现内容缩放
     /// ！！！设置缩放功能：需要两步！！！
-    // 1.设置pinch缩放属性
+    // 1.设置pinch缩放属性：默认值为1
     // scrollView.minimumZoomScale == scrollView.maximumZoomScale不能缩放
     scrollView.minimumZoomScale = 0.5; // 缩小的最小比例
     scrollView.maximumZoomScale = 5;    // 放大的最大比例
@@ -580,11 +586,13 @@
 /// UIMenuController菜单
 // https://blog.csdn.net/woyangyi/article/details/45896859
 -(void)setupMenuController {
-    UIMenuController *menu = [[UIMenuController alloc]init];
+    // 如果一个控件可以使用 “单例” 创建，那么最好让 “init” 创建报错
+    UIMenuController *menu = [UIMenuController sharedMenuController];
     UIMenuItem *copyItem = [[UIMenuItem alloc]initWithTitle:@"copy" action:@selector(onCopy:)];
     UIMenuItem *deleteItem = [[UIMenuItem alloc]initWithTitle:@"delete" action:@selector(onDelete:)];
     menu.menuItems = @[copyItem, deleteItem];
     // 设置坐标
+    // 这块坐标一般取 “点击的位置”
     [menu setTargetRect:CGRectMake(100, 100, 80, 50) inView:self.view];
     // 显示 menu
     [menu setMenuVisible:YES animated:YES];
@@ -614,6 +622,7 @@
 // iOS8.0以上推荐使用
 -(void)setupAlertController {
     // 1.创建控制器
+    // UIAlertController 是 UIViewControlelr 子类
     UIAlertController *alertVC = [UIAlertController alertControllerWithTitle:@"确定删除？" message:@"删除以后别人将看不到你的动态" preferredStyle: UIAlertControllerStyleActionSheet];
     // 2.创建按钮
     UIAlertAction *sureAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
@@ -625,11 +634,12 @@
     // 3.添加按钮
     [alertVC addAction:sureAction];
     [alertVC addAction:cancelAction];
-    // 还可以添加文本框
+    // 4.还可以添加文本框
+    // 如果需要给 block 中的对象赋值需要使用 __block 修饰
     [alertVC addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
         
     }];
-    // 4.显示弹窗
+    // 5.显示弹窗
     [self presentViewController:alertVC animated:YES completion:nil];
 }
 
@@ -871,32 +881,32 @@
     imageView.backgroundColor = UIColor.redColor;
     imageView.userInteractionEnabled = YES;
     // 一个视图可以附着多个手势/一个手势只能附着一个视图
-    /// 单击
+    /// 0.单击
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(onTap:)];
-    tap.numberOfTapsRequired = 1;  // 单击次数
-    tap.numberOfTouchesRequired = 1; // 需要几根手指
+    tap.numberOfTapsRequired = 1;  // 设置点击次数
+    tap.numberOfTouchesRequired = 1; // 设置需要几根手指
     [imageView addGestureRecognizer:tap];
-    /// 双击
+    /// 1.双击
     UITapGestureRecognizer *doubleTap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(onTap:)];
     doubleTap.numberOfTapsRequired = 2;
     [imageView addGestureRecognizer:doubleTap];
     [tap requireGestureRecognizerToFail:doubleTap]; // 单击会在双击失败以后才会识别单击手势
-    /// 按压手势/拖动的时候会持续调用
+    /// 2.长按手势/拖动的时候会持续调用
     UILongPressGestureRecognizer *longPress = [[UILongPressGestureRecognizer alloc]initWithTarget:self action:@selector(onLongPress:)];
     longPress.minimumPressDuration = 1;  // 最小按压时间
     [imageView addGestureRecognizer:longPress];
-    /// 拖动手势
+    /// 3.拖动手势
     UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc]initWithTarget:self action:@selector(onPan:)];
     [imageView addGestureRecognizer:pan];
-    /// 捏合手势
+    /// 4.捏合手势
     UIPinchGestureRecognizer *pinch = [[UIPinchGestureRecognizer alloc]initWithTarget:self action:@selector(onPinch:)];
     pinch.delegate = self;
     [imageView addGestureRecognizer:pinch];
-    /// 旋转手势
+    /// 5.旋转手势
     UIRotationGestureRecognizer *rotation = [[UIRotationGestureRecognizer alloc]initWithTarget:self action:@selector(onRotation:)];
     rotation.delegate = self;
     [imageView addGestureRecognizer:rotation];
-    /// 清扫手势（可以用于视频/直播方面）
+    /// 6.清扫手势（可以用于视频/直播方面）
     UISwipeGestureRecognizer *swipe = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(onSwipe:)];
     // NS_OPTIONS
     swipe.direction = UISwipeGestureRecognizerDirectionUp | UISwipeGestureRecognizerDirectionRight;
@@ -910,19 +920,19 @@
     NSLog(@"长按");
 }
 -(void)onPan:(UIPanGestureRecognizer *)pan {
-    NSLog(@"");
+    NSLog(@"拖动");
     // 可以拿到拖动的位置
     CGPoint point = [pan locationInView:self.view];
     NSLog(@"%@", NSStringFromCGPoint(point));
 }
 -(void)onPinch:(UIPinchGestureRecognizer *)pinch {
-    NSLog(@"");
+    NSLog(@"捏合");
 }
 -(void)onRotation:(UIRotationGestureRecognizer *)rotation {
-    NSLog(@"");
+    NSLog(@"旋转");
 }
 -(void)onSwipe:(UISwipeGestureRecognizer *)swipe {
-    NSLog(@"");
+    NSLog(@"轻扫");
 }
 
 
@@ -948,8 +958,12 @@
     // 每产生一个事件就会产生一个UIEvent对象
     NSSet *touchSet = [event allTouches];
     for (UITouch *touch in touchSet) {
-        CGPoint point = [touch locationInView:self.view];
-        NSLog(@"%@", NSStringFromCGPoint(point));
+        // CGRect/CGSize/CGPoint/CGFloat都不是类
+        CGPoint currentPoint = [touch locationInView:self.view];
+        CGPoint lastPoint = [touch previousLocationInView:self.view];
+        NSLog(@"当前触摸点%@=上次触摸点%@", NSStringFromCGPoint(currentPoint), NSStringFromCGPoint(lastPoint));
+        NSLog(@"触摸产生时所处的窗口%@=触摸产生时所处的视图%@=短时间内点击屏幕的次数%lu=触摸时间%f",
+              touch.window, touch.view, touch.tapCount, touch.timestamp);
     }
     /**
      事件的产生和传递：
@@ -1074,6 +1088,11 @@
     navigationController.navigationBar.translucent = YES; // YES半透明（表示坐标原点在屏幕左上角）/NO不透明（表示坐标原点在导航条左下角）
     navigationController.navigationBar.tintColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"image_demo"]]; // 左上角返回键字体颜色/以图片做为颜色
     navigationController.navigationBar.barTintColor = [UIColor colorWithRed:125.0/255.0 green:125.0/255.0 blue:125.0/255.0 alpha:1]; // 导航条颜色
+    // 导航条/导航条上的控件设置 alpha 没有效果
+    navigationController.navigationBar.alpha = 0;
+    // 设置导航条背景（必须使用默认模式 UIBarMetricsDefault）
+    // 当背景图片设置为 nil 的时候系统会自动生成一张半透明的图片为导航条背景
+    [navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"image_demo"] forBarMetrics:UIBarMetricsDefault];
     /// 工具条：默认隐藏
     // 一般不用（默认就是隐藏）
     navigationController.toolbarHidden = NO;
@@ -1194,7 +1213,15 @@ UIWindow -> UITabBarController -> UINavigationController -> ChildViewControllers
 #pragma mark - UIImagePickerController
 // 相机、相册
 -(void)setupImagePickerController {
-    
+    UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+    // 显示控件
+    [picker presentViewController:picker animated:YES completion:^{
+        
+    }];
+    // 隐藏控件
+    [picker dismissViewControllerAnimated:YES completion:^{
+        
+    }];
 }
 
 #pragma mark - XIB
@@ -1232,6 +1259,10 @@ UIWindow -> UITabBarController -> UINavigationController -> ChildViewControllers
 //    NSLog(@"%@=====%@", segue.destinationViewController, segue.sourceViewController);
 //    SySkillController *controller = (SySkillController *)segue.destinationViewController;
 }
+
+
+#pragma mark - Auto Layout
+
 
 #pragma mark - UITextFieldDelegate
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {

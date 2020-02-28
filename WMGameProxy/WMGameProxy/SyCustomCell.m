@@ -38,10 +38,28 @@
     return self;
 }
 
+// 该方法调用必须保证在 -(void)config; 方法之后
+// 因为必须有 model 才可以设置坐标
+/**
+  先调用 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath; 方法以后才会接着
+ 调用 - (void)layoutSubviews;
+ */
 - (void)layoutSubviews {
     [super layoutSubviews];
     // 3.这里设置尺寸
     // 也可以在这里设置约束
+}
+
+// 赋值方法
+// 此处可以使用该方法，也可以使用 setter 方法
+// 为防止 “循环引用”：有 if 就会有 else
+-(void)config {
+    /**
+     不想要显示某个控件
+     1.移除该控件
+     2.将该控件的高度设置为0
+     3.设置 hidden = YES/该方法性能最高：因为当 hidden = YES 系统就不再绘制该控件
+     */
 }
 
 @end

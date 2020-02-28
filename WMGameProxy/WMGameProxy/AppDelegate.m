@@ -32,16 +32,16 @@
     
     // 底层调用 [navigationController pushViewController:[[ComponentController alloc]init] animated:true];
     UINavigationController *navigationController = [[UINavigationController alloc]initWithRootViewController:[[ComponentController alloc]init]];
-    /// 当前 UIWindow 的根视图控制器rootViewController
+    /// 当前 UIWindow 的根视图控制器 rootViewController
     // self.window.windowLevel
     self.window.rootViewController = navigationController;
     
 //    /// 通过 UIStoryboard 加载程序
 //    UIStoryboard *sb = [UIStoryboard storyboardWithName:@"main" bundle:nil];
 //    // 加载箭头指向的 UIStoryboard
-//    [sb instantiateInitialViewController];
+//    self.window.rootViewController = [sb instantiateInitialViewController];
 //    // 加载指定 UIStoryboard
-//    [sb instantiateViewControllerWithIdentifier:@"main"];
+//    self.window.rootViewController = [sb instantiateViewControllerWithIdentifier:@"main"];
     
     /// 显示 UIWindow
     // 1.将当前 self.window 设置成当前App主窗口：这样在别的控制器就可以通过 [UIApplication sharedApplication].keyWindow 取到

@@ -38,13 +38,20 @@
     tableView.sectionHeaderHeight = 25;
     /// 设置区尾高度
     tableView.sectionFooterHeight = 25;
-    //// 预估高度
-    /// 预估行高
+    /// 预估高度
+    // self-sizing/iOS8.x以后
+    // 告诉 UITableView 所有的 cell 的真实高度是根据 “约束” 自动计算的
     tableView.rowHeight = UITableViewAutomaticDimension;
+    // 预估行高
+    // 设置估算会减少 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath; 方法的调用次数
+    /**
+     调用 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath; 方法的次数 count ？？？
+     int count = MAX(屏幕长度 / tableView.estimatedRowHeight, cell的最大值)
+     */
     tableView.estimatedRowHeight = 40;
-    /// 预估区头高度
+    // 预估区头高度
     tableView.estimatedSectionHeaderHeight = 0;
-    /// 预估区尾高度
+    // 预估区尾高度
     tableView.estimatedSectionFooterHeight = 0;
     // 设置背景视图
     UIView *bgView = [[UIView alloc]initWithFrame:self.view.bounds];
@@ -77,6 +84,9 @@
     tableView.sectionIndexColor = UIColor.redColor;
     // 设置索引背景颜色
     tableView.sectionIndexBackgroundColor = UIColor.grayColor;
+    // 强制更新
+    // 根据 “约束” 立即自动计算控件的宽度和高度
+    [tableView layoutIfNeeded];
 //    /// 两种模式
 //    // 普通模式
 //    tableView.editing = false;
@@ -86,6 +96,21 @@
     // 通过 ID 标识注册对应的 cell 类型
     // 只需要注册一次
     [tableView registerClass:[UITableView class] forCellReuseIdentifier:@"cell"];
+    /// 刷新
+    /// 1.全局刷新
+    // 1).刚进入页面会默认调一次UITableViewDelegate, UITableViewDataSource
+    // 2).调用该方法会调用该一次UITableViewDelegate, UITableViewDataSource
+    // 3).新cell进入屏幕会调用一次UITableViewDelegate, UITableViewDataSource
+    [tableView reloadData];
+    /// 2.局部刷新
+    // 修改数据
+    // 必须保证 NSArray 的 count 保持不变
+    // 不包括 “添加数据”/“删除数据”
+    [tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:0 inSection:0]] withRowAnimation:UITableViewRowAnimationFade];
+    // 添加数据
+    [tableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:0 inSection:0]] withRowAnimation:UITableViewRowAnimationFade];
+    // 删除数据
+    [tableView deleteRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:0 inSection:0]] withRowAnimation:UITableViewRowAnimationFade];
 }
 
 
@@ -201,19 +226,24 @@
     return 44;
 }
 // 5.返回某一行行高
+// 一种思路： cell的 size 可以放在 model 中统一管理
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     /// 设置行高
     // 默认设置44
+//    // ！！！会发生 “死循环”！！！
+//    [tableView cellForRowAtIndexPath:indexPath];
     return 44;
 }
 
-/// 实现删除、移动
-- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath {
-    /// 返回编辑类型
-    // 支持删除和插入
-    return UITableViewCellEditingStyleDelete;
-}
 
+
+/**
+ 默认 tableView.editing = false;
+ 左滑 tableView.editing = true;
+ */
+/// 1.左滑删除/单个 UITableViewRowAction
+// 修改系统默认的 UITableViewRowAction
+// 监听 “Delete按钮” 的点击
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     // 点击删除或插入调用该方法
     // 一般用来更新数据源
@@ -229,10 +259,46 @@
             break;
     }
 }
+// 修改 “Delete按钮” 的默认文字
+-(NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return @"删除";
+}
+
+/// 2.左滑删除/多个 UITableViewRowAction
+// 自定义 UITableViewRowAction
+- (NSArray<UITableViewRowAction *> *)tableView:(UITableView *)tableView editActionsForRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewRowAction *action1 = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleNormal title:@"关注" handler:^(UITableViewRowAction * _Nonnull action, NSIndexPath * _Nonnull indexPath) {
+        NSLog(@"点击关注");
+        // 退出编辑模式
+        // 在此处需要将 "tableView.editing = false;"
+    }];
+    action1.backgroundColor = UIColor.redColor;
+    UITableViewRowAction *action2 = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleDestructive title:@"删除" handler:^(UITableViewRowAction * _Nonnull action, NSIndexPath * _Nonnull indexPath) {
+        NSLog(@"点击删除");
+    }];
+    action2.backgroundColor = UIColor.grayColor;
+    // 从 “右边 -> 左边” 排序
+    return @[action1, action2];
+}
+
+
+
+/// 编辑模式
+// 将 tableView.editing = true; 左边会出现一排 “红色按钮”
+// 可以加上动画 [tableView setEditing:!tableView.editing animated:YES];
+
+
+
+- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath {
+    /// 返回编辑类型
+    // 支持删除和插入
+    return UITableViewCellEditingStyleDelete;
+}
 
 - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath {
     // ？？？实现行的移动？？？
 }
+
 /// 设置右边索引
 // 按照 index 匹配
 // 不是按照字符串匹配

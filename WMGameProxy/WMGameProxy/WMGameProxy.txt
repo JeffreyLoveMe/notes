@@ -60,17 +60,17 @@ option+press // 查看文档
 F11 //进入桌面
 
 //常用终端命令
-cd+目录 //切换到指定目录
-cd+../ //返回上一级目录
-cd+/  //切换到root目录
+cd + 目录 //切换到指定目录
+cd + ../ //返回上一级目录
+cd + /  //切换到root目录
 ls  //查询当前目录下子目录活文件
 pwd //查看当前路径
-clear+l //清屏
-mkdir+文件夹名称 // 新建文件夹
-rmdir+文件夹名称 // 删除文件夹
-open+文件名称 // 打开文件
-touch+xxx.txt // 在当前文件夹下新建文件
-cat+文件名 //查看文件
+clear + l //清屏
+mkdir + 文件夹名称 // 新建文件夹
+rmdir + 文件夹名称 // 删除文件夹
+open + 文件名称 // 打开文件
+touch + xxx.txt // 在当前文件夹下新建文件
+cat + 文件名 //查看文件
 
 //vi编译器的使用：用来编写c语言程序
 vi test.c //打开/新建test.c文件
@@ -526,7 +526,8 @@ char *strrchr(char *str, char c); //在串中查找指定字符的最后一个�
 // 3.类扩展/匿名类别：当定义不想对外公开一些类的方法和属性时可以使用类扩展
 @interface SyPerson()
 // 可以声明私有成员变量
-// 声明和实现都在.m文件中（可以实现私有方法）
+@property (weak, nonatomic) UIImageView *iconImageView;
+// 可以声明私有方法：声明和实现都在 “.m文件” 中
 -(void)song;
 @end
 
@@ -679,7 +680,7 @@ HTTP协议 - 超文本传输协议/规定客户端和服务端之间的数据传
 4.
 
 //多语言
-常见语言：en/tw/hk/cn
+常见语言： en/tw/hk/cn
 定义：根据用户设置的Language and Region Format（语言和区域格式）修改应用本地化信息(语言、货币、日期格式等)；
 http://www.cocoachina.com/ios/20170122/18609.html
 https://www.jianshu.com/p/c7a6408410aa
@@ -784,20 +785,31 @@ https://xclient.info
 1.XCode4.0以前使用GCC编译器：
 2.XCode4.0以后使用LLVM(Clang前端专门用来编译代码)：
 
+// LLVM项目
+
+// Clang编译器
+
+// Instruments
+
 // RxSwift
 
 // ReactiveCocoa
 
 // Scrumj敏捷开发
 
+// 著名网站
+stackoverflow - IT问答网站/可以找到90%以上的答案
+https://www.jianshu.com/p/e37914c4d3d9 - iOS大佬博客
+http://github.com/lintaoSuper/trip-to-iOS - gitHub
+
 // 名词术语
-WWDC -全球开发者大会
-UUID -设备唯一标识/代码使用
-UDID -设备识别码/真机调试
-邓白氏 -xxx
-僵尸对象 -被释放的对象/开启监听"僵尸对象"：Edit Scheme->Run->Diagnostics->勾选Zombie Objects
-野指针 -指向僵尸对象的指针
-空指针nil -为了避免给野指针发送消息报错，当一个对象被释放以后我们会将这个对象的指针设置为空指针
+WWDC - 全球开发者大会
+UUID - 设备唯一标识/代码使用
+UDID - 设备识别码/真机调试
+邓白氏 - xxx
+僵尸对象 - 被释放的对象/开启监听"僵尸对象"(Edit Scheme->Run->Diagnostics->勾选Zombie Objects)
+野指针 - 指向僵尸对象的指针
+nil空指针 - 为了避免给野指针发送消息报错，当一个对象被释放以后我们会将这个对象的指针设置为空指针
 
 //知识点速查：
 libs // 常见第三方库

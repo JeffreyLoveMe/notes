@@ -26,10 +26,10 @@
     // 0.初始化控制器的 self.view/创建self.view
     // 当 self.view 第一次使用的时候调用
     // self.view是lazy
-    // ！！！self.view还没有加载完成！！！
+    // ！！！ self.view还没有加载完成 ！！！
     /*
      底层原理：
-     先判断当前VC是不是从storyboard中加载的？
+     先判断当前VC是不是从 storyboard 中加载的？？？
      1.如果是：把storyboard中的view设置为self.view
      2.如果不是：创建一个空白的View
      */
@@ -147,8 +147,8 @@
     // 那个页面需要调用该方法就需要遵循该 delegate
     // 2.调用delegate
     [_delegate jumpPage:@"delegate传值"];
-    /// bolck（与delegate一样）
-    // 调用block
+    /// bolck（与 delegate 一样）
+    // 调用 block
     self.myBlock(YES);
 }
 
@@ -239,6 +239,7 @@
 // plist的手动创建（右键 -> New File -> Resource -> Property List）
 -(void)showPlist {
     /// 1.写入数据 myConfig.plist
+    // 把 NSDictionary/NSArray 写入到 myConfig.plist
     NSArray *names = @[@"yjn", @"mj", @"gxq", @"nj"];
     NSString *documentPath = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,
                                             NSUserDomainMask, YES).firstObject;

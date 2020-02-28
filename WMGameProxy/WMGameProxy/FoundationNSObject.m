@@ -79,13 +79,13 @@
     
     NSString *str2 = [NSString stringWithString:str1];
     NSLog(@"%@", str2);
-    /// 将 C语言字符串 转 OC字符串
-    // C语言字符串和OC字符串可以相互转换
+    // C语言字符串 <==> OC字符串
     NSString *str3 = [[NSString alloc]initWithUTF8String:"我是c语言字符串"];
     //const char *c = [str3 UTF8String]; // 这是C语言字符串
     // 拼接字符串：很重要
     NSString *str4 = [[NSString alloc]initWithFormat:@"我是万能拼接字符串：%@", str3];
-    // 字符串长度：汉字长度也的是1
+    // 字符串长度
+    // ！！！汉字长度也的是 “1”！！！
     NSUInteger str4Count = [str4 length];
     NSLog(@"%lu", (unsigned long)str4Count);
     // 通过索引获取相应字符
@@ -93,6 +93,7 @@
     NSLog(@"%c", c1);
     // unicode万国码：使用更大的存储空间存储各国字符
     // mac默认编码格式：UTF-8/unicode的分支
+    // UTF-8编码：不同的字符使用不同的字节存储（比如1个汉字占3个字节/1个英文字符占1个字节），但是都是一个字符
     /// 字符串判断
     // 1.判断字符串“内容”是否相同：区分大小写
     if ([str0 isEqualToString:str1]) {
@@ -149,7 +150,7 @@
     NSRange range3 = [str5 rangeOfString:@"ios"]; // ！！！找到第一个就不再接着找！！！
     NSLog(@"location = %lu, length = %lu", range3.location, range3.length);
     if (range3.location == NSNotFound) {
-        // 没有找到这个数
+        NSLog(@"没有找到这个字符串");
     } else {
         NSLog(@"%lu === %lu", range3.location, range3.length);
     }
@@ -252,8 +253,9 @@
     if (index == NSNotFound) {
         // 没有找到
     } else {
-        // 2.通过 index 获取元素
-        id obj = [array4 objectAtIndex:index];
+//        // 2.通过 index 获取元素
+//        id obj = [array4 objectAtIndex:index];
+//        id obj = array4[index];
     }
     
     /// NSString 和 NSArray 之间的转化

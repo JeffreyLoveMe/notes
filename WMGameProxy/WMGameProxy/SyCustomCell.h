@@ -14,6 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 // 赋值方法
 // 此处可以使用该方法，也可以使用 setter 方法
+// 为防止 “循环引用”：有 if 就会有 else
 -(void)config;
 
 @end

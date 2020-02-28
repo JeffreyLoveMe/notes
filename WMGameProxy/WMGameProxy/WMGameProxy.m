@@ -64,9 +64,10 @@
     return self;
 }
 
-// 对象方法中访问当前对象的属性_xxx
+// 对象方法中访问当前对象的属性 _xxx
 -(void)loginWithGameId:(NSString *)gameId GameKey:(NSString *)gameKey {
     NSLog(@"login");
+    // 最大浮点数 MAXFLOAT
 }
 
 
