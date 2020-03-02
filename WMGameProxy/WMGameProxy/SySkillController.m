@@ -427,9 +427,9 @@
      参数三/通知的名称（可以为 nil/不关注是 “什么通知”）/明确告诉系统想要监听 “什么通知”
      参数四/通知的发布者（可以为 nil/不关注是 “谁发布的通知”）/被观察者/明确告诉系统想要监听 “谁发布的通知”
      */
-    // 此处不接受 “匿名通知”
+    // 此处不接收 “匿名通知”
     [[NSNotificationCenter defaultCenter] addObserver:wm selector:@selector(onChange:) name:@"network3" object:wm];
-    // 此处接受 “匿名通知”
+    // 此处接收 “匿名通知”
     [[NSNotificationCenter defaultCenter] addObserver:wm selector:@selector(onChange:) name:@"network3" object:nil];
     // 二、创建通知对象
     /**

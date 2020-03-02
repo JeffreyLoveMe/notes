@@ -30,17 +30,17 @@ class WMGame: NSObject {
         // 输出函数
         print("Hello World")
         
-        /// 4.常量和变量
+       /// 4.常量和变量
         // 1.swift中必须告诉编译器这是一个常量还是变量
         // 2.使用过程中建议先定义常量，如果需要修改再修改成变量
-//        // ！！！3.常量是指向的对象不可以进行修改，但是可以改变对象内部属性！！！
-//        let myView: UIView = UIView()
-//        myView = UIView() // 错误
-//        myView.backgroundColor = UIColor.red; // 正确
+    //        // ！！！3.常量是指向的对象不可以进行修改，但是可以改变对象内部属性！！！
+    //        let myView: UIView = UIView()
+    //        myView = UIView() // 错误
+    //        myView.backgroundColor = UIColor.red; // 正确
         // 4.swift不会自动给变量赋初始值
         // 常量：值不能够被修改的量/优先使用常量
         let myConstant: Int = 12
-//        myConstant = 13 // 错误
+    //        myConstant = 13 // 错误
         let uMyConstant: UInt = 13
         // 变量：值可以根据需要不断修改
         var myVariable = 42
@@ -56,7 +56,7 @@ class WMGame: NSObject {
         // typealias类型别名
         typealias NSInteger = Int
         let value: NSInteger = 45
-        print("\(value))")
+        print(value)
         
         /// 6.swift中基本运算
         // 1.进行基本运算必须保证类型一致，否则会报错
@@ -88,7 +88,7 @@ class WMGame: NSObject {
         // 3.guard语句
         // 1).提高程序的可读性
         // 2).guard 必须与 else 同时使用
-        guard m2 > 10 else {
+        guard m2 >= 10 else {
             // 语句块1
             // 如果 条件语句（ m2 > 10 ）为 false？则执行 “语句块1”
             // “不成立”执行这里
@@ -198,49 +198,99 @@ class WMGame: NSObject {
             print(m4)
             m4 = m4 - 1
         } while m4 > 0
+        
     }
     
-    
-    
-    
-    
-    
-    
-    
-    /// 字符串
+    /// 9.字符串
     // swift中字符串不是指针而是实际的值
-    // 常见的特殊字符串常量
-    // 空字符 \0 反斜杠 \ 制表符 \t 换行符 \n 回车符 \r 双引号 \" 单引号 \'
-    func FString() {
-//        // 基本用不到
-//        let char: Character = "A"
-        let width = "The width is " // 定义字符串
-        let widthButton = String()
-        let widthLabel = 56
-        // 前面是大写
-        // 后面是小写
-        print("\(width.uppercased())\(widthLabel)\(widthButton.lowercased())")
+    // String是一个结构体
+    /**
+     常见的特殊字符串常量
+     1.空字符 \0
+     2.反斜杠 \
+     3.制表符 \t
+     4.换行符 \n
+     5.回车符 \r
+     6.双引号 \"
+     7.单引号 \'
+     */
+    func string() {
+        // 1.定义字符串
+        let opration: String = "+"
+        // 2.遍历字符串
+        for char in opration {
+            print("\(char)")
+        }
+        // 3.字符串拼接
+        // 1).连个字符串之间的拼接
+        let str1 = "小码哥"
+        let str2 = "IT教育"
+        let plusStr = str1 + str2
+        // 2).字符串和其它标识符之间的拼接
+        let count: Int = 10000
+        print("\(plusStr)有\(count)名学生")
+        // 3).拼接字符串时，字符串的格式化
+        let min = 2
+        let second = 18
+        let _ = String(format: "%02d:%02d", [min, second])
+        // 4.字符串的截取
+        let urlString = "www.520it.com"
+        // 将 string 转换成 NSString
+        let headerString = (urlString as NSString).substring(to: 3)
+        let middleString = (urlString as NSString).substring(with: NSMakeRange(4, 5))
+        let footerString = (urlString as NSString).substring(from: 10)
+        print(headerString + middleString + footerString)
+        // 5.前面是大写/后面是小写
+        print("\(headerString.uppercased())\(footerString)\(footerString.lowercased())")
         // 判断字符串是否有特定前缀
-        if width.hasPrefix("The") {
+        if urlString.hasPrefix("www") {
             
         }
         // 判断字符串是否有特定后缀
-        if width.hasSuffix("width") {
+        if urlString.hasSuffix("width") {
             
         }
         // 判断字符串是否相等
-        // 因为swift中字符串不是指针
+        // 因为 swift 中字符串不是指针
         // 如果是指针 == 表明指针地址相等
-        if width == "The width is " {
+        if urlString == "www.520it.com" {
             
         }
         // 判断字符串是否为空
-        if widthButton.isEmpty {
-            // widthButton.count/NSString的length不一定相同
-            // widthButton.count基于Unicode编码
+        // 第一种方式
+        if urlString.isEmpty {
+            // urlString.count/NSString的length不一定相同
+            // urlString.count基于Unicode编码
             // NSString的length基于UTF-16编码
         }
+        // 第二种方式
+        if urlString.count == 0 {
+            
+        }
     }
+    
+    /// 10.数组
+    func array() {
+        
+    }
+    
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     /// 数组
     func FArray() {
@@ -357,5 +407,4 @@ class WMGame: NSObject {
     
     // 闭包
     var list: [String?] = []
-    
 }

@@ -73,7 +73,7 @@
 
 - (void)applicationWillResignActive:(UIApplication *)application {
     /// 1.App将要进入非活动状态
-    // 该期间App不接受消息和事件
+    // 该期间App不接收消息和事件
 }
 
 

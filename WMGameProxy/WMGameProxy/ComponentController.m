@@ -47,10 +47,10 @@
 //    CGPoint point = CGPointMake(100, 100); // 坐标
 //    CGSize size = CGSizeMake(100, 100);  // 尺寸
 //    CGRect rect = CGRectMake(100, 100, 100, 100); // 矩形
-    /// 设置是否能接受事件/UIView默认是true
-    // 如果父视图不能接受事件、则子视图不能接受事件
-    // 子视图超出父视图部分不能接受事件
-    // 如果覆盖上面的视图可以接受事件、则下面视图不会再收到事件
+    /// 设置是否能接收事件/UIView默认是true
+    // 如果父视图不能接收事件、则子视图不能接收事件
+    // 子视图超出父视图部分不能接收事件
+    // 如果覆盖上面的视图可以接收事件、则下面视图不会再收到事件
     // UILabel/UIImageView 默认是 false
     view.userInteractionEnabled = true;
     // 是否开启多点触摸
@@ -710,13 +710,13 @@
     slider.maximumValueImage = [UIImage imageNamed:@""]; // 右边（最大）图片
     slider.minimumValueImage = [UIImage imageNamed:@""]; // 左边（最小）图片
     [slider setThumbImage:[UIImage imageNamed:@""] forState:UIControlStateHighlighted];
-    slider.continuous = NO; // 不接受连续点击
-    // 设置UISlider的值
+    slider.continuous = NO; // 不接收连续点击
+    // 设置 UISlider 的值
     [slider setValue:10 animated:YES];
     // 滑块拖动时的事件
     [slider addTarget:self action:@selector(onSliderChanged:) forControlEvents:UIControlEventValueChanged];
     // 滑块拖动后的事件
-    // 一般都选择UIControlEventTouchUpInside
+    // 一般都选择 UIControlEventTouchUpInside
     [slider addTarget:self action:@selector(onSliderUp:) forControlEvents:UIControlEventTouchUpInside];
 }
 -(void)onSliderChanged:(UISlider *)slider {
@@ -842,27 +842,26 @@
     [self.view endEditing:YES];
 }
 
+
 /**
  iOS中事件分类：
  1.触摸事件（点击按钮、长按）/ UIGestureRecognizer
  2.加速计事件（摇一摇）/ 还没有看
  3.远程控制事件（遥控）/ 还没有看
  */
-#pragma mark - UIGestureRecognizer
+#pragma mark - UIGestureRecognizer/手势识别器
 // 响应者：在 iOS 中不是所有对象都可以处理事件，只有继承 UIResponder 对象才可以接收并处理对象，我们称为“响应者对象”
 // UIApplication/UIViewController/UIView都是“响应者对象”（能够接收并处理对象）
 // UIResponder 内部提供了很多方法来处理事件
-// 事件传递流程：当前视图->视图控制器->窗口->UIApplication对象->不处理
 // 父视图不能监听事件，则子视图无法监听事件/子视图超出父视图的部分，不能监听事件
-// 同一个父视图：最上面的视图首先监听事件，如果能够响应，则不再向下传递事件，如果不能响应，则向下传递事件
 // https://www.jianshu.com/p/b1eaeff5ec81
 // https://www.jb51.net/article/108236.htm
 /**
- 控件不能接受事件的三种可能性：
+ 控件不能接收事件的三种可能性：
  1.userInteractionEnabled = NO;
  2.hidden = YES;
  3.alpha = 0.0 ~ 0.01;
- 4.父控件不能接受事件;
+ 4.父控件不能接收事件;
  */
 /**
  事件传递：
@@ -888,6 +887,7 @@
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(onTap:)];
     tap.numberOfTapsRequired = 1;  // 设置点击次数
     tap.numberOfTouchesRequired = 1; // 设置需要几根手指
+    tap.delegate = self; // ！！！手势可以设置代理！！！
     [imageView addGestureRecognizer:tap];
     /// 1.双击
     UITapGestureRecognizer *doubleTap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(onTap:)];
@@ -909,33 +909,80 @@
     UIRotationGestureRecognizer *rotation = [[UIRotationGestureRecognizer alloc]initWithTarget:self action:@selector(onRotation:)];
     rotation.delegate = self;
     [imageView addGestureRecognizer:rotation];
-    /// 6.清扫手势（可以用于视频/直播方面）
+    /// 6.轻扫手势（可以用于视频/直播方面）
     UISwipeGestureRecognizer *swipe = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(onSwipe:)];
     // NS_OPTIONS
-    swipe.direction = UISwipeGestureRecognizerDirectionUp | UISwipeGestureRecognizerDirectionRight;
+    // 设置轻扫手势方向
+    // ！！！一个轻扫手势只能对应一个方向！！！
+    // 默认 UISwipeGestureRecognizerDirectionRight
+    swipe.direction = UISwipeGestureRecognizerDirectionUp;
     [imageView addGestureRecognizer:swipe];
 }
 /// 事件处理
 -(void)onTap:(UITapGestureRecognizer *)tap {
     NSLog(@"点击");
 }
+// 当长按移动的时候会持续调用
 -(void)onLongPress:(UILongPressGestureRecognizer *)press {
     NSLog(@"长按");
+    // 判断手势的状态
+    switch (press.state) {
+        case UIGestureRecognizerStatePossible:{
+            NSLog(@"");
+        }
+            break;
+        case UIGestureRecognizerStateBegan:{
+            NSLog(@"开始长按");
+        }
+            break;
+        case UIGestureRecognizerStateChanged:{
+            NSLog(@"开始时移动");
+        }
+            break;
+        case UIGestureRecognizerStateEnded:{
+            NSLog(@"手指离开");
+        }
+            break;
+        case UIGestureRecognizerStateCancelled:{
+            NSLog(@"");
+        }
+            break;
+        case UIGestureRecognizerStateFailed:{
+            NSLog(@"");
+        }
+            break;
+        default:
+            NSLog(@"");
+            break;
+    }
 }
 -(void)onPan:(UIPanGestureRecognizer *)pan {
-    NSLog(@"拖动");
-    // 可以拿到拖动的位置
-    CGPoint point = [pan locationInView:self.view];
-    NSLog(@"%@", NSStringFromCGPoint(point));
+    // 可以拿到拖动的偏移量
+    // 相对于 “最原始的位置”/需要做 “复位”操作
+    CGPoint point = [pan translationInView:self.view];
+    NSLog(@"拖动的偏移量=%@", NSStringFromCGPoint(point));
+    // 这里可以执行 “平移”效果让控件移动
+    // 复位操作
+    [pan setTranslation:CGPointZero inView:self.view];
 }
 -(void)onPinch:(UIPinchGestureRecognizer *)pinch {
-    NSLog(@"捏合");
+    // 这里配合 “形变属性” 可以操作很多动画效果
+    // 相对于 “最原始的位置”/需要做 “复位”操作
+    NSLog(@"捏合的比例=%lf", pinch.scale);
+    [pinch setScale:1];
 }
 -(void)onRotation:(UIRotationGestureRecognizer *)rotation {
-    NSLog(@"旋转");
+    // 这里配合 “形变属性” 可以操作很多动画效果
+    // 相对于 “最原始的位置”/需要做 “复位”操作
+    NSLog(@"旋转的角度=%lf", rotation.rotation);
+    [rotation setRotation:0];
 }
 -(void)onSwipe:(UISwipeGestureRecognizer *)swipe {
-    NSLog(@"轻扫");
+    if (swipe.direction == UISwipeGestureRecognizerDirectionUp) {
+        NSLog(@"向上轻扫");
+    } else if (swipe.direction == UISwipeGestureRecognizerDirectionRight) {
+        NSLog(@"向右轻扫");
+    }
 }
 
 
@@ -943,6 +990,9 @@
 /// 点击控制器 View 系统会自动调用
 // 1.一根/多根手指开始触摸 view
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    // 事件将顺着响应者链条往上传递
+    // 控制器的 View 上一个响应者是控制器/其它 View 上一个响应者是父控件
+    [super touchesBegan:touches withEvent:event];
     NSLog(@"touch begin");
     // 单点触摸：使用第一个参数
     // 一根手指对应一个 UITouch 对象
@@ -1373,20 +1423,20 @@ UIWindow -> UITabBarController -> UINavigationController -> ChildViewControllers
 
 
 #pragma mark - UIGestureRecognizerDelegate
-- (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer {
-    // 是否允许触发手势
-    return YES;
-}
+//- (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer {
+//    // 是否允许触发手势
+//    return YES;
+//}
 
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
-    // 是否允许同时支持多个手势：默认不支持
+    // 是否允许同时支持多个手势：默认不支持 / YES表示支持
     return YES;
 }
 
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch {
-    // 是否允许接受手势
-    // 一边可以接受手势
-    // 另一边不可以接受手势
+    // 是否允许接收手势
+    // 一边可以接收手势
+    // 另一边不可以接收手势
     CGPoint point = [touch locationInView:self.view];
     if (point.x > self.view.frame.size.width / 2) {
         return NO;

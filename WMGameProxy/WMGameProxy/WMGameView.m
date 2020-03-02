@@ -78,6 +78,7 @@
      4.如果没有符合条件 1/2 的子控件就自己最适合处理；
     */
     return [super hitTest:point withEvent:event];
+    
 //    /// 2.自定义方法
 //    /**
 //     1.直接返回“某个控件”：可以重写该方法让 “某个控件” 一直响应事件
@@ -95,15 +96,44 @@
 //     ”
 //     */
 //    return self.subviews.firstObject;
+    
+//    /// 3.！！！底层实现！！！
+//    // 1.判断自身能否接收事件
+//    if (self.userInteractionEnabled == NO || self.hidden == YES || self.alpha <= 0.01) {
+//        return nil;
+//    }
+//    // 2.判断当前点在不在当前View
+    // 此处 “point” 需要保证与 “self” 在同一个坐标系
+//    if (![self pointInside:point withEvent:event]) {
+//        return nil;
+//    }
+//    // 3.从后往前遍历自己的子控件，让子控件重复前两部操作
+//    for (UIView *subView in self.subviews) {
+//        // 把当前控件的点转换成子控件坐标系的点
+//       // point点必须跟 “它方法的调用者”/“当前 View” 在 “同一个坐标系” 中
+//        CGPoint subPoint = [self convertPoint:point toView:subView];
+//        UIView *fitView = [subView hitTest:subPoint withEvent:event];
+//        if (fitView) {
+//            return fitView;
+//        }
+//    }
+//    // 4.如果没有找到比它自身更适合的View，则返回自身
+//    return self;
 }
 
 // 0.判断 “当前点” 是否在 “当前 View” 上
 // 1.什么时候调用：在 “hitTest方法” 中调用 / “系统默认方法”第二步
-// 2.point点必须跟 “它方法的调用者”/“当前 View” 在 “同一个坐标系” 中
+// 2.point点必须跟 “它方法的调用者”/“当前 View” 在 “同一个坐标系” 中/当前 View 为坐标原点
 - (BOOL)pointInside:(CGPoint)point withEvent:(UIEvent *)event {
     return NO;
 }
 
+/**
+ 常见练习
+ 0>.实现控件在屏幕上的任意拖拽
+ 1>.点击上面的子控件的某小块会让底部的子控件响应事件
+ 2>.点击子控件超过父控部分可以响应事件
+ */
 /// 处理是手势事件部分 - end - 与下面部分内容无关
 
 
