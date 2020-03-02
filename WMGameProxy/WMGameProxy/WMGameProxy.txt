@@ -577,6 +577,7 @@ NSArray *array = [NSArray array];
 // Runtime
 
 // KVC、KVO
+// KVO只能监听对象属性的改变
 
 // 多线程
 /**************************UI基础**************************/
@@ -737,13 +738,18 @@ libsqlite3.0.tbd -xxx
 NSObject
 
 //常见三方libs：需要分析源码
+AFNetworking-网络请求相关库
 Masonry/SnapKit-用于屏幕适配
+FMDB-操作数据库相关库
 MagicRecord-用于简化CoreData
 CSStickyHeaderFlowLayout-实现头部悬停
 FLAnimatedImage-让GIF播放不卡
 SVPullToRefresh-上拉加载/下拉刷新控件
 Reachability-用于检测网络类型
 SAMKeychain-keyChain保存
+MBProgressHUD-加载loading
+JXSegmentedView-多控制器滑动视图
+JSONKit-xxx
 
 // 开发App
 1.

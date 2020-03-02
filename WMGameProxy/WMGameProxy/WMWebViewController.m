@@ -12,17 +12,17 @@
 @interface WMWebViewController () <UIWebViewDelegate, UIScrollViewDelegate, WKUIDelegate, WKNavigationDelegate>
 
 /// UIWebView/WKWebView
-// 一般WebView
-// 与js交互的WebView
-// 在iOS开发过程中、经常会用到一些h5交互
-// 继承UIView
+// 一般 WebView
+// 与 js 交互的 WebView
+// 在 iOS开发 过程中、经常会用到一些 h5 交互
+// 继承 UIView
 // 加载网页数据的框架
 @property (strong, nonatomic) UIWebView *webView;
 // iOS 8.x以后新增的类
-// 相对于UIWebView：内存的消耗很少、推荐使用
-// 支持更多的HTML5的特性
-// 高达60fps的滚动刷新率以及内置手势
-// Safari相同的JavaScript引擎
+// 相对于 UIWebView：内存的消耗很少、推荐使用
+// 支持更多的 HTML5 的特性
+// 高达 60fps 的滚动刷新率以及内置手势
+// Safari相同的 JavaScript引擎
 @property (strong, nonatomic) WKWebView *wkWebView;
 
 @end
@@ -46,10 +46,10 @@
     [self.webView loadRequest:request];
     // 5.添加到父视图
     [self.view addSubview:self.webView];
-    // 可以加载html字符串
-    // 本地html字符串
+    // 可以加载 html 字符串
+    // 本地 html 字符串
     // 所有链接的默认地址
-    // 被很多"新闻类"的App使用
+    // 被很多"新闻类"的 App 使用
     [self.webView loadHTMLString:@"" baseURL:[NSURL URLWithString:@""]];
     // 刷新网页
     [self.webView reload];
@@ -75,17 +75,17 @@
     self.webView.delegate = self;
     // 可以通过处理这个属性处理 webView 的滚动事件
     self.webView.scrollView.delegate = self;
-    // 执行js方法
+    // 执行 js 方法
     // UIWebView可以主动调用js
     [self.webView stringByEvaluatingJavaScriptFromString:@"Callback()"];
-    // 加载Data数据创建一个webView
+    // 加载 Data数据 创建一个 webView
     [self.webView loadData:[[NSData alloc]init] MIMEType:@"" textEncodingName:@"" baseURL:[NSURL URLWithString:@""]];
 }
 
 #pragma mark - UIWebViewDelegate
 // 是否允许加载网页：请求发送前会调用
-// 可以获取js要打开的url
-// 通过截取url可与js交互
+// 可以获取 js 要打开的 url
+// 通过截取 url 可与 js 交互
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
     return true;
 }
@@ -106,9 +106,9 @@
 }
 
 #pragma mark - UIWebView和JS交互
-// js调用原生
+// js 调用原生
 
-// 原生调用js
+// 原生调用 js
 
 #pragma mark - WKWebView
 -(void)setupWKWebView {
@@ -126,7 +126,7 @@
 }
 
 #pragma mark - WKUIDelegate
-// 主要处理js脚本、确认框、警告框
+// 主要处理 js脚本、确认框、警告框
 
 
 #pragma mark - WKNavigationDelegate

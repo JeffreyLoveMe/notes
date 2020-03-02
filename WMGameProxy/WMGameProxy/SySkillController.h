@@ -49,7 +49,7 @@ NS_ASSUME_NONNULL_BEGIN
 // 持有协议的id指针
 // 不能 retain
 // 如果有 * 在 <> 外面
-// 为什么使用 id？？？（所有遵循 SySkillControllerProtocol 的类都可以做为我的代理）
+// 为什么使用 id？？？（任何遵循 SySkillControllerProtocol 的类都可以做为我的代理）
 @property (weak, nonatomic) id <SySkillControllerProtocol> delegate;
 
 // 1.定义block

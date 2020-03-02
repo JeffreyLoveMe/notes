@@ -123,7 +123,9 @@
     [superView removeFromSuperview];
     view.tag = 0;
     /// 图层
-    self.view.layer.cornerRadius = 5;
+    self.view.layer.borderWidth = 1.0; // 边框宽度
+    self.view.layer.borderColor = UIColor.orangeColor.CGColor; // 边框颜色
+    self.view.layer.cornerRadius = 5;  // 设置圆角半径
     self.view.layer.masksToBounds = true;
     
     /// 形变属性：一次只能利用一个形变属性
@@ -388,6 +390,7 @@
         // 这里还可以设置形变属性
         NSLog(@"这里可以改变坐标/色彩/透明度");
     } completion:^(BOOL finished) {
+        // 动画完成时需要的执行
         if (finished) {
             NSLog(@"动画完成");
         }
@@ -833,9 +836,9 @@
 
 /// keyBoard
 -(void)keyBoard {
-    // 强行关闭键盘：设置为YES/NO都可以关闭键盘
-    // 但是发生界面死锁NO可能不会关闭、永远设置为NO
-    // 只要调用：就可以强制退出键盘
+    // 强行关闭键盘：设置为 YES/NO 都可以关闭键盘
+    // 但是发生界面死锁 NO 可能不会关闭
+    // 可以强制退出键盘
     [self.view endEditing:YES];
 }
 
@@ -1239,7 +1242,7 @@ UIWindow -> UITabBarController -> UINavigationController -> ChildViewControllers
     UINib *nib = [UINib nibWithNibName:@"xib名称" bundle:nil];
     UIView *view = [nib instantiateWithOwner:nil options:nil].firstObject;
     NSLog(@"%@", view);
-    // xib不支持[[XMGShopView alloc]init]创建
+    // xib不支持 [[XMGShopView alloc]init] 创建
     // xib创建的UIView不进入 -(instancetype)init {} 方法
     // xib创建的UIView进入 -(instancetype)initWithCoder:(NSCoder *)aDecoder{} 方法
     // 用代码给 "xib创建的子控件" 添加子控件需要先唤醒
@@ -1249,7 +1252,7 @@ UIWindow -> UITabBarController -> UINavigationController -> ChildViewControllers
     [self performSegueWithIdentifier:@"xxx" sender:nil];
     /**
      1.command + D可以在 xib 中复制控件
-     2.删除 xib 需要删除 “代码”/“xib” 两处
+     2.！！！删除 xib 需要删除 “代码部分”和“xib连线” 两处！！！
      */
 }
 // 准备跳转前调用
@@ -1272,7 +1275,7 @@ UIWindow -> UITabBarController -> UINavigationController -> ChildViewControllers
 }
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField {
-    // 开始编辑
+    // 开始编辑/点击输入框调用该方法
     // 成为 “第一响应者” 开始调用
 }
 
@@ -1289,11 +1292,13 @@ UIWindow -> UITabBarController -> UINavigationController -> ChildViewControllers
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
     /// 点击 return 的时候调用该方法
     // 放弃第一响应者
+    // 退出键盘
     [textField resignFirstResponder];
     return true;
 }
 
 - (BOOL)textFieldShouldClear:(UITextField *)textField {
+    // 是否允许全部清空
     return YES;
 }
 
@@ -1309,13 +1314,13 @@ UIWindow -> UITabBarController -> UINavigationController -> ChildViewControllers
 
 #pragma mark - UIAlertViewDelegate
 //- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
-//    // 点击第几个button
+//    // 点击第几个 button
 //}
 
 
 #pragma mark - UIActionSheetDelegate
 //- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
-//    // 点击第几个button
+//    // 点击第几个 button
 //}
 //
 //- (void)actionSheetCancel:(UIActionSheet *)actionSheet {

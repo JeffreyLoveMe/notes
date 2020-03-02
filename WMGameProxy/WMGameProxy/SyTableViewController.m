@@ -60,6 +60,7 @@
     /// 设置表头/表尾
     // 如果需要动态修改表头高度：可以再次设置表头
     // 尝试用表尾做 "加载更多 loading"？？？
+    // ！！！宽度默认为 [[UIScreen mainScreen] bounds].size.width，无论设置为多少！！！
     UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width, 100)];
     tableView.tableHeaderView = view;
     tableView.tableFooterView = view;

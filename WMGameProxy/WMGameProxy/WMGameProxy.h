@@ -120,6 +120,9 @@ NS_ASSUME_NONNULL_BEGIN
 // 返回的 model 放在数组
 +(instancetype)gameWithDict:(NSDictionary *)dict;
 
+// 消息中心
+-(void)onChange:(NSNotification *)notifucaiton;
+
 // 声明类结束的标志
 @end
 

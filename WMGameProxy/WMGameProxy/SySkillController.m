@@ -146,7 +146,10 @@
     /// 2.delegate传值
     // 那个页面需要调用该方法就需要遵循该 delegate
     // 2.调用delegate
-    [_delegate jumpPage:@"delegate传值"];
+    // delegate 是否实现了该方法
+    if ([_delegate respondsToSelector:@selector(jumpPage:)]) {
+        [_delegate jumpPage:@"delegate传值"];
+    }
     /// bolck（与 delegate 一样）
     // 调用 block
     self.myBlock(YES);
@@ -395,9 +398,82 @@
     // nil 参数
     // 0.5 延迟时间
     [self performSelector:@selector(onStand) withObject:nil afterDelay:0.5];
+    /// 第二种延迟方法
+    /// 第三种延迟方法
 }
 -(void)onStand {
     
+}
+
+
+/// 通知机制
+/**
+ 常见的几种 “消息通信” 的方式的区别？？？
+ 0>.利用 “通知”/“代理” 都可以实现对象之间的通信
+ 1>.“通知”可以一对多，全局都可以接收到通知；
+ 2>.“代理”只能一对一，执行效率比通知高；
+ */
+// 1.每个 App 都有一个通知中心，负责不同对象之间的消息通信
+// 2.任何对象都可以发布通知，其他对象（观察者）都可以接收该通知/一对多
+// 3.可以降低对象之间的耦合度/解耦
+-(void)showNotification {
+    WMGameProxy *wm = [WMGameProxy new];
+    // 一、监听通知
+    // ！！！先注册 “接收通知”，再 “发送通知”！！！
+    // 另外一个对象接收通知
+    /**
+     参数一/添加的观察者、接收通知的对象
+     参数二/观察者的响应方法、一旦被观察者消息发生变化就会触发该方法
+     参数三/通知的名称（可以为 nil/不关注是 “什么通知”）/明确告诉系统想要监听 “什么通知”
+     参数四/通知的发布者（可以为 nil/不关注是 “谁发布的通知”）/被观察者/明确告诉系统想要监听 “谁发布的通知”
+     */
+    // 此处不接受 “匿名通知”
+    [[NSNotificationCenter defaultCenter] addObserver:wm selector:@selector(onChange:) name:@"network3" object:wm];
+    // 此处接受 “匿名通知”
+    [[NSNotificationCenter defaultCenter] addObserver:wm selector:@selector(onChange:) name:@"network3" object:nil];
+    // 二、创建通知对象
+    /**
+     参数一/通知的名称
+     参数二/通知的发布者（可以为 nil）
+     参数三/通知传递的参数
+     */
+    NSNotification *notification1 = [[NSNotification alloc]initWithName:@"network1" object:wm userInfo:@{@"title": @"中国大佬"}];
+    NSNotification *notification2 = [NSNotification notificationWithName:@"network2" object:nil userInfo:@{@"title": @"中国大佬"}];
+    // 三、发送通知
+    // 任何对象 -> “通知中心[NSNotificationCenter defaultCenter]” -> 另外一个对象/观察者
+    [[NSNotificationCenter defaultCenter] postNotification:notification1];
+    // 匿名通知
+    [[NSNotificationCenter defaultCenter] postNotification:notification2];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"network3" object:wm userInfo:@{@"title": @"中国大佬"}];
+    /// 四、移除通知（ iOS9.x以后可以不做 ）
+    // ！！！一般在 “被观察者对象wm” 的 “- (void)dealloc;” 方法中移除移除通知！！！
+    // ！！！移除通知必须要在 “wm被销毁” 之前！！！
+    // 移除 “network3通知”
+    [[NSNotificationCenter defaultCenter] removeObserver:wm name:@"network3" object:nil];
+    // 移除 “wm所有监听的通知”
+    [[NSNotificationCenter defaultCenter] removeObserver:wm];
+    /// 常见通知
+    /**
+     UIDevice对象不间断发布以下通知
+     1.UIDeviceOrientationDidChangeNotification - 设备旋转
+     2.UIDeviceBatteryStateDidChangeNotification - 电池状态改变
+     3.UIDeviceBatteryLevelDidChangeNotification - 电池电量改变
+     4.UIDeviceProximityStateDidChangeNotification - 近距离传感器
+     */
+     /**
+      // 键盘对象会发布以下通知
+      1.UIKeyboardWillShowNotification - 键盘即将显示
+      2.UIKeyboardDidShowNotification - 键盘显示完毕
+      3.UIKeyboardWillHideNotification - 键盘即将隐藏
+      4.UIKeyboardDidHideNotification - 键盘隐藏完毕
+      5.UIKeyboardDidChangeFrameNotification - 键盘的位置尺寸即将发生改变
+      6.UIKeyboardWillChangeFrameNotification - 键盘的位置尺寸改变完毕
+      // 系统会附带一些额外信息
+      1.UIKeyboardFrameBeginUserInfoKey - 键盘刚开始的 frame
+      2.UIKeyboardFrameEndUserInfoKey - 键盘最终的 frame
+      3.UIKeyboardAnimationDurationUserInfoKey - 键盘动画的时间
+      4.UIKeyboardAnimationCurveUserInfoKey - 键盘动画的执行节奏/快慢
+      */
 }
 
 
@@ -443,7 +519,7 @@
     // App很容易受到打扰
     // 来电、锁屏
 }
-/// 方法1
+/// 方法一
 // 状态栏样式
 // UIStatusBarStyleDarkContent黑色
 // UIStatusBarStyleLightContent白色
@@ -453,6 +529,18 @@
 // 是否隐藏状态栏
 - (BOOL)prefersStatusBarHidden {
     return YES;
+}
+
+
+/// UIDevice
+// [UIDevice currentDevice]代表设备，通过它可以获取一些设置相关信息
+-(void)showDevice {
+    // 当前设置的 “系统版本”
+    if ([UIDevice currentDevice].systemVersion.doubleValue >= 9.0) {
+        NSLog(@"系统版本大于等于9.0");
+    }
+    [[UIDevice currentDevice] localizedModel]; // 什么设备
+    [[UIDevice currentDevice] systemName]; // 系统名称
 }
 
 
@@ -468,10 +556,17 @@
 
 
 /// 架构思想
-/// MVC
-// 在 Controller 中进行网络请求
-/// MVP
-/// MVVM
+/// 1.MVC
+// 1>.概念
+// MVC是一种设计思想，贯穿整个iOS开发中；
+// 2>.作用
+// Model数据改变View的显示状态也需要随之改变；
+// View视图上面显示什么取决于Model；
+// Controller负责初始化Model，将Model传递给View；
+// 3>.宗旨
+// Model数据和View视图一一对应，以Model数据驱动View视图/防止发生复用；
+/// 2.MVP
+/// 3.MVVM
 
 
 - (void)dealloc {

@@ -258,5 +258,12 @@
     return self;
 }
 
+-(void)onChange:(NSNotification *)notifucaiton {
+    // id属性没有 “点语法”
+    // 可以使用 “get方法”
+    NSLog(@"通知名称[%@]-通知内容[%@]-通知发布者[%@]",
+          notifucaiton.name, notifucaiton.userInfo, notifucaiton.object);
+}
+
 // 实现类结束的标志
 @end
