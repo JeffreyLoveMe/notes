@@ -198,7 +198,6 @@ class WMGame: NSObject {
             print(m4)
             m4 = m4 - 1
         } while m4 > 0
-        
     }
     
     /// 9.字符串
@@ -216,11 +215,19 @@ class WMGame: NSObject {
      */
     func string() {
         // 1.定义字符串
+        // 1).定义不可变字符串
         let opration: String = "+"
+        // 2).定义可变字符串
+        var str0 = "xwj"
+        str0 = "wy"
+        // 3).定义空字符串
+        var emptyString = ""
+        
         // 2.遍历字符串
         for char in opration {
-            print("\(char)")
+            print("\(char) + \(str0)")
         }
+        
         // 3.字符串拼接
         // 1).连个字符串之间的拼接
         let str1 = "小码哥"
@@ -233,6 +240,7 @@ class WMGame: NSObject {
         let min = 2
         let second = 18
         let _ = String(format: "%02d:%02d", [min, second])
+        
         // 4.字符串的截取
         let urlString = "www.520it.com"
         // 将 string 转换成 NSString
@@ -240,23 +248,25 @@ class WMGame: NSObject {
         let middleString = (urlString as NSString).substring(with: NSMakeRange(4, 5))
         let footerString = (urlString as NSString).substring(from: 10)
         print(headerString + middleString + footerString)
-        // 5.前面是大写/后面是小写
+        
+        // 5.字符串其它方法
+        // 1).前面是大写/后面是小写
         print("\(headerString.uppercased())\(footerString)\(footerString.lowercased())")
-        // 判断字符串是否有特定前缀
+        // 2).判断字符串是否有特定前缀
         if urlString.hasPrefix("www") {
             
         }
-        // 判断字符串是否有特定后缀
+        // 3).判断字符串是否有特定后缀
         if urlString.hasSuffix("width") {
             
         }
-        // 判断字符串是否相等
+        // 4).判断字符串是否相等
         // 因为 swift 中字符串不是指针
         // 如果是指针 == 表明指针地址相等
         if urlString == "www.520it.com" {
             
         }
-        // 判断字符串是否为空
+        // 5).判断字符串是否为空
         // 第一种方式
         if urlString.isEmpty {
             // urlString.count/NSString的length不一定相同
@@ -270,13 +280,160 @@ class WMGame: NSObject {
     }
     
     /// 10.数组
+    // 1.数组Array是一串有序的由相同类型元素构成的集合
+    // 2.数组中的元素是有序的、可以重复出现
     func array() {
+        // 3.定义数组
+        // 1).定义不可变数组
+        /**
+         option + 鼠标右键 - 查看属性类型
+         command + 鼠标右键 - 查看源码
+         */
+        let array = ["why", "yz", "lmj"]
+        // 2).定义可变数组
+//        var arrayM = Array<String>() // 不常用
+        var arrayM = [String]()
+        // 定义空数组必须指定数组类型
+        var _: [String] = []
+        // 3).定义空数组
+        var emptyArray: [String] = []
         
+        // 4.对可变数组的基本操作
+        // 1).追加元素
+        arrayM.append("lnj")  // 追加在尾部
+        arrayM.append("why")  // 数组中可以有相同元素
+        arrayM.append(contentsOf: array) // 追加一个数组
+        // 2).删除元素
+//        arrayM.removeFirst()
+//        arrayM.removeLast()
+//        arrayM.remove(at: 2)
+//        arrayM.removeAll()
+        // 3).修改元素
+        arrayM[0] = "xwj"
+        arrayM[1] = "xwj"
+        // 4).获取元素
+        let _ = arrayM[1]
+        // 5).插入元素
+        arrayM.insert("xwj", at: 2)
+        
+        // 5.数组的遍历
+        // 1).根据下标
+        for index in 0..<arrayM.count {
+            print(arrayM[index])
+        }
+        // 2).直接遍历元素
+        for name in arrayM {
+            print(name)
+        }
+        // 3).遍历数组中前两个元素/部分遍历
+        for name in arrayM[0..<2] {
+            print(name)
+        }
+        
+        // 6.数组的合并
+        // 相同类型的数组才可以进行合并，不同类型数组不能相加合并
+        let _ = arrayM + array
     }
     
+    /// 11.字典
+    // 1.swift中字典类型是Dictionary/泛型集合
+    // 2.字典的元素是无序的
+    func dictionary() {
+        // 1.定义字典
+        // 1).定义不可变字典
+        let dict: [String : Any] = ["name":"xwj", "age":18, "height": 1.88]
+        // 2).定义可变字典
+//        var dictM = Dictionary<String, Any>() // 不常用
+        /**
+         NSObject - 一般用于创建对象
+         AnyObject - 一般用于指定类型
+         */
+        var dictM = [String : Any]()
+        // 3).定义空字典
+        var emptyDictionary1: [String: Any] = [:]
+        var emptyDictionary2: Dictionary<String, Any> = [:]
+        
+        // 2.对可变字典的基本操作
+        // 1).添加元素
+        dictM["name"] = "why"
+        dictM["age"] = 18
+        dictM["height"] = 1.88
+        // 2).删除元素
+        dictM.removeValue(forKey: "age")
+        // value 设置为空也可以删除字典元素
+        dictM["name"] = nil
+        // 3).修改元素
+        // 如果字典中已经有对应的 key -> 修改原 key 中保存的 value
+        // 如果字典中没有对应的 key -> 添加 key / value
+        dictM["name"] = "yz"
+        // 4).获取元素
+        let _ = dictM["name"]
+        
+        // 3.遍历字典
+        // 1).遍历字典中所有的key
+        for key in dict.keys {
+            print(key)
+        }
+        // 2).遍历字典中所有的value
+        for value in dict.values {
+            print(value)
+        }
+        // 3).遍历所有的键值对
+        for (key, value) in dict {
+            print(key)
+            print(value)
+        }
+        
+        // 4.合并字典
+        // 即使字典类型一致也不能相加合并
+    }
     
+    /// 12.元组
+    // 1.一种数据结构，组成”元组的数据“称为”元素“
+    // 2.一般元组作为方法的返回值
+    func tuple() {
+        // 1.元组的写法
+        // 1).元组的基本用法
+        let info_0 = ("yz", 18, 1.88)
+        print("\(info_0.0)\(info_0.1)\(info_0.2)")
+        // 2).元组取别名（常用写法）
+        let info_1 = (name: "yz", age: 18, height: 1.88)
+        print("\(info_1.name)\(info_1.age)\(info_1.height)")
+        // 3).元素的别名就是元组的名称
+        let (name, age, height) = ("yz", 18, 1.88)
+        print("\(name)\(age)\(height)")
+    }
     
+    /// 13.可选类型
+    // 1.swift中 nil 不是指针，是一种特定的类型 / Objective-C中 nil 是一个指针指向不存在的对象
+    // 2.swift中规定：对象中所有的属性都必须有明确的初始化值
+    func optional() {
+        // 3.定义可选类型
+        // 1).方式一/不常用
+        var name: Optional<String> = nil
+        // 2).方式二/语法糖/常用
+        var age: Int? = nil
+        
+        // 4.给可选类型赋值
+        name = "xwj"
+        age = 0
+        
+        // 5.取出可选类型的值
+        // 强制解包：非常危险，如果可选类型为 nil，则系统会崩溃
+        if name != nil {
+            print(name!)
+        }
+
+        // 6.可选绑定
+        // 1).判断age是否有值，如果没有值，直接不执行{}
+        // 2).如果age有值系统会自动将age进行解包，并将解包的结果赋值给tempAge
+        if let tempAge = age {
+            print(tempAge)
+        }
+    }
     
+
+        
     
 
     
@@ -292,105 +449,23 @@ class WMGame: NSObject {
     
     
     
-    /// 数组
-    func FArray() {
-        /// 定义
-        var emptyArray0: [String] = []  // 空数组必须指定数组元素类型
-        let array0 = ["芒果", "香蕉", "橘子"]  // 定义一个非空不可变数组
-        /// 增加：增加在尾部
-        // 增加一个元素
-        emptyArray0.append("水")
-        // 增加一个数组
-        emptyArray0.append(contentsOf: array0)
-        // 插入
-        emptyArray0.insert("苹果", at: 2)
-        // 数组的个数
-        // 数组的个数 < 数组的容量
-        // 数组的容量是2的次方
-        print("数组的个数\(emptyArray0.count)===数组的容量\(emptyArray0.capacity)")
-        if emptyArray0.isEmpty {
-            // 数组是空的
-        }
-        /// 修改
-        emptyArray0[1] = "哈密瓜"
-        // 两边可以不相等
-        // 这样数组的个数会减少两个
-        emptyArray0[0...4] = ["banana", "apple"]
-        /// 删除
-        // 删除第一个元素
-        emptyArray0.removeFirst()
-        // 删除最后一个元素
-        emptyArray0.removeLast()
-        // 删除指定元素
-        emptyArray0.remove(at: 2)
-        // 删除所有元素
-        emptyArray0.removeAll()
-        /// 数组遍历
-        // 第一种方式
-        for item in emptyArray0 {
-            print(item)
-        }
-    }
     
-    /// 字典
-    func FDictionary() {
-        /// 定义
-        var emptyDic0: Dictionary<String, String> = [:]
-        // 冒号
-        var dic0 = [
-            "key0":"value0",
-            "key1":"value1"
-        ]
-        /// 添加/修改
-        // 如果存在key0则修改value
-        // 如果不存在key0则添加value
-        dic0["key0"] = "nsvalue0"  // 修改
-        emptyDic0["key0"] = "nsvalue0" // 添加
-        /// 删除
-        // 第一种方式
-        dic0["key0"] = nil
-        // 第二种方式
-        dic0.removeValue(forKey: "key0")
-        // 输出
-        print("字典的键值对：\(dic0.count)")
-        // 遍历
-    }
     
-    /// 元组
-    // 一般用于函数返回值
-    func FTuple() {
-        /// 定义
-        // 1.定义一个简单的元组
-        let (x0, y0) = (1, 2)
-        print("x is \(x0), y is \(y0)")
-        // 2.定义一个由Int和String组成的元组
-        let httpError = (404, "Not Found")
-        print("\(httpError.0) is \(httpError.1)")
-        // 3.定义取别名的元组
-        let httpSuccess = (statusCode: 200, des: "success")
-        print("\(httpSuccess.statusCode) is \(httpSuccess.des)")
-    }
     
-    /// 可选类型
-    // Objective-C中nil是一个指针指向不存在的对象
-    // swift中nil不是指针而是一个特定类型空值（nil不能用于非可选类型）
-    func FOptional() {
-        // 要不存在、要不存在为nil
-        // swift中nil不能赋值非可选类型
-        // 默认值为nil
-        // 调用方法返回值为nil
-        var strValue: String?
-        strValue = ""
-        let hashValue = strValue?.hashValue
-        if let hashValue = hashValue {
-            print("\(hashValue)")
-        }
-//        /// 隐式解包
-//        // 这样会存在崩溃吗?
-//        // swift变量必须先init再使用
-//        let window: UIWindow!
-//        window.makeKeyAndVisible()
-    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 
     /// 函数的定义和调用
     // Void是空元组

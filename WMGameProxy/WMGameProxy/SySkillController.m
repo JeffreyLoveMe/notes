@@ -326,7 +326,7 @@
 
 /// 内存管理
 // 基本数据类型不需要管理内存
-// 自动调用dealloc方法
+// 自动调用 “dealloc方法”
 // ARC/MRC混合编程-选中工程->TARGET->Build Settings->Automatic Reference Counting->NO
 -(void)memoryManager {
     // 对象的内存存储细节
@@ -364,22 +364,21 @@
     /// 多个对象的持有某一个对象
     // 当你不再使用某一个对象引用计数-1
     // 对象所有权：当一个所有者（Objective-C对象）做出alloc/retain/copy操作就会拥有该对象的所有权
-    // 释放对象所有权：做出release/autorelease操作就会 释放该对象的所有权
-///     内存管理的黄金法则：如果对一个对象使用了alloc/copy[mutable]/retain那么必须使用release/autorelease释放
-///     ！！！反之如果没有使用alloc/copy/retain就不能使用release/autorelease！！！
+    // 释放对象所有权：做出 “release/autorelease操作” 就会释放该对象的所有权
+///     内存管理的黄金法则：如果对一个对象使用了 alloc/copy[mutable]/retain 那么必须使用 release/autorelease 释放
+///     ！！！反之如果没有使用 alloc/copy/retain 就不能使用 release/autorelease！！！
     // 怎么持有对象？？？
-    // 对象销毁相当于野指针：调用野指针会crash
+    // 对象销毁相当于野指针：调用野指针会 crash
     /*
      1.多release导致野指针程序crash
      2.少release导致内存泄漏对象不会被销毁
      */
     /// 数组的内存管理
-    // 向一个数组中加入一个元素，数组会对元素retain(引用计数+1)
-    // 数组销毁的时候会将数组中每个元素release(引用计数-1)
-    // 将元素移除数组会对元素release(引用计数-1)
-    /// 自动释放池
-    // 定义：oc的一种内存管理机制
-    // 当自动释放池销毁时会对池子中每一个对象调用一次release方法
+    // 向一个数组中加入一个元素，数组会对元素 retain(引用计数+1)
+    // 数组销毁的时候会将数组中每个元素 release(引用计数-1)
+    // 将元素移除数组会对元素 release(引用计数-1)
+    /// 自动释放池 - Objective-C语言的一种内存管理机制
+    // 当自动释放池销毁时会对池子中每一个对象调用一次 release方法
 }
 /// 逆序一个字符串
 -(NSString *)reverseWord:(NSString *)word Oprater:(NSString *)oprater {
@@ -403,6 +402,124 @@
 }
 -(void)onStand {
     
+}
+
+
+/// block
+// 1.block是iOS中一种比较特殊的数据类型/官方特别推荐使用
+// 2.用来保存 “代码段”，在恰当的时候再取出来调用/类似于函数/效率高
+-(void)shouBlock {
+    // 3.block的基本写法
+    // 1).无参数无返回值
+    /**
+     void - 表示 myBlock 保存的代码没有返回值
+     (^myBlock) - 代表 myBlock 是一个 "block变量"，可以保存一段block代码
+     (void) - 表示 myBlock 保存的代码没有形参
+     */
+    void (^myBlock)(void);
+    // 只能保存 “block代码段”
+    // ！！！如果没有 “形参” 的话 () 可以省略！！！
+    myBlock = ^(){
+        NSLog(@"这是一个block");
+    };
+    // 想要执行 “block保存的代码”，需要调用 block
+    myBlock();
+    // 2).无参数有返回值
+    // ！！！如果没有 “形参” 的话 () 可以省略！！！
+    NSString* (^plus)(void);
+    plus = ^ {
+        return @"这是一个block";
+    };
+    plus();
+    // 3).有参数无返回值
+    void (^add)(int, int);
+    add = ^ (int value1, int value2){
+        NSLog(@"这是一个block");
+    };
+    add(10, 20);
+    // 4).有参数有返回值
+    int (^sum)(int, int);
+    sum = ^ (int value1, int value2){
+        return value1 + value2;
+    };
+    sum(10, 20);
+    
+    // 4.因为 block 是一种数据类型
+    // 1).先定义再初始化
+    int (^log)(int, int);
+    log = ^ (int value1, int value2){
+        return value1 + value2;
+    };
+    log(10, 20);
+    // 2).定义的同时初始化
+    int (^request)(int, int) = ^ (int value1, int value2){
+        return value1 + value2;
+    };
+    request(10, 20);
+    
+    // 5.利用 "typedef" 给 "block取别名"
+    // “block变量名” 就是别名
+    typedef int (^sumBlock)(int, int);
+    sumBlock sumP = ^ (int value1, int value2){
+        return value1 + value2;
+    };
+    sumP(10, 20);
+    
+    // 6.block作为函数参数
+    // 普通数据类型作为函数参数只可以传递 “数字/字符串”
+    // block作为函数参数直接可以传递 “代码块”
+    
+    // 7.注意事项
+    // 1).block中可以访问外部的变量
+    // 如果想要在 block 中修改外部变量的值，必须在外界变量前面加上 __block
+    // 如果在 block 中修改了外部变量的值，会影响到外部变量的值
+    /**
+     不加 __block 是值传递 - 不能被内部修改
+     加 __block 是地址传递 - 能够被外部修改
+     */
+    __block int m1 = 10;
+    void (^yourBlock)(void) = ^{
+//        // 2).block中可以定义和外界同名的变量/就近原则
+//        int m1 = 20;
+        
+        // 3).默认情况下，不可以在 block 中修改外部的变量
+        // 因为 block 中的变量和外界的变量并不是同一个变量
+        // 如果 block 中访问到外界的变量会将外界的变量 copy 一份到堆内存
+        m1 = 30;
+        NSLog(@"m1 = %d", m1);
+    };
+    // 因为 block 使用外界的变量是 copy 的，所以此处修改变量值不会影响 block 中变量值
+    m1 = 20;
+    yourBlock();
+    
+    // 8.面试题
+    // 1>.block是存储在 “堆内存” 还是 “栈内存” 中
+    /**
+     1.默认情况下 block 存储在栈中，如果对 block 进行一个 copy 操作就会转移到 堆中；
+     2.如果 block 在栈中访问了外部的对象，那么不会对外部的对象进行 retain 操作；
+     3.如果 block 在堆中访问了外部的对象，那么会对外部的对象进行 retain 操作；
+     */
+//    // 如果在 block 中访问外部的对象，一定需要给对象加上 __block，只要加上 __block 哪怕 block 在堆中也不会对外界的对象进行 retain 操作
+//    WMGameProxy *wm = [WMGameProxy new];
+//    NSLog(@"retainCount = %lu", [wm retainCount]);
+//    void (^proxy)(void) = ^ {
+//        NSLog(@"%@", wm);
+//        NSLog(@"retainCount = %lu", [wm retainCount]);
+//    };
+//    Block_copy(proxy);
+//    proxy();
+    // 2>.什么是 “值传递”？什么是 “地址传递”？
+    /**
+     fixme
+     */
+}
+// 将 “void (^myBlock)(void)” 中 myBlock 取出来即可
+-(void)completeBlock:(void (^)(void))myBlock {
+    // 代码块
+    
+    myBlock();
+    
+    // 代码块
 }
 
 
