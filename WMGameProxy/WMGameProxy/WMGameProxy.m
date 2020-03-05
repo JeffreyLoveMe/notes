@@ -11,7 +11,10 @@
 #import "WMGameProxy.h"
 #import "MainController.h"
 // 类名
-@implementation WMGameProxy
+@implementation WMGameProxy {
+    // 这里的私有变量可以使用 KVC 赋值
+    int _gameCount;
+}
 // 方法实现
 
 /// 程序启动就会将所有类的代码加载到内存中
@@ -110,9 +113,11 @@
     return self;
 }
 
-/// 单例方法：程序运行过程中，对象只有一个
-// swift可以声明全局静态变量/OC不允许声明全局变量
-// 单例->全局变量
+
+/// 单例方法：程序运行过程中，实例对象只有一个
+// swift可以声明全局静态变量
+// OC不允许对象静态内存分配，因此不能声明全局变量
+// 单例 -> 全局变量/单例对象存储的内容全程序共享
 // 面试：手写单例方法
 // 单例的创建方法通常以 default/shared 开头
 +(instancetype)getInstance {

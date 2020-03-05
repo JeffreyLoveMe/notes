@@ -21,6 +21,8 @@ NS_ASSUME_NONNULL_BEGIN
 // 利用 model 可以实现数据源
 -(instancetype)itemWithDict:(NSDictionary *)dic;
 
++(instancetype)itemWithDict:(NSDictionary *)dic;
+
 @end
 
 NS_ASSUME_NONNULL_END

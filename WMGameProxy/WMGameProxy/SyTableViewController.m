@@ -237,7 +237,7 @@
 }
 
 
-
+// http://blog.sina.com.cn/s/blog_12ff4f7900102vjro.html - 仿 QQ 折叠
 /**
  默认 tableView.editing = false;
  左滑 tableView.editing = true;

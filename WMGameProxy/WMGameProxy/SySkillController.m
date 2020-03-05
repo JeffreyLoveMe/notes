@@ -325,7 +325,7 @@
 
 
 /// 内存管理
-// 基本数据类型不需要管理内存
+// 管理对象的生命周期/基本数据类型不需要内存管理
 // 自动调用 “dealloc方法”
 // ARC/MRC混合编程-选中工程->TARGET->Build Settings->Automatic Reference Counting->NO
 -(void)memoryManager {
@@ -591,6 +591,45 @@
       3.UIKeyboardAnimationDurationUserInfoKey - 键盘动画的时间
       4.UIKeyboardAnimationCurveUserInfoKey - 键盘动画的执行节奏/快慢
       */
+}
+
+
+/// KVC/KVO
+// 1>.KVC - Key Value Coding/键值编码
+// 间接访问属性的方法
+-(void)showKVC {
+    // 1.常规赋值
+    WMGameProxy *wm = [[WMGameProxy alloc]init];
+    wm.publishName = @"谢吴军";
+    wm.publishAge = 18;
+    // 常规赋值的也可以使用 KVC 取到值
+    NSLog(@"%@",[wm valueForKeyPath:@"publishName"]);
+    // model -> NSDictionary
+    NSDictionary *dict = [wm dictionaryWithValuesForKeys:@[@"publishName", @"publishAge"]];
+    NSLog(@"%@", dict);
+    // 可以取出 “数组” 中所有对象的某个属性
+    NSArray *array = @[wm, wm, wm];
+    NSArray *arrayPublishName = [array valueForKeyPath:@"publishName"];
+    NSLog(@"%@", arrayPublishName);
+    // 2.KVC赋值
+    // key属性值千万不能写错、不然会崩溃
+    [wm setValue:@"谢吴军" forKey:@"publishName"];
+    // KVC可以自动类型转换
+    // 对于 “网络请求” 十分有用（我们不用特别关注后台返回的数据类型/只用保证 key 一致即可）
+    [wm setValue:@"18" forKey:@"publishAge"];
+    NSLog(@"%@===%ld", wm.publishName, (long)wm.publishAge);
+    // ‘forKeyPath’ 包含 ‘forKey’ 的功能/尽量使用 ‘forKeyPath’
+    // ‘forKeyPath’ 进行内部的点语法可以层层访问内部的属性
+    // “key” 必须在 “属性” 中找到、不然会崩溃
+    [wm setValue:@"小陈" forKeyPath:@"item.name"];
+    
+    // 3.使用 KVC 给私有属性赋值
+    // nbplus
+    // 两种方式都可以
+    [wm setValue:@"88" forKeyPath:@"_gameCount"];
+    [wm setValue:@"88" forKeyPath:@"gameCount"];
+    
+    // 底层原理
 }
 
 

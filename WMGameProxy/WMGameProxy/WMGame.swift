@@ -17,20 +17,22 @@ class WMGame: NSObject {
     /// 2.swift简介
     // 编译语言的高性能 + 脚本语言的交互性
     func log() {
-        /// 定义标识符
+        /// 3.定义标识符
         // swift中定义标识符必须告诉编译器是一个常量还是一个变量
+        // let - 修饰的对象（内存地址）不可以修改/可以获取对象以后修改内部属性
+        // var -
         let myName: String = ""  // 常量
         var myAge: Int = 0          // 变量
         myAge = 10
         print("\(myName) is \(myAge)")
         
-        /// 3.swift语句结束
+        /// 4.swift语句结束
         // 1.单行语句无需加";"（加上也可以）
         // 2.多个语句在一行：必须加";"（一般不建议这样写）
         // 输出函数
         print("Hello World")
         
-       /// 4.常量和变量
+       /// 5.常量和变量
         // 1.swift中必须告诉编译器这是一个常量还是变量
         // 2.使用过程中建议先定义常量，如果需要修改再修改成变量
     //        // ！！！3.常量是指向的对象不可以进行修改，但是可以改变对象内部属性！！！
@@ -48,27 +50,27 @@ class WMGame: NSObject {
         myVariable = 12
         print("\(myConstant) + \(myVariable) + \(uMyConstant)")
         
-        /// 5.类型推导
+        /// 6.类型推导
         // 1.swift数据类型：整型Int/浮点型Double/对象类型/结构体类型
         // 2.Int == NSInteger
         // 3.swift是强类型语言（属性有明确的类型，不存在 id 类型）
         // 4.根据后面值的类型推导出前面标识符的类型
+        // 5.option + 左键 - 查看标识符类型
         // typealias类型别名
         typealias NSInteger = Int
         let value: NSInteger = 45
         print(value)
         
-        /// 6.swift中基本运算
-        // 1.进行基本运算必须保证类型一致，否则会报错
-        // 2.相同类型才可以进行运算
-        // 3.因为swift中没有 “隐式转换”
-        // 4.强制类型转换
+        /// 7.swift中基本运算
+        // 1.相同类型才可以进行运算
+        // 2.因为swift中没有 “隐式转换”（不会自动将一种类型转换成另一种类型）
+        // 3.强制类型转换
         let m1: Double = 3.14
         let tempM: Int = Int(m1)
         print("\(tempM)")
-        // 5.默认情况下 swift 的运算符不允许值溢出
+        // 4.默认情况下 swift 的运算符不允许值溢出
         
-        /// 7.逻辑分支
+        /// 8.逻辑分支
         // 1.if语句
         // 1).if后面的 () 可以省略
         // 2).判断语句不再有“非0即真”/必须有明确的真假
@@ -88,6 +90,7 @@ class WMGame: NSObject {
         // 3.guard语句
         // 1).提高程序的可读性
         // 2).guard 必须与 else 同时使用
+        // 3).“guard” 表示 “守卫” 的意思
         guard m2 >= 10 else {
             // 语句块1
             // 如果 条件语句（ m2 > 10 ）为 false？则执行 “语句块1”
@@ -165,7 +168,7 @@ class WMGame: NSObject {
             print("不合理的分数")
         }
         
-        /// 8.循环
+        /// 9.循环
         // 1.for循环
 //        // ！！！swift3.x移除该写法！！！
 //        for var index = 0; index < 10; index++ {
@@ -177,6 +180,7 @@ class WMGame: NSObject {
         }
         // 打印 10次 “hello world”
         // 在 swift 中如果一个标识符不需要使用可以使用 ”_“ 来代替
+        // 可以加快运行速度
         for _ in 0..<10 {
             print("hello world")
         }
@@ -187,7 +191,8 @@ class WMGame: NSObject {
         var m4 = 10
         while m4 > 0 {
             print(m4)
-            // swift中没有“自增自减”
+//            // swift中没有“自增自减”
+//            m4--
             m4 = m4 - 1
         }
         // 3.do...while循环
@@ -200,7 +205,7 @@ class WMGame: NSObject {
         } while m4 > 0
     }
     
-    /// 9.字符串
+    /// 10.字符串
     // swift中字符串不是指针而是实际的值
     // String是一个结构体
     /**
@@ -279,7 +284,7 @@ class WMGame: NSObject {
         }
     }
     
-    /// 10.数组
+    /// 11.数组
     // 1.数组Array是一串有序的由相同类型元素构成的集合
     // 2.数组中的元素是有序的、可以重复出现
     func array() {
@@ -302,6 +307,7 @@ class WMGame: NSObject {
         // 1).追加元素
         arrayM.append("lnj")  // 追加在尾部
         arrayM.append("why")  // 数组中可以有相同元素
+        // 与 “[mArray5 addObjectsFromArray:mArray1];” 一致
         arrayM.append(contentsOf: array) // 追加一个数组
         // 2).删除元素
 //        arrayM.removeFirst()
@@ -335,7 +341,7 @@ class WMGame: NSObject {
         let _ = arrayM + array
     }
     
-    /// 11.字典
+    /// 12.字典
     // 1.swift中字典类型是Dictionary/泛型集合
     // 2.字典的元素是无序的
     func dictionary() {
@@ -388,7 +394,7 @@ class WMGame: NSObject {
         // 即使字典类型一致也不能相加合并
     }
     
-    /// 12.元组
+    /// 13.元组
     // 1.一种数据结构，组成”元组的数据“称为”元素“
     // 2.一般元组作为方法的返回值
     func tuple() {
@@ -404,7 +410,7 @@ class WMGame: NSObject {
         print("\(name)\(age)\(height)")
     }
     
-    /// 13.可选类型
+    /// 14.可选类型
     // 1.swift中 nil 不是指针，是一种特定的类型 / Objective-C中 nil 是一个指针指向不存在的对象
     // 2.swift中规定：对象中所有的属性都必须有明确的初始化值
     func optional() {

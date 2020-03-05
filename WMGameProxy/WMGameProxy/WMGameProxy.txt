@@ -438,16 +438,14 @@ char *strrchr(char *str, char c); //在串中查找指定字符的最后一个�
 4.条件编译：见SyGameProxy.h/c
 
 //指针
-
 //值传递/指针传递
-
 //结构体
 /**************************Objective-C基础**************************/
 //认识Objective-C语言
 1.概述：面向对象(oop)的C语言/完全兼容C语言/C语言代码可以直接编译在Objective-C工程中；
 2.源文件：.h/.m/.mm；
 3.关键字：C语言关键字在oc中都可以使用/新增部分关键字：@interface、@public、@implementation等；
-4.数据类型：BOOL/Block/SEL/null
+4.数据类型：BOOL/SEL/null
 5.#include -可能会出现重复包含头文件/#import -可以避免重复包含头文件
 6.C语言：int <==> OC语言：NSInteger <==> swift语言：Int
 
@@ -465,7 +463,7 @@ char *strrchr(char *str, char c); //在串中查找指定字符的最后一个�
 1)面向对象编程是把问题中拥有相同属性的东西建立一个类，然后创建类的对象；
 2)面向对象编程注重生活逻辑、面向过程编程注重数学逻辑；
 
-//类class：属性+行为（谁最清楚这个行为，那么行为就属于谁）
+//类class：属性 + 行为（谁最清楚这个行为，那么行为就属于谁）
 1.定义1：具有相同和相似性质对象的抽象就是类；对象的抽象就是类，类的具体化就是对象（堆内存）；
 2.类 = 结构体(存储数据) + 函数(管理数据)；！！！swift中结构体作用很大！！！
 3.实质：类的实质是一个对象，该对象会在这个类第一次被使用的时候创建；
@@ -476,8 +474,6 @@ char *strrchr(char *str, char c); //在串中查找指定字符的最后一个�
 3.类方法的执行效率比对象方法高：对象方法可以访问成员变量/类方法中不可以直接访问成员变量；
 
 //单例模式
-1.定义：程序运行过程中，实例对象只有一个；
-2.作用：oc语言不允许对象静态内存分配，因此不能声明全局变量。但是可以声明单例对象，单例对象存储的内容全程序共享；
 
 //构造方法
 1.定义：OC中称所有init开头的方法为构造方法/只能被调用一次
@@ -533,8 +529,6 @@ char *strrchr(char *str, char c); //在串中查找指定字符的最后一个�
 @end
 
 //协议和代理
-1.协议protocol
-2.代理delegate
 
 //点语法和属性
 1.概念：属性可以在不使用[对象指针 方法名称]的情况下使用点语法
@@ -550,14 +544,8 @@ NSString *name = xiaoMing.name; <==> NSString *name = [xiaoMing getName];
 2.目的：提高程序的可扩展性和维护性
 
 //网络基础
-1.json解析/XML解析
-
 //内存管理
-1.C语言的内存管理：xxx
-2.Objective-C的内存管理：管理对象的生命周期（基本数据类型不需要管理内存）
-
 //选择器
-
 //文件操作
 
 //异常处理
@@ -574,12 +562,8 @@ NSArray *array = [NSArray array];
 }
 
 // RunLoop
-
 // Runtime
-
 // KVC、KVO
-// KVO只能监听对象属性的改变
-
 // 多线程
 /**************************UI基础**************************/
 //认识UI(User Interface)
@@ -587,9 +571,7 @@ NSArray *array = [NSArray array];
 2.坐标系：坐标系(0,0)在左上角，x轴向右x正向延伸、y轴向下正向延伸
 
 //iOS的坐标体系
-
 //Main()函数
-
 //UIWindow
 
 //ViewController的生命周期
@@ -624,10 +606,7 @@ UIViewAutoresizingFlexibleBottomMargin  = 1 << 5  //上边界和父视图的距�
 3.在xib中怎么使用autoresizingMask：外部4根线固定边距、内部2根线固定宽高和父视图的比例
 
 //UIViewController
-1.负责管理UIView：创建/销毁UIView、显示/隐藏UIView、处理UIView和用户之间的交互
-
 //Gif
-
 //传值
 
 //UITableView
@@ -697,18 +676,19 @@ https://www.jianshu.com/p/c7a6408410aa
 // 支付
 // 断点续传
 // IM
-// 原生与js交互
+// “原生” 与 “js交互”
 // Objective-C和Swift混合编程
 // 二维码
 // 图文混排
 // 传感器
 // iPad开发
 // svn/git/CocoaPods
-// 应用发布（打包测试/TestFlight/企业包/AppStore）
+// 应用发布（打包测试 / TestFlight /企业包 / AppStore）
 // 组件化（静态库）
 
-///常见系统库：需要理解怎么用
+///常见系统库
 //1.基础框架
+NSObject-基类（考虑分析源码）
 Foundation-提供OC的基础类
 UIKit-创建和管理App的UI
 //2.核心框架
@@ -722,10 +702,10 @@ AddressBook-提供访问用户联系人信息的功能
 AddressBookUI-提供用户界面：显示存储在地址簿中的联系人信息
 AudioToolBox-提供音频录制和回放的底层API，同时负责管理音频硬件
 AudioUnit-提供一个接口，让App可以对音频进行处理
-//地图框架
+//3.地图框架
 MapKit-为App提供内嵌地图的接口
 CoreLocation-使用GPS和WI-FI获取位置信息
-//音视频框架
+//4.音视频框架
 AVFoundation-提供音频录制和回放的c底层API，同时负责管理音频硬件
 MediaPlayer-提供播放视频和音频的功能
 MessageUI-提供视图控制接口用以处理E-mail和短信
@@ -734,9 +714,6 @@ StoreKit-为App提供在程序运行中消费的支持
 Security.framework -xxx
 libsqlite3.tbd -xxx
 libsqlite3.0.tbd -xxx
-
-//常见类库：需要分析源码
-NSObject
 
 //常见三方libs：需要分析源码
 AFNetworking-网络请求相关库
@@ -751,6 +728,7 @@ SAMKeychain-keyChain保存
 MBProgressHUD-加载loading
 JXSegmentedView-多控制器滑动视图
 JSONKit-xxx
+JSONModel/MJExtention-字典转模型
 
 // 开发App
 1.
@@ -758,6 +736,20 @@ JSONKit-xxx
 3.
 /**************************swift基础**************************/
 /**************************实用技术(swift版本)**************************/
+//怎么导入框架
+//swift简介
+//定义标识符
+//swift语句结束
+//常量和变量
+//类型推导
+//swift中基本运算
+//逻辑分支
+//循环
+//字符串
+//数组
+//字典
+//元组
+//可选类型
 /**************************补充部分**************************/
 //知识点：
 https://www.cnblogs.com/W-Kr/p/5248316.html  //解析html
@@ -767,6 +759,8 @@ https://mp.weixin.qq.com/s/ynkun7E1niuXfnnNBRap8Q  //iOS13
 //工具网站：
 https://soft.macx.cn
 https://xclient.info
+https://www.macbed.com
+http://down.applex.net/macosx/software.html
 
 //抓包：
 1.工具：Charles
@@ -793,15 +787,10 @@ https://xclient.info
 2.XCode4.0以后使用LLVM(Clang前端专门用来编译代码)：
 
 // LLVM项目
-
 // Clang编译器
-
 // Instruments
-
 // RxSwift
-
 // ReactiveCocoa
-
 // Scrumj敏捷开发
 
 // 著名网站
@@ -832,7 +821,6 @@ SyGameProxy.h/c   // C语言基础知识
 WMGameProxy.h/m   // OC基础知识
 SyMemoryManager.h/m // 内存管理
 WMGameView.h/m    // OC自定义控件
-SyDefaultCustomView.h/c // OC自定义控件
 FoundationNSObject.h/c // Foundation常见类
 ComponentController.h/m // UI组件库
 SyTableViewController.h/m  // UITableView详解

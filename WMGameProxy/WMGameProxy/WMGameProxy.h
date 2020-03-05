@@ -52,7 +52,9 @@ NS_ASSUME_NONNULL_BEGIN
 // 面试题：atomic可以保证100%安全吗？为什么？
 @property (strong, atomic) NSString *publishName;
 // assign一般用于基础数据类型
-@property (assign, nonatomic) NSInteger *publishAge;
+// 这里不需要加 *
+// NSInteger的含义？？？
+@property (assign, nonatomic) NSInteger publishAge;
 // readonly只读：只生成 getter 方法
 // readwrite缺省
 @property (readonly, strong, nonatomic) NSString *GameKey;

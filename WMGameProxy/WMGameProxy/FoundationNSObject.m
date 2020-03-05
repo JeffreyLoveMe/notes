@@ -209,6 +209,25 @@
     // 没有 * 的属性一般为 枚举/如果不想使用枚举可以设置为 0
     [mStr3 replaceCharactersInRange:range1 withString:@"xxx"];
     [mStr3 stringByReplacingOccurrencesOfString:@"xwj" withString:@"xxx"];
+    
+    /// 3).字符串的读写
+    /**
+     从文件中读取字符串
+     第一个参数 - 文件路径/必须传 “绝对路径”
+     第二个参数 - 编码/英文编码 - iOS-5988-1/中文 - GBK（一般填写UTF8）
+     第三个参数 - 错误信息（如果有）/ &error表示 “两个 *”
+     */
+    NSString *filePath = @"/Users/xiewujun/Desktop/技术部-iOS开发组-第1周-周报.docx";
+    NSError *error = nil;
+    NSString *fileString = [NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:&error];
+    NSLog(@"获取的字符串==%@/真正的错误原因==%@", fileString, [error localizedDescription]);
+    /**
+     将字符串写入到文件中
+     第一个参数 - 文件路径/必须传 “绝对路径”
+     第二个参数 - YES(字符串写入文件过程中没有写完不会生成文件)/NO(字符串写入文件过程中没有写完会生成文件)
+     第三个参数 - 错误信息（如果有）/ &error表示 “两个 *”
+     */
+    [fileString writeToFile:fileString atomically:YES encoding:NSUTF8StringEncoding error:&error];
 }
 
 
