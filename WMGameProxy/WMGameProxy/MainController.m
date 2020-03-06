@@ -57,6 +57,7 @@
     }
 }
 /// 发送邮件
+// 添加 "系统库MessageUI.framework"
 -(void)sendEmail {
     if ([MFMailComposeViewController canSendMail]) {
         /// 用户已设置邮件账户

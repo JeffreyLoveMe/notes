@@ -191,13 +191,11 @@
 
 #pragma mark - UIButton按钮
 /// 有那些类可以"事件监听"？？？:继承于UIControl都可以"事件监听"
-// UIButton
+// UIControlEventTouchUpInside - UIButton/点击事件
+// UIControlEventValueChanged - UISwitch/UISegmentControl/UISlider/值改变事件
+// UIControlEventEditingChanged - UITextField/文字改变事件
 // UIDatePicker
 // UIPageControl
-// UISegmentControl
-// UITextField
-// UISlider
-// UISwitch
 // ！！！需求：将常见UI控件分类（按照父类）！！！
 -(void)setupButton {
 //    // 尽量使用快速定义方法、如果没有快速定义方法、再考虑init
@@ -728,7 +726,7 @@
 
 
 /// UISwitch/开关
-// 不能设置尺寸的控件（只能通过缩放设置尺寸）
+// ！！！不能设置尺寸的控件（只能通过缩放设置尺寸）！！！
 // UISwitch
 // UIActivityIndicatorView
 // UISegmentControl
@@ -782,7 +780,7 @@
     segmentControl.tintColor = UIColor.orangeColor;
     segmentControl.selectedSegmentIndex = 0;  // 选中状态
     [segmentControl insertSegmentWithTitle:@"下一页" atIndex:1 animated:NO]; // 插入新段
-    segmentControl.momentary = YES; // 默认为NO（YES表示一会儿以后不显示被选中状态）
+    segmentControl.momentary = YES; // 默认为 NO（YES表示一会儿以后不显示被选中状态）
     [segmentControl addTarget:self action:@selector(onSegmentControl:) forControlEvents:UIControlEventValueChanged];
 }
 -(void)onSegmentControl:(UISegmentedControl *)segmentControl {

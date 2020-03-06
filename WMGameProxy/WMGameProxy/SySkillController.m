@@ -94,6 +94,10 @@
     // NSTimer可以直接用 weak
     // 定时器会在 1s 以后开始
     NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(onTimer:) userInfo:nil repeats:YES];
+    // 解决定时器在主线程不工作的原因
+    // ！！！主线程无论在处理什么操作都会抽时间处理 NStimer！！！
+    // 有点不太明白
+    [[NSRunLoop mainRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];
     // 立即开始
     [timer fire];
     // 停止定时器
@@ -539,7 +543,7 @@
     // ！！！先注册 “接收通知”，再 “发送通知”！！！
     // 另外一个对象接收通知
     /**
-     参数一/添加的观察者、接收通知的对象
+     参数一/添加的观察者、接收通知的对象（ “响应方法”一般在 “该类” 中实现 ）
      参数二/观察者的响应方法、一旦被观察者消息发生变化就会触发该方法
      参数三/通知的名称（可以为 nil/不关注是 “什么通知”）/明确告诉系统想要监听 “什么通知”
      参数四/通知的发布者（可以为 nil/不关注是 “谁发布的通知”）/被观察者/明确告诉系统想要监听 “谁发布的通知”
@@ -629,7 +633,46 @@
     [wm setValue:@"88" forKeyPath:@"_gameCount"];
     [wm setValue:@"88" forKeyPath:@"gameCount"];
     
-    // 底层原理
+    /**
+     KVC的底层原理/可以通过重写 “set方法” 做一些操作
+     1.查看当前 key 值的 set方法，如果有 set方法就会调用 set方法，给对应的属性赋值
+     2.如果没有 set方法 就会去查看是否有与 key值 相同并且带有下划线的成员属性，给对应的属性赋值
+     3.如果没有与 key值 相同并且带有下划线的成员属性，就会去查看有没有与 key值 相同名称的成员属性，给对应的属性赋值
+     4.如果还是没有找到会调用 “- (void)setValue:(nullable id)value forUndefinedKey:(NSString *)key” / 默认抛出异常
+     */
+}
+// 2>.KVO - Key Value Observing/键值监听
+// 监听某个对象的属性值变化
+/**
+ ！！！可以监听 “系统类/比如 UIScrollView/UITableView ” 的一些属性去做一些特定操作！！！
+ 比如有 contentOffset
+ */
+-(void)showKVO {
+    WMGameProxy *wm = [WMGameProxy new];
+    // 1.先绑定监听器
+    /**
+     给 “对象wm” 绑定一个监听器（观察者）
+     第一个参数 - 观察者
+     第二个参数 - 需要监听的属性
+     第三个参数 - 选项
+     第四个参数 - XXX
+     */
+    [wm addObserver:self forKeyPath:@"publishName" options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld context:nil];
+    // 2.再修改属性值
+    wm.publishName = @"wj";
+    wm.publishName = @"fj";
+    // 3.移除监听
+    [wm removeObserver:self forKeyPath:@"publishName"];
+}
+/**
+ 当监听的属性值发生改变调用
+ @param keyPath - 要改变的属性 / publishName
+ @param object - 要改变的属性所属的对象 / wm地址
+ @param change - 改变的内容 / NSDictionary / change[NSKeyValueChangeNewKey] / change[NSKeyValueChangeOldKey]
+ @param context - 上下文
+ */
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context {
+    
 }
 
 
