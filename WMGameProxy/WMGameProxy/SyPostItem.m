@@ -38,8 +38,8 @@
     return @"没有key";
 }
 
+
 /// 归档部分 - start - 与上面部分内容无关
-/// 归档
 // 告诉需要保存当前对象的哪些属性
 - (void)encodeWithCoder:(NSCoder *)coder {
     [coder encodeObject:self.citys forKey:@"citys"];

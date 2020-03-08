@@ -17,7 +17,8 @@ NS_ASSUME_NONNULL_BEGIN
 // WMGameProxy类名/类名必须大写
 // NSObject父类（顶级父类）
 // .h/.m相互切换：command + control + 👆
-@interface WMGameProxy : NSObject <NSCoding> {
+// 自定义泛型
+@interface WMGameProxy <ObjectType> : NSObject <NSCoding> {
     /// 定义属性
     // 实例变量/成员变量/属性
     // 成员变量不能离开类：只能写在类内部
@@ -66,9 +67,17 @@ NS_ASSUME_NONNULL_BEGIN
 // 一般不使用
 @property (setter = myHeight:) NSInteger mheight;
 // 多个属性使用 "," 隔开
-@property (setter = setUserName:, getter = getUserNmae, strong, nonatomic) NSString *mName;
-
-@property (strong, nonatomic) SyPostItem *item;
+@property (setter = setUserName:, getter = getUserName, strong, nonatomic) NSString *mName;
+/**
+ 表示"可能为空" - 用于属性、参数、方法返回值/为了迎合 swift
+ nullable修饰属性位于 (nullable, strong, nonatomic)/nullable修饰形参位于(nullable NSString *)
+ */
+@property (nullable, strong, nonatomic) SyPostItem *item;
+/**
+表示"不能为空" - 用于属性、参数、方法返回值/为了迎合 swift
+nonnull修饰属性位于 (nonnull, strong, nonatomic)/nonnull修饰形参位于(nonnull NSString *)
+*/
+@property (nonnull, strong, nonatomic) NSString *resetName;
 /**
  1.原子性
  atomic // 加锁/消耗性能、访问速度慢/多线程环境下存在线程保护（默认/原子性）
@@ -84,6 +93,13 @@ NS_ASSUME_NONNULL_BEGIN
 // 如果想对传入的数据进行过滤需要重写 getter/setter 方法
 // 如果重写 getter/setter 方法，@property将不再生成 getter/setter 方法
 @property (nonatomic, retain, readonly) NSString *userName;
+// 自定义泛型
+@property (strong, nonatomic) ObjectType obj;
+/**
+ __kindof - 当前类或者子类
+ 给某个类提供类方法，可以让外界知道创建了什么对象
+ */
++(__kindof WMGameProxy *)WMGameProxy;
 
 /// 定义方法/行为
 // 冒号也是方法名的一部分

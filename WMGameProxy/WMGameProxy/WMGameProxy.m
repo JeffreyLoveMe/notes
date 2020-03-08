@@ -243,6 +243,7 @@
     return proxy;
 }
 
+
 /// 归档
 // 告诉需要保存当前对象的哪些属性
 - (void)encodeWithCoder:(NSCoder *)coder {
@@ -262,6 +263,7 @@
     }
     return self;
 }
+
 
 -(void)onChange:(NSNotification *)notifucaiton {
     // id属性没有 “点语法”

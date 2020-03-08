@@ -48,10 +48,8 @@
     }
 }
 -(void)log {
-    
 }
 -(void)logger:(NSString *)text {
-    
 }
 
 
@@ -178,8 +176,7 @@
     // 还可以去掉首尾大小写
     str3 = [str5 stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
     NSLog(@"%@", str6);
-    
-    
+
     /// 2).可变字符串
     // NSMutableString继承于NSString
     // 初始化字符串：必须初始化
@@ -211,15 +208,55 @@
     [mStr3 stringByReplacingOccurrencesOfString:@"xwj" withString:@"xxx"];
     
     /// 3).字符串的读写
+//    // 一、第一种方式
+//    /**
+//     从文件中读取字符串
+//     第一个参数 - 文件路径/必须传 “绝对路径”
+//     第二个参数 - 编码/英文编码 - iOS-5988-1/中文 - GBK（一般填写UTF8）
+//     第三个参数 - 错误信息（如果有）/ &error表示 “两个 *”
+//     */
+//    NSString *filePath = @"/Users/xiewujun/Desktop/技术部-iOS开发组-第1周-周报.docx";
+//    NSError *error = nil;
+//    NSString *fileString = [NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:&error];
+//    NSLog(@"获取的字符串==%@/真正的错误原因==%@", fileString, [error localizedDescription]);
+//    /**
+//     将字符串写入到文件中
+//     第一个参数 - 文件路径/必须传 “绝对路径”
+//     第二个参数 - YES(字符串写入文件过程中没有写完不会生成文件)/NO(字符串写入文件过程中没有写完会生成文件)
+//     第三个参数 - 错误信息（如果有）/ &error表示 “两个 *”
+//     */
+//    [fileString writeToFile:filePath atomically:YES encoding:NSUTF8StringEncoding error:&error];
+    
+    // 二、第二种方式
+    // 该方法既可以加载 “本地资源” 也可以加载 ”网络资源“
+    /**
+    1.file:// - 协议头
+    2.192.168.5.102 - 主机域名
+    3./Users/xiewujun/Desktop/技术部-iOS开发组-第1周-周报.docx - 路径
+    file://192.168.5.102/Users/xiewujun/Desktop/技术部-iOS开发组-第1周-周报.docx
+    file:///Users/xiewujun/Desktop/技术部-iOS开发组-第1周-周报.docx
+    */
     /**
      从文件中读取字符串
-     第一个参数 - 文件路径/必须传 “绝对路径”
+     第一个参数 - URL/统一资源定位符/互联网上每个资源都有一个y唯一的url/协议头://主机域名/路径
      第二个参数 - 编码/英文编码 - iOS-5988-1/中文 - GBK（一般填写UTF8）
      第三个参数 - 错误信息（如果有）/ &error表示 “两个 *”
      */
-    NSString *filePath = @"/Users/xiewujun/Desktop/技术部-iOS开发组-第1周-周报.docx";
+    // 创建 url
+//    // 第一种方式（手动）
+//    // 因为 url 不支持中文，如果包含中文则无法访问
+//    NSString *path = @"file://192.168.5.102/Users/xiewujun/Desktop/技术部-iOS开发组-第1周-周报.docx";
+////    // 如果加载本机上资源，那么 url 中的主机地址可以省略
+////    NSString *path = @"file:///Users/xiewujun/Desktop/技术部-iOS开发组-第1周-周报.docx";
+//    // 如果 path 包含中文需要手动给 path 进行转码
+//    NSString *path = [path stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+//    NSURL *url = [NSURL URLWithString:path];
+    // 第二种方式（推荐使用/自动 - 使用该方法就算 url 包含中文也可以进行访问，系统内部会自动对 url 的中文进行处理）
+    // 如果通过该方法 “创建url” 系统会自动添加 “协议头”（ file:// ）
+    NSString *filePath = @"192.168.5.102/Users/xiewujun/Desktop/技术部-iOS开发组-第1周-周报.docx";
+    NSURL *url = [NSURL fileURLWithPath:filePath];
     NSError *error = nil;
-    NSString *fileString = [NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:&error];
+    NSString *fileString = [NSString stringWithContentsOfURL:url encoding:NSUTF8StringEncoding error:&error];
     NSLog(@"获取的字符串==%@/真正的错误原因==%@", fileString, [error localizedDescription]);
     /**
      将字符串写入到文件中
@@ -227,7 +264,38 @@
      第二个参数 - YES(字符串写入文件过程中没有写完不会生成文件)/NO(字符串写入文件过程中没有写完会生成文件)
      第三个参数 - 错误信息（如果有）/ &error表示 “两个 *”
      */
-    [fileString writeToFile:fileString atomically:YES encoding:NSUTF8StringEncoding error:&error];
+    // 多次往同一个文件中写入内容，那么后一次会覆盖前一次
+    [fileString writeToURL:url atomically:YES encoding:NSUTF8StringEncoding error:&error];
+    
+    /// 4).字符串和绝对路径
+    // ！！！记住 - 字符串和路径之间有很多方法可以使用！！！
+    // 1.判断是否为绝对路径
+    // 本质就是判断字符串是否以 “/” 开头
+    NSString *str = @"/Users/xiewujun/Desktop/技术部-iOS开发组-第1周-周报.docx";
+    if ([str isAbsolutePath]) {
+        NSLog(@"绝对路径");
+    } else {
+        NSLog(@"不是绝对路径");
+    }
+    // 2.获取文件路径的最后一个目录
+    NSString *newString = [str lastPathComponent];
+    NSLog(@"%@", newString);
+    // 3.删除文件路径中的最后一个目录
+    // 本质就是删除 “/XXX” 所有内容
+    newString = [str stringByDeletingLastPathComponent];
+    // 4.给文件路径添加一个目录
+    // 本质就是在字符串的末尾加上一个 "/XXX"
+    // 如果路径后面已经有一个或者多个 “/” 都会把 “/” 删除
+    newString = [str stringByAppendingPathComponent:@"xmg"];
+    // 5.获取路径中文件的扩展名
+    // 本质就是从字符串的末尾开始截取到第一个 "."
+    newString = [str pathExtension];
+    // 6.删除路径中文件的扩展名
+    // 本质就是从字符串的末尾开始查找第一个 "."，删除掉 “.” 和 “,” 后面的字符串
+    newString = [str stringByDeletingPathExtension];
+    // 7.给路径添加一个扩展名
+    // 本质就是在路径结尾添加 ".XXX"
+    newString = [str stringByAppendingPathExtension:@"png"];
 }
 
 
@@ -480,7 +548,7 @@
 
 
 
-/// 4.NSSet/集合（了解）
+/// 4.NSSet/集合
 // 无序、不能存放重复对象
 /*
  NSSet和NSArray的区别：
@@ -492,14 +560,14 @@
     /// 1).不可变集合
     NSString *s1 = @"zhangsan";
     NSString *s2 = @"lisi";
-    NSSet *set0 = [[NSSet alloc]initWithObjects:s1, s2, nil];
-    NSSet *set1 = [NSSet setWithObjects:s1, s2, nil];
-    // 可以将NSSet转换成NSArray
-    NSArray *array1 = [set0 allObjects];
+    NSSet *oldSet = [[NSSet alloc]initWithObjects:s1, s2, nil];
+    NSSet *newSet = [NSSet setWithObjects:s1, s2, nil];
+    // 可以将 NSSet 转换成 NSArray
+    NSArray *array1 = [oldSet allObjects];
     // 返回元素个数
-    NSUInteger count = [set1 count];
+    NSUInteger count = [newSet count];
     // 从集合中随机取一个元素
-    NSString *s3 = [set0 anyObject];
+    NSString *s3 = [oldSet anyObject];
     NSLog(@"%@==%ld==%@", array1, count, s3);
     
     /// 1).可变集合
@@ -509,55 +577,71 @@
 }
 
 
+
 /// 5.NSNumber
 // 1.明白什么是NSNumber、为什么要引入NSNumber？
-// 2.NSNumber/NSInteger/int三者之间的区别？
-// 3.NSNumber怎么包装？怎么解包？怎么简化写法@()
-// NSNumber是类：可以设置nil
+// 2.NSNumber怎么包装？怎么解包？怎么简化写法@()
+// 3.NSNumber是类：可以设置nil
 -(void)showNumber {
-    /// 包装基本数据类型
-    // 包含int/float/long/bool
-    NSNumber *intNumber0 = [NSNumber numberWithInt:100];
-    NSNumber *floatNumber0 = [NSNumber numberWithDouble:100.00];
+    // 1.包装基本数据类型/int/float/long/bool
+    NSNumber *intNumber = [NSNumber numberWithInt:100];
+    NSNumber *floatNumber = [NSNumber numberWithDouble:100.00];
     // 包装以后可以存入数组
-    NSArray *array0 = @[intNumber0, floatNumber0];
-    NSLog(@"%@", [array0 description]);
-    // 解包
-    int intValue = [intNumber0 intValue];
-    float floatValue = [floatNumber0 floatValue];
+    NSArray *array = @[intNumber, floatNumber];
+    NSLog(@"%@", [array description]);
+    // 2.解包基本数据类型
+    int intValue = [intNumber intValue];
+    float floatValue = [floatNumber floatValue];
     NSLog(@"%d, %f", intValue, floatValue);
-    // 优化语法
-    NSNumber *intNumber1 = @(12); // 等价于[NSNumber numberWithInt:100]
-    NSNumber *floatNumber1 = @(3.14f); // 等价于[NSNumber numberWithDouble:100.00]
-    NSArray *array1 = @[intNumber1, floatNumber1];
-    NSLog(@"%@", [array1 description]);
+//    // 3.优化语法
+//    // 如果传入的是 “变量” 必须在 @ h后面加上 ()/如果传入的是 “常量” ()可以省略
+//    int age = 10;
+//    NSNumber *intNumber = @(age); // 等价于 [NSNumber numberWithInt:100]
+//    NSNumber *intNumber = @10;
+//    NSNumber *floatNumber = @(3.14f); // 等价于 [NSNumber numberWithDouble:100.00]
+//    NSArray *array = @[intNumber, floatNumber];
+//    NSLog(@"%@", [array description]);
+    /**
+     4.NSNumber/NSInteger/int三者之间的区别？？？
+     1.NSNumber是一个继承与NSValue的一个类，NSNumber可以对基本数据类型进行包装存放到NSArray；
+     2.NSInteger是基本数据类型，Apple一般推荐使用，因为NSInteger会根据操作系统的位数自动返回最大的类型；
+     3.int也是基本数据类型；
+     */
 }
 
 
-/// 6.NSValue（了解）
+
+/// 6.NSValue
+// NSValue是NSNumber的父类、可以包装任意类型
 // 可以对结构体进行包装
-// NSValue是NSNumber的父类
 -(void)showValue {
-    // 结构体能不能存入数组：不能
-    // 包装结构体
-    // 封包
-    NSRange range0 = {10, 20};
-    NSValue *value = [NSValue valueWithRange:range0];
-    // 解包
-    NSRange range1 = [value rangeValue];
-    NSLog(@"%lu, %lu", (unsigned long)range1.location, range0.length);
-    /// 自定义结构体
-    // &p -结构体的指针
-    // @encode(struct WXPoint) -结构体的类型
-    struct WXPoint {
+    // 包装结构体、结构体不能直接存入数组
+    // 1.封包
+    //    // 结构体的简单写法
+    //    NSRange range1 = {10, 20};
+    NSRange range = NSMakeRange(10, 20);
+    NSValue *value = [NSValue valueWithRange:range];
+    // 2.解包
+    range = [value rangeValue];
+    NSLog(@"%lu, %lu", range.location, range.length);
+    // 3.自定义结构体
+    typedef struct{
         float x;
         float y;
-    };
-    struct WXPoint p = {1, 2};
-    NSValue *pointValue = [NSValue value:&p withObjCType:@encode(struct WXPoint)];
-    [pointValue getValue:&p];
-    NSLog(@"%f, %f", p.x, p.y);
+    }WXPoint;
+    WXPoint p = {1, 2};
+    /**
+     1>.包装自定义结构体
+     1.&p -结构体的指针
+     2.@encode(WXPoint) -结构体的类型
+     */
+    NSValue *pointValue = [NSValue value:&p withObjCType:@encode(WXPoint)];
+    // 2>.解包自定义结构体
+    WXPoint point;
+    [pointValue getValue:&point];
+    NSLog(@"%f, %f", point.x, point.y);
 }
+
 
 
 /// 7.NSNull
@@ -569,6 +653,7 @@
     NSArray *array = @[null, @(12)];
     NSLog(@"%@", [array description]);
 }
+
 
 
 /// 8.NSDate
@@ -583,8 +668,8 @@
     // 昨天 = 当前设备的时间点 - 24小时
     NSDate *date3 = [NSDate dateWithTimeIntervalSinceNow:-(24 * 60 * 60)];
     NSLog(@"%@===%@===%@===%@", date0, date1, date2, date3);
-    // 2.时间戳：某一日期到1970年的秒数大小成为该日期的时间戳
-    // 通过时间戳创建一个NSDate
+    // 2.时间戳 - 某一日期到1970年的秒数大小成为该日期的时间戳
+    // 通过 “时间戳” 创建一个 “NSDate”
     NSDate *date4 = [NSDate dateWithTimeIntervalSince1970:0];
     // 获取日期的时间戳
     NSTimeInterval t0 = [date0 timeIntervalSince1970];
@@ -621,6 +706,7 @@
     NSString *dateStr = @"2013年04月08日 18:30:25";
     NSLog(@"时间===%@/对象===%@", [dateFormatter stringFromDate:nowDate], [dateFormatter dateFromString:dateStr]);
 }
+
 
 
 /// 9.NSData

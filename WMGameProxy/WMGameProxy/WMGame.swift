@@ -12,10 +12,9 @@
 /// 1.swift中怎么导入框架
 // 一般在 swift 中不需要导入框架
 import UIKit
-
+/// 2.swift简介
+// 编译语言的高性能 + 脚本语言的交互性
 class WMGame: NSObject {
-    /// 2.swift简介
-    // 编译语言的高性能 + 脚本语言的交互性
     func log() {
         /// 3.定义标识符
         // swift中定义标识符必须告诉编译器是一个常量还是一个变量
@@ -438,54 +437,80 @@ class WMGame: NSObject {
         }
     }
     
-
-        
-    
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-
-    /// 函数的定义和调用
-    // Void是空元组
-    // 函数可以返回一个元组/可以返回多个值
-    func FSwitchController(controller: UIViewController) -> Void {
-        
+    /// 15.函数
+    // 1.基本用法
+    // 1).无参无返回值
+    func about() -> Void {
+        print("‘ -> Void’可以省略")
     }
-    
-    // 可变参数
-    // 可变参数一定要放在参数表中最后的位置
-    func FChange(controller: UIViewController, number: Double...) {
-        
+    // 2).无参有返回值
+    func readMsg() -> String {
+        // 调用函数
+        about()
+        return "吃饭了吗"
     }
-    
-    // 闭包
-    var list: [String?] = []
+    // 3).有参无返回值
+    func callPhone(phoneNum: String) {
+        let _ = sum(value1: 1, value2: 2)
+        print("打电话\(phoneNum)")
+    }
+    // 4).有参有返回值
+    func sum(value1: Int, value2: Int) -> Int {
+        callPhone(phoneNum: "15601749931")
+        let _ = plus(1, value2: 2)
+        return value1 + value2
+    }
+    // 2.使用注意
+    // 1).内部参数和外部参数
+    // 内部参数 - 在函数内部可以看到的参数就是内部参数，默认情况下所有的参数都是内部参数
+    // 外部参数 - 在函数外部可以看到的参数就是外部参数，默认情况下从第二个参数开始既是内部参数也是外部参数
+    // 如果希望第一个参数也是外部参数可以在标识符前给该参数添加一个别名 / 一般别名直接用 _
+    func plus(_ value1: Int, value2: Int) -> Int {
+        let _ = makeCoffee(coffeeName: "拿铁")
+        let _ = makeCoffee()
+        return value1 + value2
+    }
+    // 2).swift函数的默认参数
+    func makeCoffee(coffeeName: String = "雀巢") -> String {
+        let _ = sum(string: "可变参数", value1: 10, 13, 15)
+        return "制作了一杯\(coffeeName)咖啡"
+    }
+    // 3).可变参数
+    // value1 是 “数组” 类型
+    func sum(string: String, value1: Int...) -> Int {
+        var count = 0
+        for num in value1 {
+            count = count + num
+        }
+        return count
+    }
+    // 4).指针类型
+//    // 值传递
+//    // 默认情况下函数参数是 let
+//    func swapNum( m: Int, n: Int) {
+//        let tempNum = m
+//        m = n
+//        n = tempNum
+//    }
+    // 地址传递
+    // 可以修改 “函数参数”
+    func swapNum( m: inout Int, n: inout Int) {
+        let tempNum = m
+        m = n
+        n = tempNum
+    }
+    // 5).函数支持嵌套使用
+    func test() {
+        func demo() {
+            print("demo")
+        }
+        // 这里必须调用
+        demo()
+        var m = 10
+        var n = 9
+        swapNum(m: &m, n: &n)
+    }
 }
+
+// 16.类
+// 1).swift是一门面向对象开发的语言

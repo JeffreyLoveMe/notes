@@ -59,6 +59,14 @@ command+option+左/右 // 折叠/展开代码
 option+press // 查看文档
 F11 //进入桌面
 
+//XCode快捷键
+command+R //运行程序
+command+. //停止运行
+shfit＋command＋H //程序退到后台
+shift＋command＋N // 创建程序
+shift＋command＋M // 模拟内存警告
+command+press //查看方法名
+
 //常用终端命令
 cd + 目录 //切换到指定目录
 cd + ../ //返回上一级目录
@@ -148,9 +156,6 @@ int main() {
 2.特征：全部小写/在Xcode中显示不同的颜色/一共32个/不能做为标识符
 3.分类：流程控制关键字+数据类型关键字/unsigned、signed
 goto //保留关键字
-nullable //可能为空：用于属性、参数、方法返回值，为了迎合swift
-__kindof //表示当前类或者子类：给某个类提供类方法，可以让外界知道创建了什么对象
-+ (__kindof Person *)person;
 
 //标识符
 1.概念：程序员自己在项目中起的名字/不能与关键字同名
@@ -619,11 +624,6 @@ UIViewAutoresizingFlexibleBottomMargin  = 1 << 5  //上边界和父视图的距�
 
 //UIPasteboard
 
-//关于适配
-1.系统适配：
-2.机型适配：
-3.控件适配：
-
 //自动布局
 1.autosizing：设置视图和父视图的尺寸关系/iOS6.x以前
 
@@ -664,6 +664,11 @@ HTTP协议 - 超文本传输协议/规定客户端和服务端之间的数据传
 2.
 3.
 4.
+
+//适配
+1.系统适配：
+2.机型适配：
+3.控件适配：
 
 //多语言
 常见语言： en/tw/hk/cn

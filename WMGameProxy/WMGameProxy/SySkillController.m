@@ -18,7 +18,7 @@
 @end
 
 @implementation SySkillController
-/// ViewController的生命周期
+#pragma mark - ViewController的生命周期
 - (void)loadView {
     // 保留父类方法
     // 一般都需要调用
@@ -86,7 +86,7 @@
 }
 
 
-/// 定时器
+#pragma mark - 定时器
 // 频繁的销毁和创建"定时器"
 // https://blog.csdn.net/zhuzhihai1988/article/details/7742881
 -(void)createTimer {
@@ -118,14 +118,14 @@
 }
 
 
-/// MPMoviePlayerController
+#pragma mark - MPMoviePlayerController
 
 
-/// iOS自动布局框架 - Masonry详解
+#pragma mark - iOS自动布局框架 / Masonry详解
 // https://www.jianshu.com/p/ea74b230c70d
 
 
-/// 使用 gif
+#pragma mark - 使用 gif
 // 一般使用"帧动画"替代gif
 -(void)shouGIF {
     // 每个本地文件都可以通过该方法转换成url
@@ -138,7 +138,7 @@
 }
 
 
-/// 传值
+#pragma mark - 传值
 // 1.普通传值
 // 2.delegate传值
 // 3.block传值
@@ -160,7 +160,7 @@
 }
 
 
-/// 异常处理
+#pragma mark - 异常处理
 -(void)hock {
     NSArray *array = [NSArray array];
     @try {
@@ -267,7 +267,7 @@
 }
 // 3.归档NSCoding
 // 一种序列化与反序列化
-// 可以用来保存对象
+// 可以用来保存 “对象”
 // 对象必须实现 "NSCoding协议" 才可以
 // https://www.jianshu.com/p/3e08fa21316d
 -(void)showCoding {
@@ -328,8 +328,9 @@
 }
 
 
-/// 内存管理
+#pragma mark - 内存管理
 // 管理对象的生命周期/基本数据类型不需要内存管理
+// 内存管理有几种方式？？？
 // 自动调用 “dealloc方法”
 // ARC/MRC混合编程-选中工程->TARGET->Build Settings->Automatic Reference Counting->NO
 -(void)memoryManager {
@@ -685,6 +686,21 @@
         _dataArray = @[@"", @"", @""];
     }
     return _dataArray;
+}
+
+
+/**
+ 泛型 - 1.限制类型；2.提高代码规范；3.迎合swift
+ 类型 <限制类型>
+ 最大作用 - 限制集合类型
+ https://blog.csdn.net/imkata/article/details/78859482
+ __covariant协变
+ __contravariant逆变
+ */
+// 自定义泛型
+-(void)showObj {
+    WMGameProxy<NSString *> *wm = [WMGameProxy new];
+    wm.obj = @"哈哈";
 }
 
 

@@ -47,7 +47,7 @@
 //    CGPoint point = CGPointMake(100, 100); // 坐标
 //    CGSize size = CGSizeMake(100, 100);  // 尺寸
 //    CGRect rect = CGRectMake(100, 100, 100, 100); // 矩形
-    /// 设置是否能接收事件/UIView默认是true
+    /// 设置是否能接收事件 / UIView默认是true
     // 如果父视图不能接收事件、则子视图不能接收事件
     // 子视图超出父视图部分不能接收事件
     // 如果覆盖上面的视图可以接收事件、则下面视图不会再收到事件
@@ -79,9 +79,11 @@
     view.center = CGPointMake(100, 40);
     // 获取父视图对象：一个视图最多只有一个父视图
     // 一旦一个视图被添加到一个父视图上就会从上一个父视图移除
+    // 移动父视图的时候子视图也会一起移动
     UIView *superView = [view superview];
     // 打印 CGRect
     NSLog(@"%@", NSStringFromCGRect(superView.bounds));
+    NSLog(@"%@", NSStringFromCGPoint(superView.center));
     /// 背景颜色
     // 这个已经封装
     view.backgroundColor = [UIColor colorWithRed:0.1 green:0.1 blue:0.1 alpha:1];
@@ -117,9 +119,7 @@
     [self.view insertSubview:view belowSubview:superView];
     // 插入子视图：默认会添加
     [self.view insertSubview:superView atIndex:0];
-    // 注意：父视图不能移除子视图
-    // 子视图可以从父视图中移除
-    // 只要有父视图就可以移除
+    // ！！！父视图不能移除子视图/子视图可以从父视图中移除！！！
     [superView removeFromSuperview];
     view.tag = 0;
     /// 图层
@@ -235,7 +235,7 @@
     // 3.如果按钮不够大、优先显示图像
     // 居中不拉伸
     // 如果按钮小于图片会拉伸按钮
-    [btn setImage:[UIImage imageNamed:@""] forState:UIControlStateNormal];
+    [btn setImage:[UIImage imageNamed:@"image_demo"] forState:UIControlStateNormal];
     /// 设置背景图像
     // 1.创建 UIImage 对象
     UIImage *bgImage = [UIImage imageNamed:@"image_demo"];
@@ -852,6 +852,7 @@
 // UIApplication/UIViewController/UIView都是“响应者对象”（能够接收并处理对象）
 // UIResponder 内部提供了很多方法来处理事件
 // 父视图不能监听事件，则子视图无法监听事件/子视图超出父视图的部分，不能监听事件
+// UILabel/UIImageView默认不能接收事件
 // https://www.jianshu.com/p/b1eaeff5ec81
 // https://www.jb51.net/article/108236.htm
 /**
