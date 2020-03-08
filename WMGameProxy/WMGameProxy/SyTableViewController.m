@@ -102,6 +102,7 @@
     // 1).刚进入页面会默认调一次UITableViewDelegate, UITableViewDataSource
     // 2).调用该方法会调用该一次UITableViewDelegate, UITableViewDataSource
     // 3).新cell进入屏幕会调用一次UITableViewDelegate, UITableViewDataSource
+    // 删除所有屏幕上可见的 cell
     [tableView reloadData];
     /// 2.局部刷新
     // 修改数据
@@ -264,6 +265,14 @@
 -(NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath {
     return @"删除";
 }
+// 返回编辑类型
+- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.row == 0) {
+        return UITableViewCellEditingStyleDelete;
+    } else {
+        return UITableViewCellEditingStyleInsert;
+    }
+}
 
 /// 2.左滑删除/多个 UITableViewRowAction
 // 自定义 UITableViewRowAction
@@ -282,29 +291,25 @@
     return @[action1, action2];
 }
 
-
-
-/// 编辑模式
+/// 3.编辑模式
 // 将 tableView.editing = true; 左边会出现一排 “红色按钮”
 // 可以加上动画 [tableView setEditing:!tableView.editing animated:YES];
-
-
-
-- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath {
-    /// 返回编辑类型
-    // 支持删除和插入
-    return UITableViewCellEditingStyleDelete;
-}
-
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath {
-    // ？？？实现行的移动？？？
-}
-
-/// 设置右边索引
+ 
+/// 4.设置右边索引
 // 按照 index 匹配
 // 不是按照字符串匹配
 - (NSArray<NSString *> *)sectionIndexTitlesForTableView:(UITableView *)tableView {
     return @[@"A", @"B", @"C"];
+}
+
+/// 5.行的移动
+// 支持行的移动
+- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
+    return YES;
+}
+// 行的移动完成
+- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath {
+
 }
 
 @end

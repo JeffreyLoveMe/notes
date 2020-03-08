@@ -473,6 +473,21 @@
 //    // 数组中的对象必须是相同类型，不然会报错
 //    [mArray3 makeObjectsPerformSelector:@selector(isOneway)];
 //    [mArray3 makeObjectsPerformSelector:@selector(isOneway:) withObject:@"lnj"];
+    
+    /// 文件读写
+    /**
+     1.将数组写入到文件中
+     如果将一个数组写入到文件中之后本质上是一个 “XML文件”
+     “XML文件” 的l扩展名保存为 .plist
+     */
+    // 如果数组中的元素是 “自定义对象” 不能使用该方法保存
+    // 保存 “自定义对象” 需要使用 “归档”
+    NSArray *array = @[@"lnj", @"yz", @"xwj"];
+    if ([array writeToFile:@"/Users/xiewujun/Desktop/abc.plist" atomically:YES]) {
+        NSLog(@"写入成功");
+    }
+    // 2.从文件中读取一个数组
+    array = [NSArray arrayWithContentsOfFile:@"/Users/xiewujun/Desktop/abc.plist"];
 }
 
 
@@ -648,7 +663,7 @@
 // 万物皆对象：空也是对象
 // nil不能存入字典/数组中
 -(void)showNull {
-    // 将nil封装成对象
+    // 将 nil 封装成对象
     NSNull *null = [NSNull null];
     NSArray *array = @[null, @(12)];
     NSLog(@"%@", [array description]);
@@ -660,7 +675,7 @@
 // 日期对象
 -(void)showDate {
     // 1.当前设备的时间点
-    // 北京时间：东八区
+    // 北京时间 - 东八区
     NSDate *date0 =[NSDate date];
     NSDate *date1 = [[NSDate alloc]init];
     // 明天 = 当前设备的时间点 + 24小时
@@ -677,7 +692,7 @@
     NSTimeInterval t1 = [date2 timeIntervalSinceNow];
     NSLog(@"%f===%f", t0, t1);
     // 3.日期的比较
-    // 第一种方式
+    // 第一种方式 - 直接比较
     NSComparisonResult result = [date3 compare:date4];
     if (result == NSOrderedAscending) {
         NSLog(@"date3 < date4");
@@ -686,7 +701,7 @@
     } else {
         
     }
-    // 第二种方式：比较时间戳
+    // 第二种方式 - 比较时间戳
     // 4.日期的格式化
     NSDate *nowDate = [NSDate date];
     NSString *defaultStr = nowDate.description;

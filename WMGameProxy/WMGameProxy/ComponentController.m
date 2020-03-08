@@ -64,14 +64,14 @@
     // 怎么改变控件的 frame
     // https://www.jianshu.com/p/b6ddfdef4147
     CGRect tempRect = view.frame;
-    tempRect.origin.x = 100;  // 改变x
-    tempRect.origin.y += 100; // 改变y
-    tempRect.size.height += 50; // 改变height
-    tempRect.size.width += 50;  // 改变width
+    tempRect.origin.x = 100;  // 改变 x
+    tempRect.origin.y += 100; // 改变 y
+    tempRect.size.height += 50; // 改变 height
+    tempRect.size.width += 50;  // 改变 width
     view.frame = tempRect;
     // 可以控制尺寸
     // 不可以控制位置
-    // 以自己左上角为坐标原点：x和y永远为0
+    // 以自己左上角为坐标原点 - x 和 y 永远为0
     view.bounds = CGRectMake(0, 0, 100, 50);
     // 可以控制位置
     // 控件的中心点：以父控件左上角为坐标原点
