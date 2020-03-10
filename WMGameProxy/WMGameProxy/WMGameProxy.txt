@@ -573,19 +573,6 @@ NSArray *array = [NSArray array];
 //UIWindow
 
 //ViewController的生命周期
-1.第一次加载vc：loadView->viewDidLoad->viewWillAppear->viewDidAppear；
-//push
-2.跳转第二个vc：viewWillDisappear->loadView->viewDidLoad->viewWillAppear->
-viewDidDisappear->viewDidAppear；
-//present
-2.跳转第二个vc：loadView->viewDidLoad->viewWillDisappear->viewWillAppear->
-viewDidAppear->viewDidDisappear；
-//pop、dismiss
-3.返回第一个vc：viewWillDisappear->viewWillAppear->viewDidDisappear->viewDidAppear
-->dealloc；//不重新创建第一个vc，第二个vc销毁
-参考： SySkillController.h/m
-https://blog.csdn.net/spicyshrimp/article/details/70886516
-
 //NSTimer定时器
 //UIView/动画
 //UILabel

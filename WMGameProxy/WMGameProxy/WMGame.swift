@@ -15,6 +15,7 @@ import UIKit
 /// 2.swift简介
 // 编译语言的高性能 + 脚本语言的交互性
 class WMGame: NSObject {
+    var name: String = ""
     func log() {
         /// 3.定义标识符
         // swift中定义标识符必须告诉编译器是一个常量还是一个变量
@@ -510,7 +511,92 @@ class WMGame: NSObject {
         var n = 9
         swapNum(m: &m, n: &n)
     }
+    
+    /// 重写父方法必须加上 override
+    override func setValue(_ value: Any?, forUndefinedKey key: String) {
+//        // 这里不能重写父类
+//        super.setValue(value, forUndefinedKey: key)
+    }
 }
 
-// 16.类
+/// 16.类
 // 1).swift是一门面向对象开发的语言
+// 2).类的定义 - 可以没有父类
+// swift中只要继承 NSObject 就可以使用 KVC
+class WMGameProxy: NSObject {
+    // 3).定义属性
+    // 1>.存储属性
+    var id: String?
+    var age: Int = 0
+    var mathScore: Double = 0.0
+    var chineseScore: Double = 0.0
+    // 2>.计算属性
+    // 也可以通过一个 “方法” 完成（ swift不推荐使用 ）
+    var averageScore: Double {
+//        // swift开发中如果需要使用当前对象的某一个属性/调用当前对象某一个方法的时候不需要加 "self"
+//        return (self.mathScore + self.chineseScore) * 0.5
+        return (mathScore + chineseScore) * 0.5
+    }
+    // 3>.类属性
+    // 与整个类相关的属性
+    // 通过类名进行访问
+    static var courseCount: Int = 0
+    
+    // 4).定义方法
+    func objClass() {
+        // 5).给类的属性赋值
+        let game: WMGame = WMGame()
+        // 1>.直接赋值
+        game.name = "xwj"
+        // 2>.通过 KVC 赋值
+        game.setValue("xwj", forKeyPath: "name")
+        // 调用类的方法
+        game.log()
+    }
+    
+    // 6).属性监听器
+    var name: String = "" {
+        // 属性即将改变时进行监听
+        // 老值
+        willSet {
+            print(name)
+            print(newValue)
+        }
+        // 属性已经改变进行监听
+        // 新值
+        didSet {
+            print(name)
+            print(oldValue)
+        }
+    }
+    
+    // 7).构造函数
+    // 1>.重写构造函数
+    override init() {
+        // 在 “构造函数” 中如果没有明确调用 “super.init()” 系统会帮助我们调用
+        super.init()
+    }
+    // 2>.自定义构造函数
+    init(id: String, age: Int) {
+        self.id = id
+        self.age = age
+    }
+    // 3>.自定义构造函数
+    init(dict: [String : Any]) {
+//        /**
+//         AnyObject转成确定的类型
+//         1."as?"最终转成的类型是一个“可选类型”
+//         2."as!"最终转成的类型是一个“确定类型”
+//         */
+//        let _ = dict["name"] as? String
+        super.init()
+        setValuesForKeys(dict)
+    }
+    
+    override func setValue(_ value: Any?, forUndefinedKey key: String) {
+        
+    }
+    
+    /// 17.闭包
+    
+}

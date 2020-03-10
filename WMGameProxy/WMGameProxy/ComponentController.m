@@ -1066,14 +1066,17 @@
 -(void)setupController {
     // 颜色
     self.view.backgroundColor = UIColor.grayColor;
-    /// 跳转
     // 模态跳转
-    // 任何控制器都可以通过 “模态跳转”
+    // 1.任何控制器都可以通过 “模态跳转”
+    // 2.“模态跳转” 会将窗口上面的 View 移除，将需要 “模态跳转” 的 “控制器View” 添加到窗口上
     SySkillController *conroller = [[SySkillController alloc]init];
     conroller.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
     // 弹出
+    // 1.当一个控制器被销毁，那么它的View的业务逻辑没法处理
+    // 2.当一个控制器被销毁，控制器View不一定会被销毁
     [self presentViewController:conroller animated:YES completion:^{
-        NSLog(@"模态弹出");
+        // self.presentingViewController 会 强引用 SySkillController
+        NSLog(@"模态弹出%@", self.presentingViewController);
     }];
     // 消失
     [self dismissViewControllerAnimated:YES completion:^{
@@ -1096,7 +1099,7 @@
 
 #pragma mark - UINavigationBar导航条/UIToolBar工具条
 -(void)setupNavigationBar {
-    /// 创建导航视图控制器
+    /// 0.创建导航视图控制器
     // 必须指定 RootViewController：通过push/pop管理UIViewController
     // 继承 UIViewController
     /*
@@ -1110,22 +1113,21 @@
     UINavigationController *navigationController = [[UINavigationController alloc]initWithRootViewController:self];
    // navigationController.childViewControllers, navigationController.viewControllers 有什么区别
     NSLog(@"获取导航控制器的顶部控制器=%@、获取导航控制器的可视控制器=%@、获取导航控制器的子控制器=%@、获取栈中视图控制器=%@", navigationController.topViewController, navigationController.visibleViewController, navigationController.childViewControllers, navigationController.viewControllers);
-    /// 跳转
-    // 跳转到下一个 UIViewController
-    // 压入栈
+    
+    /// 2.UINavigationController的层级关系（参见 UINavigationController 的层级结构 .png）
+    /**
+    1.UIWindow -> UINavigationController() -> 存放子控制器（通过栈的形式）
+    2.rootViewController 的 view 添加到 UIWindow
+    */
+    // 压入栈 - 跳转到下一个 UIViewController
     [self.navigationController pushViewController:self animated:YES];
-    // 返回到上一个 UIViewController
-    // 会将上面的控制器移除：移除的控制器会销毁
+    // 返回到上一个 UIViewController / 会将上面的控制器移除（移除的控制器会销毁）
     [self.navigationController popViewControllerAnimated:YES]; // 移除栈顶控制器
     [self.navigationController popToViewController:self animated:YES]; // 移除指定控制器
     [self.navigationController popToRootViewControllerAnimated:YES];  // 移除栈底控制器
-    // 2.UINavigationController的层级关系：参见 UINavigationController 的层级结构 .png
-    /**
-     1.UIWindow -> UINavigationController() -> 存放子控制器（通过栈的形式）
-     2.rootViewController 的 view 添加到 UIWindow
-     */
-    // 3.UINavigationBar的常见属性和方法
-    /// 导航条（只有一个、默认不隐藏）
+    
+    /// 3.UINavigationBar的常见属性和方法
+    // 1>.导航条（只有一个、默认不隐藏）
     // 继承 UIView
     // 设置导航控制器的风格
     // UINavigationBar *bar = navigationController.navigationBar; // 获取导航栏：只读变量
@@ -1145,7 +1147,7 @@
     // 设置导航条背景（必须使用默认模式 UIBarMetricsDefault）
     // 当背景图片设置为 nil 的时候系统会自动生成一张半透明的图片为导航条背景
     [navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"image_demo"] forBarMetrics:UIBarMetricsDefault];
-    /// 工具条：默认隐藏
+    // 2>.工具条：默认隐藏
     // 一般不用（默认就是隐藏）
     navigationController.toolbarHidden = NO;
     navigationController.toolbar.barStyle = UIBarStyleBlack;
@@ -1156,7 +1158,8 @@
     if (self.navigationController.toolbarHidden) {
         // UIToolBar工具条是否隐藏
     }
-    // 4.UINavigationItem 的常见属性和方法
+    
+    /// 4.UINavigationItem 的常见属性和方法
     // 每个 UIViewController 都有一个 UINavigationItem
     // UINavigationItem 在 UINavigationBar上面，但是是由 UIViewController 控制 UINavigationItem
     // ！！！导航栏的内容取决于栈顶控制器的 UINavigationItem 属性/需要在 栈顶控制器 中设置！！！

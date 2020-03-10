@@ -671,27 +671,62 @@
 
 
 
-/// 8.NSDate
-// 日期对象
+/// 8.NSDate/日期对象
+// NSData/二进制数据
 -(void)showDate {
-    // 1.当前设备的时间点
-    // 北京时间 - 东八区
-    NSDate *date0 =[NSDate date];
+    // 1.NSDate的创建和基本概念
+    // 获取当前时间
+    NSDate *now = [NSDate date];
+//    // 在 now 的基础上追加 10 秒
+//    NSDate *date = [now dateByAddingTimeInterval:10];
+//    NSLog(@"data = %@", date);
+    // 2.获取当前所处的时区
+    NSTimeZone *zone = [NSTimeZone systemTimeZone];
+    // 获取 “当前时区” 和 “指定时间” 的时间差
+    NSUInteger secondCount = [zone secondsFromGMTForDate:now];
+    NSLog(@"secondCount = %lu", secondCount);
+    // 3.当前时间 / 北京东八区
+    NSDate *currentDate = [now dateByAddingTimeInterval:secondCount];
+    
+    // 4.时间格式化
+    // 创建 “时间格式化对象”
+    NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
+    // 按照什么格式
+    /**
+     yyyy - 年
+     MM - 月
+     dd - 日
+     HH - 24小时 / hh - 12小时
+     mm - 分钟
+     ss - 秒
+     Z - 时区
+     */
+    // 参考 "时间格式说明符对照统一表.png"
+    formatter.dateFormat = @"yyyy年MM月dd日 HH小时mm分ss秒 Z";
+    // 进行格式化
+    NSString *time = [formatter stringFromDate:now];
+    
+    // 5.NSString -> NSDate
+    NSDate *date = [formatter dateFromString:time];
+    
+    // 6.NSDate还可以通过该方法
     NSDate *date1 = [[NSDate alloc]init];
     // 明天 = 当前设备的时间点 + 24小时
     NSDate *date2 = [NSDate dateWithTimeIntervalSinceNow:24 * 60 * 60];
     // 昨天 = 当前设备的时间点 - 24小时
     NSDate *date3 = [NSDate dateWithTimeIntervalSinceNow:-(24 * 60 * 60)];
-    NSLog(@"%@===%@===%@===%@", date0, date1, date2, date3);
-    // 2.时间戳 - 某一日期到1970年的秒数大小成为该日期的时间戳
+    NSLog(@"%@==%@===%@===%@", date, date1, date2, date3);
+    
+    // 7.时间戳 - 某一日期到 1970年 的秒数大小成为该日期的时间戳
     // 通过 “时间戳” 创建一个 “NSDate”
     NSDate *date4 = [NSDate dateWithTimeIntervalSince1970:0];
     // 获取日期的时间戳
-    NSTimeInterval t0 = [date0 timeIntervalSince1970];
-    // 明天到现在的i秒数
+    NSTimeInterval t0 = [date1 timeIntervalSince1970];
+    // 明天到现在的 “i秒数”
     NSTimeInterval t1 = [date2 timeIntervalSinceNow];
     NSLog(@"%f===%f", t0, t1);
-    // 3.日期的比较
+    
+    // 8.日期的比较
     // 第一种方式 - 直接比较
     NSComparisonResult result = [date3 compare:date4];
     if (result == NSOrderedAscending) {
@@ -702,24 +737,18 @@
         
     }
     // 第二种方式 - 比较时间戳
-    // 4.日期的格式化
     NSDate *nowDate = [NSDate date];
     NSString *defaultStr = nowDate.description;
     NSLog(@"%@", defaultStr);
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc]init];
-    // 参考 "时间格式说明符对照统一表.png"
-    // zz时区
-    [dateFormatter setDateFormat:@"yyyy年MM月dd日 HH:mm:ss zz"];
-    // 设置时区
+
+    // 8.设置时区
     NSTimeZone *timeZone = [NSTimeZone timeZoneWithName:@"Pacific/Funafuti"];
     [dateFormatter setTimeZone:timeZone];
     // 获取所有时区的名称
     for (NSString *timeZone in [NSTimeZone knownTimeZoneNames]) {
         NSLog(@"%@", timeZone);
     }
-    // 字符串 -> 日期对象
-    NSString *dateStr = @"2013年04月08日 18:30:25";
-    NSLog(@"时间===%@/对象===%@", [dateFormatter stringFromDate:nowDate], [dateFormatter dateFromString:dateStr]);
 }
 
 
