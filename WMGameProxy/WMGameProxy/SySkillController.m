@@ -30,7 +30,6 @@
  //pop、dismiss
  3.返回第一个vc：viewWillDisappear->viewWillAppear->viewDidDisappear->viewDidAppear
  ->dealloc；//不重新创建第一个vc，第二个vc销毁
- 参考： SySkillController.h/m
  https://blog.csdn.net/spicyshrimp/article/details/70886516
  */
 - (void)loadView {
