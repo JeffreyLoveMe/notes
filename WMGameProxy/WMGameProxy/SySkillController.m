@@ -20,21 +20,25 @@
 @implementation SySkillController
 #pragma mark - ViewController的生命周期
 /**
- 1.第一次加载vc：loadView->viewDidLoad->viewWillAppear->viewDidAppear；
- //push
+ // 首次进入
+ 1.第一次加载vc：loadView->viewDidLoad->viewWillAppear->viewDidAppear
+ // push
  2.跳转第二个vc：viewWillDisappear->loadView->viewDidLoad->viewWillAppear->
- viewDidDisappear->viewDidAppear；
- //present
+ viewDidDisappear->viewDidAppear
+ // present
  2.跳转第二个vc：loadView->viewDidLoad->viewWillDisappear->viewWillAppear->
- viewDidAppear->viewDidDisappear；
- //pop、dismiss
+ viewDidAppear->viewDidDisappear
+ // pop、dismiss
+ // 不重新创建第一个VC
+ // 第二个VC销毁
  3.返回第一个vc：viewWillDisappear->viewWillAppear->viewDidDisappear->viewDidAppear
- ->dealloc；//不重新创建第一个vc，第二个vc销毁
+ ->dealloc
  https://blog.csdn.net/spicyshrimp/article/details/70886516
  */
 - (void)loadView {
     // 保留父类方法
     // 一般都需要调用
+    // “自定义self.view” 不用调用该方法
     [super loadView];
     // 0.初始化控制器的 self.view/创建self.view
     // 当 self.view 第一次使用的时候调用

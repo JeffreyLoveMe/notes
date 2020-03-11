@@ -46,6 +46,10 @@
 		33385C802417697200C55EC0 /* 项目的基本部署.png in Resources */ = {isa = PBXBuildFile; fileRef = 33385C7F2417697200C55EC0 /* 项目的基本部署.png */; };
 		3340B2E722C0D9AC00111228 /* 代码标准h文件.png in Resources */ = {isa = PBXBuildFile; fileRef = 3340B2E522C0D9AB00111228 /* 代码标准h文件.png */; };
 		3340B2E822C0D9AC00111228 /* 代码标准m文件.png in Resources */ = {isa = PBXBuildFile; fileRef = 3340B2E622C0D9AC00111228 /* 代码标准m文件.png */; };
+		3353539524194CB300D403FB /* 应用沙盒结构分析.png in Resources */ = {isa = PBXBuildFile; fileRef = 3353539424194CB200D403FB /* 应用沙盒结构分析.png */; };
+		3353539724194CC300D403FB /* 学历.png in Resources */ = {isa = PBXBuildFile; fileRef = 3353539624194CC300D403FB /* 学历.png */; };
+		33581CFF2418E4D3004B1F8A /* 项目基本配置.png in Resources */ = {isa = PBXBuildFile; fileRef = 33581CFD2418E4D3004B1F8A /* 项目基本配置.png */; };
+		33581D002418E4D3004B1F8A /* 常见bug_01.png in Resources */ = {isa = PBXBuildFile; fileRef = 33581CFE2418E4D3004B1F8A /* 常见bug_01.png */; };
 		3361E40E2308F3DF00A03B7D /* 常见系统库01.png in Resources */ = {isa = PBXBuildFile; fileRef = 3361E40C2308F3DF00A03B7D /* 常见系统库01.png */; };
 		3361E40F2308F3DF00A03B7D /* 常见系统库00.png in Resources */ = {isa = PBXBuildFile; fileRef = 3361E40D2308F3DF00A03B7D /* 常见系统库00.png */; };
 		3361E4182309A37D00A03B7D /* image_demo.png in Resources */ = {isa = PBXBuildFile; fileRef = 3361E4172309A37D00A03B7D /* image_demo.png */; };
@@ -161,6 +165,10 @@
 		33385C7F2417697200C55EC0 /* 项目的基本部署.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "项目的基本部署.png"; sourceTree = "<group>"; };
 		3340B2E522C0D9AB00111228 /* 代码标准h文件.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "代码标准h文件.png"; sourceTree = "<group>"; };
 		3340B2E622C0D9AC00111228 /* 代码标准m文件.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "代码标准m文件.png"; sourceTree = "<group>"; };
+		3353539424194CB200D403FB /* 应用沙盒结构分析.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "应用沙盒结构分析.png"; sourceTree = "<group>"; };
+		3353539624194CC300D403FB /* 学历.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "学历.png"; sourceTree = "<group>"; };
+		33581CFD2418E4D3004B1F8A /* 项目基本配置.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "项目基本配置.png"; sourceTree = "<group>"; };
+		33581CFE2418E4D3004B1F8A /* 常见bug_01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "常见bug_01.png"; sourceTree = "<group>"; };
 		3361E40C2308F3DF00A03B7D /* 常见系统库01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "常见系统库01.png"; sourceTree = "<group>"; };
 		3361E40D2308F3DF00A03B7D /* 常见系统库00.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "常见系统库00.png"; sourceTree = "<group>"; };
 		3361E4172309A37D00A03B7D /* image_demo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = image_demo.png; sourceTree = "<group>"; };
@@ -285,6 +293,7 @@
 				33ADF8CC240CC4BF0041F19A /* Res */,
 				33ADF8CD240CC5280041F19A /* Libs */,
 				33F735AB24036DE5005AC30D /* ProvincesAndCities.plist */,
+				3353539624194CC300D403FB /* 学历.png */,
 				3361E4172309A37D00A03B7D /* image_demo.png */,
 				3361E40D2308F3DF00A03B7D /* 常见系统库00.png */,
 				3361E40C2308F3DF00A03B7D /* 常见系统库01.png */,
@@ -295,6 +304,7 @@
 				33D730A5231925AC0024D34E /* UIView常见属性和方法.png */,
 				33A8FD7622D48125004AECBA /* 快捷键.png */,
 				33F1D58623CC4364001AC221 /* 给文件名（类名）加前缀.png */,
+				3353539424194CB200D403FB /* 应用沙盒结构分析.png */,
 				33D7768323FA7142001BF56E /* Sy-项目添加类前缀.png */,
 				33F1D58423C9FE5B001AC221 /* 真实文件夹:虚拟文件夹.png */,
 				3322A1A32417919D0062B829 /* 内存警告处理.png */,
@@ -312,6 +322,8 @@
 				33FEF93523D191C8004169AB /* info.plist简介.png */,
 				339A3D8122BBBE5D007DD37D /* Xcode新建项目.png */,
 				339A3D7C22BBB3F4007DD37D /* 下拉刷新_上拉加载_标准版.png */,
+				33581CFE2418E4D3004B1F8A /* 常见bug_01.png */,
+				33581CFD2418E4D3004B1F8A /* 项目基本配置.png */,
 				33FEF93323D18E65004169AB /* LaunchScreen简介.png */,
 				33A9F0B722B4D4C5007985BF /* 怎么称为一名优秀leader.xmind */,
 				33068F1522B0955200D044EE /* 下拉加载范例.png */,
@@ -559,6 +571,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3353539524194CB300D403FB /* 应用沙盒结构分析.png in Resources */,
 				33068EC322AE665600D044EE /* LaunchScreen.storyboard in Resources */,
 				3361E41A230A43EA00A03B7D /* DOVE.bundle in Resources */,
 				33068F0422AE67C800D044EE /* Safe Area.png in Resources */,
@@ -601,6 +614,9 @@
 				33F1D58723CC4364001AC221 /* 给文件名（类名）加前缀.png in Resources */,
 				3312831C2339D2E3005D55E2 /* DNGameProxy.txt in Resources */,
 				33068F1222AE67C800D044EE /* iphone设备尺寸.png in Resources */,
+				33581D002418E4D3004B1F8A /* 常见bug_01.png in Resources */,
+				33581CFF2418E4D3004B1F8A /* 项目基本配置.png in Resources */,
+				3353539724194CC300D403FB /* 学历.png in Resources */,
 				339D266F235DBAF700E79BCD /* 时间格式说明符对照统一表.png in Resources */,
 				33F1D58523C9FE5B001AC221 /* 真实文件夹:虚拟文件夹.png in Resources */,
 				33068F0E22AE67C800D044EE /* C语言的执行流程.png in Resources */,

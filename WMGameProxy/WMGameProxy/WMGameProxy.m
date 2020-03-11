@@ -106,6 +106,8 @@
     // super在类方法中调用父类方法
     // super在对象方法中调用父类对象方法
     // ！！！必须先赋值 self！！！
+    // super - 仅仅是一个编译指示器/只要编译器看到 super 就会让 “当前对象” 去调用 “父类方法”
+    // 此处还是 “WMGameProxy类的对象” 在调用 “NSObject类的对象” 的 “init()” 方法
     self = [super init];
     // self不能离开类
     // self在对象方法中指向当前对象（谁调用对象方法 self指向谁）
@@ -117,6 +119,13 @@
         _height = @"";
         _sdk = sdk;
     }
+    /**
+     [self class] - 获取当前方法调用者的类
+     [self superclass] - 获取当前方法调用者的父类
+     super - 仅仅是一个编译指示器/只要编译器看到 super 就会让 “当前对象” 去调用 “父类方法”
+     [super class] - 让当前类的对象去调用父类的方法
+     */
+    NSLog(@"%@ = %@ = %@ = %@", [self class], [self superclass], [super class], [super superclass]);
     return self;
 }
 
@@ -171,12 +180,12 @@
 //    [d eat];
 }
 
-// 不会输出self/会死循环
+// 不会输出 "self" / 死循环
 // NSLog()输出<类名:地址>/<Person: 0x100202310>
 // 输出 self 就是调用 [self description]
 - (NSString *)description {
     // 调用方法
-    // 先从自己类中找->再去父类中找
+    // 先从自己类中找 -> 再去父类中找
     // 返回当前对象
     // 调用 - (NSString *)description {}
     // 默认返回：<类名: 地址>

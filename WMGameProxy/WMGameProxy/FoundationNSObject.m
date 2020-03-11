@@ -664,9 +664,18 @@
 // nil不能存入字典/数组中
 -(void)showNull {
     // 将 nil 封装成对象
-    NSNull *null = [NSNull null];
+    NSNull *null = [NSNull null]; // 创建 “表示空” 的对象
     NSArray *array = @[null, @(12)];
     NSLog(@"%@", [array description]);
+//    /**
+//     nil-对象指针为空
+//     Nil-类指针为空
+//     NULL-基本类型指针为空
+//     */
+//    NSMutableDictionary *dict = [[NSMutableDictionary alloc]init];
+//    // 空指针不能加入到数组和字典
+//    [dict setObject:nil atIndexedSubscript:@"key"]; // 错误
+//    [dict setObject:[NSNull null] forKey:@"key"]; // 可以采用 "[NSNull null]" 方式加入空对象
 }
 
 

@@ -23,6 +23,8 @@
     FoundationNSObject *f = [[FoundationNSObject alloc]init];
     [f showDate];
 }
+
+
 #pragma mark - UIView视图
 // UIView是所有视图的父类/UIView的属性是子视图共有的
 // 0.以父视图左上角为原点
@@ -159,18 +161,20 @@
     // UILabel的高度是随着文字内容的增加而拉伸
     UILabel *label = [[UILabel alloc]init];
     label.frame = CGRectMake(100, 100, 100, 50);
+    // 会先将 label 从别的父视图移除
     [self.view addSubview:label];
     label.backgroundColor = UIColor.whiteColor;
     label.text = @"hello world";
     label.textColor = UIColor.yellowColor;
-    label.font = [UIFont fontWithName:@"" size:20];
+    // 添加 "Zapfino.ttf字体"
+    label.font = [UIFont fontWithName:@"Zapfino" size:20];
     /*
      NSTextAlignmentRight
      NSTextAlignmentCenter
      NSTextAlignmentLeft
      */
     label.textAlignment = NSTextAlignmentCenter;
-    // 自适应宽度：字体会缩小、不会放大
+    // 自适应宽度：字体会缩小/不会放大
     label.adjustsFontSizeToFitWidth = true;
     label.tag = 0;
     // ！！！父控件隐藏会导致所有的子控件都隐藏！！！
@@ -184,10 +188,12 @@
     label.preferredMaxLayoutWidth = [UIScreen mainScreen].bounds.size.width - 15 * 2;
 }
 
+
 #pragma mark - 阴影
 -(void)setupShadow {
     
 }
+
 
 #pragma mark - UIButton按钮
 /// 有那些类可以"事件监听"？？？:继承于UIControl都可以"事件监听"
@@ -344,8 +350,22 @@
      UIViewContentModeScaleAspectFill -按比例填满/宽和高全部靠近/会超出
      */
     imageView.contentMode = UIViewContentModeScaleAspectFit;
-    //// ！！！动画部分！！！
-    /// 1.帧动画
+    
+    // 毛玻璃
+    UIToolbar *toolBar = [[UIToolbar alloc]init];
+    // toolBar沾满imageView全屏幕
+    toolBar.frame = imageView.bounds;
+    /*
+     UIBarStyleDefault
+     UIBarStyleBlack
+     */
+    toolBar.barStyle = UIBarStyleBlack;
+    // 设置透明度
+    toolBar.alpha = 0.5;
+    [imageView addSubview:toolBar];
+    
+    // 动画部分 - start //
+    // 1.帧动画
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"DOVE/image_bg.jpg"]];
     // 1).拿到数组
     NSMutableArray<UIImage *> *photos = [NSMutableArray array];
@@ -372,7 +392,8 @@
     }
 //    // 停止动画
 //    [imageView stopAnimating];
-    /// 2.渐变动画
+    
+    // 2.渐变动画
     // 只能修改关于坐标系的属性、色彩和透明度
     // 第一种方式：通过 delegate/先不实现
     // 第二种方式：通过 block
@@ -404,20 +425,12 @@
             NSLog(@"动画完成");
         }
     }];
-    /// 3.核心动画
-    /// 4.转场动画
-    // 毛玻璃
-    UIToolbar *toolBar = [[UIToolbar alloc]init];
-    // toolBar沾满imageView全屏幕
-    toolBar.frame = imageView.bounds;
-    /*
-     UIBarStyleDefault
-     UIBarStyleBlack
-     */
-    toolBar.barStyle = UIBarStyleBlack;
-    // 设置透明度
-    toolBar.alpha = 0.5;
-    [imageView addSubview:toolBar];
+    
+    // 3.核心动画
+    
+    // 4.转场动画
+    
+    // 动画部分 - end //
 }
 
 
@@ -482,6 +495,43 @@
 -(void)editDidChanged:(UITextField *)textField {
     NSLog(@"文字改变");
 }
+#pragma mark - UITextFieldDelegate
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
+    /// 是否允许开始编辑
+    // YES代表可以成为第一响应者
+    return YES;
+}
+- (void)textFieldDidBeginEditing:(UITextField *)textField {
+    // 开始编辑/点击输入框调用该方法
+    // 成为 “第一响应者” 开始调用
+}
+- (BOOL)textFieldShouldEndEditing:(UITextField *)textField {
+    /// 是否允许结束编辑
+    // NO代表不可以失去第一响应者
+    return NO;
+}
+- (void)textFieldDidEndEditing:(UITextField *)textField {
+    // 结束编辑
+}
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    /// 点击 return 的时候调用该方法
+    // 放弃第一响应者
+    // 退出键盘
+    [textField resignFirstResponder];
+    return true;
+}
+- (BOOL)textFieldShouldClear:(UITextField *)textField {
+    // 是否允许全部清空
+    return YES;
+}
+/// ！！！重点！！！
+// 当 textField 文字发生改变就会调用该方法
+// 拦截用户输入
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
+    // 是否允许改变文本框内容
+    // 是否允许 string 去改变文本框内容
+    return YES;
+}
 
 
 #pragma mark - UITextView能滚动的文本显示控件
@@ -495,7 +545,7 @@
 // 允许用户通过拖动手势滚动查看内容
 // 允许用户通过捏合手势缩放内容
 // 用来滚动的视图，可以用来展示大量内容
-// 普通UIView不具备滚动功能
+// UIView不具备滚动功能
 // ！！！不要通过索引去访问 UIScrollView 子控件！！！
 -(void)setupScrollView {
     /// UIScrollView不可滚动的原因有哪些？？？
@@ -549,7 +599,7 @@
     // scrollView.minimumZoomScale == scrollView.maximumZoomScale不能缩放
     scrollView.minimumZoomScale = 0.5; // 缩小的最小比例
     scrollView.maximumZoomScale = 5;    // 放大的最大比例
-    // 减速率：一般数值越大、停下来的时间越长
+    // 减速率：一般数值越大，停下来的时间越长
     scrollView.decelerationRate = 0;
     // 按住手指还没有开始拖动是YES
     // 是否正在被拖拽
@@ -562,6 +612,59 @@
     for (UIView *subView in scrollView.subviews) {
         [subView removeFromSuperview];
     }
+}
+#pragma mark - UIScrollViewDelegate
+/// 1 & 2 & 4 -可以唯一确定上滑/下滑
+-(void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    // 1.不管怎么操作-只要拥有偏移量就执行
+    // 实时监测滚动变化
+}
+/// 2 & 4 -可以唯一确定停止滚动
+-(void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
+    // 2.已经停止拖拽的时候执行
+    if (decelerate == NO) {
+        // 没有减速
+        // 表示已经停止滚动
+        // 4 & 5不会执行
+    } else {
+        // 停止拖拽：会减速
+        // 4 & 5会执行
+    }
+}
+- (void)scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset {
+    // 3.将要停止拖拽的时候执行
+}
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
+    // 4.已经减速结束的时候执行
+}
+- (void)scrollViewWillBeginDecelerating:(UIScrollView *)scrollView {
+    // 5.将要减速的时候执行
+}
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
+    // 6.将要拖动的时候执行
+}
+- (BOOL)scrollViewShouldScrollToTop:(UIScrollView *)scrollView {
+    // 7.是否允许回到顶部 - 一般不用设置
+    return YES;
+}
+- (void)scrollViewDidScrollToTop:(UIScrollView *)scrollView {
+    // 8.已经回到顶部开始执行
+}
+//！！！以下处理缩放逻辑！！！//
+- (UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView {
+    // 2.设置对哪个视图缩放、返回缩放的视图对象
+    // ！！！不能用索引去查找 UIScrollView 的子控件！！！
+    // 所以此处写法有问题
+    return scrollView.subviews.firstObject;
+}
+- (void)scrollViewWillBeginZooming:(UIScrollView *)scrollView withView:(UIView *)view {
+    // 将要开始缩放
+}
+- (void)scrollViewDidZoom:(UIScrollView *)scrollView {
+    // 已经开始缩放/正在缩放
+}
+- (void)scrollViewDidEndZooming:(UIScrollView *)scrollView withView:(UIView *)view atScale:(CGFloat)scale {
+    // 已经结束缩放
 }
 
 
@@ -579,8 +682,8 @@
     pc.tag = 100;
     [pc updateCurrentPageDisplay]; // 刷新当前视图
     [self.view addSubview:pc];
-    // 自定义UIPageControl样式
-    // 利用KVC访问私有变量（KVC的强大）
+    // 自定义 "UIPageControl样式"
+    // 利用 KVC 访问私有变量
     [pc setValue:[UIImage imageNamed:@"xxx"] forKeyPath:@"_currentPageImage"];
     [pc setValue:[UIImage imageNamed:@"xxx"] forKeyPath:@"_pageImage"];
 }
@@ -589,7 +692,7 @@
 }
 
 
-/// UIMenuController菜单
+#pragma mark - UIMenuController菜单
 // https://blog.csdn.net/woyangyi/article/details/45896859
 -(void)setupMenuController {
     // 如果一个控件可以使用 “单例” 创建，那么最好让 “init” 创建报错
@@ -603,15 +706,12 @@
     // 显示 menu
     [menu setMenuVisible:YES animated:YES];
     // 设置当前 UIViewController 为第一响应者
-    // UIMenuController的显示依赖第一响应者
-    //当UIViewController取消第一响应者，UIMenuController自动消失
+    // UIMenuController的显示依赖第一响应者（UIViewController取消第一响应者 -> UIMenuController自动消失）
     [self becomeFirstResponder];
 }
-
 -(void)onCopy:(UIMenuItem *)item {
     
 }
-
 -(void)onDelete:(UIMenuItem *)item {
     
 }
@@ -661,6 +761,44 @@
     // 刷新数据
     [pickerView reloadAllComponents];
     [pickerView reloadComponent:0];
+}
+#pragma mark - UIPickerViewDataSource, UIPickerViewDelegate
+/// UIPickerViewDataSource
+/// 必须实现
+- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
+    // 总共多少列
+    return 1;
+}
+- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
+    // 每列展示多少行
+    return 10;
+}
+/// UIPickerViewDelegate
+/// 非必须实现
+// 返回每一列的宽度
+- (CGFloat)pickerView:(UIPickerView *)pickerView widthForComponent:(NSInteger)component {
+    return self.view.frame.size.width / 2;
+}
+// 返回每一行的高度
+- (CGFloat)pickerView:(UIPickerView *)pickerView rowHeightForComponent:(NSInteger)component {
+    return 45;
+}
+/// 返回每一行的内容
+// 1.字符串
+- (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
+    return @"xmg";
+}
+// 2.带属性字符串（大小、颜色、阴影、描边）
+- (nullable NSAttributedString *)pickerView:(UIPickerView *)pickerView attributedTitleForRow:(NSInteger)row forComponent:(NSInteger)component {
+    return nil;
+}
+// 3.视图
+- (UIView *)pickerView:(UIPickerView *)pickerView viewForRow:(NSInteger)row forComponent:(NSInteger)component reusingView:(nullable UIView *)view {
+    return [[UIView alloc] init];
+}
+// 当前选中的哪一行哪一列
+- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
+    
 }
 
 
@@ -800,10 +938,24 @@
 //    alert.alertViewStyle = UIAlertViewStyleLoginAndPasswordInput;
 //    [alert show];
 //}
+#pragma mark - UIAlertViewDelegate
+//- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+//    // 点击第几个 button
+//}
+
+
 ///// UIActionSheet/底部弹窗
 //-(void)setupActionSheet {
 //    UIActionSheet *alert = [[UIActionSheet alloc]initWithTitle:@"你确定需要删除吗？" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:@"删除" otherButtonTitles:@"确定", nil];
 //    [alert showInView:self.view];
+//}
+#pragma mark - UIActionSheetDelegate
+//- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+//    // 点击第几个 button
+//}
+//
+//- (void)actionSheetCancel:(UIActionSheet *)actionSheet {
+//    // 有系统事件（来电）时调用
 //}
 
 
@@ -962,22 +1114,25 @@
 }
 -(void)onPan:(UIPanGestureRecognizer *)pan {
     // 可以拿到拖动的偏移量
-    // 相对于 “最原始的位置”/需要做 “复位”操作
+    // 相对于 “最原始的位置”/ 需要做 “复位” 操作
     CGPoint point = [pan translationInView:self.view];
     NSLog(@"拖动的偏移量=%@", NSStringFromCGPoint(point));
-    // 这里可以执行 “平移”效果让控件移动
-    // 复位操作
+    // 1.这里可以执行 “平移” 效果让控件移动
+    // 假装这里有代码 / 形变 //
+    // 2.复位操作
     [pan setTranslation:CGPointZero inView:self.view];
 }
 -(void)onPinch:(UIPinchGestureRecognizer *)pinch {
-    // 这里配合 “形变属性” 可以操作很多动画效果
-    // 相对于 “最原始的位置”/需要做 “复位”操作
+    // 1.这里配合 “形变属性” 可以操作很多动画效果
+    // 假装这里有代码 / 形变 //
+    // 2.相对于 “最原始的位置”/ 需要做 “复位” 操作
     NSLog(@"捏合的比例=%lf", pinch.scale);
     [pinch setScale:1];
 }
 -(void)onRotation:(UIRotationGestureRecognizer *)rotation {
-    // 这里配合 “形变属性” 可以操作很多动画效果
-    // 相对于 “最原始的位置”/需要做 “复位”操作
+    // 1.这里配合 “形变属性” 可以操作很多动画效果
+    // 假装这里有代码 / 形变 //
+    // 2.相对于 “最原始的位置”/ 需要做 “复位” 操作
     NSLog(@"旋转的角度=%lf", rotation.rotation);
     [rotation setRotation:0];
 }
@@ -986,6 +1141,26 @@
         NSLog(@"向上轻扫");
     } else if (swipe.direction == UISwipeGestureRecognizerDirectionRight) {
         NSLog(@"向右轻扫");
+    }
+}
+#pragma mark - UIGestureRecognizerDelegate
+- (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer {
+    // 是否允许触发手势
+    return YES;
+}
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
+    // 是否允许同时支持多个手势：默认不支持 / YES表示支持
+    return YES;
+}
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch {
+    // 是否允许接收手势
+    // 一边可以接收手势
+    // 另一边不可以接收手势
+    CGPoint point = [touch locationInView:self.view];
+    if (point.x > self.view.frame.size.width / 2) {
+        return NO;
+    } else {
+        return YES;
     }
 }
 
@@ -1067,7 +1242,7 @@
 
 #pragma mark - UIViewControllView
 // UITabBarController/UINavigationController/UITableViewController
-// ？？？先执行init()方法、还是先执行loadView()？？？
+// 先执行 “init()方法” -> 执行 “loadView()方法”
 -(void)setupController {
     // 颜色
     self.view.backgroundColor = UIColor.grayColor;
@@ -1075,18 +1250,33 @@
     // 1.任何控制器都可以通过 “模态跳转”
     // 2.“模态跳转” 会将窗口上面的 View 移除，将需要 “模态跳转” 的 “控制器View” 添加到窗口上
     SySkillController *conroller = [[SySkillController alloc]init];
+    // 设定动画样式
     conroller.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
     // 弹出
-    // 1.当一个控制器被销毁，那么它的View的业务逻辑没法处理
-    // 2.当一个控制器被销毁，控制器View不一定会被销毁
+    // 当一个控制器被销毁 - 控制器View不一定会被销毁/控制器View的业务逻辑没法处理
     [self presentViewController:conroller animated:YES completion:^{
-        // self.presentingViewController 会 强引用 SySkillController
+        // self.presentingViewController 强引用 SySkillController
         NSLog(@"模态弹出%@", self.presentingViewController);
     }];
     // 消失
     [self dismissViewControllerAnimated:YES completion:^{
         NSLog(@"模态消失");
     }];
+}
+#pragma mark - UITabBarControllerDelegate
+- (BOOL)tabBarController:(UITabBarController *)tabBarController shouldSelectViewController:(UIViewController *)viewController {
+    // 是否可以选择这个控制器
+    // YES可以/NO不可以
+    return YES;
+}
+- (void)tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController {
+    // 选中某一个控制器
+}
+- (void)tabBarController:(UITabBarController *)tabBarController willBeginCustomizingViewControllers:(NSArray<__kindof UIViewController *> *)viewControllers {
+    // 将要开始编辑
+}
+- (void)tabBarController:(UITabBarController *)tabBarController didEndCustomizingViewControllers:(NSArray<__kindof UIViewController *> *)viewControllers changed:(BOOL)changed {
+    // 结束编辑
 }
 
 
@@ -1095,7 +1285,6 @@
 -(UIStatusBarStyle)preferredStatusBarStyle {
     return UIStatusBarStyleLightContent;
 }
-
 // 设置状态栏的可见性
 -(BOOL)prefersStatusBarHidden {
     return true;
@@ -1124,6 +1313,8 @@
     1.UIWindow -> UINavigationController() -> 存放子控制器（通过栈的形式）
     2.rootViewController 的 view 添加到 UIWindow
     */
+    // UITabBar隐藏
+    self.hidesBottomBarWhenPushed = YES;
     // 压入栈 - 跳转到下一个 UIViewController
     [self.navigationController pushViewController:self animated:YES];
     // 返回到上一个 UIViewController / 会将上面的控制器移除（移除的控制器会销毁）
@@ -1228,7 +1419,8 @@
     // 4.回到根视图控制器
     [self.navigationController popToRootViewControllerAnimated:true];
 }
--(void)onImage {}
+-(void)onImage {
+}
 /**
  非主流框架搭建：
  UIWindow -> UINavigationController -> UITabBarController -> ChildViewControllers
@@ -1271,6 +1463,7 @@
 UIWindow -> UITabBarController -> UINavigationController -> ChildViewControllers
 */
 
+
 #pragma mark - UIImagePickerController
 // 相机、相册
 -(void)setupImagePickerController {
@@ -1284,6 +1477,7 @@ UIWindow -> UITabBarController -> UINavigationController -> ChildViewControllers
         
     }];
 }
+
 
 #pragma mark - XIB
 -(void)setupXib {
@@ -1319,222 +1513,6 @@ UIWindow -> UITabBarController -> UINavigationController -> ChildViewControllers
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
 //    NSLog(@"%@=====%@", segue.destinationViewController, segue.sourceViewController);
 //    SySkillController *controller = (SySkillController *)segue.destinationViewController;
-}
-
-
-#pragma mark - Auto Layout
-
-
-#pragma mark - UITextFieldDelegate
-- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
-    /// 是否允许开始编辑
-    // YES代表可以成为第一响应者
-    return YES;
-}
-
-- (void)textFieldDidBeginEditing:(UITextField *)textField {
-    // 开始编辑/点击输入框调用该方法
-    // 成为 “第一响应者” 开始调用
-}
-
-- (BOOL)textFieldShouldEndEditing:(UITextField *)textField {
-    /// 是否允许结束编辑
-    // NO代表不可以失去第一响应者
-    return NO;
-}
-
-- (void)textFieldDidEndEditing:(UITextField *)textField {
-    // 结束编辑
-}
-
-- (BOOL)textFieldShouldReturn:(UITextField *)textField {
-    /// 点击 return 的时候调用该方法
-    // 放弃第一响应者
-    // 退出键盘
-    [textField resignFirstResponder];
-    return true;
-}
-
-- (BOOL)textFieldShouldClear:(UITextField *)textField {
-    // 是否允许全部清空
-    return YES;
-}
-
-/// ！！！重点！！！
-// 当 textField 文字发生改变就会调用该方法
-// 拦截用户输入
-- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
-    // 是否允许改变文本框内容
-    // 是否允许 string 去改变文本框内容
-    return YES;
-}
-
-
-#pragma mark - UIAlertViewDelegate
-//- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
-//    // 点击第几个 button
-//}
-
-
-#pragma mark - UIActionSheetDelegate
-//- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
-//    // 点击第几个 button
-//}
-//
-//- (void)actionSheetCancel:(UIActionSheet *)actionSheet {
-//    // 有系统事件（来电）时调用
-//}
-
-
-#pragma mark - UIPickerViewDataSource, UIPickerViewDelegate
-/// UIPickerViewDataSource
-/// 必须实现
-- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
-    // 总共多少列
-    return 1;
-}
-
-- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
-    // 每列展示多少行
-    return 10;
-}
-
-/// UIPickerViewDelegate
-/// 非必须实现
-// 返回每一列的宽度
-- (CGFloat)pickerView:(UIPickerView *)pickerView widthForComponent:(NSInteger)component {
-    return self.view.frame.size.width / 2;
-}
-
-// 返回每一行的高度
-- (CGFloat)pickerView:(UIPickerView *)pickerView rowHeightForComponent:(NSInteger)component {
-    return 45;
-}
-
-/// 返回每一行的内容
-// 1.字符串
-- (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
-    return @"xmg";
-}
-// 2.带属性字符串（大小、颜色、阴影、描边）
-- (nullable NSAttributedString *)pickerView:(UIPickerView *)pickerView attributedTitleForRow:(NSInteger)row forComponent:(NSInteger)component {
-    return nil;
-}
-// 3.视图
-- (UIView *)pickerView:(UIPickerView *)pickerView viewForRow:(NSInteger)row forComponent:(NSInteger)component reusingView:(nullable UIView *)view {
-    return [[UIView alloc] init];
-}
-// 当前选中的哪一行哪一列
-- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
-    
-}
-
-
-#pragma mark - UIGestureRecognizerDelegate
-//- (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer {
-//    // 是否允许触发手势
-//    return YES;
-//}
-
-- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
-    // 是否允许同时支持多个手势：默认不支持 / YES表示支持
-    return YES;
-}
-
-- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch {
-    // 是否允许接收手势
-    // 一边可以接收手势
-    // 另一边不可以接收手势
-    CGPoint point = [touch locationInView:self.view];
-    if (point.x > self.view.frame.size.width / 2) {
-        return NO;
-    } else {
-        return YES;
-    }
-}
-
-#pragma mark - UIScrollViewDelegate
-/// 1 & 2 & 4 -可以唯一确定上滑/下滑
--(void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    // 1.不管怎么操作-只要拥有偏移量就执行
-    // 实时监测滚动变化
-}
-
-/// 2 & 4 -可以唯一确定停止滚动
--(void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
-    // 2.已经停止拖拽的时候执行
-    if (decelerate == NO) {
-        // 没有减速
-        // 表示已经停止滚动
-        // 4 & 5不会执行
-    } else {
-        // 停止拖拽：会减速
-        // 4 & 5会执行
-    }
-}
-
-- (void)scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset {
-    // 3.将要停止拖拽的时候执行
-}
-
-- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
-    // 4.已经减速结束的时候执行
-}
-
-- (void)scrollViewWillBeginDecelerating:(UIScrollView *)scrollView {
-    // 5.将要减速的时候执行
-}
-
-- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
-    // 6.将要拖动的时候执行
-}
-
-- (BOOL)scrollViewShouldScrollToTop:(UIScrollView *)scrollView {
-    // 7.是否允许回到顶部 - 一般不用设置
-    return YES;
-}
-
-- (void)scrollViewDidScrollToTop:(UIScrollView *)scrollView {
-    // 8.已经回到顶部开始执行
-}
-
-//！！！以下处理缩放逻辑！！！//
-- (UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView {
-    // 2.设置对哪个视图缩放、返回缩放的视图对象
-    // ！！！不能用索引去查找 UIScrollView 的子控件！！！
-    // 所以此处写法有问题
-    return scrollView.subviews.firstObject;
-}
-
-- (void)scrollViewWillBeginZooming:(UIScrollView *)scrollView withView:(UIView *)view {
-    // 将要开始缩放
-}
-
-- (void)scrollViewDidZoom:(UIScrollView *)scrollView {
-    // 已经开始缩放/正在缩放
-}
-
-- (void)scrollViewDidEndZooming:(UIScrollView *)scrollView withView:(UIView *)view atScale:(CGFloat)scale {
-    // 已经结束缩放
-}
-
-#pragma mark - UITabBarControllerDelegate
-- (BOOL)tabBarController:(UITabBarController *)tabBarController shouldSelectViewController:(UIViewController *)viewController {
-    // 是否可以选择这个控制器
-    // YES可以/NO不可以
-    return YES;
-}
-
-- (void)tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController {
-    // 选中某一个控制器
-}
-
-- (void)tabBarController:(UITabBarController *)tabBarController willBeginCustomizingViewControllers:(NSArray<__kindof UIViewController *> *)viewControllers {
-    // 将要开始编辑
-}
-
-- (void)tabBarController:(UITabBarController *)tabBarController didEndCustomizingViewControllers:(NSArray<__kindof UIViewController *> *)viewControllers changed:(BOOL)changed {
-    // 结束编辑
 }
 
 @end
