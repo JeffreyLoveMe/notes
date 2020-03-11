@@ -717,6 +717,12 @@
 }
 
 
+/// 富文本
+-(void)showAttribute {
+    
+}
+
+
 /// UIApplication
 // UIApplication对象是应用程序的象征
 // iOS程序启动以后创建的第一个对象就是UIApplication对象

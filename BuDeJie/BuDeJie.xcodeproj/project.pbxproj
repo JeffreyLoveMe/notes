@@ -7,14 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3322A1A92418C03A0062B829 /* SyNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3322A1A82418C03A0062B829 /* SyNavigationController.m */; };
 		33385C4C2417578D00C55EC0 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 33385C4B2417578D00C55EC0 /* AppDelegate.m */; };
-		33385C522417578D00C55EC0 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 33385C512417578D00C55EC0 /* ViewController.m */; };
 		33385C552417578D00C55EC0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 33385C532417578D00C55EC0 /* Main.storyboard */; };
 		33385C572417578E00C55EC0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 33385C562417578E00C55EC0 /* Assets.xcassets */; };
 		33385C5A2417578E00C55EC0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 33385C582417578E00C55EC0 /* LaunchScreen.storyboard */; };
 		33385C5D2417578E00C55EC0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 33385C5C2417578E00C55EC0 /* main.m */; };
 		33385C672417578E00C55EC0 /* BuDeJieTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 33385C662417578E00C55EC0 /* BuDeJieTests.m */; };
 		33385C722417578E00C55EC0 /* BuDeJieUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 33385C712417578E00C55EC0 /* BuDeJieUITests.m */; };
+		33D16956241777D900CC5D0B /* SyTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 33D16955241777D900CC5D0B /* SyTabBarController.m */; };
+		33D169592417790500CC5D0B /* SyHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 33D169582417790500CC5D0B /* SyHomeViewController.m */; };
+		33D169602417795700CC5D0B /* SyMineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 33D1695F2417795700CC5D0B /* SyMineViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,11 +38,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		33385C472417578D00C55EC0 /* BuDeJie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BuDeJie.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3322A1A72418C03A0062B829 /* SyNavigationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SyNavigationController.h; sourceTree = "<group>"; };
+		3322A1A82418C03A0062B829 /* SyNavigationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SyNavigationController.m; sourceTree = "<group>"; };
+		33385C472417578D00C55EC0 /* 百思不得姐.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "百思不得姐.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		33385C4A2417578D00C55EC0 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		33385C4B2417578D00C55EC0 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		33385C502417578D00C55EC0 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		33385C512417578D00C55EC0 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		33385C542417578D00C55EC0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		33385C562417578E00C55EC0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		33385C592417578E00C55EC0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -51,6 +54,12 @@
 		33385C6D2417578E00C55EC0 /* BuDeJieUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BuDeJieUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		33385C712417578E00C55EC0 /* BuDeJieUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BuDeJieUITests.m; sourceTree = "<group>"; };
 		33385C732417578E00C55EC0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		33D16954241777D900CC5D0B /* SyTabBarController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SyTabBarController.h; sourceTree = "<group>"; };
+		33D16955241777D900CC5D0B /* SyTabBarController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SyTabBarController.m; sourceTree = "<group>"; };
+		33D169572417790500CC5D0B /* SyHomeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SyHomeViewController.h; sourceTree = "<group>"; };
+		33D169582417790500CC5D0B /* SyHomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SyHomeViewController.m; sourceTree = "<group>"; };
+		33D1695E2417795700CC5D0B /* SyMineViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SyMineViewController.h; sourceTree = "<group>"; };
+		33D1695F2417795700CC5D0B /* SyMineViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SyMineViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,7 +100,7 @@
 		33385C482417578D00C55EC0 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				33385C472417578D00C55EC0 /* BuDeJie.app */,
+				33385C472417578D00C55EC0 /* 百思不得姐.app */,
 				33385C622417578E00C55EC0 /* BuDeJieTests.xctest */,
 				33385C6D2417578E00C55EC0 /* BuDeJieUITests.xctest */,
 			);
@@ -101,10 +110,9 @@
 		33385C492417578D00C55EC0 /* BuDeJie */ = {
 			isa = PBXGroup;
 			children = (
+				33D169482417761500CC5D0B /* Classes */,
 				33385C4A2417578D00C55EC0 /* AppDelegate.h */,
 				33385C4B2417578D00C55EC0 /* AppDelegate.m */,
-				33385C502417578D00C55EC0 /* ViewController.h */,
-				33385C512417578D00C55EC0 /* ViewController.m */,
 				33385C532417578D00C55EC0 /* Main.storyboard */,
 				33385C562417578E00C55EC0 /* Assets.xcassets */,
 				33385C582417578E00C55EC0 /* LaunchScreen.storyboard */,
@@ -132,6 +140,141 @@
 			path = BuDeJieUITests;
 			sourceTree = "<group>";
 		};
+		33D169482417761500CC5D0B /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				33D1695A2417794700CC5D0B /* Mine */,
+				33D169492417761500CC5D0B /* Home */,
+				33D1694D2417761500CC5D0B /* Category */,
+				33D1694E2417761500CC5D0B /* Others */,
+				33D1694F2417761500CC5D0B /* Libs */,
+				33D169502417761500CC5D0B /* Main */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		33D169492417761500CC5D0B /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				33D1694A2417761500CC5D0B /* Controller */,
+				33D1694B2417761500CC5D0B /* Model */,
+				33D1694C2417761500CC5D0B /* View */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		33D1694A2417761500CC5D0B /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				33D169572417790500CC5D0B /* SyHomeViewController.h */,
+				33D169582417790500CC5D0B /* SyHomeViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		33D1694B2417761500CC5D0B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		33D1694C2417761500CC5D0B /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		33D1694D2417761500CC5D0B /* Category */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Category;
+			sourceTree = "<group>";
+		};
+		33D1694E2417761500CC5D0B /* Others */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Others;
+			sourceTree = "<group>";
+		};
+		33D1694F2417761500CC5D0B /* Libs */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Libs;
+			sourceTree = "<group>";
+		};
+		33D169502417761500CC5D0B /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				33D169512417761500CC5D0B /* Controller */,
+				33D169522417761500CC5D0B /* Model */,
+				33D169532417761500CC5D0B /* View */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		33D169512417761500CC5D0B /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				33D16954241777D900CC5D0B /* SyTabBarController.h */,
+				33D16955241777D900CC5D0B /* SyTabBarController.m */,
+				3322A1A72418C03A0062B829 /* SyNavigationController.h */,
+				3322A1A82418C03A0062B829 /* SyNavigationController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		33D169522417761500CC5D0B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		33D169532417761500CC5D0B /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		33D1695A2417794700CC5D0B /* Mine */ = {
+			isa = PBXGroup;
+			children = (
+				33D1695B2417794700CC5D0B /* Controller */,
+				33D1695C2417794700CC5D0B /* Model */,
+				33D1695D2417794700CC5D0B /* View */,
+			);
+			path = Mine;
+			sourceTree = "<group>";
+		};
+		33D1695B2417794700CC5D0B /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				33D1695E2417795700CC5D0B /* SyMineViewController.h */,
+				33D1695F2417795700CC5D0B /* SyMineViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		33D1695C2417794700CC5D0B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		33D1695D2417794700CC5D0B /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -149,7 +292,7 @@
 			);
 			name = BuDeJie;
 			productName = BuDeJie;
-			productReference = 33385C472417578D00C55EC0 /* BuDeJie.app */;
+			productReference = 33385C472417578D00C55EC0 /* 百思不得姐.app */;
 			productType = "com.apple.product-type.application";
 		};
 		33385C612417578E00C55EC0 /* BuDeJieTests */ = {
@@ -262,9 +405,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				33385C522417578D00C55EC0 /* ViewController.m in Sources */,
 				33385C4C2417578D00C55EC0 /* AppDelegate.m in Sources */,
+				33D169592417790500CC5D0B /* SyHomeViewController.m in Sources */,
+				33D169602417795700CC5D0B /* SyMineViewController.m in Sources */,
+				3322A1A92418C03A0062B829 /* SyNavigationController.m in Sources */,
 				33385C5D2417578E00C55EC0 /* main.m in Sources */,
+				33D16956241777D900CC5D0B /* SyTabBarController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -433,16 +579,18 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = BuDeJie/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0.0;
-				PRODUCT_BUNDLE_IDENTIFIER = DoNew.BuDeJie;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = "1,2";
+				PRODUCT_BUNDLE_IDENTIFIER = com.donew.BuDeJie;
+				PRODUCT_NAME = "百思不得姐";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -450,16 +598,18 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = BuDeJie/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0.0;
-				PRODUCT_BUNDLE_IDENTIFIER = DoNew.BuDeJie;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = "1,2";
+				PRODUCT_BUNDLE_IDENTIFIER = com.donew.BuDeJie;
+				PRODUCT_NAME = "百思不得姐";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

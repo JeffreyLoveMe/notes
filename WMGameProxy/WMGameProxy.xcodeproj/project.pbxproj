@@ -39,7 +39,11 @@
 		330C15C922F801F700CD84CA /* SySkillController.m in Sources */ = {isa = PBXBuildFile; fileRef = 330C15C822F801F700CD84CA /* SySkillController.m */; };
 		3312831A2339B6FC005D55E2 /* SyCustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 331283192339B6FC005D55E2 /* SyCustomView.swift */; };
 		3312831C2339D2E3005D55E2 /* DNGameProxy.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3312831B2339D2E3005D55E2 /* DNGameProxy.txt */; };
+		3322A1A2241791610062B829 /* 大神班课程大纲.png in Resources */ = {isa = PBXBuildFile; fileRef = 3322A1A1241791610062B829 /* 大神班课程大纲.png */; };
+		3322A1A42417919D0062B829 /* 内存警告处理.png in Resources */ = {isa = PBXBuildFile; fileRef = 3322A1A32417919D0062B829 /* 内存警告处理.png */; };
+		3322A1A6241791C50062B829 /* 生命周期方法.png in Resources */ = {isa = PBXBuildFile; fileRef = 3322A1A5241791C50062B829 /* 生命周期方法.png */; };
 		3324D54B22DED4BF0066241F /* WMWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3324D54A22DED4BF0066241F /* WMWebViewController.m */; };
+		33385C802417697200C55EC0 /* 项目的基本部署.png in Resources */ = {isa = PBXBuildFile; fileRef = 33385C7F2417697200C55EC0 /* 项目的基本部署.png */; };
 		3340B2E722C0D9AC00111228 /* 代码标准h文件.png in Resources */ = {isa = PBXBuildFile; fileRef = 3340B2E522C0D9AB00111228 /* 代码标准h文件.png */; };
 		3340B2E822C0D9AC00111228 /* 代码标准m文件.png in Resources */ = {isa = PBXBuildFile; fileRef = 3340B2E622C0D9AC00111228 /* 代码标准m文件.png */; };
 		3361E40E2308F3DF00A03B7D /* 常见系统库01.png in Resources */ = {isa = PBXBuildFile; fileRef = 3361E40C2308F3DF00A03B7D /* 常见系统库01.png */; };
@@ -149,8 +153,12 @@
 		330C15C822F801F700CD84CA /* SySkillController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SySkillController.m; sourceTree = "<group>"; };
 		331283192339B6FC005D55E2 /* SyCustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyCustomView.swift; sourceTree = "<group>"; };
 		3312831B2339D2E3005D55E2 /* DNGameProxy.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = DNGameProxy.txt; sourceTree = "<group>"; };
+		3322A1A1241791610062B829 /* 大神班课程大纲.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "大神班课程大纲.png"; sourceTree = "<group>"; };
+		3322A1A32417919D0062B829 /* 内存警告处理.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "内存警告处理.png"; sourceTree = "<group>"; };
+		3322A1A5241791C50062B829 /* 生命周期方法.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "生命周期方法.png"; sourceTree = "<group>"; };
 		3324D54922DED4BF0066241F /* WMWebViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WMWebViewController.h; sourceTree = "<group>"; };
 		3324D54A22DED4BF0066241F /* WMWebViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WMWebViewController.m; sourceTree = "<group>"; };
+		33385C7F2417697200C55EC0 /* 项目的基本部署.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "项目的基本部署.png"; sourceTree = "<group>"; };
 		3340B2E522C0D9AB00111228 /* 代码标准h文件.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "代码标准h文件.png"; sourceTree = "<group>"; };
 		3340B2E622C0D9AC00111228 /* 代码标准m文件.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "代码标准m文件.png"; sourceTree = "<group>"; };
 		3361E40C2308F3DF00A03B7D /* 常见系统库01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "常见系统库01.png"; sourceTree = "<group>"; };
@@ -289,7 +297,11 @@
 				33F1D58623CC4364001AC221 /* 给文件名（类名）加前缀.png */,
 				33D7768323FA7142001BF56E /* Sy-项目添加类前缀.png */,
 				33F1D58423C9FE5B001AC221 /* 真实文件夹:虚拟文件夹.png */,
+				3322A1A32417919D0062B829 /* 内存警告处理.png */,
+				3322A1A1241791610062B829 /* 大神班课程大纲.png */,
 				33D730A32319229D0024D34E /* 退出键盘的两种方式.png */,
+				33385C7F2417697200C55EC0 /* 项目的基本部署.png */,
+				3322A1A5241791C50062B829 /* 生命周期方法.png */,
 				3397EBAD23119A1B00522E72 /* iOS学习路线图.png */,
 				33A8FD7422D480F2004AECBA /* 线程的生命周期.png */,
 				3340B2E522C0D9AB00111228 /* 代码标准h文件.png */,
@@ -550,6 +562,7 @@
 				33068EC322AE665600D044EE /* LaunchScreen.storyboard in Resources */,
 				3361E41A230A43EA00A03B7D /* DOVE.bundle in Resources */,
 				33068F0422AE67C800D044EE /* Safe Area.png in Resources */,
+				3322A1A42417919D0062B829 /* 内存警告处理.png in Resources */,
 				33ABE2AC23BC538800A75CE5 /* Xib常见两个问题.png in Resources */,
 				33D7768423FA7142001BF56E /* Sy-项目添加类前缀.png in Resources */,
 				33068F1122AE67C800D044EE /* C:OC学习路线&重难点.png in Resources */,
@@ -571,6 +584,7 @@
 				3340B2E822C0D9AC00111228 /* 代码标准m文件.png in Resources */,
 				33068F0922AE67C800D044EE /* UI划分_00.png in Resources */,
 				33F735AC24036DE5005AC30D /* ProvincesAndCities.plist in Resources */,
+				33385C802417697200C55EC0 /* 项目的基本部署.png in Resources */,
 				33068F0722AE67C800D044EE /* 认识Autolayout.png in Resources */,
 				339A3D8222BBBE5D007DD37D /* Xcode新建项目.png in Resources */,
 				3361E40E2308F3DF00A03B7D /* 常见系统库01.png in Resources */,
@@ -594,10 +608,12 @@
 				33E589602350B32C00D92DB7 /* UINavigationController的层级结构.png in Resources */,
 				33C9259023A1119900F2212E /* error_找不到AppDelegate类.png in Resources */,
 				33D730B3231B82270024D34E /* plist知识点.png in Resources */,
+				3322A1A2241791610062B829 /* 大神班课程大纲.png in Resources */,
 				33FEF93423D18E65004169AB /* LaunchScreen简介.png in Resources */,
 				3397EBAE23119A1C00522E72 /* iOS学习路线图.png in Resources */,
 				33D730A42319229D0024D34E /* 退出键盘的两种方式.png in Resources */,
 				33068F0322AE67C800D044EE /* 单个文件放置多个类：多用于model.png in Resources */,
+				3322A1A6241791C50062B829 /* 生命周期方法.png in Resources */,
 				33068F0622AE67C800D044EE /* FlagZombie.gif in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

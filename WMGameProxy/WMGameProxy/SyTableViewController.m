@@ -180,9 +180,8 @@
      ！！！为防止 “复用” 导致 cell 的数据发生混乱：有 if 的地方必须有 else 衔接！！！
      保证 cell 每次进入屏幕都会得到改变
      */
-    
-    /// 第二种方式：（常用）
-    
+//    /// 第二种方式：（常用）
+//    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:ID forIndexPath:indexPath];
     return cell;
 }
 /// 不强制实现的方法

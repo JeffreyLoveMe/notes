@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  SyMineViewController.h
 //  BuDeJie
 //
 //  Created by 谢吴军 on 2020/3/10.
@@ -8,8 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
+NS_ASSUME_NONNULL_BEGIN
 
+@interface SyMineViewController : UIViewController
 
 @end
 
+NS_ASSUME_NONNULL_END

@@ -519,10 +519,15 @@
     // 增加额外滚动区域
     // 凡是在导航条下面的 UIScrollView 默认会设置偏移量
     // 可以通过 self.automaticallyAdjustsScrollViewInsets = NO; 设置
-    scrollView.contentInset = UIEdgeInsetsMake(10, 10, 10, 10);  // 内边距：cell到边的距离
-    self.automaticallyAdjustsScrollViewInsets = NO; // 不要自动设置偏移量
+    scrollView.contentInset = UIEdgeInsetsMake(10, 10, 10, 10);  // 内边距 - cell到边的距离
+    // 不要自动设置偏移量
+    if (@available(iOS 11, *)) {
+        scrollView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+    } else {
+        self.automaticallyAdjustsScrollViewInsets = NO;
+    }
     scrollView.bounces = NO;  // 设置是否反弹
-    scrollView.pagingEnabled = NO; // 设置按页滚动（以 UIScrollView 尺寸为一页）
+    scrollView.pagingEnabled = YES; // 设置按页滚动（以 UIScrollView 尺寸为一页）
     scrollView.indicatorStyle = UIScrollViewIndicatorStyleWhite; // 设置滚动条样式
     scrollView.scrollIndicatorInsets = UIEdgeInsetsMake(0, 0, 0, 30); // 一般不需要设置
     scrollView.userInteractionEnabled = NO; // 能否响应用户交互
@@ -1154,7 +1159,7 @@
     navigationController.toolbar.translucent = NO;
     navigationController.toolbar.tintColor = UIColor.yellowColor;
     // 继承 UIView
-    [self.navigationController setToolbarHidden:NO animated:YES];  // 设置UIToolBar工具条是否隐藏
+    [self.navigationController setToolbarHidden:NO animated:YES];  // 设置 UIToolBar工具条 是否隐藏
     if (self.navigationController.toolbarHidden) {
         // UIToolBar工具条是否隐藏
     }
@@ -1176,7 +1181,7 @@
     [image1 imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     UIBarButtonItem *item1 = [[UIBarButtonItem alloc] initWithImage:image1 style:UIBarButtonItemStylePlain target:self action:@selector(onImage)];
     // 3.设置有文字的：省略
-    // 怎么让文字不要默认蓝色？？？
+    // 怎么让文字不要默认蓝色 - 如果需要修改字体颜色使用 “富文本”/参考 "eyee"
     // 4.自定义 UIBarButtonItem
     // 位置不需要设置/大小需要自己设置
     UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -1191,7 +1196,8 @@
      navigationItem 不是由 navigationBar 控制、也不是由 UINavigationController 控制
      navigationItem 是由当前 UIViewController 控制
      */
-    // ！！！UIBarButtonItem 可以自定义！！！
+    // UIBarButtonItem 可以自定义 / UINavigationItem决定着显示内容 / 子控制器的属性
+//    // 每个 "子控制器" 都有一个 navigationItem
 //    self.navigationController.navigationItem.leftBarButtonItem = item0;  // 错误写法
     self.navigationItem.leftBarButtonItem = item0;   // 正确写法
     self.navigationItem.rightBarButtonItem = item1;
@@ -1199,10 +1205,10 @@
     self.navigationItem.rightBarButtonItems = @[item0, customItem0];
     self.navigationItem.hidesBackButton = YES;  // 隐藏返回按钮
 //    self.navigationItem.prompt = @"加载中..."; // 一般不使用
-    /// 默认图片/title都是蓝色
-    // 如果不需要图片蓝色使用UIImageRenderingModeAlwaysOriginal
-    // 如果不需要设置文字蓝色：目前还不知道？？？
+    /// ！！！默认图片 / title都是蓝色！！！
+    // 如果不需要图片蓝色使用 - UIImageRenderingModeAlwaysOriginal
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithImage:[[UIImage imageNamed:@"image_demo"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] style:UIBarButtonItemStylePlain target:self action:@selector(onAdd)];
+    // 如果不需要设置文字蓝色 - 如果需要修改字体颜色使用 “富文本”/参考 "eyee"
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"添加" style:UIBarButtonItemStylePlain target:self action:@selector(onAdd)];
 }
 -(void)onAdd {
@@ -1252,10 +1258,10 @@
     tabBarController.delegate = self;
     /// tabBarItem
     // 决定着每个 UITabBarButton 内容
-    // 每个 "子控制器" 都有一个 tabBarItem
+    // ！！！每个 "子控制器" 都有一个 tabBarItem / UITabBarItem决定着显示内容 / 子控制器的属性！！！
     // 添加完成 "子控制器" 就需要设置下面属性
     self.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"首页" image:[UIImage imageNamed:@""] selectedImage:[UIImage imageNamed:@""]];
-    self.tabBarItem.title = @"";  // 标题文字
+    self.tabBarItem.title = @"";  // 标题文字/如果需要修改字体颜色使用 “富文本”/参考 "eyee"/iOS13.x以后设置方法有所改变
     self.tabBarItem.image = [UIImage imageNamed:@""]; // 图标
     self.tabBarItem.selectedImage = [UIImage imageNamed:@""]; // 选中的图标
     self.tabBarItem.badgeValue = @"5";  // 提醒数字
@@ -1450,7 +1456,7 @@ UIWindow -> UITabBarController -> UINavigationController -> ChildViewControllers
 #pragma mark - UIScrollViewDelegate
 /// 1 & 2 & 4 -可以唯一确定上滑/下滑
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    // 1.不管怎么操作：只要拥有偏移量就执行
+    // 1.不管怎么操作-只要拥有偏移量就执行
     // 实时监测滚动变化
 }
 
@@ -1484,7 +1490,7 @@ UIWindow -> UITabBarController -> UINavigationController -> ChildViewControllers
 }
 
 - (BOOL)scrollViewShouldScrollToTop:(UIScrollView *)scrollView {
-    // 7.是否允许回到顶部：一般不用设置
+    // 7.是否允许回到顶部 - 一般不用设置
     return YES;
 }
 

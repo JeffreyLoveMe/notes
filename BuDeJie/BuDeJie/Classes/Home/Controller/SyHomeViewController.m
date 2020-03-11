@@ -1,23 +1,24 @@
 //
-//  ViewController.m
+//  SyHomeViewController.m
 //  BuDeJie
 //
 //  Created by 谢吴军 on 2020/3/10.
 //  Copyright © 2020 谢吴军. All rights reserved.
 //
 
-#import "ViewController.h"
+#import "SyHomeViewController.h"
 
-@interface ViewController ()
+@interface SyHomeViewController ()
 
 @end
 
-@implementation ViewController
+@implementation SyHomeViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    self.title = @"首页";
 }
+
 
 
 @end
