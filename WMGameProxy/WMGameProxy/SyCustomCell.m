@@ -72,8 +72,54 @@
 
 @implementation SyCollectionCell
 
+- (instancetype)initWithFrame:(CGRect)frame {
+    self = [super initWithFrame:frame];
+    if (self) {
+        // 获取 "当前cell" 的大小
+        CGSize size = self.bounds.size;
+        NSLog(@"%@", NSStringFromCGSize(size));
+    }
+    return self;
+}
+
 -(void)config {
     
+}
+
+@end
+
+
+
+@interface SyHeaderView ()
+
+@end
+
+@implementation SyHeaderView
+
+- (instancetype)initWithFrame:(CGRect)frame {
+    self = [super initWithFrame:frame];
+    if (self) {
+        
+    }
+    return self;
+}
+
+@end
+
+
+
+@interface SyFooterView ()
+
+@end
+
+@implementation SyFooterView
+
+- (instancetype)initWithFrame:(CGRect)frame {
+    self = [super initWithFrame:frame];
+    if (self) {
+        
+    }
+    return self;
 }
 
 @end

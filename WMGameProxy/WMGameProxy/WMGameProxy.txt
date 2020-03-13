@@ -713,6 +713,7 @@ FoundationNSObject.h/c // Foundation常见类
 ComponentController.h/m // UI组件库
 SyTableViewController.h/m  // UITableView详解
 SyCollectionViewController.h/m // UICollectionViewController详解
+SyCustomFlowLayout // 自定义"流式布局"
 SyCustomCell.h/m // 自定义 Cell
 SyPostItem.h/m // 自定义 Model
 WMWebViewController.h/m  // js和原生交互详解

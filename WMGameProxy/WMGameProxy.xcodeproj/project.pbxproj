@@ -60,6 +60,7 @@
 		3372CD5B2328AC9A00E7307B /* DemoController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3372CD5A2328AC9A00E7307B /* DemoController.m */; };
 		337358A22400EECF000507CC /* SyPostItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 337358A12400EECF000507CC /* SyPostItem.m */; };
 		3386EEE8241B9387001A422F /* 常见bug_00.png in Resources */ = {isa = PBXBuildFile; fileRef = 3386EEE7241B9387001A422F /* 常见bug_00.png */; };
+		3386EEEB241BBD80001A422F /* SyCustomFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 3386EEEA241BBD80001A422F /* SyCustomFlowLayout.m */; };
 		3394874623F11C5700A2C525 /* SyCustomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3394874523F11C5700A2C525 /* SyCustomCell.m */; };
 		3397EBAE23119A1C00522E72 /* iOS学习路线图.png in Resources */ = {isa = PBXBuildFile; fileRef = 3397EBAD23119A1B00522E72 /* iOS学习路线图.png */; };
 		339A3D7D22BBB3F4007DD37D /* 下拉刷新_上拉加载_标准版.png in Resources */ = {isa = PBXBuildFile; fileRef = 339A3D7C22BBB3F4007DD37D /* 下拉刷新_上拉加载_标准版.png */; };
@@ -183,6 +184,8 @@
 		337358A02400EECF000507CC /* SyPostItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SyPostItem.h; sourceTree = "<group>"; };
 		337358A12400EECF000507CC /* SyPostItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SyPostItem.m; sourceTree = "<group>"; };
 		3386EEE7241B9387001A422F /* 常见bug_00.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "常见bug_00.png"; sourceTree = "<group>"; };
+		3386EEE9241BBD80001A422F /* SyCustomFlowLayout.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SyCustomFlowLayout.h; sourceTree = "<group>"; };
+		3386EEEA241BBD80001A422F /* SyCustomFlowLayout.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SyCustomFlowLayout.m; sourceTree = "<group>"; };
 		3394874423F11C5700A2C525 /* SyCustomCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SyCustomCell.h; sourceTree = "<group>"; };
 		3394874523F11C5700A2C525 /* SyCustomCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SyCustomCell.m; sourceTree = "<group>"; };
 		3397EBAD23119A1B00522E72 /* iOS学习路线图.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iOS学习路线图.png"; sourceTree = "<group>"; };
@@ -376,6 +379,8 @@
 				33A8FD7922D481B4004AECBA /* SyTableViewController.m */,
 				33A8FD7B22D48237004AECBA /* SyCollectionViewController.h */,
 				33A8FD7C22D48237004AECBA /* SyCollectionViewController.m */,
+				3386EEE9241BBD80001A422F /* SyCustomFlowLayout.h */,
+				3386EEEA241BBD80001A422F /* SyCustomFlowLayout.m */,
 				3394874423F11C5700A2C525 /* SyCustomCell.h */,
 				3394874523F11C5700A2C525 /* SyCustomCell.m */,
 				337358A02400EECF000507CC /* SyPostItem.h */,
@@ -736,6 +741,7 @@
 				3312831A2339B6FC005D55E2 /* SyCustomView.swift in Sources */,
 				33068EF222AE670200D044EE /* WMGame.swift in Sources */,
 				33AD3E38236062830092C389 /* NSString+Extension.m in Sources */,
+				3386EEEB241BBD80001A422F /* SyCustomFlowLayout.m in Sources */,
 				33A8FD7D22D48237004AECBA /* SyCollectionViewController.m in Sources */,
 				33068EEA22AE66A800D044EE /* MainController.m in Sources */,
 				33A8FD7A22D481B4004AECBA /* SyTableViewController.m in Sources */,

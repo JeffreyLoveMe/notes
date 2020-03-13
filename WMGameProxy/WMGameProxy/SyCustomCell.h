@@ -26,4 +26,16 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
+
+// 不能直接继承 UIView
+@interface SyHeaderView : UICollectionReusableView
+
+@end
+
+
+// 不能直接继承 UIView
+@interface SyFooterView : UICollectionReusableView
+
+@end
+
 NS_ASSUME_NONNULL_END
