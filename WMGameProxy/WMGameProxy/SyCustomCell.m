@@ -63,3 +63,17 @@
 }
 
 @end
+
+
+
+@interface SyCollectionCell ()
+
+@end
+
+@implementation SyCollectionCell
+
+-(void)config {
+    
+}
+
+@end

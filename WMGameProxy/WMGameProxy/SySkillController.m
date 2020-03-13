@@ -62,8 +62,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // 1.控制器View加载完毕：创建所有子视图
-    // 控件的初始化
-    // 数据的初始化
+    // 控件的初始化/数据的初始化
+    // View是否加载
+    if (self.viewIfLoaded) {
+    }
 }
 
 - (void)viewWillAppear:(BOOL)animated {

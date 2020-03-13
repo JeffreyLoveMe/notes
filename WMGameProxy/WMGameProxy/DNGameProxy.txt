@@ -1,5 +1,5 @@
 /**
-名称：iOS项目管理
+名称：项目管理
 作者：谢吴军
 https://developer.apple.com
 */
@@ -8,17 +8,7 @@ https://developer.apple.com
 2.百思不得姐
 3.微博
 /**************************项目规划**************************/
-TD统计（投放）
-更新公告
-封号
-推送
-切服
-登录
-支付
-悬浮窗
-客服系统
-内购
-实名认证
+0.TD统计（投放）/更新公告/封号/推送/切服/登录/支付/悬浮窗/客服系统/内购/实名认证
 1.熟练使用CocoaPods管理私有库
 2.熟悉常见设计模式，拥有组件化开发经验
 3.拥有海外版本App开发经验
@@ -28,3 +18,56 @@ TD统计（投放）
 /**************************项目上架**************************/
 /**************************团队建设**************************/
 /**************************工作汇报**************************/
+/**************************常用单词**************************/
+// A
+Activity活动/Action动作/Animations动画/Audio音频/AutoLogin自动登录/Analysis分析
+Alert警告
+// B
+Bean/Domain/Model/Item实体类/Button按钮/Bluetooth蓝牙/Back返回/Bool是否/Begin开始
+// C
+Code代码/Content内容/Common公共的/CheckBox复选框/Component组件/Category类别/Chart图表
+Comment评论/Calendar日历/Custom自定义/Cache缓存/Coupon优惠券
+// D
+Dialog对话框/Demo样品/演示/Debug调试
+// E
+End/Finish结束/Engine发动机/Embedded嵌入/Exit退出
+// F
+Fail失败/Flag标志/Footer页脚/Framework框架/Focus关注/Follow跟随
+// G
+Game游戏/Gesture手势
+// H
+Header头部/HotFix热修复
+// I
+Init初始化/Image图像/Icon图标、头像/Intent意图/Item单项/Index索引
+// J
+// K
+KeyWord关键字/KeyBoard键盘
+// L
+Libs库/Login登录/Logout登出/Loading加载/Layout布局/Link链接/Least最少的/Log输出/Loop循环
+// M
+Mobile手机/MVC/MVVM/MVP架构/Material材料/Menu菜单/MapView地图视图/Media媒体
+// N
+NetWork网络/Notification通知
+// O
+Other其他的
+// P
+Pay支付/PassWord密码/PlugIn插件/Proxy代理/Page页面/Press按压/Permission许可/Performance性能
+// Q
+QRCoder二维码
+// R
+Result结果/Router路由/Report举报
+// S
+Start开始/Source资源/Splash闪屏/Success成功/Super父类/SortByXxx按xxx排序/Summary总结
+Security安全性/Storage存储/Space空间/ScreenShot截图/Should允许/Search搜索/Score分数/
+Statistic/Stat统计
+// T
+Table表格/Tag标签/Test测试/Time时间/Task任务/Toast提示框/Tool工具/Temp/Tmp临时/Theme主题
+// U
+Update更新/UserName用户名/Utils工具
+// V
+Video视频/View视图
+// W
+WebView网络视图/WebSite网站/WidGet小装置/Wear穿戴
+// X
+// Y
+// Z

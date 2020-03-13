@@ -59,6 +59,7 @@
 		3372CD542325F92500E7307B /* SYGameProxy.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3372CD532325F92400E7307B /* SYGameProxy.txt */; };
 		3372CD5B2328AC9A00E7307B /* DemoController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3372CD5A2328AC9A00E7307B /* DemoController.m */; };
 		337358A22400EECF000507CC /* SyPostItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 337358A12400EECF000507CC /* SyPostItem.m */; };
+		3386EEE8241B9387001A422F /* 常见bug_00.png in Resources */ = {isa = PBXBuildFile; fileRef = 3386EEE7241B9387001A422F /* 常见bug_00.png */; };
 		3394874623F11C5700A2C525 /* SyCustomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3394874523F11C5700A2C525 /* SyCustomCell.m */; };
 		3397EBAE23119A1C00522E72 /* iOS学习路线图.png in Resources */ = {isa = PBXBuildFile; fileRef = 3397EBAD23119A1B00522E72 /* iOS学习路线图.png */; };
 		339A3D7D22BBB3F4007DD37D /* 下拉刷新_上拉加载_标准版.png in Resources */ = {isa = PBXBuildFile; fileRef = 339A3D7C22BBB3F4007DD37D /* 下拉刷新_上拉加载_标准版.png */; };
@@ -181,6 +182,7 @@
 		3372CD5A2328AC9A00E7307B /* DemoController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DemoController.m; sourceTree = "<group>"; };
 		337358A02400EECF000507CC /* SyPostItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SyPostItem.h; sourceTree = "<group>"; };
 		337358A12400EECF000507CC /* SyPostItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SyPostItem.m; sourceTree = "<group>"; };
+		3386EEE7241B9387001A422F /* 常见bug_00.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "常见bug_00.png"; sourceTree = "<group>"; };
 		3394874423F11C5700A2C525 /* SyCustomCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SyCustomCell.h; sourceTree = "<group>"; };
 		3394874523F11C5700A2C525 /* SyCustomCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SyCustomCell.m; sourceTree = "<group>"; };
 		3397EBAD23119A1B00522E72 /* iOS学习路线图.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iOS学习路线图.png"; sourceTree = "<group>"; };
@@ -322,6 +324,7 @@
 				33FEF93523D191C8004169AB /* info.plist简介.png */,
 				339A3D8122BBBE5D007DD37D /* Xcode新建项目.png */,
 				339A3D7C22BBB3F4007DD37D /* 下拉刷新_上拉加载_标准版.png */,
+				3386EEE7241B9387001A422F /* 常见bug_00.png */,
 				33581CFE2418E4D3004B1F8A /* 常见bug_01.png */,
 				33581CFD2418E4D3004B1F8A /* 项目基本配置.png */,
 				33FEF93323D18E65004169AB /* LaunchScreen简介.png */,
@@ -611,6 +614,7 @@
 				3361E40F2308F3DF00A03B7D /* 常见系统库00.png in Resources */,
 				339A3D7D22BBB3F4007DD37D /* 下拉刷新_上拉加载_标准版.png in Resources */,
 				33068F0A22AE67C800D044EE /* UICollectionView.png in Resources */,
+				3386EEE8241B9387001A422F /* 常见bug_00.png in Resources */,
 				33F1D58723CC4364001AC221 /* 给文件名（类名）加前缀.png in Resources */,
 				3312831C2339D2E3005D55E2 /* DNGameProxy.txt in Resources */,
 				33068F1222AE67C800D044EE /* iphone设备尺寸.png in Resources */,
