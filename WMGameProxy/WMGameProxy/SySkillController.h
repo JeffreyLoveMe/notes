@@ -53,7 +53,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) id <SySkillControllerProtocol> delegate;
 
 // 1.定义block
-// block和delegate的区别：block紧凑一些
+// block和delegate的区别 - block紧凑一些
 @property (copy, nonatomic) void (^myBlock)(BOOL isBlue);
 // 企业级开发一般不修改原有方法
 // 一般会新写一个方法扩充

@@ -19,6 +19,9 @@
 //关键字
 //标识符
 
+//预处理指令
+
+
 
 
 
@@ -297,12 +300,6 @@ char *strchr(const char *s,char c); //查找字符串s中首次出现字符c的�
 //s1 > s2 -> 返回正数，s1 < s2 -> 返回负数，s1 == s2 -> 返回0
 int strcmp(const char* s1,const char* s2); //比较两个字符串的大小关系
 char *strrchr(char *str, char c); //在串中查找指定字符的最后一个出现，失败返回NULL
-
-//预处理指令
-1.概念：均以"#"开头，不要分号/包含"宏定义"、"文件包含"、"条件编译"/编译之前会执行
-2.宏定义：#define MAX 10  // 不要分号、不要等号、一般需要大写、编译预处理时将源代码中"宏名"替换成"宏内容"
-3.文件包含：#include "xxx.h"   // 将 xxx.h 复制到当前文件中
-4.条件编译：见SyGameProxy.h/c
 
 //指针
 //值传递/指针传递
@@ -686,14 +683,14 @@ stackoverflow - IT问答网站/可以找到90%以上的答案
 https://www.jianshu.com/p/e37914c4d3d9 - iOS大佬博客
 http://github.com/lintaoSuper/trip-to-iOS - gitHub
 
-// 名词术语
-WWDC - 全球开发者大会
-UUID - 设备唯一标识/代码使用
-UDID - 设备识别码/真机调试
-邓白氏 - xxx
-僵尸对象 - 被释放的对象/开启监听"僵尸对象"(Edit Scheme->Run->Diagnostics->勾选Zombie Objects)
-野指针 - 指向僵尸对象的指针
-nil空指针 - 为了避免给野指针发送消息报错，当一个对象被释放以后我们会将这个对象的指针设置为空指针
+//名词术语
+WWDC-全球开发者大会
+UUID-设备唯一标识（ https://www.jianshu.com/p/0dce89cdf9f6 ）
+UDID-设备识别码（真机调试 / App上架）
+邓白氏-xxx
+僵尸对象-被释放的对象/开启监听"僵尸对象"( Edit Scheme->Run->Diagnostics->勾选Zombie Objects )
+野指针-指向僵尸对象的指针
+nil空指针-为了避免给野指针发送消息报错，当一个对象被释放以后我们会将这个对象的指针设置为空指针
 
 //知识点速查：
 libs // 常见第三方库

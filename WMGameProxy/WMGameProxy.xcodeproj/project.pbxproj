@@ -59,6 +59,10 @@
 		3372CD542325F92500E7307B /* SYGameProxy.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3372CD532325F92400E7307B /* SYGameProxy.txt */; };
 		3372CD5B2328AC9A00E7307B /* DemoController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3372CD5A2328AC9A00E7307B /* DemoController.m */; };
 		337358A22400EECF000507CC /* SyPostItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 337358A12400EECF000507CC /* SyPostItem.m */; };
+		338448D8241D0B9A00644B47 /* 通过Xcode获取UDID.png in Resources */ = {isa = PBXBuildFile; fileRef = 338448D7241D0B9A00644B47 /* 通过Xcode获取UDID.png */; };
+		338448DA241D0EE500644B47 /* iOS证书的配置.png in Resources */ = {isa = PBXBuildFile; fileRef = 338448D9241D0EE400644B47 /* iOS证书的配置.png */; };
+		338448DC241D1ABD00644B47 /* 常见证书问题_01.png in Resources */ = {isa = PBXBuildFile; fileRef = 338448DB241D1ABC00644B47 /* 常见证书问题_01.png */; };
+		338448DE241D1AC500644B47 /* 导出ipa.png in Resources */ = {isa = PBXBuildFile; fileRef = 338448DD241D1AC400644B47 /* 导出ipa.png */; };
 		3386EEE8241B9387001A422F /* 常见bug_00.png in Resources */ = {isa = PBXBuildFile; fileRef = 3386EEE7241B9387001A422F /* 常见bug_00.png */; };
 		3386EEEB241BBD80001A422F /* SyCustomFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 3386EEEA241BBD80001A422F /* SyCustomFlowLayout.m */; };
 		3394874623F11C5700A2C525 /* SyCustomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3394874523F11C5700A2C525 /* SyCustomCell.m */; };
@@ -183,6 +187,10 @@
 		3372CD5A2328AC9A00E7307B /* DemoController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DemoController.m; sourceTree = "<group>"; };
 		337358A02400EECF000507CC /* SyPostItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SyPostItem.h; sourceTree = "<group>"; };
 		337358A12400EECF000507CC /* SyPostItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SyPostItem.m; sourceTree = "<group>"; };
+		338448D7241D0B9A00644B47 /* 通过Xcode获取UDID.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "通过Xcode获取UDID.png"; sourceTree = "<group>"; };
+		338448D9241D0EE400644B47 /* iOS证书的配置.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iOS证书的配置.png"; sourceTree = "<group>"; };
+		338448DB241D1ABC00644B47 /* 常见证书问题_01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "常见证书问题_01.png"; sourceTree = "<group>"; };
+		338448DD241D1AC400644B47 /* 导出ipa.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "导出ipa.png"; sourceTree = "<group>"; };
 		3386EEE7241B9387001A422F /* 常见bug_00.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "常见bug_00.png"; sourceTree = "<group>"; };
 		3386EEE9241BBD80001A422F /* SyCustomFlowLayout.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SyCustomFlowLayout.h; sourceTree = "<group>"; };
 		3386EEEA241BBD80001A422F /* SyCustomFlowLayout.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SyCustomFlowLayout.m; sourceTree = "<group>"; };
@@ -329,8 +337,12 @@
 				339A3D7C22BBB3F4007DD37D /* 下拉刷新_上拉加载_标准版.png */,
 				3386EEE7241B9387001A422F /* 常见bug_00.png */,
 				33581CFE2418E4D3004B1F8A /* 常见bug_01.png */,
+				338448D7241D0B9A00644B47 /* 通过Xcode获取UDID.png */,
+				338448D9241D0EE400644B47 /* iOS证书的配置.png */,
 				33581CFD2418E4D3004B1F8A /* 项目基本配置.png */,
+				338448DB241D1ABC00644B47 /* 常见证书问题_01.png */,
 				33FEF93323D18E65004169AB /* LaunchScreen简介.png */,
+				338448DD241D1AC400644B47 /* 导出ipa.png */,
 				33A9F0B722B4D4C5007985BF /* 怎么称为一名优秀leader.xmind */,
 				33068F1522B0955200D044EE /* 下拉加载范例.png */,
 				33068EF322AE67C700D044EE /* 单个文件放置多个类：多用于model.png */,
@@ -592,6 +604,7 @@
 				33C9258D23A110A000F2212E /* error_调用了一个没有实现的方法.png in Resources */,
 				33068F0822AE67C800D044EE /* json解析标准版.png in Resources */,
 				33646DBD23FE5D4A00CE99CF /* 事件传递示例-第一步.png in Resources */,
+				338448D8241D0B9A00644B47 /* 通过Xcode获取UDID.png in Resources */,
 				33FCEB7A23CDD93100A30C77 /* UIScrollView的常见属性.png in Resources */,
 				33C9259123A1119900F2212E /* error_调用一个野指针.png in Resources */,
 				33D730A6231925AC0024D34E /* UIView常见属性和方法.png in Resources */,
@@ -602,6 +615,7 @@
 				33068EBE22AE665000D044EE /* Main.storyboard in Resources */,
 				3361E4182309A37D00A03B7D /* image_demo.png in Resources */,
 				3340B2E722C0D9AC00111228 /* 代码标准h文件.png in Resources */,
+				338448DE241D1AC500644B47 /* 导出ipa.png in Resources */,
 				3340B2E822C0D9AC00111228 /* 代码标准m文件.png in Resources */,
 				33068F0922AE67C800D044EE /* UI划分_00.png in Resources */,
 				33F735AC24036DE5005AC30D /* ProvincesAndCities.plist in Resources */,
@@ -616,6 +630,7 @@
 				33068F0522AE67C800D044EE /* UIApplication.png in Resources */,
 				33A8FD7522D480F2004AECBA /* 线程的生命周期.png in Resources */,
 				33A8FD7722D48125004AECBA /* 快捷键.png in Resources */,
+				338448DC241D1ABD00644B47 /* 常见证书问题_01.png in Resources */,
 				3361E40F2308F3DF00A03B7D /* 常见系统库00.png in Resources */,
 				339A3D7D22BBB3F4007DD37D /* 下拉刷新_上拉加载_标准版.png in Resources */,
 				33068F0A22AE67C800D044EE /* UICollectionView.png in Resources */,
@@ -633,6 +648,7 @@
 				33E589602350B32C00D92DB7 /* UINavigationController的层级结构.png in Resources */,
 				33C9259023A1119900F2212E /* error_找不到AppDelegate类.png in Resources */,
 				33D730B3231B82270024D34E /* plist知识点.png in Resources */,
+				338448DA241D0EE500644B47 /* iOS证书的配置.png in Resources */,
 				3322A1A2241791610062B829 /* 大神班课程大纲.png in Resources */,
 				33FEF93423D18E65004169AB /* LaunchScreen简介.png in Resources */,
 				3397EBAE23119A1C00522E72 /* iOS学习路线图.png in Resources */,

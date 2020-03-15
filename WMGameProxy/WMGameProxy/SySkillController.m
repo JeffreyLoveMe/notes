@@ -532,10 +532,6 @@
 //    };
 //    Block_copy(proxy);
 //    proxy();
-    // 2>.什么是 “值传递”？什么是 “地址传递”？
-    /**
-     fixme
-     */
 }
 // 将 “void (^myBlock)(void)” 中 myBlock 取出来即可
 -(void)completeBlock:(void (^)(void))myBlock {
@@ -807,6 +803,12 @@
 // Model数据和View视图一一对应，以Model数据驱动View视图/防止发生复用；
 /// 2.MVP
 /// 3.MVVM
+
+
+/// 真机调试
+- (void)showTrueDevice {
+    // Xcode7.0以后只要 “Apple ID” 就可以自动生成对应证书进行 “真机调试”
+}
 
 
 - (void)dealloc {
