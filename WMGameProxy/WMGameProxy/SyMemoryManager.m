@@ -10,4 +10,12 @@
 
 @implementation SyMemoryManager
 
+- (void)dealloc {
+    /**
+     执行代码
+     */
+    // 这句代码放在最后一行
+    [super dealloc];
+}
+
 @end

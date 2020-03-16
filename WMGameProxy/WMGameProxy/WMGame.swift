@@ -594,9 +594,72 @@ class WMGameProxy: NSObject {
     }
     
     override func setValue(_ value: Any?, forUndefinedKey key: String) {
+//        // 第一种方法 - 防止循环引用
+//        weak var weakSelf = self
+//        self.loadData { (jsonData) -> (Void) in
+//            /**
+//             1.如果可选类型没有值 -> 后面的代码不会执行
+//             2.如果可选类型有值 -> 系统会自动给 weakSelf 进行解包
+//             */
+//            weakSelf?.name = ""
+//        }
         
+//        // 第二种方法 - 防止循环引用/不推荐使用
+//        // 当 self 为 nil 的时候会崩溃/很危险
+//        self.loadData { [unowned self] (jsonData) -> (Void) in
+//            /**
+//             1.如果可选类型没有值 -> 后面的代码不会执行
+//             2.如果可选类型有值 -> 系统会自动给 self 进行解包
+//             */
+//            self.name = ""
+//        }
+        
+        // 第三种方法 - 防止循环引用/推荐使用
+        // 1.尾随闭包
+        self.loadData { [weak self] (jsonData) -> (Void) in
+            /**
+             1.如果可选类型没有值 -> 后面的代码不会执行
+             2.如果可选类型有值 -> 系统会自动给 self 进行解包
+             */
+            self?.name = ""
+        }
+        
+        // 2.尾随闭包
+        self.loadData() { [weak self] (jsonData) -> (Void) in
+            /**
+             1.如果可选类型没有值 -> 后面的代码不会执行
+             2.如果可选类型有值 -> 系统会自动给 self 进行解包
+             */
+            self?.name = ""
+        }
+        
+        // 尾随闭包 - 如果闭包做为函数的最后一个参数那么闭包可以将 () 省略
+        // 3.普通方式
+        self.loadData (callback: { [weak self] (jsonData) -> (Void) in
+            /**
+             1.如果可选类型没有值 -> 后面的代码不会执行
+             2.如果可选类型有值 -> 系统会自动给 self 进行解包
+             */
+            self?.name = ""
+        })
     }
     
     /// 17.闭包
+    // 1).闭包的格式 -// (参数, 参数) -> (返回值类型)
+    // 2).闭包做为函数参数
+    /**
+     callback - 函数参数
+     (_ jsonData: String) -> (Void) - 函数参数类型/闭包类型
+     */
+    func loadData(callback: (_ jsonData: String) -> (Void)) {
+        callback("jsonData数据")
+    }
     
+    // 相当于 “dealloc方法”
+    deinit {
+        // 当对象销毁的时候调用该方法
+    }
+    // 3).typealias修饰闭包
+    typealias callBackBlock = (_ jsonData: String) -> (Void)
+    var callBack: callBackBlock?
 }

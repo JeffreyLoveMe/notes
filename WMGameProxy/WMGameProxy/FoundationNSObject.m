@@ -598,7 +598,7 @@
 // 2.NSNumber怎么包装？怎么解包？怎么简化写法@()
 // 3.NSNumber是类：可以设置nil
 -(void)showNumber {
-    // 1.包装基本数据类型/int/float/long/bool
+    // 1.包装基本数据类型/int/float/long/BOOL
     NSNumber *intNumber = [NSNumber numberWithInt:100];
     NSNumber *floatNumber = [NSNumber numberWithDouble:100.00];
     // 包装以后可以存入数组

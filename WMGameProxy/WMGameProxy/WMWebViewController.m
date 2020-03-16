@@ -46,11 +46,13 @@
     [self.webView loadRequest:request];
     // 5.添加到父视图
     [self.view addSubview:self.webView];
+    // 6.自适应居中
+    [self.webView setScalesPageToFit:YES];
     // 可以加载 html 字符串
     // 本地 html 字符串
     // 所有链接的默认地址
     // 被很多"新闻类"的 App 使用
-    [self.webView loadHTMLString:@"" baseURL:[NSURL URLWithString:@""]];
+    [self.webView loadHTMLString:@"" baseURL:nil];
     // 刷新网页
     [self.webView reload];
     // 停止加载网页

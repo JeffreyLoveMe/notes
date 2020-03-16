@@ -25,28 +25,28 @@
  2.iOS开发
  1>.概述：
  1).iOS是一款由苹果公司开发的操作系统(OS)
- 2).什么是iOS开发：开发iphone/iPad手机软件开发
- 3).主流操作系统：iOS、Android、黑莓、WP、Symbian
- 4).什么是操作系统：直接运行在硬件上的最基本的系统软件，其他软件必须依赖操作系统才能运行
+ 2).什么是iOS开发 - 开发 iphone/iPad 手机软件开发
+ 3).主流操作系统 - iOS、Android、黑莓、WP、Symbian
+ 4).什么是操作系统 - 直接运行在硬件上的最基本的系统软件，其他软件必须依赖操作系统才能运行
  5).iOS(基于UNIX、不开源、AppStore)/Android(基于Linux的虚拟机、开源、GooglePlay)
  2>.准备：
- 1).编程语言：swift > Objective-C > C语言 > C++
- 2).开发工具：Xcode
- 3).电脑系统：MacOS
- 4).真机设备：iphone/ipad
- 5).iOS证书：调试证书/发布证书
+ 1).编程语言 - swift > Objective-C > C语言 > C++
+ 2).开发工具 - Xcode
+ 3).电脑系统 - MacOS
+ 4).真机设备 - iphone/ipad
+ 5).iOS证书 - 调试证书/发布证书
  3>.Apple硬件：
- 1).iPhone：2007年发布iphone1/2008年发布iphone2(3G)
- 2).iPad：2010年发布iPad1(大概一年发布一款)
- 3).ipad mini：2012年发布iPad mini1
- 4).ipod Touch：没有打电话功能的iphone
- 5).Apple TV：需要翻墙(国内被小米模仿)
+ 1).iPhone - 2007年发布iphone1/2008年发布iphone2(3G)
+ 2).iPad - 2010年发布iPad1(大概一年发布一款)
+ 3).ipad mini - 2012年发布iPad mini1
+ 4).ipod Touch - 没有打电话功能的iphone
+ 5).Apple TV - 需要翻墙(国内被小米模仿)
  4>.Mac系统/基于Unix内核：
- 1).Dock工具栏：应用程序列表(默认位于屏幕下方)
- 2).系统偏好设置：windows的控制面板
- 3).safari浏览器：windows的IE浏览器
- 4).App store：苹果应用商店
- 5).finder文件管理器：windows的计算机
+ 1).Dock工具栏 - 应用程序列表(默认位于屏幕下方)
+ 2).系统偏好设置 - windows的控制面板
+ 3).safari浏览器 - windows的IE浏览器
+ 4).App store - 苹果应用商店
+ 5).finder文件管理器 - windows的计算机
  */
 
 /**
@@ -56,7 +56,7 @@
  command+N //新建文件
  command+tab //切换应用程序
  command+shift+3/4 //截图
- command+shift+z //恢复撤销
+ command+shift+Z //恢复撤销
  command+W/Q //退出前台|退出后台
  command+S/C/V/X/A/Z //保存/复制/粘贴/剪切/全选/撤销
  command+B/R //将代码翻译成0/1、编译程序/运行程序

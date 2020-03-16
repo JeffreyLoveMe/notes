@@ -8,10 +8,6 @@
 3.调用类方法的效率比调用对象方法高；
 4.类方法和对象方法可以相互调用；（不建议类方法调用对象方法）
 
-// 继承和组合的区别？
-1.继承：当两个类拥有相同的属性和方法可以将相同的属性和方法抽取（###是xxx）
-2.组合：让某个类做为另一个类的属性（###拥有xxx）
-
 //http/https有什么区别？socket/http数据交互有什么区别？
 1.
 2.
@@ -99,6 +95,7 @@
 2.
 3.
 
+/// 换一种通用写法
 // 冒泡排序：将相邻元素两两排序让较大的数沉底、一共需要(N-1)轮排序
 3 5 8 6 2  // 原始数据
 3 5 6 2 8  // 第一轮排序
@@ -157,12 +154,6 @@ int main() {
     return 0;
 }
 
-// 快速排序
-
-// 堆排序
-
-// 二分查找
-
 // 平时工作中遇到过哪些内存 crash/泄漏 的情况
 1.
 2.
@@ -191,20 +182,6 @@ int main() {
 https://github.com/ming1016
 https://ming1016.github.io/categories/Programming
 
-
-
-
-1.数组（一维）
-2.三种排序（冒泡、选择、快速）
-3.二维数组
-4.函数（声明、实现、调用）
-5.局部（全局）变量
-6.指针
-7.C语言字符串（相关函数）
-8.C语言内存分配（二种）
-9.结构体
-10.枚举
-11.共用体
 12.面向对象的三大特征
 13.类（声明、实现、调用）
 14.OC语言的构造方法
@@ -286,30 +263,6 @@ https://ming1016.github.io/categories/Programming
 93.近景通讯技术
 94.Bonjour
 95.iBeacons
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -3195,6 +3148,13 @@ PostStore类网络请求完成，需要告诉VC网络请求操作完成；
     return dataArr;
 }
 self.dataArr; //每次使用均会调用-(NSArray *)dataArr;
+3.懒加载：
+又称延迟加载,在开发中,当程序中需要利用的资源时,在程序启动的时候不加载资源,
+只有在运行当需要一些资源时,再去加载这些资源
+好处：
+不必将创建对象的代码全部写在viewDidLoad方法中,代码的可读性更强
+每个属性的getter方法中分别负责各自的实例化处理,代码彼此之间的独立性强,松耦合
+只有当真正需要资源时,再去加载,节省了内存资源
 
 #UISearchController：navigationItem中的一部分
 
@@ -5076,3 +5036,136 @@ https://github.com/tangqiaoboy/iOSBlogCN
 h5/css/js->前端->php->后端->python->运维->IT->word/excel/ppt
 https://www.jianshu.com/p/c73aa144d513
 
+UILabel //文本框：行的内容模式lineBreakMode/默认字体、粗体、斜体
+UIButton //按钮：有几种类型
+UIView //视图
+UIImage //Image
+UIImageView //图片视图：内容模式contentMode
+UITextField //编辑框
+UITextView //编辑文本框：可以滚动
+UISlider //滑块：事件驱动型
+UISwitch //开关：事件驱动型
+UIStepper //步数器：事件驱动型-NO
+UISegmentControl //多段选择视图：事件驱动型
+UIAlertView //警告框：协议代理型
+UIActionSheet //表单视图：协议代理型
+UIProgressView //进度条：一般型
+UIActivityIndicatorView //活动指示框：一般型
+UIWebView/WKWebView //web视图
+UIMenuController //菜单：https://blog.csdn.net/woyangyi/article/details/45896859
+UIPageControl //圆点
+UIRefreshControl //下拉刷新控件：不能上拉加载
+UIAlertController //警告框：iOS8.0以上推荐使用-UIViewControlelr的子类
+UIImagePickerController //相机、相册
+UIPickView //选择器、类似UITableView
+UIDatePicker //日期选择器
+UIToolBar //工具条：可以实现毛玻璃效果
+UINavigationBar //导航条：44px
+
+------------------
+vc和跳转一起使用
+导航视图返回:重写
+UIButton重写怎么操作：首页顶部搜索栏
+mvc：AF
+UILable包裹:朋友圈
+UITextField:11位电话号码
+UITextView：意见反馈
+UISegmentControl：选择
+UINavigationController：全透明、一张图
+UITabBarController：红色数字/点、微博发布按钮
+主流框架：UITabBarController->UINavigationController
+事件/手势：怎么实现一部分接受视图/代理
+顶部导航栏：第三方做
+UIScrollView：做vc的self.view
+搜索显示控制器：OK
+模式：后面带控件的、分组的、有组头、组尾、还有自定义cell
+仿QQ折叠、左滑删除、编辑多选模式、无数据源view变成kong
+索引、UITableView自适应
+UICollectionView：瀑布流
+多控制器之间的切换
+#App的整体架构：OK
+1.加载成功/加载失败：self.view
+2.VC需要网络请求，可以委托(PostStore类)来进行网络请求；
+3.PostStore类网络请求完成，需要告诉VC网络请求操作完成；
+
+
+5.创建学生类，成员变量有学号，姓名，年龄
+用学生类创建三个学生对象，将三个学生添加到字典中，以学号作为key。
+输入一个学生的学号，打印出该学生的完整信息。
+学生对象是值，学生学号的字符串是key。
+
+作业:
+4 写一个block，给数组排序(数组里的每个元素都是字符串)
+
+5 写一个block回调，实现师长让张嘎打鬼子
+
+6 写一个block回调，实现老师让学生做作业
+
+1.使用手动内存管理完成电子书签管理器：使用数组完成
+书签：网址、标题
+要求做的功能：
+1、添加书签到管理器中
+2、根据网址删除一个书签
+3、查看所有书签
+
+5.书签管理类的项目：
+                标签                   网址
+                百度       ————  www.baidu.com
+                谷歌       ————  www.google.com
+                千锋       ————  www.mobiletrain.org
+
+            进行添加、修改、输出、查找等功能
+            要求使用字典。
+
+
+6.使用可变字典完成如下功能
+商品管理
+商品：编号  名称  价钱  库存量
+1.完成商品的显示功能
+2.条件查询功能：输入商品编号，到可变字典里查询出对应的商品，如果没有，提示：无此商品
+3.商品添加功能
+4.删除商品
+5.修改指定商品的库存量
+
+4. 创建一个账户类。
+成员：
+用户名：
+密码：
+初始化一个账户时，设定一个用户名和密码。
+然后，登录时，输入一个用户名和密码，如果匹配成功，则登陆成功，否则，登陆不成功。
+
+5.完成电子书签管理器（要求使用存储使用字典，定义字段用属性property）
+*****************************************
+书签：网址  标题
+要求做的功能：
+1、添加书签到管理器中
+2、根据网址删除一个书签
+3、查看所有书签
+
+上传照片：https://blog.csdn.net/ios_apple/article/details/32321737#0-qzone-1-68729-d020d2d2a4e8d1a374a433f596ad1440
+
+
+安卓填坑手册：https://mp.weixin.qq.com/s?__biz=MzA4NDM2MjAwNw==&mid=208402070&idx=1&sn=0c5032852be129dc8545cdc8c05beb1b&scene=18&scene=22&srcid=0727iUS9jVCLyhCCy3lR7A8l#rd
+
+//MVC
+控制器-->利用https请求数据-->拿到json数据-->转换成model-->数据源(数组)装model-->显示在view中
+
+#网络编程需要掌握的内容：NO
+0.实时监测网络变化
+1.数据请求、数据上传、下载
+2.原生网络请求的原理
+3.网络请求第三方库的使用
+4.KVC在网络请求中的应用
+5.进入VC以后怎么加载操作
+
+
+#Model：字典转模型
+好处：字典的key不会提示错误、Model的属性会提示错误；
+//1.实现：需要封装
+Shop *shop = [[Shop alloc]init];
+shop.icon = dict[@"icon"];
+shop.name = dict[@"name"];
+[_arrM addObject:shop];
+//2.实现：最终方案
+//Shop *shop = [Shop alloc] initWithDict:dict];
+Shop *shop = [Shop shopWithDict:dict];

@@ -55,13 +55,4 @@ int main(int argc, char * argv[]) {
     // 3.开启一个事件循环（主运行循环、保证App不退出）/死循环
     // 4.加载 info.plist 文件（判断 info.plist 文件中是否有 main 参数：是否加载 xib）
     // 5.应用程序启动完毕（通知 delegate）
-    
-    
-    
-    
-    
-    
-    
-    
-    
 }

@@ -308,6 +308,13 @@
 /// 4.设置右边索引
 // 按照 index 匹配
 // 不是按照字符串匹配
+/**
+ 可以通过属性设置索引 “字体颜色”/“背景颜色”
+ // 设置索引字体颜色
+ tableView.sectionIndexColor = UIColor.redColor;
+ // 设置索引背景颜色
+ tableView.sectionIndexBackgroundColor = UIColor.grayColor;
+ */
 - (NSArray<NSString *> *)sectionIndexTitlesForTableView:(UITableView *)tableView {
     return @[@"A", @"B", @"C"];
 }
@@ -319,7 +326,7 @@
 }
 // 行的移动完成
 - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath {
-
+    
 }
 
 @end

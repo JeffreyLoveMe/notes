@@ -50,7 +50,6 @@ NS_ASSUME_NONNULL_BEGIN
 // 让编译器自动实现 setter/getter方法 | Xcode4.6以后可以省略
 // atomic缺省/原子性：对当前属性进行加锁、线程安全、消耗性能、访问速度慢
 // nonatomic非原子性：不加锁、线程不安全、访问速度快
-// 面试题：atomic可以保证100%安全吗？为什么？
 @property (strong, atomic) NSString *publishName;
 // assign一般用于基础数据类型
 // 这里不需要加 *
