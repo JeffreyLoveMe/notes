@@ -1,0 +1,448 @@
+<!DOCTYPE html><html><head><title>NBSDK接口协议</title><meta charset='utf-8'><link href='https://dn-maxiang.qbox.me/res-min/themes/marxico.css' rel='stylesheet'><style></style></head><body><div id='preview-contents' class='note-content'>
+                        
+                    
+
+
+
+<h1 id="nbsdkclgo-cs接口协议">NBSDK接口协议</h1>
+
+
+
+<h3 id="一接口地址">一、接口地址</h3>
+
+<blockquote>
+  <p>注：以下地址指向同一服务器，且必要情况下是可以支持http访问的</p>
+</blockquote>
+
+<p><code>https://sdkv3.changmeng.com</code> <br>
+<code>https://sdkv3.gamesheng.com</code> <br>
+<code>https://i38.hufangame.com</code></p>
+
+
+
+<h3 id="二请求协议">二、请求协议</h3>
+
+
+
+<h5 id="1-请求格式">1. 请求格式：</h5>
+
+<p><code>HTTP POST x-www-form-urlencoded</code></p>
+
+
+
+<h5 id="2-公共参数">2. 公共参数:</h5>
+
+<p>以下为每一个请求都需要用到的参数列表：</p>
+
+<table><tbody><tr style="font-weight:bold">  <td align="left">参数名(key)</td>  <td align="center">是否必须</td>  <td align="right">示例</td>  <td align="left">参数说明</td></tr><tr>  <td align="left">game_id</td>  <td align="center">是</td>  <td align="right">100886</td>  <td align="left">游戏ID，由服务端系统分配</td></tr><tr>  <td align="left">pf_key</td>  <td align="center">是</td>  <td align="right">qq</td>  <td align="left">当前APP包所属渠道标识，由服务端系统分配</td></tr><tr>  <td align="left">sdk_ver</td>  <td align="center">是</td>  <td align="right">3.8.10</td>  <td align="left">当前SDK版本号</td></tr><tr>  <td align="left">game_ver</td>  <td align="center">是</td>  <td align="right">1.0.1</td>  <td align="left">当前APP包版本号</td></tr><tr>  <td align="left">bundle_id</td>  <td align="center">是</td>  <td align="right">com.xyz.game</td>  <td align="left">当前APP包BundleID(iOS)或者主PackageName(Android)</td></tr><tr>  <td align="left">plat</td>  <td align="center">是</td>  <td align="right">ios</td>  <td align="left">当前包所属系统平台，ios或android</td></tr><tr>  <td align="left">udid</td>  <td align="center">是</td>  <td align="right">B03202E3-0835-4982-A330-08F26085E99C</td>  <td align="left">设备识别ID; <br>iOS默认获取IDFA，如无法获取， 则使用SimulateIDFA模拟生成不可靠ID; <br>Android则使用一个算法进行生成</td></tr><tr>  <td align="left">time</td>  <td align="center">是</td>  <td align="right">1528702621</td>  <td align="left">请求时客户端本地UNIX时间戳</td></tr><tr>  <td align="left">chid</td>  <td align="center">否</td>  <td align="right">2001001001</td>  <td align="left">当前包所属投放ID</td></tr><tr>  <td align="left">imei1</td>  <td align="center">否</td>  <td align="right">862632036227012</td>  <td align="left">第1张卡的IMEI号</td></tr><tr>  <td align="left">imei2</td>  <td align="center">否</td>  <td align="right">A00000862AF123</td>  <td align="left">第2张卡的IMEI号</td></tr><tr>  <td align="left">phonenum</td>  <td align="center">否</td>  <td align="right">18012340001</td>  <td align="left">手机号码</td></tr><tr>  <td align="left">ua</td>  <td align="center">否</td>  <td align="right">Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.18</td>  <td align="left">浏览器UserAgent</td></tr><tr>  <td align="left">mac</td>  <td align="center">否</td>  <td align="right">00:01:6C:06:A6:29</td>  <td align="left">网卡Mac地址</td></tr><tr>  <td align="left">meid</td>  <td align="center">否</td>  <td align="right">862991034992013</td>  <td align="left">手机MEID号</td></tr><tr>  <td align="left">uuid</td>  <td align="center">否</td>  <td align="right">a4dc1a45-3671-492c-913a-dbd15c71b8e7</td>  <td align="left">Android UUID</td></tr><tr>  <td align="left">android_id</td>  <td align="center">否</td>  <td align="right">8970c5e51d1d7a0d</td>  <td align="left">Android ID</td></tr><tr>  <td align="left">idfv</td>  <td align="center">否</td>  <td align="right">02D79BAE-6322-4BCC-A8DA-061A51414770</td>  <td align="left">iOS IDFV</td></tr><tr>  <td align="left"><code>sign</code></td>  <td align="center"><code>是</code></td>  <td align="right"><code>b344bf92495baf88ec30fda3c5d27d14</code></td>  <td align="left"><code>请求签名，签名方法见附录</code></td></tr></tbody></table>
+
+
+
+<h5 id="2-签名方法">2. 签名方法:</h5>
+
+<p>1) 将所有请求字段(包含公共参数、私有参数，但sign字段除外)按照字段名的字母顺序排列，字段名和其字段值之间用=号相连，字段间用&amp;符相连，字段名和值都需要预先UrlEncode，得到待签字符串。 <br>
+类似：akey=aval&amp;bkey=bval&amp;  ……  &amp;zkey=zval</p>
+
+<p>2) 将待签字符串作为源串，GameKey作为KEY，进行HmacMD5散列运算，最终得到一个32位的字符串散列值（转换为小写），此值即为sign参数的值。</p>
+
+
+
+<h3 id="三响应协议">三、响应协议</h3>
+
+
+
+<h5 id="1-响应格式">1. 响应格式</h5>
+
+<p><code>JSON字符串</code>，内容为：<code>{"code":int, "msg": "string", "data": JSON Object}</code></p>
+
+<p>1) <code>code</code>: int 表示响应状态码 <br>
+2) <code>msg</code>: string 响应描述或响应摘要字符 <br>
+3) <code>data</code>: JSON Object 如果有数据集或复杂响应结果，刚放在此字段中 </p>
+
+
+
+<h5 id="2-通用code状态码">2. 通用code状态码</h5>
+
+<p>请所有API接口遵守通用code状态码协议。 <br>
+其它的API私有响应码，可自行定义，但别重复。</p>
+
+<p><code>200</code> 正常OK <br>
+<code>403</code> 签名失败 <br>
+<code>404</code> 请求对象不存在 <br>
+<code>405</code> 请求方法错误 <br>
+<code>406</code> 参数格式错误或缺少必要参数 <br>
+<code>500</code> 系统繁忙，请稍候再试 <br>
+<code>601</code> 未知错误 <br>
+<code>888</code> 用户告知消息tips，此时客户端应直接提示响应的msg字段字符 <br>
+<code>889</code> 用户需确认的告知消息，此时客户端应使用Alert进行msg字符提示</p>
+
+
+
+<h3 id="四聚合层api接口">四、聚合层API接口</h3>
+
+
+
+<h5 id="1-初始化检查">1. 初始化检查</h5>
+
+<p>1) 请求地址： <br>
+<code>/game/check</code>  <br>
+<code>/ios/init</code> <br>
+2) 私有参数：无 <br>
+3) 响应结果：</p>
+
+<pre class="prettyprint hljs-dark"><code class="language-json hljs"><div class="hljs-line">{
+</div><div class="hljs-line">    <span class="hljs-attr">"code"</span>: <span class="hljs-number">200</span>,
+</div><div class="hljs-line">    <span class="hljs-attr">"msg"</span>: <span class="hljs-string">""</span>,
+</div><div class="hljs-line">    <span class="hljs-attr">"data"</span>: {
+</div><div class="hljs-line">        <span class="hljs-attr">"pfid"</span>: <span class="hljs-string">"1000"</span>, //PFID
+</div><div class="hljs-line">        <span class="hljs-attr">"version_info"</span>: { //版本更新信息
+</div><div class="hljs-line">            <span class="hljs-attr">"version"</span>: <span class="hljs-string">""</span>,
+</div><div class="hljs-line">            <span class="hljs-attr">"min_ver"</span>: <span class="hljs-string">""</span>,
+</div><div class="hljs-line">            <span class="hljs-attr">"title"</span>: <span class="hljs-string">""</span>,
+</div><div class="hljs-line">            <span class="hljs-attr">"intro"</span>: <span class="hljs-string">""</span>,
+</div><div class="hljs-line">            <span class="hljs-attr">"url"</span>: <span class="hljs-string">""</span>
+</div><div class="hljs-line">        },
+</div><div class="hljs-line">        <span class="hljs-attr">"notice"</span>: { //公告信息
+</div><div class="hljs-line">            <span class="hljs-attr">"type"</span>: <span class="hljs-string">"0"</span>,
+</div><div class="hljs-line">            <span class="hljs-attr">"title"</span>: <span class="hljs-string">""</span>,
+</div><div class="hljs-line">            <span class="hljs-attr">"intro"</span>: <span class="hljs-string">""</span>,
+</div><div class="hljs-line">            <span class="hljs-attr">"url"</span>: <span class="hljs-string">""</span>
+</div><div class="hljs-line">        },
+</div><div class="hljs-line">        <span class="hljs-attr">"stat_api_host"</span>: <span class="hljs-string">"https://statv3.changmeng.com"</span>, //统计API
+</div><div class="hljs-line">        <span class="hljs-attr">"parent_url"</span>: <span class="hljs-string">""</span>, //家长守护工程
+</div><div class="hljs-line">        <span class="hljs-attr">"kefu"</span>: { //网易七鱼客服
+</div><div class="hljs-line">            <span class="hljs-attr">"appkey"</span>: <span class="hljs-string">""</span>,
+</div><div class="hljs-line">            <span class="hljs-attr">"robot_id"</span>: <span class="hljs-string">""</span>,
+</div><div class="hljs-line">            <span class="hljs-attr">"robot_tid"</span>: <span class="hljs-string">""</span>,
+</div><div class="hljs-line">        }
+</div><div class="hljs-line">    }
+</div><div class="hljs-line">}
+</div></code></pre>
+
+<h5 id="2-二次登录验证">2. 二次登录验证</h5>
+
+
+
+<h5 id="3-支付下单">3. 支付下单</h5>
+
+
+
+<h3 id="五聚合层统计接口">五、聚合层统计接口</h3>
+
+
+
+<h5 id="1-设备启动事件">1. 设备启动事件</h5>
+
+
+
+<h5 id="2-用户登录事件">2. 用户登录事件</h5>
+
+
+
+<h5 id="3-创建角色事件">3. 创建角色事件</h5>
+
+
+
+<h5 id="4-选择角色事件">4. 选择角色事件</h5>
+
+
+
+<h5 id="5-进入主场景事件">5. 进入主场景事件</h5>
+
+
+
+<h5 id="6-角色升级事件">6. 角色升级事件</h5>
+
+
+
+<h5 id="7-在线心跳事件">7. 在线心跳事件</h5>
+
+
+
+<h5 id="8-用户登出事件">8. 用户登出事件</h5>
+
+
+
+<h3 id="六畅梦api接口">六、畅梦API接口</h3>
+
+
+
+<h5 id="1-获取设备登录帐号记录">1. 获取设备登录帐号记录</h5>
+
+<p>1) 请求地址： <br>
+<code>/passport/user/udid-users</code>  <br>
+<code>/sso/ios/lastus</code> <br>
+2) 私有参数：无 <br>
+3) 响应结果：</p>
+
+
+
+<pre class="prettyprint hljs-dark"><code class="language-json hljs"><div class="hljs-line">{
+</div><div class="hljs-line">    <span class="hljs-attr">"code"</span>:<span class="hljs-number">200</span>,
+</div><div class="hljs-line">    <span class="hljs-attr">"msg"</span>:<span class="hljs-string">""</span>,
+</div><div class="hljs-line">    <span class="hljs-attr">"data"</span>:[
+</div><div class="hljs-line">        {<span class="hljs-attr">"username"</span>:<span class="hljs-string">"u29809703"</span>,<span class="hljs-attr">"lasttime"</span>:<span class="hljs-string">"2018-06-14 10:57:59"</span>,<span class="hljs-attr">"fp"</span>:<span class="hljs-string">"67f990N5zWzy"</span>},
+</div><div class="hljs-line">        {<span class="hljs-attr">"username"</span>:<span class="hljs-string">"u29809699"</span>,<span class="hljs-attr">"lasttime"</span>:<span class="hljs-string">"2018-06-14 10:57:26"</span>,<span class="hljs-attr">"fp"</span>:<span class="hljs-string">"990eb95s8sis"</span>},
+</div><div class="hljs-line">        {<span class="hljs-attr">"username"</span>:<span class="hljs-string">"u29809698"</span>,<span class="hljs-attr">"lasttime"</span>:<span class="hljs-string">"2018-06-14 10:57:21"</span>,<span class="hljs-attr">"fp"</span>:<span class="hljs-string">"7b62eflxuPLS"</span>}
+</div><div class="hljs-line">    ]
+</div><div class="hljs-line">}
+</div></code></pre>
+
+<ul><li>data结果集是按照最后一次登录时间倒序排列的用户名列表，最新登录的最先出现</li>
+<li>username为用户名；lasttime为最后登录验证的时间；fp为该设备临时的登录签名，可使用该签名在该设备上直接通过密码验证，防止一键注册用户忘记密码</li>
+<li>一旦该帐号手动设置过密码或是手动注册的帐号，将不下发fp参数(json中直接没有此字段)</li>
+<li>该游戏包为提审服状态时，将强制返回空数据集，防止苹果爸爸审核员登老帐号</li>
+</ul>
+
+
+
+<h5 id="2-登录验证">2. 登录验证</h5>
+
+<p>1) 请求地址： <br>
+<code>/passport/user/login</code>  <br>
+<code>/sso/ios/auth</code> <br>
+2) 私有参数： <br>
+<code>username</code> String 用户名 <br>
+<code>password</code> String 密码 <br>
+3) 响应结果：</p>
+
+
+
+<pre class="prettyprint hljs-dark"><code class="language-json hljs"><div class="hljs-line">{
+</div><div class="hljs-line">    <span class="hljs-attr">"code"</span>:<span class="hljs-number">200</span>,
+</div><div class="hljs-line">    <span class="hljs-attr">"msg"</span>:<span class="hljs-string">"登录成功"</span>,
+</div><div class="hljs-line">    <span class="hljs-attr">"data"</span>:
+</div><div class="hljs-line">    {
+</div><div class="hljs-line">        <span class="hljs-attr">"uid"</span>:<span class="hljs-string">"29809698"</span>,
+</div><div class="hljs-line">        <span class="hljs-attr">"token"</span>:<span class="hljs-string">"dabc939bef91901120009fa3d13a55edqq0spu9b"</span>,
+</div><div class="hljs-line">        <span class="hljs-attr">"mobile_bind"</span>: <span class="hljs-number">1</span>
+</div><div class="hljs-line">    }
+</div><div class="hljs-line">}
+</div></code></pre>
+
+<ul><li>code值为200时，代表验证成功，将在data中返回uid和token，如果有下发mobile_bind字段且为1时，需要弹出手机绑定窗口</li>
+<li>code值为406时，一般为用户名或密码错误等其它人为错误，此时msg中会有详细提示，可直接显示此msg</li>
+</ul>
+
+<h5 id="3-修改密码">3. 修改密码</h5>
+
+<p>1) 请求地址： <br>
+<code>/passport/user/edit-password</code>  <br>
+2) 私有参数： <br>
+<code>username</code> String 用户名 <br>
+<code>password_old</code> String 原密码 <br>
+<code>password</code> String 新密码 <br>
+<code>password_repeat</code> String 确认新密码 <br>
+3) 响应结果：</p>
+
+
+
+<pre class="prettyprint hljs-dark"><code class="language-json hljs"><div class="hljs-line">{<span class="hljs-attr">"code"</span>:<span class="hljs-number">200</span>,<span class="hljs-attr">"msg"</span>:<span class="hljs-string">"密码修改成功"</span>,<span class="hljs-attr">"data"</span>:{}}
+</div></code></pre>
+
+<ul><li>code值为200时，代表密码已修改成功</li>
+<li>code值为406时，一般为用户名或原密码错误，重复密码不匹配等，此时msg中会有详细提示，可直接显示此msg</li>
+</ul>
+
+
+
+<h5 id="4-注册字符串帐号">4. 注册字符串帐号</h5>
+
+<p>1) 请求地址： <br>
+<code>/passport/user/register</code>  <br>
+<code>/sso/ios/r</code> <br>
+2) 私有参数： <br>
+<code>username</code> String 用户名 <br>
+<code>password</code> String 密码 <br>
+<code>password_repeat</code> String 确认密码 <br>
+3) 响应结果：</p>
+
+
+
+<pre class="prettyprint hljs-dark"><code class="language-json hljs"><div class="hljs-line">{
+</div><div class="hljs-line">    <span class="hljs-attr">"code"</span>:<span class="hljs-number">200</span>,
+</div><div class="hljs-line">    <span class="hljs-attr">"msg"</span>:<span class="hljs-string">"登录成功"</span>,
+</div><div class="hljs-line">    <span class="hljs-attr">"data"</span>:
+</div><div class="hljs-line">    {
+</div><div class="hljs-line">        <span class="hljs-attr">"uid"</span>:<span class="hljs-string">"29809704"</span>,
+</div><div class="hljs-line">        <span class="hljs-attr">"token"</span>:<span class="hljs-string">"a62a31e92b0d78d805bd0e29c4ba3893_kuvyoc-"</span>,
+</div><div class="hljs-line">        <span class="hljs-attr">"username"</span>:<span class="hljs-string">"user123"</span>,
+</div><div class="hljs-line">        <span class="hljs-attr">"password"</span>:<span class="hljs-string">"123456"</span>,
+</div><div class="hljs-line">        <span class="hljs-attr">"mobile_bind"</span>: <span class="hljs-number">1</span>
+</div><div class="hljs-line">    }
+</div><div class="hljs-line">}
+</div></code></pre>
+
+<ul><li>code值为200时，代表注册成功且同时已登录成功，将在data中返回登录uid、token，以及username和password，如果有下发mobile_bind字段且为1时，需要弹出手机绑定窗口</li>
+<li>code值为406时，一般为用户名已占用或密码无效等，此时msg中会有详细提示，可直接显示此msg</li>
+</ul>
+
+<h5 id="5-一键注册字符串帐号">5. 一键注册字符串帐号</h5>
+
+<p>1) 请求地址： <br>
+<code>/passport/user/register-quick</code>  <br>
+<code>/sso/ios/okr</code> <br>
+2) 私有参数： <br>
+<code>username</code> String 用户名 <br>
+<code>password</code> String 密码 <br>
+<code>password_repeat</code> String 确认密码 <br>
+3) 响应结果：</p>
+
+
+
+<pre class="prettyprint hljs-dark"><code class="language-json hljs"><div class="hljs-line">{
+</div><div class="hljs-line">    <span class="hljs-attr">"code"</span>:<span class="hljs-number">200</span>,
+</div><div class="hljs-line">    <span class="hljs-attr">"msg"</span>:<span class="hljs-string">"登录成功"</span>,
+</div><div class="hljs-line">    <span class="hljs-attr">"data"</span>:
+</div><div class="hljs-line">    {
+</div><div class="hljs-line">        <span class="hljs-attr">"uid"</span>:<span class="hljs-string">"29809705"</span>,
+</div><div class="hljs-line">        <span class="hljs-attr">"token"</span>:<span class="hljs-string">"8b7493bf8563433ae65f9b08d05c7fcehfe36dj9"</span>,
+</div><div class="hljs-line">        <span class="hljs-attr">"username"</span>:<span class="hljs-string">"u29809705"</span>,
+</div><div class="hljs-line">        <span class="hljs-attr">"password"</span>:<span class="hljs-string">"518171"</span>,
+</div><div class="hljs-line">        <span class="hljs-attr">"mobile_bind"</span>: <span class="hljs-number">1</span>
+</div><div class="hljs-line">    }
+</div><div class="hljs-line">}
+</div></code></pre>
+
+<ul><li>code值为200时，代表一键注册成功且同时已登录成功，将在data中返回登录uid、token，以及随机生成的username和password，如果有下发mobile_bind字段且为1时，需要弹出手机绑定窗口</li>
+</ul>
+
+<h5 id="6-手机验证码发送">6. 手机验证码发送</h5>
+
+<p>1) 请求地址： <br>
+<code>/passport/mobile/sendcode</code>  <br>
+2) 私有参数： <br>
+<code>codetype</code>: String 验证码类型：register - 注册，login - 登录， findpass - 重置密码， bind - 绑定手机号 <br>
+<code>mobile</code> String 手机号码，支持国家代码前辍，不加时默认为<code>0086</code>前辍 <br>
+<code>captcha</code> String 可选参数，人机验证码 <br>
+3) 响应结果：</p>
+
+
+
+<pre class="prettyprint hljs-dark"><code class="language-json hljs"><div class="hljs-line">{
+</div><div class="hljs-line">    <span class="hljs-attr">"code"</span>:<span class="hljs-number">200</span>,
+</div><div class="hljs-line">    <span class="hljs-attr">"msg"</span>:<span class="hljs-string">"验证码已发送，请注意查收短信"</span>,
+</div><div class="hljs-line">    <span class="hljs-attr">"data"</span>:
+</div><div class="hljs-line">    {
+</div><div class="hljs-line">        <span class="hljs-attr">"delay"</span>:<span class="hljs-number">60</span>
+</div><div class="hljs-line">    }
+</div><div class="hljs-line">}
+</div></code></pre>
+
+<ul><li>code值为200时，代表手机验证码发送成功，此时data中delay值代表多少秒后可再次点击发送</li>
+<li>code值为401时，代表人机验证失败，此时需要传入正确的人机验证码，此时msg中会有详细提示，可直接显示此msg</li>
+<li>code值为402时，代表发送频率过快，被系统限制了，此时msg中会有详细提示，可直接显示此msg</li>
+<li>code值为406时，一般手机格式不正确或不存在的手机号，此时msg中会有详细提示，可直接显示此msg</li>
+</ul>
+
+
+
+<h5 id="7-手机号注册">7. 手机号注册</h5>
+
+<p>1) 请求地址： <br>
+<code>/passport/mobile/register</code>  <br>
+2) 私有参数： <br>
+<code>mobile</code> String 手机号码，支持国家代码前辍，不加时默认为<code>0086</code>前辍  <br>
+<code>password</code> String 密码 <br>
+<code>smscode</code> String 手机短信验证码 <br>
+3) 响应结果：</p>
+
+
+
+<pre class="prettyprint hljs-dark"><code class="language-json hljs"><div class="hljs-line">{
+</div><div class="hljs-line">    <span class="hljs-attr">"code"</span>:<span class="hljs-number">200</span>,
+</div><div class="hljs-line">    <span class="hljs-attr">"msg"</span>:<span class="hljs-string">"登录成功"</span>,
+</div><div class="hljs-line">    <span class="hljs-attr">"data"</span>:
+</div><div class="hljs-line">    {
+</div><div class="hljs-line">        <span class="hljs-attr">"uid"</span>:<span class="hljs-string">"29809704"</span>,
+</div><div class="hljs-line">        <span class="hljs-attr">"token"</span>:<span class="hljs-string">"a62a31e92b0d78d805bd0e29c4ba3893_kuvyoc-"</span>,
+</div><div class="hljs-line">        <span class="hljs-attr">"username"</span>:<span class="hljs-string">"18616551234"</span>,
+</div><div class="hljs-line">        <span class="hljs-attr">"password"</span>:<span class="hljs-string">"123456"</span>,
+</div><div class="hljs-line">        <span class="hljs-attr">"mobile_bind"</span>: <span class="hljs-number">1</span>
+</div><div class="hljs-line">    }
+</div><div class="hljs-line">}
+</div></code></pre>
+
+<ul><li>code值为200时，代表注册成功且同时已登录成功，将在data中返回登录uid、token，以及username和password，如果有下发mobile_bind字段且为1时，需要弹出手机绑定窗口</li>
+<li>code值为406时，一般为手机号已占用、密码无效或验证码错误等，此时msg中会有详细提示，可直接显示此msg</li>
+</ul>
+
+<h5 id="7-手机号绑定">7. 手机号绑定</h5>
+
+<p>1) 请求地址： <br>
+<code>/passport/mobile/bind</code>  <br>
+2) 私有参数： <br>
+<code>mobile</code> String 手机号码，支持国家代码前辍，不加时默认为<code>0086</code>前辍  <br>
+<code>uid</code> String 要绑定的UID <br>
+<code>token</code> String 要绑定的UID对应的登录token <br>
+<code>smscode</code> String 手机短信验证码 <br>
+<code>replace</code> Int 可选参数，是否强制替换绑定关系，当手机号已绑定其它帐号时，1为替换，0为不替换，默认为0 <br>
+3) 响应结果：</p>
+
+
+
+<pre class="prettyprint hljs-dark"><code class="language-json hljs"><div class="hljs-line">{
+</div><div class="hljs-line">    <span class="hljs-attr">"code"</span>:<span class="hljs-number">200</span>,
+</div><div class="hljs-line">    <span class="hljs-attr">"msg"</span>:<span class="hljs-string">"手机号绑定成功"</span>,
+</div><div class="hljs-line">    <span class="hljs-attr">"data"</span>:{}
+</div><div class="hljs-line">}
+</div></code></pre>
+
+<ul><li>code值为200时，代表手机号绑定成功</li>
+<li>code值为300时，代表手机号已被其它帐号绑定，使用msg中内容进行提示用户是否要强制替换</li>
+<li>code值为406时，一般为验证码错误等，此时msg中会有详细提示，可直接显示此msg</li>
+</ul>
+
+
+
+<h5 id="7-手机号重设密码">7. 手机号重设密码</h5>
+
+<p>1) 请求地址： <br>
+<code>/passport/mobile/findpass</code>  <br>
+2) 私有参数： <br>
+<code>mobile</code> String 手机号码，支持国家代码前辍，不加时默认为<code>0086</code>前辍  <br>
+<code>password</code> String 新密码 <br>
+<code>smscode</code> String 手机短信验证码 <br>
+3) 响应结果：</p>
+
+
+
+<pre class="prettyprint hljs-dark"><code class="language-json hljs"><div class="hljs-line">{
+</div><div class="hljs-line">    <span class="hljs-attr">"code"</span>:<span class="hljs-number">200</span>,
+</div><div class="hljs-line">    <span class="hljs-attr">"msg"</span>:<span class="hljs-string">"密码重设成功"</span>,
+</div><div class="hljs-line">    <span class="hljs-attr">"data"</span>: {}
+</div><div class="hljs-line">}
+</div></code></pre>
+
+<ul><li>code值为200时，代表密码重设成功</li>
+<li>code值为406时，一般为手机号错误、密码无效或验证码错误等，此时msg中会有详细提示，可直接显示此msg</li>
+</ul>
+
+
+
+<h5 id="8-手机验证码快速登录">8. 手机验证码快速登录</h5>
+
+<p>1) 请求地址： <br>
+<code>/passport/mobile/smslogin</code>  <br>
+2) 私有参数： <br>
+<code>mobile</code> String 手机号码，支持国家代码前辍，不加时默认为<code>0086</code>前辍  <br>
+<code>smscode</code> String 手机验证码 <br>
+3) 响应结果：</p>
+
+
+
+<pre class="prettyprint hljs-dark"><code class="language-json hljs"><div class="hljs-line">{
+</div><div class="hljs-line">    <span class="hljs-attr">"code"</span>:<span class="hljs-number">200</span>,
+</div><div class="hljs-line">    <span class="hljs-attr">"msg"</span>:<span class="hljs-string">"登录成功"</span>,
+</div><div class="hljs-line">    <span class="hljs-attr">"data"</span>:
+</div><div class="hljs-line">    {
+</div><div class="hljs-line">        <span class="hljs-attr">"uid"</span>:<span class="hljs-string">"29809698"</span>,
+</div><div class="hljs-line">        <span class="hljs-attr">"token"</span>:<span class="hljs-string">"dabc939bef91901120009fa3d13a55edqq0spu9b"</span>,
+</div><div class="hljs-line">        <span class="hljs-attr">"mobile_bind"</span>: <span class="hljs-number">1</span>
+</div><div class="hljs-line">    }
+</div><div class="hljs-line">}
+</div></code></pre>
+
+<ul><li>code值为200时，代表验证成功，将在data中返回uid和token，如果有下发mobile_bind字段且为1时，需要弹出手机绑定窗口</li>
+<li>code值为406时，一般为验证码错误或已失效，此时msg中会有详细提示，可直接显示此msg</li>
+</ul></div></body></html>

@@ -10,6 +10,8 @@
 
 @interface WMThreadViewController ()
 
+@property (strong, nonatomic) UIImageView *imageView;
+
 @end
 
 /**
@@ -111,22 +113,42 @@
 }
 
 // 2.线程通信
+-(void)setupDownload {
+    [NSThread detachNewThreadSelector:@selector(download) toTarget:self withObject:nil];
+}
 -(void)download {
+    /// 下载网络图片
     // 1>.确定URL
     NSURL *url = [NSURL URLWithString:@"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1584524053542&di=11684008fd1275a02127eb8e878ff887&imgtype=0&src=http%3A%2F%2Fa3.att.hudong.com%2F68%2F61%2F300000839764127060614318218_950.jpg"];
-    // 2>.根据url下载图片
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+    // 2>.根据url下载图片/能下载下来的是二进制数据
+    NSData *imageData = [NSData dataWithContentsOfURL:url];
+    // 3.转换图片格式
+    UIImage *image = [UIImage imageWithData:imageData];
+//    // 5.显示UI/不能放在子线程修饰
+//    self.imageView.image = image;
+//    // 4.回到主线程
+    /**
+     1>.第一种方式
+     第一个参数 - 回到主线程调用哪个方法
+     第二个参数 - 前面方法传递的参数
+     第三个参数 - 是否等待/ YES - 表示140行代码结束才会打印/ NO - 表示不用等待140行代码结束就会打印
+     */
+    [self performSelectorOnMainThread:@selector(reloadImageView:) withObject:image waitUntilDone:YES];
+    /**
+     2>.第二种方式
+     第二个参数 - 表示回到哪条线程
+     */
+    [self performSelector:@selector(reloadImageView:) onThread:[NSThread mainThread] withObject:image waitUntilDone:YES];
+    /**
+     3>.第三种方式
+     直接调用 self.imageView 的 setImage: 方法
+     */
+    [self.imageView performSelectorOnMainThread:@selector(setImage:) withObject:image waitUntilDone:YES];
+    NSLog(@"---end---");
+}
+-(void)reloadImageView:(UIImage *)image {
+    // 5.显示UI/不能放在子线程修饰
+    self.imageView.image = image;
 }
 
 @end

@@ -186,6 +186,31 @@
 //    [d eat];
 }
 
+/**
+ Category类别
+ // 1.作用
+ 1.一旦使用类别给已有的类增补方法，那么这个类的对象就可以使用该方法
+ 2.不修改原有类的基础上给已有的类/系统原生类增加方法：组件化基础
+ 3.可以对类的方法进行分类管理：将类的实现分散到多个不同的文件和框架中
+ // 2.注意
+ 1.类别中不能添加成员变量
+ 2.使用类别必须导入类别头文件
+ 3.父类类别中的方法子类也可以使用
+ */
+// 类扩展/匿名类别
+// 1.当定义不想对外公开一些类的方法和属性时可以使用类扩展
+// @interface SyPerson()
+// // 可以声明私有成员变量
+// @property (weak, nonatomic) UIImageView *iconImageView;
+// // 可以声明私有方法：声明和实现都在 “.m文件” 中
+// -(void)song;
+// @end
+ /**
+  1.熟悉怎么新建Category类别
+  2.明白类扩展就是匿名类别
+  3.Category类别不能新增成员属性/类扩展既可以新增成员属性也可以新增成员方法
+  */
+
 // 不会输出 "self" / 死循环
 // NSLog()输出<类名:地址>/<Person: 0x100202310>
 // 输出 self 就是调用 [self description]
@@ -231,10 +256,14 @@
 }
 
 /// 点语法
-// 点语法的实质：是调用 setter/getter 方法
-// 仅仅可以调用这两个方法、别的方法不可以调用
-// 点语法是一个编译器的特征：会在程序翻译成二进制的时候转换成 setter/getter 方法
-// 给成员变量赋值：一般情况下如果不是给成员变量赋值不建议使用点语法
+// 属性可以在不使用 " [对象指针 方法名称] " 的情况下使用点语法
+// 点语法的实质 - 是调用 "setter/getter方法"/不是使用成员变量
+/**
+ xiaoMing.name = @"小明"; <==> [xiaoMing setName:@"小明"];
+ NSString *name = xiaoMing.name; <==> NSString *name = [xiaoMing getName];
+ */
+// 点语法是一个编译器的特征 - 会在程序翻译成二进制的时候转换成 "setter/getter方法"
+// 注意 - 一般情况下如果不是给成员变量赋值不建议使用点语法
 -(void)pointWay {
     WMGameProxy *wm = [[WMGameProxy alloc]init];
     wm.sdk = @"xxx"; // 在等号左边：编译器自动转换成 setter方法
@@ -252,6 +281,21 @@
      */
 //    Interface Builder实际就是xib
 }
+
+/**
+ 异常处理
+ NSArray *array = [NSArray array];
+ @try {
+     // 可能会出现异常的代码
+     [array objectAtIndex:5];
+ } @catch (NSException *exception) {
+     // 如果捕捉到错误：执行此处的代码
+     NSLog(@"%@", exception);
+ } @finally {
+     // 可选：必执行代码
+     NSLog(@"finally");
+ }
+ */
 
 /// json解析
 // 实质：将所有的 dict 都转化成 model 放到对应 NSArray 中

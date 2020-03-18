@@ -14,6 +14,11 @@
  
 @end
 
+/**
+ 1.认识UI(User Interface)
+ 1>.概述 - 用户通过UI与App进行交互/ 传入用户的请求/ 反馈运行的结果
+ 2>.坐标系 - 坐标系(0, 0)在左上角/ x轴向右x正向延伸/ y轴向下正向延伸
+ */
 @implementation ComponentController
 
 // 这里做很多事情会导致页面加载的很慢
@@ -1227,7 +1232,20 @@
 
 
 #pragma mark - 停靠模式
-// 主要处理父子视图
+/**
+ 停靠模式Autoresize
+ 1>.概念 - 控制父视图改变大小时，子视图的变化方式；服务于父视图边界修改后，子视图的重新布局
+ 2>.作用 - 主要处理父子视图/等比例缩放/横竖屏旋转
+ @property (strong,nonatomic) UIViewAutoresizing autoresizingMask;
+ UIViewAutoresizingNone      = 0  //NO
+ UIViewAutoresizingFlexibleLeftMargin   = 1 << 0  //右边界和父视图的距离不变，左边界自由
+ UIViewAutoresizingFlexibleWidth    = 1 << 1  //自由的宽度：左右边距与父视图保持不变
+ UIViewAutoresizingFlexibleRightMargin  = 1 << 2  //左边界和父视图的距离不变，右边界自由
+ UIViewAutoresizingFlexibleTopMargin   = 1 << 3  //下边界和父视图的距离不变，上边界自由
+ UIViewAutoresizingFlexibleHeight    = 1 << 4  //自由的高度，上下边距保持不变
+ UIViewAutoresizingFlexibleBottomMargin  = 1 << 5  //上边界和父视图的距离不变，下边界自由
+ 3.在xib中怎么使用autoresizingMask：外部4根线固定边距、内部2根线固定宽高和父视图的比例
+ */
 -(void)setupAutoresize {
     // 创建父视图
     UIView *superView = [[UIView alloc] init];
@@ -1440,14 +1458,15 @@
     tabBarController.view.backgroundColor = UIColor.redColor;
     // 2.添加子控制器
     [tabBarController addChildViewController:self];
+//    tabBarController.viewControllers = @[self];
     // 3.设置属性
     tabBarController.selectedIndex = 0;  // 选中的 index
     /// tabBar
     // 只有一个
 //    UITarBar *bar = tabBarController.tabBar;  // 获取 UITarBar
     tabBarController.tabBar.barStyle = UIBarStyleDefault; // UITabBar的样式
-    tabBarController.tabBar.tintColor = UIColor.redColor;
-    tabBarController.tabBar.barTintColor = UIColor.yellowColor;
+    tabBarController.tabBar.tintColor = UIColor.redColor; // 图标选中颜色
+    tabBarController.tabBar.barTintColor = UIColor.yellowColor; // 分栏颜色
     tabBarController.tabBar.translucent = true;  // true透明/false不透明
     tabBarController.delegate = self;
     /// tabBarItem
