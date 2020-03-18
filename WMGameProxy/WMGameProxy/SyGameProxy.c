@@ -43,7 +43,7 @@
 // 一般用于调试和发布阶段进行测试
 #define LOG  0
 void conditionCompile() {
-//// 提前结束宏定义的作用域
+// 提前结束宏定义的作用域
 //#undef PI
 #if LOG == 0      // if
     printf("等于0");

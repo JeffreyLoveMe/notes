@@ -50,7 +50,7 @@
  */
 
 /**
- 3.Mac快捷键
+ 3.MAC常用快捷键
  command+空格 //切换输入法
  command+F //查找、替换
  command+N //新建文件

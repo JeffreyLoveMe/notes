@@ -142,7 +142,7 @@
         instance = [[WMGameProxy alloc]init];
     });
     // 第一次进入创建对象
-    // 后续调用：不需要再创建对象，因为 static 修饰的对象在函数结束不销毁
+    // 后续调用不需要再创建对象，因为 static 修饰的对象在函数结束不销毁
     if (instance == nil) {
         instance = [[WMGameProxy alloc]init];
     }

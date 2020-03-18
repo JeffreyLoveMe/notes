@@ -29,6 +29,11 @@
     [f showDate];
 }
 
+/**
+ 0.控制器
+ 1>.凡是继承于UIViewController的对象都是控制器
+ 2>.本身不可见/每个控制器都有一个UIView属性管理一个软件界面
+ */
 
 #pragma mark - UIView视图
 // UIView是所有视图的父类/UIView的属性是子视图共有的

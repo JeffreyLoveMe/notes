@@ -109,6 +109,7 @@
 		33B10E4F2422265600C6E8C7 /* NBSDK接口协议.html in Resources */ = {isa = PBXBuildFile; fileRef = 33B10E4E2422265600C6E8C7 /* NBSDK接口协议.html */; };
 		33B10E512422272500C6E8C7 /* 华为编程规范.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 33B10E502422272500C6E8C7 /* 华为编程规范.pdf */; };
 		33B10E542422300400C6E8C7 /* WMNetworkViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 33B10E532422300400C6E8C7 /* WMNetworkViewController.m */; };
+		33B10E572422424500C6E8C7 /* WMJumpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 33B10E562422424500C6E8C7 /* WMJumpViewController.m */; };
 		33BE31BF22E5890A0073E35B /* FoundationNSObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 33BE31BE22E5890A0073E35B /* FoundationNSObject.m */; };
 		33ED93E022F12E77006ABD28 /* ComponentController.m in Sources */ = {isa = PBXBuildFile; fileRef = 33ED93DF22F12E77006ABD28 /* ComponentController.m */; };
 		33F1D58C23CC4B7E001AC221 /* WMGameView.m in Sources */ = {isa = PBXBuildFile; fileRef = 33F1D58B23CC4B7E001AC221 /* WMGameView.m */; };
@@ -261,6 +262,8 @@
 		33B10E502422272500C6E8C7 /* 华为编程规范.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "华为编程规范.pdf"; sourceTree = "<group>"; };
 		33B10E522422300400C6E8C7 /* WMNetworkViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WMNetworkViewController.h; sourceTree = "<group>"; };
 		33B10E532422300400C6E8C7 /* WMNetworkViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WMNetworkViewController.m; sourceTree = "<group>"; };
+		33B10E552422424500C6E8C7 /* WMJumpViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WMJumpViewController.h; sourceTree = "<group>"; };
+		33B10E562422424500C6E8C7 /* WMJumpViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WMJumpViewController.m; sourceTree = "<group>"; };
 		33BE31BD22E5890A0073E35B /* FoundationNSObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FoundationNSObject.h; sourceTree = "<group>"; };
 		33BE31BE22E5890A0073E35B /* FoundationNSObject.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FoundationNSObject.m; sourceTree = "<group>"; };
 		33ED93DE22F12E77006ABD28 /* ComponentController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ComponentController.h; sourceTree = "<group>"; };
@@ -334,8 +337,8 @@
 				33ADF8CC240CC4BF0041F19A /* Res */,
 				33ADF8CD240CC5280041F19A /* Libs */,
 				33068F1322AE67DB00D044EE /* WMGameProxy.txt */,
-				3372CD532325F92400E7307B /* SYGameProxy.txt */,
 				3312831B2339D2E3005D55E2 /* DNGameProxy.txt */,
+				3372CD532325F92400E7307B /* SYGameProxy.txt */,
 				33068EF122AE670200D044EE /* WMGame.swift */,
 				33068EEF22AE66EC00D044EE /* WMController.swift */,
 				33068EB622AE665000D044EE /* AppDelegate.h */,
@@ -354,6 +357,8 @@
 				33B10E532422300400C6E8C7 /* WMNetworkViewController.m */,
 				331309032420A7DE0014CC7E /* WMPushViewController.h */,
 				331309042420A7DE0014CC7E /* WMPushViewController.m */,
+				33B10E552422424500C6E8C7 /* WMJumpViewController.h */,
+				33B10E562422424500C6E8C7 /* WMJumpViewController.m */,
 				33F1D58A23CC4B7E001AC221 /* WMGameView.h */,
 				33F1D58B23CC4B7E001AC221 /* WMGameView.m */,
 				33BE31BD22E5890A0073E35B /* FoundationNSObject.h */,
@@ -820,6 +825,7 @@
 				339A3D8022BBBBC9007DD37D /* SyGameProxy.c in Sources */,
 				3324D54B22DED4BF0066241F /* WMWebViewController.m in Sources */,
 				33BE31BF22E5890A0073E35B /* FoundationNSObject.m in Sources */,
+				33B10E572422424500C6E8C7 /* WMJumpViewController.m in Sources */,
 				331309052420A7DE0014CC7E /* WMPushViewController.m in Sources */,
 				33B10E542422300400C6E8C7 /* WMNetworkViewController.m in Sources */,
 				3394874623F11C5700A2C525 /* SyCustomCell.m in Sources */,
