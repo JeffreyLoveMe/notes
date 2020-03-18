@@ -23,10 +23,20 @@
 // 程序进入前台 3 - 4
 // 程序杀死 1 - 2 - 5
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    /// 0.程序启动时首先调用该方法
+    /// 0.需要主动的请求授权才可以发送本地通知
+    // 该方法一般放在 AppDelegate.h 中 - 表示程序一启动就主动请求授权
+    if (@available(iOS 8.0, *)) {
+        UIUserNotificationSettings *set = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert | UIUserNotificationTypeBadge | UIUserNotificationTypeSound categories:nil];
+        [[UIApplication sharedApplication] registerUserNotificationSettings:set];
+    }
+    // 1.说明用户点击了本地通知启动的App
+    if (launchOptions[UIApplicationLaunchOptionsLocalNotificationKey]) {
+        // 在这里需要做一些操作
+    }
+    /// 2.程序启动时首先调用该方法
     // [[UIScreen mainScreen] bounds]只能使用该方法获取设备尺寸
-    // 问题： iOS9.0以后，如果添加多个窗口，控制器会自动把状态栏隐藏
-    // 解决办法：把状态栏交给应用程序管理
+    // 问题 - iOS9.0以后，如果添加多个窗口，控制器会自动把状态栏隐藏
+    // 解决办法 - 把状态栏交给应用程序管理
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.backgroundColor = UIColor.whiteColor;
     
@@ -90,6 +100,8 @@
 - (void)applicationDidBecomeActive:(UIApplication *)application {
     /// 4.App进入活动状态
     // 能否与用户进行交互
+    // 需要在这里清除图标右上角的数字
+    [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
 }
 
 
@@ -102,6 +114,32 @@
     // 6.App接收到内存警告
     // 清理缓存
     // 内存警告2次你还没有操作会闪退
+}
+
+#pragma mark -push
+- (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification {
+    /**
+     接收到本地通知 - 满足以下条件就会调用
+     1>.应用程序在前台
+     2>.应用程序从后台进入到前台
+     */
+    // 完全退出不会点击再进入App不会调用该方法
+    NSLog(@"接收到本地通知");
+    //
+    switch ([UIApplication sharedApplication].applicationState) {
+        case UIApplicationStateActive: {
+            // 应用程序在前台
+        }
+            break;
+        case UIApplicationStateInactive: {
+            // 应用程序从后台进入前台
+        }
+            break;
+        case UIApplicationStateBackground: {
+            // 应用程序在后台
+        }
+            break;
+    }
 }
 
 @end

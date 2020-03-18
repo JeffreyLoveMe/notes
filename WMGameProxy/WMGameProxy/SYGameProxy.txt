@@ -4113,7 +4113,7 @@ https://blog.csdn.net/lvchenqiang_/article/details/79077679
 #include <zh.h>/"zh.h" //将zh.h文件copy到当前文件：可能会出现重复包含头文件、降低编译效率
 <zh.h> //编译器环境->系统环境
 "zh.j" //当前文件->编译器环境->系统环境
-头文件卫士：防止循环copy
+头文件卫士：防止重复copy/仅仅作为了解/重复导入会降低编译效率
 #ifndef __ZS__H__ //判断是否"没有定义"宏名为__ZS__H__的宏
 #define __ZS__H__ //定义宏名为__ZS__H__的宏
 //执行代码

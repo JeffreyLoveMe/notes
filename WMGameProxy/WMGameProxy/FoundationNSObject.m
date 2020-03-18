@@ -7,6 +7,7 @@
 //
 
 #import "FoundationNSObject.h"
+#import "WMGameProxy.h"
 
 /// Foundation框架提供很多官方Api
 // 继承与 NSObject
@@ -387,7 +388,7 @@
     // 继承 NSArray
     // 1.创建空数组
     NSMutableArray *mArray1 = [[NSMutableArray alloc]init]; // 默认会开辟多个（具体几个不知道）
-    NSMutableArray *mArray2 = [NSMutableArray array];
+    NSMutableArray<WMGameProxy *> *mArray2 = [NSMutableArray array];
     // 2.创建有数据的数组
     NSMutableArray *mArray3 = [[NSMutableArray alloc]initWithObjects:
                                @"data1",
@@ -764,6 +765,37 @@
 
 /// 9.NSData
 -(void)showData {
+    
+}
+
+
+
+/// 10.NSCalendar
+// 获取时间中某一部分/不用截取直接获取
+- (void)showCalendar {
+    // 1>.获取当前时间的"年月日时分秒"
+    // 获取当前时间
+    NSDate *nowDate = [NSDate date];
+    // 获取对象
+    NSCalendar *nowCalendar = [NSCalendar currentCalendar];
+    // 单独获取"年月日时分秒"
+    NSCalendarUnit nowType = NSCalendarUnitYear |  NSCalendarUnitMonth |   NSCalendarUnitDay |
+    NSCalendarUnitHour | NSCalendarUnitMinute |  NSCalendarUnitSecond;
+    NSDateComponents *nowCmps = [nowCalendar components:nowType fromDate:nowDate];
+    NSLog(@"%ld年%ld月%ld日%ld小时%ld分钟%ld秒钟", nowCmps.year, nowCmps.month, nowCmps.day, nowCmps.hour, nowCmps.minute, nowCmps.second);
+    // 2>.比较两个时间
+    NSCalendar *currentCalendar = [NSCalendar currentCalendar];
+    NSCalendarUnit currentType = NSCalendarUnitYear |  NSCalendarUnitMonth |   NSCalendarUnitDay |
+    NSCalendarUnitHour |  NSCalendarUnitMinute |  NSCalendarUnitSecond;
+    // 两个时间的时间间隔
+    NSDateComponents *currentCmps = [currentCalendar components:currentType fromDate:nowDate toDate:nowDate options:0];
+    NSLog(@"%ld年%ld月%ld日%ld小时%ld分钟%ld秒钟", currentCmps.year, currentCmps.month, currentCmps.day, currentCmps.hour, currentCmps.minute, currentCmps.second);
+}
+
+
+
+/// 11.NSFileManager
+-(void)showFileManager {
     
 }
 

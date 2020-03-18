@@ -71,6 +71,7 @@ extension WMController: UITableViewDataSource {
                 // 在 swift 中怎么使用枚举
                 // 1>.枚举类型.具体类型
                 // 2>./.具体类型
+                // 如果需要使用 ‘|’ 连接枚举需要先把枚举转换成 type.rawValue
                 cell = UITableViewCell(style: .default, reuseIdentifier: cellID)
             }
             // 2.给 cell 赋值

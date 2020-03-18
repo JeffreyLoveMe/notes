@@ -29,97 +29,54 @@
 //循环语句
 //一维数组
 //二维数组
-//冒泡排序x
-//选择排序x
-//快速排序x
-//堆排序x
-//二分查找x
+//冒泡排序 - x
+//选择排序 - x
+//快速排序 - x
+//堆排序 - x
+//二分查找 - x
 //函数
 //局部变量/全局变量
 //内存管理
 //字符串
-//指针x
-//结构体x
-//枚举x
-//共用体x
+//指针 - x
+//结构体 - x
+//枚举 - x
+//共用体 - x
 //预处理指令
 /**************************Objective-C基础**************************/
-
-
-
-
-
 //认识Objective-C语言
-1.概述：面向对象(oop)的C语言/完全兼容C语言/C语言代码可以直接编译在Objective-C工程中；
-2.源文件：.h/.m/.mm；
-3.关键字：C语言关键字在oc中都可以使用/新增部分关键字：@interface、@public、@implementation等；
-4.数据类型：BOOL/SEL/null
-5.#include -可能会出现重复包含头文件/#import -可以避免重复包含头文件
-6.C语言：int <==> OC语言：NSInteger <==> swift语言：Int
-
 //面向对象OOP
-1.概念：
-1>.OOP是把问题里拥有相同属性的东西建立一个类
-2.特性：
-1>.封装：利用类将数据和基于数据的操作封装在一起，数据被保护在类的内部，系统的其它部分只有通过
-被授权的操作才可以访问数据；将不需要对外提供的内容隐藏起来：把属性隐藏起来，提供公共方法对外访问；
-2>.继承/派生：1.继承：父类的属性（成员变量：不包括私有）和方法（对象方法 & 类方法），子类可以直接获取；2.派生：子类保持父类中的行为和属性，新增其它功能（对象方法 & 类方法可以重写、属性不能重写）；3.提示：每个类都有一个[super class]指针指向自己父类（OC只支持单继承）；4.好处：1).创建大量类抽取重复代码；2).建立类与类之间的关系；3).耦合性（依赖性）太强；
-3>.多态：程序中可以有同名的不同方法共存，利用子类对父类方法的覆盖和重载在同一个类中定义多个同名的方法来实现；
-3.面向对象编程/面向过程编程的区别：
-1>.面向对象编程是把问题中拥有相同属性的东西建立一个类，然后创建类的对象；
-2>.面向对象编程注重生活逻辑、面向过程编程注重数学逻辑；
-
 //主头文件
-1.主头文件 - copy该工具箱中所有工具的头文件的文件
-2.避免每次使用都需要导入一众对应的头文件
-3.主头文件的名称都和工具箱的名称相同
-
-//类class：属性 + 行为（谁最清楚这个行为，那么行为就属于谁）
-1.定义：具有相同和相似性质对象的抽象就是类；对象的抽象就是类，类的具体化就是对象（堆内存）；
-2.类 = 结构体(存储数据) + 函数(管理数据)；！！！swift中结构体作用很大！！！
-3.实质：类的实质是一个对象，该对象会在这个类第一次被使用的时候创建；
-
-//类方法
-1.概念：C++中的静态方法/不属于任何一个对象/通过类名调用，不需要创建对象/不能直接调用对象方法和成员变量
-2.对一个功能模块留下简单的对外接口：+(void)addNum:(NSInteger)newNum;
-3.类方法的执行效率比对象方法高：对象方法可以访问成员变量/类方法中不可以直接访问成员变量；
-
+//类
+//对象方法/类方法
 //单例模式
-
+//类工厂方法
 //构造方法
-1.定义：OC中称所有init开头的方法为构造方法/只能被调用一次
-2.作用：初始化对象/初始化对象的成员变量
-3.-(instancetype)init {
-    /// 保留父类初始化操作：调用父类方法
-    // 如果调用对象方法：super就是指向父类对象的指针
-    // 如果调用类方法：super就是指向父类的指针
-    self = [super init];  // 1.初始化父类
-    /// 重写构造方法
-    // 子类方法会覆盖父类方法
-    if (self) {   // 2.判断父类是否初始化成功
-        // 只有父类初始化成功才可以初始化子类
-        // 初始化对象的成员变量
-        // 除了这里其他地方都是固定方法
-        _name = "10";  // 3.初始化子类
-        _age = 12;
-    }
-    return self;  // 4.返回当前对象地址
-}
-4.-(instancetype)initWithName:(NSString *)name withAge:(NSInteger)age {
-    self = [super initWithName:name withAge:age]; // 调用父类
-    // 自定义构造方法
-}
-特点：一个类中可以自定义零到多个构造方法；构造方法可以有一个到多个参数
+//多态
+//权限修饰
+//NSObject
+//NSString
+//NSArray
+//NSDictionary
+//NSSet
+//NSNumber
+//NSValue
+//NSNull
+//NSDate
+//NSData - x
+//NSCalendar - x
+//NSFileManager - x
 
-//多态：同一个接口不同的实现、父类指针指向子类对象
-1.重写：重新实现子类方法（子类最终执行重写以后得方法）
-2.重载：在同一个类定义多个同名方法（每个方法具有不同参数类型和个数）
-注意：！！！Objective-C语言没有严格的方法重载！！！
-3.实现条件：1).继承关系；2).重写；3).父类指针指向子类对象
-4.应用场景：可以减少代码量、避免调用子类特有方法需要强制类型转换
 
-//权限修饰：见WMController.swift/WMGameProxy.h/m
-//字符串、数组、字典（FoundationNSObject.h/m）
+
+
+
+
+
+
+
+
+
 
 //Category类别
 // 1.作用
@@ -161,8 +118,6 @@ NSArray *array = [NSArray array];
     // 可选：必执行代码
     NSLog(@"finally");
 }
-
-//多态和虚方法
 //类的消息机制
 //“抽象工厂”模式
 //协议和代理（代理实现回调）
@@ -459,6 +414,7 @@ SyGameProxy.h/c - C语言基础知识
 WMGameProxy.h/m - OC基础知识
 SyMemoryManager.h/m - 内存管理
 WMThreadViewController.h/m - 多线程
+WMPushViewController - 推送
 WMGameView.h/m - OC自定义控件
 FoundationNSObject.h/m - Foundation常见类
 ComponentController.h/m - UI组件库
@@ -473,3 +429,1431 @@ MainController.h/m - 事例代码
 NSString+Extension.h/m - 类目
 WMGameProxy.pch - 预编译
 WMGameProxy-Bridging-Header.h - 桥接文件
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#指针：
+定义：变量的地址(唯一标识一块内存的索引)；
+int a;//a变量名、&a变量地址
+int *p;//定义一个指针变量p：p指针变量名、*指向
+指针变量p的作用：用来存储地址；
+*p：指p指向的内容；
+p = &a;//将整型变量a的地址赋给指针变量p
+*p = a;//*p是p指向的变量
+int *p;//变量p是int*类型、int是p指向变量的基类型
+int *p = NULL;//指针变量p初始化为空、不能使用空指针
+int *p;//未初始化的指针称为野指针、不能使用野指针
+printf("&a=%p",&a);//输出变量a的地址：％p地址格式符
+注意：1.定义指针时，一定要初始化为空；
+2.指针做为参数或者已经赋值，则无需初始化为空；
+3.使用指针前，一定要给指针赋值；
+4.使用指针时，一定要判空；
+if(p == NULL) {
+    return;
+}
+//指针大小：固定4个字节-因为地址在内存中都是以整型的方式分配的
+
+#数组和指针：
+概述：数组名作为函数参数，代表数组的首地址；
+int *p = NULL;
+int a = 5;
+p = &a;
+p++;//执行p++操作时，指针向后移动了p指向的变量的基类型的大小个字节数
+//指针数组
+int *p[10];//数组：每个元素都是个指向整型的指针
+//指向数组的指针
+int (*p)[10];//指针：指向10个int元素的数组
+//指向指针的指针
+int **p;//指针：指向指针
+//指向函数的指针
+int (*p)(int a);//指向函数的指针
+//指针作为函数返回值
+格式：数据类型* 函数名(形参列表) {//...}
+//交换两个变量？
+1.传值：无法实现交换；
+2.传地址：交换指针指向，无法实现交换；
+3.传地址：交换指针指向变量的值，可以实现交换；
+
+#结构体：
+定义：相同或者不同数据类型变量的集合，自定义的数据类型；
+格式：放在头文件下面、所有函数上面
+//结构体定义用struct关键字，名字为data
+struct data {
+    //成员变量
+    int a;
+    char b;
+    short c;
+};
+//结构体别名：wm_data
+typedef struct data {
+    int a;
+    char b;
+    short c;
+}wm_data;
+//难点：结构体指针？
+
+#枚举：
+定义：如果变量只有几种可能的值，可以使用枚举；
+//枚举可以有无数个：不推荐使用
+typedef enum direction {
+    枚举1,
+    枚举2,
+    枚举3
+} direction_t;
+//定义通用枚举：只能同时存在一个枚举值
+typedef NS_ENUM(NSInteger,WMDirection) {
+    枚举1,
+    枚举2,
+    枚举3
+};
+//定义位移枚举：可以同时存在多个枚举值
+typedef NS_OPTIONS(NSUInteger, UIInterfaceOrientationMask) {
+    枚举1,
+    枚举2,
+    枚举3
+};
+
+#共用体：使几个不同变量共同占用一段内存的结构
+union date {
+    int a;
+    char b;
+    short c;
+};
+大小：1.共用体变量所占内存长度等于最长成员的长度；
+2.共用体是同一段内存存储相同或不同类型的成员，同一时刻只存放一种；
+3.共用体变量中起作用的成员是最后一次存放的成员；
+/******************************Objective-C语言基础******************************/
+#类对象：保存当前对象所有的对象方法，可以通过类对象来创建实例对象，实例对象中有一个isa指针，指向创建自己的类对象
+1.获取类对象：一个类在内存中只有一份类对象
+Person *p = [[Person alloc]init];
+[p class];//[实例对象 class];
+[Person class];//[类名 class];
+2.应用场景：
+1>.用于创建实例对象：Person *p = [[[p class] alloc]init];
+2>.用于调用类方法：[[p class] test];
+//启动过程：见WMBook.h/m；
+
+#虚方法：
+定义：调用方法的时候，不看指针看对象，对象的地址指向什么对象就调用什么方法；
+好处：可以描述不同事物被相同的事件触发，产生不同的响应；
+特征：Objective-C语言每个方法都是虚方法；
+
+#类工厂方法：用于快速创建对象的类方法
+作用：用于创建一个对象；
++ (instancetype)person {  //类方法：方法名称==类名称(首字母小写)、返回值id/instancetype
+    [[self alloc]init]; //谁调用+ (instancetype)person()、self就代表谁
+}
+
+#工厂类：NO
+特点：NSString/NSArray/NSDictionary/NSNumber都是工厂类/抽象类，不能被继承；
+不能被继承的原因：
+NSString采用了“抽象工厂”模式，内部是个类簇(class cluster)，它在外层提供了很
+多方法接口，但是这些方法的实现是由具体的内部类来实现的，当使用NSString生成一个对象时，
+初始化方法会判断哪个“自己内部的类”最适合生成这个对象，然后这个“工厂”就会生成这个具体的
+类对象返回给你，这种由外层类提供统一抽象的接口，然后隐藏具体的内部类来实现；
+
+#内存管理：
+1.引用计数(Reference Count)/保留计数(retain Count)：
+原理：对于一块动态申请的内存，有一个指针使用，就给这个内存的计数器+1，使用完成后，就给
+这个计数器-1，当这个内存的引用计数为0，我们就释放；
+2.Xcode 5.0版本以后默认是ARC模式；
+3.ARC-Automatic Reference Counting：自动引用计数，由Xcode帮助我们管理内存；
+4.区别：不同于java垃圾回收，在预处理时，直接在应该保留的地方，添加retain，应该释放的地
+方，添加release；从效率上来说，ARC优于MRC；
+5.MRC-Manual Reference Counting：手动引用计数，我们手动管理内存；
+6.当对象需要销毁的时候会自动调用dealloc(析构方法)；
+注意：1.指定文件不使用ARC：Build phase->Complie Source->加入-fno-objc-arc；
+2.内存管理的黄金法则：谁创建谁释放
+凡是用alloc、retain、new、copy、mutableCopy或者以copy开头、以mutableCopy开头的方法创建的对象，
+都需要用release/autorelease进行释放；
+3.release并不是销毁对象，只是让对象的引用计数-1，当对象的引用计数等于0的时候，自动调用dealloc；
+-(void)dealloc { //销毁对象
+    //执行代码
+    [super dealloc]; //写在最底层
+}
+[p retain]; //引用计数+1
+[p release]; //引用计数-1
+retainCount //打印对象的引用计数
+#数组的内存管理：数组内部也遵守内存管理
+1.当创建数组的时候，数组会对每个对象进行引用计数+1；
+2.当销毁数组的时候，数组会对每个对象进行引用计数-1；
+3.当给数组添加对象的时候，会对对象进行引用计数+1；
+4.当给数组删除对象的时候，会对对象进行引用计数-1；
+#Autorelease&Autoreleasepool：延迟销毁
+概述：Autoreleasepool相当于数组：如果哪个对象发送Autorelease消息，则是将对象的拥有权交给了
+Autoreleasepool，当Autoreleasepool销毁的时候，持有的对象才会发送一个release消息；
+//MRC：retain、release、autorelease、Autoreleasepool
+#ARC模式下的关键字：
+1.strong(强引用)：缺省属性，修饰的对象指针：指向哪个对象，会对该对象retain；
+离开哪个对象，会对该对象release；
+2.weak(弱引用)：修饰的对象指针：指向任何对象都不会retain，这样的指针指向的
+对象随时可能消失，如果对象消失了，这个指针会自动变成nil；-可以防止循环引用
+3.retain：自动帮我们生成get/set方法内存管理的代码；
+4.assign：不会帮我们生成get/set方法内存管理的代码；
+5.atomic：性能低(默认)；
+6.nonatomic：性能高；
+7.unsafe_unretained：修饰的对象指针：指向任何对象都不retain，当指向的对象消失，
+该指针不会变成nil，仍然指向已经释放的对象；不建议使用；
+注意：ARC模式下，原则上不能写retain、copy，只能写strong；实际开发中：字符串写copy、
+代理对象写weak、基本数据类型写assign、其他的写strong；
+//ARC的判断准则：只要没有强指针指向对象，对象就会释放
+__strong Person *p = [[Person alloc]init]; //默认是强指针
+__weak Person *p1 = p; //弱指针
+//MRC/ARC下多个对象的内存管理怎么操作？、防止循环引用怎么做？
+MRC：A对象想拥有B对象，需要对B对象进行一次retain；A对象不用B对象，需要修B对象进行一次release；
+ARC：A对象想拥有B对象，需要用一个强指针指向B对象；A对象不用B对象，不需要进行任何操作；
+ARC中的strong相当于MRC中的retain；
+/******************************网络基础******************************/
+#json解析：JavaScript Object Notification
+定义：json可以将js对象中表示的一组数据转换为字符串；
+格式：
+//字典：key是：字符串、value可以是：字符串&数值&true&false&null&对象&数组
+{
+    key1:value1,
+    key1:value1,
+    ...
+}
+//数组
+[
+    {
+        key1:value1,
+        key1:value1,
+    },
+    {
+        key1:value1,
+        key1:value1,
+    }
+]
+解析：见AnalyzeViewController.h/m
+第三方库：JSONKit
+
+#xml解析：
+定义：可扩展性标记语言；
+特点：可扩展性、标记语言、标签成对出现、区分大小写；
+示例：
+<?xml version="1.0" encoding="utf-8"?> //声明
+<Students> //根节点
+    <Student id="1"> //id表示属性
+        <name>王也</name>
+        <age>18</age>
+    </Student>
+
+    <Student id="2">
+    <name>孟凡路</name>
+    <age>17</age>
+    </Student>
+
+    <Student id="3">
+    <name>高家兴</name>
+    <age>48</age>
+    </Student>
+</Students>
+#结构：
+根节点：只有一对根节点，位于嵌套结构中最外层的节点；
+属性：属性值必须加""；
+注意：文档扩展名.xml、跨平台
+作用：网络传输数据
+区别：json/xml的对比
+1.目前90%的使用json、10%的使用xml；
+2.json解析简单，但是结构不易理解、xml结构容易理解，但是数据冗余；
+解析：见AnalyzeViewController.h/m
+https://blog.csdn.net/qxuewei/article/details/52369067
+
+#异步网络请求：
+//分类：
+网络请求：get
+网络上传：post
+下载：NO
+//原生网络请求：
+CFNetwork：纯C语言
+NSURLConnection：iOS7.0被废弃
+NSURLSession：NO
+https://www.jianshu.com/p/b0ddadd34037
+//ASIHttpRequest：不在更新
+//MKNetworkKit：简单易用，使用者较少
+//AFNetworking：
+1.概述：2.0使用的是NSURLConnection、3.0使用NSURLSession；
+2.代码：NetworkViewController.h/m
+注意：不要在子线程中更新UI；
+//利用KVO、KVC进行网络请求：参考2015-10-13
+1.新建数据模型PostInfo.h/m
+2.新建数据源：必须初始化
+3.设置单例：全局使用
+3.监测数据源变化：KVO
+4.新建下拉控件：进入VC->开始下拉加载->网络请求：改变数据源->加载UITableView
+5.在View中更新UI
+代码：NetworkViewController.h/m
+//设置应用支持https
+Xcode7.0以后：NSAppTransportSecurity->NSAllowsArbitraryLoads->YES
+
+#网络编程需要掌握的内容：NO
+0.实时监测网络变化
+1.数据请求、数据上传、下载
+2.原生网络请求的原理
+3.网络请求第三方库的使用
+4.KVC在网络请求中的应用
+5.进入VC以后怎么加载操作
+/******************************iOS进阶******************************/
+#数据持久化的方法
+常见方法：
+1.文件操作：见FileViewController.h/m
+5.数据库：
+//sql语句：结构化查询语言
+1.创建表
+create table if not exists sso (
+id integer primary key autoincrement,//将id设为主键
+author text,//文本
+price real,//浮点型
+pages integer);//整型
+2.插入
+insert into sso (author,price,pages) values(?,?,?);
+3.更新
+update sso set price = ?,pages = ? where author = ?;
+4.删除
+delete from sso where pages > ?;
+5.查询
+select * from sso;
+//FMDB
+代码：SqliteViewController.h/m
+//MagicalRecord：
+一.Core Data：
+1.新建Core Data；
+2.新建表：写上需要存储的文件；
+3.关联生成属性类；
+二.导入数据：
+4.导入MagicalRecord；
+三.app启动：
+5.设置数据库存放的文件名；
+6.让Magical Record支持数据库版本管理；
+7.查询所有的数据库内容，如果有内容则送到数据源；
+if([MusicInfo MR_findAll].count) {
+    for(MusicInfo *music in [MusicInfo MR_findAll]) {
+        MusicInformation *musicInfo = [[MusicInformation alloc] init];
+        musicInfo.songUrl = music.songUrl;
+        musicInfo.songName = music.songName;
+        musicInfo.songId = music.songId;
+        musicInfo.userName = music.userName;
+        musicInfo.albumName = music.albumName;
+        musicInfo.albumPic = music.albumPic;
+        [[MusicManager sharedIntance].selectMusics addObject:musicInfo];//把对象加到数据源
+    }
+}
+四.app杀掉：
+8.删除数据库里的表，将数据源保存；
+for(MusicInfo *music in [MusicInfo MR_findAll]) {
+    [music MR_deleteEntity];//删除数据表
+}
+[[NSManagedObjectContext MR_defaultContext] MR_saveToPersistentStoreAndWait];
+9.新建数据库的表，将数据源所有内容放到数据库，保存；
+for(MusicInformation *newMusic in [MusicManager sharedIntance].selectMusics) {
+    MusicInfo *zNewMusic = [MusicInfo MR_createEntity];//新建数据表
+    zNewMusic.songName = newMusic.songName;
+    zNewMusic.songUrl = newMusic.songName;
+    zNewMusic.songId = newMusic.songId;
+    zNewMusic.userName = newMusic.userName;
+    zNewMusic.albumName = newMusic.albumName;
+    zNewMusic.albumPic = newMusic.albumPic;
+}
+/*
+1.数据的增删改查
+2.多表的链接查询
+3.数据回滚
+*/
+http://hao.jobbole.com/magicalrecord/
+
+#KVC/KVO：
+//KVO：键值观察者
+#作用：用于监听对象属性的改变
+1.下拉刷新/上拉加载监听UIScrollView的contentoffsize；
+2.webview混排监听contentsize；
+3.监听模型属性实时更新UI；
+#步骤：
+/**
+给对象的属性添加观察者：
+self.post-被观察者
+self-观察者
+array-属性
+*/
+[self.post addObserver:self forKeyPath:@"array" options:NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld context:NULL];
+//给可变数组添加属性：
+[[self mutableArrayValueForKeyPath:@"array"] addObject:@2];
+//NSMutableSet==>[self mutableSetValueForKeyPath:@"可变集合属性名"];
+//如果属性改变，自动调用方法：
+-(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object
+change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context {
+    NSLog(@"new:%@",change[@"new"]);
+    NSLog(@"old:%@",change[@"old"]);
+}
+//取消监听：
+-(void)dealloc {
+    [self.post removeObserver:self forKeyPath:@"name"];
+}
+代码：
+https://www.jianshu.com/p/742b4b248da9
+
+#选择器SEL：一个数据类型，内部是消息，类似于函数指针
+原理：Objective-C在编译的时候，会根据方法的名字(包括参数序列)，生成用来区分这个方法的唯一ID，这个ID就是SEL类型；
+作用：提高执行的效率、增强程序的灵活性；
+//创建
+@selector 方法选择器
+@selector (方法名)
+//获取
+SEL s1 = @selector(onClick:);
+//将一个字符串转换为一个SEL类型
+SEL s2 = NSSelectorFromString(@"onRun:");
+//执行SEL
+Dog *dog = [[Dog alloc]init];
+[dog performSelector:s1];
+[dog performSelector:@selector(setName:) withObject:@"Tom"];//最多支持两个参数
+//使用@selector对数组排序：
+代码：SelViewController.h/m
+//在ARC(自动内存管理)的条件下，使用选择器很可能会报警：参照该方式去除报警
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+//执行代码
+Dog *dog = [[Dog alloc]init];
+SEL s1 = @selector(onClick:);
+[dog performSelector:@selector(setName:) withObject:@"Tom"];
+#pragma clang diagnostic pop
+/*
+Core Data
+通知中心
+kVC/KVO
+*/
+/******************************UI基础******************************/
+#自定义控件：
+1.在initWithFrame:方法中添加子控件，提供便利构造方法；
+2.在layoutSubviews方法中设置子控件的frame：一定要调用[super layoutSubviews]；
+3.增加模型属性，在模型属性set方法中设置数据到子控件；
+代码：见WMGame
+
+#核心动画
+CAKeyframeAnimation/CABasicAnimation/CATransition
+1).实现UIView的启动动画：WidgetViewController.h/m
+2).gif：WidgetViewController.h/m
+
+#跳转：
+1).模态方式：见WidgetViewController.h/m->TimeViewController.h/m
+基本方式传值：OK
+block传值：实现回调
+代理传值：OK
+2).通过导航控制器迁移：见WidgetViewController.h/m
+
+#UIWebView&WKWebView：代理型视图
+作用：加载URL、加载HTML网页；
+练习：WKWebView添加进度条；
+
+#多控制器：利用下列2种控制器管理多控制器
+//导航控制器：UINavigationController
+特征：以栈的形式管理子控制器-push压栈、pop出栈；
+代码：见AppDelegate.h/m、WidgetViewController.h/m
+//分栏控制器：UITabBarController
+注意：UITabBarControllerDelegate很重要
+代码：见AppDelegate.h/m
+注意：1.把导航控制器UINavigationController添加到分栏控制器UITabBarControllerDelegate；
+
+#数据源：
+实质：数据源实质就是一个数组(NSArray、NSMutableArray)；
+Model类必须是单例：全局都可能使用这个Model；
+VC需要网络请求，可以委托(PostStore类)来进行网络请求；
+PostStore类网络请求完成，需要告诉VC网络请求操作完成；
+
+#懒加载：用到的时候再加载、全局只加载一次
+定义：在开发中，程序启动的时候不加载资源，只有在运行中需要资源的时候，再去加载这些资源；
+好处：1.不必将创建对象的代码全部写在viewDidLoad()中，代码的可读性强；
+2.每个属性的getter方法中分别负责各自的实例化处理，只有真正需要资源的时候，才会加载资源，节省了内存资源；
+//实现：重写getter方法
+-(NSArray *)dataArr {
+    if (_dataArr == nil) {  //这里不能使用self.dataArr：循环引用
+        self.dataArr = @[@"",@"",@""];
+    }
+    return dataArr;
+}
+self.dataArr; //每次使用均会调用-(NSArray *)dataArr;
+
+#UISearchController：navigationItem中的一部分
+
+#UICollectionView
+
+#自定义可重用的View：
+步骤：1.新建view，继承UICollectionReusableView；
+2.给view布局；
+3.注册cell，实现delegate；
+代码：见MyCollectionViewController.h/m
+eg.定制段头/段尾
+
+#瀑布流：
+//实现原理：
+我们利用多个UITableView联动就可以实现瀑布流效果：调用UIScrollView的代理方法
+让多个UITableView的偏移量都等于UIScrollView的偏移量实现联动，当一个cell超过屏
+幕，我们不要release，而是回收到复用队列，然后在创建cell的时候首先去复用队列中
+取，如果没有我们在创建。
+//代码：见WaterFall
+
+#父子控制器：多控制器管理
+概述：利用普通UIViewController也可以管理子控制器；
+//正好相反的操作
+[self.view addSubview:_topLineVc.view];
+[_societyVc.view removeFromSuperview];
+
+#UIWindow：一种特殊的UIView、一个app至少有一个UIWindow
+特点：1.程序启动完毕，创建的第一个控件就是UIWindow，接着创建VC的view，最后将view添加到UIWindow上；
+2.没有UIWindow就没有显示UI界面；
+3.可以重写UIWindow；
+https://www.jianshu.com/p/af2a6a438a0a
+
+#状态栏：
+//通过UIViewController管理状态栏(每个VC都拥有自己不同的状态栏)
+//状态栏样式
+- (UIStatusBarStyle)preferredStatusBarStyle {
+return UIStatusBarStyleLightContent;
+}
+//隐藏状态栏
+- (BOOL)prefersStatusBarHidden {
+return YES;
+}
+//通过UIApplication管理状态栏(app状态栏统一管理)
+//修改info.plist：不让VC管理状态栏-添加key：View controller-based status bar appearance，设置为NO
+[UIApplication sharedApplication].statusBarHidden = YES;
+[UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
+
+#像素和点之间的转换：效果图上标注的怎么转换？
+https://blog.csdn.net/ridxmc/article/details/51346472
+
+#实现画折线图：利用第三方库
+1.加入tk库文件；
+2.添加QuartzCore.framework；
+
+/*
+iOS动画
+UIWindow
+自定义控件
+实现画折线图
+程序启动原理
+WKWebView
+UIApplication
+自定义UICollectionViewFlowLayout
+*/
+/******************************iOS高级******************************/
+#可视化布局：
+//xib：可视化文件，可以通过拖拽进行界面布局，实质是一个xml文件
+特点：只可以显示一个视图,在创建视图的时候可以同时创建(无需关联)；
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
+self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+if (self) {
+//xib初始化
+}
+return self;
+}
+xib加载UIViewController：
+1.UIViewController *vc = [[SqliteViewController alloc]initWithNibName:@"One" bundle:nil];
+//加载xib
+NSArray *views = [[NSBundle mainBundle] loadNibNamed:@"xib名称" owner:nil options:nil];
+UIView *view = [views firstObject];
+2.关联class、拖线；
+//xib的加载原理：NO
+//storyboard：管理多个xib文件并处理场景与场景之间的跳转
+UIStoryboard *main=[UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]]; //Main指storyboard名字
+UIViewController *vc=[main instantiateViewControllerWithIdentifier:@“VC”]; //VC指storyboard ID
+UIViewController *vc = [main instantiateInitialViewController]; //启始ViewController实例化
+总结：1.在storyboard/xib进行UI界面的布局；
+2.通过Segue实现页面的跳转：自动型/手动型；
+3.通过AutoLayout做适配；
+4.UIStackView(iOS9.0以上)；
+5.xib文件编译以后就成了nib文件；
+
+#AutoLayout：
+1.约束：通过给控件添加约束决定控件的位置和尺寸；
+2.参照：在添加约束的时候是依照谁来添加的；
+3.自动布局的核心计算公式：obj1.property1 = (obj2.property2 * multiplier)+constant value
+https://www.jianshu.com/p/4ef0277e9c5e
+
+#代码实现AutoLayout：NO
+
+#VFL实现AutoLayout：NO
+
+#多线程：三种形式
+//基本概念
+进程(类似于车间)：系统中正在运行的应用程序(进程相互独立、每一个进程至少有一个线程)；//CPU给进程分配资源
+线程(类似于工人)：程序执行任务的最小调度单位(进程中所有的任务都是在线程中执行的)；
+任务：在GCD中，任务就是block中需要执行的代码；
+队列：用来存放“任务”的数组；FIFO原则
+串行：队列中的任务要按照顺序执行；
+并行：队列中的任务同时执行；
+同步：不能开新线程，任务创建以后需要执行完毕；
+异步：可以开新线程，任务创建以后可以先绕开；
+线程锁NSLock：百度
+信号量：指同时可以执行几个多线程
+//多线程：并发执行是假象，实质是CPU快速的在多条线程之间调度
+1.使用场景：ASI网络请求、SDWebImage图片下载
+2.使用目的：为了使界面流畅，防止界面假死；
+3.原理：1s---1000个0.001s
+//主线程(UI线程)：程序一启动，系统就会默认创建一条线程
+作用：显示刷新UI界面、处理与用户的交互事件；
+注意：1.不要处理耗时操作；
+2.程序默认开启、程序员不能手动开启主线程；
+//线程的状态
+新建New-->就绪Runnable-->运行状态Running-->阻塞Blocked
+//线程安全：
+问题：多个线程访问同一块资源，容易引发数据混乱和数据安全
+解决办法：互斥锁(使用线程同步技术)
+格式：@synchronized(锁对象) {
+    //需要锁定的代码
+}
+优点：能有效防止因多线程抢夺资源造成的数据混乱和安全问题；
+缺点：需要消耗大量CPU资源；
+//线程间通信：
+定义：在一个进程中，多个线程往往不是彼此独立，需要经常进行通信；
+体现：1.一个线程传递数据给另一个线程；
+2.一个线程中执行完特定任务后，转到另一个线程继续执行任务；
+//实现方案
+一.pthread：一套通用的多线程API、跨平台、可移植
+二.NSThread：创建线程的通用类
+代码：ThreadViewController.h/m
+三.NSOperation：基于GCD、任务为导向的多线程模型、需要管理线程
+//1.创建多线程：NSOperation是抽象类，两个子类都可以创建对象
+NSInvocationOperation *operation = [[NSInvocationOperation alloc]initWithTarget:self
+selector:@selector(downloadImage:) object:nil];
+NSBlockOperation *blockOperation = [NSBlockOperation blockOperationWithBlock:^{
+    //3.先加载、再更新UI
+}]
+//2.添加到队列：即可以并行、也可以串行，默认是并发队列、默认_queue.maxConcurrentOperationCount为8
+_queue = [[NSOperationQueue alloc]init];//创建NSOperationQueue的队列
+_queue.maxConcurrentOperationCount = 2;//设置队列的最大并发数量：同一时间最多有多少任务可以执行
+[_queue setSuspended:YES];//暂停：可以恢复、不能暂停当前正在处于执行状态的任务
+[_queue setSuspended:NO];//继续执行
+[_queue cancelAllOperations];//取消：不可以恢复
+[_queue addOperation:operation];
+[_queue addOperation:blockOperation];//多线程加到队列中
+//可以跨队列依赖
+[blockOperation addDependency:operation];//操作依赖：不能循环依赖、blockOperation依赖于operation
+//操作监听
+blockOperation.completionBlock = ^{
+    //注意：执行该block块代码的线程和执行blockOperation操作的线程不一定一致，因为使用GCD和NSOperation技术线程的分配是系统内部决定的
+    NSLog(@"任务已经执行完毕--%@",[NSThread currentThread]);
+};
+//3.先加载、再更新UI
+-(void)downloadImage:(NSOperation*)operation {
+    //1.加载线程代码
+    //2.在主线程更新UI
+    [self performSelectorOnMainThread:@selector(updateUI:) withObject:image waitUntilDone:YES];
+}
+/*
+串行执行：不代表只开一条线程(线程同步)
+maxConcurrentOperationCount = 0 不会执行任务
+maxConcurrentOperationCount = 1 串行队列
+maxConcurrentOperationCount > 1 并发队列
+maxConcurrentOperationCount = -1 特殊意义：最大值、表示不受限制
+*/
+_queue.maxConcurrentOperationCount = 1;
+四.GCD：充分利用设备的多核、自动管理线程的生命周期；
+代码：ThreadViewController.h/m
+http://www.cocoachina.com/ios/20161031/17887.html
+//swift
+https://blog.csdn.net/u011146511/article/details/79300015
+https://www.jianshu.com/p/96032a032c7c
+
+#用户通知：
+//概述：
+推送功能一般分为两种：本地推送和远程推送；
+1.对于本地推送(UILocalNotification)，我们可以先注册通知；
+然后新建本地推送，设置属性；最后执行推送(会调用某个方法)；
+2.对于远程推送，我们使用第三方极光推送，按照极光推送文档操作；
+//本地通知(本地推送)：
+定义：由App发送到当前设备，不需要网络支持；
+问题：什么时候使用本地通知？App在前台需要与客户交互的时候使用本地通知；
+本地通知怎么在AppDelegate.m中使用？
+代码：AppDelegate.m
+//远程通知(远程推送)：由App服务端->APNs服务器->设备
+https://www.jianshu.com/p/ad43bc1a970a
+
+#基于位置的服务LBS：
+//系统定位
+1.导入MapKit.framework，创建MKMapView
+2.显示用户位置，把MKMapkit加到self.view，设置代理
+3.导入CoreLocation.framework，创建CLLocationManager(定位对象)设置属性
+4.问用户是否允许更新用户信息：开始更新
+5.设置代理
+6.需要在Info里边添加两项:
+1)当APP在前台的时候才使用,会跟用户弹出一个确认框：
+NSLocationWhenInUseUsageDescription
+2)当APP总是请求用户定位的时候,会跟用户弹出一个确认框：
+NSLocationAlwaysUsageDescription
+代码：MapViewController.h/m
+//大头针：知道经纬度就可以标注位置
+1.导入两个框架 MapKit.framework、CoreLocation.framework；
+2.创建MKMapView把地图显示出来；
+3.定义显示标注的类(MyAnnotation类)，实现MKAnnotation协议；
+4.从协议复制属性，初始化协议属性；
+5.给地图添加标注：MyAnnotation *a=[[MyAnnotation alloc]initWith:CLLocationCoordinate2DMake(36.1, 116.8) andTitle:@"title" andSubTitle:@"subtitle"];
+6.给地图添加标注：[self.mapview addAnnotation:a];
+代码：MKAnnotation.h/m
+//高德地图
+1.登录LBS开放平台，申请Key；
+2.下载相关SDK和实例代码；
+https://blog.csdn.net/a910577347/article/details/73499515
+//百度地图
+1.登录LBS开放平台，获取密钥；
+2.下载相关SDK和实例代码；
+https://www.jianshu.com/p/b0169d332918
+//腾讯地图
+1.登录LBS开放平台，获取参数；
+2.下载相关SDK和实例代码；
+https://blog.csdn.net/liyun123gx/article/details/44222255
+
+#多媒体：图片、音乐、录音、视频
+//上传照片：UIImagePickerController-选择图片类(代理类)
+注意：保存图片、UIAlertController打不开
+//音频：流的形式
+音频录音机-AVAudioRecorder
+音频播放器-AVAudioPlayer
+//视频：vitamio
+视频播放器-MPMoviePlayerController
+代码：MediaViewController.h/m
+练习：找出实用的第三方框架开发出商用级别项目；
+https://blog.csdn.net/Dreamandpassion/article/details/82459246
+https://www.jianshu.com/p/d8062b1856f3
+
+#程序之间通信：
+概念：URL组成-协议类型+服务器地址+资源路径+请求参数
+原理：从一个App跳转到另一个App的必要条件：另一个App必须配置scheme(skim)协议，这样App才可以根据协议找到需要打开的应用；
+1.第三方登录、分享、支付：由于是封装的SDK，可以根据文档直接集成；
+2.打电话、发短信、发邮件：https://blog.csdn.net/cc1991_/article/details/74990013
+3.实现两个单独App之间的跳转：TestApp->Demo
+1).在Demo中配置协议url scheme：test；
+2).在TestApp执行跳转方法：
+NSURL *url = [NSURL URLWithString:@"test://"];
+if ([[UIApplication sharedApplication] canOpenURL:url]) {
+    [[UIApplication sharedApplication] openURL:url];
+} else {
+    NSLog(@"尚未安装应用");
+}
+3).在TestDemo中配置协议白名单：iOS9.0以后
+在info.plist中添加字段：LSApplicationQueriesSchemes(数组)；
+配置需要跳转的协议白名单test；
+4.实现两个App之间跳转到指定界面：
+1).在"test://"协议后面跟上域名来标记需要跳转的界面；
+NSURL *url = [NSURL URLWithString:@"test://map"];
+if ([[UIApplication sharedApplication] canOpenURL:url]) {
+[[UIApplication sharedApplication] openURL:url];
+} else {
+NSLog(@"尚未安装应用");
+}
+2).在AppDelegate.h中，监听代理方法：
+- (BOOL)application:(UIApplication *)app openURL:(nonnull NSURL *)url options:(nonnull NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options {
+    if ([url.host isEqualToString:@"map"]) {
+        //在此做界面的跳转处理
+    }
+}
+https://blog.csdn.net/cc1991_/article/details/79050275
+
+#分享：
+//原生分享
+https://blog.csdn.net/qq_28009573/article/details/77744001
+//shareSDK集成
+注意：1.在Xcode7.0以上，需要在info.plist中设置访问权限；
+https://www.cnblogs.com/xubojoy/p/3885932.html
+https://www.jianshu.com/p/71499300a133
+
+#第三方登录：基于OAuth2.0协议构建的OAuth2.0授权登录系统
+1.微信登录：只提供原生登录方式(必须安装客户端)，所有使用之前必须判断；
+https://www.cnblogs.com/sunfuyou/p/7843612.html
+2.QQ登录：xxx
+https://blog.csdn.net/alexander_wei/article/details/72626396
+https://www.jianshu.com/p/133d84042483
+3.微博登录：xxx
+https://blog.csdn.net/zhonggaorong/article/details/51724810
+https://blog.csdn.net/u010545480/article/details/53004699
+https://www.jianshu.com/p/87d1d397d269
+
+#支付：
+//内购
+概述：如果你的App中销售的商品与App的功能有关必须通过内购方式购买；
+特点：1.不允许自定义价格；
+2.消耗型项目/非消耗型项目/自动续订订阅；
+https://blog.csdn.net/xiaoxiangzhu660810/article/details/17434907#0-qzone-1-51422-d020d2d2a4e8d1a374a433f596ad1440
+//第三方支付：
+http://www.cocoachina.com/ios/20151008/13506.html#0-qzone-1-88885-d020d2d2a4e8d1a374a433f596ad1440
+1.支付宝：
+https://blog.yayuanzi.com/12276.html
+https://openhome.alipay.com/platform/document.htm#down
+http://www.cnblogs.com/siyuan123/p/4872378.html?from=timeline&isappinstalled=0
+2.微信：
+https://www.jianshu.com/p/af8cbc9d51b0
+https://www.jianshu.com/p/162ece335b31
+3.银联：NO
+4.平台币：NO
+5.集成三方平台支付：海马、同步推、爱思
+
+#断点续传：
+定义：指任务在上传/下载的时候被人为划分为几个部分：每个部分采用一个线程进行上传/下载，如果遇到网络故障可以
+继承在未完成的部分继续开始，没必要从头开始下载。
+//原理
+https://www.cnblogs.com/wangzehuaw/p/5610851.html
+https://www.cnblogs.com/findumars/p/5745345.html
+//实现
+https://www.jianshu.com/p/0e6deea7de87
+https://www.jianshu.com/p/01390c7a4957
+https://blog.csdn.net/stree7cleaner/article/details/51440774
+https://blog.csdn.net/lcg910978041/article/details/51487485
+
+#即时通讯IM：
+//底层原理：
+1.协议：XMPP协议(基于xml的协议，具有超强的可扩展性)
+2.XMPP的三个部分：服务器、网关、客户端(可以任意两者双向发生)
+3.XMPP优缺点：
+//优点：
+1).XMPP协议是自由开源的，而且在C/S都有多种实现；
+2).任何IM供应商在遵循XMPP协议下都可以与Google Talk实现连接；
+3).利用XMPP技术开发软件，资源以及支持的来源都是多样的，这样就不会被“绑架”；
+4).XMPP以TCP传递XML数据流，没有中央主服务器，任何人都可以运行自己的XMPP服务器；
+5).XMPP基于XML具有很强的扩展性；
+//缺点：
+1).XMPP协议的服务器流量存在着被重复转发，数据负载太重；
+2).XMPP协议基于XML文件(编码成单一的XML文件)，因此无法提供修改二进制数据；
+//上层实现：环信
+概述：环信通过云端开放的Rest api或者客户端SDK，摆脱IM底层开发，使App内置聊天功能；
+步骤：1.制作推送证书、登录环信后台、创建应用生成AppKey；
+2.通过cocoapods下载SDK：
+pod 'EaseMobSDKFull', :git => 'https://github.com/easemob/sdk-ios-cocoapods-integration.git'
+导入头文件：#import <EaseMobSDKFull/EaseMob.h>
+3.按照环信集成开发文档操作；
+
+#iOS与H5的交互：NO
+//iOS与H5的交互
+https://blog.csdn.net/sandyloo/article/details/65630863
+https://www.jianshu.com/p/b0c847dcea9c
+//利用WebViewJavascriptBridge
+https://blog.csdn.net/qq_20455399/article/details/80353164
+https://www.jianshu.com/p/96e01aed250b
+
+#Swift和Objective-C混合编程：
+//Objective-C工程调用Swift代码
+https://blog.csdn.net/u010407865/article/details/62886943
+https://www.jianshu.com/p/9f757a09eacd
+//Swift工程调用Objective-C代码
+https://blog.csdn.net/pjk1129/article/details/39644477
+
+#二维码：
+应用：ZBarSDK第三方库
+https://blog.csdn.net/he_jiabin/article/details/47786031
+
+#App数据统计：
+//实时在线人数：使用NSTimer
+//热云
+//TD
+
+#App换肤：
+http://www.cocoachina.com/ios/20171012/20762.html
+
+#图文混排：
+https://blog.csdn.net/qcx321/article/details/52194835
+
+#webview混排：
+https://blog.csdn.net/u010960265/article/details/80563668
+
+#iPad开发：
+//iPad和iPhone开发的异同
+https://blog.csdn.net/wujakf/article/details/80223046
+//iPad项目开发总结
+https://www.jianshu.com/p/522c8993572b
+/******************************实战操作******************************/
+#svn：开源的集中式版本控制工具(trunk/branches/tags)
+官网：https://subversion.apache.org/
+客户端：SmartSVN、CornerStone
+安装：NO
+在mac环境下，自带svn服务端和客户端功能，只需要做简单配置；
+svn help //查看svn所有命令
+cd+工程目录 //进入工程目录
+svn checkout 服务器地址 --username=xwj --password==xwj123456 //将服务器代码完整的下载到本地
+------------------------------------------------------------
+svn status //查看文件状态
+' ' 没有修改
+'A' 被添加到本地代码仓库
+'C' 冲突
+'D' 被删除
+'I' 被忽略
+'M' 被修改
+'R' 被替换
+'X' 外部定义创建的版本目录
+'?' 文件没有被添加到本地版本库内,不在SVN的管理之下
+'!' 文件丢失或者不完整(不识别该文件)
+'~' 受控文件被其他文件阻隔
+'U' 更新最新的代码到本地(本地有文件的情况下)
+'G' 产生冲突后,更新操作去解决冲突,相当于进行合并
+------------------------------------------------------------
+svn add * //添加文件
+svn commit -m "本地修改说明" //将本地修改的内容提交到服务器
+svn update //将服务器最新代码更新到本地
+svn remove person.h  //删除svn版本管理控制的person.h文件
+//版本回退：
+1.本地版本回退
+svn update -r7 //回退到第7个版本：查看是否是需要的版本
+svn update //更新到最新版本
+svn merge -r7:6 person.h //person.h回退到第6个版本
+2.服务器版本回退
+svn update
+//查看版本信息
+svn update //更新
+svn log //查看某个文件的日志
+//遇到冲突
+mc(mine side) //保留自己的修改，放弃别人的修改
+tc(their side) //保留别人的修改，放弃自己的修改
+p(post pone) //延迟解决冲突：展示所有冲突的文件，手动解决冲突
+svn resolved 文件名 //解决了某个文件的冲突：必须写
+//svn地址重定向：
+cd ./workspace
+/*
+10.5.154.237 上次svn的地址
+10.5.154.142 本次svn的地址
+sally 你的用户名
+sallyssecret 你的密码
+*/
+svn switch --relocate svn://10.5.154.237 svn://10.5.154.142 --username sally --password secret
+//svn恢复
+svn revert . -R
+注意：1.本地版本号<服务器版本号->则不允许提交；
+2.如果使⽤静态库需要特别注意：必须使⽤命令⾏将静态库添加到svn的管理之下；svn add xxx.a
+https://my.oschina.net/joanfen/blog/194491#0-qzone-1-42949-d020d2d2a4e8d1a374a433f596ad1440
+
+#git：开源的分布式版本控制工具(master/branches/tags)
+开发者：Linux操作系统的作者Linus Torvalds；
+客户端：SourceTree
+安装：NO
+创建代码仓库：git init
+配置身份：查看是否配置OK
+git config --global user.name "Tony"
+git config --global user.email "tony@gmail.com"
+添加：git add 文件名
+提交：git commit -m "说明.txt"
+加入.gitignore-允许用户将指定的文件或目录排除在版本控制之外的机制；
+查看状态：git status
+查看修改内容：git diff
+撤销修改：git checkout
+查看提交内容：git log
+删除person.m文件：git rm person.m
+版本回退：git reset --hard HEAD //没有push
+1.git reset --hard HEAD^ //有push、回到上一个版本
+2.git push -f //强制推送：必须让同事也要版本回退、不然同事本地不是消失！！！
+git reset --hard HEAD^^ //回到上上一个版本
+git reset --hard HEAD~100 //回到前100个版本
+git reset --hard HEAD 版本号(前5位) //回到指定版本
+//git分支：
+查看分支：git branch -a
+创建分支：git branch 分支名
+合并分支：git checkout master->git merge 分支名
+删除分支：git branch -D 分支名
+解决冲突：git无法帮助你；
+#与远程版本库协作：NO
+//.gitignore
+https://github.com/github/gitignore
+//忽略UserInterfaceState.xcuserstate的方法：
+https://blog.csdn.net/lovenjoe/article/details/50053255
+//打tag：发现bug可以直接把这个tag变成分支
+git tag -a tag名 -m "你想要说你的话"
+git tag
+git push origin tag名
+//ssh keys认证
+1.公钥：存在github上用来解密的key
+2.私钥：存在本地一个.ssh文件夹下用来加密
+
+#CocoaPods：https://segmentfault.com/a/1190000011428874
+//安装Cocoapods
+1.安装Ruby
+1>安装RVM:
+curl -L get.rvm.io | bash -s stable
+rvm -v
+2>安装homebrew:
+/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+brew -v
+3>安装xcode command line:
+xcode-select --install
+xcode-select -v
+4>安装ruby:
+rvm list known
+rvm install 2.4.0
+ruby -v
+2.安装Cocoapods
+sudo gem install cocoapods
+教程：https://blog.csdn.net/zhanglizhi111/article/details/76657982
+//使用Cocoapods
+cd ./project
+pod init
+pod install --no-repo-update
+#Podfile
+platform :ios, '8.0'
+target '项目名' do
+use_frameworks!
+pod 'NSLogger'
+pod 'AFNetworking'
+pod 'FMDB'
+pod 'UICKeyChainStore'
+pod 'SCLAlertView-Objective-C'
+pod 'FTIndicator/FTProgressIndicator'
+pod 'FTIndicator/FTToastIndicator'
+pod 'IQKeyboardManager'
+pod 'MKDropdownMenu'
+pod 'CLGO', :git => 'ssh://git@git.changmeng.com/ios/sdk.v3.8.git', :branch => 'appstore-bt'
+end
+pod update --no-repo-update
+//升级本机pod库
+pod repo update master
+//编写podspec文件：NO
+//利用CocoaPods创建静态库：NO
+//新建静态库
+https://segmentfault.com/a/1190000011428874
+//打包静态库
+#sudo gem install cocoapods-packager
+#cd ./CLGO.podspec
+#pod package CLGO.podspec --force --verbose //常规打包
+#pod package CLGO.podspec --force --no-mangle --verbose //含.a的打包
+http://www.jianshu.com/p/605350a7b1dd
+
+#真机调试：
+//真机和模拟器的环境差异
+1.内存环境和网络环境；
+2.传感器：磁力计、陀螺仪、距离传感器不能再模拟器上使用；
+3.特定功能：打电话、拍照、发短信、蓝牙不能在模拟器上使用；
+//开发者账号
+个人账号：99$ == 688¥
+公司账号：99$ == 688¥
+企业账号：299$
+注意：1.bundle id使用通配符会有很多App服务不能选；
+2.添加设备UUID一年只可以添加100次(不是100台)；
+3..cer文件是身份证<-->.p12是复印件
+4.免费账号(1822512598@qq.com)需要加入开发者计划(99$)；
+5.Xcode7.0以后：只需要Apple ID(免费)、可以自动生成证书、开始真机调试；
+
+#应用发布：特别擅长
+//App Store：主要渠道，占比超过95%
+1.准备材料：
+项目源代码；打包成ipa，直接上传；
+关键字：5个、标点符号必须是英文
+项目描述：标点符号必须是英文
+iTunes图标：512*512\1024*1024两张
+截图(5/5s 6 6s X)100%屏幕
+2.步骤：
+一.生成CSR文件：
+1.应用程序—>实用工具—>钥匙串访问->证书助理—>从证书颁发机构请求证书；
+2.填写电子邮箱地址—>存入到硬盘；
+二.进入itunesconnect.apple.com：新建App
+三.登录后台：developer.apple.com
+1.上传CRS文件,生成证书dev/dis；
+2.新建App ID：一般会有运营帮助新建完成；
+3.配置Provisioning Profiles(配置文件)；
+四.打包App；
+五.提交App至后台；
+六.提交App到App Store；
+七.版本更新：加版本号、重新提交审核；
+//越狱平台：逐渐消失
+//企业签分发：工会等渠道
+//TestFlight：测试分发、https://testflight.top
+/******************************补充知识点******************************/
+#PCH文件：参考Res/项目中常见的文件(PCH)
+
+#正则表达式：
+代码：NewNetworkViewController.h/m
+搜索NSRegularExpression
+
+#谓词： NSPredicate
+概念：OC中谓词操作是针对于数组类型的，这样的好处是我们可以不需要编写很多代码就可以去操作数组、过滤数据；
+NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF CONTAINS[c] %@",searcgString];
+_ArrM = [NSMutableArray arrayWithArray:[_Arr filteredArrayUsingPredicate:predicate];//过滤数据
+
+#const：Apple推荐使用const
+1.修饰右边基本变量或指针变量、2.被const修饰的变量只读
+//常量
+int const a = 10;//a是常量，不允许被修改
+const int *a = 10;//a本身是一个指针，可以修改；*a是常量，不可以被修改
+int *const a = 10;//a本身是一个指针，不可以修改；a指向变量，允许被修改
+int const *const a = 10;//a本身是一个指针，不可以修改；a指向常量，不允许被修改
+//指针
+const int *p;//修饰*p可读，p可以改变；
+int *const p;//修饰p可读，*p可以改变；
+
+#深拷贝/浅拷贝：
+//定义
+深拷贝：生成值一样，内存地址不一样的全新对象-内容拷贝
+浅拷贝：使原对象的引用计数+1，没有创建全新的对象，直接返回被拷贝对象的地址-指针拷贝
+//不可变字符串：右侧如果是copy，那么就是浅拷贝；右侧如果是mutableCopy,那么就是深拷贝
+NSString *msg0 = @"";
+NSString *msg2 = [msg1 mutableCopy];//深拷贝
+NSString *msg1 = [msg0 copy];//浅拷贝：对原对象进行一次retain、对拷贝出来的对象进行一次release
+//可变字符串：右侧无论是copy还是mutableCopy，都是深拷贝
+NSMutableString *msg3 = [NSMutableString stringWithString:@""];
+NSString *msg1 = [msg0 copy];//深拷贝
+NSString *msg2 = [msg1 mutableCopy];//深拷贝
+注意：1.浅拷贝类似retain，深拷贝类似copy；
+2.参考：https://blog.csdn.net/chenyufeng1991/article/details/51771728
+-(id)copyWithZone:(NSZone *)zone {
+
+}
+-(id)mutableCopyWithZone:(NSZone *)zone {
+
+}
+
+#常见指令：
+//self
+定义：self是一个指针，哪个对象调用该方法，self指针就指向哪个对象；
+用途：1.self出现在对象方法中就代表对象、self出现在类方法中就代表类；
+2.对象方法中：self->成员变量名;//访问当前对象内部的成员变量；
+3.[self 方法名];//调用其他对象方法/类方法；
+//super：编译器的指令符号
+作用：直接调用父类中的某个方法；
+场合：子类重写父类的方法时想保留父类的一些行为；
+//id：动态数据类型
+定义：id是万能的指针，可以指向/操作任何对象；
+作用：定义变量、作为函数参数、作为函数返回值；
+id p = [Person new];//id相当于Person*；
+注意：1.由于动态数据类型可以调用任意方法(有可能调用到不属于自己的方法)、这样可能导致运行期错误；
+2.应用场景：多态-可以减少代码量、避免调用子类特有的方法需要强制类型转换；
+3.怎么避免动态数据类型运行期错误？
+id obj = [person new];
+if ([obj isKindOfClass:[Person class]]) { //判断指定对象是否属于某一个类/子类
+[obj eat];
+}
+//instancetype
+定义：id是万能的指针，可以指向/操作任何对象；
+特性：在编译期可以判断对象的真实类型、只能作为返回值；
+//typedef：可以给已知的数据类型起别名(外号)
+typedef 原有数据类型 别名
+注意：1.typedef不仅能给原生的数据类型起别名，也可以给自定义的类型起别名；
+2.利用typedef给数据起别名，并不会生成新的数据类型；
+//new
+1.开辟存储空间-alloc
+2.开辟所有的属性-init
+3.返回对象的地址
+//@available
+if(@available(macOS10.1,iOS 11,*)) {
+    //code
+}
+
+#常用代码块：
+//获取当前时间
+NSString *currentTime = [NSString stringWithFormat@"%@",[NSDate date]];
+//block中使用self
+__weak typeof(self) weakSelf = self;
+//汉字转码
+NSString *oriString = @"\u67aa\u738b";
+NSString *escapedString = [oriString stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+//屏幕中心x轴
+self.view.center.x
+//屏幕中心y轴
+self.view.center.y
+//UIWebView可以打开doc/pdf文件
+UIWebView *webView = [[UIWebView alloc] initWithFrame: [UIScreen mainScreen].bounds];
+webView.delegate = self;
+webView.multipleTouchEnabled = YES;
+webView.scalesPageToFit = YES;
+NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+NSString *documentsDirectory = [paths objectAtIndex:0];
+NSString *docPath = [documentsDirectory stringByAppendingString:@"/readMe.doc"];
+NSURL *url = [NSURL fileURLWithPath:docPath];
+NSURLRequest *request = [NSURLRequest requestWithURL:url];
+[webView loadRequest:request];
+[webview loadHTMLString:str baseURL:nil];//加载html页面
+//屏幕常亮不变暗
+[UIApplication sharedApplication].idleTimerDisabled = YES;
+//延迟执行
+[self performSelector:@selector(onShow) withObject:self afterDelay:1.0];
+//判断msg是否是NSString
+[msg isKindOfClass:[NSString class]];
+//跳转系统浏览器
+if ([[UIApplication sharedApplication] respondsToSelector:@selector(openURL:options:completionHandler:)]) {
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:url] options:@{}
+    completionHandler:^(BOOL success) {
+    }];
+} else {
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:url]];
+}
+//时间格式
+NSString *data = [NSString stringWithFormat:@"%.2d:%.2d:%.2d",self.hour,self.minute,self.second];
+//近距离感应
+[[UIDevice currentDevice] setProximityMonitoringEnabled:YES];//打开红外线开关
+[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeAction:) name:@"UIDevieceProximityState" object:nil];//添加监听
+- (void)changeAction:(NSNotification *)notification {
+    if([[UIDevice currentDevice] proximityState]) {
+        NSLog(@"靠近");
+    } else {
+        NSLog(@"远离");
+    }
+}
+//设置RGBA颜色
+UIColor *color = [[UIColor alloc]initWithRed:238/255.0 green:238/255.0 blue:238/255.0 alpha:1];
+//延迟执行
+[self performSelector:@selector(stop:) withObject:nil afterDelay:5];
+//json转换成字典
+NSDictionary *dict=[NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableContainers error:nil];
+//2> 常量
+static int const sum = 20;
+static NSString * const Str = @"xwj";
+//根据字体计算高度：一行
+NSString *name = @"谢吴军";
+NSDictionary *nameAtt = @{NSFontAttributeName : [UIFont systemFontOfSize:15]};
+CGSize nameSize = [name sizeWithAttributes:nameAtt];
+CGFloat width = nameSize.width;
+//根据最大宽度计算高度：多行
+NSString *name = @"谢吴军";
+NSDictionary *nameAtt = @{NSFontAttributeName : [UIFont systemFontOfSize:15]};
+CGSize nameSize = CGSizeMake(100, MAXFLOAT);//宽度固定100，高度不确定
+CGSize textSize = [name boundingRectWithSize:nameSize options:NSStringDrawingUsesLineFragmentOrigin attributes:nameAtt context:nil].size;
+CGFloat height = textSize.height;
+//https://www.cnblogs.com/niit-soft-518/p/6373601.html
+CGRectGetMaxX(self.view.size) //矩形中最大x值：布局简单多啦
+
+#NSCalendar：
+
+#常见第三方库(Swift)：
+https://github.com/dacaizhao/MJExtensionSwift //MJExtensionSwift：字典转模型
+https://www.jianshu.com/p/f4282df18537
+https://www.jianshu.com/p/c74f6abc2eb7
+https://www.jianshu.com/p/68e12b966d86
+
+#制作静态库SDK：
+//打包.a：
+https://www.jianshu.com/p/a1dc024a8a15
+//打包framework：
+https://blog.csdn.net/sadsadaadsd/article/details/77878279
+//swift打包静态库：不支持静态库
+https://blog.csdn.net/lvchenqiang_/article/details/79077679
+
+#设计模式：
+//MVC：Model数据模型用于存储数据；View视图负责显示UI控件；Controller控制器用于控制View和model之间的交互；
+//MVVM：xxx
+//单例模式：可以保证在程序运行过程中一个类只有一个实例；
+//工厂模式：工厂方式创建类的实例，多与proxy模式配合，创建可替换代理类；
+//观察者模式：不关心谁去接收，只负责发布信息；
+//代理设计模式：当一个类的某些功能需要由别的类来实现，但是又不确定具体会是哪个类实现；
+
+#预处理指令：在源代码被翻译成0和1之前做的操作我们称为预处理指令，一般以#开头
+//宏定义：#define 宏名 值
+作用：在源代码被翻译成0和1之前，将所有的宏名换成宏的值；
+规范：一般要求宏名以k开头，多个单词之间用驼峰命名；
+作用域：从定义开始到文件结束，可以提前结束宏定义的作用域；
+#define kVersion "3.5.8" //不能加分号
+#undef kVersion //提前结束宏定义作用域
+不带参数的宏/带参数的宏：建议写带参数的宏的时候，给每个参数加上()，给结果加上();
+注意：宏定义并不会做任何操作，仅仅在翻译成0和1之前做简单的替换
+//条件编译
+#define DEBUG 0 //0是调试阶段、1是发布阶段
+#if DEBUG == 0
+#define CMLog(format, ...) printf(format,## __VA_ARGS__)
+#elif //else if
+#else
+#define Log(format, ...)
+#endif //结束符
+#ifdef DEBUG //是否定义该宏
+#ifndef DEBUG //是否没有定义该宏
+优点：缩小应用程序的大小
+注意：条件编译不能用来判断变量，因为不在同一个生命周期，一般与宏定义结合使用；
+//文件包含
+#include <zh.h>/"zh.h" //将zh.h文件copy到当前文件：可能会出现重复包含头文件、降低编译效率
+<zh.h> //编译器环境->系统环境
+"zh.j" //当前文件->编译器环境->系统环境
+头文件卫士：防止循环copy
+#ifndef __ZS__H__ //判断是否"没有定义"宏名为__ZS__H__的宏
+#define __ZS__H__ //定义宏名为__ZS__H__的宏
+//执行代码
+#endif
+
+#RunLoop：底层
+作用：1.保持程序的持续运行；
+2.处理App中各种事件(触摸事件、定时器事件)；
+3.节省CPU资源，提高程序性能；
+实质：RunLoop实质是一个死循环，由于main函数中启动了RunLoop才保证了程序不会马上退出，可以
+保持持续运行状态；
+//CFRunLoopRef
+//NSRunLoop：基于CFRunLoopRef的封装
+//RunLoop与线程
+1.每条线程都有唯一与之对应的RunLoop对象；
+2.主线程的RunLoop已经自动创建、子线程的RunLoop需要主动创建；
+3.RunLoop在第一次获取线程时创建、在线程结束时销毁；
+//RunLoop的运行模式：见Res
+http://www.cocoana.com/ios/20150601/11970.html#0-qzone-1-74697-d020d2d2a4e8d1a374a433f596ad1440
+
+#Runtime：NO
+
+#DrawRect：NO
+概念：Quartz 2D是一个基于CoreGraphics框架来实现的二维绘制引擎，同时支持iOS和Mac系统；
+作用：绘制图形、线、三角形、圆、弧形；绘制文字；绘制/生成pdf；截图/裁剪图片；自定义UI；
+https://blog.csdn.net/potato512/article/details/56845385
+https://blog.csdn.net/mangosnow/article/details/37054765#0-qzone-1-85099-d020d2d2a4e8d1a374a433f596ad1440
+
+#iOS11/12新特性：
+https://www.jianshu.com/p/39a5aee18778
+/******************************面试部分******************************/
+#Instruments：NO
+
+#面试：
+//frame/bounds/center的区别：
+frame：以父视图的左上角为坐标原点确定控件坐标系；
+bound：以自己的左上角为坐标原点控件中心向四周扩展；
+center：控件中点位置(以父视图的左上角为坐标原点)；
+//UITableView的性能：cell的复用机制
+移动设备的内存有限，如果使用一个cell就创建一个cell对象将会耗尽设备的内存。解决该问题需要引入
+cell的复用机制：当UITableView发生滚动的时候，部分cell会移出窗口，这时候系统会将窗口外的
+cell放入cell对象池中，等待复用。当UITableView要求dataSource返回cell的时候，dataSource
+会首先查看cell对象池，返回cell对象池中未使用的cell给UITableView，从而避免创建新cell对象。
+//线程有几种状态：5种状态
+新建New--就绪Runnable--运行Running--阻塞Blocked--死亡Dead
+//http/https的区别：
+http协议是明文协议、https是添加了加密和认证的协议
+//常见的网络协议：
+http协议、https协议、TCP/IP协议、FTP协议
+//常见的响应状态码：
+200  //请求成功OK
+400 //客户端请求的语法错误，服务端无法解析Bad Request
+404 //服务器无法通过客户端的请求找到资源Not Found
+500 //服务器内部错误，无法完成请求Internal Server Error
+//TCP/UDP的区别：
+TCP是面向连接的，提供可靠的服务，UDP是无连接的，尽最大努力交付，不保证可靠服务；
+TCP通过校验、重传控制、确认应答实现可靠传输，UDP具有较好的实时性；
+TCP连接只能支持点对点，UDP支持交互通信；
+//Internet采用哪种网络协议？该协议的主要层次结构？
+tcp/ip协议，层次结构：应用层/传输层/网络层/数据链路层/物理层
+//OSI七层网络模型：
+应用层：为应用程序提供服务
+表示层：数据格式转化、数据加密
+会话层：建立、管理和维护会话
+传输层：建立、管理和维护端到端的连接
+网络层：IP选址及路由选择
+数据链路层：提供介质访问和链路管理
+物理层：物理设备标准
+//进程和线程的区别：
+进程：系统中正在运行的应用程序叫做进程(相互独立)，进程是OS资源分配的基本单位；
+线程：任务调度和执行的基本单位：每个进程当中至少有一个线程；
+//产生死锁的原因：
+死锁：多个进程在执行过程中，因为资源竞争而造成的阻塞现象；
+1.互斥条件：xxx
+2.请求和保持条件：xxx
+3.不剥夺条件：xxx
+4.环路等待条件：xxx
+//处理死锁的办法：
+1.预防死锁：通过设置一些限制条件，去破坏产生死锁的必要条件；
+2.避免死锁：在资源分配过程中，使用某种方法避免系统进入不安全的状态，从而避免发生死锁；
+3.检测死锁：允许死锁的发生，但是通过系统的检测之后，采取一些措施，将死锁清除掉；
+4.解除死锁：该方法与检测死锁配合使用；
+//进程的调度算法：
+1.先来先服务(FCFS)
+2.最短作业优先(SJF)
+3.最高响应比优先法(HRRN)
+4.时间片轮转算法(RR)
+5.多级反馈队列(MFQ)
+//KVO的工作原理：
+xxx
+//请列举几种源代码管理工具，并说明区别：
+源代码管理工具：svn、git
+区别：1.在很多情况下，git的速度远远比svn快；
+2.svn是集中式管理，git是分布式管理；
+3.svn必须联网才可以正常工作,git支持本地版本控制；
+//静态数据类型和动态数据类型的区别：
+1.静态数据类型的特点：在编译期就明确变量的类型、可以访问属性和方法；
+2.动态数据类型的特点：在编译期不清楚变量的类型、运行期才知道真实类型；
+//KVC、KVO的底层实现：
+xxx
+//为什么加上__block就可以在block内部修改变量：
+因为没有添加__block是值传递、加上__block是地址传递；
+//[self class]|[self superclass]：
+1.[self class]获取当前方法调用者的类；
+2.[self superclass]获取当前方法调用者的父类；
+//const和宏的区别：swift没有宏
+1.编译时刻：const：编译、宏：预编译(Xcode打开项目的时候读条阶段)
+2.编译检查：const有编译检查、宏没有编译检查
+3.宏的好处：const不可以定义函数|方法、宏可以定义函数|方法
+4.宏的坏处：大量使用宏导致预编译时间过长
+blog：大量使用宏导致内存爆增！错误
+//简述远程推送的步骤：
+我们一般利用第三方极光推送完成远程推送功能：
+1.登录苹果开发者后台，创建项目推送证书；
+2.登录极光推送后台，上传证书，创建应用；
+3.获取到AppKey、导入必要类库、按照开发文档操作；
+//第三方登录总结：
+xxx
+//有哪些技术可以实现定位：
+基站、GPS
+//社会化分享总结：
+1.对于系统自带的分享：如果是分享到短信、邮箱,需要导入MessageUI系统库,然后创建分
+享;如果是分享到新浪微博、腾讯微博,需要导入Social系统库,然后分享创建。优点：不需要集
+成第三方库,不需要App Key;缺点：页面简单,不能自定制；
+2.对于第三方分享：一般使用shareSDK，首先进入shareSDK官网获取App Key，集成shareSDK，
+想要分享至哪些平台就去相应开放平台申请AppKey和AppSecret，然后按照文档构建分享内容。
+//RSA加密算法：公钥加密算法
+RSA加密算法除了可加密、解密之外，还可用来作签名校验：简单的说,RSA会生成一个私钥和
+一个公钥，私钥你应该独自保管，公钥你可以分发出去；做签名验证时,你可以用私钥对需要传输
+的数据做签名加密，生成一个签名值，之后分发数据,接收方通过公钥对签名值做校验，如果一致
+则认为数据无篡改。
+//参考：
+http://blog.csdn.net/leaf8742
+https://www.jianshu.com/p/1a94498de7f4
+https://www.jianshu.com/p/2e1b3f54b4f3
+
+#简历中提到的知识点：
+Coredata：xxx
+环信SDK：xxx
+ZXing/Masonry：xxx
+sorket套接字：xxx
+/******************************swift基础******************************/
+#单例：swift中也有单例
+static let instance : HttpTool = HttpTool()
+class func shareInstance() -> HttpTool {
+    return instance
+}
+
+#闭包：经常用于回调
+//1> swift中的闭包是一个特殊的函数
+//2> block和闭包都是经常用于回调
+//代码：见WMGame/20-闭包的使用
+https://blog.csdn.net/shifang07/article/details/76293244
+
+#懒加载：
+//1> swift中也有懒加载的方式：只能放在结构体/类中
+//2> 与OC不同的是：swift直接用lazy关键字定义某一个属性懒加载
+class View : NSObject {
+    lazy var btn : UIButton = {
+        var btn = UIButton()
+        btn.backgroundColor = UIColor.red
+        return btn
+    }()
+}
+
+#补充知识点：WMGame/swift
+
+#其他知识点：Swift/weibo
+/******************************React Native******************************/
+#React Native：NO
+/******************************补充知识点******************************/
+#项目文档：
+//MarkDown：NO
+//Doxygen：多语言(C/C++/Java/Objective-C)的文档生成器
+注释规则：
+///@brief xxx
+/**
+* @class xxx
+* @author xxx
+* @date xxx
+*/
+
+#函数式编程思想(高聚合：代码聚合、方便管理)：把很多功能放在一个函数块(block)去处理
+int a = ({
+b = 2;
+c = 3;
+d = 4;
+b + c + d; //最后一句设置返回什么
+});
+UIButton *btn = ({
+UIButton *btn = [UIButton alloc]init];
+btn.tag = 1;
+btn;//最后一句设置返回什么
+});
