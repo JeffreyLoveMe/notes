@@ -78,7 +78,7 @@
 //类的消息机制 - x
 //内存管理 - x
 //MRC/ARC混合编程 - x
-//选择器SEL
+//选择器SEL - x
 //文件操作 - x
 //KVC、KVO - x
 //block - x
@@ -130,7 +130,8 @@
 //iOS动画 - x
 //UIViewController之间的传值 - x
 //NSTimer定时器
-//Xib/Interface Builder
+//Xib
+//Interface Builder(管理xib/storyboard)
 //停靠模式
 //autoLayout自动布局
 /**************************网络基础**************************/
@@ -162,9 +163,11 @@
 //闭包
 //swift修饰符
 //懒加载
+//单例
 /**************************项目实战**************************/
 //项目部署（图标/启动页面/App名称/网络请求设置）
 //程序启动原理
+//沙盒机制NSHomeDirectory()
 //数据持久化
 //多线程
 //用户通知
@@ -192,16 +195,31 @@
 //画折线图
 //iOS9.0 - iOS13.0新特性
 //Xcode7.0 - Xcode11.0新特性
-// Instruments
-// 开发工具的使用
-// Xcode编译原理
-// LLVM项目
-// Clang编译器
-// ReactiveCocoa
-// Scrumj敏捷开发
+//Instruments - x
+//开发工具的使用
+//Xcode编译原理
+//LLVM项目
+//Clang编译器
+//ReactiveCocoa
+//Scrumj敏捷开发
 /**************************实用技术(swift版本)**************************/
 /**************************RxSwift**************************/
 /**************************补充部分**************************/
+//“原生” 与 “js交互”
+1>.iOS与H5的交互
+https://blog.csdn.net/sandyloo/article/details/65630863
+https://www.jianshu.com/p/b0c847dcea9c
+2>.利用WebViewJavascriptBridge
+https://blog.csdn.net/qq_20455399/article/details/80353164
+https://www.jianshu.com/p/96e01aed250b
+
+//Objective-C和Swift混合编程
+1>.Objective-C工程调用Swift代码
+https://blog.csdn.net/u010407865/article/details/62886943
+https://www.jianshu.com/p/9f757a09eacd
+2>.Swift工程调用Objective-C代码
+https://blog.csdn.net/pjk1129/article/details/39644477
+
 //补充网址
 1>.设置启动图 - https://www.jianshu.com/p/a0f53f66ccbe/Launch Screen File > Launch Images Source
 2>.解析html - https://www.cnblogs.com/W-Kr/p/5248316.html
@@ -222,55 +240,55 @@ http://down.applex.net/macosx/software.html
 
 ///常见系统库
 //1.基础框架
-NSObject-基类（考虑分析源码）
-Foundation-提供OC的基础类
-UIKit-创建和管理App的UI
+NSObject - 基类（考虑分析源码）
+Foundation - 提供OC的基础类
+UIKit - 创建和管理App的UI
 //2.核心框架
-QuartzCore-提供动画特效以及通过硬件进行渲染能力/画图相关库
-CoreGraphics-提供2D绘制的基于C的API/画图相关库
-SystemConfiguration-检测当前网络是否可用和硬件设备状态
-CFNetwork-访问和配置网络
-CoreFoundation-提供抽象的常用数据类型
-GameKit-为游戏提供网络功能：点对点互联和游戏中的语音交流
-AddressBook-提供访问用户联系人信息的功能
-AddressBookUI-提供用户界面：显示存储在地址簿中的联系人信息
-AudioToolBox-提供音频录制和回放的底层API，同时负责管理音频硬件
-AudioUnit-提供一个接口，让App可以对音频进行处理
+QuartzCore - 提供动画特效以及通过硬件进行渲染能力/画图相关库
+CoreGraphics - 提供2D绘制的基于C的API/画图相关库
+SystemConfiguration - 检测当前网络是否可用和硬件设备状态
+CFNetwork - 访问和配置网络
+CoreFoundation - 提供抽象的常用数据类型
+GameKit - 为游戏提供网络功能：点对点互联和游戏中的语音交流
+AddressBook - 提供访问用户联系人信息的功能
+AddressBookUI - 提供用户界面：显示存储在地址簿中的联系人信息
+AudioToolBox - 提供音频录制和回放的底层API，同时负责管理音频硬件
+AudioUnit - 提供一个接口，让App可以对音频进行处理
 //3.地图框架
-MapKit-为App提供内嵌地图的接口
-CoreLocation-使用GPS和WI-FI获取位置信息
+MapKit - 为App提供内嵌地图的接口
+CoreLocation - 使用GPS和WI-FI获取位置信息
 //4.音视频框架
-AVFoundation-提供音频录制和回放的c底层API，同时负责管理音频硬件
-MediaPlayer-提供播放视频和音频的功能
-MessageUI-提供视图控制接口用以处理E-mail和短信
-OpenGLES-提供动画特效以及通过硬件进行渲染的能力
-StoreKit-为App提供在程序运行中消费的支持
-CommonCrypto/Security.framework-系统加密接口
-libsqlite3.tbd-数据库相关库
-libsqlite3.0.tbd-数据库相关库
+AVFoundation - 提供音频录制和回放的c底层API，同时负责管理音频硬件
+MediaPlayer - 提供播放视频和音频的功能
+MessageUI - 提供视图控制接口用以处理E-mail和短信
+OpenGLES - 提供动画特效以及通过硬件进行渲染的能力
+StoreKit - 为App提供在程序运行中消费的支持
+CommonCrypto/Security.framework - 系统加密接口
+libsqlite3.tbd - 数据库相关库
+libsqlite3.0.tbd - 数据库相关库
 
 //常见三方libs
 1>.需要分析理解源码
-AFNetworking-网络请求下载相关库
-Masonry/SnapKit-用于屏幕适配
-FMDB-操作数据库相关库
-MagicRecord-用于简化CoreData
-SVPullToRefresh-上拉加载/下拉刷新控件
-JSONKit-json解析
-JSONModel/MJExtention-字典转模型
-MJReFresh-上拉刷新/下拉加载
-SDWebImage-图片下载/上传
+AFNetworking - 网络请求下载相关库
+Masonry/SnapKit - 用于屏幕适配
+FMDB - 操作数据库相关库
+MagicRecord - 用于简化CoreData
+SVPullToRefresh - 上拉加载/下拉刷新控件
+JSONKit - json解析
+JSONModel/MJExtention - 字典转模型
+MJReFresh - 上拉刷新/下拉加载
+SDWebImage - 图片下载/上传
 2>.需要知道怎么使用
-JXSegmentedView-多控制器滑动视图
-MBProgressHUD-加载loading
-SAMKeychain-keyChain保存
-Reachability-用于检测网络类型
-CSStickyHeaderFlowLayout-实现头部悬停
-FLAnimatedImage-让GIF播放不卡
-FXBlurView-实现高斯模糊
-SPAlertController-各种alert
-JCAlertView-各种alert
-SPScrollPageView-集成UIScrollView
+JXSegmentedView - 多控制器滑动视图
+MBProgressHUD - 加载loading
+SAMKeychain - keyChain保存
+Reachability - 用于检测网络类型
+CSStickyHeaderFlowLayout - 实现头部悬停
+FLAnimatedImage - 让GIF播放不卡
+FXBlurView - 实现高斯模糊
+SPAlertController - 各种alert
+JCAlertView - 各种alert
+SPScrollPageView - 集成UIScrollView
 SSToolkit - 实现各种 “UI效果”
 GPUImage - 图像处理库
 SocketRocket - xxx
@@ -307,11 +325,12 @@ Libs - 常见第三方库
 WMGameProxy.txt - 常见知识点
 DNGameProxy.txt - 项目管理
 WMGame.swift - swift基础知识
+SyGameProxy.h/c - C语言基础知识
 WMController.swift - swiftUI知识
 AppDelegate.h/m - 常见系统问题查询
 SceneDelegate.h/m - iOS13新特性
-SyGameProxy.h/c - C语言基础知识
 WMGameProxy.h/m - OC基础知识
+FoundationNSObject.h/m - Foundation常见类
 SyMemoryManager.h/m - 内存管理
 WMThreadViewController.h/m - 多线程
 WMNetworkViewController.h/m - 网络编程
@@ -319,7 +338,6 @@ WMPushViewController - 推送
 WMJumpViewController - 应用间跳转
 WMStaticViewController - 静态库
 WMGameView.h/m - OC自定义控件
-FoundationNSObject.h/m - Foundation常见类
 ComponentController.h/m - UI组件库
 SyTableViewController.h/m - UITableView详解
 SyCollectionViewController.h/m - UICollectionViewController详解

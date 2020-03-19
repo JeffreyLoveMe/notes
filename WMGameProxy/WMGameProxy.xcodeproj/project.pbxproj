@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		06BBBBD467690F2951AB700B /* Pods_WMGameProxy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D3D3EDD51B0F251CBF64154 /* Pods_WMGameProxy.framework */; };
+		330484832423B50500CEE212 /* 内存中有5块内存空间.png in Resources */ = {isa = PBXBuildFile; fileRef = 330484822423B50500CEE212 /* 内存中有5块内存空间.png */; };
 		33068EB822AE665000D044EE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 33068EB722AE665000D044EE /* AppDelegate.m */; };
 		33068EBE22AE665000D044EE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 33068EBC22AE665000D044EE /* Main.storyboard */; };
 		33068EC022AE665600D044EE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 33068EBF22AE665600D044EE /* Assets.xcassets */; };
@@ -48,7 +49,7 @@
 		3359FEA2241F3E870014C82C /* 项目基本配置.png in Resources */ = {isa = PBXBuildFile; fileRef = 3359FE66241F3E840014C82C /* 项目基本配置.png */; };
 		3359FEA3241F3E870014C82C /* error_调用了一个没有实现的方法.png in Resources */ = {isa = PBXBuildFile; fileRef = 3359FE67241F3E840014C82C /* error_调用了一个没有实现的方法.png */; };
 		3359FEA4241F3E870014C82C /* json解析标准版.png in Resources */ = {isa = PBXBuildFile; fileRef = 3359FE68241F3E840014C82C /* json解析标准版.png */; };
-		3359FEA5241F3E870014C82C /* 单个文件放置多个类：多用于model.png in Resources */ = {isa = PBXBuildFile; fileRef = 3359FE69241F3E840014C82C /* 单个文件放置多个类：多用于model.png */; };
+		3359FEA5241F3E870014C82C /* 单个文件放置多个类 - 多用于model.png in Resources */ = {isa = PBXBuildFile; fileRef = 3359FE69241F3E840014C82C /* 单个文件放置多个类 - 多用于model.png */; };
 		3359FEA6241F3E870014C82C /* error_找不到AppDelegate类.png in Resources */ = {isa = PBXBuildFile; fileRef = 3359FE6A241F3E840014C82C /* error_找不到AppDelegate类.png */; };
 		3359FEA7241F3E870014C82C /* plist知识点.png in Resources */ = {isa = PBXBuildFile; fileRef = 3359FE6B241F3E840014C82C /* plist知识点.png */; };
 		3359FEA8241F3E870014C82C /* 时间格式说明符对照统一表.png in Resources */ = {isa = PBXBuildFile; fileRef = 3359FE6C241F3E840014C82C /* 时间格式说明符对照统一表.png */; };
@@ -143,6 +144,7 @@
 
 /* Begin PBXFileReference section */
 		1ADA9780669429E132079BD5 /* Pods-WMGameProxyUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WMGameProxyUITests.release.xcconfig"; path = "Target Support Files/Pods-WMGameProxyUITests/Pods-WMGameProxyUITests.release.xcconfig"; sourceTree = "<group>"; };
+		330484822423B50500CEE212 /* 内存中有5块内存空间.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "内存中有5块内存空间.png"; sourceTree = "<group>"; };
 		33068EB322AE665000D044EE /* WMGameProxy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WMGameProxy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		33068EB622AE665000D044EE /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		33068EB722AE665000D044EE /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -196,7 +198,7 @@
 		3359FE66241F3E840014C82C /* 项目基本配置.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "项目基本配置.png"; sourceTree = "<group>"; };
 		3359FE67241F3E840014C82C /* error_调用了一个没有实现的方法.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "error_调用了一个没有实现的方法.png"; sourceTree = "<group>"; };
 		3359FE68241F3E840014C82C /* json解析标准版.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "json解析标准版.png"; sourceTree = "<group>"; };
-		3359FE69241F3E840014C82C /* 单个文件放置多个类：多用于model.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "单个文件放置多个类：多用于model.png"; sourceTree = "<group>"; };
+		3359FE69241F3E840014C82C /* 单个文件放置多个类 - 多用于model.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "单个文件放置多个类 - 多用于model.png"; sourceTree = "<group>"; };
 		3359FE6A241F3E840014C82C /* error_找不到AppDelegate类.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "error_找不到AppDelegate类.png"; sourceTree = "<group>"; };
 		3359FE6B241F3E840014C82C /* plist知识点.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "plist知识点.png"; sourceTree = "<group>"; };
 		3359FE6C241F3E840014C82C /* 时间格式说明符对照统一表.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "时间格式说明符对照统一表.png"; sourceTree = "<group>"; };
@@ -356,14 +358,16 @@
 				3372CD532325F92400E7307B /* SYGameProxy.txt */,
 				33068EF122AE670200D044EE /* WMGame.swift */,
 				33068EEF22AE66EC00D044EE /* WMController.swift */,
+				339A3D7E22BBBBC9007DD37D /* SyGameProxy.h */,
+				339A3D7F22BBBBC9007DD37D /* SyGameProxy.c */,
 				33068EB622AE665000D044EE /* AppDelegate.h */,
 				33068EB722AE665000D044EE /* AppDelegate.m */,
 				339C0A9E23C6167000C3A144 /* SceneDelegate.h */,
 				339C0A9D23C6167000C3A144 /* SceneDelegate.m */,
-				339A3D7E22BBBBC9007DD37D /* SyGameProxy.h */,
-				339A3D7F22BBBBC9007DD37D /* SyGameProxy.c */,
 				33068EEB22AE66CB00D044EE /* WMGameProxy.h */,
 				33068EEC22AE66CB00D044EE /* WMGameProxy.m */,
+				33BE31BD22E5890A0073E35B /* FoundationNSObject.h */,
+				33BE31BE22E5890A0073E35B /* FoundationNSObject.m */,
 				33646DBE23FFD4A700CE99CF /* SyMemoryManager.h */,
 				33646DBF23FFD4A700CE99CF /* SyMemoryManager.m */,
 				3359FECA241F4A590014C82C /* WMThreadViewController.h */,
@@ -378,8 +382,6 @@
 				33B10E592422856600C6E8C7 /* WMStaticViewController.m */,
 				33F1D58A23CC4B7E001AC221 /* WMGameView.h */,
 				33F1D58B23CC4B7E001AC221 /* WMGameView.m */,
-				33BE31BD22E5890A0073E35B /* FoundationNSObject.h */,
-				33BE31BE22E5890A0073E35B /* FoundationNSObject.m */,
 				33ED93DE22F12E77006ABD28 /* ComponentController.h */,
 				33ED93DF22F12E77006ABD28 /* ComponentController.m */,
 				33A8FD7822D481B4004AECBA /* SyTableViewController.h */,
@@ -432,21 +434,22 @@
 		33ADF8CC240CC4BF0041F19A /* Res */ = {
 			isa = PBXGroup;
 			children = (
+				3359FE76241F3E850014C82C /* 大神班课程大纲.png */,
 				33B10E502422272500C6E8C7 /* 华为编程规范.pdf */,
-				3359FECD241F66C30014C82C /* 申请iOS开发者帐号.pdf */,
 				3359FE79241F3E850014C82C /* 常见系统库00.png */,
 				3359FE57241F3E830014C82C /* 常见系统库01.png */,
-				3359FE83241F3E860014C82C /* 常见证书问题_01.png */,
-				3359FE70241F3E840014C82C /* 常见bug_00.png */,
-				3359FE7B241F3E850014C82C /* 常见bug_01.png */,
-				3359FE76241F3E850014C82C /* 大神班课程大纲.png */,
+				3359FE69241F3E840014C82C /* 单个文件放置多个类 - 多用于model.png */,
 				3359FE73241F3E850014C82C /* 代码标准h文件.png */,
 				3359FE87241F3E860014C82C /* 代码标准m文件.png */,
-				3359FE69241F3E840014C82C /* 单个文件放置多个类：多用于model.png */,
+				3359FE70241F3E840014C82C /* 常见bug_00.png */,
+				3359FE7B241F3E850014C82C /* 常见bug_01.png */,
+				3359FECD241F66C30014C82C /* 申请iOS开发者帐号.pdf */,
+				3359FE83241F3E860014C82C /* 常见证书问题_01.png */,
 				3359FE56241F3E830014C82C /* 导出ipa.png */,
 				33B10E712422959F00C6E8C7 /* 让项目支持http请求.png */,
 				3359FE6E241F3E840014C82C /* 给文件名（类名）加前缀.png */,
 				3359FE5B241F3E830014C82C /* 快捷键.png */,
+				330484822423B50500CEE212 /* 内存中有5块内存空间.png */,
 				3359FECF241F7E390014C82C /* 多线程的实现方案.png */,
 				3359FE85241F3E860014C82C /* 内存警告处理.png */,
 				3359FE86241F3E860014C82C /* 认识Autolayout.png */,
@@ -714,7 +717,7 @@
 				3359FEB9241F3E870014C82C /* info.plist简介.png in Resources */,
 				33B10E792422964800C6E8C7 /* 新建xxx.a第二步.png in Resources */,
 				3359FE9B241F3E870014C82C /* 怎么称为一名优秀leader.xmind in Resources */,
-				3359FEA5241F3E870014C82C /* 单个文件放置多个类：多用于model.png in Resources */,
+				3359FEA5241F3E870014C82C /* 单个文件放置多个类 - 多用于model.png in Resources */,
 				3359FEC1241F3E870014C82C /* 内存警告处理.png in Resources */,
 				33B10E722422959F00C6E8C7 /* 让项目支持http请求.png in Resources */,
 				3359FEC3241F3E870014C82C /* 代码标准m文件.png in Resources */,
@@ -745,6 +748,7 @@
 				3359FEC7241F3E870014C82C /* 事件传递示例-第一步.png in Resources */,
 				3359FEA2241F3E870014C82C /* 项目基本配置.png in Resources */,
 				3359FE9F241F3E870014C82C /* image_demo.png in Resources */,
+				330484832423B50500CEE212 /* 内存中有5块内存空间.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
