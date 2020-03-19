@@ -9,7 +9,9 @@
 #import <Foundation/Foundation.h>
 
 NS_ASSUME_NONNULL_BEGIN
-
+/**
+ 
+ */
 @interface SyMemoryManager : NSObject
 // 使用 copy 外部修改了字符串不会影响内部
 // copy 会判断字符串是不可变字符串还是可变字符串

@@ -78,7 +78,7 @@
 //类的消息机制 - x
 //内存管理 - x
 //MRC/ARC混合编程 - x
-//选择器 - x
+//选择器SEL
 //文件操作 - x
 //KVC、KVO - x
 //block - x
@@ -212,6 +212,7 @@
 7>.UIViewController的生命周期 - https://blog.csdn.net/spicyshrimp/article/details/70886516
 8>.程序启动原理 - https://www.cnblogs.com/wendingding/p/3766347.html
 9>.Apple常见设备尺寸 - https://www.jianshu.com/p/c4aad5b6771e
+10>.打包 xxx.a 的静态库 - https://www.jianshu.com/p/a1dc024a8a15
 
 //工具网站：
 https://soft.macx.cn
@@ -316,6 +317,7 @@ WMThreadViewController.h/m - 多线程
 WMNetworkViewController.h/m - 网络编程
 WMPushViewController - 推送
 WMJumpViewController - 应用间跳转
+WMStaticViewController - 静态库
 WMGameView.h/m - OC自定义控件
 FoundationNSObject.h/m - Foundation常见类
 ComponentController.h/m - UI组件库

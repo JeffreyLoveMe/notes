@@ -110,6 +110,13 @@
 		33B10E512422272500C6E8C7 /* 华为编程规范.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 33B10E502422272500C6E8C7 /* 华为编程规范.pdf */; };
 		33B10E542422300400C6E8C7 /* WMNetworkViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 33B10E532422300400C6E8C7 /* WMNetworkViewController.m */; };
 		33B10E572422424500C6E8C7 /* WMJumpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 33B10E562422424500C6E8C7 /* WMJumpViewController.m */; };
+		33B10E5A2422856600C6E8C7 /* WMStaticViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 33B10E592422856600C6E8C7 /* WMStaticViewController.m */; };
+		33B10E722422959F00C6E8C7 /* 让项目支持http请求.png in Resources */ = {isa = PBXBuildFile; fileRef = 33B10E712422959F00C6E8C7 /* 让项目支持http请求.png */; };
+		33B10E742422963900C6E8C7 /* 新建xxx.a第一步.png in Resources */ = {isa = PBXBuildFile; fileRef = 33B10E732422963900C6E8C7 /* 新建xxx.a第一步.png */; };
+		33B10E792422964800C6E8C7 /* 新建xxx.a第二步.png in Resources */ = {isa = PBXBuildFile; fileRef = 33B10E752422964700C6E8C7 /* 新建xxx.a第二步.png */; };
+		33B10E7A2422964800C6E8C7 /* 新建xxx.a第三步.png in Resources */ = {isa = PBXBuildFile; fileRef = 33B10E762422964700C6E8C7 /* 新建xxx.a第三步.png */; };
+		33B10E7B2422964800C6E8C7 /* 新建xxx.a第五步.png in Resources */ = {isa = PBXBuildFile; fileRef = 33B10E772422964800C6E8C7 /* 新建xxx.a第五步.png */; };
+		33B10E7C2422964800C6E8C7 /* 新建xxx.a第四步.png in Resources */ = {isa = PBXBuildFile; fileRef = 33B10E782422964800C6E8C7 /* 新建xxx.a第四步.png */; };
 		33BE31BF22E5890A0073E35B /* FoundationNSObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 33BE31BE22E5890A0073E35B /* FoundationNSObject.m */; };
 		33ED93E022F12E77006ABD28 /* ComponentController.m in Sources */ = {isa = PBXBuildFile; fileRef = 33ED93DF22F12E77006ABD28 /* ComponentController.m */; };
 		33F1D58C23CC4B7E001AC221 /* WMGameView.m in Sources */ = {isa = PBXBuildFile; fileRef = 33F1D58B23CC4B7E001AC221 /* WMGameView.m */; };
@@ -264,6 +271,14 @@
 		33B10E532422300400C6E8C7 /* WMNetworkViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WMNetworkViewController.m; sourceTree = "<group>"; };
 		33B10E552422424500C6E8C7 /* WMJumpViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WMJumpViewController.h; sourceTree = "<group>"; };
 		33B10E562422424500C6E8C7 /* WMJumpViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WMJumpViewController.m; sourceTree = "<group>"; };
+		33B10E582422856600C6E8C7 /* WMStaticViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WMStaticViewController.h; sourceTree = "<group>"; };
+		33B10E592422856600C6E8C7 /* WMStaticViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WMStaticViewController.m; sourceTree = "<group>"; };
+		33B10E712422959F00C6E8C7 /* 让项目支持http请求.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "让项目支持http请求.png"; sourceTree = "<group>"; };
+		33B10E732422963900C6E8C7 /* 新建xxx.a第一步.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "新建xxx.a第一步.png"; sourceTree = "<group>"; };
+		33B10E752422964700C6E8C7 /* 新建xxx.a第二步.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "新建xxx.a第二步.png"; sourceTree = "<group>"; };
+		33B10E762422964700C6E8C7 /* 新建xxx.a第三步.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "新建xxx.a第三步.png"; sourceTree = "<group>"; };
+		33B10E772422964800C6E8C7 /* 新建xxx.a第五步.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "新建xxx.a第五步.png"; sourceTree = "<group>"; };
+		33B10E782422964800C6E8C7 /* 新建xxx.a第四步.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "新建xxx.a第四步.png"; sourceTree = "<group>"; };
 		33BE31BD22E5890A0073E35B /* FoundationNSObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FoundationNSObject.h; sourceTree = "<group>"; };
 		33BE31BE22E5890A0073E35B /* FoundationNSObject.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FoundationNSObject.m; sourceTree = "<group>"; };
 		33ED93DE22F12E77006ABD28 /* ComponentController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ComponentController.h; sourceTree = "<group>"; };
@@ -359,6 +374,8 @@
 				331309042420A7DE0014CC7E /* WMPushViewController.m */,
 				33B10E552422424500C6E8C7 /* WMJumpViewController.h */,
 				33B10E562422424500C6E8C7 /* WMJumpViewController.m */,
+				33B10E582422856600C6E8C7 /* WMStaticViewController.h */,
+				33B10E592422856600C6E8C7 /* WMStaticViewController.m */,
 				33F1D58A23CC4B7E001AC221 /* WMGameView.h */,
 				33F1D58B23CC4B7E001AC221 /* WMGameView.m */,
 				33BE31BD22E5890A0073E35B /* FoundationNSObject.h */,
@@ -415,7 +432,6 @@
 		33ADF8CC240CC4BF0041F19A /* Res */ = {
 			isa = PBXGroup;
 			children = (
-				33B10E4E2422265600C6E8C7 /* NBSDK接口协议.html */,
 				33B10E502422272500C6E8C7 /* 华为编程规范.pdf */,
 				3359FECD241F66C30014C82C /* 申请iOS开发者帐号.pdf */,
 				3359FE79241F3E850014C82C /* 常见系统库00.png */,
@@ -428,6 +444,7 @@
 				3359FE87241F3E860014C82C /* 代码标准m文件.png */,
 				3359FE69241F3E840014C82C /* 单个文件放置多个类：多用于model.png */,
 				3359FE56241F3E830014C82C /* 导出ipa.png */,
+				33B10E712422959F00C6E8C7 /* 让项目支持http请求.png */,
 				3359FE6E241F3E840014C82C /* 给文件名（类名）加前缀.png */,
 				3359FE5B241F3E830014C82C /* 快捷键.png */,
 				3359FECF241F7E390014C82C /* 多线程的实现方案.png */,
@@ -444,7 +461,6 @@
 				3359FE61241F3E840014C82C /* 线程的生命周期.png */,
 				3359FE60241F3E830014C82C /* 项目的基本部署.png */,
 				3359FE66241F3E840014C82C /* 项目基本配置.png */,
-				3359FE88241F3E860014C82C /* 学历.png */,
 				3359FE71241F3E850014C82C /* 应用沙盒结构分析.png */,
 				3359FE5F241F3E830014C82C /* 怎么称为一名优秀leader.xmind */,
 				3359FE5C241F3E830014C82C /* 真实文件夹:虚拟文件夹.png */,
@@ -455,8 +471,6 @@
 				3359FE67241F3E840014C82C /* error_调用了一个没有实现的方法.png */,
 				3359FE7F241F3E860014C82C /* error_调用一个野指针.png */,
 				3359FE6A241F3E840014C82C /* error_找不到AppDelegate类.png */,
-				3359FE5A241F3E830014C82C /* FlagZombie.gif */,
-				3359FE63241F3E840014C82C /* image_demo.png */,
 				3359FE7D241F3E850014C82C /* info.plist简介.png */,
 				3359FE54241F3E830014C82C /* iOS学习路线图.png */,
 				3359FE80241F3E860014C82C /* iOS证书的配置.png */,
@@ -471,7 +485,6 @@
 				3359FE68241F3E840014C82C /* json解析标准版.png */,
 				3359FE7A241F3E850014C82C /* LaunchScreen简介.png */,
 				3359FE6B241F3E840014C82C /* plist知识点.png */,
-				3359FE64241F3E840014C82C /* ProvincesAndCities.plist */,
 				3359FE5E241F3E830014C82C /* Safe Area.png */,
 				3359FE72241F3E850014C82C /* Sy-项目添加类前缀.png */,
 				3359FE65241F3E840014C82C /* UI划分_00.png */,
@@ -485,7 +498,17 @@
 				3359FE6F241F3E840014C82C /* UIView常见属性和方法.png */,
 				3359FE8D241F3E870014C82C /* Xcode新建项目.png */,
 				3359FE8A241F3E860014C82C /* Xib常见两个问题.png */,
+				33B10E732422963900C6E8C7 /* 新建xxx.a第一步.png */,
+				33B10E752422964700C6E8C7 /* 新建xxx.a第二步.png */,
+				33B10E762422964700C6E8C7 /* 新建xxx.a第三步.png */,
+				33B10E782422964800C6E8C7 /* 新建xxx.a第四步.png */,
+				33B10E772422964800C6E8C7 /* 新建xxx.a第五步.png */,
+				3359FE88241F3E860014C82C /* 学历.png */,
+				33B10E4E2422265600C6E8C7 /* NBSDK接口协议.html */,
 				3359FE62241F3E840014C82C /* Zapfino.ttf */,
+				3359FE63241F3E840014C82C /* image_demo.png */,
+				3359FE5A241F3E830014C82C /* FlagZombie.gif */,
+				3359FE64241F3E840014C82C /* ProvincesAndCities.plist */,
 				3361E419230A43EA00A03B7D /* DOVE.bundle */,
 			);
 			path = Res;
@@ -641,6 +664,7 @@
 				3359FEA1241F3E870014C82C /* UI划分_00.png in Resources */,
 				3359FE94241F3E870014C82C /* UINavigationController的层级结构.png in Resources */,
 				3359FEAB241F3E870014C82C /* UIView常见属性和方法.png in Resources */,
+				33B10E742422963900C6E8C7 /* 新建xxx.a第一步.png in Resources */,
 				3359FED7241FE1150014C82C /* 填写相关营销信息.png in Resources */,
 				33B10E4F2422265600C6E8C7 /* NBSDK接口协议.html in Resources */,
 				3359FEB0241F3E870014C82C /* iphone设备尺寸.png in Resources */,
@@ -652,6 +676,7 @@
 				3359FED5241FE1150014C82C /* 苹果账号后台.png in Resources */,
 				33068EC022AE665600D044EE /* Assets.xcassets in Resources */,
 				3359FEAE241F3E870014C82C /* Sy-项目添加类前缀.png in Resources */,
+				33B10E7B2422964800C6E8C7 /* 新建xxx.a第五步.png in Resources */,
 				3359FEA6241F3E870014C82C /* error_找不到AppDelegate类.png in Resources */,
 				3359FE96241F3E870014C82C /* FlagZombie.gif in Resources */,
 				3359FEBA241F3E870014C82C /* C语言的执行流程.png in Resources */,
@@ -661,6 +686,7 @@
 				3359FEBE241F3E870014C82C /* C语言:OC关键字.png in Resources */,
 				3359FEC8241F3E870014C82C /* UIScrollView的常见属性.png in Resources */,
 				3359FE9A241F3E870014C82C /* Safe Area.png in Resources */,
+				33B10E7A2422964800C6E8C7 /* 新建xxx.a第三步.png in Resources */,
 				3359FEAF241F3E870014C82C /* 代码标准h文件.png in Resources */,
 				3359FEA7241F3E870014C82C /* plist知识点.png in Resources */,
 				3359FEA3241F3E870014C82C /* error_调用了一个没有实现的方法.png in Resources */,
@@ -686,9 +712,11 @@
 				3359FEB6241F3E870014C82C /* LaunchScreen简介.png in Resources */,
 				33B10E512422272500C6E8C7 /* 华为编程规范.pdf in Resources */,
 				3359FEB9241F3E870014C82C /* info.plist简介.png in Resources */,
+				33B10E792422964800C6E8C7 /* 新建xxx.a第二步.png in Resources */,
 				3359FE9B241F3E870014C82C /* 怎么称为一名优秀leader.xmind in Resources */,
 				3359FEA5241F3E870014C82C /* 单个文件放置多个类：多用于model.png in Resources */,
 				3359FEC1241F3E870014C82C /* 内存警告处理.png in Resources */,
+				33B10E722422959F00C6E8C7 /* 让项目支持http请求.png in Resources */,
 				3359FEC3241F3E870014C82C /* 代码标准m文件.png in Resources */,
 				3359FEC9241F3E870014C82C /* Xcode新建项目.png in Resources */,
 				3359FE98241F3E870014C82C /* 真实文件夹:虚拟文件夹.png in Resources */,
@@ -703,6 +731,7 @@
 				3359FE90241F3E870014C82C /* iOS学习路线图.png in Resources */,
 				3359FEB4241F3E870014C82C /* UITableViewCell样式.png in Resources */,
 				3359FE8E241F3E870014C82C /* iphone设备各种空间尺寸.png in Resources */,
+				33B10E7C2422964800C6E8C7 /* 新建xxx.a第四步.png in Resources */,
 				3359FEB8241F3E870014C82C /* 生命周期方法.png in Resources */,
 				33068F1422AE67DB00D044EE /* WMGameProxy.txt in Resources */,
 				3359FEA0241F3E870014C82C /* ProvincesAndCities.plist in Resources */,
@@ -817,6 +846,7 @@
 				33068EF222AE670200D044EE /* WMGame.swift in Sources */,
 				33AD3E38236062830092C389 /* NSString+Extension.m in Sources */,
 				3386EEEB241BBD80001A422F /* SyCustomFlowLayout.m in Sources */,
+				33B10E5A2422856600C6E8C7 /* WMStaticViewController.m in Sources */,
 				33A8FD7D22D48237004AECBA /* SyCollectionViewController.m in Sources */,
 				33068EEA22AE66A800D044EE /* MainController.m in Sources */,
 				33A8FD7A22D481B4004AECBA /* SyTableViewController.m in Sources */,

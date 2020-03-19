@@ -73,9 +73,8 @@
     // 2.第二种创建方法
     NSString *str1 = [[NSString alloc]initWithString:str0];
     // 3.第三种创建方法
-    // 类工厂方法：快速创建对象的方法
+    // 类工厂方法 - 快速创建对象的方法
     // 用于给对象分配存储空间和初始化存储空间
-    
     NSString *str2 = [NSString stringWithString:str1];
     NSLog(@"%@", str2);
     // C语言字符串 <==> OC字符串

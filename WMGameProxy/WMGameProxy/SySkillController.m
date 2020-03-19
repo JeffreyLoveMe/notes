@@ -58,7 +58,6 @@
     // 如果需要透明控件响应事件：颜色透明/可以处理事件
     self.view.backgroundColor = [UIColor colorWithRed:1 green:1 blue:1 alpha:0];
 }
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     // 1.控制器View加载完毕：创建所有子视图
@@ -67,12 +66,10 @@
     if (self.viewIfLoaded) {
     }
 }
-
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     // 2.视图将要出现
 }
-
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     // 5.视图已经出现/显示完毕
@@ -81,24 +78,20 @@
     // self.view的父视图是 self.window
     [self.view removeFromSuperview];
 }
-
 - (void)viewWillLayoutSubviews {
     [super viewWillLayoutSubviews];
     // 3.控制器的View将要布局子视图
     // 会调用多次
 }
-
 - (void)viewDidLayoutSubviews {
     [super viewDidLayoutSubviews];
     // 4.控制器的View布局子视图结束
     // 会调用多次
 }
-
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     // 6.视图将要消失
 }
-
 - (void)viewDidDisappear:(BOOL)animated {
     [super viewDidDisappear:animated];
     // 7.视图已经消失
@@ -235,7 +228,6 @@
         NSLog(@"存储成功");
     }
 }
-
 /// 3.“数据持久化” 常用方法
 // 0.文件操作
 -(void)showFile {
@@ -338,57 +330,7 @@
 }
 
 
-/// 协议 protocol 一般是用来增加类方法
--(void)showProtocol {
-#warning - 代码过几天补充
-    MainController *controller = [[MainController alloc]init];
-    // 必须实现方法
-    [controller jumpPage:@""];
-    // 可选方法
-    if ([self respondsToSelector:@selector(finishTask:)]) {
-        [controller finishTask:self];
-    }
-}
-
-
-// id动态类型
-// 可以调用任何方法（包括私有方法）
--(void)dynamic {
-    id obj = [WMGameProxy new];
-    // 这样可以避免调用方法出现崩溃
-    if ([obj isKindOfClass:[WMGameProxy class]]) {
-        [obj loginWithGameId:@"" GameKey:@""];
-    }
-}
-
-
-/// 逆序一个字符串
--(NSString *)reverseWord:(NSString *)word Oprater:(NSString *)oprater {
-    NSArray *array = [word componentsSeparatedByString:oprater];
-    NSMutableArray *mArray = [NSMutableArray array];
-    for (NSString *str in [array reverseObjectEnumerator]) {
-        [mArray addObject:str];
-    }
-    return [mArray componentsJoinedByString:oprater];
-}
-
-
-/// 几种延迟的对比
--(void)afterDelay {
-    /// 第一种延迟方法
-    // @selector(onStand) Selector方法
-    // nil 参数
-    // 0.5 延迟时间
-    [self performSelector:@selector(onStand) withObject:nil afterDelay:0.5];
-    /// 第二种延迟方法
-    /// 第三种延迟方法
-}
--(void)onStand {
-    
-}
-
-
-/// block
+#pragma mark - block
 // 1.block是iOS中一种比较特殊的数据类型/官方特别推荐使用
 // 2.用来保存 “代码段”，在恰当的时候再取出来调用/类似于函数/效率高
 -(void)shouBlock {
@@ -502,7 +444,7 @@
 }
 
 
-/// 通知机制
+#pragma mark - 通知机制
 /**
  常见的几种 “消息通信” 的方式的区别？？？
  0>.利用 “通知”/“代理” 都可以实现对象之间的通信
@@ -573,7 +515,7 @@
 }
 
 
-/// KVC/KVO
+#pragma mark - KVC/KVO
 // 1>.KVC - Key Value Coding/键值编码
 // 间接访问属性的方法
 -(void)showKVC {
@@ -651,11 +593,17 @@
 }
 
 
-/// 懒加载：重写 getter 方法/如果为空加载数据/如果不为空直接返回数据
-// 1.用到的时候再加载
-// 2.全局只会被加载一次
-// 3.全局都可以使用
+#pragma mark - 懒加载
+// 0>.概念 - 在开发中程序启动的时候不加载资源，只有在运行中有需要的时候再去加载资源
+// 1>.格式 - 重写 "getter方法"/如果为空加载数据/如果不为空直接返回数据
+// 2>.特点 - 用到的时候再加载/全局只会被加载一次/全局都可以使用
+/**
+ 3>.懒加载的好处：
+ 1.不用将创建对象的代码写在 “viewDidLoad()” 中，代码的可读性更强
+ 2.每个属性的 “getter方法” 分别负责各自的实例化处理，只有真正需要资源的时候才会加载，节省了内存
+ */
 - (NSArray *)dataArray {
+    // 不能使用 self
     if (_dataArray == nil) {
         _dataArray = @[@"", @"", @""];
     }
@@ -663,28 +611,13 @@
 }
 
 
-/**
- 泛型 - 1.限制类型；2.提高代码规范；3.迎合swift
- 类型 <限制类型>
- 最大作用 - 限制集合类型
- https://blog.csdn.net/imkata/article/details/78859482
- __covariant协变
- __contravariant逆变
- */
-// 自定义泛型
--(void)showObj {
-    WMGameProxy<NSString *> *wm = [WMGameProxy new];
-    wm.obj = @"哈哈";
-}
-
-
-/// 富文本
+#pragma mark - 富文本
 -(void)showAttribute {
     
 }
 
 
-/// UIApplication
+#pragma mark - UIApplication
 // UIApplication对象是应用程序的象征
 // iOS程序启动以后创建的第一个对象就是UIApplication对象
 // https://www.cnblogs.com/wendingding/p/3766347.html
@@ -727,7 +660,7 @@
 }
 
 
-/// UIDevice
+#pragma mark - UIDevice
 // [UIDevice currentDevice]代表设备，通过它可以获取一些设置相关信息
 -(void)showDevice {
     // 当前设置的 “系统版本”
@@ -739,7 +672,7 @@
 }
 
 
-/// 程序崩溃
+#pragma mark - 程序崩溃
 // NSException
 -(void)showException {
     // 新建异常
@@ -750,7 +683,7 @@
 }
 
 
-/// 架构思想
+#pragma mark - 架构思想
 /// 1.MVC
 // 1>.概念
 // MVC是一种设计思想，贯穿整个iOS开发中；
@@ -764,18 +697,74 @@
 /// 3.MVVM
 
 
-/// 真机调试
+#pragma mark - 真机调试
 - (void)showTrueDevice {
     // Xcode7.0以后只要 “Apple ID” 就可以自动生成对应证书进行 “真机调试”
 }
 
 
-- (void)dealloc {
-    // 对象销毁之前自动调用该方法
+#pragma mark - ！！！以下内容不属于任何知识点！！！
+/// 协议 protocol 一般是用来增加类方法
+-(void)showProtocol {
+#warning - 代码过几天补充
+    MainController *controller = [[MainController alloc]init];
+    // 必须实现方法
+    [controller jumpPage:@""];
+    // 可选方法
+    if ([self respondsToSelector:@selector(finishTask:)]) {
+        [controller finishTask:self];
+    }
+}
+/// id动态类型
+// 可以调用任何方法（包括私有方法）
+-(void)dynamic {
+    id obj = [WMGameProxy new];
+    // 这样可以避免调用方法出现崩溃
+    if ([obj isKindOfClass:[WMGameProxy class]]) {
+        [obj loginWithGameId:@"" GameKey:@""];
+    }
+}
+/// 逆序一个字符串
+-(NSString *)reverseWord:(NSString *)word Oprater:(NSString *)oprater {
+    NSArray *array = [word componentsSeparatedByString:oprater];
+    NSMutableArray *mArray = [NSMutableArray array];
+    for (NSString *str in [array reverseObjectEnumerator]) {
+        [mArray addObject:str];
+    }
+    return [mArray componentsJoinedByString:oprater];
+}
+/**
+ 泛型 - 1.限制类型；2.提高代码规范；3.迎合swift
+ 类型 <限制类型>
+ 最大作用 - 限制集合类型
+ https://blog.csdn.net/imkata/article/details/78859482
+ __covariant协变
+ __contravariant逆变
+ */
+// 自定义泛型
+-(void)showObj {
+    WMGameProxy<NSString *> *wm = [WMGameProxy new];
+    wm.obj = @"哈哈";
+}
+/// 几种延迟的对比
+-(void)afterDelay {
+    /// 第一种延迟方法
+    // @selector(onStand) Selector方法
+    // nil 参数
+    // 0.5 延迟时间
+    [self performSelector:@selector(onStand) withObject:nil afterDelay:0.5];
+    /// 第二种延迟方法
+    /// 第三种延迟方法
+}
+-(void)onStand {
     
 }
 
 
+#pragma mark - 系统相关
+- (void)dealloc {
+    // 对象销毁之前自动调用该方法
+}
 - (void)didReceiveMemoryWarning {
     // 系统调用
     // 当控制器接收到内存警告调用

@@ -25,6 +25,9 @@ class WMController: UIViewController {
     private var p5: String?
     
     /// 19.懒加载
+    // 1>.swift中也有懒加载只能放在结构体/类中
+    // 2>.swift直接用lazy关键字定义某一个属性懒加载
+    // 3.格式
 //    // 第一种方式
 //    lazy var tableView: UITableView = UITableView()
     // 第二种方式

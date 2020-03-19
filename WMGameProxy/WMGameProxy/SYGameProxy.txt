@@ -157,8 +157,17 @@ int main() {
 https://github.com/ming1016
 https://ming1016.github.io/categories/Programming
 
-77.图片裁剪方法
 
+
+
+
+
+
+
+
+
+
+77.图片裁剪方法
 86.cocoapods安装
 /*
 //安装CocoaPods：
@@ -1217,30 +1226,7 @@ change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context {
 代码：
 https://www.jianshu.com/p/742b4b248da9
 
-#选择器SEL：一个数据类型，内部是消息，类似于函数指针
-原理：Objective-C在编译的时候，会根据方法的名字(包括参数序列)，生成用来区分这个方法的唯一ID，这个ID就是SEL类型；
-作用：提高执行的效率、增强程序的灵活性；
-//创建
-@selector 方法选择器
-@selector (方法名)
-//获取
-SEL s1 = @selector(onClick:);
-//将一个字符串转换为一个SEL类型
-SEL s2 = NSSelectorFromString(@"onRun:");
-//执行SEL
-Dog *dog = [[Dog alloc]init];
-[dog performSelector:s1];
-[dog performSelector:@selector(setName:) withObject:@"Tom"];//最多支持两个参数
-//使用@selector对数组排序：
-代码：SelViewController.h/m
-//在ARC(自动内存管理)的条件下，使用选择器很可能会报警：参照该方式去除报警
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
-//执行代码
-Dog *dog = [[Dog alloc]init];
-SEL s1 = @selector(onClick:);
-[dog performSelector:@selector(setName:) withObject:@"Tom"];
-#pragma clang diagnostic pop
+
 
 #iOS动画：
 //帧动画
@@ -1275,26 +1261,6 @@ block传值：实现回调
 注意：UITabBarControllerDelegate很重要
 代码：见AppDelegate.h/m
 注意：1.把导航控制器UINavigationController添加到分栏控制器UITabBarControllerDelegate；
-
-#懒加载：用到的时候再加载、全局只加载一次
-定义：在开发中，程序启动的时候不加载资源，只有在运行中需要资源的时候，再去加载这些资源；
-好处：1.不必将创建对象的代码全部写在viewDidLoad()中，代码的可读性强；
-2.每个属性的getter方法中分别负责各自的实例化处理，只有真正需要资源的时候，才会加载资源，节省了内存资源；
-//实现：重写getter方法
--(NSArray *)dataArr {
-    if (_dataArr == nil) {  //这里不能使用self.dataArr：循环引用
-        self.dataArr = @[@"",@"",@""];
-    }
-    return dataArr;
-}
-self.dataArr; //每次使用均会调用-(NSArray *)dataArr;
-3.懒加载：
-又称延迟加载,在开发中,当程序中需要利用的资源时,在程序启动的时候不加载资源,
-只有在运行当需要一些资源时,再去加载这些资源
-好处：
-不必将创建对象的代码全部写在viewDidLoad方法中,代码的可读性更强
-每个属性的getter方法中分别负责各自的实例化处理,代码彼此之间的独立性强,松耦合
-只有当真正需要资源时,再去加载,节省了内存资源
 
 #瀑布流：
 //实现原理：
@@ -1948,6 +1914,30 @@ CGFloat height = textSize.height;
 //https://www.cnblogs.com/niit-soft-518/p/6373601.html
 CGRectGetMaxX(self.view.size) //矩形中最大x值：布局简单多啦
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 #制作静态库SDK：
 //打包.a：
 https://www.jianshu.com/p/a1dc024a8a15
@@ -2134,32 +2124,6 @@ https://www.xfyun.cn/ //科大讯飞：语音识别、语音转写、语音唤�
 https://www.layabox.com/
 https://www.egret.com/
 
-#参考资源：
-//著名的IT技术问答网站
-https://stackoverflow.com
-//api store
-http://apistore.baidu.com
-//github
-https://github.com
-//开源中国
-http://git.oschina.net
-//csdn
-http://www.csdn.net
-//CocoaChina
-http://www.cocoachina.com
-//伯乐在线
-http://www.jobbole.com
-//code4app
-http://code4app.com
-//tiobe
-http://www.tiobe.com
-//图片引擎
-https://www.easyicon.net
-//daomoer
-https://github.com/daomoer
-//优秀Blog汇总
-https://github.com/tangqiaoboy/iOSBlogCN
-
 #职(xin)业(ling)规(ji)划(tang)：
 //项目驱动学习：做项目过程中遇到什么新技术就学习什么新技术
 //空闲主动学习：利用空闲时间主动去学习
@@ -2168,13 +2132,7 @@ https://github.com/tangqiaoboy/iOSBlogCN
 h5/css/js->前端->php->后端->python->运维->IT->word/excel/ppt
 https://www.jianshu.com/p/c73aa144d513
 
-
-
-
-
-
 上传照片：https://blog.csdn.net/ios_apple/article/details/32321737#0-qzone-1-68729-d020d2d2a4e8d1a374a433f596ad1440
-
 
 安卓填坑手册：https://mp.weixin.qq.com/s?__biz=MzA4NDM2MjAwNw==&mid=208402070&idx=1&sn=0c5032852be129dc8545cdc8c05beb1b&scene=18&scene=22&srcid=0727iUS9jVCLyhCCy3lR7A8l#rd
 
@@ -2199,6 +2157,21 @@ shop.name = dict[@"name"];
 //2.实现：最终方案
 //Shop *shop = [Shop alloc] initWithDict:dict];
 Shop *shop = [Shop shopWithDict:dict];
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 #指针：
 定义：变量的地址(唯一标识一块内存的索引)；
@@ -2305,12 +2278,6 @@ Person *p = [[Person alloc]init];
 定义：调用方法的时候，不看指针看对象，对象的地址指向什么对象就调用什么方法；
 好处：可以描述不同事物被相同的事件触发，产生不同的响应；
 特征：Objective-C语言每个方法都是虚方法；
-
-#类工厂方法：用于快速创建对象的类方法
-作用：用于创建一个对象；
-+ (instancetype)person {  //类方法：方法名称==类名称(首字母小写)、返回值id/instancetype
-    [[self alloc]init]; //谁调用+ (instancetype)person()、self就代表谁
-}
 
 #工厂类：NO
 特点：NSString/NSArray/NSDictionary/NSNumber都是工厂类/抽象类，不能被继承；
@@ -2462,73 +2429,6 @@ Xcode7.0以后：NSAppTransportSecurity->NSAllowsArbitraryLoads->YES
 4.KVC在网络请求中的应用
 5.进入VC以后怎么加载操作
 /******************************iOS进阶******************************/
-#数据持久化的方法
-常见方法：
-1.文件操作：见FileViewController.h/m
-5.数据库：
-//sql语句：结构化查询语言
-1.创建表
-create table if not exists sso (
-id integer primary key autoincrement,//将id设为主键
-author text,//文本
-price real,//浮点型
-pages integer);//整型
-2.插入
-insert into sso (author,price,pages) values(?,?,?);
-3.更新
-update sso set price = ?,pages = ? where author = ?;
-4.删除
-delete from sso where pages > ?;
-5.查询
-select * from sso;
-//FMDB
-代码：SqliteViewController.h/m
-//MagicalRecord：
-一.Core Data：
-1.新建Core Data；
-2.新建表：写上需要存储的文件；
-3.关联生成属性类；
-二.导入数据：
-4.导入MagicalRecord；
-三.app启动：
-5.设置数据库存放的文件名；
-6.让Magical Record支持数据库版本管理；
-7.查询所有的数据库内容，如果有内容则送到数据源；
-if([MusicInfo MR_findAll].count) {
-    for(MusicInfo *music in [MusicInfo MR_findAll]) {
-        MusicInformation *musicInfo = [[MusicInformation alloc] init];
-        musicInfo.songUrl = music.songUrl;
-        musicInfo.songName = music.songName;
-        musicInfo.songId = music.songId;
-        musicInfo.userName = music.userName;
-        musicInfo.albumName = music.albumName;
-        musicInfo.albumPic = music.albumPic;
-        [[MusicManager sharedIntance].selectMusics addObject:musicInfo];//把对象加到数据源
-    }
-}
-四.app杀掉：
-8.删除数据库里的表，将数据源保存；
-for(MusicInfo *music in [MusicInfo MR_findAll]) {
-    [music MR_deleteEntity];//删除数据表
-}
-[[NSManagedObjectContext MR_defaultContext] MR_saveToPersistentStoreAndWait];
-9.新建数据库的表，将数据源所有内容放到数据库，保存；
-for(MusicInformation *newMusic in [MusicManager sharedIntance].selectMusics) {
-    MusicInfo *zNewMusic = [MusicInfo MR_createEntity];//新建数据表
-    zNewMusic.songName = newMusic.songName;
-    zNewMusic.songUrl = newMusic.songName;
-    zNewMusic.songId = newMusic.songId;
-    zNewMusic.userName = newMusic.userName;
-    zNewMusic.albumName = newMusic.albumName;
-    zNewMusic.albumPic = newMusic.albumPic;
-}
-/*
-1.数据的增删改查
-2.多表的链接查询
-3.数据回滚
-*/
-http://hao.jobbole.com/magicalrecord/
-
 #KVC/KVO：
 //KVO：键值观察者
 #作用：用于监听对象属性的改变
@@ -2558,31 +2458,6 @@ change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context {
 }
 代码：
 https://www.jianshu.com/p/742b4b248da9
-
-#选择器SEL：一个数据类型，内部是消息，类似于函数指针
-原理：Objective-C在编译的时候，会根据方法的名字(包括参数序列)，生成用来区分这个方法的唯一ID，这个ID就是SEL类型；
-作用：提高执行的效率、增强程序的灵活性；
-//创建
-@selector 方法选择器
-@selector (方法名)
-//获取
-SEL s1 = @selector(onClick:);
-//将一个字符串转换为一个SEL类型
-SEL s2 = NSSelectorFromString(@"onRun:");
-//执行SEL
-Dog *dog = [[Dog alloc]init];
-[dog performSelector:s1];
-[dog performSelector:@selector(setName:) withObject:@"Tom"];//最多支持两个参数
-//使用@selector对数组排序：
-代码：SelViewController.h/m
-//在ARC(自动内存管理)的条件下，使用选择器很可能会报警：参照该方式去除报警
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
-//执行代码
-Dog *dog = [[Dog alloc]init];
-SEL s1 = @selector(onClick:);
-[dog performSelector:@selector(setName:) withObject:@"Tom"];
-#pragma clang diagnostic pop
 /******************************UI基础******************************/
 #自定义控件：
 1.在initWithFrame:方法中添加子控件，提供便利构造方法；
@@ -2620,19 +2495,6 @@ block传值：实现回调
 Model类必须是单例：全局都可能使用这个Model；
 VC需要网络请求，可以委托(PostStore类)来进行网络请求；
 PostStore类网络请求完成，需要告诉VC网络请求操作完成；
-
-#懒加载：用到的时候再加载、全局只加载一次
-定义：在开发中，程序启动的时候不加载资源，只有在运行中需要资源的时候，再去加载这些资源；
-好处：1.不必将创建对象的代码全部写在viewDidLoad()中，代码的可读性强；
-2.每个属性的getter方法中分别负责各自的实例化处理，只有真正需要资源的时候，才会加载资源，节省了内存资源；
-//实现：重写getter方法
--(NSArray *)dataArr {
-    if (_dataArr == nil) {  //这里不能使用self.dataArr：循环引用
-        self.dataArr = @[@"",@"",@""];
-    }
-    return dataArr;
-}
-self.dataArr; //每次使用均会调用-(NSArray *)dataArr;
 
 #瀑布流：
 //实现原理：
@@ -3207,93 +3069,6 @@ if(@available(macOS10.1,iOS 11,*)) {
     //code
 }
 
-#常用代码块：
-//获取当前时间
-NSString *currentTime = [NSString stringWithFormat@"%@",[NSDate date]];
-//block中使用self
-__weak typeof(self) weakSelf = self;
-//汉字转码
-NSString *oriString = @"\u67aa\u738b";
-NSString *escapedString = [oriString stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-//屏幕中心x轴
-self.view.center.x
-//屏幕中心y轴
-self.view.center.y
-//UIWebView可以打开doc/pdf文件
-UIWebView *webView = [[UIWebView alloc] initWithFrame: [UIScreen mainScreen].bounds];
-webView.delegate = self;
-webView.multipleTouchEnabled = YES;
-webView.scalesPageToFit = YES;
-NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-NSString *documentsDirectory = [paths objectAtIndex:0];
-NSString *docPath = [documentsDirectory stringByAppendingString:@"/readMe.doc"];
-NSURL *url = [NSURL fileURLWithPath:docPath];
-NSURLRequest *request = [NSURLRequest requestWithURL:url];
-[webView loadRequest:request];
-[webview loadHTMLString:str baseURL:nil];//加载html页面
-//屏幕常亮不变暗
-[UIApplication sharedApplication].idleTimerDisabled = YES;
-//延迟执行
-[self performSelector:@selector(onShow) withObject:self afterDelay:1.0];
-//判断msg是否是NSString
-[msg isKindOfClass:[NSString class]];
-//跳转系统浏览器
-if ([[UIApplication sharedApplication] respondsToSelector:@selector(openURL:options:completionHandler:)]) {
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:url] options:@{}
-    completionHandler:^(BOOL success) {
-    }];
-} else {
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:url]];
-}
-//时间格式
-NSString *data = [NSString stringWithFormat:@"%.2d:%.2d:%.2d",self.hour,self.minute,self.second];
-//近距离感应
-[[UIDevice currentDevice] setProximityMonitoringEnabled:YES];//打开红外线开关
-[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeAction:) name:@"UIDevieceProximityState" object:nil];//添加监听
-- (void)changeAction:(NSNotification *)notification {
-    if([[UIDevice currentDevice] proximityState]) {
-        NSLog(@"靠近");
-    } else {
-        NSLog(@"远离");
-    }
-}
-//设置RGBA颜色
-UIColor *color = [[UIColor alloc]initWithRed:238/255.0 green:238/255.0 blue:238/255.0 alpha:1];
-//延迟执行
-[self performSelector:@selector(stop:) withObject:nil afterDelay:5];
-//json转换成字典
-NSDictionary *dict=[NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableContainers error:nil];
-//2> 常量
-static int const sum = 20;
-static NSString * const Str = @"xwj";
-//根据字体计算高度：一行
-NSString *name = @"谢吴军";
-NSDictionary *nameAtt = @{NSFontAttributeName : [UIFont systemFontOfSize:15]};
-CGSize nameSize = [name sizeWithAttributes:nameAtt];
-CGFloat width = nameSize.width;
-//根据最大宽度计算高度：多行
-NSString *name = @"谢吴军";
-NSDictionary *nameAtt = @{NSFontAttributeName : [UIFont systemFontOfSize:15]};
-CGSize nameSize = CGSizeMake(100, MAXFLOAT);//宽度固定100，高度不确定
-CGSize textSize = [name boundingRectWithSize:nameSize options:NSStringDrawingUsesLineFragmentOrigin attributes:nameAtt context:nil].size;
-CGFloat height = textSize.height;
-//https://www.cnblogs.com/niit-soft-518/p/6373601.html
-CGRectGetMaxX(self.view.size) //矩形中最大x值：布局简单多啦
-
-#常见第三方库(Swift)：
-https://github.com/dacaizhao/MJExtensionSwift //MJExtensionSwift：字典转模型
-https://www.jianshu.com/p/f4282df18537
-https://www.jianshu.com/p/c74f6abc2eb7
-https://www.jianshu.com/p/68e12b966d86
-
-#制作静态库SDK：
-//打包.a：
-https://www.jianshu.com/p/a1dc024a8a15
-//打包framework：
-https://blog.csdn.net/sadsadaadsd/article/details/77878279
-//swift打包静态库：不支持静态库
-https://blog.csdn.net/lvchenqiang_/article/details/79077679
-
 #设计模式：
 //MVC：Model数据模型用于存储数据；View视图负责显示UI控件；Controller控制器用于控制View和model之间的交互；
 //MVVM：xxx
@@ -3301,21 +3076,6 @@ https://blog.csdn.net/lvchenqiang_/article/details/79077679
 //工厂模式：工厂方式创建类的实例，多与proxy模式配合，创建可替换代理类；
 //观察者模式：不关心谁去接收，只负责发布信息；
 //代理设计模式：当一个类的某些功能需要由别的类来实现，但是又不确定具体会是哪个类实现；
-
-#RunLoop：底层
-作用：1.保持程序的持续运行；
-2.处理App中各种事件(触摸事件、定时器事件)；
-3.节省CPU资源，提高程序性能；
-实质：RunLoop实质是一个死循环，由于main函数中启动了RunLoop才保证了程序不会马上退出，可以
-保持持续运行状态；
-//CFRunLoopRef
-//NSRunLoop：基于CFRunLoopRef的封装
-//RunLoop与线程
-1.每条线程都有唯一与之对应的RunLoop对象；
-2.主线程的RunLoop已经自动创建、子线程的RunLoop需要主动创建；
-3.RunLoop在第一次获取线程时创建、在线程结束时销毁；
-//RunLoop的运行模式：见Res
-http://www.cocoana.com/ios/20150601/11970.html#0-qzone-1-74697-d020d2d2a4e8d1a374a433f596ad1440
 
 #DrawRect：NO
 概念：Quartz 2D是一个基于CoreGraphics框架来实现的二维绘制引擎，同时支持iOS和Mac系统；
@@ -3326,11 +3086,6 @@ https://blog.csdn.net/mangosnow/article/details/37054765#0-qzone-1-85099-d020d2d
 #iOS11/12新特性：
 https://www.jianshu.com/p/39a5aee18778
 /******************************面试部分******************************/
-#面试：
-//frame/bounds/center的区别：
-frame：以父视图的左上角为坐标原点确定控件坐标系；
-bound：以自己的左上角为坐标原点控件中心向四周扩展；
-center：控件中点位置(以父视图的左上角为坐标原点)；
 //UITableView的性能：cell的复用机制
 移动设备的内存有限，如果使用一个cell就创建一个cell对象将会耗尽设备的内存。解决该问题需要引入
 cell的复用机制：当UITableView发生滚动的时候，部分cell会移出窗口，这时候系统会将窗口外的
@@ -3342,11 +3097,6 @@ cell放入cell对象池中，等待复用。当UITableView要求dataSource返回
 http协议是明文协议、https是添加了加密和认证的协议
 //常见的网络协议：
 http协议、https协议、TCP/IP协议、FTP协议
-//常见的响应状态码：
-200  //请求成功OK
-400 //客户端请求的语法错误，服务端无法解析Bad Request
-404 //服务器无法通过客户端的请求找到资源Not Found
-500 //服务器内部错误，无法完成请求Internal Server Error
 //TCP/UDP的区别：
 TCP是面向连接的，提供可靠的服务，UDP是无连接的，尽最大努力交付，不保证可靠服务；
 TCP通过校验、重传控制、确认应答实现可靠传输，UDP具有较好的实时性；
@@ -3416,28 +3166,4 @@ class func shareInstance() -> HttpTool {
     return instance
 }
 
-#懒加载：
-//1> swift中也有懒加载的方式：只能放在结构体/类中
-//2> 与OC不同的是：swift直接用lazy关键字定义某一个属性懒加载
-class View : NSObject {
-    lazy var btn : UIButton = {
-        var btn = UIButton()
-        btn.backgroundColor = UIColor.red
-        return btn
-    }()
-}
-
 #补充知识点：WMGame/swift
-/******************************补充知识点******************************/
-#函数式编程思想(高聚合：代码聚合、方便管理)：把很多功能放在一个函数块(block)去处理
-int a = ({
-b = 2;
-c = 3;
-d = 4;
-b + c + d; //最后一句设置返回什么
-});
-UIButton *btn = ({
-UIButton *btn = [UIButton alloc]init];
-btn.tag = 1;
-btn;//最后一句设置返回什么
-});

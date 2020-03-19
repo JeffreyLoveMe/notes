@@ -151,7 +151,6 @@ nonnull修饰属性位于 (nonnull, strong, nonatomic)/nonnull修饰形参位于
  3>.一定有返回值id/instancetype
  */
 +(instancetype)wmGameProxy;
-
 +(instancetype)wmGameProxyWithSdk:(NSString *)sdk;
 
 // 初始化方法
