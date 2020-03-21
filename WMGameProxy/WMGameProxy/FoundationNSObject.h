@@ -13,7 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 // 枚举类型：实质是一个整数
 // 指定第一个整数，后面的会依次递增
 // 也可以置顶莫一个为多少
-// 一般配合switch使用
+// 一般配合 switch 使用
 typedef enum {
     kMovingTop = 10,
     kMovingLeft,

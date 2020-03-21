@@ -516,6 +516,7 @@
 
 
 #pragma mark - KVC/KVO
+// https://www.jianshu.com/p/742b4b248da9
 // 1>.KVC - Key Value Coding/键值编码
 // 间接访问属性的方法
 -(void)showKVC {
@@ -559,7 +560,7 @@
      */
 }
 // 2>.KVO - Key Value Observing/键值监听
-// 监听某个对象的属性值变化
+// 监听某个对象的属性变化
 /**
  ！！！可以监听 “系统类/比如 UIScrollView/UITableView ” 的一些属性去做一些特定操作！！！
  比如有 contentOffset
@@ -568,7 +569,7 @@
     WMGameProxy *wm = [WMGameProxy new];
     // 1.先绑定监听器
     /**
-     给 “对象wm” 绑定一个监听器（观察者）
+     给 "对象wm/被观察者" 绑定一个监听器（观察者）
      第一个参数 - 观察者
      第二个参数 - 需要监听的属性
      第三个参数 - 选项
@@ -578,7 +579,7 @@
     // 2.再修改属性值
     wm.publishName = @"wj";
     wm.publishName = @"fj";
-    // 3.移除监听
+    // 3.移除监听/一般写在 “dealloc方法”
     [wm removeObserver:self forKeyPath:@"publishName"];
 }
 /**
@@ -669,6 +670,7 @@
     }
     [[UIDevice currentDevice] localizedModel]; // 什么设备
     [[UIDevice currentDevice] systemName]; // 系统名称
+    [[UIDevice currentDevice] systemVersion]; // 系统版本号
 }
 
 

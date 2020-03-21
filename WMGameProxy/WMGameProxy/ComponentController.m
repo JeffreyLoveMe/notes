@@ -100,6 +100,8 @@
     NSLog(@"%@", NSStringFromCGPoint(superView.center));
     /// 背景颜色
     // 这个已经封装
+    //设置RGBA颜色
+//    view.backgroundColor = [[UIColor alloc]initWithRed:238.0/255.0 green:238.0/255.0 blue:238.0/255.0 alpha:1];
     view.backgroundColor = [UIColor colorWithRed:0.1 green:0.1 blue:0.1 alpha:1];
 //    // 这里怎么理解？？？
 //    view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@""]];
@@ -584,8 +586,10 @@
     scrollView.contentInset = UIEdgeInsetsMake(10, 10, 10, 10);  // 内边距 - cell到边的距离
     // 不要自动设置偏移量
     if (@available(iOS 11, *)) {
+        // >= iOS 11
         scrollView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
     } else {
+        // < iOS 11
         self.automaticallyAdjustsScrollViewInsets = NO;
     }
     scrollView.bounces = NO;  // 设置是否反弹

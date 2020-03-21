@@ -21,10 +21,12 @@
 		33068EF022AE66EC00D044EE /* WMController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33068EEF22AE66EC00D044EE /* WMController.swift */; };
 		33068EF222AE670200D044EE /* WMGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33068EF122AE670200D044EE /* WMGame.swift */; };
 		33068F1422AE67DB00D044EE /* WMGameProxy.txt in Resources */ = {isa = PBXBuildFile; fileRef = 33068F1322AE67DB00D044EE /* WMGameProxy.txt */; };
+		3309077A242472950029DB9F /* WMRuntimeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 33090779242472950029DB9F /* WMRuntimeViewController.m */; };
 		330C15C922F801F700CD84CA /* SySkillController.m in Sources */ = {isa = PBXBuildFile; fileRef = 330C15C822F801F700CD84CA /* SySkillController.m */; };
 		3312831C2339D2E3005D55E2 /* DNGameProxy.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3312831B2339D2E3005D55E2 /* DNGameProxy.txt */; };
 		331309052420A7DE0014CC7E /* WMPushViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 331309042420A7DE0014CC7E /* WMPushViewController.m */; };
 		331309072421EB520014CC7E /* 线程状态.png in Resources */ = {isa = PBXBuildFile; fileRef = 331309062421EB510014CC7E /* 线程状态.png */; };
+		3324C82024260DD100766248 /* TestFight添加测试人员.png in Resources */ = {isa = PBXBuildFile; fileRef = 3324C81F24260DD100766248 /* TestFight添加测试人员.png */; };
 		3324D54B22DED4BF0066241F /* WMWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3324D54A22DED4BF0066241F /* WMWebViewController.m */; };
 		3359FE8E241F3E870014C82C /* iphone设备各种空间尺寸.png in Resources */ = {isa = PBXBuildFile; fileRef = 3359FE52241F3E830014C82C /* iphone设备各种空间尺寸.png */; };
 		3359FE8F241F3E870014C82C /* 下拉加载范例.png in Resources */ = {isa = PBXBuildFile; fileRef = 3359FE53241F3E830014C82C /* 下拉加载范例.png */; };
@@ -96,7 +98,7 @@
 		3359FEDA241FEC120014C82C /* 部署注意点_00.png in Resources */ = {isa = PBXBuildFile; fileRef = 3359FED9241FEC120014C82C /* 部署注意点_00.png */; };
 		3359FEDC241FEC1A0014C82C /* 部署注意点_01.png in Resources */ = {isa = PBXBuildFile; fileRef = 3359FEDB241FEC1A0014C82C /* 部署注意点_01.png */; };
 		3361E41A230A43EA00A03B7D /* DOVE.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 3361E419230A43EA00A03B7D /* DOVE.bundle */; };
-		33646DC023FFD4A700CE99CF /* SyMemoryManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 33646DBF23FFD4A700CE99CF /* SyMemoryManager.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		33646DC023FFD4A700CE99CF /* WMMemoryManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 33646DBF23FFD4A700CE99CF /* WMMemoryManager.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		3372CD542325F92500E7307B /* SYGameProxy.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3372CD532325F92400E7307B /* SYGameProxy.txt */; };
 		337358A22400EECF000507CC /* SyPostItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 337358A12400EECF000507CC /* SyPostItem.m */; };
 		3386EEEB241BBD80001A422F /* SyCustomFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 3386EEEA241BBD80001A422F /* SyCustomFlowLayout.m */; };
@@ -167,12 +169,15 @@
 		33068EEF22AE66EC00D044EE /* WMController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WMController.swift; sourceTree = "<group>"; };
 		33068EF122AE670200D044EE /* WMGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WMGame.swift; sourceTree = "<group>"; };
 		33068F1322AE67DB00D044EE /* WMGameProxy.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = WMGameProxy.txt; sourceTree = "<group>"; };
+		33090778242472950029DB9F /* WMRuntimeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WMRuntimeViewController.h; sourceTree = "<group>"; };
+		33090779242472950029DB9F /* WMRuntimeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WMRuntimeViewController.m; sourceTree = "<group>"; };
 		330C15C722F801F700CD84CA /* SySkillController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SySkillController.h; sourceTree = "<group>"; };
 		330C15C822F801F700CD84CA /* SySkillController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SySkillController.m; sourceTree = "<group>"; };
 		3312831B2339D2E3005D55E2 /* DNGameProxy.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = DNGameProxy.txt; sourceTree = "<group>"; };
 		331309032420A7DE0014CC7E /* WMPushViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WMPushViewController.h; sourceTree = "<group>"; };
 		331309042420A7DE0014CC7E /* WMPushViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WMPushViewController.m; sourceTree = "<group>"; };
 		331309062421EB510014CC7E /* 线程状态.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "线程状态.png"; sourceTree = "<group>"; };
+		3324C81F24260DD100766248 /* TestFight添加测试人员.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TestFight添加测试人员.png"; sourceTree = "<group>"; };
 		3324D54922DED4BF0066241F /* WMWebViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WMWebViewController.h; sourceTree = "<group>"; };
 		3324D54A22DED4BF0066241F /* WMWebViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WMWebViewController.m; sourceTree = "<group>"; };
 		3359FE52241F3E830014C82C /* iphone设备各种空间尺寸.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iphone设备各种空间尺寸.png"; sourceTree = "<group>"; };
@@ -246,8 +251,8 @@
 		3359FED9241FEC120014C82C /* 部署注意点_00.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "部署注意点_00.png"; sourceTree = "<group>"; };
 		3359FEDB241FEC1A0014C82C /* 部署注意点_01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "部署注意点_01.png"; sourceTree = "<group>"; };
 		3361E419230A43EA00A03B7D /* DOVE.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = DOVE.bundle; sourceTree = "<group>"; };
-		33646DBE23FFD4A700CE99CF /* SyMemoryManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SyMemoryManager.h; sourceTree = "<group>"; };
-		33646DBF23FFD4A700CE99CF /* SyMemoryManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SyMemoryManager.m; sourceTree = "<group>"; };
+		33646DBE23FFD4A700CE99CF /* WMMemoryManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WMMemoryManager.h; sourceTree = "<group>"; };
+		33646DBF23FFD4A700CE99CF /* WMMemoryManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WMMemoryManager.m; sourceTree = "<group>"; };
 		3372CD532325F92400E7307B /* SYGameProxy.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SYGameProxy.txt; sourceTree = "<group>"; };
 		337358A02400EECF000507CC /* SyPostItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SyPostItem.h; sourceTree = "<group>"; };
 		337358A12400EECF000507CC /* SyPostItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SyPostItem.m; sourceTree = "<group>"; };
@@ -368,12 +373,14 @@
 				33068EEC22AE66CB00D044EE /* WMGameProxy.m */,
 				33BE31BD22E5890A0073E35B /* FoundationNSObject.h */,
 				33BE31BE22E5890A0073E35B /* FoundationNSObject.m */,
-				33646DBE23FFD4A700CE99CF /* SyMemoryManager.h */,
-				33646DBF23FFD4A700CE99CF /* SyMemoryManager.m */,
+				33646DBE23FFD4A700CE99CF /* WMMemoryManager.h */,
+				33646DBF23FFD4A700CE99CF /* WMMemoryManager.m */,
 				3359FECA241F4A590014C82C /* WMThreadViewController.h */,
 				3359FECB241F4A590014C82C /* WMThreadViewController.m */,
 				33B10E522422300400C6E8C7 /* WMNetworkViewController.h */,
 				33B10E532422300400C6E8C7 /* WMNetworkViewController.m */,
+				33090778242472950029DB9F /* WMRuntimeViewController.h */,
+				33090779242472950029DB9F /* WMRuntimeViewController.m */,
 				331309032420A7DE0014CC7E /* WMPushViewController.h */,
 				331309042420A7DE0014CC7E /* WMPushViewController.m */,
 				33B10E552422424500C6E8C7 /* WMJumpViewController.h */,
@@ -481,6 +488,7 @@
 				3359FED1241FE1150014C82C /* 苹果账号后台.png */,
 				3359FED3241FE1150014C82C /* 填写相关营销信息.png */,
 				3359FED2241FE1150014C82C /* 填写App的基本信息.png */,
+				3324C81F24260DD100766248 /* TestFight添加测试人员.png */,
 				3359FED9241FEC120014C82C /* 部署注意点_00.png */,
 				3359FEDB241FEC1A0014C82C /* 部署注意点_01.png */,
 				3359FE74241F3E850014C82C /* iphone设备尺寸.png */,
@@ -669,6 +677,7 @@
 				3359FEAB241F3E870014C82C /* UIView常见属性和方法.png in Resources */,
 				33B10E742422963900C6E8C7 /* 新建xxx.a第一步.png in Resources */,
 				3359FED7241FE1150014C82C /* 填写相关营销信息.png in Resources */,
+				3324C82024260DD100766248 /* TestFight添加测试人员.png in Resources */,
 				33B10E4F2422265600C6E8C7 /* NBSDK接口协议.html in Resources */,
 				3359FEB0241F3E870014C82C /* iphone设备尺寸.png in Resources */,
 				3359FE9D241F3E870014C82C /* 线程的生命周期.png in Resources */,
@@ -858,6 +867,7 @@
 				33ADF8D1240CC5280041F19A /* UIImage+animatedGIF.m in Sources */,
 				339A3D8022BBBBC9007DD37D /* SyGameProxy.c in Sources */,
 				3324D54B22DED4BF0066241F /* WMWebViewController.m in Sources */,
+				3309077A242472950029DB9F /* WMRuntimeViewController.m in Sources */,
 				33BE31BF22E5890A0073E35B /* FoundationNSObject.m in Sources */,
 				33B10E572422424500C6E8C7 /* WMJumpViewController.m in Sources */,
 				331309052420A7DE0014CC7E /* WMPushViewController.m in Sources */,
@@ -865,7 +875,7 @@
 				3394874623F11C5700A2C525 /* SyCustomCell.m in Sources */,
 				337358A22400EECF000507CC /* SyPostItem.m in Sources */,
 				33F1D58C23CC4B7E001AC221 /* WMGameView.m in Sources */,
-				33646DC023FFD4A700CE99CF /* SyMemoryManager.m in Sources */,
+				33646DC023FFD4A700CE99CF /* WMMemoryManager.m in Sources */,
 				339C0A9F23C6167000C3A144 /* SceneDelegate.m in Sources */,
 				33ED93E022F12E77006ABD28 /* ComponentController.m in Sources */,
 			);
@@ -1043,6 +1053,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = "";
+				ENABLE_STRICT_OBJC_MSGSEND = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				INFOPLIST_FILE = WMGameProxy/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
@@ -1069,6 +1080,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = "";
+				ENABLE_STRICT_OBJC_MSGSEND = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				INFOPLIST_FILE = WMGameProxy/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;

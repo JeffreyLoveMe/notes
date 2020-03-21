@@ -53,6 +53,7 @@
 //类工厂方法
 //构造方法
 //多态和虚方法
+//工厂类
 //权限修饰
 //NSObject
 //NSString
@@ -63,13 +64,13 @@
 //NSValue
 //NSNull
 //NSDate
-//NSData - x
+//NSData
 //NSCalendar
 //NSFileManager - x
 //Category类别
 //Extension类扩展/匿名类别
 //点语法
-//@property属性修饰符 - x
+//@property属性修饰符
 //购物车系统 - x
 //异常处理
 //通知中心
@@ -77,10 +78,10 @@
 //“抽象工厂”模式 - x
 //类的消息机制 - x
 //内存管理 - x
-//MRC/ARC混合编程 - x
+//MRC/ARC混合编程
 //选择器SEL - x
 //文件操作 - x
-//KVC、KVO - x
+//KVC、KVO
 //block - x
 //RunLoop - x
 //Runtime - x
@@ -133,15 +134,17 @@
 //Xib
 //Interface Builder(管理xib/storyboard)
 //停靠模式
-//autoLayout自动布局
+//AutoLayout自动布局
+//代码实现AutoLayout
+//VFL实现AutoLayout
 /**************************网络基础**************************/
 //网络概述
 //json解析 - x
 //xml解析 - x
 //xPath - x
+//抓包 - x
 //socket通信 - x
 //NSURLSession原生网络请求 - x
-//抓包 - x
 /**************************swift基础**************************/
 //怎么导入框架
 //swift简介
@@ -163,45 +166,46 @@
 //闭包
 //swift修饰符
 //懒加载
-//单例
+//单例 - x
+//枚举 - x
 /**************************项目实战**************************/
 //项目部署（图标/启动页面/App名称/网络请求设置）
-//程序启动原理
+//程序启动原理 - x
 //沙盒机制NSHomeDirectory()
-//数据持久化
-//多线程
-//用户通知
-//地图LBS
-//多语言（en/tw/hk/cn）
-//多媒体（图片/音频/视频/直播）
-//三方登录、分享
-//多语言
-//支付
-//断点续传
-//IM
-//“原生” 与 “js交互”
+//数据持久化 - x
+//多线程 - x
+//地图LBS - x
+//多语言（en/tw/hk/cn） - x
+//多媒体（图片/音频/视频/直播） - x
+//三方登录、分享 - x
+//三方支付/内购 - x
+//断点续传 - x
+//IM - x
+//“原生” 与 “js交互” - x
 //Objective-C和Swift混合编程
-//二维码
-//图文混排
-//传感器
-//AR
-//近景通讯技术（蓝牙）
-//iPad开发
-//svn/git/CocoaPods
+//二维码 - x
+//图文混排 - x
+//传感器 - x
+//AR - x
+//近景通讯技术（蓝牙） - x
+//iPad开发 - x
+//svn/git/CocoaPods - x
 //应用发布（打包测试/ TestFlight/ 企业包/ AppStore/ 广告植入）
-//组件化（静态库）
-//消息推送/本地推送
-//即时通讯
-//画折线图
-//iOS9.0 - iOS13.0新特性
-//Xcode7.0 - Xcode11.0新特性
+//组件化（静态库） - x
+//消息推送/本地推送 - x
+//即时通讯 - x
+//画折线图 - x
+//正则表达式 - x
+//谓词NSPredicate - x
+//iOS9.0 - iOS13.0新特性 - x
+//Xcode7.0 - Xcode11.0新特性 - x
 //Instruments - x
-//开发工具的使用
-//Xcode编译原理
-//LLVM项目
-//Clang编译器
-//ReactiveCocoa
-//Scrumj敏捷开发
+//开发工具的使用 - x
+//Xcode编译原理 - x
+//LLVM项目 - x
+//Clang编译器 - x
+//ReactiveCocoa - x
+//Scrumj敏捷开发 - x
 /**************************实用技术(swift版本)**************************/
 /**************************RxSwift**************************/
 /**************************补充部分**************************/
@@ -231,6 +235,7 @@ https://blog.csdn.net/pjk1129/article/details/39644477
 8>.程序启动原理 - https://www.cnblogs.com/wendingding/p/3766347.html
 9>.Apple常见设备尺寸 - https://www.jianshu.com/p/c4aad5b6771e
 10>.打包 xxx.a 的静态库 - https://www.jianshu.com/p/a1dc024a8a15
+11>.AutoLayout - https://www.jianshu.com/p/4ef0277e9c5e
 
 //工具网站：
 https://soft.macx.cn
@@ -331,8 +336,9 @@ AppDelegate.h/m - 常见系统问题查询
 SceneDelegate.h/m - iOS13新特性
 WMGameProxy.h/m - OC基础知识
 FoundationNSObject.h/m - Foundation常见类
-SyMemoryManager.h/m - 内存管理
+WMMemoryManager.h/m - 内存管理
 WMThreadViewController.h/m - 多线程
+WMRuntimeViewController.h/m - runtime
 WMNetworkViewController.h/m - 网络编程
 WMPushViewController - 推送
 WMJumpViewController - 应用间跳转

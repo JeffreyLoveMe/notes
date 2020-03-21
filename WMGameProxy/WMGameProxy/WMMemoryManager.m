@@ -1,12 +1,12 @@
 //
-//  SyMemoryManager.m
+//  WMMemoryManager.m
 //  WMGameProxy
 //
 //  Created by 谢吴军 on 2020/2/21.
 //  Copyright © 2020 zali. All rights reserved.
 //
 
-#import "SyMemoryManager.h"
+#import "WMMemoryManager.h"
 #import "WMGameProxy.h"
 /**
  0.内存管理的重要性
@@ -38,7 +38,7 @@
  3>.给对象发送一个retainCount消息->可以获取当前引用计数器的值（获取的不准备/要想准备必须使用dealloc()方法）
  */
 
-@implementation SyMemoryManager
+@implementation WMMemoryManager
 /**
 5.dealloc()方法
 1>.什么时候调用 - 当对象的 "引用计数器retainCount = 0"的时候
@@ -53,13 +53,13 @@
     [super dealloc];
 }
 
-#pragma mark - 单个对象的内存管理
+// 单个对象的内存管理
 /**
  6.内存中有5块内存空间
  栈 - 由编译器自动分配释放内存/主要存放函数的参数值、局部变量
  堆 - 由程序员手动分配释放内存/若程序员不释放，程序结束的时候才会回收
- 静态区 -
- 常量区 -
+ 静态区/方法区 - 静态变量、全局变量和方法/class存放的区/只要静态区被分配内存直到程序结束才会被释放
+ 常量区 - 存放常量/多个内容相同的对象指向同一块存储空间
  程序代码区 - 程序加载到内存（程序代码存放在"代码区(存放二进制代码)"）
  */
 /**
@@ -84,13 +84,17 @@
     WM指向的对象 - [[WMGameProxy alloc]init]
     */
     WMGameProxy *WM = [[WMGameProxy alloc]init];  // 引用计数器 = 1
-    // ARC/MRC混合编程 - 选中工程-> TARGET-> Build Settings-> Automatic Reference Counting-> NO
+    /**
+     ARC/MRC混合编程
+     1.整个工程支持MRC - 选中工程-> TARGET-> Build Settings-> Automatic Reference Counting-> NO
+     2.单个文件支持MRC - Build Phases-> Compile Sources -> "-fno-objc-arc"
+     */
     // 必须在 “{}” 前通过 “指针变量WM” 给 “WM指向的对象” 发送一条 “release消息”
     [WM release];  // 引用计数器 - 1 = 0 -> 自动调用 "dealloc方法"/release只会使“引用计数器 - 1”不会“自动调用 'dealloc方法'”
     
 //    WMGameProxy *WM = [[WMGameProxy alloc]init];  // 引用计数器 = 1
-//    [WM retain]; // 引用计数器 = 2
-//    [WM release]; // // 引用计数器 - 1 = 1/这时候不会“自动调用 'dealloc方法'”
+//    [WM retain]; // 引用计数器 + 1 = 2/给 “指针变量WM指向的对象” 引用计数器 + 1
+//    [WM release]; // // 引用计数器 - 1 = 1/这时候不会“自动调用 'dealloc方法'”/给 “指针变量WM指向的对象” 引用计数器 - 1
     
     /**
      0>.僵尸对象 - 被释放的对象/开启监听"僵尸对象"( Edit Scheme->Run->Diagnostics->勾选Zombie Objects )
@@ -108,6 +112,14 @@
 }
 
 
+// 多个对象的内存管理
+-(void)doubleObjectMemoryManager {
+    /**
+    有增就有减/有 retain 就有 release
+    1.当A对象想要使用B对象的时候（"setter方法"）一定要对B对象进行一次 retain（拥有B对象的所有权）/保证A对象存在B对象就一定存在
+    2.当A对象释放的时候（“dealloc方法”）一定要对B对象进行一次 release（释放B对象的所有权）/保证A对象释放了B对象也会被随之释放
+    */
+}
 
 
 
@@ -124,16 +136,6 @@
      对象方法：对象p -> 属性 -> 类对象 -> 调用方法
      类方法：类对象 -> 调用方法
      类对象的执行效率更高
-     */
-    /// 多个对象的持有某一个对象
-    // 当你不再使用某一个对象引用计数-1
-    // 对象所有权：当一个所有者（Objective-C对象）做出alloc/retain/copy操作就会拥有该对象的所有权
-    // 释放对象所有权：做出 “release/autorelease操作” 就会释放该对象的所有权
-    // 怎么持有对象？？？
-    // 对象销毁相当于野指针：调用野指针会 crash
-    /*
-     1.多release导致野指针程序crash
-     2.少release导致内存泄漏对象不会被销毁
      */
     /// 数组的内存管理
     // 向一个数组中加入一个元素，数组会对元素 retain(引用计数+1)

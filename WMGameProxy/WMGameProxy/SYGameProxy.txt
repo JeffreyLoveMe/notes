@@ -1,11 +1,5 @@
-//常见的七种数据结构
-1.冒泡排序、2.选择排序、3.插入排序、4.希尔排序、5.快速排序、6.归并排序、7.堆排序
-//链表
 // NSString为什么使用Strong而不使用Copy?
 //runloop常驻线程NSURLConnection：为什么AF2.0使用常驻线程？AF3.0就抛弃了？
-//保证多线程数据安全又什么办法？
-1.加锁：
-2.再写一个？？？
 //怎么获取app的全量日志（如何实现一套和业务解耦的日志系统）
 //App启动优化：有哪些建议？了解过dyld吗？`
 //符号是怎么绑定在地址上的？能写一个hotReload框架吗？
@@ -14,8 +8,6 @@
 //Apple为什么设计元类？
 // 什么是循环引用？block为什么会导致循环引用？weak怎么防止循环引用？请举例子说明。
 1.对象A持有对象B的同时对象B持有对象A，这种情况我们称为循环引用，循环引用会导致两个对象都无法销毁；
-// 什么是拷贝？深拷贝和浅拷贝有什么区别？
-1.拷贝：复制一个对象，会开辟一块新的内存存放复制的对象；
 //retain、copy/mutableCopy、release有什么区别？
 1.retain引用计数+1，没有创建新对象；
 2.copy（不可变对象）/mutableCopy（可变对象）引用计数+1，创建新对象；/不是所有
@@ -94,49 +86,6 @@ int main() {
 https://github.com/ming1016
 https://ming1016.github.io/categories/Programming
 77.图片裁剪方法
-89.KVC、KVO
-/*
-使用KVO就三步;使用KVO时,遇到可变数组（可变集合）需要在设置数组元素是,使用mutableArrayValueForKeyPath方法,将数组读出来
-
-1.属性方法
-self.post=[[PostInfo alloc]init];
-self.post.user.userName=@"qianfeng";
-[self.post.array addObject:[NSNumber numberWithInteger:1]];
-
-//KVC方式(forKeyPath)   set方式
-[self.post setValue:@"qianfeng" forKeyPath:@"user.username"];
-    
-[self.post setValue:[NSMutableArray array] forKey:@"array"];
-    
-//KVC方式  get方式
-NSLog(@"%@",[self.post valueForKeyPath:@"user.userName"]);
-    
-NSLog(@"%@",[self.post valueForKeyPath:@"array"]);
-    
-//KVO方法（情况1基本属性）
-1.添加观察者
-1)被观察者：self.post
-2)观察者：self
-3)要观察的属性：@"user.userName"
-4)要观察的事件：options:
-5)content：忽略
-[self.post addObserver:self forKeyPath:@"user.userName" options:NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld context:nil];
-    
-//给可变数组添加属性(self的array属性,不是可变集合,而是可变数组——Xcode不会自动检测到这个错误,确保写对)
-[[self mutableArrayValueForKeyPath:@"array"] addObject:@2];
-    
-//NSMutableSet==>[self mutableSetValueForKeyPath:@"可变集合属性名"];
-
-//2.属性发生改变的时候调用改方法
--(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary*)change context:(void *)context{
-    NSLog(@"~~~~~");
-}
-
-//3.调用构造函数（移除观察者）
--(void)dealloc{
-    [self.post removeObserver:self forKeyPath:@"user.userName"];
-}
-*/
 92.多媒体（图片、音乐、录音、视频）
 /*
 1.多媒体：图片,声音,录音,视频
@@ -590,11 +539,6 @@ int ret = sum(10,15);//3.调用：相当于把函数体的代码执行一遍
 2.实参的值直接赋给形参；
 3.实参是在函数调用的地方传递值，形参是在函数实现的地方接收实参的值；
 
-#递归：函数自己调用自己、容易栈内存溢出
-作用：当不知道循环次数的时候，使用递归；
-注意：递归一定要有明确的结束条件，否则会造成死循环；
-代码：参见NBSDK
-
 #指针：
 定义：变量的地址(唯一标识一块内存的索引)；
 int a;//a变量名、&a变量地址
@@ -637,31 +581,6 @@ int (*p)(int a);//指向函数的指针
 2.传地址：交换指针指向，无法实现交换；
 3.传地址：交换指针指向变量的值，可以实现交换；
 
-#字符串：c语言部分
-1.定义：字符串就是一串字符，由一对双引号括起来；
-char *a = "hello world";//每个字符占1个字节，\0称为尾零
-2.指向字符串的指针：char *p = "123456";
-3.了解：
-#include <ctype.h>
-int isalpha(int c);//判断单个字符是否是字母
-int isnumber(int c);//判断单个字符是否是表示数字
-int isupper(int c);//判断单个字符是否是大写字母
-int islower(int c);//判断单个字符是否是小写字母
-int toupper(int c);//将单个字符转换为大写字母
-int tolower(int c);//将单个字符转换为小写字母
-4.掌握：
-#include<string.h>
-size_t strlen(const char *s);//返回字符串的有效字符个数：与sizeof()区别？
-char *strcat(char *s1,const char *s2);//将s2的内容拼接到s1后面形成新的字符串s1
-//返回子串在s1中首次出现位置的第一个字符的地址
-char *strstr(const char *s1, const char *s2);//在字符串s1中，寻找子串s2首次出现的位置
-//s1必须有足够大的空间，如果数组越界，可能导致未知的错误
-char *strcpy(char *s1,const char *s2);//将字符串s2拷贝到字符数组s1，返回s1
-char *strchr(const char *s,char c);//查找字符串s中首次出现字符c的位置，不存在c,返回NULL
-//s1>s2->返回正数，s1<s2->返回负数，s1==s2->返回0
-int strcmp(const char* s1,const char* s2);//比较两个字符串的大小关系
-char *strrchr(char *str, char c);//在串中查找指定字符的最后一个出现，失败返回NULL
-
 #结构体：
 定义：相同或者不同数据类型变量的集合，自定义的数据类型；
 格式：放在头文件下面、所有函数上面
@@ -680,7 +599,7 @@ typedef struct data {
 }wm_data;
 //难点：结构体指针？
 
-#枚举：
+#枚举：枚举就是一串宏
 定义：如果变量只有几种可能的值，可以使用枚举；
 //枚举可以有无数个：不推荐使用
 typedef enum direction {
@@ -728,27 +647,6 @@ union date {
 还书(提供书的完整信息、提供天数)，计算租金、
 查看所有图书信息
 Demo：新建demo，包含Model、Manager、View、Controller？？？
-
-//#@property：编译器指令
-作用：1.让编译器自动声明set/get方法；
-2.生成_xxx的成员变量；
-属性：UI所有的属性都要用nonatomic
-atomic(缺省) //原子性：对当前属性进行加锁，消耗性能，访问速度慢，但是线程安全；
-nonatomic //非原子性：不需要加锁，访问速度快，但是线程不安全；
-assign //直接赋值修饰符：一般用在基本类型；
-readonly/readwrite(缺省) //读写操作：readonly只需要提供get方法；
-copy //复制一份原来的对象：修饰字符串、不可变字符串可以直接使用strong
-注意：多个属性修饰符需要使用,隔开；
-get方法   set方法     属性
-   YES        YES       可读可写
-   YES         NO           只读
-    NO         YES          只写
-    NO          NO           私有
-注意：1.如果想对传入的数据进行过滤，就必须重写set/get方法；否则可以直接使用@property；
-2.如果重写了set/get方法，@property将不会再生成set/get方法；
-
-#@synthesize：编译器指令、Xcode4.4以后可以省略
-作用：让编译器自动实现set/get方法；
 
 #内存管理：
 //C语言：sizeof()是一个运算符，用来计算变量或数据类型的大小
@@ -821,44 +719,7 @@ __weak Person *p1 = p; //弱指针
 MRC：A对象想拥有B对象，需要对B对象进行一次retain；A对象不用B对象，需要修B对象进行一次release；
 ARC：A对象想拥有B对象，需要用一个强指针指向B对象；A对象不用B对象，不需要进行任何操作；
 ARC中的strong相当于MRC中的retain；
-
-#ARC和MRC的混合编程：
-//MRC转ARC：选中工程->target->Build Settings->Automatic Reference Counting改成NO
 /******************************网络基础******************************/
-#网络请求：
-1).基础概念：
-客户端(Client)：移动应用(iOS、Android应用)；
-服务端(Server)：为客户端提供服务、数据和资源；
-请求(Request)：客户端向服务端索取数据的一种行为；
-响应(Response)：服务端对客户端请求的反应；
-2).URL：
-定位：统一资源定位符(网址)；
-组成：协议 主机ip地址+端口号 资源；
-域名：用利于记忆的符号来代替IP地址；
-域名解析器DNS：把网址里写的域名解析成对应的IP地址；
-创建：WMPayInfo.h/m
-3).HTTP协议：
-定义：超文本传输协议，访问远程的网络资源；
-格式：http://
-作用：1).规定客户端和服务端之间的数据传输格式；
-2).让客户端和服务端能有效地进行数据沟通；
-App发送请求->服务端->服务端处理->App获取数据；
-交互方法：GET|POST|PUT|DELETE；
-//GET和POST：
-GET用来从服务端获取数据、没有请求体、GET不安全；
-http://www.baidu.com/login?wd=ios开发&id=changmeng&name=畅梦
-协议+主机地址+接口名称+?+参数1&参数2&参数3
-POST向服务端上传数据、有请求体、POST安全；
-http://www.baidu.com/login
-协议+主机地址+接口名称
-3).网络中的数据：都是字符串
-格式：json格式、xml格式
-4).网络的数据下载：
-//同步下载：使用主线程进行下载，在下载完成前，线程阻塞
-NSURL *url = [NSURL URLWithString:@"http://10.0.8.8/sns/my/user_list.php?number=20&page=1"];//OC中使用NSURL类型的网址
-NSData *data = [NSData dataWithContentsOfURL:url];
-//异步下载：开辟新线程负责下载，主线程不会卡死，当子线程完成，回调主线程
-
 #异步网络请求：
 //分类：
 网络请求：get
@@ -988,18 +849,7 @@ _imgView.animationRepeatCount = 0;//设置播放动画次数：0表示无限重�
 CAKeyframeAnimation/CABasicAnimation/CATransition
 1).实现UIView的启动动画：WidgetViewController.h/m
 2).gif：WidgetViewController.h/m
-
-#父子控制器：多控制器管理
-概述：利用普通UIViewController也可以管理子控制器；
-//正好相反的操作
-[self.view addSubview:_topLineVc.view];
-[_societyVc.view removeFromSuperview];
 /******************************补充知识点******************************/
-#常用代码块：
-//App起始三句话
-self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-self.window.backgroundColor = [UIColor whiteColor];
-[self.window makeKeyAndVisible];
 //获取当前时间
 NSString *currentTime = [NSString stringWithFormat@"%@",[NSDate date]];
 //block中使用self
@@ -1007,18 +857,10 @@ __weak typeof(self) weakSelf = self;
 //汉字转码
 NSString *oriString = @"\u67aa\u738b";
 NSString *escapedString = [oriString stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-//获取当前设备
-[[UIDevice currentDevice] localizedModel];//什么设备
-[[UIDevice currentDevice] systemName];//系统名称
-[[UIDevice currentDevice] systemVersion];//版本号
 //屏幕中心x轴
 self.view.center.x
 //屏幕中心y轴
 self.view.center.y
-//加载图片
-UIImage *img = [UIImage imageNamed:@"logo.png"];//加载小图片、经常被使用的图片
-NSString *path =  [[NSBundle mainBundle] pathForResource:@"logo" ofType: @"png"];
-UIImage *img = [UIImage imageWithContentsOfFile:path];//加载大图片、不经常使用的图片
 //UIWebView可以打开doc/pdf文件
 UIWebView *webView = [[UIWebView alloc] initWithFrame: [UIScreen mainScreen].bounds];
 webView.delegate = self;
@@ -1035,19 +877,10 @@ NSURLRequest *request = [NSURLRequest requestWithURL:url];
 [UIApplication sharedApplication].idleTimerDisabled = YES;
 //隐藏NavigationBar
 [self.navigationController setNavigationBarHidden:YES animated:YES];
-//UIView设置成圆角
-view.layer.cornerRadius = 5;
-view.layer.masksToBounds = YES;
-//判断msg是否是NSString
-[msg isKindOfClass:[NSString class]];
 //跳转：隐藏TabBar
 TestViewController *vc = [[TestViewController alloc] init];
 vc.hidesBottomBarWhenPushed = YES;
 [self.navigationController pushViewController:vc animated:YES];
-//添加Zapfino.ttf字体
-UILabel *label = [[UILabel alloc] init];
-label.text = @"sd¥ƒ∆®∞∂∆";
-label.font = [UIFont fontWithName:@"Zapfino" size:15];
 //跳转系统浏览器
 if ([[UIApplication sharedApplication] respondsToSelector:@selector(openURL:options:completionHandler:)]) {
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:url] options:@{}
@@ -1071,10 +904,6 @@ NSArray *words = [fileConent componentsSeparatedByString:@"\n"];//转换成NSArr
         NSLog(@"远离");
     }
 }
-//设置RGBA颜色
-UIColor *color = [[UIColor alloc]initWithRed:238/255.0 green:238/255.0 blue:238/255.0 alpha:1];
-//延迟执行
-[self performSelector:@selector(stop:) withObject:nil afterDelay:5];
 //json转换成字典
 NSDictionary *dict=[NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableContainers error:nil];
 //根据字体计算高度：一行
@@ -1114,17 +943,6 @@ https://blog.csdn.net/lvchenqiang_/article/details/79077679
 //RunLoop的运行模式：见Res
 http://www.cocoana.com/ios/20150601/11970.html#0-qzone-1-74697-d020d2d2a4e8d1a374a433f596ad1440
 /******************************补充知识点******************************/
-#项目文档：
-//MarkDown：NO
-//Doxygen：多语言(C/C++/Java/Objective-C)的文档生成器
-注释规则：
-///@brief xxx
-/**
-* @class xxx
-* @author xxx
-* @date xxx
-*/
-
 #函数式编程思想(高聚合：代码聚合、方便管理)：把很多功能放在一个函数块(block)去处理
 int a = ({
 b = 2;
@@ -1161,13 +979,6 @@ https://www.egret.com/
 h5/css/js->前端->php->后端->python->运维->IT->word/excel/ppt
 https://www.jianshu.com/p/c73aa144d513
 
-上传照片：https://blog.csdn.net/ios_apple/article/details/32321737#0-qzone-1-68729-d020d2d2a4e8d1a374a433f596ad1440
-
-安卓填坑手册：https://mp.weixin.qq.com/s?__biz=MzA4NDM2MjAwNw==&mid=208402070&idx=1&sn=0c5032852be129dc8545cdc8c05beb1b&scene=18&scene=22&srcid=0727iUS9jVCLyhCCy3lR7A8l#rd
-
-//MVC
-控制器-->利用https请求数据-->拿到json数据-->转换成model-->数据源(数组)装model-->显示在view中
-
 #Model：字典转模型
 好处：字典的key不会提示错误、Model的属性会提示错误；
 //1.实现：需要封装
@@ -1178,12 +989,6 @@ shop.name = dict[@"name"];
 //2.实现：最终方案
 //Shop *shop = [Shop alloc] initWithDict:dict];
 Shop *shop = [Shop shopWithDict:dict];
-
-
-
-
-
-
 /******************************Objective-C语言基础******************************/
 #类对象：保存当前对象所有的对象方法，可以通过类对象来创建实例对象，实例对象中有一个isa指针，指向创建自己的类对象
 1.获取类对象：一个类在内存中只有一份类对象
@@ -1194,19 +999,6 @@ Person *p = [[Person alloc]init];
 1>.用于创建实例对象：Person *p = [[[p class] alloc]init];
 2>.用于调用类方法：[[p class] test];
 //启动过程：见WMBook.h/m；
-
-#虚方法：
-定义：调用方法的时候，不看指针看对象，对象的地址指向什么对象就调用什么方法；
-好处：可以描述不同事物被相同的事件触发，产生不同的响应；
-特征：Objective-C语言每个方法都是虚方法；
-
-#工厂类：NO
-特点：NSString/NSArray/NSDictionary/NSNumber都是工厂类/抽象类，不能被继承；
-不能被继承的原因：
-NSString采用了“抽象工厂”模式，内部是个类簇(class cluster)，它在外层提供了很
-多方法接口，但是这些方法的实现是由具体的内部类来实现的，当使用NSString生成一个对象时，
-初始化方法会判断哪个“自己内部的类”最适合生成这个对象，然后这个“工厂”就会生成这个具体的
-类对象返回给你，这种由外层类提供统一抽象的接口，然后隐藏具体的内部类来实现；
 
 #内存管理：
 1.引用计数(Reference Count)/保留计数(retain Count)：
@@ -1259,126 +1051,6 @@ __weak Person *p1 = p; //弱指针
 MRC：A对象想拥有B对象，需要对B对象进行一次retain；A对象不用B对象，需要修B对象进行一次release；
 ARC：A对象想拥有B对象，需要用一个强指针指向B对象；A对象不用B对象，不需要进行任何操作；
 ARC中的strong相当于MRC中的retain；
-/******************************网络基础******************************/
-#json解析：JavaScript Object Notification
-定义：json可以将js对象中表示的一组数据转换为字符串；
-格式：
-//字典：key是：字符串、value可以是：字符串&数值&true&false&null&对象&数组
-{
-    key1:value1,
-    key1:value1,
-    ...
-}
-//数组
-[
-    {
-        key1:value1,
-        key1:value1,
-    },
-    {
-        key1:value1,
-        key1:value1,
-    }
-]
-解析：见AnalyzeViewController.h/m
-第三方库：JSONKit
-
-#xml解析：
-定义：可扩展性标记语言；
-特点：可扩展性、标记语言、标签成对出现、区分大小写；
-示例：
-<?xml version="1.0" encoding="utf-8"?> //声明
-<Students> //根节点
-    <Student id="1"> //id表示属性
-        <name>王也</name>
-        <age>18</age>
-    </Student>
-
-    <Student id="2">
-    <name>孟凡路</name>
-    <age>17</age>
-    </Student>
-
-    <Student id="3">
-    <name>高家兴</name>
-    <age>48</age>
-    </Student>
-</Students>
-#结构：
-根节点：只有一对根节点，位于嵌套结构中最外层的节点；
-属性：属性值必须加""；
-注意：文档扩展名.xml、跨平台
-作用：网络传输数据
-区别：json/xml的对比
-1.目前90%的使用json、10%的使用xml；
-2.json解析简单，但是结构不易理解、xml结构容易理解，但是数据冗余；
-解析：见AnalyzeViewController.h/m
-https://blog.csdn.net/qxuewei/article/details/52369067
-
-#异步网络请求：
-//分类：
-网络请求：get
-网络上传：post
-下载：NO
-//原生网络请求：
-CFNetwork：纯C语言
-NSURLConnection：iOS7.0被废弃
-NSURLSession：NO
-https://www.jianshu.com/p/b0ddadd34037
-//ASIHttpRequest：不在更新
-//MKNetworkKit：简单易用，使用者较少
-//AFNetworking：
-1.概述：2.0使用的是NSURLConnection、3.0使用NSURLSession；
-2.代码：NetworkViewController.h/m
-注意：不要在子线程中更新UI；
-//利用KVO、KVC进行网络请求：参考2015-10-13
-1.新建数据模型PostInfo.h/m
-2.新建数据源：必须初始化
-3.设置单例：全局使用
-3.监测数据源变化：KVO
-4.新建下拉控件：进入VC->开始下拉加载->网络请求：改变数据源->加载UITableView
-5.在View中更新UI
-代码：NetworkViewController.h/m
-//设置应用支持https
-Xcode7.0以后：NSAppTransportSecurity->NSAllowsArbitraryLoads->YES
-
-#网络编程需要掌握的内容：NO
-0.实时监测网络变化
-1.数据请求、数据上传、下载
-2.原生网络请求的原理
-3.网络请求第三方库的使用
-4.KVC在网络请求中的应用
-5.进入VC以后怎么加载操作
-/******************************iOS进阶******************************/
-#KVC/KVO：
-//KVO：键值观察者
-#作用：用于监听对象属性的改变
-1.下拉刷新/上拉加载监听UIScrollView的contentoffsize；
-2.webview混排监听contentsize；
-3.监听模型属性实时更新UI；
-#步骤：
-/**
-给对象的属性添加观察者：
-self.post-被观察者
-self-观察者
-array-属性
-*/
-[self.post addObserver:self forKeyPath:@"array" options:NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld context:NULL];
-//给可变数组添加属性：
-[[self mutableArrayValueForKeyPath:@"array"] addObject:@2];
-//NSMutableSet==>[self mutableSetValueForKeyPath:@"可变集合属性名"];
-//如果属性改变，自动调用方法：
--(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object
-change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context {
-    NSLog(@"new:%@",change[@"new"]);
-    NSLog(@"old:%@",change[@"old"]);
-}
-//取消监听：
--(void)dealloc {
-    [self.post removeObserver:self forKeyPath:@"name"];
-}
-代码：
-https://www.jianshu.com/p/742b4b248da9
 /******************************UI基础******************************/
 #跳转：
 1).模态方式：见WidgetViewController.h/m->TimeViewController.h/m
@@ -1413,12 +1085,6 @@ PostStore类网络请求完成，需要告诉VC网络请求操作完成；
 幕，我们不要release，而是回收到复用队列，然后在创建cell的时候首先去复用队列中
 取，如果没有我们在创建。
 //代码：见WaterFall
-
-#UIWindow：一种特殊的UIView、一个app至少有一个UIWindow
-特点：1.程序启动完毕，创建的第一个控件就是UIWindow，接着创建VC的view，最后将view添加到UIWindow上；
-2.没有UIWindow就没有显示UI界面；
-3.可以重写UIWindow；
-https://www.jianshu.com/p/af2a6a438a0a
 
 #状态栏：
 //通过UIViewController管理状态栏(每个VC都拥有自己不同的状态栏)
@@ -1871,50 +1537,6 @@ NSString *msg2 = [msg1 mutableCopy];//深拷贝
 
 }
 
-#常见指令：
-//self
-定义：self是一个指针，哪个对象调用该方法，self指针就指向哪个对象；
-用途：1.self出现在对象方法中就代表对象、self出现在类方法中就代表类；
-2.对象方法中：self->成员变量名;//访问当前对象内部的成员变量；
-3.[self 方法名];//调用其他对象方法/类方法；
-//super：编译器的指令符号
-作用：直接调用父类中的某个方法；
-场合：子类重写父类的方法时想保留父类的一些行为；
-//id：动态数据类型
-定义：id是万能的指针，可以指向/操作任何对象；
-作用：定义变量、作为函数参数、作为函数返回值；
-id p = [Person new];//id相当于Person*；
-注意：1.由于动态数据类型可以调用任意方法(有可能调用到不属于自己的方法)、这样可能导致运行期错误；
-2.应用场景：多态-可以减少代码量、避免调用子类特有的方法需要强制类型转换；
-3.怎么避免动态数据类型运行期错误？
-id obj = [person new];
-if ([obj isKindOfClass:[Person class]]) { //判断指定对象是否属于某一个类/子类
-[obj eat];
-}
-//instancetype
-定义：id是万能的指针，可以指向/操作任何对象；
-特性：在编译期可以判断对象的真实类型、只能作为返回值；
-//typedef：可以给已知的数据类型起别名(外号)
-typedef 原有数据类型 别名
-注意：1.typedef不仅能给原生的数据类型起别名，也可以给自定义的类型起别名；
-2.利用typedef给数据起别名，并不会生成新的数据类型；
-//new
-1.开辟存储空间-alloc
-2.开辟所有的属性-init
-3.返回对象的地址
-//@available
-if(@available(macOS10.1,iOS 11,*)) {
-    //code
-}
-
-#设计模式：
-//MVC：Model数据模型用于存储数据；View视图负责显示UI控件；Controller控制器用于控制View和model之间的交互；
-//MVVM：xxx
-//单例模式：可以保证在程序运行过程中一个类只有一个实例；
-//工厂模式：工厂方式创建类的实例，多与proxy模式配合，创建可替换代理类；
-//观察者模式：不关心谁去接收，只负责发布信息；
-//代理设计模式：当一个类的某些功能需要由别的类来实现，但是又不确定具体会是哪个类实现；
-
 #DrawRect：NO
 概念：Quartz 2D是一个基于CoreGraphics框架来实现的二维绘制引擎，同时支持iOS和Mac系统；
 作用：绘制图形、线、三角形、圆、弧形；绘制文字；绘制/生成pdf；截图/裁剪图片；自定义UI；
@@ -1968,8 +1590,6 @@ tcp/ip协议，层次结构：应用层/传输层/网络层/数据链路层/物�
 3.最高响应比优先法(HRRN)
 4.时间片轮转算法(RR)
 5.多级反馈队列(MFQ)
-//KVO的工作原理：
-xxx
 //静态数据类型和动态数据类型的区别：
 1.静态数据类型的特点：在编译期就明确变量的类型、可以访问属性和方法；
 2.动态数据类型的特点：在编译期不清楚变量的类型、运行期才知道真实类型；
@@ -1981,8 +1601,6 @@ xxx
 //静态数据类型和动态数据类型的区别：
 1.静态数据类型的特点：在编译期就明确变量的类型、可以访问属性和方法；
 2.动态数据类型的特点：在编译期不清楚变量的类型、运行期才知道真实类型；
-//KVC、KVO的底层实现：
-xxx
 //为什么加上__block就可以在block内部修改变量：
 因为没有添加__block是值传递、加上__block是地址传递；
 //[self class]|[self superclass]：
@@ -2011,7 +1629,8 @@ https://www.jianshu.com/p/2e1b3f54b4f3
 #补充知识点：WMGame/swift
 
 #选择器SEL：一个数据类型，内部是消息，类似于函数指针
-原理：Objective-C在编译的时候，会根据方法的名字(包括参数序列)，生成用来区分这个方法的唯一ID，这个ID就是SEL类型；
+原理：1.Objective-C在编译的时候，会根据方法的名字(包括参数序列)，生成用来区分这个方法的唯一ID，这个ID就是SEL类型；
+2.SEL就是对方法的一种包装。包装的SEL类型数据对应相应的方法地址，找到方法地址就可以调用方法。在内存中每个类的方法都存储在类对象中，每个方法都有一个与之对应的SEL类型的数据，根据一个SEL数据就可以找到对应的方法地址，进而调用方法。
 作用：提高执行的效率、增强程序的灵活性；
 //创建
 @selector 方法选择器
@@ -2020,6 +1639,15 @@ https://www.jianshu.com/p/2e1b3f54b4f3
 SEL s1 = @selector(onClick:);
 //将一个字符串转换为一个SEL类型
 SEL s2 = NSSelectorFromString(@"onRun:");
+/**
+通过@selector方法获取
+SEL s1 = @selector(compare:);
+//这个方法用于编译时就能确定调用的方法
+
+通过NSSelectorFromString将一个字符串转换为一个SEL类型
+SEL s2 = NSSelectorFromString(@“run:”);
+//这个方法用于运行时就能确定调用的方法
+*/
 //执行SEL
 Dog *dog = [[Dog alloc]init];
 [dog performSelector:s1];
@@ -2034,3 +1662,1443 @@ Dog *dog = [[Dog alloc]init];
 SEL s1 = @selector(onClick:);
 [dog performSelector:@selector(setName:) withObject:@"Tom"];
 #pragma clang diagnostic pop
+
+1.二维数组
+1）定义：元素是一维数组的数组称为二维数组
+int arr[4][4];
+
+2）二维数组的初始化
+int arr[4][4]={   {1,2,3,4},
+               {2,3,4,5},
+               {3,4,5,6},
+               {4,5,6,7} };
+
+3）二维数组的赋值
+arr[0][0] = 4;
+arr[2][1] = 4;
+
+
+1.指针
+1）指针就是变量的地址；地址就是唯一标识一块内存的索引
+int  a;
+a         //a是变量名
+&a     //a的地址
+&       //取地址符
+
+2）指针变量
+1.int  *p;   //定义一个指针变量p
+   p           //p是指针变量名
+  ＊        //指向
+指针变量p的作用：指针变量时用来存储地址的
+*p: 指p所指向的内容
+
+2.给指针变量赋值
+ p=&a;    // 将整型变量a的地址赋给指针变量p
+               //p指向变量a，指针变量p同一时刻只能指向一个变量
+  a＝3;    //直接的改变了变量a的值
+ *p=5;   //间接的改变了变量a的值
+            //＊p是p指向的变量
+
+3.指针作为函数参数的使用
+int *p; //变量p是int*类型
+            //int是p指向的变量的基类型
+
+4.空指针和野指针
+int *p = NULL；   //指针变量p初始化为空
+                              //NULL代表空，值为0；
+                             //不能使用空指针
+
+int  *p；     //未初始化的指针称为野指针
+                   //不能使用野指针
+3）printf("&a=%p,&b=%p\n",&a ,&b );   //输出变量a,b的地址，％p地址格式符
+int *p=NULL;        //p初始化为空，不能使用空指针
+4）使用指针注意事项：
+1）定义指针时，一定要初始化为空；
+int *p=NULL;//指针作为参数或者已经赋值，则无需初始化为空。
+2）使用指针前，一定要给指针赋值；
+3）使用指针时，一定要判空
+if(p==NULL) {
+    return;
+}
+
+5)指针大小
+固定4个字节（因为地址在内存里都是一整型的方式分配的）
+char *p
+int *q
+//p和q都是4个字节。
+
+例如：交换两个变量
+#include "jiaohuan.h"
+//传值，无法实现交换
+void Swap1(int a,int b)
+{
+    printf("swap1：%p,%p\n",&a,&b);
+    int t;
+    t = a;
+    a = b;
+    b = t;
+}
+//传地址，交换指针指向，无法实现交换
+void Swap2(int *c,int *d)
+{
+    printf("swap2：%p,%p\n",c,d);
+    int *t;
+    t = c;
+    c = d;
+    d = t;
+}
+//传地址，交换指针指向变量的值，可以实现交换
+void Swap3(int *e,int *f) {
+    printf("swap3：%p,%p\n",e,f);
+    int t;
+    t = *e;
+    *e = *f;
+    *f = t;
+}
+#include <stdio.h>
+void Swap1(int a,int b);
+void Swap2(int *a,int *b);
+void Swap3(int *a,int *b);
+
+#include <stdio.h>
+#include "jiaohuan.h"
+int main(int argc, const char * argv[]) {
+    // insert code here...
+    int a = 3;
+    int b = 5;
+    printf("主函数:%p,%p\n",&a,&b);
+    Swap1(a, b);
+    printf("a=%d,b=%d\n",a,b);
+    
+    int c = 3;
+    int d = 5;
+    printf("主函数:%p,%p\n",&c,&d);
+    Swap2(&c, &d);
+    printf("c=%d,d=%d\n",c,d);
+    
+    int e = 3;
+    int f = 5;
+    printf("主函数:%p,%p\n",&e,&f);
+    Swap3(&e, &f);
+    printf("e=%d,f=%d\n",e,f);
+}
+
+1.指针
+1） 数组和指针
+数组名作为函数的参数
+数组名代表数组的首地址
+
+2）指针++
+int *p=NULL;
+int a=5;
+p=&a;
+p++;
+//执行p++操作时，指针向后移动了p指向的变量的基类型的大小个字节数。
+//指针的移动：必须赋值地址才可以实现指针的移动，不可以赋值指针所指的内容
+ q=p  //正确；
+q=*p  //错误；
+*q=*p//错误；
+
+2.理解内容：
+指针数组
+int *p[10];
+//这是一个数组，10个元素，每个元素都是个指向整型的指针。
+//元素为指针的数组
+练习：
+快速的声明20个int *指针，分别指向int a[20]中的每个元素
+指向数组的指针
+int (*p)[10];
+//这是一个指针，指向10个int元素的数组。
+//指向数组的指针
+指向指针的指针
+int * * p;
+//这是一个指针，指向指针
+//二级指针
+指向函数的指针
+int (*p)(int a);//指向函数的指针
+//这是一个指针，指向一个函数。
+//函数指针
+函数指针的声明方法为：
+返回值类型 ( * 指针变量名) (形参列表);
+
+3.字符串
+1.认识字符串:字符串就是一串字符。
+由一对双引号括起来，双引号里面可以写一串字符 。
+//“hello world!”是字符串常量。
+//字符串中的每个字符占1个字节，字符的个数，比可视的字符多一个。在字符串结尾处有一个’\0’，称作尾零，其ASCII值就是0.
+//如上述字符串中有13个字符，12个有效字符。
+例如：int arr[5] = {3,4,5,6,7};
+char arr[10] = “hello”;   //长度10
+char arr[] = “hello”;     //长度6
+
+2.指向字符串的指针：
+char * p = "1234567";
+//当我们程序中写下"1234567"，就是在【只读数据段】存储了8个字符。
+//"1234567”的值只代表第一个字符的所在空间的地址。
+练习：
+主函数定义一个字符串，编写函数，传递字符串，统计一下字符串中字母的个数；将统计结果返回给主函数。
+
+3.指针作为函数返回值
+数据类型＊  函数名（形参列表）
+char * MyStr(char * const str,char c);
+在字符串str中查找字符c，返回第一次找到c的首地址，如果找不到，则返回NULL；
+#include <stdio.h>
+char * MyStr(char * str,char c) {
+    if(NULL == str) {
+        return NULL;
+    }
+    
+    while (*str != '\0') {
+        if(*str == c)
+        {
+            break;
+        }
+        str++;
+    }
+    if (*str == '\0') {
+        return NULL;
+    } else {
+        return str;
+    }
+}
+int main(int argc, const char * argv[]) {
+     char *p = "hello c dddworld!";
+     char *r = MyStr2(p, 'c');
+    printf("%s\n",r);
+    return 0;
+}
+
+char * MyStr2(char * str,char c);
+
+4.内存分配的两种方式
+1）静态内存分配
+分配在数据段、只读数据段、栈区的内存，由编译器自动申请和释放的内存，称为静态内存分配；在编译阶段分配的内存；
+
+2）动态内存分配
+分配堆区里的内存，由程序猿手动申请和释放的内存，称为动态内存分配；在运行阶段分配的内存；
+动态申请内存：malloc函数；
+动态释放内存：free函数
+malloc函数返回值是void* 类型；void*是一个泛型指针；
+sizeof();   //sizeof是一个运算符，用来计算变量或数据类型的大小；
+free(p);
+练习：
+输入一个数n，动态分配n个int大小的内存空间，并向内存中写入n个int型数值，实现求n个数的平均值，并返回。
+  ＃include<stdlib.h>
+#include <stdio.h>
+#include <stdlib.h>
+int main(int argc, const char * argv[]) {
+    int n;
+    scanf("%d",&n);
+    int *p = NULL;
+    p = (int *)malloc(sizeof(int)*n);
+    int *q = p;
+    int sum = 0;
+    float avg = 0;
+    for (int i=0; i<n; i++) {
+        *q = i+3;
+        sum += *q;
+        q++;
+    }
+    avg = (float)sum/n;
+    printf("%f\n",avg);
+    free(p);
+    return 0;
+}
+3）动态内存释放的注意事项：
+1、防止提前释放
+2、防止内存泄露
+3、防止重复释放
+
+4）动态内存分配和静态内存分配的区别
+静态内存分配
+<1>操作系统分配空间
+<2>空间在编译时确定，而非运行时。
+<3>空间在栈段，数据段，只读数据段
+<4>自动释放空间
+动态内存分配
+<1>程序员分配空间
+<2>运行时确定，每次运行都不同。
+<3>空间在堆段
+<4>手动释放空间
+
+2.结构体
+定义：相同或不同数据类型变量的集合
+1.结构体的定义
+struct data {
+    int a;
+    char c;
+    short b;
+};
+ 
+#include <stdio.h>
+//结构体定义用struct关键字，结构体名字为data
+//结构体命名遵循标示符的定义
+//定义一个结构体后，一个新的数据类型诞生了，结构体是自定义的数据类型
+//结构体的声明一般放在头文件内，或者 .c 文件的最上面(放在include定义的下面，放在所有函数的上面)
+struct data {
+    //{}里是定义结构体的成员变量，成员变量可以有无数个，成员变量的数据类型可以相同或不同
+    //结构体的成员变量也叫做结构体的属性
+    int i;
+    char c;
+    short b;
+};
+
+//结构体取别名
+//方式1：在定义结构体时直接取别名，用typedef关键字
+//如下定义相当于给struct student取别名为stu
+typedef struct student {
+    int age;
+    char name[10];
+    int num;
+}stu;
+
+//方式2：定义结构体之后，另起一行取别名
+struct class {
+    int a;
+    short b;
+};
+//完成给struct class取别名为cla
+typedef struct class  cla;
+
+int main(int argc, const char * argv[]) {
+    // insert code here...
+    //定义一个结构体类型的变量d(也叫做创建一个结构体对象d)
+    //struct data是一个结构体类型，相当于int
+    //结构体变量也叫做结构体对象
+    struct data d;
+    //结构体的初始化
+    //结构体初始化要分别对每个成员变量进行初始化
+    struct data d1 = {5,'a',3};
+    
+    int a;
+    a = 3;
+    
+    //结构体对象的赋值
+    //通过对象访问结构体成员变量用 . 进行访问
+    struct data d2;
+    d2.i = 4;
+    d2.c = 'x';
+    d2.b = 3;
+    
+    //结构体指针
+    int *p;
+    p = &a;
+    *p = 4;
+    
+    //定义一个结构体指针
+    struct data *pst;
+    pst = &d2;
+
+    //结构体指针通过 -> 来访问成员变量
+    pst->i = 5;
+    pst->c = 't';
+    
+    //结构体数组
+    int arr[5];
+    
+    //定义一个长度为5的结构体数组
+    struct data sct[5];
+    
+    //通过结构体数组访问成员变量
+    sct[0].i = 7;
+    sct[0].c = 'u';
+    sct[3].i = 6;
+    
+    return 0;
+}
+
+1.内存管理
+1）内存管理
+1.C的内存管理，以及麻烦之处
+char *p = (char *)malloc(100*sizeof (char));
+这是C的动态内存分配，我们手动跟系统申请了100个字节的内存；或者说系统在堆里开辟了100个字节的空间，并将这个空间的首地址返回给指针变量p。
+free(p);
+使用完成后，手动跟系统释放内存空间；或者说系统回收空间。
+            
+2.C的内存管理，我们手动申请，手动释放。这样来看，我们只需要注意三个问题就好了：
+1.申请内存，使用完成后需要释放，如果不释放会造成内存泄露。
+2.不能多次释放，如果多次释放，则会崩溃。
+3.不能提前释放，如果提前释放了再使用，也会崩溃。
+
+3.但是，如果项目比较复杂，需要有几十上百号人一起分工完成，就很容易出现问题。
+比方说我们开辟了一块内存空间里存放了一块很有用的数据。但是，这个数据不只有我在这一块代码里用，甚至有多个人，在程序的多个地方使用。这样造成的结果就是，就算我使用完成这块内存，我也不能去释放他，因为我不能确定，别人在别的地方是否还需要使用这块内存。内存泄露在所难免了。
+
+2)OC的内存管理
+1.引用计数(Reference Count)/保留计数(retain Count)
+对于一块动态申请的内存，有一个人（指针）使用，就给这个内存的计数器加1，使用完成后，就给这个计数器减1，当这个内存的引用计数为0了，我们再释放他，这样，上面的问题就解决了。OC，就是使用引用计数这种方式来管理内存的。
+
+3. MRC
+1)内存管理的黄金法则
+对于引用计数来说，有一套内存管理的黄金法则:
+The basic rule to apply is everything that increases the reference counter with alloc, [mutable]copy[withZone:] or retain is in charge of the corresponding [auto]release.
+凡是用alloc，retain，new，copy，mutableCopy或者以copy开头，以mutableCopy开头的方法[创建]的对象，都需要用release或autorelease进行释放。
+通俗一点的说法就是谁污染谁治理(谁创建谁释放)。
+2)alloc与release
+ARC模式下创建一个Dog类
+@interface Dog : NSObject
+@end
+@implementation Dog
+ - (void)dealloc {
+    NSLog(@"dog dealloc");
+    //[super dealloc];
+}
+  @end
+dealloc是析构函数，当对象销毁的时候，会自动调用这个方法，我们在这里重写这个方法。
+
+ 在main函数里，写入如下代码：
+  int main(int argc, const char * argv[]) {
+          @autoreleasepool {
+           Dog *dog = [[Dog alloc] init];
+             }
+           NSLog(@"程序即将退出");
+           return 0;
+      }
+ 从终端打印信息来看，“程序即将退出”这条打印之前，已经打印dog dealloc，也就是说在程序运行结束前，dog对象已经销毁了。这个是ARC，由Xcode帮我们管理dog对象。
+ 将ARC改为MRC，再执行程序，dog对象并没有销毁，因为我们现在是手动管理了，我们需要遵守内存管理的黄金法则，Dog *dog = [[Dog alloc] init]; 我们需要对dog进行release。
+将main函数代码改为如下形式：
+ int main(int argc, const char * argv[]) {
+    @autoreleasepool {
+       Dog *dog = [[Dog alloc] init];
+       [dog release];
+       }
+    NSLog(@"程序即将退出");
+    return 0;
+     }
+ 再次执行程序，从打印可以看出，dog对象已经销毁。这就是黄金法则，我们对dog进行alloc，就要对dog进行release。
+注意：release 并不是销毁对象，让对象的引用计数减1，当对象的引用计数为0的时候，自动调用dealloc方法，销毁对象。
+3）retain与retainCount
+retain：将对象进行保留操作，也就是使对象的引用计数加1。
+retainCount：打印一个对象的引用计数。
+4）类的组合中使用
+在上面代码中，增加Person类
+@interface Person : NSObject {
+ // 一个人，养了一条狗（持有一条狗）
+Dog *_dog;
+ }
+ - (void)setDog:(Dog *)dog;
+  - (Dog *)dog;
+ @end
+ @implementation Person
+/* 版本1 （有问题） 人并没有真正持有狗，如果在main函数里[dog release]，让dog的引用计数减1，就变为0，dog就销毁了。
+  - (void)setDog:(Dog *)dog
+ {
+       _dog = dog;
+ }*/
+
+/* 版本2 （有问题） 如果人再持有别的狗，就会造成第一条狗得不到释放，内存泄露。
+- (void)setDog:(Dog *)dog
+  {
+       _dog = [dog retain];
+  }*/
+
+ /* 版本3 （有问题） 如果本来持有一条狗，又重新设置这条狗，先进行release，这个时候，很可能dog就销毁了，然后，就没法再次retain了。
+ - (void)setDog:(Dog *)dog {
+      [_dog release];
+      _dog = [dog retain];
+}*/
+ // 版本4 OK!，标准写法
+- (void)setDog:(Dog *)dog {
+    if (_dog != dog) {
+     [_dog release];
+      _dog = [dog retain];
+      }
+}
+  - (Dog *)dog {
+      return _dog;
+ }
+    - (void)dealloc {
+    NSLog(@"person dealloc");
+     // 人在销毁的时候，一并将持有的dog对象销毁
+    [_dog release];
+    [super dealloc];
+}
+7 数组的内存管理
+1）当我们创建数组的时候，数组会对每个对象进行引用计数加1
+ 2）当数组销毁的时候，数组会对每个对象进行引用计数减1
+ 3）当我们给数组添加对象的时候，会对对象进行引用计数加1
+ 4）当我们给数组删除对象的时候，会对对象进行引用计数减1
+总之，谁污染谁治理，管好自己就可以了（数组内部也遵守内存管理）。
+8 ) autorelease与autoreleasepool
+        在main函数里写如下代码:
+        int main(int argc, const char * argv[]){
+            @autoreleasepool {
+                          Dog *dog = [[Dog alloc] init];
+
+        //dog并没有马上销毁，而是延迟销毁，将dog对象的拥有权交给了autoreleasepool
+            [dog autorelease];
+
+        //这个是可以打印的，因为打印完dog的引用计数后，dog对象才销毁
+            NSLog(@"retainCount = %lu",dog.retainCount);
+             }
+            NSLog(@"程序即将退出");
+            return 0;
+      }
+ autoreleasepool相当于一个数组，如果哪个对象发送autorelease消息，实际将对象的拥有权交给了autoreleasepool；当autoreleasepool销毁的时候，autoreleasepool里持有的对象都发送一个release消息。
+4.ARC
+1）从Xcode5以后，默认自动内存管理
+2）自动引用计数
+简单点说就是让编译器完成堆空间的引用计数加减，自动释放。程序员不再写 retain release等方法
+3）OC的自动内存管理，不同于JAVA垃圾回收。而是在预处理时，直接在应该保留的地方，添加retain，在应该释放的地方，添加release。是直接添加代码。
+从效率上，ARC优于手动内存管理。
+    
+文件操作
+1.数据持久化的方法
+通常程序在运行中或者程序结束之后，需要保存一些信息，而且需要持久化存储信息,比如登陆信息、视频播放记录、收藏记录等等,那么我们可以采用以下几种方式对数据进行持久化保存。1.文件    2.plist    3.数据库
+2.常用文件操作类
+1）NSFileManager（文件管理类）
+<1>创建文件管理器单例对象
+[NSFileManager defaultManager];
+
+<2>遍历目录下的内容
+//浅度遍历当前目录下的文件
+[manager contentsOfDirectoryAtPath:path error:&error]
+
+//深度遍历
+[manager subpathsOfDirectoryAtPath:path error:&error]
+
+<3>判断文件是否存在
+[manager fileExistsAtPath:path]
+
+<4>创建文件
+//创建文件
+/*参数1：创建文件的路径
+参数2：内容，如果nil表示创建一个内容为空的文件。
+参数3：nil表示采用默认的设置*/
+//如果文件已经存在，会覆盖原来文件。
+[manager createFileAtPath:path contents:data attributes:nil];
+    
+//创建目录
+/*参数1：文件夹路径
+参数2：是否有中间目录(YES针对所有的情况)
+参数3：nil表示采用默认设置
+参数4：错误*/
+
+//不会覆盖文件夹内容
+[manager createDirectoryAtPath:path withIntermediateDirectories:YES attributes:nil error:&error];
+
+<5>拷贝文件/目录
+//从哪个路径copy
+NSString *fromPath = @"/Users/qianfeng/Desktop/文件夹/testff.txt";
+//copy哪个路径
+NSString *toPath = @"/Users/qianfeng/Desktop/文件夹/新建文件夹/testff.txt";
+//如果文件已经存在是copy不成功的
+[manager copyItemAtPath:fromPath toPath:toPath error:&error];
+
+<6>移动文件/目录
+[manager moveItemAtPath:fromPath toPath:toPath error:&error];
+
+<7>删除文件/目录
+[manager removeItemAtPath:@"/Users/qianfeng/Desktop/文件夹/新建文件夹" error:nil]
+
+<8>获取文件属性    (返回的是字典)
+[manager attributesOfItemAtPath:@"/Users/qianfeng/Desktop/文件夹/testff.txt" error:nil];
+
+2.3 NSFileHandle（文件句柄类）
+对文件进行读写首先需要NSFileHandle打开文件,NSFileHandle对文件进行读写都是NSData类型的二进制数据.
+                
+<1>打开文件方法
+//以只读方式打开
+NSFileHandle *readOnlyHandle =  [NSFileHandle fileHandleForReadingAtPath:path]
+//以只写方式打开
+NSFileHandle *writeOnlyHandle = [NSFileHandle fileHandleForWritingAtPath:path]
+//以读写方式打开
+NSFileHandle *readWriteHandle = [NSFileHandle fileHandleForUpdatingAtPath:path]
+
+<2>读指定长度的数据（单位为字节)
+[readOnlyHandle readDataOfLength:5]或者 [readWriteHandle readDataOfLength:5]
+
+<3>从当前偏移量读到文件尾
+[readOnlyHandle readDataToEndOfFile];
+
+<4>设置文件偏移量（单位为字节)
+[readOnlyHandle seekToFileOffset:5];
+
+<5>将文件偏移量定位到文件尾
+[readOnlyHandle seekToEndOfFile];
+
+//如果希望这次写入的数据完全覆盖掉原有数据
+//常规做法，短的写入，无法覆盖长的数据
+//可以截断原来数据
+[readWriteHandle truncateFileAtOffset:0];
+//截断到0字节长，即清空原有数据。
+
+<6>写文件(不会覆盖的时候需要设置偏移量)
+//当前偏移量指到文件最后
+[readWriteHandle seekToEndOfFile];
+//写入数据
+[readWriteHandle writeData:data];
+
+[readWriteHandle writeData:[@"12345678945343543534543" dataUsingEncoding:NSUTF8StringEncoding]];
+
+ <7>关闭文件句柄
+//关闭文件句柄,关闭后(不需要)就不能再操作文件了
+[readOnlyHandle closeFile];
+[readWriteHandle closeFile];
+[writeOnlyHandle closeFile];
+
+
+#json解析：JavaScript Object Notification
+定义：json可以将js对象中表示的一组数据转换为字符串；
+格式：
+//字典：key是：字符串、value可以是：字符串&数值&true&false&null&对象&数组
+{
+    key1:value1,
+    key1:value1,
+    ...
+}
+//数组
+[
+    {
+        key1:value1,
+        key1:value1,
+    },
+    {
+        key1:value1,
+        key1:value1,
+    }
+]
+解析：见AnalyzeViewController.h/m
+第三方库：JSONKit
+4.json数据解析
+(JavaScript Object Notation)
+简单地说，JSON 可以将 JavaScript 对象中表示的一组数据转换为字符串，然后就可以在函数之间轻松地传递这个字符串，或者在异步应用程序中将字符串从 Web 客户机传递给服务器端程序。这个字符串看起来有点儿古怪，但是JavaScript很容易解释它，而且 JSON 可以表示比"名称 / 值对"更复杂的结构。例如，可以表示数组和复杂的对象，而不仅仅是键和值的简单列表。
+
+<1>Json数据的格式
+JSON有两种表示结构
+{}中表示一个字典  []中表示一个数组
+对象结构以”{”大括号开始，以”}”大括号结束。中间部分多个以”，”分隔的”key(关键字)/value(值)”对构成，关键字和值之间以”：”分隔，语法结构如代码。
+{
+    key1:value1,
+    key2:value2,
+    ...
+}
+关键字是字符串，值可以是字符串，数值，true,false,null,对象或数组
+数组结构以”[”开始，”]”结束。中间多个以”，”分隔的值列表组成，语法结构如代码。
+[
+    {
+        key1:value1,
+        key2:value2
+    },
+    {
+         key3:value3,
+         key4:value4
+    }
+]
+
+<2> 如何解析
+NSDictionary * dict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
+
+
+1.什么是XML？
+extensible Markup Language   可扩展性标记语言
+特点：1.可扩展性   2.标记
+标记：A.就是标签 成对出现（有开始，有结束）   B.标签区分大小写
+例如：
+<students>董佳迪</students>
+students是标签，董佳迪是标签的值
+可扩展性：1.体现在标签的名字用户自己随意命名
+                    2.XML中的标签是可以嵌套的，嵌套的结构也是随意的。
+示例：
+<?xml version="1.0" encoding="utf-8" ?>
+<Students>
+  <Student id="1" >
+    <name>王也</name>
+    <age>18</age>
+  </Student>
+
+  <Student id="2">
+    <name>孟凡路</name>
+    <age>17</age>
+  </Student>
+
+  <Student id="3">
+    <name>高家兴</name>
+    <age>48</age>
+  </Student>
+
+</Students>
+
+XML的相关概念：
+XML经常被理解成倒挂一棵树
+根节点:只能有一对根节点，位于嵌套结构中最外层的节点
+在本例中 Students为根节点。
+id为属性     1为属性值（属性值必须加“”）
+注意点：
+1.文档扩展名  .XML
+2.XML跨平台。
+3.主要用途就是网络传输数据
+4.声明，是整个XML的第一条语句
+ <?xml version="1.0" encoding="utf-8" ?>
+ 属性：属性值必须加""；
+ 注意：文档扩展名.xml、跨平台
+ 作用：网络传输数据
+ 区别：json/xml的对比
+ 1.目前90%的使用json、10%的使用xml；
+ 2.json解析简单，但是结构不易理解、xml结构容易理解，但是数据冗余；
+ 解析：见AnalyzeViewController.h/m
+ https://blog.csdn.net/qxuewei/article/details/52369067
+ 
+2.XML和JSON的对比
+1）90%使用JSON   10%使用XML
+2）JSON解析简单   XML解析复杂
+3）JSON阅读时结构不易理解  ， XML容易理解，但是有数据冗余
+
+3.XML解析
+Google的GData ——第三方库
+使用Google的GData解析XML
+
+1）相关类和方法
+GDataXMLNode
+//获取当前节点的值
+- (NSString *)stringValue;
+
+GDataXMLElement : GDataXMLNode
+//根据子节点名字获取所有的节点名为name的子节点数组
+- (NSArray *)elementsForName:(NSString *)name;
+//获取节点的属性
+- (NSArray *)attributes;
+//根据属性名获取属性节点
+- (GDataXMLNode *)attributeForName:(NSString *)name;
+
+GDataXMLDocument    //XML节点树
+//创建文档节点
+- (id)initWithData:(NSData *)data options:(unsigned int)mask error:(NSError **)error;
+//获取跟节点
+- (GDataXMLElement *)rootElement;
+//根据xpath 语法 获取 指定的节点数组
+- (NSArray *)nodesForXPath:(NSString *)xpath error:(NSError **)error;
+
+2）本地解析
+//读取数据
+NSData *data = [[NSData alloc]initWithContentsOfFile:PATH];
+        
+//建立节点数对象
+GDataXMLDocument *doc = [[GDataXMLDocument alloc]initWithData:data options:0 error:nil];
+
+
+3）网络解析
+转换为URL类型网址
+NSURL * url = [NSURL URLWithString:@"http://mps.manzuo.com/mps/cate?sid=(null)&id=0&cc=beijing&pt=all&ffst=1&mnt=10&st=-1&hs=1"];
+
+向服务器请求数据，并获得数据
+NSData * data = [NSData dataWithContentsOfURL:url];
+
+建立节点数对象
+GDataXMLDocument *doc = [[GDataXMLDocument alloc] initWithData:data options:0 error:nil];
+
+数据接口
+http://www.k780.com/api
+
+xml解析配置步骤
+1、先把Gdata库拖入到项目中-》copy item if
+needed  选择第一个单选钮（create groupes）
+下面add to targets一般打上勾
+2、到项目的build phases—》Link Binary With -Library里添加一个二进制库(搜索libxml2)—>选择libxml2.dylib—add
+3、到项目的build phases—》compile里给Gdata文件添加禁用arc(-fno-objc-arc)
+4、到项目的build settings-》搜索栏里搜索header search paths—》找到后双击-》添加(/usr/include/libxml2)———》   继续搜索（other linker flags）—》双击-》添加(-lxml2)
+练习：
+<1>http://www.oschina.net/action/api/news_detail?id=44392
+xml解析
+Google的GData 第三方库
+
+今日内容：
+XPath语法的使用
+//XML路径语法
+作用：快速的锁定某一级的节点。可以免去一层层复杂的节点搜索
+XPath 使用路径表达式来选取 XML 文档中的节点或节点集。节点是通过沿着路径 (path) 或者步 (steps) 来选取的。掌握MVC设计模式
+
+1.选择器
+#import <Foundation/Foundation.h>
+
+@interface Person : NSObject
+
+@property NSInteger num;
+@property NSString *name;
+@property NSInteger age;
+
+-(BOOL)shortreules:(Person*)person;
+
+@end
+
+
+#import "Person.h"
+
+@implementation Person
+
+-(BOOL)shortreules:(Person *)person {
+    BOOL a=self.age>person.age;
+    if(self.age==person.age) {
+        if(NSOrderedDescending==[self.name compare:person.name])
+            a=YES;
+    }
+    return a;
+}
+
+@end
+
+
+#import <Foundation/Foundation.h>
+#import "Person.h"
+        int main(int argc, const char * argv[]) {
+            @autoreleasepool {
+                Person *person1=[[Person alloc]init];
+                person1.num=001;
+                person1.name=@"xiaoming";
+                person1.age=12;
+                
+                Person *person2=[[Person alloc]init];
+                person2.num=002;
+                person2.name=@"xiaohong";
+                person2.age=12;
+                
+                Person *person3=[[Person alloc]init];
+                person3.num=003;
+                person3.name=@"hanmeimei";
+                person3.age=12;
+                
+                NSMutableArray *arr=[[NSMutableArray alloc]initWithObjects:person1,person2,person3, nil];
+                SEL sel=@selector(shortreules:);
+                //NSArray *arr1 = [arr sortedArrayUsingSelector:sel];
+                
+                [arr sortUsingSelector:sel];
+                for (Person *person in arr) {
+                    NSLog(@"学号：%lu 姓名：%@ 年龄：%lu",person.num,person.name,person.age);
+                }
+            }
+    return 0;
+}
+
+
+2.文件NSFileManager
+#import <Foundation/Foundation.h>
+
+#define PATH @"/Users/qianfeng/Desktop/文件/文件/main.m"
+
+int main(int argc, const char * argv[]) {
+    @autoreleasepool {
+        //创建文件管理单例对象
+        //NSFileManager *file = [NSFileManager defaultManager];
+        NSError *error = nil;
+        
+        NSFileManager *manager=[[NSFileManager alloc]init];
+        /*浅度遍历
+        NSArray *arr =  [file contentsOfDirectoryAtPath:PATH error:&error];
+        if (error != nil) {
+            NSLog(@"%@",error);
+        }
+        NSLog(@"%@",arr);
+        
+         深度遍历
+       arr = [file subpathsOfDirectoryAtPath:PATH error:&error];
+       NSLog(@"%@",arr);*/
+        
+        //判断文件是否存在
+        NSLog(@"%d",[manager fileExistsAtPath:PATH]);
+        
+        //创建文件
+        NSString *str=@"飞流直下三千尺";
+        
+        NSData *data=[str dataUsingEncoding:NSUTF8StringEncoding];
+        
+        [manager createFileAtPath:PATH contents:data attributes:nil];/*参数1：创建文件的路径
+                   参数2：内容，如果nil表示创建一个内容为空的文件。
+                   参数3：nil表示采用默认的设置
+                   如果文件已经存在，会覆盖原来文件*/
+        
+       NSString *fromPath =@"/Users/qianfeng/Desktop/文件/文件/main.m";
+        
+       NSString *toPath =@"/Users/qianfeng/Desktop/文件/Manager.h";
+      
+        [manager copyItemAtPath:fromPath toPath:toPath error:&error];
+
+        [manager moveItemAtPath:fromPath toPath:toPath error:&error];
+        
+        [manager removeItemAtPath:@"/Users/qianfeng/Desktop/文件/Manager.h" error:nil];
+        
+        //获取文件属性,返回的是字典
+      NSDictionary *dic=[manager attributesOfItemAtPath:@"/Users/qianfeng/Desktop/文件/文件/main.m" error:nil];
+        for(NSString *key in dic) {
+            NSLog(@"%@",[dic objectForKey:key]);
+        }
+    }
+    return 0;
+}
+
+
+3.文件NSHandle
+#define PATH @"/Users/qianfeng/Desktop/文件/文件/main.m"
+
+#import <Foundation/Foundation.h>
+
+int main(int argc, const char * argv[]) {
+    @autoreleasepool {
+        NSString *str = @"飞流直下三千尺，不及汪伦送我情";
+        
+        NSData *data = [str dataUsingEncoding:NSUTF8StringEncoding];
+       
+        [data writeToFile:PATH atomically:YES];
+        
+        //创建一个可读可写的文件句柄
+        NSFileHandle *readWriteHandle = [NSFileHandle fileHandleForUpdatingAtPath:PATH];
+        
+        //设置偏移量
+        [readWriteHandle seekToFileOffset:9];
+        
+        //读取指定长度数据
+        data = [readWriteHandle readDataOfLength:6];
+        
+        NSString *str1 = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+        
+        NSLog(@"%@",str1);
+        
+        //设置偏移量到文件尾
+        [readWriteHandle seekToEndOfFile];
+        
+        //从当前偏移量读取到文件尾
+        data = [readWriteHandle readDataToEndOfFile];
+        
+        //关闭句柄
+        [readWriteHandle closeFile];
+        
+    }
+    return 0;
+}
+
+
+12.Json解析
+1.本地解析
+JSON:
+{
+    "error": 0,
+    "status": "success",
+    "date": "2015-08-24",
+    "results": [
+        {
+            "currentCity": "北京市",
+            "pm25": "30",
+            "index": [
+                {
+                    "title": "穿衣",
+                    "zs": "热",
+                    "tipt": "穿衣指数",
+                    "des": "天气热，建议着短裙、短裤、短薄外套、T恤等夏季服装。"
+                },
+                {
+                    "title": "洗车",
+                    "zs": "较适宜",
+                    "tipt": "洗车指数",
+                    "des": "较适宜洗车，未来一天无雨，风力较小，擦洗一新的汽车至少能保持一天。"
+                },
+                {
+                    "title": "旅游",
+                    "zs": "适宜",
+                    "tipt": "旅游指数",
+                    "des": "天气较好，但丝毫不会影响您的心情。微风，虽天气稍热，却仍适宜旅游，不要错过机会呦！"
+                },
+                {
+                    "title": "感冒",
+                    "zs": "少发",
+                    "tipt": "感冒指数",
+                    "des": "各项气象条件适宜，发生感冒机率较低。但请避免长期处于空调房间中，以防感冒。"
+                },
+                {
+                    "title": "运动",
+                    "zs": "适宜",
+                    "tipt": "运动指数",
+                    "des": "天气较好，赶快投身大自然参与户外运动，尽情感受运动的快乐吧。"
+                },
+                {
+                    "title": "紫外线强度",
+                    "zs": "中等",
+                    "tipt": "紫外线强度指数",
+                    "des": "属中等强度紫外线辐射天气，外出时建议涂擦SPF高于15、PA+的防晒护肤品，戴帽子、太阳镜。"
+                }
+            ],
+            "weather_data": [
+                {
+                    "date": "周一 08月24日 (实时：28℃)",
+                    "dayPictureUrl": "http://api.map.baidu.com/images/weather/day/duoyun.png",
+                    "nightPictureUrl": "http://api.map.baidu.com/images/weather/night/duoyun.png",
+                    "weather": "多云",
+                    "wind": "微风",
+                    "temperature": "30 ~ 20℃"
+                },
+                {
+                    "date": "周二",
+                    "dayPictureUrl": "http://api.map.baidu.com/images/weather/day/duoyun.png",
+                    "nightPictureUrl": "http://api.map.baidu.com/images/weather/night/duoyun.png",
+                    "weather": "多云",
+                    "wind": "微风",
+                    "temperature": "30 ~ 20℃"
+                },
+                {
+                    "date": "周三",
+                    "dayPictureUrl": "http://api.map.baidu.com/images/weather/day/duoyun.png",
+                    "nightPictureUrl": "http://api.map.baidu.com/images/weather/night/duoyun.png",
+                    "weather": "多云",
+                    "wind": "微风",
+                    "temperature": "31 ~ 20℃"
+                },
+                {
+                    "date": "周四",
+                    "dayPictureUrl": "http://api.map.baidu.com/images/weather/day/duoyun.png",
+                    "nightPictureUrl": "http://api.map.baidu.com/images/weather/night/duoyun.png",
+                    "weather": "多云",
+                    "wind": "微风",
+                    "temperature": "31 ~ 21℃"
+                }
+            ]
+        }
+    ]
+}
+
+
+#import <Foundation/Foundation.h>
+
+@interface Model : NSObject
+
+@property NSString *title;
+@property NSString *zs;
+@property NSString *tipt;
+@property NSString *des;
+
+@end
+
+
+#import "Model.h"
+
+@implementation Model
+
+@end
+
+
+#import <Foundation/Foundation.h>
+#import "Model.h"
+#define PATH @"/Users/qianfeng/Desktop/本地解析/解析/2.json"
+
+int main(int argc, const char * argv[]) {
+    @autoreleasepool {
+        NSData *data=[[NSData alloc]initWithContentsOfFile:PATH];
+        NSMutableDictionary *dic=[NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+        
+        NSArray *arr=dic[@"results"];
+        NSMutableDictionary *dic1=arr[0];
+        NSArray *arr1=dic1[@"index"];
+        NSDictionary *dic2=arr1[0];
+        
+        NSMutableArray *array=[[NSMutableArray alloc]init];
+        Model *m=[[Model alloc]init];
+        
+        for(int i=0;i<[arr1 count];i++) {
+            dic2=arr1[i];
+            m.title=dic2[@"title"];
+            m.zs=dic2[@"zs"];
+            m.tipt=dic2[@"tipt"];
+            m.des=dic2[@"des"];
+            [array addObject:m];
+        }
+        
+        for(Model *m in array) {
+            NSLog(@"title:%@ zs:%@ tipt:%@ des:%@",m.title,m.zs,m.tipt,m.des);
+        }
+    }
+    return 0;
+}
+
+
+2。网络解析
+#import <Foundation/Foundation.h>
+
+@interface Model : NSObject
+
+@property NSString*uid;
+@property NSString*username;
+@property NSString*groupid;
+@property NSString*credit;
+@property NSString*experience;
+@property NSString*viewnum;
+@property NSString*friendnum;
+@property NSString*lastactivity;
+@property NSString*headimage;
+@property NSString*realname;
+
+@end
+
+
+#import "Model.h"
+
+@implementation Model
+
+@end
+
+
+#import <Foundation/Foundation.h>
+#import "Model.h"
+
+int main(int argc, const char * argv[]) {
+    @autoreleasepool {
+        //定义字符串网址
+        NSString *strUrl = @"http://10.0.8.8/sns/my/user_list.php?number=20&page=1";
+        
+        //将网址转换为URL类型
+        //string类型的字符串网址需要做一个转换
+        //转换为NSURL类型的网址，才可以进行申请数据操作
+        NSURL *url = [NSURL URLWithString:strUrl];
+        
+        //向网络服务器请求数据
+        //同步请求数据，当服务器响应数据之前，线程一直处于卡死状态
+        NSData *data = [[NSData alloc]initWithContentsOfURL:url];
+        
+        //网络请求的数据都存储在data里了
+        NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+        
+        //到这一步，所有的json数据都存储在字典里了
+        NSArray *arr= dic[@"users"];
+        NSDictionary *dic1=arr[0];
+        NSMutableArray *array=[[NSMutableArray alloc]init];
+        
+        for(int i=0;i<[arr count];i++) {
+            Model *m=[[Model alloc]init];
+            dic1=[arr objectAtIndex:i];
+            m.uid=dic1[@"uid"];
+            m.username=dic1[@"username"];
+            m.groupid=dic1[@"groupid"];
+            m.credit=dic1[@"credit"];
+            m.experience=dic1[@"experience"];
+            m.viewnum=dic1[@"viewnum"];
+            m.friendnum=dic1[@"friendnum"];
+            m.lastactivity=dic1[@"lastactivity"];
+            m.headimage=dic1[@"headimage"];
+            m.realname=dic1[@"realname"];
+            
+            [array addObject:m];
+        }
+        for(Model *m in array) {
+            NSLog(@"uid:%@ username:%@ groupid:%@ credit:%@ experience:%@ viewnum:%@ friendnum:%@ lastactivity:%@ headimage%@ realname:%@",m.uid,m.username,m.groupid,m.credit,m.experience,m.viewnum,m.friendnum,m.lastactivity,m.headimage,m.realname);
+        }
+    }
+    return 0;
+}
+
+
+13.XML解析
+1.本地解析
+xml解析配置步骤
+1、先把Gdata库拖入到项目中-》copy item if
+needed  选择第一个单选钮（create groupes）
+下面add to targets一般打上勾
+2、到项目的build phases—》Link Binary With -Library里添加一个二进制库(搜索libxml2)—>选择libxml2.dylib—add
+3、到项目的build phases—》compile里给Gdata文件添加禁用arc(-fno-objc-arc)
+4、到项目的build settings-》搜索栏里搜索header search paths—》找到后双击-》添加(/usr/include/libxml2)———》   继续搜索（other linker flags）—》双击-》添加(-lxml2)
+
+#import <Foundation/Foundation.h>
+
+@interface Book : NSObject
+
+@property NSString *ID;
+@property NSString *lag;
+@property NSString *name;
+@property NSString *authorName;
+@property NSInteger price;
+@property NSString *summary;
+
+@end
+
+
+#import <Foundation/Foundation.h>
+#import "Book.h"
+
+@interface Manager : NSObject {
+    NSMutableArray *arr;
+}
+
+- (void)addBook:(Book *)book;
+
+- (void)show;
+
+@end
+
+
+#import "Manager.h"
+
+@implementation Manager
+
+-(instancetype)init {
+    if (self = [super init]) {
+        arr = [[NSMutableArray alloc]init];
+    }
+    return self;
+}
+
+- (void)addBook:(Book *)book {
+    [arr addObject:book];
+}
+
+- (void)show {
+    for (Book *b in arr) {
+        NSLog(@"%@",b.summary);
+    }
+}
+@end
+
+
+#import "Book.h"
+
+@implementation Book
+
+@end
+
+
+#import <Foundation/Foundation.h>
+#import "Book.h"
+#import "Manager.h"
+#import "GDataXMLNode.h"
+
+int main(int argc, const char * argv[]) {
+    @autoreleasepool {
+        NSData *data = [[NSData alloc]initWithContentsOfFile:@"/Users/qianfeng/Desktop/demo/xml本地解析4/xml本地解析4/GData/book.xml"];
+        GDataXMLDocument *doct = [[GDataXMLDocument alloc]initWithData:data options:0 error:nil];
+        GDataXMLElement *rootElement = [doct rootElement];
+        
+        //取books节点
+        GDataXMLElement *booksElement = [rootElement elementsForName:@"books"].firstObject;
+        
+        Manager *m=[[Manager alloc]init];
+        
+        //取book节点
+        NSArray *arr = [booksElement elementsForName:@"book"];
+        
+        for (GDataXMLElement *bookElement in arr) {
+            GDataXMLNode *ID = [bookElement attributeForName:@"id"];
+            GDataXMLNode *language = [bookElement attributeForName:@"language"];
+            GDataXMLElement *nameElement = [bookElement elementsForName:@"name"].firstObject;
+            GDataXMLElement *autherElement = [bookElement elementsForName:@"auther"].firstObject;
+            GDataXMLElement *autNameElement = [autherElement elementsForName:@"name"].firstObject;
+            GDataXMLElement *priceElement = [bookElement elementsForName:@"price"].firstObject;
+            GDataXMLElement *summaryElement = [bookElement elementsForName:@"summary"].firstObject;
+            
+            Book *book = [[Book alloc]init];
+            book.ID = [ID stringValue];
+            book.lag = [language stringValue];
+            book.name = [nameElement stringValue];
+            book.authorName = [autNameElement stringValue];
+            book.price = [[priceElement stringValue] doubleValue];
+            book.summary = [summaryElement stringValue];
+
+            [m addBook:book];
+        }
+        [m show];
+    }
+    return 0;
+}
+
+
+2.XML:
+<?xml version="1.0" encoding="UTF-8"?>
+<root name="中国">
+  <province name="天津市" postcode="120000" >
+    <city name="市辖区" postcode="120100" >
+        <area name="和平区" postcode="120101" />
+        <area name="河东区" postcode="120102" />
+        <area name="河西区" postcode="120103" />
+        <area name="南开区" postcode="120104" />
+        <area name="河北区" postcode="120105" />
+        <area name="红桥区" postcode="120106" />
+        <area name="塘沽区" postcode="120107" />
+        <area name="汉沽区" postcode="120108" />
+        <area name="大港区" postcode="120109" />
+        <area name="东丽区" postcode="120110" />
+        <area name="西青区" postcode="120111" />
+        <area name="津南区" postcode="120112" />
+        <area name="北辰区" postcode="120113" />
+        <area name="武清区" postcode="120114" />
+        <area name="宝坻区" postcode="120115" />
+    </city>
+  </province>
+</root>
+
+
+#import <Foundation/Foundation.h>
+
+@interface Area : NSObject
+
+@property NSString *name;
+@property NSString *postcode;
+
+@end
+
+
+#import "Area.h"
+
+@implementation Area
+
+@end
+
+
+#import <Foundation/Foundation.h>
+#import "Area.h"
+@interface Manager : NSObject {
+    NSMutableArray *_arr;
+}
+
+- (void)addArea:(Area *)area;
+
+- (void)showAll;
+
+@end
+
+
+#import "Manager.h"
+
+@implementation Manager
+
+-(instancetype)init {
+    if (self = [super init]) {
+        _arr = [[NSMutableArray alloc]init];
+    }
+    return self;
+}
+
+-(void)addArea:(Area *)area {
+    [_arr addObject:area];
+}
+
+-(void)showAll {
+    for (Area *area in _arr) {
+        NSLog(@"name:%@,postcode:%@",area.name,area.postcode);
+    }
+}
+
+@end
+
+
+#import <Foundation/Foundation.h>
+#import "GDataXMLNode.h"
+#import "Manager.h"
+
+int main(int argc, const char * argv[]) {
+    @autoreleasepool {
+        Manager *m = [[Manager alloc]init];
+        
+        NSData *data = [[NSData alloc]initWithContentsOfFile:@"/Users/qianfeng/Desktop/伯明利－下午 /2.t/tianjin.xml"];
+        GDataXMLDocument *doc = [[GDataXMLDocument alloc]initWithData:data options:0 error:nil];
+        
+        GDataXMLElement *rootElement = [doc rootElement];
+        GDataXMLNode *rootNameElement = [rootElement attributeForName:@"name"];
+        Area *area1 = [[Area alloc]init];
+        area1.name = rootNameElement.stringValue;
+        [m addArea:area1];
+        
+        GDataXMLElement *provinceElement = [rootElement elementsForName:@"province"].firstObject;
+        GDataXMLNode *provinceName = [provinceElement attributeForName:@"name"];
+        GDataXMLNode *provincePostcode = [provinceElement attributeForName:@"postcode"];
+        Area *area2 = [[Area alloc]init];
+        area2.name =provinceName.stringValue;
+        area2.postcode =provincePostcode.stringValue;
+        [m addArea:area2];
+        
+        GDataXMLElement *cityElement = [provinceElement elementsForName:@"city"].firstObject;
+        GDataXMLNode *cityName = [cityElement attributeForName:@"name"];
+        GDataXMLNode *cityPostcode = [cityElement attributeForName:@"postcode"];
+        Area *area3 = [[Area alloc]init];
+        area3.name = cityName.stringValue;
+        area3.postcode = cityPostcode.stringValue;
+        [m addArea:area3];
+        
+        NSArray *arr = [cityElement elementsForName:@"area"];
+        for (GDataXMLElement *areaElement in arr) {
+            GDataXMLNode *name = [areaElement attributeForName:@"name"];
+            GDataXMLNode *postcode = [areaElement attributeForName:@"postcode"];
+            Area *area = [[Area alloc]init];
+            area.name = name.stringValue;
+            area.postcode = postcode.stringValue;
+            [m addArea:area];
+        }
+        [m showAll];
+    }
+    return 0;
+}
+
+3.网络解析
+#import <Foundation/Foundation.h>
+
+@interface Model : NSObject
+
+@property NSString *title;
+@property NSString *url;
+
+@end
+
+
+#import "Model.h"
+
+@implementation Model
+
+@end
+
+#import <Foundation/Foundation.h>
+#import "Model.h"
+#import "GDataXMLNode.h"
+
+int main(int argc, const char * argv[]) {
+    @autoreleasepool {
+        NSURL *url = [NSURL URLWithString:@"http://www.oschina.net/action/api/news_detail?id=44392"];
+        NSData *data = [[NSData alloc]initWithContentsOfURL:url];
+        GDataXMLDocument *doc = [[GDataXMLDocument alloc]initWithData:data options:0 error:nil];
+        GDataXMLElement *rootEle = [doc rootElement];
+        GDataXMLElement *newsEle = [rootEle elementsForName:@"news"][0];
+        GDataXMLElement *relEle = [newsEle elementsForName:@"relativies"][0];
+
+        NSArray *arr = [relEle elementsForName:@"relative"];
+        NSMutableArray *mArr = [[NSMutableArray alloc]init];
+        
+        for (GDataXMLElement *releEle in arr) {
+            GDataXMLElement *titleEle = [releEle elementsForName:@"rtitle"][0];
+            GDataXMLElement *urlEle = [releEle elementsForName:@"rurl"][0];
+            
+            Model *m = [[Model alloc]init];
+            m.title = [titleEle stringValue];
+            m.url = [urlEle stringValue];
+            [mArr addObject:m];
+        }
+        for (Model *m in mArr) {
+            NSLog(@"title=%@,url=%@",m.title,m.url);
+        }
+    }
+    return 0;
+}
+
+#异步网络请求：
+//分类：
+网络请求：get
+网络上传：post
+下载：NO
+//原生网络请求：
+CFNetwork：纯C语言
+NSURLConnection：iOS7.0被废弃
+NSURLSession：NO
+https://www.jianshu.com/p/b0ddadd34037
+//ASIHttpRequest：不在更新
+//MKNetworkKit：简单易用，使用者较少
+//AFNetworking：
+1.概述：2.0使用的是NSURLConnection、3.0使用NSURLSession；
+2.代码：NetworkViewController.h/m
+注意：不要在子线程中更新UI；
+//利用KVO、KVC进行网络请求：参考2015-10-13
+1.新建数据模型PostInfo.h/m
+2.新建数据源：必须初始化
+3.设置单例：全局使用
+3.监测数据源变化：KVO
+4.新建下拉控件：进入VC->开始下拉加载->网络请求：改变数据源->加载UITableView
+5.在View中更新UI
+代码：NetworkViewController.h/m
+//设置应用支持https
+Xcode7.0以后：NSAppTransportSecurity->NSAllowsArbitraryLoads->YES
+
+#网络编程需要掌握的内容：NO
+0.实时监测网络变化
+1.数据请求、数据上传、下载
+2.原生网络请求的原理
+3.网络请求第三方库的使用
+4.KVC在网络请求中的应用
+5.进入VC以后怎么加载操作

@@ -34,7 +34,7 @@
     // 让执行过程停在此处
     [[NSRunLoop currentRunLoop] run];
     /// 两者有什么不同？？？
-    // 判断 obj0对象 是否 NSObject类的子类 创建
+    // 判断 “obj0对象” 是否 “NSObject类/子类” 创建
     if ([obj0 isKindOfClass:[NSObject class]]) {
         
     }
@@ -77,6 +77,12 @@
     // 用于给对象分配存储空间和初始化存储空间
     NSString *str2 = [NSString stringWithString:str1];
     NSLog(@"%@", str2);
+    /**
+     关于内存管理
+     1>.一般情况下只要通过 “alloc/第一种方式” 或者 “类工厂方法/第二种方式” 创建的对象每次都会在堆内存中开辟一块新的存储空间
+     2>.如果是通过 ‘alloc的initWithString方法’ 除外/因为该方法是通过复制返回一个字符串对象
+     3>.
+     */
     // C语言字符串 <==> OC字符串
     NSString *str3 = [[NSString alloc]initWithUTF8String:"我是c语言字符串"];
     //const char *c = [str3 UTF8String]; // 这是C语言字符串
@@ -627,7 +633,7 @@
 
 
 /// 6.NSValue
-// NSValue是NSNumber的父类、可以包装任意类型
+// NSValue是NSNumber的父类、可以包装任意类型（包括数组/指针/结构体）
 // 可以对结构体进行包装
 -(void)showValue {
     // 包装结构体、结构体不能直接存入数组
@@ -684,7 +690,7 @@
 // NSData/二进制数据
 -(void)showDate {
     // 1.NSDate的创建和基本概念
-    // 获取当前时间
+    // 获取当前时间/以格林尼治时间为准
     NSDate *now = [NSDate date];
 //    // 在 now 的基础上追加 10 秒
 //    NSDate *date = [now dateByAddingTimeInterval:10];
@@ -758,13 +764,33 @@
     for (NSString *timeZone in [NSTimeZone knownTimeZoneNames]) {
         NSLog(@"%@", timeZone);
     }
+
+//    // 9.其它设置
+//    // 未来时间 - 用于暂停定时器，将定时器启动时间设为遥远的未来
+//    NSDate * futureDate = [NSDate distantFuture];
+//    // 过去时间 - 用于重启定时器，将定时器启动时间设为遥远的过去
+//    NSDate * pastDate = [NSDate distantPast];
 }
 
 
 
-/// 9.NSData
+/// 9.NSData/二进制数据类
 -(void)showData {
-    
+    // NSString -> NSData
+    NSString *string = @"谢吴军";
+    NSData *data= [string dataUsingEncoding:NSUTF8StringEncoding];
+    /**
+     将 data数据 写入文件
+     1.如果文件不存在 -> 创建文件
+     2.如果文件已存在 -> 覆盖文件
+     单线程下操作传入 YES/NO 无分别/多线程下操作必须传入 YES
+     
+     */
+    [data writeToFile:@"/Users/xiewujun/Desktop/data.txt" atomically:YES];
+    // NSData -> NSString
+    string = [[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
+    // 从文件中读取数据存储在二进制文件中
+    data = [[NSData alloc]initWithContentsOfFile:@"/Users/xiewujun/Desktop/data.txt"];
 }
 
 

@@ -30,7 +30,7 @@ Comment评论/Calendar日历/Custom自定义/Cache缓存/Coupon优惠券
 // D
 Dialog对话框/Demo样品/演示/Debug调试
 // E
-End/Finish结束/Engine发动机/Embedded嵌入/Exit退出
+End/Finish结束/Engine发动机/Embedded嵌入/Exit退出/Exchange交换
 // F
 Fail失败/Flag标志/Footer页脚/Framework框架/Focus关注/Follow跟随
 // G
@@ -45,7 +45,7 @@ KeyWord关键字/KeyBoard键盘
 // L
 Libs库/Login登录/Logout登出/Loading加载/Layout布局/Link链接/Least最少的/Log输出/Loop循环
 // M
-Mobile手机/MVC/MVVM/MVP架构/Material材料/Menu菜单/MapView地图视图/Media媒体
+Mobile手机/MVC/MVVM/MVP架构/Material材料/Menu菜单/MapView地图视图/Media媒体/Message(Msg)信息
 // N
 NetWork网络/Notification通知
 // O
