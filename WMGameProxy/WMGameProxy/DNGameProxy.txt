@@ -21,14 +21,14 @@ https://developer.apple.com
 /**************************常用单词**************************/
 // A
 Activity活动/Action动作/Animations动画/Audio音频/AutoLogin自动登录/Analysis分析
-Alert警告
+Access访问/Alert警告
 // B
 Bean/Domain/Model/Item实体类/Button按钮/Bluetooth蓝牙/Back返回/Bool是否/Begin开始
 // C
 Code代码/Content内容/Common公共的/CheckBox复选框/Component组件/Category类别/Chart图表
-Comment评论/Calendar日历/Custom自定义/Cache缓存/Coupon优惠券
+Comment评论/Calendar日历/Custom自定义/Cache缓存/Coupon优惠券/Create建立
 // D
-Dialog对话框/Demo样品/演示/Debug调试
+Dialog对话框/Demo样品/演示/Debug调试/Destroy销毁/Delete删除
 // E
 End/Finish结束/Engine发动机/Embedded嵌入/Exit退出/Exchange交换
 // F
@@ -38,7 +38,7 @@ Game游戏/Gesture手势
 // H
 Header头部/HotFix热修复
 // I
-Init初始化/Image图像/Icon图标、头像/Intent意图/Item单项/Index索引
+Init初始化/Image图像/Icon图标/Intent意图/Item单项/Index索引/Insert插入
 // J
 // K
 KeyWord关键字/KeyBoard键盘
@@ -46,6 +46,7 @@ KeyWord关键字/KeyBoard键盘
 Libs库/Login登录/Logout登出/Loading加载/Layout布局/Link链接/Least最少的/Log输出/Loop循环
 // M
 Mobile手机/MVC/MVVM/MVP架构/Material材料/Menu菜单/MapView地图视图/Media媒体/Message(Msg)信息
+Modify修改
 // N
 NetWork网络/Notification通知
 // O

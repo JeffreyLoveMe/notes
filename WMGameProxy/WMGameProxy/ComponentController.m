@@ -10,7 +10,7 @@
 #import "SySkillController.h"
 #import "FoundationNSObject.h"
 
-@interface ComponentController () <UITextFieldDelegate, UIAlertViewDelegate, UIActionSheetDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UIScrollViewDelegate, UITabBarControllerDelegate, UIGestureRecognizerDelegate>
+@interface ComponentController () <UITextFieldDelegate, UITextViewDelegate, UIAlertViewDelegate, UIActionSheetDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UIScrollViewDelegate, UITabBarControllerDelegate, UIGestureRecognizerDelegate>
  
 @end
 
@@ -54,11 +54,12 @@
  7.alpha
  */
 -(void)setupView {
-    UIView *view = [[UIView alloc]init];
-    /// 坐标系
+//    // 坐标系
 //    CGPoint point = CGPointMake(100, 100); // 坐标
 //    CGSize size = CGSizeMake(100, 100);  // 尺寸
 //    CGRect rect = CGRectMake(100, 100, 100, 100); // 矩形
+//    CGRectZero - "高度/宽度 = 0"的矩形常量
+    UIView *view = [[UIView alloc]init];
     /// 设置是否能接收事件 / UIView默认是true
     // 如果父视图不能接收事件、则子视图不能接收事件
     // 子视图超出父视图部分不能接收事件
@@ -551,7 +552,61 @@
 #pragma mark - UITextView能滚动的文本显示控件
 -(void)setupTextView {
     // 可以滚动
+    UITextView *textView = [[UITextView alloc]init];
+    textView.frame = CGRectMake(100, 100, 100, 50);
+    [self.view addSubview:textView];
+    textView.backgroundColor = [UIColor whiteColor];
+    // 当文字超过视图边框时是否允许滑动 - 默认YES
+    textView.scrollEnabled = YES;
+    // 是否允许编辑内容 - 默认YES
+    textView.editable = YES;
+    // 设置字体名字和字体大小
+    textView.font = [UIFont fontWithName:@"Arial" size:18.0];
+    // return键的类型
+    textView.returnKeyType = UIReturnKeyDefault;
+    // 键盘类型
+    textView.keyboardType = UIKeyboardTypeDefault;
+    // 文本显示的位置默认为居左
+    textView.textAlignment = NSTextAlignmentLeft;
+    // 显示数据类型的链接模式（如电话号码、网址、地址等）
+    textView.dataDetectorTypes = UIDataDetectorTypeAll;
+    // 内容
+    textView.text = @"请输入你想要说的话";
+    // 设置代理
+    textView.delegate = self;
 }
+#pragma mark - UITextViewDelegate
+- (BOOL)textViewShouldBeginEditing:(UITextView *)textView {
+    // 将要开始编辑
+    return YES;
+}
+- (BOOL)textViewShouldEndEditing:(UITextView *)textView {
+    // 将要结束编辑
+    return YES;
+}
+- (void)textViewDidBeginEditing:(UITextView *)textView {
+    // 结束编辑
+    [textView resignFirstResponder]; // 放弃第一响应者
+}
+- (void)textViewDidEndEditing:(UITextView *)textView {
+    // 开始编辑
+}
+/*
+ 内容文字改变的时候调用
+ text - 用户输入的内容
+ return - YES允许用户输入/NO不允许使用输入
+ */
+- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
+    // 内容将要发生改变
+    return YES;
+}
+- (void)textViewDidChange:(UITextView *)textView {
+    // 内容发生改变
+}
+- (void)textViewDidChangeSelection:(UITextView *)textView {
+    // 焦点发生改变
+}
+
 
 
 #pragma mark - UIScrollView滚动视图

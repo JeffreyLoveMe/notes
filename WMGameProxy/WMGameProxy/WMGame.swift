@@ -658,8 +658,17 @@ class WMGameProxy: NSObject {
     // 相当于 “dealloc方法”
     deinit {
         // 当对象销毁的时候调用该方法
+        // 借用位置/与该函数无关
+        var _ = block("",18)
     }
-    // 3).typealias修饰闭包
+    
+    // 3).闭包基本写法
+    var block: (_ name: String, _ age: Int) -> (Int) = {
+        (name: String, age: Int) in
+        return 100
+    }
+    
+    // 4).typealias修饰闭包
     typealias callBackBlock = (_ jsonData: String) -> (Void)
     var callBack: callBackBlock?
 }

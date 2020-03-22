@@ -27,6 +27,7 @@
 		331309052420A7DE0014CC7E /* WMPushViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 331309042420A7DE0014CC7E /* WMPushViewController.m */; };
 		331309072421EB520014CC7E /* 线程状态.png in Resources */ = {isa = PBXBuildFile; fileRef = 331309062421EB510014CC7E /* 线程状态.png */; };
 		3324C82024260DD100766248 /* TestFight添加测试人员.png in Resources */ = {isa = PBXBuildFile; fileRef = 3324C81F24260DD100766248 /* TestFight添加测试人员.png */; };
+		3324C8222427B39800766248 /* 从应用A跳转到应用B.png in Resources */ = {isa = PBXBuildFile; fileRef = 3324C8212427B39800766248 /* 从应用A跳转到应用B.png */; };
 		3324D54B22DED4BF0066241F /* WMWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3324D54A22DED4BF0066241F /* WMWebViewController.m */; };
 		3359FE8E241F3E870014C82C /* iphone设备各种空间尺寸.png in Resources */ = {isa = PBXBuildFile; fileRef = 3359FE52241F3E830014C82C /* iphone设备各种空间尺寸.png */; };
 		3359FE8F241F3E870014C82C /* 下拉加载范例.png in Resources */ = {isa = PBXBuildFile; fileRef = 3359FE53241F3E830014C82C /* 下拉加载范例.png */; };
@@ -178,6 +179,7 @@
 		331309042420A7DE0014CC7E /* WMPushViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WMPushViewController.m; sourceTree = "<group>"; };
 		331309062421EB510014CC7E /* 线程状态.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "线程状态.png"; sourceTree = "<group>"; };
 		3324C81F24260DD100766248 /* TestFight添加测试人员.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TestFight添加测试人员.png"; sourceTree = "<group>"; };
+		3324C8212427B39800766248 /* 从应用A跳转到应用B.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "从应用A跳转到应用B.png"; sourceTree = "<group>"; };
 		3324D54922DED4BF0066241F /* WMWebViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WMWebViewController.h; sourceTree = "<group>"; };
 		3324D54A22DED4BF0066241F /* WMWebViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WMWebViewController.m; sourceTree = "<group>"; };
 		3359FE52241F3E830014C82C /* iphone设备各种空间尺寸.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iphone设备各种空间尺寸.png"; sourceTree = "<group>"; };
@@ -456,6 +458,7 @@
 				33B10E712422959F00C6E8C7 /* 让项目支持http请求.png */,
 				3359FE6E241F3E840014C82C /* 给文件名（类名）加前缀.png */,
 				3359FE5B241F3E830014C82C /* 快捷键.png */,
+				3324C8212427B39800766248 /* 从应用A跳转到应用B.png */,
 				330484822423B50500CEE212 /* 内存中有5块内存空间.png */,
 				3359FECF241F7E390014C82C /* 多线程的实现方案.png */,
 				3359FE85241F3E860014C82C /* 内存警告处理.png */,
@@ -703,6 +706,7 @@
 				3359FEA7241F3E870014C82C /* plist知识点.png in Resources */,
 				3359FEA3241F3E870014C82C /* error_调用了一个没有实现的方法.png in Resources */,
 				3359FEB3241F3E870014C82C /* App职责分配.png in Resources */,
+				3324C8222427B39800766248 /* 从应用A跳转到应用B.png in Resources */,
 				3359FEDA241FEC120014C82C /* 部署注意点_00.png in Resources */,
 				3372CD542325F92500E7307B /* SYGameProxy.txt in Resources */,
 				3359FEA4241F3E870014C82C /* json解析标准版.png in Resources */,

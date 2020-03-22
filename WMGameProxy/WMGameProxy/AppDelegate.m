@@ -18,6 +18,7 @@
 
 /// SceneDelegate
 // https://blog.csdn.net/weixin_38735568/article/details/101266408
+#pragma mark - App默认代理
 // 程序开始启动 0 - 4
 // 程序进入后台 1 - 2
 // 程序进入前台 3 - 4
@@ -116,6 +117,7 @@
     // 内存警告2次你还没有操作会闪退
 }
 
+
 #pragma mark -push
 - (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification {
     /**
@@ -141,5 +143,46 @@
             break;
     }
 }
+
+
+#pragma mark - 应用间跳转
+/// iOS9.x以上
+- (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options {
+    /**
+     ？？？怎么把 url 传给别的控制器？？？
+     */
+    // 当别的App通过URL打开该App的时候调用该方法
+    if ([url.host containsString:@"friend"]) {
+        NSLog(@"跳转到好友列表页面");
+    }
+    if ([url.host containsString:@"pengyouquan"]) {
+        NSLog(@"跳转到朋友圈页面");
+    }
+    return YES;
+}
+/// iOS9.x以下
+// 当别的App通过URL打开该App的时候调用该方法
+- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {
+    return YES;
+}
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
+    return YES;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 @end

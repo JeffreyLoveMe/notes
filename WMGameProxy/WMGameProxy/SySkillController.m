@@ -138,10 +138,10 @@
 
 
 #pragma mark - 使用 gif
-// 一般使用"帧动画"替代gif
+// 一般使用 "帧动画" 替代 "gif"
 -(void)shouGIF {
-    // 每个本地文件都可以通过该方法转换成url
-    // 利用url生成对象本身
+    // 每个本地文件都可以通过该方法转换成 "url"
+    // 利用 "url" 生成对象本身
     NSURL *url = [[NSBundle mainBundle] URLForResource:@"FlagZombie" withExtension:@"gif"];
     UIImage *image = [UIImage animatedImageWithAnimatedGIFURL:url];
     UIImageView *gifImageView = [[UIImageView alloc]initWithImage:image];
@@ -545,7 +545,11 @@
     // “key” 必须在 “属性” 中找到、不然会崩溃
     [wm setValue:@"小陈" forKeyPath:@"item.name"];
     
-    // 3.使用 KVC 给私有属性赋值
+    // 3.给数组赋值
+    [[wm mutableSetValueForKeyPath:@"dateArray"] addObject:@"xwj"];
+    [[wm mutableSetValueForKeyPath:@"dateArray"] removeObject:@"xwj"];
+    
+    // 4.使用 KVC 给私有属性赋值
     // nbplus
     // 两种方式都可以
     [wm setValue:@"88" forKeyPath:@"_gameCount"];
@@ -635,6 +639,8 @@
     // 设置联网指示器的可见性
     // 状态栏会出现一个"菊花"
     app.networkActivityIndicatorVisible = YES;
+    // 屏幕常亮不变暗
+    app.idleTimerDisabled = YES;
     // 设置状态栏
     // iOS7.0以后系统提供2种管理状态栏的方法
     // 1.通过 UIViewController 管理：每个 UIViewController 可以拥有自己不同的状态栏
@@ -659,6 +665,12 @@
 - (BOOL)prefersStatusBarHidden {
     return YES;
 }
+/**
+ 通过 UIApplication 管理状态栏 - app状态栏统一管理
+ 不让VC管理状态栏 - 修改 info.plist（View controller-based status bar appearance，设置为NO）
+ [UIApplication sharedApplication].statusBarHidden = YES;
+ [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
+ */
 
 
 #pragma mark - UIDevice

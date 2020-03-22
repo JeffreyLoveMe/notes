@@ -254,6 +254,40 @@ https://ming1016.github.io/categories/Programming
  //刷新UI主线程
  }
 });
+//NSOperation两个子类
+NSOperation是一个多线程任务，用于把它放到队里边当中执行
+NSInvocationOperation
+新建一个任务，在这个任务当中会执行target的selector方法
+NSBlockOperation
+新建一个任务，在这个任务当中会执行block里边的代码块
+NSOperation的cancel消息，直接让Operation取消
+在任务内部，不需要自己写isCancel的处理了
+NSOperationQueue
+// 向队列当中，添加任务
+addOperation
+// 队列的最大并发数量
+maxConcurrentOperationCount
+// GCD
+用来维护一个计数器
+当这个计数器回到0的时候，会触发notify的block
+dispatch_group_t
+dispatch_group_create
+dispatch_group_enter
+dispatch_group_leave
+当group计数器回到0的时候，在指定的queue里边，执行block
+dispatch_group_notify(group, queue, block)
+信号量
+dispatch_semaphore_t
+dispatch_semaphore_create
+dispatch_semaphore_wait
+dispatch_semaphore_signal
+信号量
+跟线程锁(NSLock)概念差不多
+将线程锁，理解成来回两车道，同方向前车在那停着，后车必须等
+其实就是信号量为1的时候
+信号量可以定义堵塞的数量
+比如说信号定义了堵塞数量为2，同方向前车在那堵着，但是另外一条车道有一个空的，所以后车可以选择绕过去
+但是如果同方向两车道都有车在那停着，后车必须也等待，等待到有任何一个车被释放，才可以继续往前开
 */
 96.map（大头针）
 /*
@@ -295,6 +329,12 @@ region.span.latitudeDelta=10;
 region.span.longitudeDelta=10;
 self.mapview.region=region;
 5.知道经纬度就可以标注位置（具体位置借助API）
+//定位
+需要在Info里边添加两项
+当APP在前台的时候才使用，会跟用户弹出一个确认框
+NSLocationWhenInUseUsageDescription
+当APP总是请求用户定位的时候，会跟用户弹出一个确认框
+NSLocationAlwaysUsageDescription
 */
 97.地图导航
 /*
@@ -356,6 +396,21 @@ sallyssecret  你的密码
  
 svn恢复:
 svn revert . -R
+svn地址重定向
+
+cd 进入工作目录
+
+svn switch --relocate svn://10.5.154.237 svn://10.5.154.142 --username sally --password sallyssecret
+SVN客户端
+SmartSVN
+Versions
+CornerStone
+
+svn批量添加、批量删除
+将所有状态为问号的，使用svn add批量添加
+svn st | grep '^\?' | tr '^\?' ' ' | sed 's/[ ]*//' | sed 's/[ ]/\\ /g' | xargs svn add
+将所有状态为叹号的，使用svn delete --force批量删除
+svn st | grep '^!' | tr '^!' ' ' | sed 's/[ ]*//' | sed 's/[ ]/\\ /g' | xargs svn delete --force
 */
 108.消息推送、本地推送
 /*
@@ -825,13 +880,6 @@ for(MusicInformation *newMusic in [MusicManager sharedIntance].selectMusics) {
 */
 http://hao.jobbole.com/magicalrecord/
 
-#通知中心：WMGameProxy直接看代码
-定义：每个App都有一个通知中心，专门负责协助不同对象之间的消息通信
-//创建消息对象
-NSNotification *notice=[[NSNotification alloc]initWithName:@"123" object:nil userInfo:@{@"1":@"123"}];
-[[NSNotificationCenter defaultCenter] postNotification:notice];
-代码：ObserverViewController.h/m
-
 #iOS动画：
 //帧动画
 _imgArray = [[NSMutableArray alloc]init];
@@ -873,22 +921,12 @@ NSURL *url = [NSURL fileURLWithPath:docPath];
 NSURLRequest *request = [NSURLRequest requestWithURL:url];
 [webView loadRequest:request];
 [webview loadHTMLString:str baseURL:nil];//加载html页面
-//屏幕常亮不变暗
-[UIApplication sharedApplication].idleTimerDisabled = YES;
 //隐藏NavigationBar
 [self.navigationController setNavigationBarHidden:YES animated:YES];
 //跳转：隐藏TabBar
 TestViewController *vc = [[TestViewController alloc] init];
 vc.hidesBottomBarWhenPushed = YES;
 [self.navigationController pushViewController:vc animated:YES];
-//跳转系统浏览器
-if ([[UIApplication sharedApplication] respondsToSelector:@selector(openURL:options:completionHandler:)]) {
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:url] options:@{}
-    completionHandler:^(BOOL success) {
-    }];
-} else {
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:url]];
-}
 //时间格式
 NSString *data = [NSString stringWithFormat:@"%.2d:%.2d:%.2d",self.hour,self.minute,self.second];
 //读取文件内容：dict.txt
@@ -970,14 +1008,6 @@ https://www.xfyun.cn/ //科大讯飞：语音识别、语音转写、语音唤�
 #H5游戏加速器引擎：
 https://www.layabox.com/
 https://www.egret.com/
-
-#职(xin)业(ling)规(ji)划(tang)：
-//项目驱动学习：做项目过程中遇到什么新技术就学习什么新技术
-//空闲主动学习：利用空闲时间主动去学习
-//主要技术：数据结构与算法->h5->js->java->C++
-//技术进阶：C语言->Objective-C语言->iOS->Swift->Java->Android->C++(选修)—>
-h5/css/js->前端->php->后端->python->运维->IT->word/excel/ppt
-https://www.jianshu.com/p/c73aa144d513
 
 #Model：字典转模型
 好处：字典的key不会提示错误、Model的属性会提示错误；
@@ -1085,21 +1115,6 @@ PostStore类网络请求完成，需要告诉VC网络请求操作完成；
 幕，我们不要release，而是回收到复用队列，然后在创建cell的时候首先去复用队列中
 取，如果没有我们在创建。
 //代码：见WaterFall
-
-#状态栏：
-//通过UIViewController管理状态栏(每个VC都拥有自己不同的状态栏)
-//状态栏样式
-- (UIStatusBarStyle)preferredStatusBarStyle {
-return UIStatusBarStyleLightContent;
-}
-//隐藏状态栏
-- (BOOL)prefersStatusBarHidden {
-return YES;
-}
-//通过UIApplication管理状态栏(app状态栏统一管理)
-//修改info.plist：不让VC管理状态栏-添加key：View controller-based status bar appearance，设置为NO
-[UIApplication sharedApplication].statusBarHidden = YES;
-[UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
 
 #像素和点之间的转换：效果图上标注的怎么转换？
 https://blog.csdn.net/ridxmc/article/details/51346472
@@ -1229,39 +1244,6 @@ https://blog.csdn.net/liyun123gx/article/details/44222255
 练习：找出实用的第三方框架开发出商用级别项目；
 https://blog.csdn.net/Dreamandpassion/article/details/82459246
 https://www.jianshu.com/p/d8062b1856f3
-
-#程序之间通信：
-概念：URL组成-协议类型+服务器地址+资源路径+请求参数
-原理：从一个App跳转到另一个App的必要条件：另一个App必须配置scheme(skim)协议，这样App才可以根据协议找到需要打开的应用；
-1.第三方登录、分享、支付：由于是封装的SDK，可以根据文档直接集成；
-2.打电话、发短信、发邮件：https://blog.csdn.net/cc1991_/article/details/74990013
-3.实现两个单独App之间的跳转：TestApp->Demo
-1).在Demo中配置协议url scheme：test；
-2).在TestApp执行跳转方法：
-NSURL *url = [NSURL URLWithString:@"test://"];
-if ([[UIApplication sharedApplication] canOpenURL:url]) {
-    [[UIApplication sharedApplication] openURL:url];
-} else {
-    NSLog(@"尚未安装应用");
-}
-3).在TestDemo中配置协议白名单：iOS9.0以后
-在info.plist中添加字段：LSApplicationQueriesSchemes(数组)；
-配置需要跳转的协议白名单test；
-4.实现两个App之间跳转到指定界面：
-1).在"test://"协议后面跟上域名来标记需要跳转的界面；
-NSURL *url = [NSURL URLWithString:@"test://map"];
-if ([[UIApplication sharedApplication] canOpenURL:url]) {
-[[UIApplication sharedApplication] openURL:url];
-} else {
-NSLog(@"尚未安装应用");
-}
-2).在AppDelegate.h中，监听代理方法：
-- (BOOL)application:(UIApplication *)app openURL:(nonnull NSURL *)url options:(nonnull NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options {
-    if ([url.host isEqualToString:@"map"]) {
-        //在此做界面的跳转处理
-    }
-}
-https://blog.csdn.net/cc1991_/article/details/79050275
 
 #分享：
 //原生分享
@@ -1570,26 +1552,6 @@ TCP通过校验、重传控制、确认应答实现可靠传输，UDP具有较�
 TCP连接只能支持点对点，UDP支持交互通信；
 //Internet采用哪种网络协议？该协议的主要层次结构？
 tcp/ip协议，层次结构：应用层/传输层/网络层/数据链路层/物理层
-//进程和线程的区别：
-进程：系统中正在运行的应用程序叫做进程(相互独立)，进程是OS资源分配的基本单位；
-线程：任务调度和执行的基本单位：每个进程当中至少有一个线程；
-//产生死锁的原因：
-死锁：多个进程在执行过程中，因为资源竞争而造成的阻塞现象；
-1.互斥条件：xxx
-2.请求和保持条件：xxx
-3.不剥夺条件：xxx
-4.环路等待条件：xxx
-//处理死锁的办法：
-1.预防死锁：通过设置一些限制条件，去破坏产生死锁的必要条件；
-2.避免死锁：在资源分配过程中，使用某种方法避免系统进入不安全的状态，从而避免发生死锁；
-3.检测死锁：允许死锁的发生，但是通过系统的检测之后，采取一些措施，将死锁清除掉；
-4.解除死锁：该方法与检测死锁配合使用；
-//进程的调度算法：
-1.先来先服务(FCFS)
-2.最短作业优先(SJF)
-3.最高响应比优先法(HRRN)
-4.时间片轮转算法(RR)
-5.多级反馈队列(MFQ)
 //静态数据类型和动态数据类型的区别：
 1.静态数据类型的特点：在编译期就明确变量的类型、可以访问属性和方法；
 2.动态数据类型的特点：在编译期不清楚变量的类型、运行期才知道真实类型；
@@ -3102,3 +3064,18 @@ Xcode7.0以后：NSAppTransportSecurity->NSAllowsArbitraryLoads->YES
 3.网络请求第三方库的使用
 4.KVC在网络请求中的应用
 5.进入VC以后怎么加载操作
+
+今日项目需求(参考2015-10-13/org.mobiletrain.afnetworking-sample)
+0 ViewController当中的所有数据，都是来源于Model，但不在ViewController当中保存，是存放在单独的Model类。其他的类也会使用到这一个Model，所以Model必须是单例
+1 ViewController当中，不进行网络请求，不使用AFNetworking。
+2 ViewController当中，要进行网络请求，委托另外一个类(PostStore)来进行请求
+3 PostStore进行网络请求之后，需要告诉ViewController，请求和数据操作都已经完成
+4ViewController是一个列表视图控制器，既然委托PostStore进行网络请求，并且PostStore会在网络请求完成之后，操作Model，所以要观察Model([PostList sharedInstance].posts)
+5PostStore在网络请求的方法内，需要外部传入两个block，这两个block，会在PostStore网络请求完成并且数据解析完成之后调回去
+6PostStore内部需要做3件事：数据下载；唯一性判断；排序。所以应该在最后一步，也就是排序的时候，告诉观察者，数据(Model)已经更新了
+7ViewController当中的cell，需要显示Model当中的text，这个text会被改变(DetailViewController)，所以cell需要添加对于这个Model(NSMutableDictionary)的观察者
+8 因为有复用机制，所以当设置观察者之前，需要将之前的观察者删除掉
+9 ViewController和DetailViewController不应该传输数据，所以，当前被选中的PostInfo，需要放到Model当中([PostList sharedInstance].selectedPost)，设置好之后，再进入下一级页面
+
+MacVim脚本：将GET请求的URL，使用OC的方式，做成字典
+%s/[?&]\([^=]*\)=\([^&]*\)/[dict setValue:@"\2" forKey:@"\1"];^M/g

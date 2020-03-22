@@ -28,12 +28,6 @@
 }
 
 /// 体验iOS开发
-// 打电话
--(void)experienceIOS {
-    // sms://10010
-    NSURL *url = [NSURL URLWithString:@"tel://10010"];
-    [[UIApplication sharedApplication] openURL:url];
-}
 // 3D
 -(void)iphone3D {
     // 创建一个过渡动画

@@ -25,6 +25,6 @@
 #define WMLOG(...)   NSLog(__VA_ARGS__)
 // 4.原理
 // 工程在编译阶段把 xxx.pch 文件中的所有内容导入到工程当中所有的文件中
-
+#define SystemVersion [UIDevice currentDevice].systemVersion.doubleValue
 
 #endif
