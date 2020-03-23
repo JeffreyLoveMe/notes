@@ -112,7 +112,7 @@
 }
 #pragma mark - SySkillControllerProtocol
 - (void)jumpPage:(NSString *)text {
-    
+    // 传值
 }
 
 #pragma mark - Objective-C语言专用注释

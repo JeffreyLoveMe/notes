@@ -35,6 +35,7 @@
  ->dealloc
  https://blog.csdn.net/spicyshrimp/article/details/70886516
  */
+
 - (void)loadView {
     // 保留父类方法
     // 一般都需要调用
@@ -433,6 +434,17 @@
 //    };
 //    Block_copy(proxy);
 //    proxy();
+    
+    // 9.block的快捷方式 - inlineBlock
+    
+    // 10.
+    
+    /**
+     //block中使用self
+     __weak typeof(self) weakSelf = self;
+     // 什么是循环引用？block为什么会导致循环引用？weak怎么防止循环引用？请举例子说明。
+     1.对象A持有对象B的同时对象B持有对象A，这种情况我们称为循环引用，循环引用会导致两个对象都无法销毁；
+     */
 }
 // 将 “void (^myBlock)(void)” 中 myBlock 取出来即可
 -(void)completeBlock:(void (^)(void))myBlock {
@@ -675,6 +687,8 @@
 
 #pragma mark - UIDevice
 // [UIDevice currentDevice]代表设备，通过它可以获取一些设置相关信息
+// 如果需要获取设备的硬件信息 - 可以百度
+// 私有api - 不能在头文件中找到的api/不能上架App store
 -(void)showDevice {
     // 当前设置的 “系统版本”
     if ([UIDevice currentDevice].systemVersion.doubleValue >= 9.0) {
@@ -683,6 +697,17 @@
     [[UIDevice currentDevice] localizedModel]; // 什么设备
     [[UIDevice currentDevice] systemName]; // 系统名称
     [[UIDevice currentDevice] systemVersion]; // 系统版本号
+    /// 近距离感应
+    // 打开红外线开关
+    [[UIDevice currentDevice] setProximityMonitoringEnabled:YES];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeAction:) name:UIDeviceProximityStateDidChangeNotification object:nil];
+}
+- (void)changeAction:(NSNotification *)notification {
+    if([[UIDevice currentDevice] proximityState]) {
+        NSLog(@"靠近");
+    } else {
+        NSLog(@"远离");
+    }
 }
 
 

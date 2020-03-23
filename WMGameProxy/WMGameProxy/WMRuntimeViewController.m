@@ -70,7 +70,7 @@
 
 
 ///**
-// 3.交换方法
+// 3.交换方法/经常使用
 // 1>.给 “[UIImage imageName:@""];（系统方法）” 添加功能
 // 1.自定义UIImage并重写“imageName:方法”/有弊端
 // 2.交换方法/推荐使用
@@ -106,6 +106,53 @@
 //}
 
 
+// 4.动态添加方法/使用较少
+/**
+ 1>.美团面试 - 有没有使用过 “performSelector方法”？在什么情况下使用？为什么要动态添加方法？
+ // OC基本都是lazy加载机制/只要一个方法实现了就会马上添加到方法列表中
+ 2>.任何方法中都默认有两个隐式参数 "self"（当前调用的类或对象）/"_cmd"（当前方法的方法编号）
+ 
+ */
+-(void)dynamicAddMethod {
+    //调用一个没有实现的方法（这个调用的是类方法还是对象方法（根据调用者判断））
+    [self performSelector:NSSelectorFromString(@"play")];
+}
+/**
+ 什么时候调用 - 只要一个对象调用了一个未实现的实例方法就会调用该方法进行处理
+ 作用 - 动态添加方法
+ */
++ (BOOL)resolveInstanceMethod:(SEL)sel {
+    if (sel == NSSelectorFromString(@"play")) {
+        /**
+         动态添加方法 - 可以直接查看文档（ window -> developer Documentation ）了解方法
+         第一个参数 - 给哪个类添加方法
+         第二个参数 - 添加哪个方法
+         第三个参数 - 函数名
+         第四个参数 - 方法类型
+         "v@:" - v/返回值、@/参数、:/参数
+         */
+        class_addMethod(self, sel, (IMP)play, "v@:");
+        return YES;
+    }
+    return [super resolveInstanceMethod:sel];
+}
+// 任何方法中都默认有两个隐式参数 "self"（当前调用的类或对象）/"_cmd"（当前方法的方法编号）
+void play(id self, SEL _cmd) {
+    NSLog(@"吃东西");
+}
+/**
+什么时候调用 - 只要一个对象调用了一个未实现的类方法就会调用该方法进行处理
+作用 - 动态添加方法
+*/
++ (BOOL)resolveClassMethod:(SEL)sel {
+    return [super resolveClassMethod:sel];
+}
+
+
+// 5.动态添加属性/经常使用
+/**
+ 1>.什么时候需要动态添加属性 - 怎么让一个 NSObject 类保存一个字符串？
+ */
 
 
 @end

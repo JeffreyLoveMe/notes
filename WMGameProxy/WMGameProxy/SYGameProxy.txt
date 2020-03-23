@@ -6,8 +6,6 @@
 //iOS崩溃是什么导致的？如何监控不同类型的崩溃？
 //如何获取详细的内存分配信息：比如不同线程的堆栈调用？
 //Apple为什么设计元类？
-// 什么是循环引用？block为什么会导致循环引用？weak怎么防止循环引用？请举例子说明。
-1.对象A持有对象B的同时对象B持有对象A，这种情况我们称为循环引用，循环引用会导致两个对象都无法销毁；
 //retain、copy/mutableCopy、release有什么区别？
 1.retain引用计数+1，没有创建新对象；
 2.copy（不可变对象）/mutableCopy（可变对象）引用计数+1，创建新对象；/不是所有
@@ -900,8 +898,6 @@ CAKeyframeAnimation/CABasicAnimation/CATransition
 /******************************补充知识点******************************/
 //获取当前时间
 NSString *currentTime = [NSString stringWithFormat@"%@",[NSDate date]];
-//block中使用self
-__weak typeof(self) weakSelf = self;
 //汉字转码
 NSString *oriString = @"\u67aa\u738b";
 NSString *escapedString = [oriString stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
@@ -932,16 +928,6 @@ NSString *data = [NSString stringWithFormat:@"%.2d:%.2d:%.2d",self.hour,self.min
 //读取文件内容：dict.txt
 NSString *fileConent = [[NSString alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"dict" ofType:@"txt"] encoding:NSUTF8StringEncoding error:nil];
 NSArray *words = [fileConent componentsSeparatedByString:@"\n"];//转换成NSArray
-//近距离感应
-[[UIDevice currentDevice] setProximityMonitoringEnabled:YES];//打开红外线开关
-[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeAction:) name:@"UIDevieceProximityState" object:nil];//添加监听
-- (void)changeAction:(NSNotification *)notification {
-    if([[UIDevice currentDevice] proximityState]) {
-        NSLog(@"靠近");
-    } else {
-        NSLog(@"远离");
-    }
-}
 //json转换成字典
 NSDictionary *dict=[NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableContainers error:nil];
 //根据字体计算高度：一行

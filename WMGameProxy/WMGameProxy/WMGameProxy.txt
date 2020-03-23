@@ -82,7 +82,7 @@
 //选择器SEL - xx
 //文件操作 - xx
 //KVC、KVO
-//block - x
+//block
 //RunLoop - xxx
 //Runtime - xx
 /**************************UI基础**************************/
@@ -122,14 +122,16 @@
 //UIMenuController菜单
 //UIAlertController警告框
 //UIImagePickerController
-//UIWebView/WKWebView - x
+//UIPopoverContrller - x
+//UIStackView - x
+//UIWebView/WKWebView
 //UIRefreshControl
 //UIPasteboard - xx
 //NSShadow阴影 - xx
 //富文本 - xx
 //Gif动画 - xx
 //iOS动画 - xx
-//UIViewController之间的传值 - xx
+//UIViewController之间的传值（三种）
 //NSTimer定时器
 //Xib
 //Interface Builder(管理xib/storyboard)
@@ -142,9 +144,11 @@
 //json解析 - xx
 //xml解析 - xx
 //xPath - xx
-//抓包 - xx
 //socket通信 - xx
-//NSURLSession原生网络请求 - xx
+//NSURLConnection(原生网络请求+下载+上传) - xx
+//NSURLSession(原生网络请求+下载+上传) - xx
+//AFNetWorking开发 - xx
+//网络安全（抓包+MD5+https）- xx
 /**************************swift基础**************************/
 //怎么导入框架
 //swift简介
@@ -205,8 +209,8 @@
 //Clang编译器 - x
 //ReactiveCocoa - x
 //Scrumj敏捷开发 - x
+//RxSwift - x
 /**************************实用技术(swift版本)**************************/
-/**************************RxSwift**************************/
 /**************************补充部分**************************/
 //“原生” 与 “js交互”
 1>.iOS与H5的交互
@@ -354,12 +358,12 @@ WMJumpViewController - 应用间跳转/第三方登录/分享/支付
 WMStaticViewController - 静态库
 WMGameView.h/m - OC自定义控件
 ComponentController.h/m - UI组件库
+WMWebViewController.h/m - js和原生交互详解
 SyTableViewController.h/m - UITableView详解
 SyCollectionViewController.h/m - UICollectionViewController详解
 SyCustomFlowLayout - 自定义"流式布局"
 SyCustomCell.h/m - 自定义 Cell
 SyPostItem.h/m - 自定义 Model
-WMWebViewController.h/m - js和原生交互详解
 SySkillController.h/m - 技能事例
 MainController.h/m - 事例代码
 NSString+Extension.h/m - 类目

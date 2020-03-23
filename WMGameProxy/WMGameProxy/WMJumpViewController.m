@@ -23,6 +23,7 @@
  1.应用间跳转/scheme(skim)
  0>.https://blog.csdn.net/cc1991_/article/details/79050275
  1>.如果想要跳转到不同的App - 1.定义需要跳转到的App的“协议/scheme”/2.打开对应App的“协议/scheme”
+ 2>.应用间跳转代表进程之间可以通信/线程之间也可以通信
  */
 -(void)setupJump {
     /**

@@ -9,15 +9,7 @@
 #import "WMWebViewController.h"
 #import <WebKit/WebKit.h>
 
-@interface WMWebViewController () <UIWebViewDelegate, UIScrollViewDelegate, WKUIDelegate, WKNavigationDelegate>
-
-/// UIWebView/WKWebView
-// 一般 WebView
-// 与 js 交互的 WebView
-// 在 iOS开发 过程中、经常会用到一些 h5 交互
-// 继承 UIView
-// 加载网页数据的框架
-@property (strong, nonatomic) UIWebView *webView;
+@interface WMWebViewController () <UIWebViewDelegate, WKUIDelegate, WKNavigationDelegate>
 // iOS 8.x以后新增的类
 // 相对于 UIWebView：内存的消耗很少、推荐使用
 // 支持更多的 HTML5 的特性
@@ -36,81 +28,79 @@
 
 #pragma mark - UIWebView
 -(void)setupUIWebView {
+    /**
+     UIWebView
+     1>.概念 - UIWebView是iOS内置的浏览器控件
+     2>.作用 - UIWebView可以加载远程的网页资源和常见文件（.pdf/.txt）
+     */
+    /// 3>.加载网络资源
     // 1.创建UIWebView
-    self.webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height)];
+    UIWebView *webView = [[UIWebView alloc]initWithFrame:self.view.bounds];
     // 2.创建远程url/也可以创建本地url
-    NSURL *remoteUrl = [NSURL URLWithString:@"http://www.baidu.com"];
+    NSURL *url = [NSURL URLWithString:@"http://www.baidu.com"];
     // 3.创建NSURLRequest
-    NSURLRequest *request = [NSURLRequest requestWithURL:remoteUrl];
+    NSURLRequest *request = [NSURLRequest requestWithURL:url];
     // 4.加载url
-    [self.webView loadRequest:request];
+    [webView loadRequest:request];
     // 5.添加到父视图
-    [self.view addSubview:self.webView];
-    // 6.自适应居中
-    [self.webView setScalesPageToFit:YES];
-    // 可以加载 html 字符串
-    // 本地 html 字符串
-    // 所有链接的默认地址
-    // 被很多"新闻类"的 App 使用
-    [self.webView loadHTMLString:@"" baseURL:nil];
+    [self.view addSubview:webView];
+    /// 4>.可以通过 “UIScrollView属性” 给 “UIWebView 设置”
+    webView.scrollView.contentInset = UIEdgeInsetsMake(50, 0, 0, 0);
+    /// 5>.加载本地资源
+    // 万能加载 - xxx.txt/xxx.mp4/xxx.pdf/xxx.ppt
+    [webView loadRequest:[NSURLRequest requestWithURL:[NSURL fileURLWithPath:@"/Users/xiewujun/Desktop/123.mp4"]]];
+    // 设置自适应
+    webView.scalesPageToFit = YES;
+    // 加载 “本地html”
+    [webView loadRequest:[NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"NBSDK接口协议.html" withExtension:nil]]];
+    // 设置需要识别什么类型字符串
+    webView.dataDetectorTypes = UIDataDetectorTypeAll;
+    // 后退 - 退到第一页代表不能再后退
+    if (webView.canGoBack) {
+        [webView goBack];
+    }
+    // 前进 - 前进最后一页代表不能再前进
+    if ([webView canGoForward]) {
+        [webView goForward];
+    }
     // 刷新网页
-    [self.webView reload];
+    [webView reload];
+    // 可以加载 "html字符串" - 很多 "新闻类App" 使用
+    [webView loadHTMLString:@"" baseURL:nil];
     // 停止加载网页
-    [self.webView stopLoading];
-    // 后退
-    // 是否可以后退
-    if (self.webView.canGoBack) {
-        [self.webView goBack];
-    }
-    // 前进
-    // 是否可以前进
-    if ([self.webView canGoForward]) {
-        [self.webView goForward];
-    }
+    [webView stopLoading];
     // 是否正在加载
-    if ([self.webView isLoading]) {
+    if ([webView isLoading]) {
         NSLog(@"正在加载");
     }
-    // 网页是否可以缩放、NO表示不能缩放
-    self.webView.scalesPageToFit = NO;
     // delegate
-    self.webView.delegate = self;
-    // 可以通过处理这个属性处理 webView 的滚动事件
-    self.webView.scrollView.delegate = self;
-    // 执行 js 方法
-    // UIWebView可以主动调用js
-    [self.webView stringByEvaluatingJavaScriptFromString:@"Callback()"];
-    // 加载 Data数据 创建一个 webView
-    [self.webView loadData:[[NSData alloc]init] MIMEType:@"" textEncodingName:@"" baseURL:[NSURL URLWithString:@""]];
+    webView.delegate = self;
+    // 执行 "js方法" - UIWebView可以主动调用js
+    [webView stringByEvaluatingJavaScriptFromString:@"Callback()"];
 }
-
 #pragma mark - UIWebViewDelegate
-// 是否允许加载网页：请求发送前会调用
-// 可以获取 js 要打开的 url
-// 通过截取 url 可与 js 交互
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
+    // 1.即将加载某个请求的时候调用 - 请求发送前会调用
+    // 1>.拦截某个请求
+    if ([request.URL.absoluteString containsString:@"360"]) {
+        return NO;
+    }
     return true;
 }
-
-// 开始加载网页：请求发送以后
 - (void)webViewDidStartLoad:(UIWebView *)webView {
-    
+    // 2.开始加载网页 - 请求发送以后
 }
-
-// 网页加载完成：服务器返回数据以后
 - (void)webViewDidFinishLoad:(UIWebView *)webView {
-    
+    // 3.网页加载完成 - 服务器返回数据以后
 }
-
-// 网页加载错误：网页加载失败
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error {
-    
+    // 4.网页加载错误 - 网页加载失败
 }
-
 #pragma mark - UIWebView和JS交互
 // js 调用原生
-
 // 原生调用 js
+
+
 
 #pragma mark - WKWebView
 -(void)setupWKWebView {
@@ -126,33 +116,26 @@
     [self.wkWebView loadRequest:request];
     
 }
-
 #pragma mark - WKUIDelegate
 // 主要处理 js脚本、确认框、警告框
-
-
 #pragma mark - WKNavigationDelegate
 // 主要处理一些跳转、加载处理操作
 // 页面开始加载时调用
 - (void)webView:(WKWebView *)webView didStartProvisionalNavigation:(WKNavigation *)navigation {
     
 }
-
 // 当内容开始返回时调用
 - (void)webView:(WKWebView *)webView didCommitNavigation:(WKNavigation *)navigation {
     
 }
-
 // 页面加载完成之后调用
 - (void)webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation {
     
 }
-
 // 页面加载失败时调用
 - (void)webView:(WKWebView *)webView didFailNavigation:(WKNavigation *)navigation withError:(NSError *)error {
     
 }
-
 // 接收到服务器跳转以后调用
 - (void)webView:(WKWebView *)webView didReceiveServerRedirectForProvisionalNavigation:(WKNavigation *)navigation {
     
