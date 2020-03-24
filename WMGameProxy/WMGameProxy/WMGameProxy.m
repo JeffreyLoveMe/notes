@@ -155,11 +155,13 @@
 // 类工厂方法
 // 1>.用于快速创建对象的类方法/用于创建一个对象
 // 2>.自定义类工厂方法是 Apple 规范
-// 3>.不要使用 WMGameProxy：这样在继承的时候会出现问题
-// 4>.改成 self
-// 5>.self 在 “类方法” 中代表 “类”/谁调用该方法 self 就代表谁
-+(instancetype)wmGameProxy {  // 6>.类方法/方法名称==类名称(首字母小写)/返回值id/instancetype
+// 3>.不要使用 WMGameProxy（这样在继承的时候会出现问题）/改成self
+// 4>.self 在 “类方法” 中代表 “类”/谁调用该方法 self 就代表谁
+// 5>.类方法/方法名称==类名称(首字母小写)/返回值id/instancetype
++(instancetype)wmGameProxy {
     return [[self alloc] init];
+//    // MRC环境下
+//    return [[[self alloc]init] autorelease];
 }
 +(instancetype)wmGameProxyWithSdk:(NSString *)sdk {
     WMGameProxy *p = [[self alloc] init];

@@ -33,9 +33,9 @@ NS_ASSUME_NONNULL_BEGIN
  3gs-4s //armv7
  5/5c //armv7s(armv7兼容armv7s)
  5s-6splus //arm64
- 3>.查看 xxx.a 支持哪些架构
- cd ~/xxx（包含xxx.a的文件夹）
- lipo -info xxx.a
+ 3>.查看 xxx.a/xxx.framework 支持哪些架构
+ cd ~/xxx（包含xxx.a/xxx.framework的文件夹）
+ lipo -info xxx.a/xxx.framework
  4>.支持编译所有架构设置 - Build Settings-Build Active Architecture Only设置为NO
  5>.合并支持模拟器的.a/支持真机的.a
  lipo -create xxx.a路径 yyy.a路径 -output zzz.a
@@ -43,6 +43,12 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  打包 xxx.a 的静态库 - https://www.jianshu.com/p/a1dc024a8a15
  */
+/**
+ xxx.a和xxx.framework的区别？
+ 1.xxx.a - 纯二进制文件/不可以直接使用（需要xxx.h配合）/ .a + .h + sourceFile = .framework
+ 2.xxx.framework - 除二进制文件还有资源文件/可以直接使用/建议使用
+ */
+// 如果导入过多头文件建议使用主头文件
 @interface WMStaticViewController : UIViewController
 
 @end

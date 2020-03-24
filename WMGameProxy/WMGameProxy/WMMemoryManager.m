@@ -81,8 +81,13 @@
      */
     /**
     WM - 指针变量WM
-    WM指向的对象 - [[WMGameProxy alloc]init]
+    [[WMGameProxy alloc]init] - WM指向的对象/WMGameProxy实例变量
     */
+    /**
+     “WM指向的对象/WMGameProxy实例变量”中包含
+     1.属性（isa指针）- 属性可以指向别的实例变量
+     2.引用计数器（retainCount）
+     */
     WMGameProxy *WM = [[WMGameProxy alloc]init];  // 引用计数器 = 1
     /**
      ARC/MRC混合编程
@@ -112,7 +117,7 @@
 }
 
 
-// 多个对象的内存管理
+// 9.多个对象的内存管理
 -(void)doubleObjectMemoryManager {
     /**
     有增就有减/有 retain 就有 release
@@ -121,10 +126,87 @@
     */
 }
 /**
- “循环retain”
+ 10.“循环retain”
  1.概念 - 如果对象A拥有对象B，而对象B拥有对象A，此时会形成 “循环retain”
  2.解决办法 - 让对象A/对象B一方不要进行 “retain操作”
  */
+
+ 
+/**
+ 11.Autorelease
+ 1>.概念 - 一种支持引用计数的内存管理方式
+ 2>.作用 - 只要给对象发送 “autorelease消息” 就会将对象放到自动释放池。当自动释放池被销毁的时候会对自动释放池中所有的对象做一次 “release操作”（并不代表会释放对象）
+ 3>.p = [p autorelease];  // autorelease返回对象本身/不会修改对象的引用计数器
+ 4>.好处 - 1.不用关心对象释放的时间/2.不用关心什么时候调用release
+ 5>.原理 - “autorelease操作”实际上是将 “release操作” 延迟执行（只要对象发送 “autorelease消息”系统就会将对象放入 “自动释放池” 中，当 “自动释放池”被销毁就会对内部的所有对象发送 “release消息”）
+ 6>.加入到自动释放池以后可以接着使用该对象/release以后不可以接着使用该对象
+ 7>.自动释放池无序/自动释放池可以嵌套使用/就近原则-向上查找
+ */
+/**
+1>.自动释放池注意事项
+ 1.调用autorelease必须在 @autoreleasepool {} 内部不然没有效果
+ 2.写在 @autoreleasepool {} 内部的代码必须 ”调用autorelease“ 不然没有效果
+ 3.只要在 @autoreleasepool {} 内部 ”调用autorelease“ 就有效果
+ 4.尽量避免对大内存使用 “@autoreleasepool {}方法” - 因为这是一种延迟释放机制
+ 5.一个 “alloc/new/copy/retain” 对应一个 “release/autorelease”/不要过度释放
+*/
+/**
+2>.什么时候使用“自动释放池”？
+1.如果对象需要返回->那么对象不能在返回之前release->那么在返回之前需要将对象放入自动释放池
+2.使用类对象创建的对象不需要release/都会自动加入到自动释放池
+*/
+// 面试题 - Foundation框架的类但凡通过类工厂方法创建的对象都是autorelease的
+-(void)setAutoRelease {
+    /// 新建自动释放池
+    // 1>.第一种方法/ iOS5.x以后
+    @autoreleasepool {   // 创建一个自动释放池 - iOS程序运行过程中会创建无数个“自动释放池”/“自动释放池”以栈结构存在
+        // 执行代码块
+        // 第一种写法
+        WMGameProxy *wm = [[WMGameProxy alloc]init];
+        // 把 "指针变量p" 指向的 “实例变量” 放到了 “自动释放池” 中
+        // 只要调用了 “autorelease” 就不用在调用 "release"
+        // 将这个对象放到栈顶的自动释放池
+        wm = [wm autorelease];
+//        // 第二种写法
+//        WMGameProxy *wm = [[[WMGameProxy alloc]init] autorelease];
+        [wm setSdk:@"sdk"];
+    }  // 销毁自动释放池 - 给自动释放池中所有对象发送一条 “release消息”
+//    // 2>.第二种方法/ iOS5.x以前
+//    NSAutoreleasePool *pool = [[NSAutoreleasePool alloc]init];
+//    // 执行代码块
+//    [pool release];
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 -(void)memoryManager {

@@ -106,6 +106,13 @@
 		3394874623F11C5700A2C525 /* SyCustomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3394874523F11C5700A2C525 /* SyCustomCell.m */; };
 		339A3D8022BBBBC9007DD37D /* SyGameProxy.c in Sources */ = {isa = PBXBuildFile; fileRef = 339A3D7F22BBBBC9007DD37D /* SyGameProxy.c */; };
 		339C0A9F23C6167000C3A144 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 339C0A9D23C6167000C3A144 /* SceneDelegate.m */; };
+		33A1B06924291731007248A3 /* 新建xxx.framework第五步.png in Resources */ = {isa = PBXBuildFile; fileRef = 33A1B06324291730007248A3 /* 新建xxx.framework第五步.png */; };
+		33A1B06A24291731007248A3 /* 新建xxx.framework第二步.png in Resources */ = {isa = PBXBuildFile; fileRef = 33A1B06424291730007248A3 /* 新建xxx.framework第二步.png */; };
+		33A1B06B24291731007248A3 /* 新建xxx.framework第六步.png in Resources */ = {isa = PBXBuildFile; fileRef = 33A1B06524291730007248A3 /* 新建xxx.framework第六步.png */; };
+		33A1B06C24291731007248A3 /* 新建xxx.framework第四步.png in Resources */ = {isa = PBXBuildFile; fileRef = 33A1B06624291731007248A3 /* 新建xxx.framework第四步.png */; };
+		33A1B06D24291731007248A3 /* 新建xxx.framework第一步.png in Resources */ = {isa = PBXBuildFile; fileRef = 33A1B06724291731007248A3 /* 新建xxx.framework第一步.png */; };
+		33A1B06E24291731007248A3 /* 新建xxx.framework第三步.png in Resources */ = {isa = PBXBuildFile; fileRef = 33A1B06824291731007248A3 /* 新建xxx.framework第三步.png */; };
+		33A1B074242A0899007248A3 /* iOS高级经典面试.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 33A1B073242A0899007248A3 /* iOS高级经典面试.pdf */; };
 		33A8FD7A22D481B4004AECBA /* SyTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 33A8FD7922D481B4004AECBA /* SyTableViewController.m */; };
 		33A8FD7D22D48237004AECBA /* SyCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 33A8FD7C22D48237004AECBA /* SyCollectionViewController.m */; };
 		33AD3E38236062830092C389 /* NSString+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 33AD3E37236062830092C389 /* NSString+Extension.m */; };
@@ -266,6 +273,13 @@
 		339A3D7F22BBBBC9007DD37D /* SyGameProxy.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = SyGameProxy.c; sourceTree = "<group>"; };
 		339C0A9D23C6167000C3A144 /* SceneDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SceneDelegate.m; sourceTree = "<group>"; };
 		339C0A9E23C6167000C3A144 /* SceneDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SceneDelegate.h; sourceTree = "<group>"; };
+		33A1B06324291730007248A3 /* 新建xxx.framework第五步.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "新建xxx.framework第五步.png"; sourceTree = "<group>"; };
+		33A1B06424291730007248A3 /* 新建xxx.framework第二步.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "新建xxx.framework第二步.png"; sourceTree = "<group>"; };
+		33A1B06524291730007248A3 /* 新建xxx.framework第六步.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "新建xxx.framework第六步.png"; sourceTree = "<group>"; };
+		33A1B06624291731007248A3 /* 新建xxx.framework第四步.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "新建xxx.framework第四步.png"; sourceTree = "<group>"; };
+		33A1B06724291731007248A3 /* 新建xxx.framework第一步.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "新建xxx.framework第一步.png"; sourceTree = "<group>"; };
+		33A1B06824291731007248A3 /* 新建xxx.framework第三步.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "新建xxx.framework第三步.png"; sourceTree = "<group>"; };
+		33A1B073242A0899007248A3 /* iOS高级经典面试.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "iOS高级经典面试.pdf"; sourceTree = "<group>"; };
 		33A8FD7822D481B4004AECBA /* SyTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SyTableViewController.h; sourceTree = "<group>"; };
 		33A8FD7922D481B4004AECBA /* SyTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SyTableViewController.m; sourceTree = "<group>"; };
 		33A8FD7B22D48237004AECBA /* SyCollectionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SyCollectionViewController.h; sourceTree = "<group>"; };
@@ -360,6 +374,7 @@
 			children = (
 				33ADF8CC240CC4BF0041F19A /* Res */,
 				33ADF8CD240CC5280041F19A /* Libs */,
+				33A1B072242A0866007248A3 /* 面试题 */,
 				33068F1322AE67DB00D044EE /* WMGameProxy.txt */,
 				3312831B2339D2E3005D55E2 /* DNGameProxy.txt */,
 				3372CD532325F92400E7307B /* SYGameProxy.txt */,
@@ -440,6 +455,14 @@
 			path = WMGameProxyUITests;
 			sourceTree = "<group>";
 		};
+		33A1B072242A0866007248A3 /* 面试题 */ = {
+			isa = PBXGroup;
+			children = (
+				33A1B073242A0899007248A3 /* iOS高级经典面试.pdf */,
+			);
+			path = "面试题";
+			sourceTree = "<group>";
+		};
 		33ADF8CC240CC4BF0041F19A /* Res */ = {
 			isa = PBXGroup;
 			children = (
@@ -517,6 +540,12 @@
 				33B10E762422964700C6E8C7 /* 新建xxx.a第三步.png */,
 				33B10E782422964800C6E8C7 /* 新建xxx.a第四步.png */,
 				33B10E772422964800C6E8C7 /* 新建xxx.a第五步.png */,
+				33A1B06724291731007248A3 /* 新建xxx.framework第一步.png */,
+				33A1B06424291730007248A3 /* 新建xxx.framework第二步.png */,
+				33A1B06824291731007248A3 /* 新建xxx.framework第三步.png */,
+				33A1B06624291731007248A3 /* 新建xxx.framework第四步.png */,
+				33A1B06324291730007248A3 /* 新建xxx.framework第五步.png */,
+				33A1B06524291730007248A3 /* 新建xxx.framework第六步.png */,
 				3359FE88241F3E860014C82C /* 学历.png */,
 				33B10E4E2422265600C6E8C7 /* NBSDK接口协议.html */,
 				3359FE62241F3E840014C82C /* Zapfino.ttf */,
@@ -679,6 +708,8 @@
 				3359FE94241F3E870014C82C /* UINavigationController的层级结构.png in Resources */,
 				3359FEAB241F3E870014C82C /* UIView常见属性和方法.png in Resources */,
 				33B10E742422963900C6E8C7 /* 新建xxx.a第一步.png in Resources */,
+				33A1B06D24291731007248A3 /* 新建xxx.framework第一步.png in Resources */,
+				33A1B06924291731007248A3 /* 新建xxx.framework第五步.png in Resources */,
 				3359FED7241FE1150014C82C /* 填写相关营销信息.png in Resources */,
 				3324C82024260DD100766248 /* TestFight添加测试人员.png in Resources */,
 				33B10E4F2422265600C6E8C7 /* NBSDK接口协议.html in Resources */,
@@ -703,12 +734,14 @@
 				3359FE9A241F3E870014C82C /* Safe Area.png in Resources */,
 				33B10E7A2422964800C6E8C7 /* 新建xxx.a第三步.png in Resources */,
 				3359FEAF241F3E870014C82C /* 代码标准h文件.png in Resources */,
+				33A1B06C24291731007248A3 /* 新建xxx.framework第四步.png in Resources */,
 				3359FEA7241F3E870014C82C /* plist知识点.png in Resources */,
 				3359FEA3241F3E870014C82C /* error_调用了一个没有实现的方法.png in Resources */,
 				3359FEB3241F3E870014C82C /* App职责分配.png in Resources */,
 				3324C8222427B39800766248 /* 从应用A跳转到应用B.png in Resources */,
 				3359FEDA241FEC120014C82C /* 部署注意点_00.png in Resources */,
 				3372CD542325F92500E7307B /* SYGameProxy.txt in Resources */,
+				33A1B06B24291731007248A3 /* 新建xxx.framework第六步.png in Resources */,
 				3359FEA4241F3E870014C82C /* json解析标准版.png in Resources */,
 				3359FEAD241F3E870014C82C /* 应用沙盒结构分析.png in Resources */,
 				3359FEA9241F3E870014C82C /* UIScrollView.png in Resources */,
@@ -721,12 +754,14 @@
 				3359FE8F241F3E870014C82C /* 下拉加载范例.png in Resources */,
 				3359FECE241F66C40014C82C /* 申请iOS开发者帐号.pdf in Resources */,
 				3359FED8241FE1150014C82C /* 创建App.png in Resources */,
+				33A1B06E24291731007248A3 /* 新建xxx.framework第三步.png in Resources */,
 				3359FEC0241F3E870014C82C /* 通过Xcode获取UDID.png in Resources */,
 				3359FEBB241F3E870014C82C /* error_调用一个野指针.png in Resources */,
 				3359FEB5241F3E870014C82C /* 常见系统库00.png in Resources */,
 				3359FEB7241F3E870014C82C /* 常见bug_01.png in Resources */,
 				3359FEB6241F3E870014C82C /* LaunchScreen简介.png in Resources */,
 				33B10E512422272500C6E8C7 /* 华为编程规范.pdf in Resources */,
+				33A1B074242A0899007248A3 /* iOS高级经典面试.pdf in Resources */,
 				3359FEB9241F3E870014C82C /* info.plist简介.png in Resources */,
 				33B10E792422964800C6E8C7 /* 新建xxx.a第二步.png in Resources */,
 				3359FE9B241F3E870014C82C /* 怎么称为一名优秀leader.xmind in Resources */,
@@ -754,6 +789,7 @@
 				3359FE97241F3E870014C82C /* 快捷键.png in Resources */,
 				3359FEB1241F3E870014C82C /* C:OC学习路线&重难点.png in Resources */,
 				3359FEB2241F3E870014C82C /* 大神班课程大纲.png in Resources */,
+				33A1B06A24291731007248A3 /* 新建xxx.framework第二步.png in Resources */,
 				3359FE95241F3E870014C82C /* UICollectionView.png in Resources */,
 				3359FE92241F3E870014C82C /* 导出ipa.png in Resources */,
 				3359FEAA241F3E870014C82C /* 给文件名（类名）加前缀.png in Resources */,
