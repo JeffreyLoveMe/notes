@@ -3,8 +3,8 @@ platform :ios, '9.0'
 
 target 'WMGameProxy' do
   # Comment the next line if you don't want to use dynamic frameworks
-  use_frameworks!
-
+  use_frameworks! #以动态库的形式加载第三方库
+  inhibit_all_warnings!  #清除pod项目中警告
   
 
   target 'WMGameProxyTests' do

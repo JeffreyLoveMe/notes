@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "AppDelegate.h"
-#import "SySkillController.h"
+#import "SySkillViewController.h"
 /// App启动原理
 // 1.执行 main 函数
 // 2.执行 UIApplicationMain：创建UIApplication对象，设置UIApplication代理
@@ -30,7 +30,7 @@ int main(int argc, char * argv[]) {
 //    // 第二种方式
 //    NSAutoreleasePool *pool = [[NSAutoreleasePool alloc]init];
 //    // 引用计数 + 1 = 1
-//    SySkillController *controller = [[SySkillController alloc]init];
+//    SySkillViewController *controller = [[SySkillViewController alloc]init];
 //    // 引用计数 + 1 = 2
 //    NSMutableArray *array = [[NSMutableArray alloc]initWithObjects:controller, nil];
 //    // 将指针（实质是将指针加入到自动释放池）加入到自动释放池

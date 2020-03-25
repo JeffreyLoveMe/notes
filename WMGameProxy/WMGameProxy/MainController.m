@@ -8,8 +8,8 @@
 
 #import "MainController.h"
 #import <MessageUI/MessageUI.h>
-// 2.在这里使用到 SySkillController.h/m 的地方才需要导入 SySkillController.h
-#import "SySkillController.h"
+// 2.在这里使用到 SySkillViewController.h/m 的地方才需要导入 SySkillViewController.h
+#import "SySkillViewController.h"
 
 /// 常见设置常量的办法
 // 1.宏定义
@@ -25,19 +25,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-}
-
-/// 体验iOS开发
-// 3D
--(void)iphone3D {
-    // 创建一个过渡动画
-    CATransition *animation = [CATransition animation];
-    // 设置动画类型
-    animation.type = @"cube";
-    // 设置动画时间
-    animation.duration = 5;
-    // 添加动画
-    [self.view.layer addAnimation:animation forKey:nil];
 }
 
 -(void)selected {
@@ -104,13 +91,13 @@
 }
 /// 3.遵循代理、实现方法
 -(void)followDelegate {
-    SySkillController *controller = [[SySkillController alloc]init];
+    SySkillViewController *controller = [[SySkillViewController alloc]init];
     controller.delegate = self;
     controller.myBlock = ^(BOOL isBlue) {
         // 执行代码
     };
 }
-#pragma mark - SySkillControllerProtocol
+#pragma mark - SySkillViewControllerProtocol
 - (void)jumpPage:(NSString *)text {
     // 传值
 }

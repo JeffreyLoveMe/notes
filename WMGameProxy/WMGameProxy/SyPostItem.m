@@ -22,7 +22,7 @@
     // 1.字典中的 key 必须在 model 中的属性中找到
     // 2.不适用于 model 中嵌套 model
     // 3.应用场景 - 简单的 字典 转 model ---> MJExtention框架 / JSONModel框架
-    // 原理 - 遍历 dic 给每个 dic 赋值
+    // 原理 - 遍历字典中所有的 key -> 给字典中所有的 value 赋值
     [item setValuesForKeysWithDictionary:dic]; // KVC
     return item;
 }

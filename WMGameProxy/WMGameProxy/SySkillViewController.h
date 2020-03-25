@@ -1,5 +1,5 @@
 //
-//  SySkillController.h
+//  SySkillViewController.h
 //  WMGameProxy
 //
 //  Created by 谢吴军 on 2019/8/5.
@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@class SySkillController;
+@class SySkillViewController;
 /// 1.定义协议protocol
 // 协议本身不是类，类似 java 中的接口
 // 作用：给类增加方法（外部可以用类的对象调用该协议方法）
@@ -30,7 +30,7 @@ NS_ASSUME_NONNULL_BEGIN
 // 遵循某个协议的不同对象可以放在同一个数组中
 // 遵循某个协议但不实现该协议中的方法的对象被调用会报错/需要做判断
 // 2.代理delegate
-@protocol SySkillControllerProtocol <NSObject>
+@protocol SySkillViewControllerProtocol <NSObject>
 // 必须实现协议（缺省）
 // Objective-C不实现会报警告⚠️
 // swift中不实现会直接报错
@@ -38,19 +38,19 @@ NS_ASSUME_NONNULL_BEGIN
 -(void)jumpPage:(NSString *)text;
 // 可选实现协议
 @optional
--(void)finishTask:(SySkillController *)controller;
+-(void)finishTask:(SySkillViewController *)controller;
 
 @end
 
-@interface SySkillController : UIViewController
+@interface SySkillViewController : UIViewController
 // 委托方：持有协议/该类就是委托方
 // 使用 weak 防止内存泄漏？？？说明原因？？？/会被赋值成xxx
 // 代理方：遵从协议、实现方法
 // 持有协议的id指针
 // 不能 retain
 // 如果有 * 在 <> 外面
-// 为什么使用 id？？？（任何遵循 SySkillControllerProtocol 的类都可以做为我的代理）
-@property (weak, nonatomic) id <SySkillControllerProtocol> delegate;
+// 为什么使用 id？？？（任何遵循 SySkillViewControllerProtocol 的类都可以做为我的代理）
+@property (weak, nonatomic) id <SySkillViewControllerProtocol> delegate;
 
 // 1.定义block - 怎么 “声明block” 就怎么 “定义block” / 以后使用直接使用 “myBlock”
 // block和delegate的区别 - block紧凑一些

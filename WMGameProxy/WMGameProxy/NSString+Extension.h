@@ -19,20 +19,17 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  注意点：
  1.分类中只能添加方法，不能添加类的属性
- 2.分类中的 @property 只会生成 setter/ getter 方法，不会生成实现和私有成员变量
- 3.可以在分类中访问原有类中 .h 中的属性
+ 2.分类中的@property只会生成setter/getter方法声明，不会生成实现和私有成员变量/_name
+ 3.可以在分类中访问原有类中.h中的属性
  4.如果分类中有与原有类中同名的方法，会调用分类中的方法（就近原则）/不建议这样写
  5.如果多个分类中都有和原有类同名的方法，调用由编译器决定执行哪一个（会执行最后一个参与编译的分类中的方法）/参
  与编译的顺序可以自动设置（项目 -> Build Phases -> Compile Sources/从上至下）
  */
+// 因为不会生成 _name/不用属性修饰符
+@property NSString *name;
 /**
- 方法调用的顺序
- 分类
- 本类
- 父类
- */
-@property (strong, nonatomic) NSString *name;
-
+方法调用的顺序 - 分类 -> 本类 -> 父类
+*/
 
 @end
 

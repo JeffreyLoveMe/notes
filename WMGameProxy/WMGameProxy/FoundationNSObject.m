@@ -716,6 +716,10 @@
      ss - 秒
      Z - 时区
      */
+    /**
+     12小时制 - "yyyy-MM-dd HH:mm:ss"
+     24小时制 - “yyyy-MM-dd hh:mm:ss”
+     */
     // 参考 "时间格式说明符对照统一表.png"
     formatter.dateFormat = @"yyyy年MM月dd日 HH小时mm分ss秒 Z";
     // 进行格式化

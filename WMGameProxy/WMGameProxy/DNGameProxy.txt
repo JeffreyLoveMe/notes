@@ -38,7 +38,7 @@ Game游戏/Gesture手势
 // H
 Header头部/HotFix热修复
 // I
-Init初始化/Image图像/Icon图标/Intent意图/Item单项/Index索引/Insert插入
+Init初始化/Image图像/Icon图标/Intent意图/Item单项/Index索引/Insert插入/Inhibit阻止
 // J
 // K
 KeyWord关键字/KeyBoard键盘

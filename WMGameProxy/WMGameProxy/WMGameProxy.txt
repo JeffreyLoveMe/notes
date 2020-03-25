@@ -84,7 +84,7 @@
 //KVC、KVO
 //block
 //RunLoop - xxx
-//Runtime - xx
+//Runtime
 /**************************UI基础**************************/
 //认识UI(User Interface)
 //Apple设备（尺寸、分辨率、坐标）
@@ -121,8 +121,9 @@
 //UIPageController
 //UIMenuController菜单
 //UIAlertController警告框
-//UIImagePickerController
+//UIImagePickerController - x
 //UIPopoverContrller - x
+//UIActivityViewController - x
 //UIStackView - x
 //UIWebView/WKWebView
 //UIRefreshControl
@@ -130,7 +131,10 @@
 //NSShadow阴影 - xx
 //富文本 - xx
 //Gif动画 - xx
-//iOS动画 - xx
+//帧动画
+//渐变动画
+//核心动画 - xx
+//转场动画 - x
 //UIViewController之间的传值（三种）
 //NSTimer定时器
 //Xib
@@ -170,11 +174,12 @@
 //闭包
 //swift修饰符
 //懒加载
-//单例 - xx
-//枚举 - xx
+//单例
+//枚举
+//动态库
 /**************************项目实战**************************/
 //项目部署（图标/启动页面/App名称/网络请求设置）
-//程序启动原理 - xx
+//程序启动原理
 //沙盒机制NSHomeDirectory()
 //数据持久化 - xx
 //多线程 - xx
@@ -337,6 +342,10 @@ http://code4app.com - code4App
 4>.h5/css/js -> web开发 -> 小程序/ 2023年 - 2024年
 5>.java语言 -> 后端开发 -> 研发总监/ 2024年 - 2028年
 
+//职业发展
+NO1 - iOS开发工程师->iOS开发主管->iOS开发leader/移动端开发leader->大前端开发leader/副研发总监->CTO->联合创始人
+NO2 - iOS开发工程师->iOS开发主管->iOS开发leader/移动端开发leader -> CEO/创始人
+
 //知识点速查
 Res - 资源文件/常见问题截图
 Libs - 常见第三方库
@@ -355,7 +364,7 @@ WMRuntimeViewController.h/m - runtime
 WMNetworkViewController.h/m - 网络编程
 WMPushViewController - 推送
 WMJumpViewController - 应用间跳转/第三方登录/分享/支付
-WMStaticViewController - 静态库
+SySkillViewController.h/m - 技能事例
 WMGameView.h/m - OC自定义控件
 ComponentController.h/m - UI组件库
 WMWebViewController.h/m - js和原生交互详解
@@ -364,7 +373,6 @@ SyCollectionViewController.h/m - UICollectionViewController详解
 SyCustomFlowLayout - 自定义"流式布局"
 SyCustomCell.h/m - 自定义 Cell
 SyPostItem.h/m - 自定义 Model
-SySkillController.h/m - 技能事例
 MainController.h/m - 事例代码
 NSString+Extension.h/m - 类目
 WMGameProxy.pch - 预编译

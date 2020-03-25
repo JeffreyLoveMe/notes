@@ -23,6 +23,8 @@ class WMController: UIViewController {
     fileprivate var p4: String?
     // 类内部可以使用
     private var p5: String?
+    // 单例
+    public static let instance = WMController()
     
     /// 19.懒加载
     // 1>.swift中也有懒加载只能放在结构体/类中
@@ -88,5 +90,30 @@ extension WMController: UITableViewDataSource {
 extension WMController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("点击了\(indexPath.row)")
+    }
+}
+
+/// 22.动态库
+// 1.swift不支持创建静态库
+// 2.swift新建动态库与新建xxx.framework一致（第一步不用修改为静态库/第二步没有头文件导入/使用的时候需要链接为动态库）
+
+/// 23.枚举
+extension WMController {
+    //
+    /**
+     1).命名规范
+     1>.在swift中enum名称大写、元素小写
+     2>.在oc中enum名称大写、元素大写
+     */
+    enum CalendarTimeType: Int {
+        case none = 1
+        case new
+        case old
+    }
+    func type() {
+        // 数字 -> 枚举
+        let _: CalendarTimeType? = CalendarTimeType.init(rawValue: 1)
+        // 枚举 -> 数字
+        print("\(CalendarTimeType.new.rawValue)")
     }
 }

@@ -7,7 +7,7 @@
 //
 
 #import "ComponentController.h"
-#import "SySkillController.h"
+#import "SySkillViewController.h"
 #import "FoundationNSObject.h"
 
 @interface ComponentController () <UITextFieldDelegate, UITextViewDelegate, UIAlertViewDelegate, UIActionSheetDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UIScrollViewDelegate, UITabBarControllerDelegate, UIGestureRecognizerDelegate>
@@ -143,7 +143,7 @@
     self.view.layer.borderWidth = 1.0; // 边框宽度
     self.view.layer.borderColor = UIColor.orangeColor.CGColor; // 边框颜色
     self.view.layer.cornerRadius = 5;  // 设置圆角半径
-    self.view.layer.masksToBounds = true;
+    self.view.layer.masksToBounds = true; // 将位于它之下的 layer 都挡住/设置这个就会不显示阴影
     
     /// 形变属性：一次只能利用一个形变属性
     // 1.！！！xxxMakexxx相对于UIView的初始状态进行形变！！！
@@ -442,6 +442,7 @@
     }];
     
     // 3.核心动画
+    // CAKeyframeAnimation/CABasicAnimation/CATransition
     
     // 4.转场动画
     
@@ -1333,13 +1334,13 @@
     // 模态跳转
     // 1.任何控制器都可以通过 “模态跳转”
     // 2.“模态跳转” 会将窗口上面的 View 移除，将需要 “模态跳转” 的 “控制器View” 添加到窗口上
-    SySkillController *conroller = [[SySkillController alloc]init];
+    SySkillViewController *conroller = [[SySkillViewController alloc]init];
     // 设定动画样式
     conroller.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
     // 弹出
     // 当一个控制器被销毁 - 控制器View不一定会被销毁/控制器View的业务逻辑没法处理
     [self presentViewController:conroller animated:YES completion:^{
-        // self.presentingViewController 强引用 SySkillController
+        // self.presentingViewController 强引用 SySkillViewController
         NSLog(@"模态弹出%@", self.presentingViewController);
     }];
     // 消失
@@ -1490,7 +1491,7 @@
     /// 导航栏的跳转
     // self.navigationController 是否有值？？？取决于 self 是否加入导航控制器
     // 1.跳转到下一页
-    SySkillController *controller = [[SySkillController alloc]init];
+    SySkillViewController *controller = [[SySkillViewController alloc]init];
     [self.navigationController pushViewController:controller animated:true];
     // 2.返回上一页
     [self.navigationController popToViewController:controller animated:true];
@@ -1567,7 +1568,7 @@ UIWindow -> UITabBarController -> UINavigationController -> ChildViewControllers
 #pragma mark - XIB
 -(void)setupXib {
 //    // 通过 xib 新建 UIViewController
-//    SySkillController *controller = [[SySkillController alloc]initWithNibName:@"SySkillController" bundle:nil];
+//    SySkillViewController *controller = [[SySkillViewController alloc]initWithNibName:@"SySkillViewController" bundle:nil];
     
     /// 第一种方式：创建一个 xib
     // 拿到的可能多个
@@ -1597,7 +1598,7 @@ UIWindow -> UITabBarController -> UINavigationController -> ChildViewControllers
 // 一般不使用 xib 做跳转
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
 //    NSLog(@"%@=====%@", segue.destinationViewController, segue.sourceViewController);
-//    SySkillController *controller = (SySkillController *)segue.destinationViewController;
+//    SySkillViewController *controller = (SySkillViewController *)segue.destinationViewController;
 }
 
 @end

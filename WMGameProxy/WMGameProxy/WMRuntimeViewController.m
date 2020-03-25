@@ -7,7 +7,7 @@
 //
 
 #import "WMRuntimeViewController.h"
-// 1.导入头文件
+// 0.导入头文件
 #import <objc/message.h>
 
 @interface WMRuntimeViewController ()
@@ -22,7 +22,7 @@
 }
 
 /**
- 2.消息机制
+ 1.消息机制/经常使用
  1>.任何方法的调用本质就是发送一个消息（用runtime发送一个消息）
  */
 -(void)sendMessage {
@@ -70,8 +70,8 @@
 
 
 ///**
-// 3.交换方法/经常使用
-// 1>.给 “[UIImage imageName:@""];（系统方法）” 添加功能
+// 2.交换方法/一般写在 category 中/经常使用
+// 1>.什么时候调用 - 给 “[UIImage imageName:@""];（系统方法）” 添加功能
 // 1.自定义UIImage并重写“imageName:方法”/有弊端
 // 2.交换方法/推荐使用
 // 2>.需要给系统方法添加功能的时候可以使用runtime
@@ -106,12 +106,11 @@
 //}
 
 
-// 4.动态添加方法/使用较少
+// 3.动态添加方法/使用较少
 /**
  1>.美团面试 - 有没有使用过 “performSelector方法”？在什么情况下使用？为什么要动态添加方法？
  // OC基本都是lazy加载机制/只要一个方法实现了就会马上添加到方法列表中
  2>.任何方法中都默认有两个隐式参数 "self"（当前调用的类或对象）/"_cmd"（当前方法的方法编号）
- 
  */
 -(void)dynamicAddMethod {
     //调用一个没有实现的方法（这个调用的是类方法还是对象方法（根据调用者判断））
@@ -119,7 +118,7 @@
 }
 /**
  什么时候调用 - 只要一个对象调用了一个未实现的实例方法就会调用该方法进行处理
- 作用 - 动态添加方法
+ 作用 - 动态添加对象方法
  */
 + (BOOL)resolveInstanceMethod:(SEL)sel {
     if (sel == NSSelectorFromString(@"play")) {
@@ -142,17 +141,40 @@ void play(id self, SEL _cmd) {
 }
 /**
 什么时候调用 - 只要一个对象调用了一个未实现的类方法就会调用该方法进行处理
-作用 - 动态添加方法
+作用 - 动态添加类方法
 */
 + (BOOL)resolveClassMethod:(SEL)sel {
     return [super resolveClassMethod:sel];
 }
 
 
-// 5.动态添加属性/经常使用
+// 4.动态添加属性/一般写在 category 中/经常使用
 /**
- 1>.什么时候需要动态添加属性 - 怎么让一个 NSObject 类保存一个字符串？
+ 1>.什么时候需要动态添加属性 - 怎么让 NSObject 保存一个字符串？/给系统的类添加属性的时候可以使用 “runtime动态添加属性”
+ 2>.添加属性的本质就是让某一属性与某个对象产生一个关联
  */
+-(void)dynamicAddProperty {
+//    // 1.在 category.h 中写上
+//    // 因为不会生成 _name/不用属性修饰符
+//    @property NSString *name;
+//    // 2.在category.m中实现setter/getter方法
+//    -(void)setName:(NSString *)name {
+//        /**
+//         第一个参数 - 给哪个对象添加属性
+//         第二个参数 - 属性名称
+//         第三个参数 - 属性值
+//         第四个参数 - 保存策略/ strong|weak|copy
+//         */
+//        objc_setAssociatedObject(self, "name", name, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+//    }
+//    -(NSString *)name {
+//        /**
+//        第一个参数 - 给哪个对象添加属性
+//        第二个参数 - 属性名称
+//        */
+//        return objc_getAssociatedObject(self, "name");
+//    }
+}
 
 
 @end
