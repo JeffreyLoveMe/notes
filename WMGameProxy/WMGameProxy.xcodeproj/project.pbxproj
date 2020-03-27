@@ -29,6 +29,7 @@
 		3324C82024260DD100766248 /* TestFight添加测试人员.png in Resources */ = {isa = PBXBuildFile; fileRef = 3324C81F24260DD100766248 /* TestFight添加测试人员.png */; };
 		3324C8222427B39800766248 /* 从应用A跳转到应用B.png in Resources */ = {isa = PBXBuildFile; fileRef = 3324C8212427B39800766248 /* 从应用A跳转到应用B.png */; };
 		3324D54B22DED4BF0066241F /* WMWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3324D54A22DED4BF0066241F /* WMWebViewController.m */; };
+		33264F10242B4E0400199DBD /* WMRunLoopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 33264F0F242B4E0400199DBD /* WMRunLoopViewController.m */; };
 		33302F6F242B10ED00C53F13 /* 静态库:动态库常见错误.png in Resources */ = {isa = PBXBuildFile; fileRef = 33302F6E242B10ED00C53F13 /* 静态库:动态库常见错误.png */; };
 		33302F71242B10F200C53F13 /* 静态库:动态库链接方式.png in Resources */ = {isa = PBXBuildFile; fileRef = 33302F70242B10F200C53F13 /* 静态库:动态库链接方式.png */; };
 		3359FE8E241F3E870014C82C /* iphone设备各种空间尺寸.png in Resources */ = {isa = PBXBuildFile; fileRef = 3359FE52241F3E830014C82C /* iphone设备各种空间尺寸.png */; };
@@ -117,6 +118,8 @@
 		33A1B074242A0899007248A3 /* iOS高级经典面试.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 33A1B073242A0899007248A3 /* iOS高级经典面试.pdf */; };
 		33A8FD7A22D481B4004AECBA /* SyTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 33A8FD7922D481B4004AECBA /* SyTableViewController.m */; };
 		33A8FD7D22D48237004AECBA /* SyCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 33A8FD7C22D48237004AECBA /* SyCollectionViewController.m */; };
+		33AC9E8E242B61A100B28AB5 /* Runtime.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 33AC9E8D242B61A100B28AB5 /* Runtime.pdf */; };
+		33AC9E90242B61DA00B28AB5 /* 谢吴军.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 33AC9E8F242B61DA00B28AB5 /* 谢吴军.pdf */; };
 		33AD3E38236062830092C389 /* NSString+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 33AD3E37236062830092C389 /* NSString+Extension.m */; };
 		33ADF8D1240CC5280041F19A /* UIImage+animatedGIF.m in Sources */ = {isa = PBXBuildFile; fileRef = 33ADF8D0240CC5280041F19A /* UIImage+animatedGIF.m */; };
 		33B10E4F2422265600C6E8C7 /* NBSDK接口协议.html in Resources */ = {isa = PBXBuildFile; fileRef = 33B10E4E2422265600C6E8C7 /* NBSDK接口协议.html */; };
@@ -190,6 +193,8 @@
 		3324C8212427B39800766248 /* 从应用A跳转到应用B.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "从应用A跳转到应用B.png"; sourceTree = "<group>"; };
 		3324D54922DED4BF0066241F /* WMWebViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WMWebViewController.h; sourceTree = "<group>"; };
 		3324D54A22DED4BF0066241F /* WMWebViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WMWebViewController.m; sourceTree = "<group>"; };
+		33264F0E242B4E0400199DBD /* WMRunLoopViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WMRunLoopViewController.h; sourceTree = "<group>"; };
+		33264F0F242B4E0400199DBD /* WMRunLoopViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WMRunLoopViewController.m; sourceTree = "<group>"; };
 		33302F6E242B10ED00C53F13 /* 静态库:动态库常见错误.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "静态库:动态库常见错误.png"; sourceTree = "<group>"; };
 		33302F70242B10F200C53F13 /* 静态库:动态库链接方式.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "静态库:动态库链接方式.png"; sourceTree = "<group>"; };
 		3359FE52241F3E830014C82C /* iphone设备各种空间尺寸.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iphone设备各种空间尺寸.png"; sourceTree = "<group>"; };
@@ -287,6 +292,8 @@
 		33A8FD7922D481B4004AECBA /* SyTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SyTableViewController.m; sourceTree = "<group>"; };
 		33A8FD7B22D48237004AECBA /* SyCollectionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SyCollectionViewController.h; sourceTree = "<group>"; };
 		33A8FD7C22D48237004AECBA /* SyCollectionViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SyCollectionViewController.m; sourceTree = "<group>"; };
+		33AC9E8D242B61A100B28AB5 /* Runtime.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = Runtime.pdf; sourceTree = "<group>"; };
+		33AC9E8F242B61DA00B28AB5 /* 谢吴军.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "谢吴军.pdf"; sourceTree = "<group>"; };
 		33AD3E36236062830092C389 /* NSString+Extension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+Extension.h"; sourceTree = "<group>"; };
 		33AD3E37236062830092C389 /* NSString+Extension.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+Extension.m"; sourceTree = "<group>"; };
 		33ADF8CF240CC5280041F19A /* UIImage+animatedGIF.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+animatedGIF.h"; sourceTree = "<group>"; };
@@ -375,7 +382,6 @@
 			children = (
 				33ADF8CC240CC4BF0041F19A /* Res */,
 				33ADF8CD240CC5280041F19A /* Libs */,
-				33A1B072242A0866007248A3 /* 面试题 */,
 				33068F1322AE67DB00D044EE /* WMGameProxy.txt */,
 				3312831B2339D2E3005D55E2 /* DNGameProxy.txt */,
 				3372CD532325F92400E7307B /* SYGameProxy.txt */,
@@ -399,6 +405,8 @@
 				33B10E532422300400C6E8C7 /* WMNetworkViewController.m */,
 				33090778242472950029DB9F /* WMRuntimeViewController.h */,
 				33090779242472950029DB9F /* WMRuntimeViewController.m */,
+				33264F0E242B4E0400199DBD /* WMRunLoopViewController.h */,
+				33264F0F242B4E0400199DBD /* WMRunLoopViewController.m */,
 				331309032420A7DE0014CC7E /* WMPushViewController.h */,
 				331309042420A7DE0014CC7E /* WMPushViewController.m */,
 				33B10E552422424500C6E8C7 /* WMJumpViewController.h */,
@@ -454,17 +462,12 @@
 			path = WMGameProxyUITests;
 			sourceTree = "<group>";
 		};
-		33A1B072242A0866007248A3 /* 面试题 */ = {
-			isa = PBXGroup;
-			children = (
-				33A1B073242A0899007248A3 /* iOS高级经典面试.pdf */,
-			);
-			path = "面试题";
-			sourceTree = "<group>";
-		};
 		33ADF8CC240CC4BF0041F19A /* Res */ = {
 			isa = PBXGroup;
 			children = (
+				33AC9E8F242B61DA00B28AB5 /* 谢吴军.pdf */,
+				33A1B073242A0899007248A3 /* iOS高级经典面试.pdf */,
+				33AC9E8D242B61A100B28AB5 /* Runtime.pdf */,
 				3359FE76241F3E850014C82C /* 大神班课程大纲.png */,
 				33B10E502422272500C6E8C7 /* 华为编程规范.pdf */,
 				3359FE79241F3E850014C82C /* 常见系统库00.png */,
@@ -746,6 +749,7 @@
 				33A1B06B24291731007248A3 /* 新建xxx.framework第六步.png in Resources */,
 				3359FEA4241F3E870014C82C /* json解析标准版.png in Resources */,
 				3359FEAD241F3E870014C82C /* 应用沙盒结构分析.png in Resources */,
+				33AC9E8E242B61A100B28AB5 /* Runtime.pdf in Resources */,
 				3359FEA9241F3E870014C82C /* UIScrollView.png in Resources */,
 				3359FED0241F7E390014C82C /* 多线程的实现方案.png in Resources */,
 				33068EBE22AE665000D044EE /* Main.storyboard in Resources */,
@@ -758,6 +762,7 @@
 				3359FED8241FE1150014C82C /* 创建App.png in Resources */,
 				33A1B06E24291731007248A3 /* 新建xxx.framework第三步.png in Resources */,
 				3359FEC0241F3E870014C82C /* 通过Xcode获取UDID.png in Resources */,
+				33AC9E90242B61DA00B28AB5 /* 谢吴军.pdf in Resources */,
 				3359FEBB241F3E870014C82C /* error_调用一个野指针.png in Resources */,
 				3359FEB5241F3E870014C82C /* 常见系统库00.png in Resources */,
 				3359FEB7241F3E870014C82C /* 常见bug_01.png in Resources */,
@@ -904,6 +909,7 @@
 				3386EEEB241BBD80001A422F /* SyCustomFlowLayout.m in Sources */,
 				33A8FD7D22D48237004AECBA /* SyCollectionViewController.m in Sources */,
 				33068EEA22AE66A800D044EE /* MainController.m in Sources */,
+				33264F10242B4E0400199DBD /* WMRunLoopViewController.m in Sources */,
 				33A8FD7A22D481B4004AECBA /* SyTableViewController.m in Sources */,
 				33068EB822AE665000D044EE /* AppDelegate.m in Sources */,
 				33ADF8D1240CC5280041F19A /* UIImage+animatedGIF.m in Sources */,

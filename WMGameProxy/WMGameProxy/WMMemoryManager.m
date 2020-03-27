@@ -117,7 +117,7 @@
 }
 
 
-// 9.多个对象的内存管理
+// 9.MRC模式下多个对象的内存管理
 -(void)doubleObjectMemoryManager {
     /**
     有增就有减/有 retain 就有 release
@@ -163,7 +163,7 @@
         // 执行代码块
         // 第一种写法
         WMGameProxy *wm = [[WMGameProxy alloc]init];
-        // 把 "指针变量p" 指向的 “实例变量” 放到了 “自动释放池” 中
+        // 把 "指针变量p" 指向的 “实例变量” 放到了 “自动释放池” 中/对象还是可以访问
         // 只要调用了 “autorelease” 就不用在调用 "release"
         // 将这个对象放到栈顶的自动释放池
         wm = [wm autorelease];
@@ -179,7 +179,26 @@
 
 
 
-
+/**
+ 12.ARC
+ 1>.概念 - 自动引用计数/编译器特性（不是运行时特性）
+ 2>.不允许写retain/release/autorelease|可以调用dealloc()，但是不允许使用[super dealloc];
+ 3>.判断原则 - 只要还有一个强指针变量指向对象，对象就会保持在内存中/默认所有的指针都是强指针
+ */
+-(void)setARC {
+    // 明确声明这是一个强指针
+    __strong WMGameProxy *wm = [[WMGameProxy alloc]init];
+    // 明确声明这是一个弱指针/只有弱指针指向的对象也会被释放
+    __weak WMGameProxy *wm1 = wm;
+    // 刚创建出来就会被释放 - 在开发中不要使用一个弱指针保存一个刚刚创建的对象（一创建就会被释放）
+    __weak WMGameProxy *wm2 = [[WMGameProxy alloc]init];
+    // 执行完这行代码 “对象wm” 就会被释放
+    wm = nil;
+}
+/**
+ 13.ARC模式下多个对象的内存管理
+ 1>.A对象想拥有B对象就需要用一个强指针指向B对象/A指针不再使用B对象什么都不需要做（编译器会自动帮我们释放）
+ */
 
 
 

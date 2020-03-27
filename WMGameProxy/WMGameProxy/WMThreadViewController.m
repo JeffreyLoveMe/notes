@@ -27,7 +27,7 @@
     
 }
 
-// 1.NSThread
+/// 1.NSThread
 // 1>.基本使用
 // 线程的生命周期 - 当线程中的任务执行完毕以后才会被释放
 -(void)setupNSThread {
@@ -152,7 +152,8 @@
 }
 
 
-// 2.GCD - Grand Central Dispatch/强大的中枢调度器
+
+/// 2.GCD - Grand Central Dispatch/强大的中枢调度器
 //http://www.cocoachina.com/ios/20161031/17887.html
 //https://blog.csdn.net/u011146511/article/details/79300015
 //https://www.jianshu.com/p/96032a032c7c
@@ -171,6 +172,11 @@
  GCD的执行步骤
  1.定制任务
  2.将任务添加到队列 - GCD会自动将队列中的任务取出，放在对应的线程中执行/任务的取出遵循队列的FIFO原则
+ */
+/**
+ 全局并发队列和自己创建的并发队列的区别？
+ 1.全局并发队列 - 整个程序中本身默认存在的并对应有优先级/ 栅栏函数不能使用/ ARC模式下不需要释放内存
+ 2.自己创建的并发队列 - 需要我们手动创建/ 栅栏函数只能使用自己创建的并发队列/ ARC模式下需要释放内存
  */
 -(void)setupGCD {
     // 1.GCD用来执行任务的常用函数
@@ -340,7 +346,7 @@
 //        });
     });
 }
-// 3.GCD其他常见函数
+// 3>.GCD其他常见函数
 -(void)notify {
     // 1.延迟执行
     // 第一种方法
@@ -372,5 +378,282 @@
 -(void)onTask {
     NSLog(@"task===%@", [NSThread currentThread]);
 }
+// 4>.栅栏函数
+// 1.可以控制异步函数的执行顺序
+// 2.同步函数不需要使用栅栏函数
+// 3.栅栏函数不能使用全局并发队列
+-(void)zhaLanMethod {
+    // 执行顺序 - downloadA/downloadB(它们俩还是并发执行) -> 栅栏函数 -> downloadC
+    dispatch_queue_t queue = dispatch_queue_create("com.easy.download", DISPATCH_QUEUE_CONCURRENT);
+    dispatch_async(queue, ^{
+        NSLog(@"downloadA---%@", [NSThread currentThread]);
+    });
+    dispatch_async(queue, ^{
+        NSLog(@"downloadB---%@", [NSThread currentThread]);
+    });
+    dispatch_barrier_async(queue, ^{
+        NSLog(@"========================");
+    });
+    dispatch_async(queue, ^{
+        NSLog(@"downloadC---%@", [NSThread currentThread]);
+    });
+}
+// 5>.快速迭代(遍历)
+// 1.for循环是同步执行的
+-(void)quicklyMethod {
+    /**
+     第一个参数 - 遍历的次数
+     第二个参数 - 队列（必须是并发队列/如果是全局队列会发生死锁/如果是串行队列会没有效果）
+     第三个参数 - 索引
+     */
+    // 并发执行/迭代速度特别快
+    dispatch_apply(10, dispatch_get_global_queue(0, 0), ^(size_t index) {
+        
+    });
+}
+// 6>.队列组 - 监听异步所有任务执行结束
+-(void)groupMethod {
+    // 1.创建队列
+    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    // 2.创建队列组
+    dispatch_group_t group = dispatch_group_create();
+    // 第一种写法
+    // 3.异步函数
+    dispatch_group_async(group, queue, ^{
+        NSLog(@"downloadA---%@", [NSThread currentThread]);
+    });
+    dispatch_group_async(group, queue, ^{
+        NSLog(@"downloadB---%@", [NSThread currentThread]);
+    });
+    dispatch_group_async(group, queue, ^{
+        NSLog(@"downloadC---%@", [NSThread currentThread]);
+    });
+    // 第二种写法
+    // 在该方法后面的异步任务会被纳入到队列组的监听范围
+    dispatch_group_enter(group);
+    dispatch_async(queue, ^{
+        NSLog(@"downloadA---%@", [NSThread currentThread]);
+        // 离开队列组
+        dispatch_group_leave(group);
+    });
+    dispatch_group_enter(group);
+    dispatch_async(queue, ^{
+        NSLog(@"downloadB---%@", [NSThread currentThread]);
+        // 离开队列组
+        dispatch_group_leave(group);
+    });
+    dispatch_group_enter(group);
+    dispatch_async(queue, ^{
+        NSLog(@"downloadC---%@", [NSThread currentThread]);
+        // 离开队列组
+        dispatch_group_leave(group);
+    });
+    // 当队列组中所有任务都执行完毕的时候调用该方法
+    // 内部本身是异步的/不会阻塞
+    dispatch_group_notify(group, queue, ^{
+        /**
+         queue - 并发队列/子线程执行
+         queue - 主队列/主线程执行
+         */
+    });
+    /**
+     DISPATCH_TIME_NOW - xxx
+     DISPATCH_TIME_FOREVER - 死等/直到队列中所有的任务都执行完毕以后才能执行
+     */
+    dispatch_group_wait(group, DISPATCH_TIME_FOREVER);
+}
+// 7>.补充
+-(void)testMethod {
+    // 两者是等价的（封装任务的方法不一样）
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+        
+    });
+    /**
+     第一个参数 - 队列
+     第二个参数 - 参数
+     第三个参数 - 要调用的函数的名称
+     */
+    dispatch_async_f(dispatch_get_global_queue(0, 0), NULL, task);
+}
+void task(void *parm) {
+    NSLog(@"%s", __func__);
+}
+
+
+
+/// 3.NSOperation/抽象类
+/**
+ 1.NSOperation和NSOperationQueue可以实现多线程编程
+ 2.NSOperation继承NSObject
+ 3.操作 == 任务
+ */
+-(void)setNSOperation {
+    // 1.NSInvocationOperation
+//    // 1>.创建操作
+//    // 此处还是主线程（没有开子线程）/没有意义
+//    /**
+//     第一个参数 - 目标对象
+//     第二个参数 - SEL
+//     第三个参数 - 方法需要接收的参数
+//     */
+//    NSInvocationOperation *optA = [[NSInvocationOperation alloc] initWithTarget:self selector:@selector(operationA) object:nil];
+//    // 2>.执行操作
+//    [optA start];
+    // 2.如果开子线程
+    // 1>.创建操作
+    NSInvocationOperation *optA = [[NSInvocationOperation alloc] initWithTarget:self selector:@selector(operationA) object:nil];
+    NSInvocationOperation *optB = [[NSInvocationOperation alloc] initWithTarget:self selector:@selector(operationB) object:nil];
+    NSInvocationOperation *optC = [[NSInvocationOperation alloc] initWithTarget:self selector:@selector(operationC) object:nil];
+    // 2>.添加操作依赖 - optA依赖于optB/可以控制子线程的执行顺序
+    // 执行顺序 - optC > optB > optA
+    // 不可以循环依赖 - 不会崩溃/死锁
+    // 可以跨队列依赖
+    [optA addDependency:optB];
+    // optB依赖于optC
+    [optA addDependency:optC];
+    // 3>.操作监听
+    optA.completionBlock = ^{
+        // 当 “操作optA” 执行完毕就会执行此处
+        // 此处跟 “操作optA” 不一定在同一个子线程操作
+    };
+    // 4>.创建队列
+    /**
+     主队列 - [NSOperationQueue mainQueue]/与GCD一样/也是串行队列
+     非主队列 - [[NSOperationQueue alloc]init]/同时具备并发和串行的功能/默认情况下是并发队列
+     */
+    NSOperationQueue *queue = [[NSOperationQueue alloc]init];
+    // 同一时间最多有多少个任务可以执行
+    // maxConcurrentOperationCount > 1  // 并发队列
+    // maxConcurrentOperationCount = 1  // 串行队列
+    // maxConcurrentOperationCount = 0  // 一条任务都不会执行
+    // maxConcurrentOperationCount = -1  // 特殊意义/表示最大值/表示最大并发数不受限制
+    // 串行执行任务 != 只开一条线程/串行执行任务主要看执行任务的顺序
+    queue.maxConcurrentOperationCount = 1;
+    // 暂停队列 - 可以恢复/不能暂停当前正在处于执行状态的任务
+    // 队列中的任务也有状态 - 已经执行完毕/正在执行/排队等待状态
+    /**
+     // 1.——自定义NSOperation没有效果——
+     // 2.该方法本质 - 内部调用了所有操作的 “cancelled方法”
+     // 3.解决办法/官方建议 - 没执行完毕一段耗时操作都需要判断一下该操作有没有被取消
+     -(void)main {
+         // 第一段耗时操作
+         if (self.isExecuting) {
+             return
+         }
+         // 第二段耗时操作
+         if (self.isExecuting) {
+             return
+         }
+         // 第三段耗时操作
+          if (self.isExecuting) {
+              return
+          }
+     }
+     */
+    [queue setSuspended:YES];
+    // 继续执行
+    [queue setSuspended:NO];
+    // 取消 - 不可以恢复
+    /**
+    // 1.——自定义NSOperation没有效果——
+    // 2.该方法本质 - 内部调用了所有操作的 “cancelled方法”
+    // 3.解决办法/官方建议 - 没执行完毕一段耗时操作都需要判断一下该操作有没有被取消
+    -(void)main {
+        // 第一段耗时操作
+        if (self.isCancelled) {
+            return
+        }
+        // 第二段耗时操作
+        if (self.isCancelled) {
+            return
+        }
+        // 第三段耗时操作
+         if (self.isCancelled) {
+             return
+         }
+    }
+    */
+    [queue cancelAllOperations];
+    // 5>.添加操作到队列
+    // 此处内部已经调用 [optA start]
+    [queue addOperation:optA];
+    [queue addOperation:optB];
+    [queue addOperation:optC];
+    
+    
+//    // 2.NSBlockOperation
+//    // 此处还是主线程（没有开子线程）/没有意义
+//    // 1>.创建操作
+//    NSBlockOperation *blockA = [NSBlockOperation blockOperationWithBlock:^{
+//        NSLog(@"%@", [NSThread currentThread]);
+//    }];
+//    NSBlockOperation *blockB = [NSBlockOperation blockOperationWithBlock:^{
+//        NSLog(@"%@", [NSThread currentThread]);
+//    }];
+//    // 2>.追加任务
+//    // 1.如果一个操作中的任务数量 > 1 -> 那么就会开子线程并发执行任务
+//    [blockA addExecutionBlock:^{
+//        // 不一定是子线程/也有可能是主线程
+//    }];
+//    [blockA addExecutionBlock:^{
+//        // 不一定是子线程/也有可能是主线程
+//    }];
+//    // 3>.执行操作
+//    [blockA start];
+//    [blockB start];
+    // 2.如果开子线程
+    // 1>.创建操作
+    NSBlockOperation *blockA = [NSBlockOperation blockOperationWithBlock:^{
+        NSLog(@"%@", [NSThread currentThread]);
+        // 线程通信
+        // 更新UI - 回到主线程
+        [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+            
+        }];
+    }];
+    NSBlockOperation *blockB = [NSBlockOperation blockOperationWithBlock:^{
+        NSLog(@"%@", [NSThread currentThread]);
+    }];
+    NSBlockOperation *blockC = [NSBlockOperation blockOperationWithBlock:^{
+        NSLog(@"%@", [NSThread currentThread]);
+    }];
+    // 2>.追加任务
+    // 1.如果一个操作中的任务数量 > 1 -> 那么就会开子线程并发执行任务
+    [blockA addExecutionBlock:^{
+        // 不一定是子线程/也有可能是主线程
+    }];
+    [blockA addExecutionBlock:^{
+        // 不一定是子线程/也有可能是主线程
+    }];
+    // 3>.创建队列
+    /**
+     主队列 - [NSOperationQueue mainQueue]/与GCD一样/也是串行队列
+     非主队列 - [[NSOperationQueue alloc]init]/同时具备并发和串行的功能/默认情况下是并发队列
+     */
+    NSOperationQueue *blockQueue = [[NSOperationQueue alloc]init];
+    // 4>.添加操作到队列
+    // 此处内部已经调用 [optA start]
+    [blockQueue addOperation:blockA];
+    [blockQueue addOperation:blockB];
+    [blockQueue addOperation:blockC];
+    
+    
+    // 3.简便方法/将上面四步操作合并成两步
+    [blockQueue addOperationWithBlock:^{
+        NSLog(@"%@", [NSThread currentThread]);
+    }];
+    
+    
+    /**
+     4.自定义类继承NSOperation也可以实现多线程 - 因为 NSOperation 是抽象类
+     1>.让XMGOperation继承NSOperation/创建[[XMGOperation alloc]init];
+     2>.创建队列把XMGOperation加入到队列
+     3>.重写XMGOperation中-(void)main {}执行操作
+     */
+    // 应用场景 - 当任务的代码量很大可以考虑该方法/有利于代码隐蔽/有利于代码复用
+}
+//-(void)operationA {
+//    NSLog(@"%s - %@", __func__, [NSThread currentThread]);
+//}
 
 @end

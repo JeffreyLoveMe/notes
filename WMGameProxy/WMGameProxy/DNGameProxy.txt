@@ -30,7 +30,7 @@ Comment评论/Calendar日历/Custom自定义/Cache缓存/Coupon优惠券/Create�
 // D
 Dialog对话框/Demo样品/演示/Debug调试/Destroy销毁/Delete删除
 // E
-End/Finish结束/Engine发动机/Embedded嵌入/Exit退出/Exchange交换
+End结束/Finish结束/Engine发动机/Embedded嵌入/Exit退出/Exchange交换/Extension延展
 // F
 Fail失败/Flag标志/Footer页脚/Framework框架/Focus关注/Follow跟随
 // G
@@ -38,7 +38,7 @@ Game游戏/Gesture手势
 // H
 Header头部/HotFix热修复
 // I
-Init初始化/Image图像/Icon图标/Intent意图/Item单项/Index索引/Insert插入/Inhibit阻止
+Init初始化/Image图像/Icon图标/Intent意图/Item单项/Index索引/Insert插入/Inhibit阻止/􏶉􏲆􏲈􏰓􏱳􏰖􏰕􏱃􏲆􏰔􏰓􏶉􏲆􏲈􏰓􏱳􏰖􏰕􏱃􏲆􏰔􏰓Inheritance继承
 // J
 // K
 KeyWord关键字/KeyBoard键盘

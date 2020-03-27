@@ -31,8 +31,11 @@
 //二维数组
 //冒泡排序 - xx
 //选择排序 - xx
+//插入排序 - xx
+//希尔排序 - xx
 //快速排序 - xx
 //堆排序 - xx
+//归并排序 - xx
 //二分查找 - xx
 //函数
 //局部变量/全局变量
@@ -76,22 +79,22 @@
 //协议和代理
 //购物车系统 - xx
 //“抽象工厂”模式 - xx
-//类的消息机制 - xx
+//类的消息机制
 //内存管理 - xx
 //MRC/ARC混合编程
-//选择器SEL - xx
+//选择器SEL
 //文件操作 - xx
 //KVC、KVO
 //block
-//RunLoop - xxx
+//RunLoop
 //Runtime
 /**************************UI基础**************************/
 //认识UI(User Interface)
 //Apple设备（尺寸、分辨率、坐标）
 //iOS的坐标体系
 //UIApplication
-//main()函数 - xx
-//AppDelegate - xx
+//main()函数
+//AppDelegate
 //UIWindow
 //UIViewController的生命周期
 //状态栏
@@ -130,7 +133,7 @@
 //UIPasteboard - xx
 //NSShadow阴影 - xx
 //富文本 - xx
-//Gif动画 - xx
+//Gif动画
 //帧动画
 //渐变动画
 //核心动画 - xx
@@ -182,7 +185,7 @@
 //程序启动原理
 //沙盒机制NSHomeDirectory()
 //数据持久化 - xx
-//多线程 - xx
+//多线程
 //地图LBS - xx
 //多语言（en/tw/hk/cn） - xx
 //多媒体（图片/音频/视频/直播） - xx
@@ -200,21 +203,35 @@
 //iPad开发 - xx
 //svn/git/CocoaPods - xx
 //应用发布（打包测试/ TestFlight/ 企业包/ AppStore/ 广告植入）
-//组件化（静态库） - xx
+//组件化（静态库）
 //消息推送/本地推送 - xx
-//即时通讯IM - x
+//即时通讯IM - xx
 //画折线图 - x
-//正则表达式 - xx
-//谓词NSPredicate - xx
+//正则表达式 - x
+//谓词NSPredicate - x
 //iOS9.0 - iOS13.0新特性 - xx
 //Xcode7.0 - Xcode11.0新特性 - xx
-//Instruments - xx
+//Instruments
 //Xcode编译原理 - x
 //LLVM项目 - x
 //Clang编译器 - x
 //ReactiveCocoa - x
 //Scrumj敏捷开发 - x
 //RxSwift - x
+/*
+多语言
+二维码
+通讯录
+内购
+分享
+第三方登录
+支付
+极光推送
+即时通讯
+多媒体
+地图
+iPad开发
+*/
 /**************************实用技术(swift版本)**************************/
 /**************************补充部分**************************/
 //“原生” 与 “js交互”
@@ -283,7 +300,7 @@ libsqlite3.0.tbd - 数据库相关库
 //常见三方libs
 1>.需要分析理解源码
 AFNetworking/Alamofire - 网络请求下载相关库
-Masonry/SnapKit - 用于屏幕适配
+Masonry/ - 用于屏幕适配
 FMDB - 操作数据库相关库
 MagicRecord - 用于简化CoreData
 MJReFresh/SVPullToRefresh - 上拉刷新/下拉加载

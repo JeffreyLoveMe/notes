@@ -106,10 +106,14 @@
     /// 创建定时器
     // NSTimer可以直接用 weak
     // 定时器会在 1s 以后开始
-    NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(onTimer:) userInfo:nil repeats:YES];
+    // 第一种方式 - 需要加入到NSRunLoop中
+    NSTimer *timer = [NSTimer timerWithTimeInterval:2.0 target:self selector:@selector(onTimer:) userInfo:nil repeats:YES];
+//    // 第二种方式 - 不需要加入到NSRunLoop中/内部已经加入默认模式中
+//    // 这种创建方式定时器在UI界面滑动的时候也是不工作 - 需要重新添加
+//    NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(onTimer:) userInfo:nil repeats:YES];
     // 解决定时器在主线程不工作的原因
     // ！！！主线程无论在处理什么操作都会抽时间处理 NStimer！！！
-    // 有点不太明白
+    // ？？？有点不太明白？？？
     [[NSRunLoop mainRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];
     // 立即开始
     [timer fire];
@@ -785,6 +789,66 @@
  */
 // 如果导入过多头文件建议使用主头文件
 // MRC项目下的静态库打包以后可以在ARC项目下直接使用（不需要加-fno-objc-arc）
+
+
+#pragma mark - 内存分析
+// https://www.jianshu.com/p/92cd90e65d4c
+/**
+ 1.静态内存分析/ Product->Analyze
+ 1>.概念 - 不运行程序直接对代码进行分析/根据代码的上下文的语法结构来分析内存状况
+ 2>.作用 - 1.逻辑错误（访问未初始化的变量/野指针错误）2.声明错误（从未使用过的对象）3.内存管理错误（内存泄漏）
+ 3>.缺点 - 测试可能不准确
+ */
+//// 测试可能不准确
+//-(void)staticAnalyze {
+//    NSObject *obj = [self getObjc];
+//    [obj release];
+//}
+//-(NSObject *)getObjc {
+//    return [[NSObject alloc]init];
+//}
+/**
+ 2.动态内存分析 - 程序运行的时候通过 Product->Profile->Instruments 动态查看内存情况
+ */
+
+
+#pragma mark - SEL
+-(void)setSEL {
+    /**
+     1.SEL - 代表着方法的签名/每个方法都有一个与之对应的 “SEL类型” 的对象
+     */
+//    /**
+//     2.方法调用原理
+//     1>.把 “test方法” 包装成 “sel类型的数据”
+//     2>.根据SEL数据到该类的类对象上去找，如果找到就执行该代码
+//     3>.如果没有找到根据类对象上的父类的类对象指针去父类的类对象找，如果找到就执行该代码
+//     4>.如果没有找到就一直向上找直到基类（NSObject）
+//     5>.如果都没有找到就会报错
+//     */
+//    // 会有缓存（对性能消耗有限）
+//    [p test];
+    SEL sel = @selector(setAge:);
+    WMGameProxy *wm = [WMGameProxy new];
+    // 3.判断 wm 有没有实现 -(void)setAge:(int)age;方法
+    if ([wm respondsToSelector:sel]) {
+    }
+    // 4.判断 WMGameProxy 有没有实现 +(void)setAge:(int)age;方法
+    if ([WMGameProxy respondsToSelector:sel]) {
+    }
+    // ARC的条件下，使用选择器很可能会报警/参照该方式去除报警
+    #pragma clang diagnostic push
+    #pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+    // 5.调用“SEL包装的方法”
+    // NSSelectorFromString(@"test:") - 通过 NSString 转换成 SEL
+    [wm performSelector:NSSelectorFromString(@"test:")];
+    /**
+     sel - 方法
+     10 - 方法参数/必须是一个对象
+     */
+    [wm performSelector:sel withObject:@"10"];
+    #pragma clang diagnostic pop
+    // 6.作为函数形参 - 在函数内部操作 “SEL类型”
+}
 
 
 #pragma mark - ！！！以下内容不属于任何知识点！！！

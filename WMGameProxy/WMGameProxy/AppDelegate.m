@@ -61,8 +61,13 @@
     
 //    // WMGameProxy借用地盘
 //    /**
-//     [WMGameProxy alloc] // 创建对象并返回对象地址/堆内存/类方法
-//     [WMGameProxy init]   // 初始化对象并返回对象地址/对象方法
+//     [WMGameProxy alloc] - 堆内存开辟存储空间并返回对象地址/类方法
+//     [WMGameProxy init] - 初始化对象属性并返回对象地址/对象方法
+//     wm - 指针变量wm接收返回对象地址
+//     */
+//    /**
+//     1.创建对象返回的地址就是类的第零个属性的地址
+//     2.类的第零个属性就是isa属性
 //     */
 //    WMGameProxy *wm = [[WMGameProxy alloc]init];
 //    /**
