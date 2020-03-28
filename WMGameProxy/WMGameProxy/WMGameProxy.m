@@ -128,7 +128,8 @@
      super - 仅仅是一个编译指示器/只要编译器看到 super 就会让 “当前对象” 去调用 “父类方法”
      [super class] - 让当前类的对象去调用父类的方法
      */
-    NSLog(@"%@ = %@ = %@ = %@", [self class], [self superclass], [super class], [super superclass]);
+    // [self class] == [super class] = WMGameProxy
+    NSLog(@"%@ = %@ = %@", [self class], [self superclass], [super class]);
     return self;
 }
 
@@ -366,6 +367,29 @@
     // 可以使用 “get方法”
     NSLog(@"通知名称[%@]-通知内容[%@]-通知发布者[%@]",
           notifucaiton.name, notifucaiton.userInfo, notifucaiton.object);
+}
+
+/// 自定义类实现Copy
+- (id)copyWithZone:(nullable NSZone *)zone {
+    // 1.创建一个新对象
+    WMGameProxy *wm = [[[self class] allocWithZone:zone] init];
+    // 2.设置当前对象的内容给新对象
+    wm.mName = _mName;
+    // 3.返回新对象
+    return wm;
+//    // 如果父类已经实现该协议
+//    id obj = [super copyWithZone:zone];
+//    obj.age = _age;
+//    return obj;
+}
+
+- (id)mutableCopyWithZone:(NSZone *)zone {
+    // 1.创建一个新对象
+    WMGameProxy *wm = [[[self class] allocWithZone:zone] init];
+    // 2.设置当前对象的内容给新对象
+    wm.mName = _mName;
+    // 3.返回新对象
+    return wm;
 }
 
 // 实现类结束的标志

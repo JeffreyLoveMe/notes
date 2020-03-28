@@ -23,15 +23,15 @@ NS_ASSUME_NONNULL_BEGIN
  5>.retain - 自动帮我们生成 “setter方法” 内存管理的代码/表示持有特性/一般只能用在 "MRC"
  6>.assign - 不会帮我们生成 “setter方法” 内存管理的代码/仅仅会生成普通的 “setter/getter方法”/表示赋值特性/一般用于基本数据类型（无论是 ARC 还是 MRC）/默认
  // ARC
- 7>.strong - 强引用/相当于 “MRC模式” retain
- 8>.weak - 弱引用/相当于 “MRC模式” assign/指向的对象随时可能消失（如果对象消失该指针自动置为 nil）/一般用于delegate
+ 7>.strong - 强引用/表示持有属性/相当于 “MRC模式” retain
+ 8>.weak - 弱引用/相当于 “MRC模式” assign/指向的对象随时可能消失（如果指向的对象被释放该指针自动置为 nil）/一般用于delegate
  assign - 用于基本数据类型
  
  9>.atomic - 原子性/线程安全（对当前属性 "setter方法" 加锁）/性能低
  10>.nonatomic - 非原子性/线程不安全（不对当前属性setter方法加锁）/性能高/UI所有的属性都要用nonatomic
  
- 11>.copy - 会复制原来的对象生成新的对象/修饰字符串/？？？不可变字符串可以直接使用strong？？？
- 12>.mutableCopy - xxx
+ 11>.copy - 会生成不可变对象/字符串使用copy修饰（防止内部修改内部数据）/block使用copy（从栈区转移到堆区）
+ 12>.mutableCopy - 会生成可变对象/生成一个新的对象
  
  2.注意
  1>.多个属性x修饰符用 ‘,’ 隔开

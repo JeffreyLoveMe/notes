@@ -47,7 +47,7 @@ NS_ASSUME_NONNULL_BEGIN
 // NSObject父类（顶级父类）
 // .h/.m相互切换：command + control + 👆
 // 自定义泛型
-@interface WMGameProxy <ObjectType> : NSObject <NSCoding> {
+@interface WMGameProxy <ObjectType> : NSObject <NSCoding, NSCopying, NSMutableCopying> {
     /// 定义属性
     // 实例变量/成员变量/属性
     // 成员变量不能离开类：只能写在类内部

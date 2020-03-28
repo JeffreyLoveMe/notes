@@ -80,8 +80,8 @@
     /**
      关于内存管理
      1>.一般情况下只要通过 “alloc/第一种方式” 或者 “类工厂方法/第二种方式” 创建的对象每次都会在堆内存中开辟一块新的存储空间
-     2>.如果是通过 ‘alloc的initWithString方法’ 除外/因为该方法是通过复制返回一个字符串对象
-     3>.
+     2>.alloc - 需要手动 release/类工厂方法 - 99.9%是autorelease
+     3>.如果是通过 ‘alloc的initWithString方法’ 除外/因为该方法是通过复制返回一个字符串对象
      */
     // C语言字符串 <==> OC字符串
     NSString *str3 = [[NSString alloc]initWithUTF8String:"我是c语言字符串"];

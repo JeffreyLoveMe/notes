@@ -19,7 +19,7 @@
     
 }
 // https://www.jianshu.com/p/d6b12f775328
-// 1.第一种获取方式 - 通过 “Foundation框架” 获取
+// 1>.第一种获取方式 - 通过 “Foundation框架” 获取
 // oc语言方式
 -(void)setNSRunLoop {
     // 获取主线程的RunLoop对象
@@ -37,24 +37,22 @@
     NSRunLoop *currentRunLoop = [NSRunLoop currentRunLoop];
 }
 
-// 2.第二种获取方式 - 通过 Core Foundation框架 获取
+// 2>.第二种获取方式 - 通过 Core Foundation框架 获取
 // C语言方式
 -(void)setCFRunLoop {
     // 获得当前线程的RunLoop对象
     // 获取主线程的RunLoop对象
     NSLog(@"%@ - %@", CFRunLoopGetCurrent(), CFRunLoopGetMain());
-    
-    
 }
 
-//
+
 /**
- 3.RunLoop相关类
- 1>.在RunLoop中有多个运行模式(Mode)/但是启动以后只能选择一种模式运行（称为CurrentMode）/一个模式中至少有一个timer或者source
- 2>.如果需要切换Mode - 只能退出当前Loop，再重新指定一个Mode进入（为了分隔开不同组的Source/Timer/Observer让其互不影响）
+ 3>.RunLoop相关类
+ 1.在RunLoop中有多个运行模式(Mode)/但是启动以后只能选择一种模式运行（称为CurrentMode）/一个模式中至少有一个timer或者source
+ 2.如果需要切换Mode - 只能退出当前Loop，再重新指定一个Mode进入（为了分隔开不同组的Source/Timer/Observer让其互不影响）
  */
 /**
- CFRunLoopModeRef - 系统默认注册五个Mode
+ 1>.CFRunLoopModeRef - 系统默认注册五个Mode
  1.kCFRunLoopDefaultMode - App的默认Mode/通常主线程在该Mode下运行
  2.UITrackingRunLoopMode - 界面跟踪Mode/用于UIScrollView追踪触摸滑动（保证界面滑动时不受其他Mode影响）
  3.UIInitializationRunLoopMode - 再刚启动App时进入的第一个Mode（启动完成就不再使用）
@@ -62,6 +60,7 @@
  5.kCFRunLoopCommonModes - 占位使用的Mode（不是一种真正的Mode）
  */
 /**
+ 2>.CFRunLoopTimerRef
  1.为什么需要把NSTimer加入到NSRunLoop？
  Q.界面滑动的时候定时器不工作
  2.为什么界面滑动的时候定时器会不工作？
@@ -106,18 +105,99 @@
 //    // 以什么模式开启RunLoop/10s以后退出RunLoop
 //    [runloop runMode:NSRunLoopCommonModes beforeDate:[NSDate dateWithTimeIntervalSinceNow:10]];
 }
+/**
+ 3>.CFRunLoopSourceRef - 事件源
+ 1>.Source0 - 非基于Port/用户主动触发
+ 2>.Source1 - 基于Port/非用户主动触发
+ */
+/**
+ 4>.CFRunLoopObserverRef - 观察者/能够监听RunLoop的状态改变
+ // CFRunLoopActivity
+ 1>.kCFRunLoopEntry - 即将进入RunLoop
+ 2>.kCFRunLoopBeforeTimers - 即将处理Timer
+ 3>.kCFRunLoopBeforeSources - 即将处理Source
+ 4>.kCFRunLoopBeforeWaiting - 即将处理休眠
+ 5>.kCFRunLoopAfterWaiting - 刚从休眠中唤醒
+ 6>.kCFRunLoopExit - 即将推出RunLoop
+ */
+-(void)setObserver {
+    // 1>.创建监听者
+    /**
+    第一个参数 - 怎么分配存储空间
+    第二个参数 - 要监听的状态/ kCFRunLoopAllActivities - 所有状态
+    第三个参数 - 是否需要持续监听
+    第四个参数 - 优先级/总是传入0
+    第五个参数 - 当状态改变的时候调用
+    */
+    CFRunLoopObserverRef observer = CFRunLoopObserverCreateWithHandler(CFAllocatorGetDefault(), kCFRunLoopAllActivities, YES, 0, ^(CFRunLoopObserverRef observer, CFRunLoopActivity activity) {
+        switch (activity) {
+            case kCFRunLoopEntry: {
+                NSLog(@"即将进入RunLoop");
+            }
+            break;
+            case kCFRunLoopBeforeTimers: {
+                NSLog(@"即将处理Timer");
+            }
+                break;
+            case kCFRunLoopBeforeSources: {
+                NSLog(@"即将处理Source");
+            }
+                break;
+            case kCFRunLoopBeforeWaiting: {
+                NSLog(@"即将处理休眠");
+            }
+                break;
+            case kCFRunLoopAfterWaiting: {
+                NSLog(@"刚从休眠中唤醒");
+            }
+                break;
+            case kCFRunLoopExit: {
+                NSLog(@"即将推出RunLoop");
+            }
+                break;
+            default:
+                break;
+        }
+    });
+    /**
+    第一个参数 - 要监听哪个RunLoop
+    第二个参数 - 观察者
+    第三个参数 - 运行模式
+    */
+    CFRunLoopAddObserver(CFRunLoopGetCurrent(), observer, kCFRunLoopDefaultMode);
+}
 
 
-
-
-
-
-
-
-
-
-
-
-
+/**
+ 6.GCD定时器
+ 1.不受RunLoop的影响
+ 2.绝对精准
+ */
+-(void)setTimer {
+    // 1>.创建GCD中定时器
+    /**
+     第一个参数 - source类型/DISPATCH_SOURCE_TYPE_TIMER表示定时器
+     第二个参数 - 描述信息/线程ID
+     第三个参数 - 更详细的描述信息
+     第四个参数 - 队列/决定GCD定时器中的任务在哪个线程中执行
+     */
+    // 此处 timer 不执行 - 需要给 timer 一个强引用
+    // @property (strong, nonatomic) dispatch_source_t timer;
+    dispatch_source_t timer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0, dispatch_get_global_queue(0, 0));
+    // 2.设置定时器
+    /**
+    第一个参数 - 定时器对象
+    第二个参数 - 起始时间/ DISPATCH_TIME_NOW - 从现在开始
+    第三个参数 - 间隔时间/ 每隔2.0s /NSEC_PER_SEC == 10^9
+    第四个参数 - 精准度/ 0代表绝对精准
+    */
+    dispatch_source_set_timer(timer, DISPATCH_TIME_NOW, 2.0 * NSEC_PER_SEC, 0 * NSEC_PER_SEC);
+    // 3>.设置定时器的任务
+    dispatch_source_set_event_handler(timer, ^{
+        NSLog(@"%@", [NSThread currentThread]);
+    });
+    // 4>.启动定时器
+    dispatch_resume(timer);
+}
 
 @end

@@ -15,6 +15,8 @@
 
 @property (strong, nonatomic) NSArray *dataArray;
 
+@property (strong, nonatomic) void(^block)(void);
+
 @end
 
 @implementation SySkillViewController
@@ -404,8 +406,8 @@
     // 如果想要在 block 中修改外部变量的值，必须在外界变量前面加上 __block
     // 如果在 block 中修改了外部变量的值，会影响到外部变量的值
     /**
-     不加 __block 是值传递 - 不能被内部修改
-     加 __block 是地址传递 - 能够被外部修改
+     如果是局部变量 -> 值传递 -> 不能被内部修改/！！！什么修饰都不加不能被传递！！！
+     如果是静态变量 / 全局变量 / __block -> 地址传递 -> 能够被外部修改
      */
     __block int m1 = 10;
     void (^yourBlock)(void) = ^{
@@ -440,15 +442,6 @@
 //    proxy();
     
     // 9.block的快捷方式 - inlineBlock
-    
-    // 10.
-    
-    /**
-     //block中使用self
-     __weak typeof(self) weakSelf = self;
-     // 什么是循环引用？block为什么会导致循环引用？weak怎么防止循环引用？请举例子说明。
-     1.对象A持有对象B的同时对象B持有对象A，这种情况我们称为循环引用，循环引用会导致两个对象都无法销毁；
-     */
 }
 // 将 “void (^myBlock)(void)” 中 myBlock 取出来即可
 -(void)completeBlock:(void (^)(void))myBlock {
@@ -457,6 +450,42 @@
     myBlock();
     
     // 代码块
+}
+// 内存管理
+-(void)setMemoryManager {
+    // 1>.block是不是一个对象？
+    // 是一个对象/需要管理内存
+    // 2>.MRC
+    // block代码块中引用外部局部变量 -> 栈
+    // block代码块中没有引用外部局部变量 -> 全局区
+    /**
+     1.只能使用copy修饰block/copy可以让block从栈区转移到堆区
+     2.不能使用retain修饰block/retain修饰的block还是在栈区/调用会crash
+     */
+    void(^block)(void) = ^{
+        NSLog(@"调用block");
+    };
+    NSLog(@"%@", block);
+    // 3>.ARC
+    // block代码块中引用外部局部变量 -> 堆
+    // block代码块中没有引用外部局部变量 -> 全局区
+    // 最好使用 strong/不要使用 copy
+}
+/**
+ 什么是循环引用 - A引用B/B引用A导致A和B都不能够释放内存
+ 1>.block为什么会导致循环引用？- block会对“代码块”中的强指针变量全部进行一次强引用
+ __weak typeof(self) weakSelf = self;
+ */
+-(void)setCycle {
+    // 指明  “self” 为 “弱指针变量”
+    __weak typeof(self) weakSelf = self;
+    _block = ^ {
+        // block内部如果有延迟操作需要用一个强指针指向，不然拿不到结果
+        __strong typeof(weakSelf) strongSelf = weakSelf;
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            NSLog(@"%@", strongSelf);
+        });
+    };
 }
 
 

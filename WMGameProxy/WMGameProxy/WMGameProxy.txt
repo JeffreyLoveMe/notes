@@ -80,7 +80,7 @@
 //购物车系统 - xx
 //“抽象工厂”模式 - xx
 //类的消息机制
-//内存管理 - xx
+//内存管理
 //MRC/ARC混合编程
 //选择器SEL
 //文件操作 - xx
@@ -217,8 +217,38 @@
 //Clang编译器 - x
 //ReactiveCocoa - x
 //Scrumj敏捷开发 - x
+//链式编程思想 - x
 //RxSwift - x
+/**************************实用技术(swift版本)**************************/
 /*
+0.简历上提及的知识点
+Objective-C/swift混合开发
+静态库开发
+mvc/mvvm模式
+自定义UI控件
+懒加载
+多线程
+block
+runtime
+runloop
+内存管理
+AutoLayout
+上架/分发/打包
+消息机制（KVO/KVC/通知/代理）
+网络开发 - x
+iOS动画 - x
+数据持久化 - x
+svn、git、CocoaPods - x
+AFNetWorking、SDWebImage、MJRefresh、SnapKit - x
+第三方登录 - x
+社会化分享 - x
+极光推送 - x
+LBS - x
+“原生” 与 “js交互” - x
+微信SDK/支付宝SDK - x
+*/
+/*
+1.有时间需要加强的知识点
 多语言
 二维码
 通讯录
@@ -232,7 +262,6 @@
 地图
 iPad开发
 */
-/**************************实用技术(swift版本)**************************/
 /**************************补充部分**************************/
 //“原生” 与 “js交互”
 1>.iOS与H5的交互
@@ -308,6 +337,7 @@ JSONKit - json解析
 JSONModel/MJExtention - 字典转模型
 HandyJSON/SwiftyJSON - 字典转模型
 SDWebImage - 图片下载/上传
+fmmpeg - 音视频编解码框架
 2>.需要知道怎么使用
 JXSegmentedView - 多控制器滑动视图
 MBProgressHUD - 加载loading
