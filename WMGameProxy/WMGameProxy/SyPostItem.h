@@ -23,6 +23,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 +(instancetype)itemWithDict:(NSDictionary *)dic;
 
++(instancetype)sharedInstance;
+
 @end
 
 NS_ASSUME_NONNULL_END

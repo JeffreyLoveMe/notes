@@ -104,6 +104,14 @@
 		3361E41A230A43EA00A03B7D /* DOVE.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 3361E419230A43EA00A03B7D /* DOVE.bundle */; };
 		33646DC023FFD4A700CE99CF /* WMMemoryManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 33646DBF23FFD4A700CE99CF /* WMMemoryManager.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		3366E827242F6F3900820298 /* BAT面试资料全集.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 3366E826242F6F3900820298 /* BAT面试资料全集.pdf */; };
+		3366E82C2431089D00820298 /* WMSqlViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3366E82B2431089D00820298 /* WMSqlViewController.m */; };
+		3366E83D24310A2000820298 /* README.markdown in Resources */ = {isa = PBXBuildFile; fileRef = 3366E82E24310A1F00820298 /* README.markdown */; };
+		3366E83E24310A2000820298 /* LICENSE.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3366E82F24310A1F00820298 /* LICENSE.txt */; };
+		3366E83F24310A2000820298 /* FMDatabaseQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 3366E83324310A1F00820298 /* FMDatabaseQueue.m */; };
+		3366E84024310A2000820298 /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3366E83624310A2000820298 /* FMDatabaseAdditions.m */; };
+		3366E84124310A2000820298 /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 3366E83724310A2000820298 /* FMDatabase.m */; };
+		3366E84224310A2000820298 /* FMDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = 3366E83B24310A2000820298 /* FMDatabasePool.m */; };
+		3366E84324310A2000820298 /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 3366E83C24310A2000820298 /* FMResultSet.m */; };
 		3372CD542325F92500E7307B /* SYGameProxy.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3372CD532325F92400E7307B /* SYGameProxy.txt */; };
 		337358A22400EECF000507CC /* SyPostItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 337358A12400EECF000507CC /* SyPostItem.m */; };
 		3386EEEB241BBD80001A422F /* SyCustomFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 3386EEEA241BBD80001A422F /* SyCustomFlowLayout.m */; };
@@ -276,6 +284,21 @@
 		33646DBF23FFD4A700CE99CF /* WMMemoryManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WMMemoryManager.m; sourceTree = "<group>"; };
 		3366E826242F6F3900820298 /* BAT面试资料全集.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "BAT面试资料全集.pdf"; sourceTree = "<group>"; };
 		3366E8282430561C00820298 /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MyPlayground.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		3366E82A2431089D00820298 /* WMSqlViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WMSqlViewController.h; sourceTree = "<group>"; };
+		3366E82B2431089D00820298 /* WMSqlViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WMSqlViewController.m; sourceTree = "<group>"; };
+		3366E82E24310A1F00820298 /* README.markdown */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.markdown; sourceTree = "<group>"; };
+		3366E82F24310A1F00820298 /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
+		3366E83224310A1F00820298 /* FMDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabase.h; sourceTree = "<group>"; };
+		3366E83324310A1F00820298 /* FMDatabaseQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabaseQueue.m; sourceTree = "<group>"; };
+		3366E83424310A1F00820298 /* FMResultSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMResultSet.h; sourceTree = "<group>"; };
+		3366E83524310A1F00820298 /* FMDatabasePool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabasePool.h; sourceTree = "<group>"; };
+		3366E83624310A2000820298 /* FMDatabaseAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabaseAdditions.m; sourceTree = "<group>"; };
+		3366E83724310A2000820298 /* FMDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabase.m; sourceTree = "<group>"; };
+		3366E83824310A2000820298 /* FMDatabaseQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabaseQueue.h; sourceTree = "<group>"; };
+		3366E83924310A2000820298 /* FMDB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDB.h; sourceTree = "<group>"; };
+		3366E83A24310A2000820298 /* FMDatabaseAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabaseAdditions.h; sourceTree = "<group>"; };
+		3366E83B24310A2000820298 /* FMDatabasePool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabasePool.m; sourceTree = "<group>"; };
+		3366E83C24310A2000820298 /* FMResultSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMResultSet.m; sourceTree = "<group>"; };
 		3372CD532325F92400E7307B /* SYGameProxy.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SYGameProxy.txt; sourceTree = "<group>"; };
 		337358A02400EECF000507CC /* SyPostItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SyPostItem.h; sourceTree = "<group>"; };
 		337358A12400EECF000507CC /* SyPostItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SyPostItem.m; sourceTree = "<group>"; };
@@ -420,6 +443,8 @@
 				331309042420A7DE0014CC7E /* WMPushViewController.m */,
 				33B10E552422424500C6E8C7 /* WMJumpViewController.h */,
 				33B10E562422424500C6E8C7 /* WMJumpViewController.m */,
+				3366E82A2431089D00820298 /* WMSqlViewController.h */,
+				3366E82B2431089D00820298 /* WMSqlViewController.m */,
 				330C15C722F801F700CD84CA /* SySkillViewController.h */,
 				330C15C822F801F700CD84CA /* SySkillViewController.m */,
 				33F1D58A23CC4B7E001AC221 /* WMGameView.h */,
@@ -469,6 +494,42 @@
 				33068EDC22AE665600D044EE /* Info.plist */,
 			);
 			path = WMGameProxyUITests;
+			sourceTree = "<group>";
+		};
+		3366E82D24310A1F00820298 /* FMDB */ = {
+			isa = PBXGroup;
+			children = (
+				3366E82E24310A1F00820298 /* README.markdown */,
+				3366E82F24310A1F00820298 /* LICENSE.txt */,
+				3366E83024310A1F00820298 /* src */,
+			);
+			path = FMDB;
+			sourceTree = "<group>";
+		};
+		3366E83024310A1F00820298 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				3366E83124310A1F00820298 /* fmdb */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
+		3366E83124310A1F00820298 /* fmdb */ = {
+			isa = PBXGroup;
+			children = (
+				3366E83224310A1F00820298 /* FMDatabase.h */,
+				3366E83324310A1F00820298 /* FMDatabaseQueue.m */,
+				3366E83424310A1F00820298 /* FMResultSet.h */,
+				3366E83524310A1F00820298 /* FMDatabasePool.h */,
+				3366E83624310A2000820298 /* FMDatabaseAdditions.m */,
+				3366E83724310A2000820298 /* FMDatabase.m */,
+				3366E83824310A2000820298 /* FMDatabaseQueue.h */,
+				3366E83924310A2000820298 /* FMDB.h */,
+				3366E83A24310A2000820298 /* FMDatabaseAdditions.h */,
+				3366E83B24310A2000820298 /* FMDatabasePool.m */,
+				3366E83C24310A2000820298 /* FMResultSet.m */,
+			);
+			path = fmdb;
 			sourceTree = "<group>";
 		};
 		33ADF8CC240CC4BF0041F19A /* Res */ = {
@@ -578,6 +639,7 @@
 		33ADF8CD240CC5280041F19A /* Libs */ = {
 			isa = PBXGroup;
 			children = (
+				3366E82D24310A1F00820298 /* FMDB */,
 				33ADF8CE240CC5280041F19A /* UIImage+animatedGIF */,
 			);
 			path = Libs;
@@ -748,6 +810,7 @@
 				3359FE96241F3E870014C82C /* FlagZombie.gif in Resources */,
 				3359FEBA241F3E870014C82C /* C语言的执行流程.png in Resources */,
 				3359FEC5241F3E870014C82C /* UIApplication.png in Resources */,
+				3366E83D24310A2000820298 /* README.markdown in Resources */,
 				3359FEC6241F3E870014C82C /* Xib常见两个问题.png in Resources */,
 				3359FEAC241F3E870014C82C /* 常见bug_00.png in Resources */,
 				3359FEBE241F3E870014C82C /* C语言:OC关键字.png in Resources */,
@@ -765,6 +828,7 @@
 				33A1B06B24291731007248A3 /* 新建xxx.framework第六步.png in Resources */,
 				3359FEA4241F3E870014C82C /* json解析标准版.png in Resources */,
 				3359FEAD241F3E870014C82C /* 应用沙盒结构分析.png in Resources */,
+				3366E83E24310A2000820298 /* LICENSE.txt in Resources */,
 				33AC9E8E242B61A100B28AB5 /* Runtime.pdf in Resources */,
 				3359FEA9241F3E870014C82C /* UIScrollView.png in Resources */,
 				3359FED0241F7E390014C82C /* 多线程的实现方案.png in Resources */,
@@ -930,6 +994,7 @@
 				33264F10242B4E0400199DBD /* WMRunLoopViewController.m in Sources */,
 				33A8FD7A22D481B4004AECBA /* SyTableViewController.m in Sources */,
 				33068EB822AE665000D044EE /* AppDelegate.m in Sources */,
+				3366E84224310A2000820298 /* FMDatabasePool.m in Sources */,
 				33ADF8D1240CC5280041F19A /* UIImage+animatedGIF.m in Sources */,
 				339A3D8022BBBBC9007DD37D /* SyGameProxy.c in Sources */,
 				3324D54B22DED4BF0066241F /* WMWebViewController.m in Sources */,
@@ -937,6 +1002,7 @@
 				33BE31BF22E5890A0073E35B /* FoundationNSObject.m in Sources */,
 				33B10E572422424500C6E8C7 /* WMJumpViewController.m in Sources */,
 				331309052420A7DE0014CC7E /* WMPushViewController.m in Sources */,
+				3366E84124310A2000820298 /* FMDatabase.m in Sources */,
 				33B10E542422300400C6E8C7 /* WMNetworkViewController.m in Sources */,
 				3394874623F11C5700A2C525 /* SyCustomCell.m in Sources */,
 				337358A22400EECF000507CC /* SyPostItem.m in Sources */,
@@ -944,6 +1010,10 @@
 				33646DC023FFD4A700CE99CF /* WMMemoryManager.m in Sources */,
 				339C0A9F23C6167000C3A144 /* SceneDelegate.m in Sources */,
 				33ED93E022F12E77006ABD28 /* ComponentController.m in Sources */,
+				3366E82C2431089D00820298 /* WMSqlViewController.m in Sources */,
+				3366E84324310A2000820298 /* FMResultSet.m in Sources */,
+				3366E83F24310A2000820298 /* FMDatabaseQueue.m in Sources */,
+				3366E84024310A2000820298 /* FMDatabaseAdditions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

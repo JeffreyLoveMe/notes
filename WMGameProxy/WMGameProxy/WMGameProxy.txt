@@ -235,16 +235,16 @@ runloop
 AutoLayout
 上架/分发/打包
 消息机制（KVO/KVC/通知/代理）
-网络开发 - x
+网络开发
 iOS动画 - x
 数据持久化 - x
-svn、git、CocoaPods - x
-AFNetWorking、SDWebImage、MJRefresh、SnapKit - x
-第三方登录 - x
-社会化分享 - x
-极光推送 - x
+svn、git、CocoaPods
+AFNetWorking、SDWebImage、MJRefresh、SnapKit
+第三方登录
+社会化分享
+极光推送
 LBS - x
-“原生” 与 “js交互” - x
+“原生” 与 “js交互”
 微信SDK/支付宝SDK
 */
 /*

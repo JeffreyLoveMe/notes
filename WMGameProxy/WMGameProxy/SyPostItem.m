@@ -27,6 +27,23 @@
     return item;
 }
 
+///！！！单例的标准写法！！！
+static SyPostItem *_instance = nil;
++(instancetype)sharedInstance {
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        _instance = [[super allocWithZone:NULL]init];
+    });
+    return _instance;
+}
++ (instancetype)allocWithZone:(struct _NSZone *)zone {
+    return [self sharedInstance];
+}
+-(id)copyWithZone:(NSZone *)zone {
+    return [[self class] sharedInstance];
+}
+///！！！单例的标准写法！！！
+
 +(instancetype)itemWithDict:(NSDictionary *)dic {
     return [[self alloc]init];
 }
