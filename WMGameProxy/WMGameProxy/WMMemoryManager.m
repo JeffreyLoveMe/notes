@@ -184,6 +184,7 @@
  1>.概念 - 自动引用计数/编译器特性（不是运行时特性）
  2>.不允许写retain/release/autorelease|可以调用dealloc()，但是不允许使用[super dealloc];
  3>.判断原则 - 只要还有一个强指针变量指向对象，对象就会保持在内存中/默认所有的指针都是强指针
+ 4>.从执行效率上讲 - ARC优于MRC
  */
 -(void)setARC {
     // 明确声明这是一个强指针
@@ -245,7 +246,7 @@
 
 /**
  16.内存管理的黄金法则
- alloc/new/retain/copy
+ 凡是用 alloc/new/retain/copy/mutableCopy创建的对象都需要使用 release/autorelease 进行释放
  */
 
 @end

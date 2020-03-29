@@ -275,6 +275,7 @@
 		33646DBE23FFD4A700CE99CF /* WMMemoryManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WMMemoryManager.h; sourceTree = "<group>"; };
 		33646DBF23FFD4A700CE99CF /* WMMemoryManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WMMemoryManager.m; sourceTree = "<group>"; };
 		3366E826242F6F3900820298 /* BAT面试资料全集.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "BAT面试资料全集.pdf"; sourceTree = "<group>"; };
+		3366E8282430561C00820298 /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MyPlayground.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		3372CD532325F92400E7307B /* SYGameProxy.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SYGameProxy.txt; sourceTree = "<group>"; };
 		337358A02400EECF000507CC /* SyPostItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SyPostItem.h; sourceTree = "<group>"; };
 		337358A12400EECF000507CC /* SyPostItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SyPostItem.m; sourceTree = "<group>"; };
@@ -473,6 +474,7 @@
 		33ADF8CC240CC4BF0041F19A /* Res */ = {
 			isa = PBXGroup;
 			children = (
+				3366E8282430561C00820298 /* MyPlayground.playground */,
 				339D69EF242F449200619804 /* iOS开发工程师-谢吴军.pdf */,
 				33A1B073242A0899007248A3 /* iOS高级经典面试.pdf */,
 				3366E826242F6F3900820298 /* BAT面试资料全集.pdf */,

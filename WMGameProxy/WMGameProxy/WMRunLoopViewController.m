@@ -97,13 +97,18 @@
     // 子线程的RunLoop不存在，需要手动创建
     NSRunLoop *runloop = [NSRunLoop currentRunLoop];
     // 创建定时器
-    [NSTimer scheduledTimerWithTimeInterval:2.0 target:self selector:@selector(run) userInfo:nil repeats:YES];
+    NSTimer *timer = [NSTimer timerWithTimeInterval:2.0 target:self selector:@selector(run) userInfo:nil repeats:YES];
+    [runloop addTimer:timer forMode:NSRunLoopCommonModes];
     // 子线程的RunLoop默认不开启，需要手动开启
     [runloop run];
+//    // ！！！以下方法仅仅适用于子线程的runLoop！！！
 //    // 开启RunLoop后10s以后退出RunLoop
 //    [runloop runUntilDate:[NSDate dateWithTimeIntervalSinceNow:10]];
 //    // 以什么模式开启RunLoop/10s以后退出RunLoop
 //    [runloop runMode:NSRunLoopCommonModes beforeDate:[NSDate dateWithTimeIntervalSinceNow:10]];
+//    // ！！！以上方法仅仅适用于子线程的runLoop！！！
+    // 此处代码不执行 - 因为runLoop是一个死循环
+    NSLog(@"---end---");
 }
 /**
  3>.CFRunLoopSourceRef - 事件源
@@ -199,5 +204,60 @@
     // 4>.启动定时器
     dispatch_resume(timer);
 }
+
+/**
+ 1.什么是RunLoop
+ 1>.RunLoop是一个运行循环，本质是一个do...while的死循环，在循环的内部不断处理各种任务（timer事件/touch事件）
+ 2.一个线程对应一个RunLoop，主线程的RunLoop默认开启，子线程的RunLoop需要手动开启
+ 
+ 2.自动释放池什么时候释放？
+ 1>.第一次创建 - 启动runLoop的时候
+ 2>.最后一次销毁 - runLoop退出的时候
+ 3>.其他时间的创建和销毁 - 即将进入休眠的时候会销毁之前的释放池，重新创建新的释放池
+ 
+ 3>.在开发中RunLoop的应用场景？
+ 1.用于定时器在特定的模式下运行
+ 2.用于开启一个常驻子线程（保证子线程不消亡）
+ */
+
+/**
+ 1.runLoop的内部实现？（伪代码）/1.runLoop是do...while的死循环/2.runLoop至少有一个timer或source
+ void RunLoop(void) {
+     int result;
+    // 1.runLoop是do...while的死循环
+     do {
+         result = run(mode);
+     } while (runLoopIsFinished != result);
+ }
+ int run(Mode: mode) {
+    // 2.runLoop至少有一个timer或source
+    timer = fromT(mode);
+    source = formS(mode);
+     if (mode == NULL || timer == NULL || source == NULL) {
+         return runLoopIsFinished;
+     }
+     return runLoopNoStoped;
+ }
+ 
+ 2.如何让一个runLoop的线程常驻？-runLoop至少有一个timer或source/只要有timer或source的话runLoop就会继续执行/没有timer或source的话就会马上退出
+ // https://www.jianshu.com/p/bc04369ce69d
+ 1>.将线程设置为全局变量
+ @property (strong, nonatomic) NSThread *thread;
+ 2>.新建子线程
+ self.thread = [[NSThread alloc]initWithTarget:self selector:@selector(run:) object:nil];
+ [ self.thread start];
+ 3>.在子线程开启一个runLoop和定时器
+ -(void)run {
+    // 第一种方式 - 添加一个timer/不推荐使用-定时器没啥作用
+    NSTimer *timer = [NSTimer timerWithTimeInterval:2.0 target:self selector:@selector(run) userInfo:nil repeats:YES];
+    [[NSRunLoop currentRunLoop] addTimer:timer forMode:NSDefaultRunLoopMode];
+    [[NSRunLoop currentRunLoop] run];
+    // 第二种方式 - 添加一个source/推荐使用
+    [[NSRunLoop currentRunLoop] addPort:[NSPort port] forMode:NSDefaultRunLoopMode];
+    [[NSRunLoop currentRunLoop] run];
+ }
+ 4>.目前在主线程想要该线程工作可以切换到该线程
+ [self performSelector:@selector(reloadImageView) onThread:self.thread withObject:nil waitUntilDone:YES];
+ */
 
 @end

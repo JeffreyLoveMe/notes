@@ -29,14 +29,14 @@
 //循环语句
 //一维数组
 //二维数组
-//冒泡排序 - xx
-//选择排序 - xx
+//冒泡排序
+//选择排序
 //插入排序 - xx
 //希尔排序 - xx
 //快速排序 - xx
 //堆排序 - xx
 //归并排序 - xx
-//二分查找 - xx
+//二分查找
 //函数
 //局部变量/全局变量
 //内存管理
@@ -152,8 +152,8 @@
 //xml解析 - xx
 //xPath - xx
 //socket通信 - xx
-//NSURLConnection(原生网络请求+下载+上传) - xx
-//NSURLSession(原生网络请求+下载+上传) - xx
+//NSURLConnection
+//NSURLSession
 //AFNetWorking开发 - xx
 //网络安全（抓包+MD5+https）- xx
 /**************************swift基础**************************/
@@ -245,7 +245,7 @@ AFNetWorking、SDWebImage、MJRefresh、SnapKit - x
 极光推送 - x
 LBS - x
 “原生” 与 “js交互” - x
-微信SDK/支付宝SDK - x
+微信SDK/支付宝SDK
 */
 /*
 1.有时间需要加强的知识点
