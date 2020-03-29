@@ -112,6 +112,8 @@
 		3366E84124310A2000820298 /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 3366E83724310A2000820298 /* FMDatabase.m */; };
 		3366E84224310A2000820298 /* FMDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = 3366E83B24310A2000820298 /* FMDatabasePool.m */; };
 		3366E84324310A2000820298 /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 3366E83C24310A2000820298 /* FMResultSet.m */; };
+		3366E8462431296B00820298 /* 树的基本概念.png in Resources */ = {isa = PBXBuildFile; fileRef = 3366E8442431296B00820298 /* 树的基本概念.png */; };
+		3366E8472431296B00820298 /* 遍历树.png in Resources */ = {isa = PBXBuildFile; fileRef = 3366E8452431296B00820298 /* 遍历树.png */; };
 		3372CD542325F92500E7307B /* SYGameProxy.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3372CD532325F92400E7307B /* SYGameProxy.txt */; };
 		337358A22400EECF000507CC /* SyPostItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 337358A12400EECF000507CC /* SyPostItem.m */; };
 		3386EEEB241BBD80001A422F /* SyCustomFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 3386EEEA241BBD80001A422F /* SyCustomFlowLayout.m */; };
@@ -299,6 +301,8 @@
 		3366E83A24310A2000820298 /* FMDatabaseAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabaseAdditions.h; sourceTree = "<group>"; };
 		3366E83B24310A2000820298 /* FMDatabasePool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabasePool.m; sourceTree = "<group>"; };
 		3366E83C24310A2000820298 /* FMResultSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMResultSet.m; sourceTree = "<group>"; };
+		3366E8442431296B00820298 /* 树的基本概念.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "树的基本概念.png"; sourceTree = "<group>"; };
+		3366E8452431296B00820298 /* 遍历树.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "遍历树.png"; sourceTree = "<group>"; };
 		3372CD532325F92400E7307B /* SYGameProxy.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SYGameProxy.txt; sourceTree = "<group>"; };
 		337358A02400EECF000507CC /* SyPostItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SyPostItem.h; sourceTree = "<group>"; };
 		337358A12400EECF000507CC /* SyPostItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SyPostItem.m; sourceTree = "<group>"; };
@@ -547,6 +551,8 @@
 				3359FE69241F3E840014C82C /* 单个文件放置多个类 - 多用于model.png */,
 				3359FE73241F3E850014C82C /* 代码标准h文件.png */,
 				3359FE87241F3E860014C82C /* 代码标准m文件.png */,
+				3366E8452431296B00820298 /* 遍历树.png */,
+				3366E8442431296B00820298 /* 树的基本概念.png */,
 				33F72D8D242ED4420024A889 /* 图片加载.png */,
 				3359FE70241F3E840014C82C /* 常见bug_00.png */,
 				3359FE7B241F3E850014C82C /* 常见bug_01.png */,
@@ -789,6 +795,7 @@
 				3359FEAB241F3E870014C82C /* UIView常见属性和方法.png in Resources */,
 				339D69F0242F449200619804 /* iOS开发工程师-谢吴军.pdf in Resources */,
 				33B10E742422963900C6E8C7 /* 新建xxx.a第一步.png in Resources */,
+				3366E8462431296B00820298 /* 树的基本概念.png in Resources */,
 				33A1B06D24291731007248A3 /* 新建xxx.framework第一步.png in Resources */,
 				33A1B06924291731007248A3 /* 新建xxx.framework第五步.png in Resources */,
 				3359FED7241FE1150014C82C /* 填写相关营销信息.png in Resources */,
@@ -863,6 +870,7 @@
 				3359FE91241F3E870014C82C /* 退出键盘的两种方式.png in Resources */,
 				3359FE9C241F3E870014C82C /* 项目的基本部署.png in Resources */,
 				3359FEBD241F3E870014C82C /* UIKit.png in Resources */,
+				3366E8472431296B00820298 /* 遍历树.png in Resources */,
 				3359FE9E241F3E870014C82C /* Zapfino.ttf in Resources */,
 				3359FEA8241F3E870014C82C /* 时间格式说明符对照统一表.png in Resources */,
 				3359FE93241F3E870014C82C /* 常见系统库01.png in Resources */,
