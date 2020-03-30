@@ -52,8 +52,6 @@
     // 这句代码放在最后一行
     [super dealloc];
 }
-
-// 单个对象的内存管理
 /**
  6.内存中有5块内存空间
  栈 - 由编译器自动分配释放内存/主要存放函数的参数值、局部变量
@@ -73,6 +71,8 @@
  1>.如果一个对象使用了 "alloc/copy[mutable]/retain" 那么就必须使用 "release/autorelease"
  2>.反之如果没有使用 "alloc/copy/retain" 就不能使用 "release/autorelease"
  */
+
+// MRC单个对象的内存管理
 -(void)singleObjectMemoryManager {
     /**
      1.开辟内存空间（在堆中开辟内存空间存放对象和对象属性）
@@ -153,7 +153,7 @@
 /**
 2>.什么时候使用“自动释放池”？
 1.如果对象需要返回->那么对象不能在返回之前release->那么在返回之前需要将对象放入自动释放池
-2.使用类对象创建的对象不需要release/都会自动加入到自动释放池
+2.使用类工厂方法创建的对象不需要release/都会自动加入到自动释放池
 */
 // 面试题 - Foundation框架的类但凡通过类工厂方法创建的对象都是autorelease的
 -(void)setAutoRelease {
@@ -174,7 +174,7 @@
 //    // 2>.第二种方法/ iOS5.x以前
 //    NSAutoreleasePool *pool = [[NSAutoreleasePool alloc]init];
 //    // 执行代码块
-//    [pool release];
+//    [pool drain];
 }
 
 
@@ -243,10 +243,5 @@
 //    [str release];
 //    // ！！！Copy内存管理的正确写法！！！
 }
-
-/**
- 16.内存管理的黄金法则
- 凡是用 alloc/new/retain/copy/mutableCopy创建的对象都需要使用 release/autorelease 进行释放
- */
 
 @end

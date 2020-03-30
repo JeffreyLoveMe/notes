@@ -314,7 +314,6 @@
     // OC数组和C数组有什么区别？
     // 1.NSArray是一个类：任意类型对象地址的集合
     // 2.NSArray不能存放简单的基本数据类型（int、float、NSInteger）
-    // NSInteger不是类吗？
     // 3.C数组是相同类型变量的有序集合，可以保存任意类型的数据
     // 4.NSArray下标越界不会有警告（运行直接会报错）
     /// 创建数组
@@ -702,7 +701,6 @@
     NSLog(@"secondCount = %lu", secondCount);
     // 3.当前时间 / 北京东八区
     NSDate *currentDate = [now dateByAddingTimeInterval:secondCount];
-    
     // 4.时间格式化
     // 创建 “时间格式化对象”
     NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
@@ -724,10 +722,8 @@
     formatter.dateFormat = @"yyyy年MM月dd日 HH小时mm分ss秒 Z";
     // 进行格式化
     NSString *time = [formatter stringFromDate:now];
-    
     // 5.NSString -> NSDate
     NSDate *date = [formatter dateFromString:time];
-    
     // 6.NSDate还可以通过该方法
     NSDate *date1 = [[NSDate alloc]init];
     // 明天 = 当前设备的时间点 + 24小时
@@ -735,8 +731,7 @@
     // 昨天 = 当前设备的时间点 - 24小时
     NSDate *date3 = [NSDate dateWithTimeIntervalSinceNow:-(24 * 60 * 60)];
     NSLog(@"%@==%@===%@===%@", date, date1, date2, date3);
-    
-    // 7.时间戳 - 某一日期到 1970年 的秒数大小成为该日期的时间戳
+    // 7.时间戳 - "某一日期" 到 "1970年" 的秒数大小成为该日期的时间戳
     // 通过 “时间戳” 创建一个 “NSDate”
     NSDate *date4 = [NSDate dateWithTimeIntervalSince1970:0];
     // 获取日期的时间戳
@@ -744,7 +739,6 @@
     // 明天到现在的 “i秒数”
     NSTimeInterval t1 = [date2 timeIntervalSinceNow];
     NSLog(@"%f===%f", t0, t1);
-    
     // 8.日期的比较
     // 第一种方式 - 直接比较
     NSComparisonResult result = [date3 compare:date4];
@@ -760,7 +754,6 @@
     NSString *defaultStr = nowDate.description;
     NSLog(@"%@", defaultStr);
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc]init];
-
     // 8.设置时区
     NSTimeZone *timeZone = [NSTimeZone timeZoneWithName:@"Pacific/Funafuti"];
     [dateFormatter setTimeZone:timeZone];
@@ -768,7 +761,6 @@
     for (NSString *timeZone in [NSTimeZone knownTimeZoneNames]) {
         NSLog(@"%@", timeZone);
     }
-
 //    // 9.其它设置
 //    // 未来时间 - 用于暂停定时器，将定时器启动时间设为遥远的未来
 //    NSDate * futureDate = [NSDate distantFuture];
@@ -785,10 +777,9 @@
     NSData *data= [string dataUsingEncoding:NSUTF8StringEncoding];
     /**
      将 data数据 写入文件
-     1.如果文件不存在 -> 创建文件
-     2.如果文件已存在 -> 覆盖文件
-     单线程下操作传入 YES/NO 无分别/多线程下操作必须传入 YES
-     
+     1.如果文件不存在->创建文件
+     2.如果文件已存在->覆盖文件
+     3.单线程下操作传入YES/NO无分别/多线程下操作必须传入YES
      */
     [data writeToFile:@"/Users/xiewujun/Desktop/data.txt" atomically:YES];
     // NSData -> NSString

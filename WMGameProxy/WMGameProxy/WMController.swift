@@ -17,7 +17,7 @@ class WMController: UIViewController {
     open var p1: String?
     // 比 open 小一点、不可继承
     public var p2: String?
-    // 包内可以使用
+    // 包内可以使用 - 默认
     internal var p3: String?
     // 文件内可以使用
     fileprivate var p4: String?

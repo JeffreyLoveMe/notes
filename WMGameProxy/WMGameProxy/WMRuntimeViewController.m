@@ -48,13 +48,11 @@
     obj = objc_msgSend(obj, sel_registerName("init"));
     // 调用带多个参数的方法
     obj = objc_msgSend(obj, @selector(initWithInt:), 20);
-    
     /**
      3.什么时候使用runtime
      1>.装逼/YYKit
      2>.可以帮我们调用私有方法
      */
-    
     /**
      4.方法调用流程/面试题
      1>.对象方法 - 保存在类对象的方法列表中

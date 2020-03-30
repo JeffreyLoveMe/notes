@@ -5,7 +5,7 @@
  3>.空间复杂度 - O(1)
  4>.稳定性 - 稳定
  */
-var array:[Int] = [4, 8, 7, 2, 6]
+var array:[Int] = [6, 1, 2, 7, 9, 3, 4, 5, 10, 8]
 func bubbleSort(array: inout [Int]) -> [Int] {
     // 需要排序 (array.count - 1) 轮
     for i in 0..<(array.count - 1) {
@@ -61,6 +61,39 @@ func selectedSort(array: inout [Int]) -> [Int] {
 3>.空间复杂度 -
 4>.稳定性 -
 */
+func quickSort(array: inout [Int], left: Int, right: Int) {
+    if left > right {
+        return
+    }
+    var i = left
+    var j = right
+    // 设置基准
+    var base = array[left]
+    // 相等的时候停止遍历
+    while i != j {
+        // 从右边向左边遍历
+        while array[j] >= base && i < j {
+            j = j - 1
+        }
+        // 从左边向左边遍历
+        while array[i] <= base &&  i < j {
+            i = i + 1
+        }
+        // 交换 i / j
+        if i < j {
+            let temp = array[i]
+            array[i] = array[j]
+            array[j] = temp
+        }
+    }
+    // 把 i 和 基准 交换
+    array[left] = array[i]
+    array[i] = base
+    // 递归
+    quickSort(array: &array, left: left, right: i - 1)
+    quickSort(array: &array, left: j + 1, right: right)
+}
+quickSort(array: &array, left: 0, right: array.count - 1)
 
 
 /**
@@ -70,9 +103,9 @@ func selectedSort(array: inout [Int]) -> [Int] {
  3>.空间复杂度 -
  4>.稳定性 -
  */
-func getKey(array: [Int], key: Int, low: Int, high: Int) -> Int {
+func getKey(array: [Int], key: Int, low: Int, high: Int) -> Int? {
     if low > high {
-        return  -1
+        return nil
     }
     let mid: Int = (low + high) / 2
     if key == array[mid] {
@@ -83,4 +116,4 @@ func getKey(array: [Int], key: Int, low: Int, high: Int) -> Int {
         return getKey(array: array, key: key, low: mid + 1, high: high)
     }
 }
-getKey(array: array, key: 8, low: 0, high: array.count - 1)
+getKey(array: array, key: 8, low: 3, high: 9)

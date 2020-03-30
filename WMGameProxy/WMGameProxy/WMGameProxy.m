@@ -34,13 +34,12 @@
 // 不需要创建对象 - 不需要开辟存储空间/优化性能
 // ？？？类方法为什么不能直接访问属性？？？
 // ？？？类方法怎么访问属性？？？（可以通过类方法调用对象方法间接调用属性/不建议这样写）
-// 如果方法中没有使用到成员变量，尽量使用类方法。因为类方法执行效率高（为什么？）
+// 如果方法中没有使用到成员变量，尽量使用类方法。因为类方法执行效率高
 // 类方法一般用于工具方法的定义
 + (void)initialize {
     // 父类的 initialize() -> 子类的 initialize()
     if (self == [WMGameProxy class]) {
         // 第一次新建该类的时候调用：有且仅有一次
-        // 先调用父类的 load() -> 子类的 load()
         // 用于 init 某些静态变量
     }
 }
@@ -109,7 +108,7 @@
     // super在类方法中调用父类方法
     // super在对象方法中调用父类对象方法
     // ！！！必须先赋值 self！！！
-    // super - 仅仅是一个编译指示器/只要编译器看到 super 就会让 “当前对象” 去调用 “父类方法”
+    // super - 仅仅是一个编译指示器指令/只要编译器看到 super 就会让 “当前对象” 去调用 “父类方法”
     // 此处还是 “WMGameProxy类的对象” 在调用 “NSObject类的对象” 的 “init()” 方法
     self = [super init];
     // self不能离开类
@@ -140,7 +139,7 @@
 // 面试：手写单例方法
 // 单例的创建方法通常以 default/shared 开头
 +(instancetype)getInstance {
-    // static声明静态变量：在函数结束变量不销毁
+    // static声明静态变量 - 在函数结束变量不销毁
     static WMGameProxy *instance;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{

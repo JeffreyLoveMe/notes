@@ -77,7 +77,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong, nonatomic) NSString *sdk;
 // @synthesize编译器指令（孙色size）
 // 让编译器自动实现 setter/getter方法 | Xcode4.6以后可以省略
-// atomic缺省/原子性：对当前属性进行加锁、线程安全、消耗性能、访问速度慢
+// atomic原子性：对当前属性进行加锁、线程安全、消耗性能、访问速度慢/默认
 // nonatomic非原子性：不加锁、线程不安全、访问速度快
 @property (strong, atomic) NSString *publishName;
 // assign一般用于基础数据类型
@@ -159,7 +159,6 @@ nonnull修饰属性位于 (nonnull, strong, nonatomic)/nonnull修饰形参位于
 // 不推荐直接给属性赋值
 // 如果需要给属性赋值、可以使用set方法
 // 修改实例变量
-// 面试题：get/set方法的实质是什么？
 -(void)setSdk:(NSString * _Nonnull)sdk;
 
 // 获取属性内容、可以使用get方法

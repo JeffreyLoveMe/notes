@@ -32,7 +32,7 @@
     }];
     //插入：加入主键防止重复插入
     [self executeSQL:^(FMDatabase *db) {
-        [_db executeUpdate:@"insert or replace into sso (id,author,price,pages) values(?,?,?,?);",@1,@"XWJ",@50.00,@546];
+        [db executeUpdate:@"insert or replace into sso (id,author,price,pages) values(?,?,?,?);",@1,@"XWJ",@50.00,@546];
     }];
     //更新
     [self executeSQL:^(FMDatabase *db) {

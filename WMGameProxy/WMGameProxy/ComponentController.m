@@ -1077,7 +1077,7 @@
  3.远程控制事件（遥控）/ 还没有看
  */
 #pragma mark - UIGestureRecognizer/手势识别器
-// 响应者：在 iOS 中不是所有对象都可以处理事件，只有继承 UIResponder 对象才可以接收并处理对象，我们称为“响应者对象”
+// 响应者：在 iOS 中不是所有对象都可以处理事件，只有继承 UIResponder 对象才可以接收并处理事件，我们称为“响应者对象”
 // UIApplication/UIViewController/UIView都是“响应者对象”（能够接收并处理对象）
 // UIResponder 内部提供了很多方法来处理事件
 // 父视图不能监听事件，则子视图无法监听事件/子视图超出父视图的部分，不能监听事件
@@ -1085,7 +1085,7 @@
 // https://www.jianshu.com/p/b1eaeff5ec81
 // https://www.jb51.net/article/108236.htm
 /**
- 控件不能接收事件的三种可能性：
+ 控件不能接收事件的四种可能性：
  1.userInteractionEnabled = NO;
  2.hidden = YES;
  3.alpha = 0.0 ~ 0.01;
