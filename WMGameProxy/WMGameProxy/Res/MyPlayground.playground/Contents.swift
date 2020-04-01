@@ -27,9 +27,9 @@ func bubbleSort(array: inout [Int]) -> [Int] {
 /**
  选择排序
  1>.原理 - 从 0 开始默认第 i 位数字最小->依次比较第 i 位以后元素大小找到最小值交换到第 i 位
- 2>.时间复杂度 -
- 3>.空间复杂度 -
- 4>.稳定性 -
+ 2>.时间复杂度 - O(N^2)
+ 3>.空间复杂度 - O(1)
+ 4>.稳定性 - 不稳定
  */
 func selectedSort(array: inout [Int]) -> [Int] {
     // 需要排序 (array.count - 1) 轮
@@ -57,9 +57,9 @@ func selectedSort(array: inout [Int]) -> [Int] {
 /**
 快速排序
 1>.原理 - xxx
-2>.时间复杂度 -
-3>.空间复杂度 -
-4>.稳定性 -
+2>.时间复杂度 - O(nlog2n)
+3>.空间复杂度 - O(nlog2n)
+4>.稳定性 - 不稳定
 */
 func quickSort(array: inout [Int], left: Int, right: Int) {
     if left > right {
@@ -98,10 +98,6 @@ quickSort(array: &array, left: 0, right: array.count - 1)
 
 /**
  二分查找
- 1>.原理 -
- 2>.时间复杂度 -
- 3>.空间复杂度 -
- 4>.稳定性 -
  */
 func getKey(array: [Int], key: Int, low: Int, high: Int) -> Int? {
     if low > high {

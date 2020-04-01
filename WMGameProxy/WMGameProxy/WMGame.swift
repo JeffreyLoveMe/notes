@@ -20,7 +20,7 @@ class WMGame: NSObject {
         /// 3.定义标识符
         // swift中定义标识符必须告诉编译器是一个常量还是一个变量
         // let - 修饰的对象（内存地址）不可以修改/可以获取对象以后修改内部属性
-        // var - xxx
+        // var - 修饰的对象（内存地址）可以修改
         let myName: String = ""  // 常量
         var myAge: Int = 0          // 变量
         myAge = 10
