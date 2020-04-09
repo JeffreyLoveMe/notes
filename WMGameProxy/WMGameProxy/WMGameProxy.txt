@@ -31,10 +31,10 @@
 //二维数组
 //冒泡排序
 //选择排序
+//快速排序
+//堆排序 - xx
 //插入排序 - xx
 //希尔排序 - xx
-//快速排序 - xx
-//堆排序 - xx
 //归并排序 - xx
 //二分查找
 //函数
@@ -83,7 +83,6 @@
 //内存管理
 //MRC/ARC混合编程
 //选择器SEL
-//文件操作 - xx
 //KVC、KVO
 //block
 //RunLoop
@@ -124,12 +123,12 @@
 //UIPageController
 //UIMenuController菜单
 //UIAlertController警告框
+//UIWebView/WKWebView
+//UIRefreshControl
 //UIImagePickerController - x
 //UIPopoverContrller - x
 //UIActivityViewController - x
 //UIStackView - x
-//UIWebView/WKWebView
-//UIRefreshControl
 //UIPasteboard - xx
 //NSShadow阴影 - xx
 //富文本 - xx
@@ -191,9 +190,9 @@
 //多媒体（图片/音频/视频/直播） - xx
 //应用间跳转
 //三方登录、分享 - xx
-//三方支付/内购 - xx
+//三方支付、内购 - xx
 //断点续传 - xx
-//“原生” 与 “js交互” - xx
+//“原生”与“js交互” - xx
 //Objective-C和Swift混合编程
 //二维码 - x
 //图文混排 - xx
@@ -236,16 +235,16 @@ AutoLayout
 上架/分发/打包
 消息机制（KVO/KVC/通知/代理）
 网络开发
-iOS动画 - x
-数据持久化 - x
+数据持久化
 svn、git、CocoaPods
 AFNetWorking、SDWebImage、MJRefresh、SnapKit
 第三方登录
 社会化分享
 极光推送
+“原生”与“js交互”
+微信SDK/支付宝SDK/内购
 LBS - x
-“原生” 与 “js交互”
-微信SDK/支付宝SDK
+iOS动画 - x
 */
 /*
 1.有时间需要加强的知识点

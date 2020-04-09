@@ -99,6 +99,14 @@
     // 打印 CGRect
     NSLog(@"%@", NSStringFromCGRect(superView.bounds));
     NSLog(@"%@", NSStringFromCGPoint(superView.center));
+    // 获取最大值/最小值
+    // 可以简化布局
+    CGRectGetMaxX(view.frame);
+    CGRectGetMaxY(view.frame);
+    CGRectGetMidX(view.frame);
+    CGRectGetMidY(view.frame);
+    CGRectGetMinX(view.frame);
+    CGRectGetMinY(view.frame);
     /// 背景颜色
     // 这个已经封装
     //设置RGBA颜色

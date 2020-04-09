@@ -1,7 +1,6 @@
 ！！！！黑魔法！！！！/KVO的工作原理
 ！！！！“原生” 与 “js交互”！！！！
 ！！！！动画！！！！
-//runloop常驻线程NSURLConnection：为什么AF2.0使用常驻线程？AF3.0就抛弃了？
 //App启动优化：有哪些建议？了解过dyld吗？
 //符号是怎么绑定在地址上的？能写一个hotReload框架吗？
 //iOS崩溃是什么导致的？如何监控不同类型的崩溃？
@@ -261,7 +260,7 @@ union date {
 还书(提供书的完整信息、提供天数)，计算租金、
 查看所有图书信息
 Demo：新建demo，包含Model、Manager、View、Controller？？？
-/******************************iOS进阶******************************/
+
 #数据持久化的方法
 1.数据库：
 //sql语句：结构化查询语言
@@ -326,10 +325,8 @@ for(MusicInformation *newMusic in [MusicManager sharedIntance].selectMusics) {
 3.数据回滚
 */
 http://hao.jobbole.com/magicalrecord
-/******************************补充知识点******************************/
-//汉字转码
-NSString *oriString = @"\u67aa\u738b";
-NSString *escapedString = [oriString stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+
+
 //隐藏NavigationBar
 [self.navigationController setNavigationBarHidden:YES animated:YES];
 //跳转：隐藏TabBar
@@ -338,9 +335,6 @@ vc.hidesBottomBarWhenPushed = YES;
 [self.navigationController pushViewController:vc animated:YES];
 //时间格式
 NSString *data = [NSString stringWithFormat:@"%.2d:%.2d:%.2d",self.hour,self.minute,self.second];
-//读取文件内容：dict.txt
-NSString *fileConent = [[NSString alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"dict" ofType:@"txt"] encoding:NSUTF8StringEncoding error:nil];
-NSArray *words = [fileConent componentsSeparatedByString:@"\n"];//转换成NSArray
 //json转换成字典
 NSDictionary *dict=[NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableContainers error:nil];
 //根据字体计算高度：一行
@@ -355,7 +349,6 @@ CGSize nameSize = CGSizeMake(100, MAXFLOAT);//宽度固定100，高度不确定
 CGSize textSize = [name boundingRectWithSize:nameSize options:NSStringDrawingUsesLineFragmentOrigin attributes:nameAtt context:nil].size;
 CGFloat height = textSize.height;
 //https://www.cnblogs.com/niit-soft-518/p/6373601.html
-CGRectGetMaxX(self.view.size) //矩形中最大x值：布局简单多啦
 /******************************补充知识点******************************/
 #函数式编程思想(高聚合：代码聚合、方便管理)：把很多功能放在一个函数块(block)去处理
 int a = ({
@@ -369,21 +362,6 @@ UIButton *btn = [UIButton alloc]init];
 btn.tag = 1;
 btn;//最后一句设置返回什么
 });
-
-#马甲包：
-//单机游戏和h5链接切换
-//2d-x和Unity3d切换
-https://github.com/klaus01/KLGenerateSpamCode
-https://github.com/2361496651/AutoCreateSpamCode
-
-#第三方服务商：
-http://www.mob.com/ //掌淘科技：验证码
-https://www.umeng.com/ //友盟：移动统计、消息推送、社会化分享
-https://www.xfyun.cn/ //科大讯飞：语音识别、语音转写、语音唤醒
-
-#H5游戏加速器引擎：
-https://www.layabox.com/
-https://www.egret.com/
 
 #Model：字典转模型
 好处：字典的key不会提示错误、Model的属性会提示错误；
@@ -406,7 +384,6 @@ Person *p = [[Person alloc]init];
 2>.用于调用类方法：[[p class] test];
 //启动过程：见WMBook.h/m；
 
-/******************************UI基础******************************/
 #多控制器：利用下列2种控制器管理多控制器
 //导航控制器：UINavigationController
 特征：以栈的形式管理子控制器-push压栈、pop出栈；
@@ -436,7 +413,7 @@ https://blog.csdn.net/ridxmc/article/details/51346472
 #实现画折线图：利用第三方库
 1.加入tk库文件；
 2.添加QuartzCore.framework；
-/******************************iOS高级******************************/
+
 #多语言：en/tw/cn
 定义：根据用户设置的Language and Region Format(语言和区域格式)修改应用
 本地化信息(语言、货币、日期格式等)；
@@ -2124,8 +2101,6 @@ MacVim脚本：将GET请求的URL，使用OC的方式，做成字典
 13.iOS怎么做数据持久化？coredata/sqlite之间又什么联系？coredata是关系型数据库吗？
 15.说说iOS中常用的多线程？最好能结合代码好好说；在哪里用到了多线程？三种多线程哪种会比较全面一些，
 然后谈一谈线程安全问题的解决方案？
-16.block在ARC/MRC中用法有什么区别和联系？
-17.常用的iOS设计模式有哪些？
 19.使用过哪些第三方库？jsonKit/AFNetworking/SnapKit/MJRefresh///要有针对性，涉及到每个方面；
 20.怎么实现UITableView的懒加载？
 21.iOS开发中常见的异常有哪些？
@@ -2192,14 +2167,8 @@ Person *person = [Person alloc] init]；
 
 //面试题：技术部分
 2.iOS程序在执行main函数之前做了哪些操作？
-Q.
 3.一个App可以有几个UIWindow？
-Q.
 7.NSOperation什么时候从queue中移除？
-Q.
-17.iOS中常见的单例有哪些？弄懂每一个作用
-Q.应用程序实例：UIApplication|消息中心：NSNotificationCenter|文件管理：NSFileManager|应用
-程序设置：NSUserDefaults|请求缓存：NSURLCache|应用程序Cookies池：NSHTTPCookieStorage
 18.怎么提高客户端的性能？（这点需要深入研究一番）
 25.有哪些方法可以启动一个线程？
 26.xib/nib之间的区别？
@@ -2260,8 +2229,6 @@ UITableView调用reloadData()会发生什么问题？
 只是初始化父类的空间、为什么self可以调用子类的方法？
 22. ARC是什么？工作机制详细讲下？
 23. 常见的第三方库你见过那些多线程？/有盟、高德地图、AFNetWorking、SDWebImage、FMDB
-24. 为什么需要用到单例模式/不使用会怎么样？
-27. 什么是多态？为什么需要使用多态？
 31. 在iOS中有哪些常见第三方库：实现的功能是什么？你看过第三方库的源码吗？有过根据需求修改过源码吗？
 32. 写一个NSString类的实现；
 33. 描述OC和swift的联系和不同；
@@ -2273,8 +2240,6 @@ UITableView调用reloadData()会发生什么问题？
 39. 描述web后端Session在什么时候产生、什么时候结束？Cookie又是什么关系？
 40. iOS的后台运行是什么原理和机制？
 41. 创建一个对象、放在可变数组中。释放整个对象会发生什么？释放数组会发生什么？
-42. 你常用的设计模式、第三方库？
-43. 进程空间中的数据区、代码区、栈区、堆区有什么不同？
 44. WWDC是什么？你有关注过WWDC吗？
 45. Xcode选择模拟器编译：在Products中生成的二进制文件后缀是什么？
 46. 重点理解SEL的用法；
@@ -2310,9 +2275,6 @@ layer和UIView、UIWindow的区别是什么？
 self在对象方法中代表对象、self在类方法中代表类、
 self.age = 10代表set方法[self setAge:10];
 
-//单例模式
-一般单例模式只能保证跳用类方法的时候、创建的对象是不变的；
-参考sdkv3.8可以保证无论什么情况创建的对象都是唯一的；
 1.解释一下block、使用block应该注意什么;
 2.block的用法？
 3.如何避免使用block引起循环引用问题？
@@ -2321,8 +2283,6 @@ self.age = 10代表set方法[self setAge:10];
 Xcode支持在一个工程里面新建多个项目
 1.怎么开启异步线程、如果需要线程过段时间再开启、如果实现？
 1.列举常见使用到多线程的地方、2.多线程安全的几种解决办法？
-//App的发布流程
-1.创建一个单例并实现？有一种很特别的方式创建
 //数据存储
 1.单例保存的数据App杀死、数据清空
 2.数据库/NSUserDefaults保存的数据在App被杀死数据不会清空、App被卸载数据会清空
@@ -2928,7 +2888,6 @@ NSThread  NSLock 等实现线程锁，即当一个线程说话时锁定另一个
 
 1：ARC是什么？工作机制详细讲下。
 2：三方库里面的你见过那些多线程，讲一下。
-3：你用到的单例模式，为什么要用，不用会怎样。
 5：GCD
 6：还有就是把你的项目下载下来，问你功能的实现问题
 2、写一个view动画从顶到底部再消失，
@@ -3031,7 +2990,6 @@ Singleton 了，用的越多对水平就越表示怀疑。对设计模式自信�
 
 20.什么是序列化或者Acrchiving,可以用来做什么,怎样与copy结合,原理是什么?.
  
- 
 22.在iphone上有两件事情要做,请问是在一个线程里按顺序做效率高还是两个线程里做效率高？为什么？
 
 24.ios平台怎么做数据的持久化?coredata和sqlite有无必然联系？coredata是一个关系型数据库吗？
@@ -3039,10 +2997,6 @@ Singleton 了，用的越多对水平就越表示怀疑。对设计模式自信�
 25.阐述一个nil对象从interface bulider产生，到载入程序运行空间，最后被释放时所经历的生命周期.
  
 26.notification是同步还是异步? kvo是同步还是异步？notification是全进程空间的通知吗？kvo呢？
- 
-27.kvc是什么?kvo是什么?有什么特性？
- 
-28.响应者链是什么？
  
 29.unix上进程怎么通信？
  
@@ -3127,17 +3081,6 @@ interface?委托的 property声明用什么属性?为什
 10、 分别描述类别( categories)和延展( extensions)
 是什么?以及两者的区别?继承和类别在实现中 有何区别?为什么 Category只能为对象添加方法， 却不能添加成员变量?
 
-1,什么时IOS的单例(Singleton)模式
-单例(Singleton)类必须保证只有一个实例存在。
-实现单例的思路很简单：一个类能返回对象的一个实例（并且永远都是同一个）和一个获取该类实例的方法(该方法必须时静态方法，名称可以自定义)。当我们调用该方法的时候，如果该类持有的实例为空，则创建这个实例，否则直接返回这个实例。从而限制用户通过该类提供的静态方法获得该类的唯一实例。
-在多线程环境下使用单例模式应该非常小心，如果多个线程同时检测出没有单例类的实例存在，则会同时创建一个实例，这样就会违反了单例模式中的唯一性原则。解决这个问题的方法就是为标记类是否实例化的变量一个互斥锁。
-2,实现单例(Singleton)模式的方法
-IOS中实现单例模式的方法很简单:
-1,在单例类的实现文件中声明一个静态的实例，初始化为nil;
-2,在获取实例的方法中，判断只有在静态实例为nil的时候，才会实例化一个实例，这个实例一般也被称为共享的实例。如下面例子中的GetToastShow方法;
-3,重写allocWithZone方法。限制用户只能通过获取实例的方法得到这个类的实例;
-4,实现基本的协议方法:copyWithZone,retain,release,retainCount,autorelease,用于保证单例处于一个正确的状态。其中retain,release,retainCount,autorelease用户内存管理;
-
 3.下面程序有什么错误
 for(int i =0; i< someLageNumber; i++) {
     NSString * str = @"ABC";
@@ -3145,7 +3088,6 @@ for(int i =0; i< someLageNumber; i++) {
     str = [str stringByAppendingString:@"123"];
     NSLog(@"%@",str);
 }
-36、多态的理解 
 1.autorelease和垃圾回收机制(gc)有什么关系？
 2,ifndef/define/endif左右
 33、线程理解，有什么好处 
@@ -3157,7 +3099,6 @@ for(int i =0; i< someLageNumber; i++) {
 
 4,c++程序中调用被C编译的函数为什么要加extern "C"
 5,重载重写区别
-6,多态作用以及实现原理简述
 7,哪几种情况能使用构造函数初始化列表初始化,有什么好处
 8,内存分配方式简述
 9,单项链表逆序
@@ -3182,11 +3123,8 @@ const int *a;
 int * const a;
 const int * const a;
        写出各语句的功能
-    •    写一个单例；
     •    有integer :5,6,10,34,25,用NSArray实现逆序
     •    NSThread  NSLock 等实现线程锁，即当一个线程说话时锁定另一个线程，说完后再解锁
-
-
 
 3、tableView加载大量图片时应该注意什么？
     应该使用多线程和异步加载数据
@@ -3219,7 +3157,7 @@ const int * const a;
 12.IphoneOS有没有垃圾回收?
 13.什么是Notification模式？
 14.什么时候使用delegate什么时候使用Notification？
-1.分别以下列序列构造二叉排序树，与用其他三个序列所构造的结果不同的是( )。 A．(100，80，90，60，120，110，130) B．(100，120，110，130，80，60，90) C．(100，60，80，90，120，110，130) D．(100，80，60，90，120，130，110)   字典是一个二叉树吗？为什么?   2、[array alloca] 和 Narray *array; array 的内存技术是几。把它放入字典中是几。在从字典中remove是几。   3、IOS单例的作用，写一个单例。 4、网络请求为什么用jSON多，XML少 5、处了单例，工场。IOS还有什么模式。用伪代码表示 6.arc 中unsafe_unretained 是作用。一个@property (strong) NSString *string1 默认是什么操作。 7，宏 和 函数的区别，在什么情况下用宏。宏扩展又是什么 8、多线程是什么，多线程同步是什么，异步？        写一个NSOPENRATION队列，体现初始化和填入队列方法 9、block的作用，不用block可以用什么实现。 10、在多线程中,下面代码有什么问题 怎么改 i nterface a:NSobject { NSmutableArray *array; } .... @im.... -(void)add:(*item item){ [array addObject :item]; } -(void)rem:(*item item){ [array removeobject:item]; }  11.什么是观察者模式。 12.NSOpertaion有几种种形式.
+1.分别以下列序列构造二叉排序树，与用其他三个序列所构造的结果不同的是( )。 A．(100，80，90，60，120，110，130) B．(100，120，110，130，80，60，90) C．(100，60，80，90，120，110，130) D．(100，80，60，90，120，130，110)   字典是一个二叉树吗？为什么?   2、[array alloca] 和 Narray *array; array 的内存技术是几。把它放入字典中是几。在从字典中remove是几。  4、网络请求为什么用jSON多，XML少 5、工场。IOS还有什么模式。用伪代码表示 6.arc 中unsafe_unretained 是作用。一个@property (strong) NSString *string1 默认是什么操作。 7，宏 和 函数的区别，在什么情况下用宏。宏扩展又是什么 8、多线程是什么，多线程同步是什么，异步？        写一个NSOPENRATION队列，体现初始化和填入队列方法 9、block的作用，不用block可以用什么实现。 10、在多线程中,下面代码有什么问题 怎么改 i nterface a:NSobject { NSmutableArray *array; } .... @im.... -(void)add:(*item item){ [array addObject :item]; } -(void)rem:(*item item){ [array removeobject:item]; }  11.什么是观察者模式。 12.NSOpertaion有几种种形式.
 
 
 TCP 传输控制协议  是一种面向连接的、可靠的、基于字节流的运输层通信协议   短链接协议
@@ -3467,11 +3405,6 @@ iphone 的标准推荐CFNetwork C库编程.但是编程比较烦躁。在其它O
    NSLog(@"===%@",aStr);
    [aStr release];
 
-4.     举例说明你什么时候用代理
-    当一个类的某些功能需要被别人来实现，但是既不明确是些什么功能，又不明确谁来实现这些功能的时候，委托模式就可以派上用场。说到底一切都是为了使类之间的耦合性更松散。
-    在程序中，单例模式经常用于只希望一个类只有一个实例，而不运行一个类还有两个以上的实例。
-
-
 6.     什么是工厂
 
 8.     为什么要异步下载图片
@@ -3492,15 +3425,6 @@ iphone 的标准推荐CFNetwork C库编程.但是编程比较烦躁。在其它O
 
 16、 cell行数太多，如何滑动流畅
  
-17.  iOS系统的单例类都有哪些？
-    iOS系统的单例类:
-    UIApplication(应用程序实例)
-    NSNotificationCenter(消息中心):
-    NSFileManager(文件管理):
-    NSUserDefaults(应用程序设置):
-    NSURLCache(请求缓存)：
-    NSHTTPCookieStorage(应用程序cookies池):
-
 18.自动释放池是什么,如何工作  当您向一个对象发送一个autorelease消息时，Cocoa就会将该对象的一个引用放入到最新的自动释放池。
 它仍然是个正当的对象，因此自动释放池定义的作用域内的其它对象可以向它发送消息。
 当程序执行到作用域结束的位置时，自动释放池就会被释放，池中的所有对象也就被释放。 1.  ojc-c 是通过一种"referring counting"(引用计数)的方式来管理内存的, 对象在开始分配内存(alloc)的时候引用计数为一, 以后每当碰到有copy,retain的时候引用计数都会加一, 每当碰到release和autorelease的时候引用计数就会减一,如果此对象的计数变为了0, 就会被系统销毁. 2. NSAutoreleasePool 就是用来做引用计数的管理工作的,这个东西一般不用你管的. 3. autorelease和release没什么区别,只是引用计数减一的时机不同而已,autorelease会在对象的使用真正结束的时候才做引用计数减一.
@@ -3632,7 +3556,6 @@ const int *a;
 int * const a;
 const int * const a;
        写出各语句的功能
-写一个单例；
 有integer :5,6,10,34,25,用NSArray实现逆序
 NSThread  NSLock 等实现线程锁，即当一个线程说话时锁定另一个线程，说完后再解锁
 
@@ -3652,14 +3575,7 @@ NSThread  NSLock 等实现线程锁，即当一个线程说话时锁定另一个
     委托代理（delegate），顾名思义，把某个对象要做的事情委托给别的对象去做，那么别的对象就是这个对象的代理，代替它来打理要做的事。
     在cocoa框架中的Delegate模式中，委托人往往是框架中的对象（视图中的控件、表视图神马的），代理人往往是视图控制器对象。
 
-
-5.     什么是单列
-    相当于C当中的全局变量
-    单例模式是一个类在系统中只有一个实例对象。通过全局的一个入口点对这个实例对象进行访问。
-    单例模式顾名思义就是只有一个实例，它确保一个类只有一个实例，并且自行实例化并向整个系统提供这个实例。它经常用来做应用程序级别的共享资源控制。这个模式使用频率非常高，通过一个单例类，可以实现在不同窗口之间传递数据。
-
 7.     网络你如何下载图片
-
 
 18、tableview滑动时图片加载缓慢解决办法
     使图片异步加载
@@ -3668,14 +3584,11 @@ NSThread  NSLock 等实现线程锁，即当一个线程说话时锁定另一个
     [cell.imageView setImageWithURL:[NSURL URLWithString:url] placeholderImage:nil ];
     这里的nil也可以换成默认的一张图片，这样系统运行起来就比较流畅，因为图片是异步加载的，加载好了直接放到缓存里，下次的时候就不再去跟服务器通讯了。
 
-
-
 TCP 传输控制协议  是一种面向连接的、可靠的、基于字节流的运输层通信协议   短链接协议
 
 TCP层是位于IP层之上，应用层之下的传输层
 
 文件传送协议FTP(File TransferProtocol）允许用户从一台计算机到另一台取得文件，或发送文件到另外一台计算机。
-
 
 UDP 用户数据报协议  是 OSI 参考模型中一种无连接的传输层协议，提供面向事务的简单不可靠信息传送服务
 
@@ -3752,7 +3665,6 @@ NSLog(@”%@”, string);
 C中分配内存的方式有哪些？
 Kvo/kvc的机制？
 阐述以下推送功能的原理机制？
-什么是多态？
 Object-c中用什么修饰私有变量？
 Object-c中创建一个工程需要用到那两个框架？
 写一个委托Delegate的interface
@@ -4273,33 +4185,6 @@ UIScrollView的contentSize能否在viewDidLoad中设置？
     * 因为任何控制器的view在viewDidLoad的时候的尺寸都是不准确的，如果有子控件的尺寸依赖父控件的尺寸，在这个方法中设置会导致子控件的frame不准确，所以这时应该在下面的方法中设置子控件的尺寸
 -(void)viewDidLayoutSubviews;
 
-触摸事件的传递
-* 触摸事件的传递是从父控件传递到子控件
-* 如果父控件不能接收触摸事件，那么子控件就不可能接收到触摸事件
-* 不能接受触摸事件的四种情况
-    * 不接收用户交互，即：userInteractionEnabled = NO
-    * 隐藏，即：hidden = YES
-    * 透明，即：alpha <= 0.01
-    * 未启用，即：enabled = NO
-* 提示：UIImageView的userInteractionEnabled默认就是NO，因此UIImageView以及它的子控件默认是不能接收触摸事件的
-* 如何找到最合适处理事件的控件：
-    * 首先，判断自己能否接收触摸事件
-        * 可以通过重写hitTest:withEvent:方法验证
-    * 其次，判断触摸点是否在自己身上
-        * 对应方法pointInside:withEvent:
-    * 从后往前(先遍历最后添加的子控件)遍历子控件，重复前面的两个步骤
-    * 如果没有符合条件的子控件，那么就自己处理
-事件响应者链
-* 如果当前view是控制器的view，那么就传递给控制器
-* 如果控制器不存在，则将其传递给它的父控件
-* 在视图层次结构的最顶层视图也不能处理接收到的事件或消息，则将事件或消息传递给UIWindow对象进行处理
-* 如果UIWindow对象也不处理，则将事件或消息传递给UIApplication对象
-* 如果UIApplication也不能处理该事件或消息，则将其丢弃
-* 补充：如何判断上一个响应者
-    * 如果当前这个view是控制器的view，那么控制器就是上一个响应者
-    ◦    如果当前这个view不是控制器的view，那么父控件就是上一个响应者
-￼
-    *
 如何实现类似QQ的三角形头像
 * Quartz2D
 * 使用coreGraphics裁剪出一个三角形
@@ -4310,10 +4195,6 @@ UIScrollView的contentSize能否在viewDidLoad中设置？
 * 创建
 * 设置相关属性
 * 添加到CALayer上，会自动执行动画
-
-
-
-
 
 10.object-c中创建线程的方法是什么？如果在主线程中执行代码，方法是什么？如果想延时执行代码，方法又是什么？
 答:a、线程创建有三种方法：使用NSThread创建(detachNewThreadSelector:toTarget:withObject:)、使用GCD的dispatch、使用子类化的NSOperation,然后将其加入NSOperationQueue;
@@ -4733,11 +4614,6 @@ ASIHttpRequest,SBJson,JsonKit，SDWebImage，KissXML,FMDB
 网络 WebKit
 用户应用 Address Book Core Location Map Kit
 
-5. 你了解的设计模式
-单例，消息，协议，代理
-6. 平时会代码复用，或经常重构自己的代码吗？
-会。这样可以提高代码的可维护性和可扩展性。
-iOS SDK:
 1. 如何实现Push 通知的机制（大致写下）
 首先应用程序把要发送的消息、目的iPhone的标识打包，发给苹果服务器，苹果服务器在自身的已注册Push服务的iPhone列表中，查找有相应标识的iPhone，并把消息发送到iPhone，最后，iPhone把发来的消息传递给相应的应用程序，并且按照设定弹出Push通知。
 
@@ -4966,16 +4842,6 @@ oc中可修改和不可以修改类型。
 答案：可修改不可修改的集合类。这个我个人简单理解就是可动态添加修改和不可动态添加修改一样。
 比如NSArray和NSMutableArray。前者在初始化后的内存控件就是固定不可变的，后者可以添加等，可以动态申请新的内存空间。
 
-8.When we call objective c is runtime language what does it mean?
-我们说的oc是动态运行时语言是什么意思？
-答案：多态。 主要是将数据类型的确定由编译时，推迟到了运行时。
-这个问题其实浅涉及到两个概念，运行时和多态。
-简单来说，运行时机制使我们直到运行时才去决定一个对象的类别，以及调用该类别对象指定方法。
-多态：不同对象以自己的方式响应相同的消息的能力叫做多态。意思就是假设生物类（life）都用有一个相同的方法-eat;
-那人类属于生物，猪也属于生物，都继承了life后，实现各自的eat，但是调用是我们只需调用各自的eat方法。
-也就是不同的对象以自己的方式响应了相同的消息（响应了eat这个选择器）。
-因此也可以说，运行时机制是多态的基础？~~~
-
 9.what is difference between NSNotification and protocol?
 通知和协议的不同之处？
 答案：协议有控制链(has-a)的关系，通知没有。
@@ -5026,21 +4892,7 @@ oc中可修改和不可以修改类型。
  6}
 7 </span>
 这段代码有什么问题 . ?会不会造成内存泄露(多线程)?在内存紧张的设备上做大循环时自动释放池是写在循环内好 还是循环外好?为什么?
-
-18. 在一个对象释放前 . 如果他被加到了 notificationCenter 中 . 不在 notificationcenter 现什么问题?
-19. 怎样实现一个 singleton 的类 . 给出思路。
-20. 什么是序列化或者 Acrchiving, 可以用来做什么 , 怎样与 copy 结合 , 原理是什么 ?.
-21. 线程是什么? 有哪些注意事项 .?
-property 结合的时候怎样
-中 remove 这个对象可能会出
-22. 在 iphone 上有两件事情要做 , 请问是在一个线程里按顺序做效率高还是两个线程里做效率高?为什么?
-24.ios 平台怎么做数据的持久化 ?coredata 和 sqlite 有无必然联系? coredata 是一个关系型数据库吗?
-25. 阐述一个 nil 对象从 interface bulider 产生，到载入程序运行空间，最后被释放时所经历的生命周期 .
-26.notification 是同步还是异步 ? kvo 是同步还是异步? 27.kvc 是什么 ?kvo 是什么 ?有什么特性?
-28. 响应者链是什么?
-29.unix 上进程怎么通信?
 30.timer 的间隔周期准吗?为什么?怎样实现一个精准的
-31.UIscrollVew 用到了什么设计模式?还能再 foundation
 notification 是全进程空间的通知吗? kvo 呢?
 timer?
 库中找到类似的吗?
@@ -5273,7 +5125,6 @@ charVar
 8 多态。 主要是将数据类型的确定由编译时，推迟到了运行时。
 9 协议有控制链 (has-a) 的关系，通知没有。
 11 多态，子类指针可以赋值给父类。
-12 单例。
 13 事件响应链。包括点击事件，画面刷新事件等。在视图栈内从上至下，或者从下之上传播。
 
 15 selector 是一个方法的名字， method 是一个组合体，包含了名字和实现
@@ -5289,12 +5140,6 @@ charVar
 6 代理的目的是改变或传递控制链。允许一个类在某些特定时刻通知到其他类，而不需要获取到那些类的指针。可以减少框架复杂度 7 可修改不可修改的集合类。
 继承可以增加，修改或者删除方法，并且可以增
 extensions 可以认为是一个私有的 Category
-
- 8 多态。 主要是将数据类型的确定由编译时，推迟到了运行时。 9 协议有控制链 (has-a) 的关系，通知没有。
-
-11 多态，子类指针可以赋值给父类。
-12 单例。
-13 事件响应链。包括点击事件，画面刷新事件等。在视图栈内从上至下，或者从下之上传播。
 
 15 selector 是一个方法的名字， method 是一个组合体，包含了名字和实现
 16 OC2.0 有 Garbage collection ，但是 iOS 平台不提供。
@@ -5311,7 +5156,6 @@ extensions 可以认为是一个私有的 Category
 9 协议有控制链 (has-a) 的关系，通知没有。
 
 11 多态，子类指针可以赋值给父类。
-12 单例。
 13 事件响应链。包括点击事件，画面刷新事件等。在视图栈内从上至下，或者从下之上传播。
 15 selector 是一个方法的名字， method 是一个组合体，包含了名字和实现
 16 OC2.0 有 Garbage collection ，但是 iOS 平台不提供。
@@ -5320,12 +5164,7 @@ extensions 可以认为是一个私有的 Category
 继承可以增加，修改或者删除方法，并且可以增
 extensions 可以认为是一个私有的 Category
 
-33. 响应者链是什么
-响应者链是 Application Kit 事件处理架构的中心机制。它由一系列链接在一起的响应者对象组成，事件或者动作消息
-可以沿着这些对象进行传递。如图 6-20 显示的那样，如果一个响应者对象不能处理某个事件或动作-也就是说，它不 响应那个消息，或者不认识那个事件，则将该消息重新发送给链中的下一个响应者。消息沿着响应者链向上、向更高级 别的对象传递，直到最终被处理(如果最终还是没有被处理，就会被抛弃)。
-obj-c
-当 Application Kit 在应用程序中构造对象时，会为每个窗口建立响应者链。响应者链中的基本对象是 NSWindow对象 及其视图层次。 在视图层次中级别较低的视图将比级别更高的视图优先获得处理事件或动作消息的机会。 NSWindow中保 有一个 第一响应者 的引用，它通常是当前窗口中处于选择状态的视图，窗口通常把响应消息的机会首先给它。对于事件
-消息，响应者链通常以发生事件的窗口对应的 到 NSWindow对象的后面。
+
 34. .UIscrollVew 用到了什么设计模式?还能再 组合模式 composition ，所有的 container view
 NSWindow对象作为结束，虽然其它对象也可以作为下一个响应者被加入
 foundation 库中找到类似的吗? 都用了这个模式
@@ -5335,27 +5174,6 @@ foundation 库中找到类似的吗? 都用了这个模式
 NSTimer 可以精确到 50-100 毫秒 .
 NSTimer 不是绝对准确的 , 而且中间耗时或阻塞错过下一个点 , 那么下一个点就 pass 过去了 34.
 此份面试题包含 40 个题目，是现在网上能搜索到的一个比较热的一份，但是答案并不是很详细和完整，基本答案来着 cocoaChina ，和一些自己的 补充。
-
-
-答案: kvc: 键 - 值编码是一种间接访问对象的属性使用字符串来标识属性，而不是通过调用存取方法，直接或通过实例变量访问的机制。
-很多情况下可以简化程序代码。 apple 文档其实给了一个很好的例子。 kvo: 键值观察机制，他提供了观察某一属性变化的方法，极大的简化了代码。 具体用看到嗯哼用到过的一个地方是对于按钮点击变化状态的的监控。 比如我自定义的一个 button
-[cpp]
-[self addObserver:self forKeyPath:@"highlighted" options:0 context:nil];
-#pragma mark KVO
-- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
-
-if ([keyPath isEqualToString:@"highlighted"] ) { [self setNeedsDisplay];
-}
-}
-对于系统是根据 keypath 去取的到相应的值发生改变，理论上来说是和
-对于 kvc 机制如何通过 key 寻找到 value :
-“当通过 KVC调用对象时， 比如:[self valueForKey:@ ”someKey”] 时，程序会自动试图通过几种不同的方式解析这个调用。 这个方法， 如果没找到， 会继续查找对象是否带有 someKey这个实例变量 ( iVar )，如果还没有找到， 程序会继续试图调用 这个方法。如果这个方法还是没有被实现的话，程序会抛出一个 NSUndefinedKeyException 异常错误。
-(cocoachina.com 注:Key-Value Coding 查找方法的时候， 不仅仅会查找 someKey 这个方法， 还会查找 getsomeKey 这个方法， 前面加一个 get ，或者 _someKey 以及_getsomeKey 这几种形式。同时，查找实例变量的时候也会不仅仅查找 someKey这个变量，也会查找 _someKey这个变量是否存在。)
-设计 valueForUndefinedKey: 方法的主要目的是当你使用 -(id)valueForKey 方法从对象中请求值时， 对象能够在错误发生前， 有最后的机会响应这个请求。 这样做有很多好处，下面的两个例子说明了这样做的好处。“
-来至 cocoa，这个说法应该挺有道理。
-因为我们知道 button 却是存在一个 highlighted 实例变量 . 因此为何上面我们只是 add 一个相关的 keypath 就行了，
-可以按照 kvc 查找的逻辑理解，就说的过去了。
-6.What is purpose of delegates?
 代理的作用? 答案:代理的目的是改变或传递控制链。允许一个类在某些特定时刻通知到其他类，而不需要获取到那些类的指针。可以减少框架复杂度。 另外一点，代理可以理解为 java 中的回调监听机制的一种类似。
 7.What are mutable and immutable types in Objective C? oc 中可修改和不可以修改类型。
 答案:可修改不可修改的集合类。这个我个人简单理解就是可动态添加修改和不可动态添加修改一样。
@@ -5408,10 +5226,6 @@ A. 需要 B. 不需要 C.都可以
 三、 程序与设计
 1. 有 test.h 和 test.m 两个文件。 现在想给 test 类里中增加一个私有方法 hello ，那么在 test.h 和 test.m 文件中该如何编写
 2. 用递归实现 N! = N*(N-1) *(N-2) * ⋯*2*1.
-3. 请写一个单例模式。
-4. 一个农夫，买了一头小牛，这头小牛成长到第四年开始，会每年生一头小牛，所出生的 小牛成长到第四年开始，也会每年生一头小牛，请问 N 年后，农夫共有多少头牛。请写
-出代码实现。 //1 1 2 3 4 5
-5. 请用 UML 图画出设计模式中的状态模式、策略模式、责任链模式和命令模式中的任两 个模式。
 
 卷一 : 技术题部分 一、不定项选择题:基础理论知识，( 10题× 4分，合计 40分)
 1、以下线性表中能使用二分查找的有()
@@ -5562,29 +5376,6 @@ A. 12000 元 B. 15900 元 C.19500 元 D.25900 元 E.62000 元
  else NSLog(@"NFCLog: Failed to save converted image.”);
 }
 
- 3. 单例模式 Singleton
- 单例设计模式是 IOS 开发中一种很重要很常用的一种设计模
- 式。
- 确保程序运行期某个类，只有一份实例，用于进行资源共享 控制。也就是，无论请求多少次，始终返回一个实例，也就 是一个类只有一个实例。 优势: 使用简单，延时求值，易于 跨模块 敏捷原则: 单一职责原则(单一功能原则) 实例: NSUserDefaults
- [UIApplication sharedApplication] 等注意事项: 确保使用 者只能通过 getInstance 方法才能获得， 单例类的唯一实例。
- 单例代码:
- 单例的创建分 Non-ARC( 非 ARC) 和 ARC+GCD ，后者现在用 的比较广泛，它保证了线程的安全，满足了静态分析器的要 求，还兼容了 ARC ，代码如下:
- +( AccountManager *)sharedManager
- {
- static AccountManager *sharedAccountManagerInstance = nil;
-
- static dispatch_once_t predicate; dispatch_once (&predicate, ^{
- sharedAccountManagerInstance = [[
- });
- return sharedAccountManagerInstance; }
- self alloc ] init ];
- 代码分析: 通过这个类方法，可以得到当前类的单例对象。
- 在方法中先声明了一个实例，并初始化为 关键字可以保证只执行一次为 nil的操作。 dispatch_once_t 是多线程中的， 保证只执行一次。 dispatch_once 这个函数用 于检查该代码块是否已经被调用过，通过它不仅可以保证块 里面初始化的代码仅被运行一次，还能保证线程的安全。
- 4. 工厂模式 factory pattern 工厂模式是一种很常用的实例化对象的模式。
- 抽象出一个工厂类专门来实例化对象， 被实例化的对象类继承自工厂 类。也就是在实例化对象的时候，通过工厂方法代替 new 或者 alloc 、 init 方法。
- 优势: 易于替换，面向对象的编程
- nil，前面的 static
-
  敏捷原则: 开放 --封闭原则 工厂模式优缺点
  优点: 简单工厂模式的优点是客户端可以直接消费产品， 而不必关心具体产品的实现， 消除了客 户端直接创建产品对象的责任，实现了对责任的分割。
  缺点是工厂类几种了所有产品的创建逻辑， 一旦不能正常工作， 整个系统都会受到影响， 产品类多结构复杂的时候，把所有创建工作放进一个工厂中来，回事后期程序的扩展较为困难。
@@ -5637,8 +5428,8 @@ IOS
  NSUserDefaults 适合存储轻量级的本地数据， 以键值对的形 式进行存储，只能存储基本的 OC 对象(不包括自定义的对 象)。
 NSUserDefaults 非常好用，并不需要用户在程序中设置 NSUserDefaults 的全局变量，需要在哪里使用 NSUserDefaults 的数据，那么就在哪里创建一个 NSUserDefaults 对象，然后进行读或者写操作。
 针对同一个关键字对应的对象或者数据，可以对它进行重写， 重写之后关键字就对应新的对象或者数据，旧的对象或者数 据会被自动清理。
-NSUserDefaults 是典型的单例模式。 3. ProtocolList
-属性列表，是一种用来存储串行化后的对象的文件。因为扩 展名为 plist ，因此通常被称为 plist 文件。
+NSUserDefaults 是典型的单例模式。
+3. ProtocolList属性列表，是一种用来存储串行化后的对象的文件。因为扩 展名为 plist ，因此通常被称为 plist 文件。
 plist 文件通常用于储存用户设置，也可以用于存储捆绑的信 息，其内容为 xml 格式。它可以在程序运行期间动态的创建
 和读写，因此可以用于少量数据时候的数据持久化。 3. 归档?优缺点?
 
@@ -5671,28 +5462,6 @@ HTML 标记不区分大小写， XML 则大小敏感 ,即区分大小写。
 数据索引、 排
 HTML 被设
 XML 则要求所有
-
-
- IOS 面试问题总结
-分类: IOS 开发 2013-11-20 17:26 10685
-人阅读 评论 (1) 收藏 举报 目录 (?)[+]
-通过网络搜寻和自己总结经历找了一些 IOS 面试经常被问道的问题: 1. 搞清楚 touch 事件的传递 ( 事件的响应链 )
-事件的响应( responder chain )
-只有继承了 UIResponder 的类才能响应 touch 事件，从上图的响应者链可以看出，优先 是最上层的 view 响应事件，如果该 view 有视图控制器的话会是下一个响应者，否者就是 该 view 的父视图，这样至上而下传递事件。直到单例 UIWindow 对象，最后是单例 UIApplication 对象以终止， UIApplication 的下一个响应者是 nil ，已结束整个响应循环。 事件在传递过程中视图可以决定是否需要对该事件进行响应。
-事件分发( Event Delivery )
-第一响应者( First responder )指的是当前接受触摸的响应者对象(通常是一个 UIView 对象)，即表示当前该对象正在与用户交互，它是响应者链的开端。整个响应者链和事件 分发的使命都是找出第一响应者。
-UIWindow 对象以消息的形式将事件发送给第一响应者，使其有机会首先处理事件。如果 第一响应者没有进行处理， 系统就将事件 (通过消息) 传递给响应者链中的下一个响应者，
-看看它是否可以进行处理。
-iOS 系统检测到手指触摸 (Touch) 操作时会将其打包成一个 UIEvent 对象，并放入当前活动 Application 的事件队列， 单例的 UIApplication 会从事件队列中取出触摸事件并传递给单 例的 UIWindow 来处理， UIWindow 对象首先会使用 hitTest:withEvent: 方法寻找此次
-
- Touch 操作初始点所在的视图 (View) ，即需要将触摸事件传递给其处理的视图，这个过程 称之为 hit-test view 。
-UIWindow 实例对象会首先在它的内容视图上调用 hitTest:withEvent: ，此方法会在其视 图层级结构中的每个视图上调用 pointInside:withEvent: (该方法用来判断点击事件发生
-的位置是否处于当前视图范围内，以确定用户是不是点击了当前视图)，如果 pointInside:withEvent: 返回 YES ，则继续逐级调用，直到找到 touch 操作发生的位置，
-这个视图也就是要找的 hit-test view 。 hitTest:withEvent: 方法的处理流程如下 :
-首先调用当前视图的 pointInside:withEvent: 方法判断触摸点是否在当前视图内;
-若返回 NO, 则 hitTest:withEvent: 返回 nil;
-若返回 YES, 则向当前视图的所有子视图 (subviews) 发送 hitTest:withEvent: 消息， 所有子 视图的遍历顺序是从最顶层视图一直到到最底层视图，即从 subviews 数组的末尾向前遍 历，直到有子视图返回非空对象或者全部子视图遍历完毕;
-若第一次有子视图返回非空对象，则 hitTest:withEvent: 方法返回此对象，处理结束; 如所有子视图都返回非，则 hitTest:withEvent: 方法返回自身 (self) 。
 
  14 ， tableview 的优化 优化:
 1.1 正确的复用 cell 。
@@ -6102,20 +5871,6 @@ objective-c - 类里面的方法只有两种 的原则就是一个对象只暴�
 6. 代理的作用? 答案:代理的目的是改变或传递控制链。允许一个类在某些特定时刻通知到其他类，而不需要获取到
 那些类的指针。可以减少框架复杂度。 7.oc 中可修改和不可以修改类型。
 答案:就是可动态添加修改和不可动态添加修改一样。 比如 NSArray 和 NSMutableArray 。前者在 初始化后的内存控件就是固定不可变的，后者可以添加等，可以动态申请新的内存空间。
-8.我们说的 oc 是动态运行时语言是什么意思?
-答案:多态。 主要是将数据类型的确定由编译时，推迟到了运行时。 这个问题其实浅涉及到两个概
-念，运行时和多态。 运行时机制使我们直到运行时才去决定一个对象的类别，以及调用该类别对象指
-定方法。 多态:不同对象以自己的方式响应相同的消息的能力叫做多态。 // 都用有一个相同的方法，
-不同的对象以自己的方式响应了相同的消息 . 因此也可以说，运行时机制是多态的基础 9. 通知和协议的不同之处?
-答案:协议有控制链 (has-a) 的关系，通知没有。 // 通知 : 它可以一对多，一条消息可以发送给多个消息接 受者 ,但是不会处理消息 控制链:单一拥有和可控制的对应关系。
-10. 关于多态性
-答案:多态，子类指针可以赋值给父类。 对象不仅仅可以已本身的类型存在，也可以作为其父类类型
-存在。 多态性是允许将父对象设置成为和一个或多个它的子对象相等的技术， 多态性使得能够利用同 一类 (基类 )类型的指针来引用不同类的对象 ,以及根据所引用对象的不同 ,以不同的方式执行相同的操作 .
-11. 说说响应链
-答案: 事件响应链。包括点击事件，画面刷新事件等。在视图栈内从上至下，或者从下之上传播。
-
-
-
 
 13 、什么是 Notification ?
 答:观察者模式， controller 向 defaultNotificationCenter 添加自己的 notification ，其他类注 册这个 notification 就可以收到通知，这些类可以在收到通知时做自己的操作(多观察者默认随机 顺序发通知给观察者们，而且每个观察者都要等当前的某个观察者的操作做完才能轮到他来操作，
@@ -6239,23 +5994,6 @@ Core animation 应该是用 CAlayer 来实现各种动画。
 19. 怎样实现一个 singleton 的类 .给出思路。
 20. 什么是序列化或者 Acrchiving, 可以用来做什么 ,怎样与 copy 结合 ,原理是什么 ?.
 22. 在 iphone 上有两件事情要做 ,请问是在一个线程里按顺序做效率高还是两个线程里做效率高? 为什么?
-
-24.ios 平台怎么做数据的持久化 ?coredata 和sqlite 有无必然联系? coredata 是一个关系型数据 库吗?
-25. 阐述一个 nil 对象从 interface bulider 产生，到载入程序运行空间，
-周期.
-26.notification 是同步还是异步 ? kvo 是同步还是异步?
-kvo 呢?
-27.kvc 是什么 ?kvo 是什么 ?有什么特性?
-28. 响应者链是什么?
-29.unix 上进程怎么通信?
-30.timer 的间隔周期准吗?为什么?怎样实现一个精准的
-31.UIscrollVew 用到了什么设计模式?还能再 foundation
-notification
-timer?
-库中找到类似的吗?
-最后被释放时所经历的生命
-是全进程空间的通知吗?
-
 17. 列举 Cocoa 中常用的几种多线程实现，并谈谈多线程安全问题的几种解 决方案，什么地方会用到多线程 NSOperation NSThread @sychonized
 
 19. (Key-Value-Observing
@@ -6278,18 +6016,6 @@ someKey 这个方法， 如果没找到， 会继续查找对象是否带有 som
 get /set方
 法怎么做?有什么注意事项?
 12. 委托是什么?委托的 property 声明用什么属性?为什么?
-
-24.ios 平台怎么做数据的持久化 ?coredata 和sqlite 有无必然联系? coredata 是一个关系型数据库
-吗?
-25. 阐述一个 nil 对象从 interface bulider 产生，到载入程序运行空间，最后被释放时所经历的生命
-周期.
-
-26.notification 是同步还是异步 ? kvo 是同步还是异步? kvo 呢?
-27.kvc 是什么 ?kvo 是什么 ?有什么特性?
-28. 响应者链是什么?
-29.unix 上进程怎么通信?
-30.timer 的间隔周期准吗?为什么?怎样实现一个精准的 31.UIscrollVew 用到了什么设计模式?还能再 foundation
-
 7 [invocation invokeWithTarget:self.carInfo]; 8}
 (NSMethodSignature*)methodSignatureForSelector:(SEL)selector
 NSMethodSignature* signature = [super methodSignatureForSelector:selector];
@@ -6723,11 +6449,6 @@ _getsomeKey 这几种形式。同时，查找实例变量 的时候也会不仅�
 浅涉及到两个概念，运行时和多态。 简单来说，运行时机制使我们直到运行时 才去决定一个对象的类别，以及调用该类别对象指定方法。 多态:不同对象以自己的方式响应相同的消息的能力叫做多态。如: Person 和 Dog 都继承自生物 Life 类，且都有一个 eat 方法，但是调用时只需要调用各自的 eat 方法，就是说不同对象以自己的方式响应相同的方法和消息! 因此也可以说， 运行时机制是多态的基础。
 八、通知和代理的异同? 1、相同点:利用通知和代理都能完成对象之间的通信
 2、不同点:代理是一对一的关系，通知是多对多的关系。一般来说代理是两个 类之间的关系，通知可以一对多，也可以多对一，还可以多对多，就是一个发布 者一个监听者， 一个发布者多个监听者， 多个发布者多个多个监听者， 代理需要 有协议、要声明协议、实现协议中方法、设置代理;通知需要设置通知中心、设 置发布者和监听者。
-
-
-十、简述响应者链条? 1、响应者链条是由多个响应者对象连接起来的链条
-2、响应者对象是指能够处理事件的对象，即继承 3、利用响应者链条，能让多个控件处理同一个触摸事件
-
 十二、 ios 中的垃圾回收机制?
 1、Objective-c 2.0 后提供了垃圾回收机制 Garbage Collection，但是 ios 移动端不 支持垃圾回收机制，需要注意的是 ARC 并不是垃圾回收机制， ARC 也是需要管 理内存的，只不过是隐式的管理内存， 编译器会在适当的位置添加 retain 、release、 autorelease 等消息!
 
@@ -6886,25 +6607,7 @@ D>高级功能:调度组、延时操作 after、和一次性 (单例) 五十七�
 3、GCD是替代 NSThread 的线程技术，底层也是 C 语言，线程的生命周期由系 统管理，经常使用
 4、NSOperation 基于 GCD，比 GCD多了些实用的功能，更加面向对象， OC编 写，线程生命周期也是系统管理，经常使用
 
-五十九、描述响应者链条?
-1、概念:多个响应者对象连接起来的链条 响应者对象:继承自 UIResponder 的对象
-2、作用:可以让触摸事件发生的时候多个响应者同时响应 1 该事件
-3、事件传递过程: UIApplication--->UIWindow---> 由上向下由父控件到子控件 找到最合适的 view 处理事件
-响应者链条的事件传递过程: A>如果 view 是控制器的 view 就传递给控制器， 如果不是就传递给它的父视图
-B>在视图层次结构的最顶级视图如果也不能处理接收 的事件，则将事件传递给 window 进行处理
 
-C>window 如果也不能处理就将事件传递给 D>如果 UIApplication 也不能处理则将事件直接丢弃
-UIApplication 处理
-4、判断上一个响应者的标准:先判断当前 view 是不是控制器的 view ，是的话
-控制器就是上一个响应者
-如果当前这个 view 不是控制器的 view ，那么父控件就是上
-一个响应者
-六十、 new 和 alloc init 的区别?
-1、概括的说:二者功能基本一致，分配内存空间并完成初始化 2、差别在于:采用 new 的方式只能采用默认的 init 方法完成初始化，而采用的
-方式可以使用其他的定制的初始化方法 六十一、创建控制器 view 的过程 (优先级 )?
-1、先看有没有重写系统的 loadView 方法，有的话就根据 loadView 的代码创建 view
-2、没有重写 loadView 的话就寻找有没有指定的 sb，有就通过 sb 的描述创建 view 3、没有的话就寻找有没有指定 nibName, 如果有，就根据 nibName 对应的 xib 去创建 (如: LGViewController.xib)
-4、没有的话会寻找有没有跟控制器同名，不带 Controller 的 xib，有就创建 5、如果没有就去找跟控制器同名带 Controller 的 xib，有就创建 6、没有就直接创建几乎透明的 view
 六十二、应用的状态和生命周期?
 1、状态:
 A、Not running 未运行:程序未启动
@@ -7433,17 +7136,6 @@ viewDidLoad 在 view 从 nib 文件初始化时调用， loadView 在 controller
 @synthesize 是系统自动生成 getter 和 setter 属性声明 ;@synthesize 的意思是， 除非开发人员已经做了， 否则由编译器生成相应的代码， 以满 足属性声明;
 @dynamic是开发者自已提供相应的属性声明 ,@dynamic意思是由开发人 员提供相应的代码:对于只读属性需要提供 setter ，对于读写属性需要 提供 setter 和 getter 。查阅了一些资料确定 @dynamic的意思是告诉编 译器 , 属性的获取与赋值方法由用户自己实现 , 不自动生成。
 
-自定义实现 UITabbarController 的原理
-*)touches withEvent:(UIEvent
-运用字典， 点击五个按钮的一个可以从字典里选择一个控制器对象， 将其 View 显示到主控制器视图上。
-iOS 中的响应者链的工作原理
-每一个应用有一个响应者链，我们的视图结构是一个 N叉树( 一个视图可 以有多个子视图，一个子视图同一时刻只有一个父视图 ), 而每一个继承
-UIResponder 的对象都可以在这个 N叉树中扮演一个节点。 当叶节点成为最高响应者的时候， 从这个叶节点开始往其父节点开始追朔 出一条链，那么对于这一个叶节点来讲，这一条链就是当前的响应者链。 响应者链将系统捕获到的 UIEvent 与 UITouch 从叶节点开始层层向下分发， 期间可以选择停止分发，也可以选择继续向下分发。
-如需了解更多细节，请读 这篇文章 。
-View 和 View 之间传值方式
-对象的 property 属性传值; 方法参数传值; NSUserDefault 传值; 块传值。
-
-
 队列和多线程的使用原理
 在 iOS 中队列分为以下几种:
    串行队列:队列中的任务只会顺序执行;
@@ -7456,7 +7148,6 @@ dispatch_queue_t q = dispatch_get_global_queue(DISPATCH_QUEUE_PRIO RITY_DEFAULT,
 主队列:每一个应用程序对应唯一主队列， 直接 GET即可;在多线程开发 中，使用主队列更新 UI ;
 dispatch_queue_t q = dispatch_get_main_queue()
 
- 
  内存的使用和优化的注意事项
 重用问题:如 UITableViewCells 、UICollectionViewCells 、 UITableViewHeaderFooterViews 设置正确的 reuseIdentifier ，充分重用; 尽量把 views 设置为不透明:当 opque 为 NO的时候，图层的半透明取决 于图片和其本身合成的图层为结果，可提高性能;
 不要使用太复杂的 XIB/Storyboard :载入时就会将 XIB/storyboard 需要 的所有资源， 包括图片全部载入内存， 即使未来很久才会使用。 那些相比 纯代码写的延迟加载，性能及内存就差了很多;
@@ -7574,32 +7265,7 @@ UICollectionViewController. 可以把表格分成多列。
 Social Framework( 社交集成 ) UIActivityViewController 来询问用户的社交行为
 缓存:就是存放在临时文件里，比如新浪微博请求的数据，和图片， 下次请求看这里有没有值。
 
-56Singleton (单例模式)，也叫单子模式，是一种常用的软件设 计模式。在应用这个模式时， 单例对象的类必须保证只有一个实例存 在。
-代码如下:
-static ClassA *classA = nil ;//静态的该类的实例 + (ClassA *)sharedManager
-{
-@synchronized(self) {
-if (!classA) {
-classA = [[super allocWithZone:NULL]init]; }
-return classA; }
-}
-+ (id)allocWithZone:(NSZone *)zone { return [[self sharedManager] retain];
-}
-- (id)copyWithZone:(NSZone *)zone { return self;
-}
-- (id)retain {
-return self;
 
-}
-- (NSUIntger)retainCount { return NSUIntgerMax;
-}
-- (oneway void)release {
-}
-- (id)autorelease {
-return self;
-}
--(void)dealloc{
-}
 57请写一个 C函数，若处理器是 Big_endian 的，则返回 0;若是 Little_endian 的，则返回 1 int checkCPU( ) {
 {
 union w {
@@ -10197,19 +9863,6 @@ name: "新疆", citys:
 25 、曾经是否发布过 IOS 应用到 App store? 描述下发布流程
 答案:还得实际操作
 
-
-
-1 iOS中传值的方式
-属性 代理 通知 单例 block
-2 写一个单例 代理 类别
-单例
-+(id)allocWithZone:(struct _NSZone *)zone {
-static Person *person;
-static dispatch_once_t onceToken; dispatch_once(&onceToken, ^{
-person = [super allocWithZone:zone]; });
-return person; }
-+(Person *)sharePerson {
-return [[self alloc] init]; }
 3 info.plist 和 Prefix.pch 的用处 info.plist
 项目的配置属性
 Prefix.pch
@@ -10591,9 +10244,6 @@ view1.layer.masksToBounds = YES;
 1?工?厂?方法: ?用来快速加 ?工对象?比。如:便利构造器。
 2抽象 ?工?厂:抽象出 ?一个公共的 ?父类，提 ?高?子类公共的功能。 ?子类继承即可， 但是不会使 ?用该?父类去创建对象使 ?用。?比:?手如势,UIControl 3对象?工?厂:?用来根据需求 ?生成不同类型的对象?。比如:cell?工?厂。
 ?工?厂模式对调 ?用者屏蔽具体的产品类。如果使 ?用?工?厂模式，调 ?用者只关 ?心产品 的接 ?口就可以了， ?至于具体的实现，调 ?用者根本 ?无需关 ?心。即使变更了具体的 实现，对调 ?用者来说没有任何影响。
-单例模式 :
-单例模式的原则就是创建 ?一个单例类， ?而必须保证该类只能 ?生成 ?一个对象，在 该?工程中，任何位置访问时，访问的都是该对象。 ??目的是为了共享内存空间， 保证数据的 ?一致性。
-设计模式存在的意义在于提 ?高程序的内聚性，降低程序的耦合性。
 
 31.在.m?文件Class Extension 中声明的私有 ?方法，其他类能否调
 ?用?若强 ?行调 ?用会发 ?生什么? 答:
@@ -10975,15 +10625,6 @@ b. 远程推送:由推送服务器推送通知到 ?用户设.备过程为
 2、 IOS 跟 APNS Server 要deviceToken 。应 ?用程序接受deviceToken 。 3、应 ?用程序将deviceToken 发送给 PUSH 服务端程序。
 4、 服务端程序向 APNS服务发送消息。
 5 、APNS服务将消息发送给 iPhone应?用程序。 102.What is Polymorphism ?
-翻译:什么是多态。
-翻译:什么是单例。
-104.什么是响应者链。
-
-
-
-
-
-
 
 10.类的定义及声明文件以什么为后缀名? 11.怎样自动生成属性的获取方法和设置方法 12.声明一个静态方法和一个实例方法 13.写一个发送同步 http 请求，并获得返回结果的方法 14.怎样启动一个新线程，子线程怎样刷新主 UI 15.什么是 MVC ，你工作时怎样运用它
 第 3 题:
@@ -12991,12 +12632,6 @@ http :请求头、相应头、请求体、相应体
 要求同时进行并且又要共享某些变量的并发操作， 只能用线程， 不能 用进程。
 42.在iphone上有两件事情要做 ,请问是在一个线程里按顺序做效率 高还是两个线程里做效率高?为什么?
 43.runloop 是什么?在主线程中的某个函数里调用了异步函数，怎么 样 block 当前线程 ,且还能响应当前线程的 timer 事件， touch 事件等 .
-44.ios平台怎么做数据的持久化 ?coredata 和sqlite有无必然联系? coredata 是一个关系型 数据库 吗? iOS 中可以有四种持久化数据的 方式:属性列表、对象归档、 SQLite3 和Core Data ;core data 可以 使你以图形界面的方式快速的定义 app 的数据模型，同时在你的代码 中容易获取到它。 core data 提供了基础结构去处理常用的功能，例 如保存，恢复，撤销和重做，允许你在 app 中继续创建新的任务。在 使用 core data 的时候，你不用安装额外的数据库系统， 因为 core data 使用内置的 sqlite 数据库。 core data 将你 app 的模型层放入到一组定 义在内存中的数据对象。 core data 会追踪这些对象的改变，同时可 以根据需要做相反的改变，例如用户执行撤销命令。当 core data 在 对你 app 数据的改变进行保存的时候， core data 会把这些数据归档， 并永久性保存。 mac os x 中sqlite 库，它是一个轻量级功能强大的关 系数据引擎，也很容易嵌入到应用程序。 可以在多个平台使用， sqlite 是一个轻量级的嵌入式 sql数据库 编程。与 core data 框架不同的是， sqlite是使用程序式的， sql的主要的 API来直接操作数据表。 Core
-
-Data 不是一个关系型数据库，也不是关系型数据库管理 系统 (RDBMS) 。虽然 Core Dta 支持 SQLite 作为一种存储类型，但它不能 使用任意的 SQLite 数据库。 Core Data 在使用的过程种自己创建这个 数据库。 Core Data 支持对一、对多的关系。
-45. 阐述一个 nil对象从 interface bulider 产生，到载入程序运行空间， 最后被释放时所经历的生命周期 .
-47.kvc 是什么 ?kvo 是什么 ?有什么特性? 48. 响应者链是什么?
-49.unix 上进程怎么通信?
 UNIX 主要支持三种通信方式:
 1. 基本通信:主要用来协调进程间的同步和互斥 (1) 锁文件通信
 通信的双方通过查找特定目录下特定类型的文件
@@ -13742,24 +13377,6 @@ crash 信息 由于自己的 crash 信息太长，找了一张示例:
 1、触屏事件( Touch Event ) 2、运动事件( Motion Event )
 3、远端控制事件( Remote-Control Event )
 
-响应者链( Responder Chain )
-响应者对象( Responder Object )，指的是有响应和处理事件能力的对象。响应
-者链就是由一系列的响应者对象构成的一个层次结构。
-UIResponder 是所有响应对象的基类， 在 UIResponder 类中定义了处理上述各种 事件的接口。我们熟悉的 UIApplication 、 UIViewController 、UIWindow和所 有继承自 UIView 的 UIKit 类都直接或间接的继承自 UIResponder，所以它们的 实 例都是可以构成响应者链的响应者对象。
-响应者链有以下特点: 1、响应者链通常是由视图( UIView)构成的;
-2、一个视图的下一个响应者是它视图控制器( UIViewController )(如果有的 话)，然后再转给它的父视图( Super View );
-3、视图控制器(如果有的话)的下一个响应者为其管理的视图的父视图; 4、单例的窗口( UIWindow)的内容视图将指向窗口本身作为它的下一个响应者
-需要指出的是， CocoaTouch应用不像 Cocoa应用，它只有一个 UIWindow对象， 因此整个响应者链要简单一点;
-5、单例的应用( UIApplication )是一个响应者链的终点，它的下一个响应者指 向 nil ，以结束整个循环。
-点击屏幕时是如何互动的
-iOS 系统检测到手指触摸 (Touch) 操作时会将其打包成一个 UIEvent 对象，并放
-入当前活动 Application 的事件队列，单例的 UIApplication 会从事件队列中取 出触摸事件并传递给单例的 UIWindow来处理， UIWindow对象首先会使用 hitTest:withEvent: 方法寻找此次 Touch 操作初始点所在的视图 (View) ，即需要 将触摸事件传递给其处理的视图，这个过程称之为 hit-test view 。
-UIWindow实例对象会首先在它的内容视图上调用 hitTest:withEvent: ，此方法 会在其视 图层级结构中的每个视图上调用 pointInside:withEvent: (该方法用
-来判断点击事件发生的位置是否处于当前视图范围内，以确定用户是不 是点击 了当前视图)，如果 pointInside:withEvent: 返回 YES，则继续逐级调用，直到 找到 touch 操作发生的位置，这个视图也就是 要找的 hit-test view 。
-hitTest:withEvent: 方法的处理流程如下 : 首先调用当前视图的 pointInside:withEvent: 方法判断触摸点是否在当前视图内;若返回 NO,则
-hitTest:withEvent: 返回 nil; 若返回 YES,则向当前视图的所有子视图 (subviews) 发送 hitTest:withEvent: 消息，所有子视图的遍历顺序是从最顶层 视图一直到到最底 层视图，即从 subviews 数组的末尾向前遍历， 直到有子视图
-
-
  Run Loop 的四个作用 :
 使程序一直运行接受用户输入 决定程序在何时应该处理哪些 Event 调用解耦
 节省 CPU时间
@@ -14066,19 +13683,6 @@ static 修饰变量 ,表示这个内部全局变量 ,只能在本文件中访问
 static 修饰类 , 表示这个内部的方法 , 只能在本文件中访问 .
 extern c 表示声明了一外部变量 , 多个外部变量如果同名 ,实际指向的是同一块存储空间
 , 它
-
-
-十 说说响应者链条 ?
-响应者链条是一条由 UIResponder 的子类组成的链条
-应者起 ,如果它是控制器的 view 的话 ,它的上一级响应者就是这个控制器 ,否则就是它的父控 件; 控制器的上一级响应者是它父控制器的 view,最终一直到 window.
-十一 . CGD 的底层实现
-iOS 和 OS X 的核心是 XNU 内核 , GCD 是基于 XUN 内核实现的 GCD 的 API 全部在 libdispatch 库中
-GCD 的底层实现主要有 Dispatch Queue 和 Dispatch Source Dispatch Queue:管理 block 操作
-Dispatch Source:处理事件
-十二 . Notification 是同步还是异步 ?kvo 是同步还是异步
-包括代理 ,这些都是同步的;监听和回调都是在同一个线程中执行
-
-
 
 十六 . NSTimer 和 GCD 的定时器有什么区别
 NSTimer 可以调用 invalidate 进行撤销 ,创建和撤销必须在同一线程
@@ -18402,21 +18006,6 @@ mac os x 中 sqlite 库，它是一个轻量级功能强大的关系数据引擎
 Core Data 不是一个关系型数据库，也不是关系型数据库管理系统 (RDBMS) 。 虽然 Core Dta 支持 SQLite 作为一种存储类型，但它不能使用任意的 SQLite
 数据库。 Core Data 在使用的过程种自己创建这个数据库。 Core Data 支持对 一、对多的关系。
 
-45. 阐述一个 nil 对象从 interface bulider 产生，到载入程序 运行空间，最后被释放时所经历的生命周期 .
-46.notification 是同步还是异步 ? kvo是同步还是异步? notification 是全进程空间的通知吗? kvo 呢?
-47.kvc 是什么 ?kvo 是什么 ?有什么特性? 48. 响应者链是什么?
-49.unix 上进程怎么通信?
-UNIX 主要支持三种通信方式:
-1. 基本通信:主要用来协调进程间的同步和互斥 (1) 锁文件通信
-一个特定类型文件，若有，则等待一段时间再查找锁文件。 (2) 记录锁文件
-2. 管道通信:适应大批量的数据传递 3. IPC :适应大批量的数据传递
-50.timer 的间隔周期准吗?为什么?怎样实现一个精准的 timer?
-(称锁文件 )来完成进程间 对临界资源访问时的互斥;例如进程 p1 访问一个临界资源，首先查看是否有
-通信的双方通过查找特定目录下特定类型的文件
-
-51.UIscrollVew 用到了什么设计模式?还能再 foundation 库 中找到类似的吗?(答案众多，不知道哪个是对的~~)
-模板 (Template) 模式，所有 datasource 和 delegate 接口都是模板模式的典型 应用，
-组合模式 composition ，所有的 container view 都用了这个模式 观察者模式 observer ，所有的 UIResponder 都用了这个模式。
 52 如果要开发一个类似 eclipse的软件，支持插件结构。且 开放给第三方开发。你会怎样去设计它?(大概思路)
 53.
 main() {
@@ -19787,7 +19376,6 @@ XX管理系统
 工厂方法
 工厂类
 类的消息机制
-weak怎么防止循环引用
 */
 /******************************网络基础******************************/
 #json解析：JavaScript Object Notification
@@ -20970,17 +20558,6 @@ iTunes图标：512*512\1024*1024两张
 NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF CONTAINS[c] %@",searcgString];
 _ArrM = [NSMutableArray arrayWithArray:[_Arr filteredArrayUsingPredicate:predicate];//过滤数据
 
-#const：Apple推荐使用const
-1.修饰右边基本变量或指针变量、2.被const修饰的变量只读
-//常量
-int const a = 10;//a是常量，不允许被修改
-const int *a = 10;//a本身是一个指针，可以修改；*a是常量，不可以被修改
-int *const a = 10;//a本身是一个指针，不可以修改；a指向变量，允许被修改
-int const *const a = 10;//a本身是一个指针，不可以修改；a指向常量，不允许被修改
-//指针
-const int *p;//修饰*p可读，p可以改变；
-int *const p;//修饰p可读，*p可以改变；
-
 #深拷贝/浅拷贝：
 //定义
 深拷贝：生成值一样，内存地址不一样的全新对象-内容拷贝
@@ -21051,26 +20628,10 @@ if(@available(macOS10.1,iOS 11,*)) {
 //UDID：设备识别码(真机调试、App上架)
 //nil：0x0
 
-#常用代码块：
-//App起始三句话
-self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-self.window.backgroundColor = [UIColor whiteColor];
-[self.window makeKeyAndVisible];
 //获取当前时间
 NSString *currentTime = [NSString stringWithFormat@"%@",[NSDate date]];
 //block中使用self
 __weak typeof(self) weakSelf = self;
-//汉字转码
-NSString *oriString = @"\u67aa\u738b";
-NSString *escapedString = [oriString stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-//获取当前设备
-[[UIDevice currentDevice] localizedModel];//什么设备
-[[UIDevice currentDevice] systemName];//系统名称
-[[UIDevice currentDevice] systemVersion];//版本号
-//屏幕中心x轴
-self.view.center.x
-//屏幕中心y轴
-self.view.center.y
 //加载图片
 UIImage *img = [UIImage imageNamed:@"logo.png"];//加载小图片、经常被使用的图片
 NSString *path =  [[NSBundle mainBundle] pathForResource:@"logo" ofType: @"png"];
@@ -21091,11 +20652,6 @@ NSURLRequest *request = [NSURLRequest requestWithURL:url];
 [UIApplication sharedApplication].idleTimerDisabled = YES;
 //隐藏NavigationBar
 [self.navigationController setNavigationBarHidden:YES animated:YES];
-//延迟执行
-[self performSelector:@selector(onShow) withObject:self afterDelay:1.0];
-//UIView设置成圆角
-view.layer.cornerRadius = 5;
-view.layer.masksToBounds = YES;
 //判断msg是否是NSString
 [msg isKindOfClass:[NSString class]];
 //plist转NSArray
@@ -21132,50 +20688,6 @@ NSArray *words = [fileConent componentsSeparatedByString:@"\n"];//转换成NSArr
         NSLog(@"远离");
     }
 }
-//设置RGBA颜色
-UIColor *color = [[UIColor alloc]initWithRed:238/255.0 green:238/255.0 blue:238/255.0 alpha:1];
-//延迟执行
-[self performSelector:@selector(stop:) withObject:nil afterDelay:5];
-//创建多个UIButton
-NSArray *titles = @[@"分享到短信", @"分享到邮箱", @"分享到新浪微博"];
-NSArray *selectors = @[@"shareToSMS:", @"shareToEmail:", @"shareToSinaWeibo:"];
-for (NSInteger idx = 0; idx != [titles count]; ++idx) {
-    UIButton *shareButton = [[UIButton alloc]initWithFrame:CGRectMake(20, 80 + (40 + 20) * idx, self.view.frame.size.width - 40, 40)];
-    [shareButton setTitle:titles[idx] forState:UIControlStateNormal];
-    [shareButton addTarget:self action:NSSelectorFromString(selectors[idx]) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:shareButton];
-}
--(void)shareToSMS:(id)sender {
-
-}
--(void)shareToEmail:(id)sender {
-
-}
--(void)shareToSinaWeibo:(id)sender {
-
-}
-//json转换成字典
-NSDictionary *dict=[NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableContainers error:nil];
-//常量
-//1> 宏
-#define Name @"xwj"
-#define Age 20
-//2> 常量
-static int const sum = 20;
-static NSString * const Str = @"xwj";
-//根据字体计算高度：一行
-NSString *name = @"谢吴军";
-NSDictionary *nameAtt = @{NSFontAttributeName : [UIFont systemFontOfSize:15]};
-CGSize nameSize = [name sizeWithAttributes:nameAtt];
-CGFloat width = nameSize.width;
-//根据最大宽度计算高度：多行
-NSString *name = @"谢吴军";
-NSDictionary *nameAtt = @{NSFontAttributeName : [UIFont systemFontOfSize:15]};
-CGSize nameSize = CGSizeMake(100, MAXFLOAT);//宽度固定100，高度不确定
-CGSize textSize = [name boundingRectWithSize:nameSize options:NSStringDrawingUsesLineFragmentOrigin attributes:nameAtt context:nil].size;
-CGFloat height = textSize.height;
-//https://www.cnblogs.com/niit-soft-518/p/6373601.html
-CGRectGetMaxX(self.view.size) //矩形中最大x值：布局简单多啦
 
 #常用类：
 //1.NSNumber：把基础类型转化成对象
@@ -21260,45 +20772,6 @@ https://blog.csdn.net/sadsadaadsd/article/details/77878279
 //swift打包静态库：不支持静态库
 https://blog.csdn.net/lvchenqiang_/article/details/79077679
 
-#设计模式：
-//MVC：Model数据模型用于存储数据；View视图负责显示UI控件；Controller控制器用于控制View和model之间的交互；
-//MVVM：xxx
-//单例模式：可以保证在程序运行过程中一个类只有一个实例；
-//工厂模式：工厂方式创建类的实例，多与proxy模式配合，创建可替换代理类；
-//观察者模式：不关心谁去接收，只负责发布信息；
-//代理设计模式：当一个类的某些功能需要由别的类来实现，但是又不确定具体会是哪个类实现；
-
-#预处理指令：在源代码被翻译成0和1之前做的操作我们称为预处理指令，一般以#开头
-//宏定义：#define 宏名 值
-作用：在源代码被翻译成0和1之前，将所有的宏名换成宏的值；
-规范：一般要求宏名以k开头，多个单词之间用驼峰命名；
-作用域：从定义开始到文件结束，可以提前结束宏定义的作用域；
-#define kVersion "3.5.8" //不能加分号
-#undef kVersion //提前结束宏定义作用域
-不带参数的宏/带参数的宏：建议写带参数的宏的时候，给每个参数加上()，给结果加上();
-注意：宏定义并不会做任何操作，仅仅在翻译成0和1之前做简单的替换
-//条件编译
-#define DEBUG 0 //0是调试阶段、1是发布阶段
-#if DEBUG == 0
-#define CMLog(format, ...) printf(format,## __VA_ARGS__)
-#elif //else if
-#else
-#define Log(format, ...)
-#endif //结束符
-#ifdef DEBUG //是否定义该宏
-#ifndef DEBUG //是否没有定义该宏
-优点：缩小应用程序的大小
-注意：条件编译不能用来判断变量，因为不在同一个生命周期，一般与宏定义结合使用；
-//文件包含
-#include <zh.h>/"zh.h" //将zh.h文件copy到当前文件：可能会出现重复包含头文件、降低编译效率
-<zh.h> //编译器环境->系统环境
-"zh.j" //当前文件->编译器环境->系统环境
-头文件卫士：防止循环copy
-#ifndef __ZS__H__ //判断是否"没有定义"宏名为__ZS__H__的宏
-#define __ZS__H__ //定义宏名为__ZS__H__的宏
-//执行代码
-#endif
-
 #Xcode介绍：
 概述：Mac系统中所有的目录都是文件夹，Mac系统/iOS都是基于unix系统；
 Xcode4之前，Xcode使用GCC编译器来翻译代码；
@@ -21321,23 +20794,6 @@ File->New->Project...->iOS->Single View App
 //替换单词：OK
 //添加类前缀：Class Prefix
 
-#RunLoop：底层
-作用：1.保持程序的持续运行；
-2.处理App中各种事件(触摸事件、定时器事件)；
-3.节省CPU资源，提高程序性能；
-实质：RunLoop实质是一个死循环，由于main函数中启动了RunLoop才保证了程序不会马上退出，可以
-保持持续运行状态；
-//CFRunLoopRef
-//NSRunLoop：基于CFRunLoopRef的封装
-//RunLoop与线程
-1.每条线程都有唯一与之对应的RunLoop对象；
-2.主线程的RunLoop已经自动创建、子线程的RunLoop需要主动创建；
-3.RunLoop在第一次获取线程时创建、在线程结束时销毁；
-//RunLoop的运行模式：见Res
-http://www.cocoana.com/ios/20150601/11970.html#0-qzone-1-74697-d020d2d2a4e8d1a374a433f596ad1440
-
-#Runtime：NO
-
 #DrawRect：NO
 概念：Quartz 2D是一个基于CoreGraphics框架来实现的二维绘制引擎，同时支持iOS和Mac系统；
 作用：绘制图形、线、三角形、圆、弧形；绘制文字；绘制/生成pdf；截图/裁剪图片；自定义UI；
@@ -21359,19 +20815,6 @@ https://www.jianshu.com/p/39a5aee18778
 
 #Interface Builder介绍：用来管理xib、storyboard
 
-#面试：
-//self.name和_name的区别：
-self.name是对set/get方法的简单操作，引用计数+1；
-_name是直接操作变量，引用计数不+1；
-//ARC和java的垃圾回收机制有什么不同：
-xxx
-//assign和weak的区别：
-用weak声明的变量在栈中会自动清空：赋值为nil；
-用assign声明的变量在栈中可能不会自动赋值为nil：会造成野指针错误；
-//frame/bounds/center的区别：
-frame：以父视图的左上角为坐标原点确定控件坐标系；
-bound：以自己的左上角为坐标原点控件中心向四周扩展；
-center：控件中点位置(以父视图的左上角为坐标原点)；
 //UITableView的性能：cell的复用机制
 移动设备的内存有限，如果使用一个cell就创建一个cell对象将会耗尽设备的内存。解决该问题需要引入
 cell的复用机制：当UITableView发生滚动的时候，部分cell会移出窗口，这时候系统会将窗口外的
@@ -21381,17 +20824,8 @@ cell放入cell对象池中，等待复用。当UITableView要求dataSource返回
 新建New--就绪Runnable--运行Running--阻塞Blocked--死亡Dead
 //http/https的区别：
 http协议是明文协议、https是添加了加密和认证的协议
-//get/post的区别：
-1.get获取数据、post更新数据
-2.get请求的数据会明文出现在url上、post请求的数据会封装在请求体种。 相对安全
-3.get请求的数据受到浏览器/服务器对url长度的限制、post没有限制
 //常见的网络协议：
 http协议、https协议、TCP/IP协议、FTP协议
-//常见的响应状态码：
-200  //请求成功OK
-400 //客户端请求的语法错误，服务端无法解析Bad Request
-404 //服务器无法通过客户端的请求找到资源Not Found
-500 //服务器内部错误，无法完成请求Internal Server Error
 //TCP/UDP的区别：
 TCP是面向连接的，提供可靠的服务，UDP是无连接的，尽最大努力交付，不保证可靠服务；
 TCP通过校验、重传控制、确认应答实现可靠传输，UDP具有较好的实时性；
@@ -21406,9 +20840,6 @@ tcp/ip协议，层次结构：应用层/传输层/网络层/数据链路层/物�
 网络层：IP选址及路由选择
 数据链路层：提供介质访问和链路管理
 物理层：物理设备标准
-//进程和线程的区别：
-进程：系统中正在运行的应用程序叫做进程(相互独立)，进程是OS资源分配的基本单位；
-线程：任务调度和执行的基本单位：每个进程当中至少有一个线程；
 //产生死锁的原因：
 死锁：多个进程在执行过程中，因为资源竞争而造成的阻塞现象；
 1.互斥条件：xxx
@@ -21420,12 +20851,6 @@ tcp/ip协议，层次结构：应用层/传输层/网络层/数据链路层/物�
 2.避免死锁：在资源分配过程中，使用某种方法避免系统进入不安全的状态，从而避免发生死锁；
 3.检测死锁：允许死锁的发生，但是通过系统的检测之后，采取一些措施，将死锁清除掉；
 4.解除死锁：该方法与检测死锁配合使用；
-//进程的调度算法：
-1.先来先服务(FCFS)
-2.最短作业优先(SJF)
-3.最高响应比优先法(HRRN)
-4.时间片轮转算法(RR)
-5.多级反馈队列(MFQ)
 //请列举几种源代码管理工具，并说明区别：
 源代码管理工具：svn、git
 区别：1.在很多情况下，git的速度远远比svn快；
@@ -21473,38 +20898,3 @@ RSA加密算法除了可加密、解密之外，还可用来作签名校验：�
 http://blog.csdn.net/leaf8742
 https://www.jianshu.com/p/1a94498de7f4
 https://www.jianshu.com/p/2e1b3f54b4f3
-
-#抓包：
-1.安装JRE for Mac：本人提供
-2.安装抓包工具paros：本人提供
-3.mac电脑->应用程序->设置->网络：找到本机ip
-4.mac电脑->应用程序->设置->共享->互联网共享(打钩)->Wifi(打钩)：WiFi图标出现向上的箭头
-5.保证mac和手机网络同在一个网段：同连一个wifi
-6.设置手机WLAN：代理：手动、ip：与电脑一致、端口：与电脑一致
-7.进入paros：Tools-Options...-Local proxy(ip：与电脑一致、端口：与电脑一致)
-
-#函数式编程思想(高聚合：代码聚合、方便管理)：把很多功能放在一个函数块(block)去处理
-int a = ({
-b = 2;
-c = 3;
-d = 4;
-b + c + d; //最后一句设置返回什么
-});
-UIButton *btn = ({
-UIButton *btn = [UIButton alloc]init];
-btn.tag = 1;
-btn;//最后一句设置返回什么
-});
-
-#马甲包：
-//单机游戏和h5链接切换
-//2d-x和Unity3d切换
-https://github.com/klaus01/KLGenerateSpamCode
-https://github.com/2361496651/AutoCreateSpamCode
-
-#App下载：
-http://soft.macx.cn //最出名
-http://down.applex.net/macosx/software.html
-https://www.macbed.com
-
-

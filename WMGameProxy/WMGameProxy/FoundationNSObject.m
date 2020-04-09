@@ -392,7 +392,7 @@
     // 继承 NSArray
     // 1.创建空数组
     NSMutableArray *mArray1 = [[NSMutableArray alloc]init]; // 默认会开辟多个（具体几个不知道）
-    NSMutableArray<WMGameProxy *> *mArray2 = [NSMutableArray array];
+    NSMutableArray<WMGameProxy *> *mArray2 = [NSMutableArray array]; // 类工厂方法
     // 2.创建有数据的数组
     NSMutableArray *mArray3 = [[NSMutableArray alloc]initWithObjects:
                                @"data1",
@@ -623,7 +623,7 @@
 //    NSLog(@"%@", [array description]);
     /**
      4.NSNumber/NSInteger/int三者之间的区别？？？
-     1.NSNumber是一个继承与NSValue的一个类，NSNumber可以对基本数据类型进行包装存放到NSArray；
+     1.NSNumber是一个继承于NSValue的一个类，NSNumber可以对基本数据类型进行包装存放到NSArray；
      2.NSInteger是基本数据类型，Apple一般推荐使用，因为NSInteger会根据操作系统的位数自动返回最大的类型；
      3.int也是基本数据类型；
      */
