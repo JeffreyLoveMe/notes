@@ -1,5 +1,8 @@
-name: donew_flutter
-description: A new Flutter project.
+# 类似plist文件
+# 项目名称
+name: donewflutter
+# 项目描述
+description: A new Flutter application.
 
 # The following defines the version and build number for your application.
 # A version number is three numbers separated by dots, like 1.2.43
@@ -12,10 +15,10 @@ description: A new Flutter project.
 # Read more about iOS versioning at
 # https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
 version: 1.0.0+1
-
+# 环境配置
 environment:
   sdk: ">=2.1.0 <3.0.0"
-
+# 依赖
 dependencies:
   flutter:
     sdk: flutter

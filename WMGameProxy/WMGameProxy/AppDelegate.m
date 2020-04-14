@@ -123,6 +123,20 @@
 }
 
 
+#pragma mark -设置App支持的屏幕方向
+- (UIInterfaceOrientationMask)application:(UIApplication *)application supportedInterfaceOrientationsForWindow:(UIWindow *)window {
+    // 如果这里设置了就以这里为准/如果这里没有设置以 info.plist 为准
+    return UIInterfaceOrientationMaskPortrait;
+}
+
+
+#pragma mark -恢复处理程序
+- (BOOL)application:(UIApplication *)application continueUserActivity:(NSUserActivity *)userActivity restorationHandler:(void (^)(NSArray<id<UIUserActivityRestoring>> * _Nullable))restorationHandler {
+    // 应用程序处理了程序
+    return YES;
+}
+
+
 #pragma mark -push
 - (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification {
     /**
@@ -173,21 +187,5 @@
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
     return YES;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 @end
