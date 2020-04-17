@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		06BBBBD467690F2951AB700B /* Pods_WMGameProxy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D3D3EDD51B0F251CBF64154 /* Pods_WMGameProxy.framework */; };
 		330484832423B50500CEE212 /* 内存中有5块内存空间.png in Resources */ = {isa = PBXBuildFile; fileRef = 330484822423B50500CEE212 /* 内存中有5块内存空间.png */; };
+		330490E724484F7E003B2439 /* iap支付价格等级.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 330490E624484F7E003B2439 /* iap支付价格等级.jpg */; };
 		33068EB822AE665000D044EE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 33068EB722AE665000D044EE /* AppDelegate.m */; };
 		33068EBE22AE665000D044EE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 33068EBC22AE665000D044EE /* Main.storyboard */; };
 		33068EC022AE665600D044EE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 33068EBF22AE665600D044EE /* Assets.xcassets */; };
@@ -173,6 +174,7 @@
 /* Begin PBXFileReference section */
 		1ADA9780669429E132079BD5 /* Pods-WMGameProxyUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WMGameProxyUITests.release.xcconfig"; path = "Target Support Files/Pods-WMGameProxyUITests/Pods-WMGameProxyUITests.release.xcconfig"; sourceTree = "<group>"; };
 		330484822423B50500CEE212 /* 内存中有5块内存空间.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "内存中有5块内存空间.png"; sourceTree = "<group>"; };
+		330490E624484F7E003B2439 /* iap支付价格等级.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "iap支付价格等级.jpg"; sourceTree = "<group>"; };
 		33068EB322AE665000D044EE /* WMGameProxy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WMGameProxy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		33068EB622AE665000D044EE /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		33068EB722AE665000D044EE /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -544,6 +546,7 @@
 				33A1B073242A0899007248A3 /* iOS高级经典面试.pdf */,
 				3366E826242F6F3900820298 /* BAT面试资料全集.pdf */,
 				33AC9E8D242B61A100B28AB5 /* Runtime.pdf */,
+				330490E624484F7E003B2439 /* iap支付价格等级.jpg */,
 				3359FE76241F3E850014C82C /* 大神班课程大纲.png */,
 				33B10E502422272500C6E8C7 /* 华为编程规范.pdf */,
 				3359FE79241F3E850014C82C /* 常见系统库00.png */,
@@ -798,6 +801,7 @@
 				3366E8462431296B00820298 /* 树的基本概念.png in Resources */,
 				33A1B06D24291731007248A3 /* 新建xxx.framework第一步.png in Resources */,
 				33A1B06924291731007248A3 /* 新建xxx.framework第五步.png in Resources */,
+				330490E724484F7E003B2439 /* iap支付价格等级.jpg in Resources */,
 				3359FED7241FE1150014C82C /* 填写相关营销信息.png in Resources */,
 				3366E827242F6F3900820298 /* BAT面试资料全集.pdf in Resources */,
 				3324C82024260DD100766248 /* TestFight添加测试人员.png in Resources */,

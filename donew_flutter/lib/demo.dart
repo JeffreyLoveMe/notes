@@ -1,128 +1,166 @@
- import 'dart:ffi';
-
 void main() {
-  /// 1.变量的声明
-  /**
-   * var/dynamic/Object都可以声明变量，它们的区别是什么？
-   * var - 如果没有初始化值可以变成任何类型/如果有初始化值声明的变量类型固定不能改变
-   * dynamic - 动态任意类型/声明的变量类型可以改变/编辑的时候不检查类型
-   * Object - 动态任意类型/声明的变量类型可以改变/编辑的时候会检查类型
-   */
-  /**
-   * 1.没有初始化的变量自动获取一个默认值null
-   * 2.在Dart语言中一切皆对象，对象默认值为null
-   */
-  // 未初始化的变量声明
-  var m1;
+  /// 1.变量的声明 - 在Dart语言中变量的声明有3种方式
+  // 1>.第一种方式 - 使用var（推荐使用）
+  // 未初始化的变量声明 - 没有初始化的变量自动获取一个默认值null(包括bool)
+  // 如果没有初始化值可以变成任何类型
+  var m1; 
   m1 = 1;
-  m1 = 'aaa';
-  // 初始化变量声明
-  // 可以类型推倒
-  var m2 = 123;
-  // m2 = '123'; // 错误
-  dynamic m3 = 123;
-  m3 = '123'; // 正确
-  m3.test(); // 编译不检查类型/运行报错
-  Object m4 = 123;
-  m4 = '123'; // 正确
-  // m4.test(); // 编译检查类型
-  /**
-   * var > Object > dynamic
-   */
-  String m5 = '123';
-  
+  m1 = 'ab';  // 语言结束以 ";" 结尾/字符串可以使用''/""
+  // 如果有初始化值声明的变量类型固定不能改变
+  var m2 = 'ab'; // 支持类型推导 - 类似swift
+  // m2 = 1;  // 报错
+  print(m2);
 
-  /// 2.常量 - final和const的区别
-  // 共同点
-  // 1>.声明变量的时候“变量类型可以省略”/常量可以省略类型
-  final s1 = 'ninghao';
-  final String s2 = 'ninghao';
-  // // 2>.初始化后不能再赋值 - 表示常量
-  // s1 = 'nh';
-  // // 3>.不能与var一起使用
-  // const var s3 = 'ninghao';
+  // 2>.第二种方式 - 使用Object（不推荐使用）
+  // 动态任意类型/声明的变量类型可以改变/编辑的时候会检查类型
+  Object m3 = 123;
+  m3 = 'ab';
+  // m3.test(); // 报错 - 编辑的时候会检查类型
+
+  // 3>.第三种方式 - 使用dynamic（类似oc种的id类型）
+  // 动态任意类型/声明的变量类型可以改变/编译的时候不检查类型
+  dynamic m4 = 123;
+  m4 = 'ab';
+  // m4.test(); // 编译不报错/运行报错 - 编译的时候不检查类型
+
+  // 4>.第四种方式 - 使用默认类型（类似java）
+  String m5 = 'ab';
+  // m5 = 123; // 报错
   /**
-   * 区别
-   * 1>.类级别常量使用static const
-   * 2>.const可以使用其他const常量的值来初始化其值
-   * 3>.使用const赋值声明（cons可以省略）
-   * 4>.可以更改非final/非const变量的值（即使曾经具有const值）
-   * 5>.const导致的不可变性是可传递的
-   * 6>.相同的const常量不会在内存中重复传递
-   * 7>.const需要是编译时常量
+   * 问题 - var/Object/dynamic都可以声明变量，它们的区别是什么？
+   * var - 如果没有初始化值可以变成任何类型/如果有初始化值声明的变量类型固定不能改变
+   * Object - 动态任意类型/声明的变量类型可以改变/编辑的时候会检查类型
+   * dynamic - 动态任意类型/声明的变量类型可以改变/编译的时候不检查类型
    */
-  // const可以使用其他const常量的值来初始化其值
+
+
+
+  /// 2.常量声明 - 使用final和const
+  // 第一、final和const的共同点
+  // 1>.常量声明可以省略常量类型
+  final String m6 = 'ab';
+  // // 2>.常量初始化以后不能再次赋值
+  // m6 = '123'; // 报错
+  final m7 = 'ab';
+  const String m8 = 'ab';
+  const m9 = 'ab';
+  // // 2>.不能与var一起使用（跟swift一样：var代表变量）
+  // final var m10 = 'ab'; // 报错
+  // const var m10 = 'ab'; // 报错
+
+  // 第二、final和const的区别
+  // 1>.类级别常量使用static const
+  // 2>.const可以使用其他const常量的值来初始化其值
   const width = 100;
   const height = 100;
   const square = width * height;
-  // 使用const赋值声明（cons可以省略）
+  print(square);
+  // 3>.使用const赋值声明（const可以省略）
   // 第二个const可以省略
-  var list1 = const [1, 2, 3];
-  const list2 = const [1, 2, 3];
-  final list3 = const [1, 2, 3];
-  list1[2] = 0;  // 不可以修改
-  list1 = [2];   // 可以修改 - 正确
-  list2[2] = 0;  // 不可以修改
-  // list2 = [2];   // 不可以修改
-  list3[2] = 0;  // 不可以修改
-  // list3 = [2];   // 不可以修改
+  var list1 = const [1, 2, 3];  // list1数组可以修改/list1[x]元素不能修改
+  const list2 = const [1, 2, 3]; // list1数组不能修改/list1[x]元素不能修改
+  final list3 = const [1, 2, 3]; // list1数组不能修改/list1[x]元素不能修改
+  // 4>.可以更改非final/非const变量的值（即使曾经具有const值）
+  // 5>.const导致的不可变性是可传递的（子类会继承）
+  // 6>.相同的const常量不会在内存中重复传递
+  // 7>.const需要是编译时常量
+  print()
 
 
-  /// 3.内置类型
-  // 1>.Numbers数值 - int/double/num是int、double的父类
-  int w = 10;
-  double w1 = 0.9;
-  // 2>.String字符串 - 可以使用'' / ""
-  String w2 = 'ninghao';
-  String w3 = "ninghao";
-  String w4 = w2 + w3;
-  print(w4);
+  /// 3.内置类型（常用数据类型）
+  // 1>.数值类型/num、int、double - int/double的父类
+  num m11 = 10;
+  m11 = 11.0;
+  int m12 = 10;
+  double m13 = 9.80;
+  
+  // 2>.字符串类型/String - 可以使用''或者""
+  String m14 = '123';
+  String m15 = "ab";
+  String m16 = m14 + m15;
+  print(m16);
   // ‘’‘ string ’‘’可以定义多行字符串
-  String w5 = '''
-    ninghao
-    ninghao
-    ninghao
-    ninghao
+  String m17 = '''
+    abc
+    abc
+    abc
   ''';
+  print(m17);
+
+  // 3>.布尔类型/bool - 默认为null，不为false/默认为null，不为false/默认为null，不为false
+  bool isNull;
+  if (isNull) {
+    print('不能进入');
+  }
+
+  // 4>.数组/List - 下标从0开始/支持泛型
+  // // 此处new可以省略 - swift写法
+  // List ls = new List();
+  // 默认不指定长度可以无限添加/默认指定长度不可以无限添加
+  List ls = List();
+  ls.add('ab');
+  ls.add('ab');
+  ls.add('ab');
+  ls.add('ab');
+  ls.first();
+
+  // 5>.字典/Map - 与java类似
+
+  // 6>.集合Set
+  Set oneSet = Set();
+  oneSet.addAll([1, 2, 3, 4]);
+  Set twoSet = Set();
+  twoSet.addAll([1, 2, 5, 6]);
+  // 补集 - 存在于set1中 & 不存在于set2中
+  var difference = oneSet.difference(twoSet);
+  print(difference);
+  // 交集 - 存在于set1中 & 存在于set2中
+  var intersection = oneSet.intersection(twoSet);
+  print(intersection);
+  // 并集 - 存在于set1中 || 存在于set2中
+  var union = oneSet.union(twoSet);
+  print(union);
+
+  // 7>.Runes
+  Runes runes = Runes('');
+  var s = String.fromCharCodes(runes);
+  print(s);
+
+  /// 4.函数
+  
+
+
+
+
+  /// 5.闭包
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
   StringBuffer sb = StringBuffer();
   // 两者是等价的
   sb.write('dg');
   sb.write('da');
   // 链式调用
   sb..write('dg')..write('da');
-  // 3>.bool - 默认值为null
-  bool isNull;
-  if (isNull) {
-    print('不能进入');
-  }
-  // 4>.List - 数组/下标从0开始/支持泛型
-  // 默认不指定长度可以无限添加/默认指定长度不可以无限添加
-  List ls = List();
-  ls.add(123);
-  ls.add(123);
-  ls.add(123);
-  ls.add(123);
-  ls.first();
-  // 40min
-  // 5>.Map - 与java类似
-  // 6>.Set
-  Set set1 = Set();
-  set1.addAll([1, 2, 5, 6]);
-  Set set2 = Set();
-  set2.addAll([1, 2, 3, 4]);
-  // 补集 - 存在于set1中 & 不存在于set2中
-  var difference = set1.difference(set2);
-  print(difference);
-  // 交集 - 存在于set1中 & 存在于set2中
-  var intersection = set1.intersection(set2);
-  print(intersection);
-  // 并集 - 存在于set1中 || 存在于set2中
-  var union = set1.union(set2);
-  print(union);
-  // 7.Runes
-  Runes runes = Runes('');
-  var s = String.fromCharCodes(runes);
-  print(s);
 
   /// 5.闭包
   // 返回一个函数
@@ -136,7 +174,31 @@ void main() {
   print(addFunc(12));
 
   /// 7.操作符号
-  // 30min
+  // ?. - 可选类型
+  String str;
+  print(str?.length);
+  // ~/ - 取整（干掉小数点后面的）= 实际上就是商（余数直接省略）
+  print(1 / 2);
+  print(1 ~/ 2);
+  // as is is!
+  // as - 类型转换
+  num n = 1;
+  num n1 = 1.0;
+  int i = n as int;
+  // is - 是否是
+  print(n1 is int);
+  // is! - 是否不是
+  print(i is double);
+  // 三目运算符
+  // ?? - isGo是否是Null（如果不是Null - isGo）
+  // 与swift一样
+  bool isGo = false;
+  isGo = isGo ?? false;
+  isGo ??= false;
+  
+  /// 8.流程控制语句
+  
+  /// 9.异常处理
 }
 
 

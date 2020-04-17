@@ -10,8 +10,9 @@
 #import "UIImage+animatedGIF.h"
 #import "MainController.h"
 #import "WMGameProxy.h"
+#import <StoreKit/StoreKit.h>
 
-@interface SySkillViewController ()
+@interface SySkillViewController () <SKProductsRequestDelegate>
 
 @property (strong, nonatomic) NSArray *dataArray;
 
@@ -818,6 +819,69 @@
  */
 // 如果导入过多头文件建议使用主头文件
 // MRC项目下的静态库打包以后可以在ARC项目下直接使用（不需要加-fno-objc-arc）
+
+
+#pragma mark - 内购
+/**
+ 1.基本概念
+ 1>.概念 - Apple规定如果你在App中销售的商品与App的功能相关就必须使用内购方式购买
+ 2>.缺点 - 对于商家而言（苹果分成3成）/对于用户而言（第一次使用必须绑定银行卡）/内购商品的价格不能自定义
+ 3>.开发者创收模式 - 下载收费/广告/内购
+ 4>.注意 - 如果销售的商品应该使用内购而开发者没有使用内购会被拒绝上架
+ 2.流程
+ 1>.商户（App）告诉商场（苹果）你需要卖什么东西 - 去苹果开发者后台创建商品
+ 2>.商户（App）需要进货（从自己服务器下载）/验证进货商品是否为“第1步”注册的可以销售的商品 - 需要代码操作
+ 3>.顾客（用户）去商户（App）购买一个商品/商户（App）会给你开一个小票（订单号）
+ 4>.顾客（用户）拿着小票（订单号）去商场（苹果）付款
+ 3.App内购类型 - 必须先同意协议（不然只会出现"免费订阅"一个选项）
+ 1>.消耗性项目 - 对于消耗性App内购买项目，用户每次下载的时候都必须购买
+ 2>.非消耗性项目 - 对于非消耗性App内购买项目，用户仅需要购买一次
+ 3>.自动续订订阅 - 用于iBook
+ 4>.免费订阅 - 用于iBook
+ 5>.非续订订阅 - 用于iBook
+ */
+-(void)storeKit {
+    // 1.从我们自己的服务器获取需要销售的商品
+    NSArray * productIds = @[@"com.shiyi.zidan", @"com.shiyi.jiguanqiang", @"com.shiyi.yifu"];
+    // 2.拿到需要销售的商品到苹果服务器进行验证
+    // 1>.创建商品请求 - 哪些商品可以真正被销售
+    NSSet *set = [NSSet setWithArray:@[productIds.firstObject]];
+    SKProductsRequest *request = [[SKProductsRequest alloc]initWithProductIdentifiers:set];
+    // 2>.设置代理 - 接收可以被销售的商品列表
+    request.delegate = self;
+    // 3>.发送请求
+    [request start];
+}
+/**
+ request - 我们传过去的
+ response - 返回的数据
+ */
+- (void)productsRequest:(SKProductsRequest *)request didReceiveResponse:(SKProductsResponse *)response {
+    /**
+     products - 可以被销售的商品 / SKProduct
+     invalidProductIdentifiers - 无效的商品ID  / NSString
+     */
+    NSLog(@"可以被销售的商品%@===无效的商品ID%@", response.products, response.invalidProductIdentifiers);
+    NSLog(@"基本描述：%@", response.products.firstObject.description);
+    NSLog(@"商品ID：%@", response.products.firstObject.productIdentifier);
+    NSLog(@"地区编码：%@", response.products.firstObject.priceLocale.localeIdentifier);
+    // 根据什么判断的当地指什么地方？- 根据AppleID账号地区确定
+    // 最低6元/最高6498元
+    NSLog(@"本地价格：%@", response.products.firstObject.price);
+    NSLog(@"本地标题：%@", response.products.firstObject.localizedTitle);
+    NSLog(@"本地描述：%@", response.products.firstObject.localizedDescription);
+    NSLog(@"语言代码：%@", [response.products.firstObject.priceLocale objectForKey:NSLocaleLanguageCode]);
+    NSLog(@"国家代码：%@", [response.products.firstObject.priceLocale objectForKey:NSLocaleCountryCode]);
+    NSLog(@"货币代码：%@", [response.products.firstObject.priceLocale objectForKey:NSLocaleCurrencyCode]);
+    NSLog(@"货币符号：%@", [response.products.firstObject.priceLocale objectForKey:NSLocaleCurrencySymbol]);
+    
+    // 3.购买商品
+    // 1.取出需要购买的商品
+    SKMutablePayment *payment = [SKMutablePayment paymentWithProduct:response.products.firstObject];
+    // 2.添加到支付队列，开始进行购买操作
+    [[SKPaymentQueue defaultQueue] addPayment:payment];
+}
+
 
 
 #pragma mark - 内存分析
