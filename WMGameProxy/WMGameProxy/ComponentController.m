@@ -660,7 +660,6 @@
     scrollView.pagingEnabled = YES; // 设置按页滚动（以 UIScrollView 尺寸为一页）
     scrollView.indicatorStyle = UIScrollViewIndicatorStyleWhite; // 设置滚动条样式
     scrollView.scrollIndicatorInsets = UIEdgeInsetsMake(0, 0, 0, 30); // 一般不需要设置
-    scrollView.userInteractionEnabled = NO; // 能否响应用户交互
     // 设置隐藏滚动条
     scrollView.showsVerticalScrollIndicator = NO;
     scrollView.showsHorizontalScrollIndicator = NO;

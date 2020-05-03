@@ -24,7 +24,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+
+    [self sendEmail];
 }
 
 -(void)selected {
@@ -58,6 +59,8 @@
         [controller setMessageBody:@"邮件的正文内容" isHTML:false];
         // 弹出邮件发送视图
         [self presentViewController:controller animated:true completion:nil];
+    } else {
+        NSLog(@"----");
     }
 }
 
