@@ -1,4 +1,7 @@
+# 类似plist文件
+# 项目名称
 name: dream_flutter
+# 项目描述
 description: A new Flutter project.
 
 # The following line prevents the package from being accidentally published to
@@ -16,13 +19,15 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 # Read more about iOS versioning at
 # https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
 version: 1.0.0+1
-
+# 环境配置
 environment:
   sdk: ">=2.7.0 <3.0.0"
-
+# 依赖 - http://pub.dartlang.org
+# 第三方库放置位置
 dependencies:
   flutter:
     sdk: flutter
+    xml:
 
 
   # The following adds the Cupertino Icons font to your application.
