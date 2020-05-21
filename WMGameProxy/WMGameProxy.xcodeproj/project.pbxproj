@@ -33,6 +33,8 @@
 		33264F10242B4E0400199DBD /* WMRunLoopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 33264F0F242B4E0400199DBD /* WMRunLoopViewController.m */; };
 		33302F6F242B10ED00C53F13 /* 静态库:动态库常见错误.png in Resources */ = {isa = PBXBuildFile; fileRef = 33302F6E242B10ED00C53F13 /* 静态库:动态库常见错误.png */; };
 		33302F71242B10F200C53F13 /* 静态库:动态库链接方式.png in Resources */ = {isa = PBXBuildFile; fileRef = 33302F70242B10F200C53F13 /* 静态库:动态库链接方式.png */; };
+		33385163246943B3006D458E /* 从证书颁发机构请求证书.png in Resources */ = {isa = PBXBuildFile; fileRef = 33385162246943B3006D458E /* 从证书颁发机构请求证书.png */; };
+		33385166246950C8006D458E /* 真机调试 - 自动生成证书.png in Resources */ = {isa = PBXBuildFile; fileRef = 33385165246950C8006D458E /* 真机调试 - 自动生成证书.png */; };
 		3359FE8E241F3E870014C82C /* iphone设备各种空间尺寸.png in Resources */ = {isa = PBXBuildFile; fileRef = 3359FE52241F3E830014C82C /* iphone设备各种空间尺寸.png */; };
 		3359FE8F241F3E870014C82C /* 下拉加载范例.png in Resources */ = {isa = PBXBuildFile; fileRef = 3359FE53241F3E830014C82C /* 下拉加载范例.png */; };
 		3359FE90241F3E870014C82C /* iOS学习路线图.png in Resources */ = {isa = PBXBuildFile; fileRef = 3359FE54241F3E830014C82C /* iOS学习路线图.png */; };
@@ -145,6 +147,7 @@
 		33B10E7B2422964800C6E8C7 /* 新建xxx.a第五步.png in Resources */ = {isa = PBXBuildFile; fileRef = 33B10E772422964800C6E8C7 /* 新建xxx.a第五步.png */; };
 		33B10E7C2422964800C6E8C7 /* 新建xxx.a第四步.png in Resources */ = {isa = PBXBuildFile; fileRef = 33B10E782422964800C6E8C7 /* 新建xxx.a第四步.png */; };
 		33BE31BF22E5890A0073E35B /* FoundationNSObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 33BE31BE22E5890A0073E35B /* FoundationNSObject.m */; };
+		33E15543246D5FC000216E08 /* iap的逻辑流程.png in Resources */ = {isa = PBXBuildFile; fileRef = 33E15542246D5FC000216E08 /* iap的逻辑流程.png */; };
 		33ED93E022F12E77006ABD28 /* ComponentController.m in Sources */ = {isa = PBXBuildFile; fileRef = 33ED93DF22F12E77006ABD28 /* ComponentController.m */; };
 		33F1D58C23CC4B7E001AC221 /* WMGameView.m in Sources */ = {isa = PBXBuildFile; fileRef = 33F1D58B23CC4B7E001AC221 /* WMGameView.m */; };
 		33F72D8E242ED4420024A889 /* 图片加载.png in Resources */ = {isa = PBXBuildFile; fileRef = 33F72D8D242ED4420024A889 /* 图片加载.png */; };
@@ -213,6 +216,8 @@
 		33264F0F242B4E0400199DBD /* WMRunLoopViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WMRunLoopViewController.m; sourceTree = "<group>"; };
 		33302F6E242B10ED00C53F13 /* 静态库:动态库常见错误.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "静态库:动态库常见错误.png"; sourceTree = "<group>"; };
 		33302F70242B10F200C53F13 /* 静态库:动态库链接方式.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "静态库:动态库链接方式.png"; sourceTree = "<group>"; };
+		33385162246943B3006D458E /* 从证书颁发机构请求证书.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "从证书颁发机构请求证书.png"; sourceTree = "<group>"; };
+		33385165246950C8006D458E /* 真机调试 - 自动生成证书.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "真机调试 - 自动生成证书.png"; sourceTree = "<group>"; };
 		3359FE52241F3E830014C82C /* iphone设备各种空间尺寸.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iphone设备各种空间尺寸.png"; sourceTree = "<group>"; };
 		3359FE53241F3E830014C82C /* 下拉加载范例.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "下拉加载范例.png"; sourceTree = "<group>"; };
 		3359FE54241F3E830014C82C /* iOS学习路线图.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iOS学习路线图.png"; sourceTree = "<group>"; };
@@ -347,6 +352,7 @@
 		33B10E782422964800C6E8C7 /* 新建xxx.a第四步.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "新建xxx.a第四步.png"; sourceTree = "<group>"; };
 		33BE31BD22E5890A0073E35B /* FoundationNSObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FoundationNSObject.h; sourceTree = "<group>"; };
 		33BE31BE22E5890A0073E35B /* FoundationNSObject.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FoundationNSObject.m; sourceTree = "<group>"; };
+		33E15542246D5FC000216E08 /* iap的逻辑流程.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iap的逻辑流程.png"; sourceTree = "<group>"; };
 		33ED93DE22F12E77006ABD28 /* ComponentController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ComponentController.h; sourceTree = "<group>"; };
 		33ED93DF22F12E77006ABD28 /* ComponentController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ComponentController.m; sourceTree = "<group>"; };
 		33F1D58A23CC4B7E001AC221 /* WMGameView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WMGameView.h; sourceTree = "<group>"; };
@@ -554,6 +560,7 @@
 				3359FE69241F3E840014C82C /* 单个文件放置多个类 - 多用于model.png */,
 				3359FE73241F3E850014C82C /* 代码标准h文件.png */,
 				3359FE87241F3E860014C82C /* 代码标准m文件.png */,
+				33E15542246D5FC000216E08 /* iap的逻辑流程.png */,
 				3366E8452431296B00820298 /* 遍历树.png */,
 				3366E8442431296B00820298 /* 树的基本概念.png */,
 				33F72D8D242ED4420024A889 /* 图片加载.png */,
@@ -561,9 +568,6 @@
 				3359FE7B241F3E850014C82C /* 常见bug_01.png */,
 				33F72D8F242ED4460024A889 /* Instruments的使用.png */,
 				33F72D91242ED44A0024A889 /* MRC代码转换ARC.png */,
-				3359FECD241F66C30014C82C /* 申请iOS开发者帐号.pdf */,
-				3359FE83241F3E860014C82C /* 常见证书问题_01.png */,
-				3359FE56241F3E830014C82C /* 导出ipa.png */,
 				33B10E712422959F00C6E8C7 /* 让项目支持http请求.png */,
 				3359FE6E241F3E840014C82C /* 给文件名（类名）加前缀.png */,
 				3359FE5B241F3E830014C82C /* 快捷键.png */,
@@ -595,11 +599,16 @@
 				3359FE6A241F3E840014C82C /* error_找不到AppDelegate类.png */,
 				3359FE7D241F3E850014C82C /* info.plist简介.png */,
 				3359FE54241F3E830014C82C /* iOS学习路线图.png */,
+				3359FECD241F66C30014C82C /* 申请iOS开发者帐号.pdf */,
+				3359FE83241F3E860014C82C /* 常见证书问题_01.png */,
+				3359FE56241F3E830014C82C /* 导出ipa.png */,
+				3359FED1241FE1150014C82C /* 苹果账号后台.png */,
+				33385165246950C8006D458E /* 真机调试 - 自动生成证书.png */,
+				33385162246943B3006D458E /* 从证书颁发机构请求证书.png */,
 				3359FE80241F3E860014C82C /* iOS证书的配置.png */,
 				3359FED4241FE1150014C82C /* 创建App.png */,
-				3359FED1241FE1150014C82C /* 苹果账号后台.png */,
-				3359FED3241FE1150014C82C /* 填写相关营销信息.png */,
 				3359FED2241FE1150014C82C /* 填写App的基本信息.png */,
+				3359FED3241FE1150014C82C /* 填写相关营销信息.png */,
 				3324C81F24260DD100766248 /* TestFight添加测试人员.png */,
 				3359FED9241FEC120014C82C /* 部署注意点_00.png */,
 				3359FEDB241FEC1A0014C82C /* 部署注意点_01.png */,
@@ -804,6 +813,7 @@
 				330490E724484F7E003B2439 /* iap支付价格等级.jpg in Resources */,
 				3359FED7241FE1150014C82C /* 填写相关营销信息.png in Resources */,
 				3366E827242F6F3900820298 /* BAT面试资料全集.pdf in Resources */,
+				33385163246943B3006D458E /* 从证书颁发机构请求证书.png in Resources */,
 				3324C82024260DD100766248 /* TestFight添加测试人员.png in Resources */,
 				33B10E4F2422265600C6E8C7 /* NBSDK接口协议.html in Resources */,
 				3359FEB0241F3E870014C82C /* iphone设备尺寸.png in Resources */,
@@ -816,6 +826,7 @@
 				33302F71242B10F200C53F13 /* 静态库:动态库链接方式.png in Resources */,
 				33068EC022AE665600D044EE /* Assets.xcassets in Resources */,
 				3359FEAE241F3E870014C82C /* Sy-项目添加类前缀.png in Resources */,
+				33385166246950C8006D458E /* 真机调试 - 自动生成证书.png in Resources */,
 				33B10E7B2422964800C6E8C7 /* 新建xxx.a第五步.png in Resources */,
 				3359FEA6241F3E870014C82C /* error_找不到AppDelegate类.png in Resources */,
 				3359FE96241F3E870014C82C /* FlagZombie.gif in Resources */,
@@ -898,6 +909,7 @@
 				3359FED6241FE1150014C82C /* 填写App的基本信息.png in Resources */,
 				3359FEC7241F3E870014C82C /* 事件传递示例-第一步.png in Resources */,
 				3359FEA2241F3E870014C82C /* 项目基本配置.png in Resources */,
+				33E15543246D5FC000216E08 /* iap的逻辑流程.png in Resources */,
 				3359FE9F241F3E870014C82C /* image_demo.png in Resources */,
 				330484832423B50500CEE212 /* 内存中有5块内存空间.png in Resources */,
 			);

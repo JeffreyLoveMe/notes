@@ -7028,8 +7028,6 @@ mac os x 中 sqlite 库，它是一个轻量级功能强大的关系数据引擎
 Core Data 不是一个关系型数据库，也不是关系型数据库管理系统 (RDBMS) 。虽然 CoreDta
 支持 SQLite 作为一种存储类型， 但它不能使用任意的 SQLite 数据库。 CoreData 在使用的过 程种自己创建这个数据库。 Core Data 支持对一、对多的关系。
 
-
-
 XML 数据解析方式各有什么不同， JSON解析有哪些框架?
  XML数据解析的两种解析方式: DOM解析和 SAX解析;
 DOM解析必须完成 DOM树的构造， 在处理规模较大的 XML文档时就很耗内 存， 占用资源较多， 读入整个 XML文档并构建一个驻留内存的树结构 (节 点树) ，通过遍历树结构可以检索任意 XML节点， 读取它的属性和值， 通 常情况下，可以借助 XPath 查询 XML节点;
@@ -13112,11 +13110,7 @@ for (int i = marry.count - 1; i > 0; i--) {
         [str deleteCharactersInRange:NSMakeRange(num, 1)];
  
     }
-
-获取一台设备唯一标识的方法有哪些？
-UIID       UUID        MAC ADDRESS       OPEN UDID
-广告标示符   Vindor标示符
-
+    
 ios类是否可以多继承？如果没有，那可以用其他方法实现吗？简述实现过程。
 没有   用catogory 和 extension 可以实现
 堆和栈的区别？

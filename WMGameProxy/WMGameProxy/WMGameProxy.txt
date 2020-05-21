@@ -371,17 +371,15 @@ http://code4app.com - code4App
 
 //名词术语
 1>.WWDC - 全球开发者大会
-2>.UUID - 设备唯一标识（ https://www.jianshu.com/p/0dce89cdf9f6 ）
-3>.UDID - 设备识别码（真机调试 / App上架）
-4>.HealthKit - xxx
-5>.HomeKit - xxx
-6>.iBeacons - xxx
-7>.SpriteKit - xxx
-8>.SceneKit - xxx
-9>.邓白氏 - xxx
-10>.僵尸对象 - 被释放的对象/开启监听"僵尸对象"( Edit Scheme->Run->Diagnostics->勾选Zombie Objects )
-11>.野指针 - 指向僵尸对象的指针
-12>.nil空指针 - 为了避免给野指针发送消息报错，当一个对象被释放以后我们会将这个对象的指针设置为空指针
+2>.HealthKit - xxx
+3>.HomeKit - xxx
+4>.iBeacons - xxx
+5>.SpriteKit - xxx
+6>.SceneKit - xxx
+7>.邓白氏 - xxx
+8>.僵尸对象 - 被释放的对象/开启监听"僵尸对象"( Edit Scheme->Run->Diagnostics->勾选Zombie Objects )
+9>.野指针 - 指向僵尸对象的指针
+10>.nil空指针 - 为了避免给野指针发送消息报错，当一个对象被释放以后我们会将这个对象的指针设置为空指针
 
 //职业规划
 1>.C语言 -> Objective-C语言 -> iOS开发 -> Swift语言/ 2016年 - 2020年

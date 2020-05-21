@@ -12,7 +12,7 @@
 #import "WMGameProxy.h"
 #import <StoreKit/StoreKit.h>
 
-@interface SySkillViewController () <SKProductsRequestDelegate>
+@interface SySkillViewController () <SKProductsRequestDelegate, SKPaymentTransactionObserver>
 
 @property (strong, nonatomic) NSArray *dataArray;
 
@@ -770,9 +770,49 @@
 /// 3.MVVM
 
 
-#pragma mark - 真机调试
+#pragma mark - 真机调试/打包测试
 - (void)showTrueDevice {
     // Xcode7.0以后只要 “Apple ID” 就可以自动生成对应证书进行 “真机调试”
+    /**
+    // 获取一台设备唯一标识的方法有哪些方法？
+    // https://www.jianshu.com/p/0dce89cdf9f6
+    IDFA - 广告标示符/一般可以保证唯一/只要关闭“限制广告追踪”功能再次打开就会不一样
+    IDFV - Vindor标示符/同一个厂商在同一个设备上的不同App返回一样/如果把App删除再次安装会改变
+    UUID - 通用唯一标识符/每次输出都不一样/利用UUID + keychain唯一确定设备
+    UDID - 唯一设备标识符/打包需要使用/苹果在iOS 5.0被禁止获取
+    */
+    /**
+     1.限制人
+     1>.免费申请Apple ID
+     2>.加入开发者计划
+     3>.个人账号/公司账号（99美元/688元人民币）（个人账号申请简单快捷/公司账号申请必须要"邓白氏编码"）/个人账号申请大概3天/公司账号申请大概30天/个人账号必须使用账号和密码才可以使用（不能创建和管理团队）/公司账号可以创建和管理团队（加入用户、删除用户）
+     4>.企业账号 - 299美元/App针对某一个特定人群使用，无需上架AppStore/可以创建和管理团队（加入用户、删除用户）/需要"邓白氏编码"/不能上架AppStore
+     5>.申请“邓白氏编码” - 直接与苹果客服MM询问
+     */
+    // tips - 如果看不懂英文可以直接在网址后面加一个/cn
+    /**
+     2.限制电脑
+     1>.需要使用真机调试的电脑生成CSR文件（证书签名请求文件 - 可以唯一识别不同的电脑）
+     2>.真机调试证书最多只能够配置2个
+     3>.不要删除别人的证书 - 别人电脑生成的证书我这边不能直接下载使用（如果需要使用必须让别人生成.p12文件给我）
+     */
+    /**
+     3.限制App
+     1>.根据bundle ID区分App
+     2>.新建App ID - Explicit App ID（确定的App ID）/Wildcard App ID（模糊的App ID）- 不可以使用push/iap
+     */
+    /**
+     4.限制真机设备
+     1>.根据UDID区分手机 - 禁止代码获取
+     2>.添加设备 - 最多添加100次/每年有一次机会删除设备
+     关键字 - Reset your device list before adding any new devices.   Get Started
+     勾选 - 不需要的设备 -> 删除不需要的设备 -> 保存
+     3>.项目的最低部署版本 < 真机设备系统版本
+     */
+    // 生成描述文件 - 登录账号 + 证书 + App ID + UDID
+    // 描述文件位置 - 点击Finder -> 前往 -> 资源库 -> MobileDevice/Provisioning Profiles
+    // /Users/xiewujun/Library/MobileDevice/Provisioning/Profiles
+    // 此证书签发者无效 - 不能导出ipa
 }
 
 
@@ -835,11 +875,12 @@
  4>.顾客（用户）拿着小票（订单号）去商场（苹果）付款
  3.App内购类型 - 必须先同意协议（不然只会出现"免费订阅"一个选项）
  1>.消耗性项目 - 对于消耗性App内购买项目，用户每次下载的时候都必须购买
- 2>.非消耗性项目 - 对于非消耗性App内购买项目，用户仅需要购买一次
+ 2>.非消耗性项目 - 对于非消耗性App内购买项目，用户仅需要购买一次（永远都在）
  3>.自动续订订阅 - 用于iBook
  4>.免费订阅 - 用于iBook
  5>.非续订订阅 - 用于iBook
  */
+// 创建App -> （必须先同意协议）点击"功能"（配置计费点）-> 写代码 -> 配置沙盒账号（用户与协议）
 -(void)storeKit {
     // 1.从我们自己的服务器获取需要销售的商品
     NSArray * productIds = @[@"com.shiyi.zidan", @"com.shiyi.jiguanqiang", @"com.shiyi.yifu"];
@@ -857,6 +898,9 @@
  response - 返回的数据
  */
 - (void)productsRequest:(SKProductsRequest *)request didReceiveResponse:(SKProductsResponse *)response {
+    // 当请求完毕执行该代理
+    // request - 是我们发起的
+    // response - 苹果返回数据
     /**
      products - 可以被销售的商品 / SKProduct
      invalidProductIdentifiers - 无效的商品ID  / NSString
@@ -875,13 +919,53 @@
     NSLog(@"货币代码：%@", [response.products.firstObject.priceLocale objectForKey:NSLocaleCurrencyCode]);
     NSLog(@"货币符号：%@", [response.products.firstObject.priceLocale objectForKey:NSLocaleCurrencySymbol]);
     
-    // 3.购买商品
-    // 1.取出需要购买的商品
-    SKMutablePayment *payment = [SKMutablePayment paymentWithProduct:response.products.firstObject];
-    // 2.添加到支付队列，开始进行购买操作
-    [[SKPaymentQueue defaultQueue] addPayment:payment];
+    if ([SKPaymentQueue canMakePayments]) {
+        // 3.购买商品
+        // 1.取出需要购买的商品
+        SKMutablePayment *payment = [SKMutablePayment paymentWithProduct:response.products.firstObject];
+        // 2.添加到支付队列，开始进行购买操作
+        [[SKPaymentQueue defaultQueue] addPayment:payment];
+        // 3.交易队列的监听
+        [[SKPaymentQueue defaultQueue] addTransactionObserver:self];
+    } else {
+        // 不支持购买
+    }
+//    // 恢复购买
+//    [[SKPaymentQueue defaultQueue] restoreCompletedTransactions];
 }
 
+- (void)paymentQueue:(SKPaymentQueue *)queue updatedTransactions:(NSArray<SKPaymentTransaction *> *)transactions {
+    // 当交易队列中添加的每一笔交易状态发生改变的时候调用
+    for (SKPaymentTransaction *transaction in transactions) {
+        switch (transaction.transactionState) {
+            case SKPaymentTransactionStatePurchasing: {
+                // 正在支付
+            }
+                break;
+            case SKPaymentTransactionStatePurchased: {
+                // 支付成功
+                // 移除交易队列
+                [[SKPaymentQueue defaultQueue] finishTransaction:transaction];
+            }
+                break;
+            case SKPaymentTransactionStateFailed: {
+                // 支付失败
+                // 移除交易队列
+                [[SKPaymentQueue defaultQueue] finishTransaction:transaction];
+            }
+                break;
+            case SKPaymentTransactionStateRestored: {
+                // 恢复购买
+                // 移除交易队列
+                [[SKPaymentQueue defaultQueue] finishTransaction:transaction];
+            }
+                break;
+            case SKPaymentTransactionStateDeferred: {
+                // 延迟处理
+            }
+        }
+    }
+}
 
 
 #pragma mark - 内存分析
