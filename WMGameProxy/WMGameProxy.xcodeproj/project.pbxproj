@@ -35,6 +35,7 @@
 		33302F71242B10F200C53F13 /* 静态库:动态库链接方式.png in Resources */ = {isa = PBXBuildFile; fileRef = 33302F70242B10F200C53F13 /* 静态库:动态库链接方式.png */; };
 		33385163246943B3006D458E /* 从证书颁发机构请求证书.png in Resources */ = {isa = PBXBuildFile; fileRef = 33385162246943B3006D458E /* 从证书颁发机构请求证书.png */; };
 		33385166246950C8006D458E /* 真机调试 - 自动生成证书.png in Resources */ = {isa = PBXBuildFile; fileRef = 33385165246950C8006D458E /* 真机调试 - 自动生成证书.png */; };
+		334757E4247CC9AD00EBF4EC /* 提交AppStore选项参考.png in Resources */ = {isa = PBXBuildFile; fileRef = 334757E3247CC9AD00EBF4EC /* 提交AppStore选项参考.png */; };
 		3359FE8E241F3E870014C82C /* iphone设备各种空间尺寸.png in Resources */ = {isa = PBXBuildFile; fileRef = 3359FE52241F3E830014C82C /* iphone设备各种空间尺寸.png */; };
 		3359FE8F241F3E870014C82C /* 下拉加载范例.png in Resources */ = {isa = PBXBuildFile; fileRef = 3359FE53241F3E830014C82C /* 下拉加载范例.png */; };
 		3359FE90241F3E870014C82C /* iOS学习路线图.png in Resources */ = {isa = PBXBuildFile; fileRef = 3359FE54241F3E830014C82C /* iOS学习路线图.png */; };
@@ -148,6 +149,7 @@
 		33B10E7C2422964800C6E8C7 /* 新建xxx.a第四步.png in Resources */ = {isa = PBXBuildFile; fileRef = 33B10E782422964800C6E8C7 /* 新建xxx.a第四步.png */; };
 		33BE31BF22E5890A0073E35B /* FoundationNSObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 33BE31BE22E5890A0073E35B /* FoundationNSObject.m */; };
 		33E15543246D5FC000216E08 /* iap的逻辑流程.png in Resources */ = {isa = PBXBuildFile; fileRef = 33E15542246D5FC000216E08 /* iap的逻辑流程.png */; };
+		33E28F102477A35100C0D147 /* ipad开发部署.png in Resources */ = {isa = PBXBuildFile; fileRef = 33E28F0F2477A35100C0D147 /* ipad开发部署.png */; };
 		33ED93E022F12E77006ABD28 /* ComponentController.m in Sources */ = {isa = PBXBuildFile; fileRef = 33ED93DF22F12E77006ABD28 /* ComponentController.m */; };
 		33F1D58C23CC4B7E001AC221 /* WMGameView.m in Sources */ = {isa = PBXBuildFile; fileRef = 33F1D58B23CC4B7E001AC221 /* WMGameView.m */; };
 		33F72D8E242ED4420024A889 /* 图片加载.png in Resources */ = {isa = PBXBuildFile; fileRef = 33F72D8D242ED4420024A889 /* 图片加载.png */; };
@@ -218,6 +220,7 @@
 		33302F70242B10F200C53F13 /* 静态库:动态库链接方式.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "静态库:动态库链接方式.png"; sourceTree = "<group>"; };
 		33385162246943B3006D458E /* 从证书颁发机构请求证书.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "从证书颁发机构请求证书.png"; sourceTree = "<group>"; };
 		33385165246950C8006D458E /* 真机调试 - 自动生成证书.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "真机调试 - 自动生成证书.png"; sourceTree = "<group>"; };
+		334757E3247CC9AD00EBF4EC /* 提交AppStore选项参考.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "提交AppStore选项参考.png"; sourceTree = "<group>"; };
 		3359FE52241F3E830014C82C /* iphone设备各种空间尺寸.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iphone设备各种空间尺寸.png"; sourceTree = "<group>"; };
 		3359FE53241F3E830014C82C /* 下拉加载范例.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "下拉加载范例.png"; sourceTree = "<group>"; };
 		3359FE54241F3E830014C82C /* iOS学习路线图.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iOS学习路线图.png"; sourceTree = "<group>"; };
@@ -353,6 +356,7 @@
 		33BE31BD22E5890A0073E35B /* FoundationNSObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FoundationNSObject.h; sourceTree = "<group>"; };
 		33BE31BE22E5890A0073E35B /* FoundationNSObject.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FoundationNSObject.m; sourceTree = "<group>"; };
 		33E15542246D5FC000216E08 /* iap的逻辑流程.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iap的逻辑流程.png"; sourceTree = "<group>"; };
+		33E28F0F2477A35100C0D147 /* ipad开发部署.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ipad开发部署.png"; sourceTree = "<group>"; };
 		33ED93DE22F12E77006ABD28 /* ComponentController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ComponentController.h; sourceTree = "<group>"; };
 		33ED93DF22F12E77006ABD28 /* ComponentController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ComponentController.m; sourceTree = "<group>"; };
 		33F1D58A23CC4B7E001AC221 /* WMGameView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WMGameView.h; sourceTree = "<group>"; };
@@ -587,6 +591,7 @@
 				3359FE61241F3E840014C82C /* 线程的生命周期.png */,
 				3359FE60241F3E830014C82C /* 项目的基本部署.png */,
 				3359FE66241F3E840014C82C /* 项目基本配置.png */,
+				33E28F0F2477A35100C0D147 /* ipad开发部署.png */,
 				3359FE71241F3E850014C82C /* 应用沙盒结构分析.png */,
 				3359FE5F241F3E830014C82C /* 怎么称为一名优秀leader.xmind */,
 				3359FE5C241F3E830014C82C /* 真实文件夹:虚拟文件夹.png */,
@@ -610,6 +615,7 @@
 				3359FED2241FE1150014C82C /* 填写App的基本信息.png */,
 				3359FED3241FE1150014C82C /* 填写相关营销信息.png */,
 				3324C81F24260DD100766248 /* TestFight添加测试人员.png */,
+				334757E3247CC9AD00EBF4EC /* 提交AppStore选项参考.png */,
 				3359FED9241FEC120014C82C /* 部署注意点_00.png */,
 				3359FEDB241FEC1A0014C82C /* 部署注意点_01.png */,
 				3359FE74241F3E850014C82C /* iphone设备尺寸.png */,
@@ -816,6 +822,7 @@
 				33385163246943B3006D458E /* 从证书颁发机构请求证书.png in Resources */,
 				3324C82024260DD100766248 /* TestFight添加测试人员.png in Resources */,
 				33B10E4F2422265600C6E8C7 /* NBSDK接口协议.html in Resources */,
+				334757E4247CC9AD00EBF4EC /* 提交AppStore选项参考.png in Resources */,
 				3359FEB0241F3E870014C82C /* iphone设备尺寸.png in Resources */,
 				3359FE9D241F3E870014C82C /* 线程的生命周期.png in Resources */,
 				33068EC322AE665600D044EE /* LaunchScreen.storyboard in Resources */,
@@ -848,6 +855,7 @@
 				3359FEDA241FEC120014C82C /* 部署注意点_00.png in Resources */,
 				3372CD542325F92500E7307B /* SYGameProxy.txt in Resources */,
 				33A1B06B24291731007248A3 /* 新建xxx.framework第六步.png in Resources */,
+				33E28F102477A35100C0D147 /* ipad开发部署.png in Resources */,
 				3359FEA4241F3E870014C82C /* json解析标准版.png in Resources */,
 				3359FEAD241F3E870014C82C /* 应用沙盒结构分析.png in Resources */,
 				3366E83E24310A2000820298 /* LICENSE.txt in Resources */,

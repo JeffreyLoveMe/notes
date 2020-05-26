@@ -693,6 +693,7 @@
     // 2.通过 UIApplication 管理：一个App的状态栏统一管理
     // 默认通过 “方法1” 管理状态栏
     // 如果使用 “方法2” 需要配置 info.plist 文件
+    // 参考 - https://www.jianshu.com/p/52300d0df3e5
     app.statusBarHidden = YES;
     app.statusBarStyle = UIStatusBarStyleLightContent;
     // 打开其他App
@@ -880,6 +881,7 @@
  4>.免费订阅 - 用于iBook
  5>.非续订订阅 - 用于iBook
  */
+// https://blog.csdn.net/xiaoxiangzhu660810/article/details/17434907#0-qzone-1-51422-d020d2d2a4e8d1a374a433f596ad1440
 // 创建App -> （必须先同意协议）点击"功能"（配置计费点）-> 写代码 -> 配置沙盒账号（用户与协议）
 -(void)storeKit {
     // 1.从我们自己的服务器获取需要销售的商品

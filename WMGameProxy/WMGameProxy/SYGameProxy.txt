@@ -593,12 +593,6 @@ https://www.jianshu.com/p/d8062b1856f3
  }
 }
 */
-#支付：
-//内购
-概述：如果你的App中销售的商品与App的功能有关必须通过内购方式购买；
-特点：1.不允许自定义价格；
-2.消耗型项目/非消耗型项目/自动续订订阅；
-https://blog.csdn.net/xiaoxiangzhu660810/article/details/17434907#0-qzone-1-51422-d020d2d2a4e8d1a374a433f596ad1440
 //第三方支付：
 http://www.cocoachina.com/ios/20151008/13506.html#0-qzone-1-88885-d020d2d2a4e8d1a374a433f596ad1440
 1.支付宝：

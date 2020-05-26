@@ -26,8 +26,7 @@ environment:
 # 第三方库放置位置
 dependencies:
   flutter:
-    sdk: flutter
-    xml:
+    sdk: flutter   
 
 
   # The following adds the Cupertino Icons font to your application.

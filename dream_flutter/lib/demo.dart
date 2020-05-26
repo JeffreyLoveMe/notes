@@ -7,7 +7,6 @@
 4>.import 'xxx' deferred as yyy - 延迟导入yyy
  */
 import 'dart:collection';
-import 'package:xml/xml.dart' as xml;
 
 // shift + command + F --> 全局搜索
 class Demo {
@@ -110,12 +109,20 @@ class Demo {
 
     // 五、集合Set - 无序
     // 集合元素不能相同？？？
-    var set = {'123', '1234', '1235'}; // 创建非空Set不需要指定类型
+    var oneSet = {'123', '1234', '1235'}; // 创建非空Set不需要指定类型
     var emptySet = <String>{};  // 创建空Set需要指定类型
-    set.length; // 获取集合长度
+    oneSet.length; // 获取集合长度
     emptySet.add('12345'); // 添加元素
-    set.addAll(emptySet);  // 将emptySet中的元素添加到set中（不是把emptySet添加到set中）
-
+    oneSet.addAll(emptySet);  // 将emptySet中的元素添加到set中（不是把emptySet添加到set中）
+    // 补集 - 存在于set1中 & 不存在于set2中
+    var difference = oneSet.difference(emptySet);
+    print(difference);
+    // 交集 - 存在于set1中 & 存在于set2中
+    var intersection = oneSet.intersection(emptySet);
+    print(intersection);
+    // 并集 - 存在于set1中 || 存在于set2中
+    var union = oneSet.union(emptySet);
+    print(union);
 
     // 六、映射 - Map对象
     // var goodMap = <String, Object>{};  // 推荐使用
@@ -201,16 +208,32 @@ class Demo {
   const - 表示编译时常量/值将在编译时确定
    */
   void disConstant() {
-    /*
-    v1 - 
-    v2 - 
-    v3 - 
-    v4 -
-     */
-    final int v1 = 12;
-    const int v2 = 13;
-    final v3 = 12;
-    const v4 = 13;
+    // 一、final和const的相同点
+    // 1>.常量声明可以省略常量类型
+    // final String m1 = 'wy';
+    final m1 = 'wy';
+    // const int n1 = 1;
+    const n1 = 1;
+    print('$m1 $n1');
+    // 2>.常量初始化以后不能再次赋值
+    // m1 = 'cfj';
+    // n1 = 2;
+    // 3>.不能与var一起使用
+    // final var m2 = 'wy';
+    // const var n2 = 2;
+    // 二、final和const的区别
+    // 1>.类级别常量使用static/const
+    // 2>.const可以使用其他const常量的值来初始化其值
+    const width = 100;
+    const height = 200;
+    const square = width * height;
+    print(square);
+    // 3>.相同的const常量不会在内存中重复存储
+    // 4>.const修饰的不可变性是可以传递的（子类会继承）
+    var list1 = const [1, 2, 3];  // list1数组可以修改/list1[x]元素不能修改
+    const list2 = const [1, 2, 3]; // list1数组不能修改/list1[x]元素不能修改
+    final list3 = const [1, 2, 3]; // list1数组不能修改/list1[x]元素不能修改
+    print('$list1$list2$list3');
   }
 
   // 运算符
@@ -290,6 +313,35 @@ class Demo {
   // 6>.Lambda函数 - 函数块只有一条语句
   void single() => print('Lambda函数');
 
+  // 匿名函数
+  void disMityFunction() {
+    // (name) - 参数
+    // print('$name') - 代码块
+    var mName = (name) => print('$name'); // 有参匿名函数
+    var sName = () => print(''); // 无参匿名函数
+    // 一个函数做为另一个函数参数
+    // String - 函数返回类型
+    // func - 函数名称/自定义 - 形参
+    // str - 函数入参
+    void sLogger(String func(str)) {
+
+    }
+    sLogger(mName);
+    void state(String func()) {
+
+    }
+    state(sName);
+
+    // 函数别名/闭包 - 返回一个函数/函数也是一个对象
+    Function makeAdd(int a, int b) {
+      return (int y) => a + y;
+    }
+    // 接收一个函数
+    var addFunc = makeAdd(10, 12);
+    // 打印结果
+    print(addFunc(12));
+  }
+
   // 枚举 - ？？？
   void loginType() {
     var type = enumName.codeLoginType;
@@ -341,23 +393,7 @@ class Demo {
    */
   // 下载第三方库：先在pubspec.yaml中写上需要下载的第三方库 -> 然后选中pubspec.yaml -> 最后Get Packages
   void disXml() {
-    var bookXml = '''
-    <?xml version = "1.0"?> 
-      <bookshelf> 
-        <book> 
-          <title lang = "english">Growing a Language</title> 
-          <price>29.99</price> 
-        </book> 
-
-        <book> 
-         <title lang = "english">Learning XML</title> 
-         <price>39.95</price> 
-        </book> 
-      <price>132.00</price> 
-    </bookshelf>
-    ''';
-    var documentXml = xml.parse(bookXml);
-    print(documentXml.toString());
+    
   }
 
   // 3.异常处理 - 在执行程序期间出现问题
@@ -485,78 +521,3 @@ class BackMassage implements Massage {
     print('背部按摩');
   }
 }
-
-
-// // 2.常量声明 - 使用final和const
-//   // 第一、final和const的共同点
-//   // 1>.常量声明可以省略常量类型
-//   final String m6 = 'ab';
-//   // // 2>.常量初始化以后不能再次赋值
-//   // m6 = '123'; // 报错
-//   final m7 = 'ab';
-//   const String m8 = 'ab';
-//   const m9 = 'ab';
-//   // // 2>.不能与var一起使用（跟swift一样：var代表变量）
-//   // final var m10 = 'ab'; // 报错
-//   // const var m10 = 'ab'; // 报错
-//   // 第二、final和const的区别
-//   // 1>.类级别常量使用static const
-//   // 2>.const可以使用其他const常量的值来初始化其值
-//   const width = 100;
-//   const height = 100;
-//   const square = width * height;
-//   print(square);
-//   // 3>.使用const赋值声明（const可以省略）
-//   // 第二个const可以省略
-//   var list1 = const [1, 2, 3];  // list1数组可以修改/list1[x]元素不能修改
-//   const list2 = const [1, 2, 3]; // list1数组不能修改/list1[x]元素不能修改
-//   final list3 = const [1, 2, 3]; // list1数组不能修改/list1[x]元素不能修改
-//   // 4>.可以更改非final/非const变量的值（即使曾经具有const值）
-//   // 5>.const导致的不可变性是可传递的（子类会继承）
-//   // 6>.相同的const常量不会在内存中重复传递
-//   // 7>.const需要是编译时常量
-//   print(identical(list2, list3)); // 判断两个对象是否一致/返回true - 表示常量指向同一块内存
-
-
-//  // 6>.集合Set
-//   Set oneSet = Set();
-//   oneSet.addAll([1, 2, 3, 4]);
-//   Set twoSet = Set();
-//   twoSet.addAll([1, 2, 5, 6]);
-//   // 补集 - 存在于set1中 & 不存在于set2中
-//   var difference = oneSet.difference(twoSet);
-//   print(difference);
-//   // 交集 - 存在于set1中 & 存在于set2中
-//   var intersection = oneSet.intersection(twoSet);
-//   print(intersection);
-//   // 并集 - 存在于set1中 || 存在于set2中
-//   var union = oneSet.union(twoSet);
-//   print(union);
-
-
-//  // 8>.匿名函数
-//   // (name) - 参数
-//   // print('$name') - 代码块
-//   var mName = (name) => print('$name'); // 有参匿名函数
-//   var sName = () => print(''); // 无参匿名函数
-//   // 一个函数做为另一个函数参数
-//   // String - 函数返回类型
-//   // func - 函数名称/自定义 - 形参
-//   // str - 函数入参
-//   void sLogger(String func(str)) {
-
-//   }
-//   sLogger(mName);
-//   void state(String func()) {
-
-//   }
-//   state(sName);
-//   // 9>.函数别名 - ？？？
-//   // 5.闭包 - 返回一个函数/函数也是一个对象
-//   Function makeAdd(int a, int b) {
-//     return (int y) => a + y;
-//   }
-//   // 接收一个函数
-//   var addFunc = makeAdd(10, 12);
-//   // 打印结果
-//   print(addFunc(12));

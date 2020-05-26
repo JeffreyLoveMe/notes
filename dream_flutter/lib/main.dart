@@ -9,7 +9,7 @@
 // 3>.flutter - UI性能好，开发体验较好
 
 // 什么是flutter
-// 1>.概念 - flutter是google开发的移动UI框架。可以快速的在iOS/Android上构建高质量的原生用户界面。
+// 1>.概念 - flutter是google开发的移动UI框架。可以快速的在iOS/Android上构建高质量的原生用户界面
 // 2>.特点 - flutter可以与现有的代码一起工作/flutter是完全免费、开源的
 // 3>.兼容 - iOS/Android/wp/web
 
@@ -88,130 +88,339 @@
 // 2>.flutter插件 - dart语言无法直接调用Android系统提供的Java接口，需要使用flutter插件来实现中转
 // 3>.Skia（siQ）图像处理引擎 - 2005年问世/用于Chrome浏览器/2007年被移植到Android平台
 
-import 'package:flutter/material.dart';
+/*第一个程序start*/
+// import 'package:flutter/material.dart';  // 必须使用‘;’结尾
 
-void main() {
-  runApp(MyApp());
-}
+// // void main() => runApp(MyApp());  // 只有一行使用 =>
+// void main() {
+//   runApp(MyApp());
+// }
 
-// 新建一个类 - 类名首字母大写
-/*
- * StatelessWidget - 死控件/不会随数据动态改变
- * StatefulWidget - 活控件/会随数据动态改变
- */
+// Flutter的基本项目代码
+// class MyApp extends StatelessWidget {
+//   @override
+//   Widget build(BuildContext context) {
+//     return MaterialApp(
+//       // 属性以‘,’结尾
+//       title: 'Welcome to Flutter',
+//       home: Scaffold(
+//         appBar: AppBar(
+//           title: Text('Welcome to Flutter'),
+//         ),
+//         body: Center(
+//           child: Text('Helllo World'),
+//         ),
+//       ),
+//     );
+//   }
+// }
+
+// /*
+// r - 热更新
+// p - 显示网格
+// o - 切换安卓/iOS样式
+// q - 退出
+//  */
+/*第一个程序end*/
+
+
+/*自动生成代码start*/
+// import 'package:flutter/material.dart';
+
+// void main() {
+//   runApp(MyApp());
+// }
+
+// // 新建一个类 - 类名首字母大写
+// /*
+//  * StatelessWidget - 死控件/不会随数据动态改变
+//  * StatefulWidget - 活控件/会随数据动态改变
+//  */
+// class MyApp extends StatelessWidget {
+//   // 万物皆Widget
+//   // 选中 -> command -> 内部实现
+//   /*
+//   widget之间使用;
+//   属性之间使用,
+//   */
+//   @override
+//   Widget build(BuildContext context) {
+//     return MaterialApp(
+//       title: 'Flutter Demo',
+//       theme: ThemeData(
+//         // This is the theme of your application.
+//         //
+//         // Try running your application with "flutter run". You'll see the
+//         // application has a blue toolbar. Then, without quitting the app, try
+//         // changing the primarySwatch below to Colors.green and then invoke
+//         // "hot reload" (press "r" in the console where you ran "flutter run",
+//         // or simply save your changes to "hot reload" in a Flutter IDE).
+//         // Notice that the counter didn't reset back to zero; the application
+//         // is not restarted.
+//         primarySwatch: Colors.blue,
+//         // This makes the visual density adapt to the platform that you run
+//         // the app on. For desktop platforms, the controls will be smaller and
+//         // closer together (more dense) than on mobile platforms.
+//         visualDensity: VisualDensity.adaptivePlatformDensity,
+//       ),
+//       home: MyHomePage(title: 'Flutter Demo Home Page'),
+//     );
+//   }
+// }
+
+// class MyHomePage extends StatefulWidget {
+//   MyHomePage({Key key, this.title}) : super(key: key);
+
+//   // This widget is the home page of your application. It is stateful, meaning
+//   // that it has a State object (defined below) that contains fields that affect
+//   // how it looks.
+
+//   // This class is the configuration for the state. It holds the values (in this
+//   // case the title) provided by the parent (in this case the App widget) and
+//   // used by the build method of the State. Fields in a Widget subclass are
+//   // always marked "final".
+
+//   final String title;
+
+//   @override
+//   _MyHomePageState createState() => _MyHomePageState();
+// }
+
+// class _MyHomePageState extends State<MyHomePage> {
+//   int _counter = 0;
+
+//   void _incrementCounter() {
+//     setState(() {
+//       // This call to setState tells the Flutter framework that something has
+//       // changed in this State, which causes it to rerun the build method below
+//       // so that the display can reflect the updated values. If we changed
+//       // _counter without calling setState(), then the build method would not be
+//       // called again, and so nothing would appear to happen.
+//       _counter++;
+//     });
+//   }
+
+//   @override
+//   Widget build(BuildContext context) {
+//     // This method is rerun every time setState is called, for instance as done
+//     // by the _incrementCounter method above.
+//     //
+//     // The Flutter framework has been optimized to make rerunning build methods
+//     // fast, so that you can just rebuild anything that needs updating rather
+//     // than having to individually change instances of widgets.
+//     return Scaffold(
+//       appBar: AppBar(
+//         // Here we take the value from the MyHomePage object that was created by
+//         // the App.build method, and use it to set our appbar title.
+//         title: Text(widget.title),
+//       ),
+//       body: Center(
+//         // Center is a layout widget. It takes a single child and positions it
+//         // in the middle of the parent.
+//         child: Column(
+//           // Column is also a layout widget. It takes a list of children and
+//           // arranges them vertically. By default, it sizes itself to fit its
+//           // children horizontally, and tries to be as tall as its parent.
+//           //
+//           // Invoke "debug painting" (press "p" in the console, choose the
+//           // "Toggle Debug Paint" action from the Flutter Inspector in Android
+//           // Studio, or the "Toggle Debug Paint" command in Visual Studio Code)
+//           // to see the wireframe for each widget.
+//           //
+//           // Column has various properties to control how it sizes itself and
+//           // how it positions its children. Here we use mainAxisAlignment to
+//           // center the children vertically; the main axis here is the vertical
+//           // axis because Columns are vertical (the cross axis would be
+//           // horizontal).
+//           mainAxisAlignment: MainAxisAlignment.center,
+//           children: <Widget>[
+//             Text(
+//               'You have pushed the button this many times:',
+//             ),
+//             Text(
+//               '$_counter',
+//               style: Theme.of(context).textTheme.headline4,
+//             ),
+//           ],
+//         ),
+//       ),
+//       floatingActionButton: FloatingActionButton(
+//         onPressed: _incrementCounter,
+//         tooltip: 'Increment',
+//         child: Icon(Icons.add),
+//       ), // This trailing comma makes auto-formatting nicer for build methods.
+//     );
+//   }
+// }
+/*自动生成代码end*/
+
+
+/*组件学习start*/
+// flutter一切皆Widget
+import 'package:flutter/material.dart';  // 引入库
+
+void main() => runApp(MyApp(
+  items: new List<String>.generate(1000, (index) => 'Item $index')
+));
+
 class MyApp extends StatelessWidget {
-  // 万物皆Widget
-  // 选中 -> command -> 内部实现
-  /*
-  widget之间使用;
-  属性之间使用,
-  */
+
+  // 1.声明一个List
+  final List<String> items;
+
+  MyApp({Key key, @required this.items}): super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // Try running your application with "flutter run". You'll see the
-        // application has a blue toolbar. Then, without quitting the app, try
-        // changing the primarySwatch below to Colors.green and then invoke
-        // "hot reload" (press "r" in the console where you ran "flutter run",
-        // or simply save your changes to "hot reload" in a Flutter IDE).
-        // Notice that the counter didn't reset back to zero; the application
-        // is not restarted.
-        primarySwatch: Colors.blue,
-        // This makes the visual density adapt to the platform that you run
-        // the app on. For desktop platforms, the controls will be smaller and
-        // closer together (more dense) than on mobile platforms.
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-      ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
-
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
-
-  // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
-  // used by the build method of the State. Fields in a Widget subclass are
-  // always marked "final".
-
-  final String title;
-
-  @override
-  _MyHomePageState createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    // This method is rerun every time setState is called, for instance as done
-    // by the _incrementCounter method above.
-    //
-    // The Flutter framework has been optimized to make rerunning build methods
-    // fast, so that you can just rebuild anything that needs updating rather
-    // than having to individually change instances of widgets.
-    return Scaffold(
-      appBar: AppBar(
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: Text(widget.title),
-      ),
-      body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
-        child: Column(
-          // Column is also a layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
-          // Invoke "debug painting" (press "p" in the console, choose the
-          // "Toggle Debug Paint" action from the Flutter Inspector in Android
-          // Studio, or the "Toggle Debug Paint" command in Visual Studio Code)
-          // to see the wireframe for each widget.
-          //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal).
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
-            ),
-          ],
+      title: 'text widget',
+      home: Scaffold(
+        // 导航栏
+        appBar: new AppBar(
+          title: new Text('Flutter Demo'),
         ),
+        // // 页面 - 具体内容
+        // body: Center(
+        //   // // 1.Text - 类似UILabel
+        //   // child: Text(
+        //   //   // 文字
+        //   //   '这是谁？这是谁？这是谁？这是谁？这是谁？',
+        //   //   // 对其方式
+        //   //   textAlign: TextAlign.center,
+        //   //   // 最大行数
+        //   //   maxLines: 1,
+        //   //   // 字数过多溢出怎么处理
+        //   //   overflow: TextOverflow.clip,
+        //   //   // 字体样式
+        //   //   style: TextStyle(
+        //   //     // 字体大小
+        //   //     fontSize: 25.0,
+        //   //     // 字体颜色
+        //   //     color: Color.fromARGB(255, 255, 125, 125),
+        //   //     // 下划线
+        //   //     decoration: TextDecoration.underline,
+        //   //     // 下划线样式
+        //   //     decorationStyle: TextDecorationStyle.double,
+        //   //   ),
+        //   // ),
+
+        //   // // 2.Container - 类似div/UIView
+        //   // // 属性之间的‘,’不能减少/最后一个属性省略‘,’
+        //   // child: Container(
+        //   //   // 子试图
+        //   //   child: new Text('hello jsPang', style: TextStyle(fontSize: 40.0)),
+        //   //   // 文字在容器中的位置
+        //   //   alignment: Alignment.topLeft,
+        //   //   // 宽度
+        //   //   width: 350.0,
+        //   //   // 高度
+        //   //   height: 400.0,
+        //   //   // // 背景颜色
+        //   //   // color: Colors.red,
+        //   //   // 内边距 - 容器与容器子元素（文字/图片）之间的距离
+        //   //   padding: const EdgeInsets.fromLTRB(10, 15, 15, 10),
+        //   //   // 外边距 - 容器与父试图之间的距离
+        //   //   margin: const EdgeInsets.all(10.0),
+        //   //   // decoration - 装饰
+        //   //   decoration: new BoxDecoration(
+        //   //     // 渐变颜色 - 不能与“背景颜色”共存/会抛出异常
+        //   //     gradient: const LinearGradient(colors: [Colors.red, Colors.black, Colors.blue]),
+        //   //     border: Border.all(width:2.0, color: Colors.red),
+        //   //   ),
+        //   // )
+
+        //   // // 3.Image - 图片
+        //   // // Image.asset() - 项目图片（常用）
+        //   // // Image.file() - 本地图片
+        //   // // Image.memory() - 内存图片
+        //   // // Image.network() - 网络图片（常用）
+        //   // child: Container(
+        //   //   child: new Image.network(
+        //   //     // src - 资源路径
+        //   //     'https://pics3.baidu.com/feed/ca1349540923dd54c1589d6d977805d89c824807.jpeg?token=c818dc30edfcb1df8e619903be34b251',
+        //   //     /*
+        //   //     BoxFit.contain - xxx
+        //   //     BoxFit.fill - 填满/会变形
+        //   //     BoxFit.fitWidth - 横向按比例填满（竖向可能会超出）
+        //   //     BoxFit.fitHeight - 竖向按比例填满（横向可能会超出）
+        //   //     BoxFit.cover - 按比例填满
+        //   //     BoxFit.scaleDown - 不能改变原图大小
+        //   //      */
+        //   //     fit: BoxFit.cover, 
+        //   //     // 图片混合颜色
+        //   //     color: Colors.greenAccent,
+        //   //     colorBlendMode: BlendMode.darken,
+        //   //     // 图片重复
+        //   //     // ImageRepeat.noRepeat - 不重复（默认）
+        //   //     // ImageRepeat.repeat - 重复（以中间为基础）
+        //   //     // ImageRepeat.repeatX - 横向重复
+        //   //     // ImageRepeat.repeatY - 竖向重复
+        //   //     repeat: ImageRepeat.repeatY,
+        //   //   ),
+        //   //   width: 300.0,
+        //   //   height: 300.0,
+        //   //   color: Colors.red
+        //   // ),
+        // ),
+
+        // 4.ListView
+        // 1>.静态ListView
+        // body: new ListView(
+        //   children: <Widget>[
+        //     // 第一种写法
+        //     // new ListTile(
+        //     //   leading: new Icon(Icons.perm_camera_mic),
+        //     //   title: new Text('perm_camera_mic'),
+        //     // ),
+        //     // new ListTile(
+        //     //   leading: new Icon(Icons.perm_contact_calendar),
+        //     //   title: new Text('perm_camera_mic'),
+        //     // ),
+        //     // new ListTile(
+        //     //   leading: new Icon(Icons.perm_data_setting),
+        //     //   title: new Text('perm_camera_mic'),
+        //     // ),
+        //     // // 第二种写法
+        //     // new Image.network('https://cms-dumall.cdn.bcebos.com/cms_com_upload_pro/dumall_1588149639781.jpg?x-bce-process=image/quality,q_100/format,f_auto/interlace,i_progressive'),
+        //     // new Image.network('https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=3105985776,1507540069&fm=11&gp=0.jpg'),
+        //     // new Image.network('https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1590391163768&di=4d4846387c0f24f310895a37c45ac1e2&imgtype=0&src=http%3A%2F%2Fimg1.cache.netease.com%2Fcatchpic%2F4%2F4A%2F4A8FF896FCBBF48048A13CE64024DE0E.jpg')
+        //   ],
+        // ),
+
+        // // 2>.万物皆组件
+        // body: Center(
+        //   child: Container(
+        //     height: 200.0,
+        //     child: MyListView()
+        //   ),
+        // ),
+
+        // // 3.动态列表
+        // body: new ListView.builder(
+        //   itemBuilder: (context, index) {
+        //     return new ListTile(
+        //       title: Text('$items[index]')
+        //     );
+        //   },
+        //   itemCount: items.length,
+        // )
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }
+
+// class MyListView extends StatelessWidget {
+//   @override
+//   Widget build(BuildContext context) {
+//     return ListView(
+//       // 滑动方法 - 水平方法
+//       scrollDirection: Axis.horizontal,
+//       children: <Widget>[
+//         new Image.network('https://cms-dumall.cdn.bcebos.com/cms_com_upload_pro/dumall_1588149639781.jpg?x-bce-process=image/quality,q_100/format,f_auto/interlace,i_progressive'),
+//         new Image.network('https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=3105985776,1507540069&fm=11&gp=0.jpg'),
+//         new Image.network('https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1590391163768&di=4d4846387c0f24f310895a37c45ac1e2&imgtype=0&src=http%3A%2F%2Fimg1.cache.netease.com%2Fcatchpic%2F4%2F4A%2F4A8FF896FCBBF48048A13CE64024DE0E.jpg')
+//       ],
+//     );
+//   }
+// }
+/*组件学习end*/
