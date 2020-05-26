@@ -272,8 +272,72 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // 层叠布局
+    // var stack = new Stack(
+    //   // 0 - 1
+    //   // 只能相对于两个控件
+    //   alignment: const FractionalOffset(0, 1),
+    //   children: <Widget>[
+    //     new CircleAvatar(
+    //       backgroundImage: new NetworkImage('http://blogimages.jspang.com/blogtouxiang1.jpg'),
+    //       radius: 100.0,
+    //     ),
+    //     // new Container(
+    //     //   decoration: new BoxDecoration(
+    //     //     color: Colors.lightBlue
+    //     //   ),
+    //     //   padding: const EdgeInsets.all(10.0),
+    //     //   child: Text('jsPang 技术胖'),
+    //     // )
+    //     // 绝对布局 - 特别灵活
+    //     new Positioned(
+    //       child: new Text('jsPang'),
+    //       top: 10.0,
+    //       left: 10.0,
+    //     ),
+    //     new Positioned(
+    //       child: new Text('jsPang.com'),
+    //       right: 10.0,
+    //       bottom: 10.0,
+    //     ),
+    //   ],
+    // );
+
+    // // card布局
+    // var card = new Card(
+    //   child: Column(
+    //     children: <Widget>[
+    //       ListTile(
+    //         title: Text(
+    //           'jspang',
+    //           style: TextStyle(fontWeight: FontWeight.w500)
+    //         ),
+    //         subtitle: Text('技术胖'),
+    //         leading: new Icon(Icons.accessibility,color:Colors.lightBlue)
+    //       ),
+    //       ListTile(
+    //         title: Text(
+    //           'jspang',
+    //           style: TextStyle(fontWeight: FontWeight.w500)
+    //         ),
+    //         subtitle: Text('技术胖'),
+    //         leading: new Icon(Icons.accessibility,color:Colors.lightBlue)
+    //       ),
+    //       ListTile(
+    //         title: Text(
+    //           'jspang',
+    //           style: TextStyle(fontWeight: FontWeight.w500)
+    //         ),
+    //         subtitle: Text('技术胖'),
+    //         leading: new Icon(Icons.accessibility,color:Colors.lightBlue)
+    //       ),
+    //     ],
+    //   ),
+    // );
+
     return MaterialApp(
       title: 'text widget',
+      // home的含义？？？
       home: Scaffold(
         // 导航栏
         appBar: new AppBar(
@@ -395,15 +459,108 @@ class MyApp extends StatelessWidget {
         //   ),
         // ),
 
-        // // 3.动态列表
+        // // 3>.动态列表
         // body: new ListView.builder(
         //   itemBuilder: (context, index) {
         //     return new ListTile(
-        //       title: Text('$items[index]')
+        //       title: Text('$items[index]'),
+        //       onTap: (){
+        //         // 点击事件
+        //         print('');
+        //       },
         //     );
         //   },
         //   itemCount: items.length,
         // )
+
+        // // 5.GridView
+        // // 1>.静态GridView
+        // body: GridView.count(
+        //   // 1.内边距
+        //   padding: const EdgeInsets.all(20.0),
+        //   // 2.网格之间的间距（横轴）
+        //   crossAxisSpacing: 10.0,
+        //   // 3.网格之间的间距（竖轴）
+        //   mainAxisSpacing: 5.0,
+        //   // 4.宽/高
+        //   childAspectRatio: 2.0,
+        //   // 5.每行显示几个网格
+        //   crossAxisCount: 3,
+        //   // 6.共有几个网格
+        //   children: <Widget>[
+        //     const Text('I am JSpang'),
+        //     const Text('I am JSpang'),
+        //     const Text('I am JSpang'),
+        //     const Text('I am JSpang'),
+        //     const Text('I am JSpang'),
+        //     const Text('I am JSpang'),
+        //     const Text('I am JSpang'),
+        //   ],
+        // ),
+
+        // 布局
+        // 1>.水平布局 - Row
+        // body: new Row(
+        //   children: <Widget>[
+        //     // 灵活的布局
+        //     Expanded(child: new RaisedButton(
+        //       onPressed: (){},
+        //       color: Colors.red,
+        //       child: new Text('红色按钮'),
+        //       ),
+        //     ),
+        //     Expanded(child: new RaisedButton(
+        //       onPressed: (){},
+        //       color: Colors.blue,
+        //       child: new Text('蓝色按钮'),
+        //       ),
+        //     ),
+        //     Expanded(child: new RaisedButton(
+        //       onPressed: (){},
+        //       color: Colors.orange,
+        //       child: new Text('橙色按钮'),
+        //       ),
+        //     ),
+        //     Expanded(child: new RaisedButton(
+        //       onPressed: (){},
+        //       color: Colors.yellow,
+        //       child: new Text('黄色按钮'),
+        //       ),
+        //     ),
+        //   ],
+        // ),
+
+        // // 2>.垂直布局 - Column
+        // body: Center( 
+        //   child: Column(
+        //     // 对齐方法
+        //     // 垂直布局 - 主轴就是垂直方法/副轴就是水平方法
+        //     crossAxisAlignment: CrossAxisAlignment.end,   // 相对与控件居中
+        //     mainAxisAlignment: MainAxisAlignment.center,  // 相对于屏幕
+        //     children: <Widget>[
+        //       Text('I am JSpang'),
+        //       Text('My website is jspang.com'),
+        //       Text('I love coding'),
+        //     ],
+        //   ),
+        // ),
+
+        // // 3>.层叠布局
+        // body: Center(
+        //   child: stack,
+        // ),
+
+        // // 4.card布局
+        // body: Center(
+        //   child: card,
+        // ),
+
+        // 导航
+        body: Center(
+          // 按钮
+          child: Button()
+        ),
+        
       ),
     );
   }
@@ -423,4 +580,46 @@ class MyApp extends StatelessWidget {
 //     );
 //   }
 // }
+
+class Button extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return RaisedButton(
+      onPressed: (){
+        // 点击事件
+        // MaterialPageRoute - 路由组件
+        Navigator.push(context, MaterialPageRoute(
+          builder: (contxt) => new SecondScreen(productId: '1234567890')
+        ));
+      },
+      child: Text('查看商品详情页'),
+    );
+  }
+}
+
+class SecondScreen extends StatelessWidget {
+  // 接收参数
+  final String productId;
+  // 构造函数 - 这是什么写法？？？
+  SecondScreen({Key key, @required this.productId}): super(key:key);
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(title: Text('商品详情页')),
+        body: Center(
+          child: RaisedButton(
+          onPressed: (){
+            // 点击事件
+            Navigator.pop(context);
+            print(this.productId);
+          },
+          child: Text('返回'),
+        )
+      ),
+      ),
+    );
+  }
+}
 /*组件学习end*/
