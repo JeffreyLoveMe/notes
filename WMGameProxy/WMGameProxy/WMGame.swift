@@ -335,6 +335,10 @@ class WMGame: NSObject {
         for name in arrayM[0..<2] {
             print(name)
         }
+        // 4).遍历
+        arrayM.forEach { (name) in
+            print(name)
+        }
         
         // 6.数组的合并
         // 相同类型的数组才可以进行合并，不同类型数组不能相加合并

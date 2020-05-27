@@ -41,7 +41,7 @@ class Demo {
     // int s = 0.1;  // 不要把小数分配给整数（会抛出异常）
     print(sum);
 
-    // 二、字符串 - 可以使用''/""
+    // 二、字符串 - 可以使用''/ ""
     // dart语言中字符串是不可变的
     String c = '这是一个字符串';
     String d = '这也是一个字符串';
@@ -108,7 +108,6 @@ class Demo {
       firstList.removeLast(); // 删除最后一个元素
       firstList.removeAt(2);   // 删除第3个元素
       firstList.reversed;  // List逆序
-      firstList.length;    // List长度
     }
 
     // 五、集合Set - 无序
@@ -118,6 +117,10 @@ class Demo {
     oneSet.length; // 获取集合长度
     emptySet.add('12345'); // 添加元素
     oneSet.addAll(emptySet);  // 将emptySet中的元素添加到set中（不是把emptySet添加到set中）
+    // 遍历集合
+    oneSet.forEach((element) {
+      print('$element');
+    });
     // 补集 - 存在于set1中 & 不存在于set2中
     var difference = oneSet.difference(emptySet);
     print(difference);
@@ -163,6 +166,10 @@ class Demo {
       3: 'value3'
     };
     print(map);
+    // 4>.遍历映射
+    giftMaps.forEach((key, value) {
+      print('Key = $key, Value = $value');
+    });
 
     // 七、符文 - UTF-32的代码点
     String.fromCharCode(1);
@@ -334,9 +341,9 @@ class Demo {
     // 一个函数做为另一个函数参数
     // String - 函数返回类型/void可以省略
     // func - 函数名称/自定义 - 形参
-    // str - 函数入参
-    void sLogger(String func(str)) {
-
+    // str - 函数入参/自定义
+    void sLogger(String func(string)) {
+      func('1');
     }
     sLogger(mName);
     void state(String func()) {
