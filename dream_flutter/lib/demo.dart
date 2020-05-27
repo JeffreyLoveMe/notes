@@ -23,6 +23,10 @@ class Demo {
   多行注释
    */
 
+  Demo() {
+    print('');
+  }
+
   // 输出语句
   void log() {
     print('hello world');
@@ -301,11 +305,12 @@ class Demo {
   int disSum(int a, [int b, int c]) {
     return a + b + c;
   }
-  // 3>.可选命名参数 - ？？？
-  int disClick(int a, {int b, int c}) {
+  // 3>.可选命名参数 - 命名参数就是选填参数
+  // 命名参数最好给默认值
+  int disClick(int a, {int b = 1, int c = 1}) {
     return a + b + c;
   }
-  // 4>.带有默认值的可选函数 - ？？？
+  // 4>.带有默认值的可选函数 - 命名参数最好给默认值
   int disDefault(int a, [int b = 1, int c = 2]) {
     return a + b + c;
   }
@@ -313,14 +318,21 @@ class Demo {
   // 6>.Lambda函数 - 函数块只有一条语句
   void single() => print('Lambda函数');
 
-  // 匿名函数
+  // 匿名函数 - 没有方法名/必须用var/final修饰
+  /*
+  两种形式
+  1.() => xxx;
+  2.() {
+
+    };
+   */
   void disMityFunction() {
     // (name) - 参数
     // print('$name') - 代码块
     var mName = (name) => print('$name'); // 有参匿名函数
     var sName = () => print(''); // 无参匿名函数
     // 一个函数做为另一个函数参数
-    // String - 函数返回类型
+    // String - 函数返回类型/void可以省略
     // func - 函数名称/自定义 - 形参
     // str - 函数入参
     void sLogger(String func(str)) {
@@ -470,14 +482,19 @@ class Test extends Demo {
     return this.name;
   }
   // 构造函数
-  // 1>.普通构造函数
-  Test() {
-    print('');
-  }
+  // // 1>.普通构造函数
+  // Test() {
+  //   print('');
+  // }
   // 2>.命名构造函数
   Test.nameConst() {
     // this - 表示引用类的当前实例
     this.name = '';
+  }
+  // 3>.调用超类的构造函数
+  // 使用“:”可以调用超类的构造方法
+  Test(): super() {
+    print('');
   }
   // 使用这些方法
   void disDemo() {

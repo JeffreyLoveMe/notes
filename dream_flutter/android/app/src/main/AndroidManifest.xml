@@ -5,9 +5,13 @@
          In most cases you can leave this as-is, but you if you want to provide
          additional functionality it is fine to subclass or reimplement
          FlutterApplication and put your custom class here. -->
+    <!-- 
+      android:label="jsPang" - App名称/显示在手机上
+      android:icon="@mipmap/ic_launcher" - AppIcon/显示在手机上
+          -->
     <application
         android:name="io.flutter.app.FlutterApplication"
-        android:label="dream_flutter"
+        android:label="jsPang"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"

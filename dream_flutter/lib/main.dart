@@ -123,6 +123,9 @@
 //  */
 /*第一个程序end*/
 
+// flutter打包
+// 安卓打包 - flutter build apk
+// iOS打包 - xxx
 
 /*自动生成代码start*/
 // import 'package:flutter/material.dart';
@@ -448,6 +451,7 @@ class MyApp extends StatelessWidget {
         //     // new Image.network('https://cms-dumall.cdn.bcebos.com/cms_com_upload_pro/dumall_1588149639781.jpg?x-bce-process=image/quality,q_100/format,f_auto/interlace,i_progressive'),
         //     // new Image.network('https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=3105985776,1507540069&fm=11&gp=0.jpg'),
         //     // new Image.network('https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1590391163768&di=4d4846387c0f24f310895a37c45ac1e2&imgtype=0&src=http%3A%2F%2Fimg1.cache.netease.com%2Fcatchpic%2F4%2F4A%2F4A8FF896FCBBF48048A13CE64024DE0E.jpg')
+        //     // new Image.asset(images/dm_main_logo.png);
         //   ],
         // ),
 
@@ -587,13 +591,27 @@ class Button extends StatelessWidget {
     return RaisedButton(
       onPressed: (){
         // 点击事件
-        // MaterialPageRoute - 路由组件
-        Navigator.push(context, MaterialPageRoute(
-          builder: (contxt) => new SecondScreen(productId: '1234567890')
-        ));
+        // // MaterialPageRoute - 路由组件
+        // Navigator.push(context, MaterialPageRoute(
+        //   builder: (contxt) => new SecondScreen(productId: '1234567890')
+        // ));
+        _jumpSecondScreen(context);
       },
       child: Text('查看商品详情页'),
     );
+  }
+
+  // 私有方法
+  _jumpSecondScreen(BuildContext context) async {
+    // 获取方法的result
+    final result = await Navigator.push(
+      context,
+      MaterialPageRoute(
+          builder: (contxt) => new SecondScreen(productId: '1234567890')
+      )
+    );
+    // Toast
+    Scaffold.of(context).showSnackBar(SnackBar(content: Text('$result')));
   }
 }
 
@@ -612,7 +630,9 @@ class SecondScreen extends StatelessWidget {
           child: RaisedButton(
           onPressed: (){
             // 点击事件
-            Navigator.pop(context);
+            // Navigator.pop(context);
+            // 带参数回来
+            Navigator.pop(context, this.productId);
             print(this.productId);
           },
           child: Text('返回'),
