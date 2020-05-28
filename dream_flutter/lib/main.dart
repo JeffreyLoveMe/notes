@@ -144,7 +144,7 @@
 //   // 选中 -> command -> 内部实现
 //   /*
 //   widget之间使用;
-//   属性之间使用,
+//   参数之间使用,
 //   */
 //   @override
 //   Widget build(BuildContext context) {

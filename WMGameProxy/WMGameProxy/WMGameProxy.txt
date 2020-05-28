@@ -382,11 +382,10 @@ http://code4app.com - code4App
 10>.nil空指针 - 为了避免给野指针发送消息报错，当一个对象被释放以后我们会将这个对象的指针设置为空指针
 
 //职业规划
-1>.C语言 -> Objective-C语言 -> iOS开发 -> Swift语言/ 2016年 - 2020年
-2>.flutter开发 -> 混合编程 -> java语言 -> Android开发/ 2020年 - 2022年
-3>.软件知识架构(操作系统/软件工程/设计模式/数据结构/数据库系统/网络安全) -> microsoft office/ 2022年 - 2023年
-4>.h5/css/js -> web开发 -> 小程序/ 2023年 - 2024年
-5>.java语言 -> 后端开发 -> 研发总监/ 2024年 - 2028年
+C语言 -> Objective-C语言 -> iOS开发 -> Swift语言  -> flutter开发 ->
+web开发 -> 小程序 -> java语言 -> Android开发 -> php开发 -> 服务端开发 ->
+golang开发 -> 软件知识架构(操作系统/软件工程/设计模式/数据结构/数据库系统/网络安全) ->
+microsoft office -> 研发总监
 
 //职业发展
 NO1 - iOS开发工程师->iOS开发主管->iOS开发leader/移动端开发leader->大前端开发leader/副研发总监->CTO->联合创始人

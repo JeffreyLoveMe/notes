@@ -321,7 +321,7 @@ class Demo {
   int disDefault(int a, [int b = 1, int c = 2]) {
     return a + b + c;
   }
-  // 5>.递归函数
+  // 5>.递归函数hans
   // 6>.Lambda函数 - 函数块只有一条语句
   void single() => print('Lambda函数');
 
@@ -341,7 +341,7 @@ class Demo {
     // 一个函数做为另一个函数参数
     // String - 函数返回类型/void可以省略
     // func - 函数名称/自定义 - 形参
-    // str - 函数入参/自定义
+    // string - 函数入参/自定义
     void sLogger(String func(string)) {
       func('1');
     }
@@ -361,7 +361,7 @@ class Demo {
     print(addFunc(12));
   }
 
-  // 枚举 - ？？？
+  // 枚举 - 一种特殊的类
   void loginType() {
     var type = enumName.codeLoginType;
     switch (type) {
