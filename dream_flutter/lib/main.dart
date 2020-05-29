@@ -17,6 +17,11 @@
 // 1>.Engine(C++) - Skia/Dart/Text
 // 2>.Framework - Dart
 
+/*
+ 1.开发电脑选择：mac(windows不能开发iOS)
+ 2.IDE选择：Android Studio > VsCode
+ */
+
 // flutter环境搭建
 /*
  * 11.flutter环境准备
@@ -24,21 +29,21 @@
  * 2>.点击Docs->选择MacOS
  * 3>.下载flutterSDK（以后flutter升级直接可以用命令行）
  * 4>.将下载完成的flutterSDK放在某个位置（开始配置环境变量）
- * 1.vim ~/.bash_profile
-    // 环境变量
-    export PATH=/Applications/flutter/bin:$PATH
-    // 针对国内用户
-    export FLUTTER_STORAGE_BASE_URL=https://storage.flutter-io.cn
-    export PUB_HOSTED_URL=https://pub.flutter-io.cn
- * 2.source ~/.bash_profile
- * 3.flutter doctor #检测flutter环境
+ 1.vim ~/.bash_profile
+ // 配置环境变量
+ export PATH=/Applications/flutter/bin:$PATH
+ // 针对国内用户 - 设置Flutter临时镜像（随时可以会换）
+ export FLUTTER_STORAGE_BASE_URL=https://storage.flutter-io.cn
+ export PUB_HOSTED_URL=https://pub.flutter-io.cn
+ 2.source ~/.bash_profile
+ 3.flutter doctor #检测flutter环境
  * 5>.在iOS上配置环境 - 下载Xcode/安装git/安装CocoaPods
  * 6>.Android Studio - Preferences - Plugins(下载Dart/Flutter)
  */
 // 注意点
 // 1>.shift + command + p - 打开控制器面板
 // 2>.运行flutter项目之前可以使用“flutter doctor”命令行检测一下
-// 3>.？？？怎么升级flutterSDK？？？
+// 3>.？？？怎么升级flutterSDK？？？flutter upgrade
 // Using Flutter in China - https://flutter.dev/community/china
 // 4>.VSCode新建项目命令
 // flutter create -i swift -a kotlin xxx

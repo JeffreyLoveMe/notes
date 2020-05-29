@@ -8,9 +8,6 @@
 //Apple为什么设计元类？
 //Xcode中选择模拟器编译，在 products 中生成的二进制文件后缀是什么？
 /// 换一种通用写法
-// 戴铭
-https://github.com/ming1016
-https://ming1016.github.io/categories/Programming
 77.图片裁剪方法
 107.版本控制
 /*
@@ -144,14 +141,6 @@ libxml2.dylib
 3.编译没错误则说明集成SDK成功
 */
 122.瀑布流
-/*
-1.简单地说:我们利用3个UITableView联动就可以实现瀑布流效果
-2.我们利用UIScrollView的代理方法让3个UITableView的偏移量都等于
-UIScrollView的偏移量实现联动
-3.最好做法：一个cell超过屏幕,我们不要release,而是回收到复用队列,创建cell首先去
-复用队列去取,如果没有我们在创建
-*/
-
 #指针：
 定义：变量的地址(唯一标识一块内存的索引)；
 int a;//a变量名、&a变量地址
@@ -326,7 +315,6 @@ for(MusicInformation *newMusic in [MusicManager sharedIntance].selectMusics) {
 */
 http://hao.jobbole.com/magicalrecord
 
-
 //隐藏NavigationBar
 [self.navigationController setNavigationBarHidden:YES animated:YES];
 //跳转：隐藏TabBar
@@ -398,14 +386,6 @@ Person *p = [[Person alloc]init];
 Model类必须是单例：全局都可能使用这个Model；
 VC需要网络请求，可以委托(PostStore类)来进行网络请求；
 PostStore类网络请求完成，需要告诉VC网络请求操作完成；
-
-#瀑布流：
-//实现原理：
-我们利用多个UITableView联动就可以实现瀑布流效果：调用UIScrollView的代理方法
-让多个UITableView的偏移量都等于UIScrollView的偏移量实现联动，当一个cell超过屏
-幕，我们不要release，而是回收到复用队列，然后在创建cell的时候首先去复用队列中
-取，如果没有我们在创建。
-//代码：见WaterFall
 
 #像素和点之间的转换：效果图上标注的怎么转换？
 https://blog.csdn.net/ridxmc/article/details/51346472
@@ -658,64 +638,6 @@ https://blog.csdn.net/u010960265/article/details/80563668
 https://blog.csdn.net/wujakf/article/details/80223046
 //iPad项目开发总结
 https://www.jianshu.com/p/522c8993572b
-/******************************实战操作******************************/
-#svn：开源的集中式版本控制工具(trunk/branches/tags)
-官网：https://subversion.apache.org/
-客户端：SmartSVN、CornerStone
-安装：NO
-在mac环境下，自带svn服务端和客户端功能，只需要做简单配置；
-svn help //查看svn所有命令
-cd+工程目录 //进入工程目录
-svn checkout 服务器地址 --username=xwj --password==xwj123456 //将服务器代码完整的下载到本地
-------------------------------------------------------------
-svn status //查看文件状态
-' ' 没有修改
-'A' 被添加到本地代码仓库
-'C' 冲突
-'D' 被删除
-'I' 被忽略
-'M' 被修改
-'R' 被替换
-'X' 外部定义创建的版本目录
-'?' 文件没有被添加到本地版本库内,不在SVN的管理之下
-'!' 文件丢失或者不完整(不识别该文件)
-'~' 受控文件被其他文件阻隔
-'U' 更新最新的代码到本地(本地有文件的情况下)
-'G' 产生冲突后,更新操作去解决冲突,相当于进行合并
-------------------------------------------------------------
-svn add * //添加文件
-svn commit -m "本地修改说明" //将本地修改的内容提交到服务器
-svn update //将服务器最新代码更新到本地
-svn remove person.h  //删除svn版本管理控制的person.h文件
-//版本回退：
-1.本地版本回退
-svn update -r7 //回退到第7个版本：查看是否是需要的版本
-svn update //更新到最新版本
-svn merge -r7:6 person.h //person.h回退到第6个版本
-2.服务器版本回退
-svn update
-//查看版本信息
-svn update //更新
-svn log //查看某个文件的日志
-//遇到冲突
-mc(mine side) //保留自己的修改，放弃别人的修改
-tc(their side) //保留别人的修改，放弃自己的修改
-p(post pone) //延迟解决冲突：展示所有冲突的文件，手动解决冲突
-svn resolved 文件名 //解决了某个文件的冲突：必须写
-//svn地址重定向：
-cd ./workspace
-/*
-10.5.154.237 上次svn的地址
-10.5.154.142 本次svn的地址
-sally 你的用户名
-sallyssecret 你的密码
-*/
-svn switch --relocate svn://10.5.154.237 svn://10.5.154.142 --username sally --password secret
-//svn恢复
-svn revert . -R
-注意：1.本地版本号<服务器版本号->则不允许提交；
-2.如果使⽤静态库需要特别注意：必须使⽤命令⾏将静态库添加到svn的管理之下；svn add xxx.a
-https://my.oschina.net/joanfen/blog/194491#0-qzone-1-42949-d020d2d2a4e8d1a374a433f596ad1440
 
 #git：开源的分布式版本控制工具(master/branches/tags)
 开发者：Linux操作系统的作者Linus Torvalds；
@@ -810,8 +732,6 @@ https://segmentfault.com/a/1190000011428874
 #pod package CLGO.podspec --force --no-mangle --verbose //含.a的打包
 http://www.jianshu.com/p/605350a7b1dd
 /******************************补充知识点******************************/
-#PCH文件：参考Res/项目中常见的文件(PCH)
-
 #正则表达式：
 代码：NewNetworkViewController.h/m
 搜索NSRegularExpression
@@ -2084,9 +2004,6 @@ Xcode7.0以后：NSAppTransportSecurity->NSAllowsArbitraryLoads->YES
 8 因为有复用机制，所以当设置观察者之前，需要将之前的观察者删除掉
 9 ViewController和DetailViewController不应该传输数据，所以，当前被选中的PostInfo，需要放到Model当中([PostList sharedInstance].selectedPost)，设置好之后，再进入下一级页面
 
-MacVim脚本：将GET请求的URL，使用OC的方式，做成字典
-%s/[?&]\([^=]*\)=\([^&]*\)/[dict setValue:@"\2" forKey:@"\1"];^M/g
-
 1.项目的技术要点/功能模块实现/项目中的难点有哪些，怎么解决的/项目中有哪些你不满意的地方/如果现在让你做，你可以怎么做？/做过最得意的是什么项目/
 2.关于版本控制系统：一般可以讲svn/git就行/优缺点/怎么使用/具体命令行又什么区别和作用？
 3.你通常用什么数据格式与服务端交互：json/xml|json、xml解析方式的底层是如何处理的？
@@ -2242,14 +2159,9 @@ UITableView调用reloadData()会发生什么问题？
 1.NSCache和数据持久化使用场景有什么区别？
 2.常用的数据持久化方法有哪些？各自有什么利弊？
 
-//正则表达式
-
 // 数据库开发：sql语句/连表查询
 例1.有两张表，用户表(Z_User)和黑名单表(Z_Blackuser)，userid是Z_User的
 主键，Z_BlackUser的外键。现在需要查询用户表中不在黑名单表中的数据，请写出sql语句。
-
-开发中做的事情：软件编码/单元测试/技术难点
-面向对象的编程思想
 
 是否参与过GitHubiOS开源项目?
 请描述一下你的iOS应用开发流程？
@@ -2306,21 +2218,11 @@ Xcode支持在一个工程里面新建多个项目
 2.链表
 3.哈希表
 
-//重点
-1.多线程/数据库/网络编程
-
 //网络相关方面
 1.有没有用过socket、一般怎么使用？如果预防socket丢包？
 
 //加密算法
 1.MD5-概念、应用场景、
-
-//相关网址
-https://blog.csdn.net/leaf8742/article/details/50960827
-
-//附加
-1.访问Stack Overflow
-2.开源类库、代码片段；//命名规范、最佳实践和设计模式
 
 ###趣味问答
 //这一块最好需要有人帮你总结：因为你感觉很自豪的事情在别人看来就是很垃圾！！！
@@ -2364,14 +2266,10 @@ App中哪些需要存放在本机|App中的缓存机制
 
 如果是数组就是dateList
 
-如果是字典就是DateModel
+如果是字典就是DateModel/DateInfo
 
 safeArea // 这是什么意思
 constrain to magins //没有作用：为了plus/iPhone X布局尽量到中间
-
-对于swift:我们对所有的view都需要lazy
-
-对于oc:我们也可以lazy
 
 对于cell 我们一般不需要把model传进去 再传出来 我们一般是把cell传出来 然后通过cell拿到indexPath 再通过indexPath拿到model
 
@@ -2451,12 +2349,6 @@ NSNotFound
 int和NSInteger都是基本数据类型、一般OC使用NSInteger代替int/Swift使用Int、然后需要放在字典中的话：需要包装：@(NSInteger)
 
 自定义UI：如果你希望整个UI都可以点击：可以直接在整个UI上面添加touch方法
-
-Xcode中有：打开"Main Thread Checker"可以判断线程是否使用合理
-
-swift中：如果是String = ""
-如果是类：一般会怎么样？？
-一般会声明+实现
 
 给对象赋值不需要初始化
 
@@ -2566,7 +2458,7 @@ command + D   //收藏书签
 发版本...把1，2，3，4合并到发版分支->新建v3.3.x发版本分支
 
 cell因为是复用的、所以cell有if/就必须有else
-不让做不到让数据->驱动->UI
+不然做不到让数据驱动UI
 
 国际化：文字的国际化、图片的国际化
 
@@ -2726,14 +2618,6 @@ a的地址是一样的，但意思不一样
 a是数组首地址，也就是a[0]的地址， a是对象（数组）首地址，
 a+1是数组下一元素的地址，即a[1] a+1是下一个对象的地址，即a[5].
 
-2. 以下为WindowsNT下的32位C++程序，请计算sizeof的值
-void Func ( char str[100]){
-sizeof( str ) =?
-}
-void *p = malloc( 100 );
-sizeof ( p ) = ?
-这题 很常见了Func (char str[100])函数中数组名作为函数形参时，在函数体内，数组名遗失了本身的内在，仅仅只是一个指针；在遗失其内在的同时，它还遗失了其常量特性，可以作自增、自减等操作，可以被修改。Windows NT 32位平台下，指针的长度（占用内存的大小）为4字节，故sizeof( str )、sizeof ( p ) 都为4。
-
 10.为什么标准头文件都有类似以下的布局？
 #ifndef__INCvxWorksh
 #define__INCvxWorksh
@@ -2809,30 +2693,8 @@ resources: 包含应用程序中的非代码文件(因为应用程序只能在�
 Frameworks:特殊的库，可以存放库、框架、图像、声音等资源；
 Products：包含项目在编译时生成的应用程序(xxx.app);
 
-11.看下面的程序,第一个NSLog会输出什么？这时str的retainCount是多少？第二个和第三个呢？ 为什么？
-01.=======================================================
-02.NSMutableArray* ary = [[NSMutableArray array] retain];
-03.NSString *str = [NSString stringWithFormat:@"test"];
-04.[strretain];
-05.[aryaddObject:str];
-06.NSLog(@"%@%d",str,[str retainCount]);
-07.[strretain];
-08.[strrelease];
-09.[strrelease];
-10.NSLog(@"%@%d",str,[str retainCount]);
-11.[aryremoveAllObjects];
-12.NSLog(@"%@%d",str,[str retainCount]);
-13.=======================================================
-str的retainCount创建+1，retain+1，加入数组自动+1
-3
-retain+1，release-1，release-1
-2
-数组删除所有对象，所有数组内的对象自动-1
-1
-
 12. Object C中创建线程的方法是什么？如果在主线程中执行代码，方法是什么？如果想延时执行代码、方法又是什么？
 
-  
 //// 使用 copy 外部修改了字符串不会影响内部
 //// copy 会判断字符串是不可变字符串还是可变字符串
 //// 不可变字符串直接赋值
@@ -2840,7 +2702,7 @@ retain+1，release-1，release-1
 //@property (copy, nonatomic) NSString *name;
 
     技术
-1。WWDC是什么？你关注过哪些？
+1.WWDC是什么？你关注过哪些？
 7.数据保存怎么实现？
 8.block和gcd的并发执行
 9.app的优化,你用什么工具去优化一个qpp,例如,例如一个页面,万一崩了,你用什么工具去查内存之类的状态
@@ -2952,9 +2814,6 @@ Singleton 了，用的越多对水平就越表示怀疑。对设计模式自信�
 一样，很是憋屈;还有非常屌屌的，明明不懂仍然强行据理力争，镇得住面试官也罢，撞枪 口上就别怪不客气了 。决定要不要一个人基本上聊 5 分钟就可以确定了， 喜欢水到渠成 的感觉，看对眼了挡都挡不住。
 招聘告一段落， 后面将会有更精彩的事情发生。 最后， 再次感谢大家的支持和对我的信 任。
 
-
-
-
 谈谈你对代理设计模式的理解?
 25、 谈谈你对 Socket 的理解? TCP 和 UDP 协议有什么区别
 26、 你常用的数据存储方式有哪些?
@@ -2966,9 +2825,7 @@ Singleton 了，用的越多对水平就越表示怀疑。对设计模式自信�
 
 6. NSNotification和KVO的区别和用法是什么？什么时候应该使用通知，什么时候应该使用KVO，它们的实现上有什么区别吗？如果用protocol和delegate（或者delegate的Array）来实现类似的功能可能吗？如果可能，会有什么潜在的问题？如果不能，为什么？
 
-
 7.什么是安全释放？
- 
  
 12.委托是什么？委托的property声明用什么属性？为什么？
  
@@ -2998,7 +2855,6 @@ Singleton 了，用的越多对水平就越表示怀疑。对设计模式自信�
  
 31.UIscrollVew用到了什么设计模式？还能再foundation库中找到类似的吗？
  
-
 3. OC中 SEL是什么，有什么作用?
 4. 如何在 OC的字典或数组中存取一个基本数据类型的值?如何把字典或数组中的
   值转换成基本数据类型的值?
@@ -3008,10 +2864,7 @@ Singleton 了，用的越多对水平就越表示怀疑。对设计模式自信�
 程中使用非 ARC的类和开源框架?
 10.简要说明下 OC的延展和分类的作用和区别 11.OC中多线程的实现方式有哪些?如何实现在一个异步线程中使用一个定时器? 12. 请例举常用的网络请求开源框架、 JSON解析开源框架、 UI 开源框架。
 14. 请列举出你所知道的设计模式及各种设计模式的特点。
-  
-CoreAnimation
-CoreGraphics
-
+ 
 1.iOS 平台怎么做数据持久化(本地保存)，请列举至少 4 种方法。
 2. 什么情况使用 weak 关键字， weak和 assign 的区别是什么?
 3.@synthesize 和@dynamic分别有什么作用?
@@ -3029,19 +2882,11 @@ CoreGraphics
 
 3. SDWebImage的原理以及实现机制。如何解决 卡的问题
 
-微信及支付宝支付的流程是?
-
-3 期学员面试经验 以下是我面试过程中记录下来的重点的面试及笔试题， 算是我对千锋的一点点感
-恩致谢，在此感谢恩师的栽培。
 总结了一下:新浪微博爱问 UI ，数据缓存应用方面的实现，腾讯爱问原理，坑 爹的百度就喜欢拿算法来得瑟。
-面试制胜之招: 1.原理性的知识，必须背下来，代码不需要会写，没人要求写原理、底层的
-代码 (这是一个空子，可以钻 )
-2.链表操作，排序算法最好是能默写 3.面试始终保持平静，冷静，镇静，面试再刁难也要保持端坐，面带一丝微
-笑
-4.对喜欢的公司最好能表现出对加入目标公司的渴望，对技术的追求 5.加分的地方:对简历上的项目很熟悉，技术点都有所研究，包括封装，细
-节实现;最好能把 MJExtension 框架多敲几遍，包装成自己开发的工具(显示自 己大神的威力)
+面试制胜之招: 1.原理性的知识，必须背下来，代码不需要会写，没人要求写原理、底层的代码 (这是一个空子，可以钻 )
+2.链表操作，排序算法最好是能默写 3.面试始终保持平静，冷静，镇静，面试再刁难也要保持端坐，面带一丝微笑
+4.对喜欢的公司最好能表现出对加入目标公司的渴望，对技术的追求 5.加分的地方:对简历上的项目很熟悉，技术点都有所研究，包括封装，细节实现;最好能把 MJExtension 框架多敲几遍，包装成自己开发的工具(显示自 己大神的威力)
 工作建议:没人查个人背景 (这点不用太担心， 大不了重新找 );上班后勤勉工作， 最好不要泡在 QQ 上，不懂赶紧问，别拖延时间，转正期也是适应期多，花点时 间在工作上，工作态度非常非常重要。
-
 
 7.请简述 KVO 内部的实现，使用条件 --- 新浪微博
 8.请用代码描述错误消息处理 ---腾讯，百度 9.消息转发内部原理(结构指针，方法选择器， forwarding... 一串破玩意儿) -- 百度
@@ -3061,7 +2906,7 @@ CoreGraphics
 5.实现 memmove 算法(金山网络)
 6.求 1+2+3+...+n 要求不能使用除法、 for、while、if、else、switch、case等关 键字以及条件判断语句 (A?B:C)(金山网络)
 7.判断一个 IP的有效性(百度)
-/////////////////////////////////////////////////////////////////////////////////////
+
 1、 简述你对 UIView、UIWindow 和 CALayer的理解
 2、 写一个完整的代理，包括声明，实现
 3、 分析 json、xml 的区别? json、xml 解析方式的底
@@ -3146,7 +2991,6 @@ const int * const a;
         
  Cocoa中常用多线程实现？多线程安全问题解决方案？什么地方用到多线程？ 另外面试过程中还会问及C语言内存管理，和asihttp请求中断处理？
 
-
 4.XML有哪些解析方式，有何优缺点？XML解析有哪些解析技术，区别是什么？
 12.IphoneOS有没有垃圾回收?
 13.什么是Notification模式？
@@ -3167,10 +3011,6 @@ TCP协议和UDP协议的区别
 3，TCP协议保证数据顺序，UDP协议不保证
 4，TCP协议保证数据正确性，UDP协议可能丢包
 5，TCP协议对系统资源要求多，UDP协议要求少
-
-
-
-
 特点：
 支持客户/服务器模式
 简单快速
@@ -3178,34 +3018,19 @@ TCP协议和UDP协议的区别
 无连接
 无状态
 
-
-json和xml解析
-
-json解析更快一些 json解析采用哈希查找
-json数据格式  字典
-
-xml采用树形查找
-xml数据格式  数组
-
-
 流媒体  流媒体技术也称流式媒体技术。所谓流媒体技术就是把连续的影像和声音信息经过压缩处理后放上网站服务器，让用户一边下载一边观看、收听，而不需要等整个压缩文件下载到自己的计算机上才可以看到的网络传输技术。
    该技术先在使用者端的计算机上创建一个缓冲区，在播放前预先下一段数据作为缓冲
   
 多线程：
-
 Grand Central Dispatch或者GCD，是一套低层API
-
 GCD有点像NSOperationQueue，他们都允许程序将任务切分为多个单一任务然后提交至工作队列来并发地或者串行地执行
-GCD比之NSOpertionQueue更底层更高效，并且它不是Cocoa框架的一部分/Users/jerry/Downloads/MapKit-LBS项目-FindMe.pdf
-/Users/jerry/Downloads/额外视频.tar.gz
-
+GCD比之NSOpertionQueue更底层更高效，并且它不是Cocoa框架的一部分
 GCD比之thread跟简单易用。由于GCD基于work unit而非像thread那样基于运算
 
 GCD中有三种队列类型：
 The main queue：主队列
 The main queue：全局队列即并发队列
 用户队列：是用函数 dispatch_queue_create 创建的队列
-
 
 第一题：service有时会被自动回收，你如何解决。
 第二题：listview网络获取图片时会发生错位，如何解决。
@@ -3216,7 +3041,6 @@ The main queue：全局队列即并发队列
 第七题: Tabhost的生命周期
 第八题: 敲一遍数据库操作 和 http连接网络
 第九题: 图片如何加载不会发生内存的溢出,你对内存回收机制了解吗
-
 
 一、微博登录时第一次授权之后，下次登录时就不需要授权了 为什么
 二、项目需要连接网络时用的是系统的 还是第三方的？
@@ -3400,7 +3224,6 @@ iphone 的标准推荐CFNetwork C库编程.但是编程比较烦躁。在其它O
    [aStr release];
 
 6.     什么是工厂
-
 8.     为什么要异步下载图片
 9.     xml如何解析
 10. json如何解析
