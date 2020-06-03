@@ -7,10 +7,11 @@ AutoLogin - 自动登录
 Analysis - 分析
 Access - 访问
 Alert - 警告
-// B
+
+### B
 Bean - xxx
 Domain - xxx
-Model - xxx
+Model - 模型
 Item - 实体类
 Button - 按钮
 Bluetooth - 蓝牙
@@ -18,53 +19,167 @@ Back - 返回
 Bool - 布尔类型
 Begin - 开始
 
+### C
+Code - 代码
+Content - 内容
+Common - 公共的
+CheckBox - 复选框
+Component - 组件
+Category - 类别
+Chart - 图表
+Comment - 评论
+Calendar - 日历
+Custom - 自定义
+Cache - 缓存
+Coupon - 优惠券
+Create - 建立
+Constant - 常量
 
-还没有整理？？？
-// C
-Code代码/Content内容/Common公共的/CheckBox复选框/Component组件/Category类别/Chart图表
-Comment评论/Calendar日历/Custom自定义/Cache缓存/Coupon优惠券/Create建立/Constant - 常量
-// D
-Dialog对话框/Demo样品/演示/Debug调试/Destroy销毁/Delete删除/detected被检查到/察觉
-// E
-End结束/Finish结束/Engine发动机/Embedded嵌入/Exit退出/Exchange交换/Extension延展
-// F
-Fail失败/Flag标志/Footer页脚/Framework框架/Focus关注/Follow跟随
-// G
-Game游戏/Gesture手势
-// H
-Header头部/HotFix热修复
-// I
-Init初始化/Image图像/Icon图标/Intent意图/Item单项/Index索引/Insert插入/Inhibit阻止/􏶉􏲆􏲈􏰓􏱳􏰖􏰕􏱃􏲆􏰔􏰓􏶉􏲆􏲈􏰓􏱳􏰖􏰕􏱃􏲆􏰔􏰓Inheritance继承
-// J
-// K
-KeyWord关键字/KeyBoard键盘
-// L
-Libs库/Login登录/Logout登出/Loading加载/Layout布局/Link链接/Least最少的/Log输出/Loop循环
-// M
-Mobile手机/MVC/MVVM/MVP架构/Material材料/Menu菜单/MapView地图视图/Media媒体/Message(Msg)信息
-Modify修改
-// N
-NetWork网络/Notification通知
-// O
-Other其他的
-// P
-Pay支付/PassWord密码/PlugIn插件/Proxy代理/Page页面/Press按压/Permission许可/Performance性能
-// Q
-QRCoder二维码
-// R
-Result结果/Router路由/Report举报/remove - 移除/review - 回顾/检查/复审
-// S
-Start开始/Source资源/Splash闪屏/Success成功/Super父类/SortByXxx按xxx排序/Summary总结
-Security安全性/Storage存储/Space空间/ScreenShot截图/Should允许/Search搜索/Score分数/
-Statistic/Stat统计
-// T
-Table表格/Tag标签/Test测试/Time时间/Task任务/Toast提示框/Tool工具/Temp/Tmp临时/Theme主题
-// U
-Update更新/UserName用户名/Utils工具
-// V
-Video视频/View视图/version - 版本
-// W
-WebView网络视图/WebSite网站/WidGet小装置/Wear穿戴
-// X
-// Y
-// Z
+### D
+Dialog - 对话框
+Demo - 样品/演示
+Debug - 调试
+Destroy - 销毁
+Delete - 删除
+Detected - 被检查到/察觉
+
+### E
+End - 结束
+Finish - 结束
+Engine - 发动机
+Embedded - 嵌入
+Exit - 退出
+Exchange - 交换
+Extension - 延展
+
+### F
+Fail - 失败
+Flag - 标志
+Footer - 页脚
+Framework - 框架
+Focus - 关注
+Follow - 跟随
+
+### G
+Game - 游戏
+Gesture - 手势
+
+### H
+Header - 头部
+HotFix - 热修复
+
+### I
+Init - 初始化
+Image - 图像
+Icon - 图标
+Intent - 意图
+Item - 单项
+Index - 索引
+Insert - 插入
+Inhibit - 阻止
+Inheritance - 继承
+
+### J
+
+### K
+KeyWord - 关键字
+KeyBoard - 键盘
+
+### L
+Libs - 库
+Login - 登录
+Logout - 登出
+Loading - 加载
+Layout - 布局
+Link - 链接
+Least - 最少的
+Log - 输出
+Loop - 循环
+
+### M
+Mobile - 手机
+MVC/MVVM/MVP架构
+Material - 材料
+Menu - 菜单
+MapView - 地图视图
+Media - 媒体
+Message(Msg) - 信息
+Modify - 修改
+Manual - 手动/说明书
+
+### N
+NetWork - 网络
+Notification - 通知
+
+### O
+Other - 其他的
+
+### P
+Pay - 支付
+PassWord - 密码
+PlugIn - 插件
+Proxy - 代理
+Page - 页面
+Press - 按压
+Permission - 许可
+Performance - 性能
+
+### Q
+QRCoder - 二维码
+
+### R
+Result - 结果
+Router - 路由
+Report - 举报
+remove - 移除
+review - 回顾/检查/复审
+
+### S
+Start - 开始
+Source - 资源
+Splash - 闪屏
+Success - 成功
+Super - 父类
+SortByXxx - 按xxx排序
+Summary - 总结
+Security - 安全性
+Storage - 存储
+Space - 空间
+ScreenShot - 截图
+Should - 允许
+Search - 搜索
+Score - 分数
+Statistic/Stat - 统计
+
+### T
+Table - 表格
+Tag - 标签
+Test - 测试
+Time - 时间
+Task - 任务
+Toast - 提示框
+Tool - 工具
+Temp/Tmp - 临时
+Theme - 主题
+
+### U
+Update - 更新
+UserName - 用户名
+Utils - 工具
+
+### V
+Video - 视频
+View - 视图
+Version - 版本
+
+### W
+WebView - 网络视图
+WebSite - 网站
+WidGet - 小装置
+Wear - 穿戴
+
+### X
+
+### Y
+
+### Z

@@ -54,6 +54,7 @@ flutter:
   #   - images/a_dot_ham.jpeg
   # 将资源文件配置到这里
   assets:
+  # 这里只需要声明一个就行
   - images/dm_main_logo.png
 
   # An image asset can refer to one or more resolution-specific "variants", see

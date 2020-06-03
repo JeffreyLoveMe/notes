@@ -49,25 +49,54 @@
 // flutter create -i swift -a kotlin xxx
 // 5>.将项目导入到AS
 // 将flutter项目导入AS中会引导AS安装flutter插件/Dart插件
+// 6>.flutter run - 运行项目
+// 7>.flutter run -d 'iphone X' - 利用
 
 // flutter项目文件
 /*
- * dream_flutter
+ * dream_flutter - projectName
  * .dart_tool - 工具包
  * .idea - 环境配置
- * android - 安卓包
+ * android - 安卓包工程文件
  * build - xxx
- * ios - iOS包
- * lib - 主要工程目录
- * test - 测试事例
+ * ios - iOS包工程文件
+ * lib - 主要工程目录（dart源文件）/可以包含其他资源文件
+ * test - 测试相关文件
  * .gitignore - 忽略文件
  * .metadata - 元信息
  * .packages - 包信息
  * donewflutter.iml - xxx
  * pubspec.lock - xxx
- * pubspec.yaml - 当前项目的信息（很重要）
+ * pubspec.yaml - 项目依赖配置文件（很重要）
  * README.md - xxx
  */
+
+// flutter中怎么归档资源文件
+// 1>.Android中将resources/assets区别对待/iOS中将images和assets区别对待
+// 2>.flutter中认为所有的资源都会被作为assets对待
+// 3>.flutter中的assets文件夹可以是任意文件夹（只要在pubspec.yaml中声明）
+/*
+assets:
+- myAssets/logo.png
+*/
+// 注意 - 项目中怎么使用该图片？？？
+
+// flutter中如何处理不同分辨率 - 与iOS一致遵循一个简单的基于像素密度的格式
+
+// flutter中如何添加项目所需依赖
+// 1>.在Android中可以使用Gradle文件来添加依赖项/在iOS中通常把依赖项添加到Podfile中
+// 2>.flutter使用dart构建系统和pub包管理器来处理依赖
+/*
+dependencies:
+  flutter:
+    sdk: flutter
+    google_sign_in: ^3.0.3
+*/
+/*
+注意：
+1.虽然flutter项目中的Android文件夹下有一个Gradle文件，但是只有在添加平台相关所需要的依赖关系时才使用这些文件。否则应该使用pubspec.yaml来声明用于flutter的外部依赖项
+2.如果flutter项目中的iOS文件夹下有Podfile文件，但是只有在添加平台相关所需要的依赖关系时才使用这些文件。否则应该使用pubspec.yaml来声明用于flutter的外部依赖项
+*/
 
 // dart语言简介
 // 1>.dart语言是一个由Google开发的通用编程语言。后来被Ecma（Ecma-408）批准为标准。用于构建web/服务器/桌面和移动应用
@@ -139,10 +168,15 @@
 //   runApp(MyApp());
 // }
 
+// flutter中状态管理
+// 1>.什么是状态state -构建widget时可以同步读取的信息/在widget生命周期中可以更改的信息
+// 2>.怎么管理状态 - 利用statefulWidget
+// 
+
 // // 新建一个类 - 类名首字母大写
 // /*
-//  * StatelessWidget - 死控件/不会随数据动态改变
-//  * StatefulWidget - 活控件/会随数据动态改变
+//  * StatelessWidget - 死控件/不会随数据动态改变/无状态
+//  * StatefulWidget - 活控件/会随数据动态改变/有状态
 //  */
 // class MyApp extends StatelessWidget {
 //   // 万物皆Widget
@@ -271,6 +305,10 @@ void main() => runApp(MyApp(
   items: new List<String>.generate(1000, (index) => 'Item $index')
 ));
 
+/*
+StatelessWidget - 适用于当我们描述的用户界面不依赖于对象中的配置信息/无状态的widget
+StatefulWidget - 动态更新UI/具有state对象存储状态数据并将其传递到树重建中
+*/
 class MyApp extends StatelessWidget {
 
   // 1.声明一个List
@@ -343,6 +381,11 @@ class MyApp extends StatelessWidget {
     //   ),
     // );
 
+    /*
+    * 命令式UI - 手动构建全功能UI实体，然后在UI更改时使用方法对其进行变更/在旧的上进行修改
+    * 声明式UI - widget会在自身上触发重建并构建一个新的widget子树/生成新的
+    * */
+    // widget具有不同性 - 每当widget状态发生改变的时候就会创建一个新的widget
     return MaterialApp(
       title: 'text widget',
       // home的含义？？？
@@ -510,6 +553,10 @@ class MyApp extends StatelessWidget {
         // 布局
         // 1>.水平布局 - Row
         // body: new Row(
+        //   // 主轴对齐方法
+        //   mainAxisAlignment: MainAxisAlignment.center,
+        //   // 副轴对齐方法
+        //   crossAxisAlignment: CrossAxisAlignment.end,
         //   children: <Widget>[
         //     // 灵活的布局
         //     Expanded(child: new RaisedButton(
@@ -624,6 +671,10 @@ class SecondScreen extends StatelessWidget {
   // 接收参数
   final String productId;
   // 构造函数 - 这是什么写法？？？
+  /*
+  * @required - 表示参数是必选的
+  * : super(key:key) - 表示调用父类
+  * */
   SecondScreen({Key key, @required this.productId}): super(key:key);
 
   @override
