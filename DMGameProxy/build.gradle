@@ -1,13 +1,30 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
-
+/**
+ * 1>.一个project(DMGameProxy)可以有多个Module(app)/一个project(DMGameProxy)可以开发多个互不相关的App
+ * // 可以在gradle\wrapper\gradle-wrapper.properties文件中查看当前项目构建代码使用的版本
+ * // 如果使用copy别人项目需要下载很多东西可以修改gradle版本
+ * .gradle - 包含gradle工具的各个版本
+ * .idea - 包含了开发环境所需要的各种环境
+ * app/libs - 存放.jar文件
+ * app/src - 存放资源文件
+ * app/.gitgnore - 忽略文件
+ * app/build.gradle - Module(app)通用的配置信息/该文件只对Module(app)有效
+ * gradlew.bat - windows下的批处理文件
+ * DMGameproxy.iml - 保存这个模块的相关信息
+ * local.properties - Android SDK所在的路径
+ * setting.gradle - 初始化过程中被执行
+ */
+// module - 莫就儿
 buildscript {
     
     repositories {
         google()
+        // jcenter引用
         jcenter()
         
     }
     dependencies {
+        // 声明Gradle编译插件
         classpath 'com.android.tools.build:gradle:4.0.0'
         
 

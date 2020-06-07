@@ -6,6 +6,26 @@
  * 4>.计算机软件 - 系统软件（DOS/Windows/Linux/Mac）/应用软件（QQ/微信）
  */
 
+/**
+ * 2.标识符 - 以"字母、_"开头只能包含'字母、_、数字、$'的字符串
+ * 1>.包/文件夹 - cn.itcast.com/全部小写
+ * 2>.类和接口 - HelloWorld/首字母大写、驼峰命名
+ * 4>.方法和变量 - studyStudent/首字母小写、驼峰命名
+ * 4>.常量 - GET_MAX/全部大写、下划线分割单词
+ * */
+
+/**
+ * 3.常见的Linux命令
+ * 1>.dir + 目录 -> 当前目录下的子文件和子目录
+ * 2>.cd + 目录 -> 进入指定目录
+ * 3>.cd.. -> 退回到上一级目录
+ * 4>.cls -> 清屏
+ * 5>.exit -> 退出DOS命令行
+ * 6>.md + 目录 -> 创建目录
+ * 7>.rd + 目录 -> 删除目录
+ * 8>.del -> 删除文件
+ */
+
 package com.example.dmgameproxy;
 
 import androidx.appcompat.app.AppCompatActivity;

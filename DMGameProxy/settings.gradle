@@ -1,2 +1,4 @@
 rootProject.name='DMGameProxy'
+// 描述DMGameProxy/build.gradle文件影响了哪些module
 include ':app'
+//include ':app', ':dreamSDK'
