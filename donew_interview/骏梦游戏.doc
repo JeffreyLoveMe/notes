@@ -1,0 +1,21 @@
+一、工作任务
+// 进行中
+1.适配SceneDelegate.h/m(Objective-C/swift版本)
+2.废弃LaunchImage/适配LaunchScreen.storyboard
+3.探索四种App内购类型的区别
+4.部署GNJOYSDK
+5.调研自动化打包/jenkins
+6.整体测试DMSDK/修复DMSDK发现的错误/检查plist相关逻辑/检查iOS对接文档 - 重要
+7.梳理GNJOYSDK的UI样式/相关逻辑 - 重要
+// 延误
+1.复习"真机测试、打包、testFight、内购、Ad"
+2.多语言翻译资源（与需求方沟通）
+// 完成
+1.删除DMSDK中未使用的IDFA（防止影响上线AppStore）
+2.完善DMSDK支付下单逻辑
+3.梳理整个SDK的流程图（自我测试bug）
+4.梳理整个SDK的流程图（与需求方对照）
+5.总结初始化接口需要哪些参数
+6.调研获取IDFA以后对上架的影响
+7.写SDK接入文档（自己按照文档接入一遍）
+8.测试验证“3DES加密”

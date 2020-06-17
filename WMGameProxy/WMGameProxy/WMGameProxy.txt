@@ -242,9 +242,6 @@ AFNetWorking、SDWebImage、MJRefresh、SnapKit
 社会化分享
 极光推送
 “原生”与“js交互”
-微信SDK - x
-支付宝SDK - x
-内购
 LBS - x
 iOS动画 - x
 */
@@ -253,7 +250,6 @@ iOS动画 - x
 多语言
 二维码
 通讯录
-内购
 分享
 第三方登录
 支付

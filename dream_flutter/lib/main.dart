@@ -43,7 +43,7 @@
 // 注意点
 // 1>.shift + command + p - 打开控制器面板
 // 2>.运行flutter项目之前可以使用“flutter doctor”命令行检测一下
-// 3>.？？？怎么升级flutterSDK？？？flutter upgrade
+// 3>.？？？怎么升级flutterSDK？？？1.终端输入flutter upgrade/2.直接下载flutterSDK覆盖
 // Using Flutter in China - https://flutter.dev/community/china
 // 4>.VSCode新建项目命令
 // flutter create -i swift -a kotlin xxx
