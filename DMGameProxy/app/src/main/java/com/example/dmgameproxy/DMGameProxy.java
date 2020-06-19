@@ -164,16 +164,78 @@ class DMGameProxy {
         if (b11) {
             System.out.println("true");
         }
+        /**
+         * 注意点：
+         * 1.在定义long/float类型变量的时候需要加上L/f
+         * 2.整数默认类型是int/浮点数默认类型是double
+         * 3.byte/short在定义的时候接收的实际上是一个int类型（如果不在它们的范围就会报错）
+         * 4.关于自动类型提升 - byte/short/char -> int -> long -> float -> double
+         *
+         */
         /// 2>.引用数据类型
         // 类 - class
         // 接口 - interface
         // 数组 - []
 
+        // 11.变量 - 可以改变的量
+        // 1>.作用域 - xxx
+        // 1.声明的同时赋值
+        int c1 = 10;
+        c1 = 20;
+        System.out.println(c1);
+        // 2.声明之后再赋值
+        int c2;
+        c2 = 10;
+        // 变量在使用之前必须赋值
+        System.out.println(c2);
+        // 3.一条语言可以声明无数个变量/使用变量之前赋值即可
+        int c3, c4, c5;
+        c3 = 10;
+        c4 = 20;
+        c5 = 30;
+        System.out.println(c3);
+        System.out.println(c4);
+        System.out.println(c5);
+
+        // 12.类型转换
+        int d1 = 100;
+        byte d2 = 50;
+        // 1>.自动类型提升 - 隐式转换
+        // byte -> int/小类型自动提升到大类型
+        d1 = d1 + d2;
+        System.out.println(d1);
+        // int不能直接赋值给byte
+        // 计算机运算都是以'补码'的形式进行
+        /**
+         * int类型占4个字节 - 在内存中如果位数不够需要在前面补0
+         * 123 - 00000000/00000000/00000000/01111011
+         * 如果转成byte类型占1个字节 - 在内存中会将前面的0去掉///01111011
+         */
+        // 2>.强制类型转换 - 可能会损失精度
+        d2 = (byte) (d1 + d2);
+        System.out.println(d2);
+        // 3>.面试题
+        // 声明为byte类型
+        byte e1, e2, e3;
+        // byte -> int
+        e1 = 3;
+        // byte -> int
+        e2 = 4;
+//        // 报错 - byte = int + int
+//        e3 = e1 + e2;
+        // byte -> int
+        // 常量优化机制 - 编译的时候直接将常量相加的结果算出来赋值/等同于'e3 = 7';
+        e3 = 3 + 4;
+        System.out.println(e1);
+        System.out.println(e2);
+        System.out.println(e3);
+
+        // 13.运算符
+        
 
 
 
 
-        // 变量 - 可以改变的量
 
 
 
@@ -206,5 +268,9 @@ class DMGameProxy {
 
 
 
+
+
+
+        
     }
 }

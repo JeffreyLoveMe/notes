@@ -19,3 +19,105 @@
 6.调研获取IDFA以后对上架的影响
 7.写SDK接入文档（自己按照文档接入一遍）
 8.测试验证“3DES加密”
+
+二、工作备忘
+1.安卓网络请求 - Retrofit+Rxjava
+
+//java技术栈
+开发环境git jdk maven idea
+数据库mysql sqlserver redis
+框架springboot spring springmvc mybatis
+常用中间件Elasticsearch rabbitMQ
+工具navicat xshell
+
+// 关于屏幕旋转
+<key>UISupportedInterfaceOrientations</key>
+	<array>
+		<string>UIInterfaceOrientationPortrait</string>
+		<string>UIInterfaceOrientationPortraitUpsideDown</string>
+		<string>UIInterfaceOrientationLandscapeLeft</string>
+		<string>UIInterfaceOrientationLandscapeRight</string>
+	</array>
+<key>UISupportedInterfaceOrientations~ipad</key>
+	<array>
+		<string>UIInterfaceOrientationPortrait</string>
+		<string>UIInterfaceOrientationPortraitUpsideDown</string>
+		<string>UIInterfaceOrientationLandscapeLeft</string>
+		<string>UIInterfaceOrientationLandscapeRight</string>
+	</array>
+
+//命令行打包
+$ xcodebuild -help
+$ xcodebuild -list
+$ cd /Users/xiewujun/Desktop/gitlab/dmsdk_ios_oversea/DMGame
+$ xcodebuild clean -project DMGame.xcodeproj -scheme DMGame
+$ xcodebuild build -project DMGame.xcodeproj -scheme DMGame
+$ xcodebuild archive -project DMGame.xcodeproj -scheme DMGame -archivePath ~/Downloads/DMGame.xcarchive
+$ xcodebuild -exportArchive -archivePath ~/Downloads/DMGame.xcarchive -exportPath ~/Downloads -exportOptionsPlist ~/Downloads/ExportOptions.plist
+
+三、问题查阅
+1.sdk实现静态库 - https://www.jianshu.com/p/d772d6780956
+2.iOS简述性能优化 - https://www.jianshu.com/p/7bbf4c496b0f
+3.git常用命令大全 - https://mbd.baidu.com/newspage/data/landingshare?context=%7B%22nid%22%3A%22news_9141352227381227975%22%2C%22sourceFrom%22%3A%22bjh%22%7D
+4.sdk多语言 - https://www.jianshu.com/p/793e8fb00b7e
+5.sdk开发 - https://www.jianshu.com/p/dd8d1b7ce1e4
+6.iOS内购(iap)总结 - https://www.jianshu.com/p/8c958e75f98f
+7.ipa上传成功后App Store后台没有出现构建版本问题 - https://blog.csdn.net/qtb58/article/details/103310571
+8.iOS各种证书作用、有效期、过期处理 - https://www.jianshu.com/p/95ca850e7ece
+9.jenkins打包 - https://www.jianshu.com/p/91baa66b6c06
+10.iOS腾讯面试题 - https://www.jianshu.com/p/bfba8eb64f3f
+11.微信登录配置Universal Link - https://www.jianshu.com/p/d29547d308f3
+https://blog.csdn.net/Loving_iOS/article/details/103933896
+http://www.zyiz.net/tech/detail-99945.html
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+四、任职公司
+辽宁工程技术大学/2012/08 - 2016/07/计算机科学与技术专业
+上海淘米网络科技有限公司/2015/12 - 2016/05/9000
+上海畅梦移动网络科技有限公司/2016/05 - 2018/10/11000
+上海砸立电子商务有限公司/2018/11 - 2020/03/18000
+上海骏梦网络科技有限公司/2020/04 - 至今/20000
