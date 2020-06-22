@@ -13,7 +13,7 @@
  1>.建议学习时间：
  上午 9:00-12:00 | 下午 14:00-18:00 | 晚上 19:30-21:30 | 最晚不能超过凌晨两点
  2>.学习内容：
- 基础班( 1个月 )：C语言 | Objective-C |
+ 基础班( 1个月 )：C语言 | Objective-C
  就业班( 4个月 )：iOS开发 ｜ swift语言 | HTML | React Native
  3>.学习方法：
  1).专心听讲：注重听懂、理解
@@ -30,7 +30,7 @@
  4).什么是操作系统 - 直接运行在硬件上的最基本的系统软件，其他软件必须依赖操作系统才能运行
  5).iOS(基于UNIX、不开源、AppStore)/Android(基于Linux的虚拟机、开源、GooglePlay)
  2>.准备：
- 1).编程语言 - swift > Objective-C > C语言 > C++
+ 1).编程语言 - C语言 > Objective-C > swift/C++
  2).开发工具 - Xcode
  3).电脑系统 - MacOS
  4).真机设备 - iphone/ipad

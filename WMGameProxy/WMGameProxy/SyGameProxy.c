@@ -103,10 +103,14 @@ int getMax(int m, int n);
 
 /**
  3.关键字
- 1>.定义：被C语言赋予特殊含义的单词
+ 1>.定义：被C语言赋予特殊含义的单词/严格区分大小写
  2>.特征：全部小写/在Xcode中显示不同的颜色/一共32个/不能做为标识符
  3>.分类：流程控制关键字+数据类型关键字/unsigned、signed
- goto //保留关键字
+ // goto - 保留关键字
+ auto double int struct break else long switch
+ case enum register typedef char extern return
+ union const float short unsigned continue for
+ signed void default goto sizeof volatile do if while static
  */
 
 /**
@@ -125,7 +129,7 @@ int getMax(int m, int n);
  */
 
 ///**
-// 5.注释 - 不会参与编译/不会被翻译成0和1/可以用来查看代码段
+// 5.注释 - 不会参与编译/不会被翻译成0和1/可以用来查看代码段/可以写在任何地方
 // 1>.单行注释 - '// 单行注释 '
 // 2.多行注释 - '/*多行注释*/ '
 // 3.文档注释 - ‘ /**文档注释 @brief*/ ’
@@ -141,13 +145,16 @@ int getMax(int m, int n);
 /**
  6.数据类型 - 任何变量都有数据类型
  1>.静态数据 - 一般以文件的形式存储在硬盘/静态数据类型 -> 动态数据类型（从磁盘加载到内存）
- 2.动态数据 - 一般存储在内存中/访问速度快/动态数据类型 -> 静态数据类型（手机拍照）
+ 2.动态数据 - 动态产生的临时数据/一般存储在内存中/访问速度快/动态数据类型 -> 静态数据类型（手机拍照）
  3.计量单位 - 1B(Byte) = 8bit(10101010)/1KB = 1024B/1MB = 1024KB/1GB = 1024MB/1TB = 1024GB
- 4.分类 - 基本数据类型( short/int/long/char/float/double )/构造类型/指针类型/空类型
- 1).整型 - int/short2/int4/long8/unsigned无符号整数（正数）/signed有符号整数
- 2).浮点型 - 用来存放小数/ double/ float4/ double8
- 3).字符型 - 字符型变量/ 'A'对/ '12'错
+ 4.基本数据类型( short/int/long/char/float/double )
+ 1).整型 - 用来存放整数 - 默认是int /short占2个字节 /int占4个字节 /long占8个字节 /unsigned无符号整数（正数）/signed有符号整数
+ 2).浮点型 - 用来存放小数 - 默认是double /float占4个字节 /double占8个字节
+ 3).字符型 - 字符型变量 /'A'对 /'12'错
  4).字符串常量 - "ADC"
+ 5.构造类型 - 数组/结构体/枚举/共用体
+ 6.指针类型
+ 7.空类型Void
  */
 
 /**
@@ -157,12 +164,12 @@ int getMax(int m, int n);
  signed有符号整型/ unsigned无符号整型
  2>.实型常量(小数)
  float sum = 5.2f; //单精度
- double sum = 88.8; //双精度/默认情况
+ double sum = 88.8; //双精度 - 默认情况
  3>.字符型常量 - 普通字符/转义字符
  char sum = 'a' //''只能存放单个字符
  char sum = '13' //错误 - 13是由2个字符组成
  char name = '男' //错误写法 - 一个汉字占3个字节
- ps.1).'\n'虽然有两个字符组成，但是还是字符型常量
+ 1).'\n'虽然有两个字符组成，但是还是字符型常量
  2).转义字符 - 通常以 '\' 开头/ 有实际意义/ 终端看不到输出结果
  4.字符串常量 - "hello world"/"a"也是字符串常量
  ps.常量在内存中有存储空间吗？？？//常量存放在“常量区”
@@ -207,10 +214,10 @@ int getMax(int m, int n);
  float value = 3.1456
  printf("%5i",number); //"补3个空格"99
  printf("%-5i",number); //99"补3个空格"
- printf("%05i",number); //宽度不够补0、够了按照实际输出/宽度够直接显示/0表示补充0、5表示占5列
+ printf("%05i",number); //宽度不够补0、超出按照实际输出/宽度够直接显示/0表示补充0、5表示占5列
  printf("%.2f",value); //保留两位小数
- printf("%.*f",n,value); //保留n位小数
- //怎么计算有效位数？？？从第一位开始3.1415926
+ printf("%.*f",n,value); //！！！保留n位小数！！！
+ //怎么计算有效位数？？？从第一位开始 - 例如'3.1415926'从'3'开始
  2>.scanf()函数 / 输入函数/ 阻塞式函数/ 敲击\n告诉系统输入完毕/ 不能加文字性说明
  int number; //定义number接收数据
  printf("请输入一个数据：")
@@ -222,33 +229,35 @@ int getMax(int m, int n);
 
 /**
  10.运算符
- 1>.算术运算符：+|-|*|/|%  //参与运算的操作数类型和结果的类型必须一致
+ 1>.算术运算符：+|-|*|/|%  //！！！参与运算的操作数类型和结果的类型肯定一致！！！
  result = 1 + 3 + 6 * 5 / 3; //result = 14/优先级：*|/ > +|-
  result = -10 % 3; //result = -1/result正负性取决于左边的操作数/%只能用于整型
- 1).自动类型转换(隐式转化)/"大类型"->"小类型"/会损失精度
+ 1).自动类型转换(隐式转化)/"大类型"->"小类型"/可能会损失精度
  int num = 10.8; //int占4个字节/double占8个字节
  printf("number = %i\n", num); //number = 10
  2).强制类型转换(显式转化)：原表达式的值不变、强转以后结果改变
  int num = (int)10.8; // 有可能丢失精度
  3).自动类型提升：系统会将"小类型"->"大类型"/不会损失精度
- int result = 10+9.9; //只有相同类型的数据才可以运算：必须"自动类型提升"
+ int result = 10+9.9; //！！！只有相同类型的数据才可以运算：必须"自动类型提升"！！！
  2>.赋值运算符：=|+=|-=|*=|/=|%=/结合性 - 从右到左/优先级很低
  result = 5; result += 5; //result = 10
+ // 复合运算符优先级 < 算术运算符优先级
+ result += 5 + 3 + 5; <==> result = result + (5 + 3 + 5);
  3>.自增/自减运算符：
  int result = 5;
  int sum = result++; //先赋值、再result+1/result = 6/sum = 5
  int sum = ++result; //先result+1、再赋值/result = 6/sum = 6
- 4>.sizeof运算符：一个数据类型/常量/变量在内存中占有字节数/sizeof运算符不是一个函数
- int size = sizeof(10);=>int size = size 10; //()可以省略
- int x = 9.8; int size = sizeof(x);=>int size = sizeof x; //()可以省略
+ 4>.sizeof运算符：一个“数据类型/常量/变量”在内存中占有字节数/“sizeof运算符”不是一个函数
+ int size = sizeof(10); <==> int size = size 10; //()可以省略
+ int x = 9.8; int size = sizeof(x); <==> int size = sizeof x; //()可以省略
  int size = sizeof(float); //()不能省略
  5>.逗号运算符：
  // 一般很少使用 ','  获取表达式的结果/一般使用 ',' 连接多个表达式
- // ',' 连接多个表达式：类似于&&的含义
+ // ','连接多个表达式：类似于&&的含义
  if let count = array.count, let size = count + 1 {
      //整个 ',' 表达式的结果等于最后一个表达式的值
  }
- 6>.关系运算符：>|<|>=|<=|==|!=/C语言规定：非0即真、0为假
+ 6>.关系运算符：>|<|>=|<=|==|!=/C语言规定：非0即真、0为假/“>|<|>=|<=”优先级大于“==|!=”
  a = 10, b = 5; // "="/"=="的区别
  int result = a > b; // a>b吗？
  7>.逻辑运算符：&&、||、!/C语言规定所有的数值都有真假性/非0即真
@@ -256,7 +265,7 @@ int getMax(int m, int n);
  int sum = a || b; // 或
  int sum = !a; // 从右至左
  int result = 4 < 5 < 6  // 错误：(5 > 4) && (5 < 6)
- 1).&&/||会出现短路现象 - 只要前面的条件为假/真，后面的代码不再执行
+ 1).！！！&&/||会出现“短路现象” - 只要前面的条件为假/真，后面的代码不再执行！！！
  int x = 100; int result = (x > 200) && (++x == 0);   // x = 100
  int y = 100; int result = ( y < 200) || (++y == 0);  // y = 100
  8>.三目运算符:
@@ -290,10 +299,16 @@ int getMax(int m, int n);
  2>.switch语句：C语言中'条件表达式'的返回值只支持整数/switch的效率比if高/注意格式
  switch (条件表达式) {
  // case不能重复/不能放置变量/没有if灵活
- case 整数: {
+ case 整数0: {
      //执行代码
  }
      break; // 跳出当前case
+ case 整数1:
+ case 整数2:
+ case 整数3: {
+    //执行代码
+ }
+    break; // 跳出当前case
  // default可以随便放置/可以放置在上面/也可以放置在最底下/default永远都是最后执行
  default: {
      //执行代码

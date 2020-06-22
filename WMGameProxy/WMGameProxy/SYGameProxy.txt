@@ -4071,11 +4071,7 @@ OpenAL
 
     加号方法是类方法，用类名直接调用
     减号方法为实例方法，需要创建一个实例对象调用
-
-27. 建一个工程用到的最基本的两个框架是？
-
-     Foundation   UIKit
-
+    
 28，一个UITableview的实例，重新加载数据的方法是什么？
 
     reloadData  刷新整个表格  和 reloadSections:     withRowAnimation  刷新一组数据
