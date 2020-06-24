@@ -231,6 +231,16 @@ class DMGameProxy {
         System.out.println(e3);
 
         // 13.运算符
+        int f1 = 4;
+        int f2 = f1++;
+        int f3 = ++f1;
+        // 6 - 自身不管怎么样都会'+1/-1'
+        System.out.println(f1);
+        // 4 - 直接赋值
+        System.out.println(f2);
+        // 5 - '+1'再赋值
+        System.out.println(f3);
+
 
 
 

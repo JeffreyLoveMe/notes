@@ -386,6 +386,7 @@ class MyApp extends StatelessWidget {
     * 声明式UI - widget会在自身上触发重建并构建一个新的widget子树/生成新的
     * */
     // widget具有不同性 - 每当widget状态发生改变的时候就会创建一个新的widget
+    // https://www.jianshu.com/p/88c66747eec1
     return MaterialApp(
       title: 'text widget',
       // home的含义？？？

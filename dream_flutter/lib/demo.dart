@@ -12,28 +12,6 @@ import 'dart:collection';
 
 // shift + command + F --> 全局搜索
 class Demo {
-  // 标识符 - 与其他语言一致
-  // 以“字母/下划线”开头，只能包含“字母/下划线/数字/$”
-  // 严格区分大小写
-  String msg = 'msg是一个标识符';
-
-  // 语句结束符 - dart语言以';'结束
-
-  // 注释
-  // 单行注释
-  /*
-  多行注释
-   */
-
-  Demo() {
-    print('');
-  }
-
-  // 输出语句
-  void log() {
-    print('hello world');
-  }
-
   // 数据类型
   void numType() {
     // 一、数字类型 - 整数可以转换成双精度浮点数
