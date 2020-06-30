@@ -22,6 +22,8 @@ class Lego {
 
   // 5.数据类型
   void numType() {
+    // 1.数字类型
+
 
   }
 

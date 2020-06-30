@@ -12,12 +12,32 @@ import 'dart:collection';
 
 // shift + command + F --> 全局搜索
 class Demo {
+  // 标识符 - dart语言规定必须以'字母/下划线'开头，只能包含'字母/下划线/数字/$'
+  // 1>.严格区分大小写
+  // 2>.标识符的定义与'其他语言'默认保持一致
+  var msg = 'msg是一个标识符';
+
+  // 语句结束
+  // 1>.dart语言规定语句必须以';'结束
+  var a1 = 10;
+//  // 报错 - 必须以';'结束
+//  var a2 = 5
+
+  // 注释 - dart语言'注释'分为两种
+  // 1>.'// 单行注释'
+  // 2>./* 多行注释 */
+
+  // 输出语句
+  void log() {
+    print('hello world');
+  }
+
   // 数据类型
   void numType() {
     // 一、数字类型 - 整数可以转换成双精度浮点数
     int a = 1; // int - 表示任意大小的整数
     double b = 2.00; // double - 表示小数
-    num sum = 0.01;  // num - 表示int/double的父类
+    num sum = 0.01; // num - 表示int/double的父类
     // int s = 0.1;  // 不要把小数分配给整数（会抛出异常）
     print(sum);
 
@@ -26,11 +46,11 @@ class Demo {
     String c = '这是一个字符串';
     String d = '这也是一个字符串';
     // 虽然字符串不可变但是可以操作字符串返回新的字符串
-    String c1 = c.trim();  // 删除字符串前后的空格
+    String c1 = c.trim(); // 删除字符串前后的空格
     List list = c1.split(','); // 分割字符串返回List
-    c.substring(1, 5);  // 分割字符串(包含1，包含5？？？)
-    c1.toLowerCase();  // 将字符串全部小写
-    c1.toUpperCase();  // 将字符串全部大写
+    c.substring(1, 5); // 分割字符串(包含1，包含5？？？)
+    c1.toLowerCase(); // 将字符串全部小写
+    c1.toUpperCase(); // 将字符串全部大写
     print(list);
     // 1>.字符串 -> 数字
     int e = int.parse(c);
@@ -40,10 +60,10 @@ class Demo {
     String h = b.toString();
     String numString = sum.toString();
     // 3>.拼接字符串/万能拼接'${xxx}'
-    String h1 = '${2+2}';   // ${表达式}
-    String i = '${'wy'}';  // 万能拼接
+    String h1 = '${2 + 2}'; // ${表达式}
+    String i = '${'wy'}'; // 万能拼接
     String j = '$h1$i$e$f$g$h$numString'; // 如果是拼接标识符可以省略'{}'
-    String k = i + j;  // 如果是两个字符串拼接可以直接使用‘+’
+    String k = i + j; // 如果是两个字符串拼接可以直接使用‘+’
     // 4>.创建多行语句
     String l = '''
     你好，
@@ -72,31 +92,31 @@ class Demo {
     listName[2] = 3;
     // 2>.可增长列表 - 默认没有指定长度/长度能在运行时更改
     // 创建一个空List
-    var listM = new List();  
+    var listM = new List();
     listM.add(1);
     listM.first;
     // 创建一个有值List
-    var firstList = [1, 2, 3]; 
+    var firstList = [1, 2, 3];
     firstList.length; // List长度
     if (firstList.length > 1) {
       var _ = firstList[1]; // 获取List第2个元素
-      firstList.add(1);     // 添加元素
-      firstList.first;     // 返回第一个元素
+      firstList.add(1); // 添加元素
+      firstList.first; // 返回第一个元素
       if (firstList.isEmpty) {
         print('firstList是空的');
       }
       firstList.removeLast(); // 删除最后一个元素
-      firstList.removeAt(2);   // 删除第3个元素
-      firstList.reversed;  // List逆序
+      firstList.removeAt(2); // 删除第3个元素
+      firstList.reversed; // List逆序
     }
 
     // 五、集合Set - 无序
     // 集合元素不能相同？？？
     var oneSet = {'123', '1234', '1235'}; // 创建非空Set不需要指定类型
-    var emptySet = <String>{};  // 创建空Set需要指定类型
+    var emptySet = <String>{}; // 创建空Set需要指定类型
     oneSet.length; // 获取集合长度
     emptySet.add('12345'); // 添加元素
-    oneSet.addAll(emptySet);  // 将emptySet中的元素添加到set中（不是把emptySet添加到set中）
+    oneSet.addAll(emptySet); // 将emptySet中的元素添加到set中（不是把emptySet添加到set中）
     // 遍历集合
     oneSet.forEach((element) {
       print('$element');
@@ -116,16 +136,12 @@ class Demo {
     // dart语言中规定 - 映射中的键值对都可以是任何类型
     // 映射可以在运行时增长和缩小
     // 1>.第一种创建方式
-    var gifts = {
-      'key1':'value1',
-      'key2':'value2',
-      'key3':'value3'
-    };
+    var gifts = {'key1': 'value1', 'key2': 'value2', 'key3': 'value3'};
     // 获取映射中的value
     assert(gifts['key1'] == 'value1');
     // 获取映射中的value，如果获取不到直接返回null
     assert(gifts['key4'] == null);
-    gifts.length;  // 返回映射中键值对的个数
+    gifts.length; // 返回映射中键值对的个数
     // 2>.第二种创建方式
     // 创建赋值 - 不推荐使用
     var giftMaps = Map();
@@ -134,17 +150,13 @@ class Demo {
     giftMaps['key3'] = 'value3';
     // 修改
     giftMaps['key1'] = 'value11'; // 修改Map
-    giftMaps['key4'] = 'value4';  // 添加map
-    giftMaps.keys;   // 返回所有的key
+    giftMaps['key4'] = 'value4'; // 添加map
+    giftMaps.keys; // 返回所有的key
     giftMaps.values; // 返回所有的value
     giftMaps.length; // 返回map的长度
     giftMaps.clear(); // 删除map中所有的键值对
     // 3>.新建常量映射
-    final map = const {
-      1: 'value1',
-      2: 'value2',
-      3: 'value3'
-    };
+    final map = const {1: 'value1', 2: 'value2', 3: 'value3'};
     print(map);
     // 4>.遍历映射
     giftMaps.forEach((key, value) {
@@ -183,7 +195,7 @@ class Demo {
 
     // 动态任意类型/声明的变量类型可以改变/编译的时候不检查类型
     // 类似oc种的id类型
-    dynamic height = '180'; 
+    dynamic height = '180';
     // height = 170; // 编译不报错/运行报错 - 编译的时候不检查类型
 
     // 使用默认类型
@@ -221,7 +233,7 @@ class Demo {
     print(square);
     // 3>.相同的const常量不会在内存中重复存储
     // 4>.const修饰的不可变性是可以传递的（子类会继承）
-    var list1 = const [1, 2, 3];  // list1数组可以修改/list1[x]元素不能修改
+    var list1 = const [1, 2, 3]; // list1数组可以修改/list1[x]元素不能修改
     const list2 = const [1, 2, 3]; // list1数组不能修改/list1[x]元素不能修改
     final list3 = const [1, 2, 3]; // list1数组不能修改/list1[x]元素不能修改
     print('$list1$list2$list3');
@@ -239,31 +251,25 @@ class Demo {
     result = (m1 ~/ m2); // 取整 - 实际上就是商
     int sum = 2;
     String s = sum as String; // as表示’类型转换‘
-    assert(sum is int);  // is代表‘是否是’
+    assert(sum is int); // is代表‘是否是’
     // ? - 可选类型
     // ?? - 与swift一致
     String msg;
-    print(msg?.length); 
+    print(msg?.length);
     print('$result/$s');
 
     // 2>.条件语句
     if (m1 > m2) {
-      
-    } else {
-
-    }
+    } else {}
     switch (m1) {
-      case 1: {
-
-      }
+      case 1:
+        {}
         break;
-      case 2: {
-
-      }
+      case 2:
+        {}
         break;
-      default: {
-
-      }
+      default:
+        {}
     }
     // 3>.循环语句
     for (var i = 0; i < 1000; i++) {
@@ -273,12 +279,8 @@ class Demo {
     for (var item in list) {
       print(item);
     }
-    while (m1 < m2) {
-      
-    }
-    do {
-      
-    } while (m1 < m2);
+    while (m1 < m2) {}
+    do {} while (m1 < m2);
   }
 
   // 函数 - 可读/可维护/可重用代码的代码块
@@ -288,19 +290,23 @@ class Demo {
     int result = a + b + c;
     print(result);
   }
+
   // 2>.可选位置参数 - ？？？
   int disSum(int a, [int b, int c]) {
     return a + b + c;
   }
+
   // 3>.可选命名参数 - 命名参数就是选填参数
   // 命名参数最好给默认值
   int disClick(int a, {int b = 1, int c = 1}) {
     return a + b + c;
   }
+
   // 4>.带有默认值的可选函数 - 命名参数最好给默认值
   int disDefault(int a, [int b = 1, int c = 2]) {
     return a + b + c;
   }
+
   // 5>.递归函数hans
   // 6>.Lambda函数 - 函数块只有一条语句
   void single() => print('Lambda函数');
@@ -325,16 +331,16 @@ class Demo {
     void sLogger(String func(string)) {
       func('1');
     }
-    sLogger(mName);
-    void state(String func()) {
 
-    }
+    sLogger(mName);
+    void state(String func()) {}
     state(sName);
 
     // 函数别名/闭包 - 返回一个函数/函数也是一个对象
     Function makeAdd(int a, int b) {
       return (int y) => a + y;
     }
+
     // 接收一个函数
     var addFunc = makeAdd(10, 12);
     // 打印结果
@@ -345,17 +351,20 @@ class Demo {
   void loginType() {
     var type = enumName.codeLoginType;
     switch (type) {
-      case enumName.normalLoginType: {
-        print('普通登录');
-      }
+      case enumName.normalLoginType:
+        {
+          print('普通登录');
+        }
         break;
-      case enumName.phoneLoginType: {
-        print('手机登录');
-      }
+      case enumName.phoneLoginType:
+        {
+          print('手机登录');
+        }
         break;
-      case enumName.codeLoginType: {
-        print('验证码登录');
-      }
+      case enumName.codeLoginType:
+        {
+          print('验证码登录');
+        }
         break;
     }
 
@@ -391,9 +400,7 @@ class Demo {
   4.pub help - 将提供所有pub命名帮助
    */
   // 下载第三方库：先在pubspec.yaml中写上需要下载的第三方库 -> 然后选中pubspec.yaml -> 最后Get Packages
-  void disXml() {
-    
-  }
+  void disXml() {}
 
   // 3.异常处理 - 在执行程序期间出现问题
   // 特点 - 发生异常时程序的正常流程中断，程序会异常中止
@@ -419,6 +426,7 @@ class Demo {
       // 可选 - 总是会执行这里
     }
   }
+
   // 2.抛出异常
   void testAge(int age) {
     if (age < 0) {
@@ -438,11 +446,7 @@ class CustomException implements Exception {
 
 // 枚举 - 特殊的类，通常用来表示相同类型的一组常量
 // 枚举不能被继承，不能创建实例
-enum enumName {
-  normalLoginType,
-  phoneLoginType,
-  codeLoginType
-}
+enum enumName { normalLoginType, phoneLoginType, codeLoginType }
 
 // 类
 // dart是一门面向对象的语言 - 支持面向对象编程
@@ -460,14 +464,17 @@ class Test extends Demo {
     _method = 'wy';
     print(_method);
   }
+
   // setter方法
   set testName(String name) {
     this.name = name;
   }
+
   // getter方法
   String get testName {
     return this.name;
   }
+
   // 构造函数
   // // 1>.普通构造函数
   // Test() {
@@ -480,7 +487,7 @@ class Test extends Demo {
   }
   // 3>.调用超类的构造函数
   // 使用“:”可以调用超类的构造方法
-  Test(): super() {
+  Test() : super() {
     print('');
   }
   // 使用这些方法
@@ -499,6 +506,7 @@ class Test extends Demo {
     // 4.调用静态函数
     Test.disTest();
   }
+
   // 静态函数 - 需要类名调用
   static void disTest() {
     // 状态 - 描述对象

@@ -399,6 +399,29 @@ class DMGameProxy {
         }
 
         // 18.循环语句
+        // 1>.for循环 - 条件为真开始循环
+        for (int index = 0; index <= 10; index++) {
+            System.out.println("hello world");
+        }
+        // 2>.while语句
+        int h1 = 0;  // 初始化语句
+        while (h1 <= 10) { // 条件语句 - 条件为真开始循环
+            System.out.println("hello world");
+            h1++; // 控制语句
+        }
+        // 3>.do...while语句
+        do {
+            System.out.println("hello world");
+            h1++; // 控制语句
+        } while (h1 <= 10); // 条件语句 - 条件为真开始循环
+
+
+
+
+
+
+
+
 
 
 
