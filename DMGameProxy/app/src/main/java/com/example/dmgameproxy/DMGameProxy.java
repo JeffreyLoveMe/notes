@@ -414,57 +414,70 @@ class DMGameProxy {
             System.out.println("hello world");
             h1++; // 控制语句
         } while (h1 <= 10); // 条件语句 - 条件为真开始循环
+//        // 4>.死循环
+//        while (true) {
+//
+//        }
+//        // ！！！java对于永远无法执行到的语句会报错！！！
+//        for (;;) {
+//
+//        }
+        // 5>.循环嵌套
+        // 外层循环 - 决定行数
+        for (int i = 0; i < 5; i++) {
+            // 内层循环 - 决定列数
+            // i = 0/1/2/3/4分别会执行一次该循环
+            for (int j = 0; j < 4; j++) {
+                // 打印自动换行
+                System.out.println("*");
+                // 打印不会自动换行
+                System.out.print("*");
+                // 跳出循环
+                break;
+            }
+            if (i == 4) {
+                // 用于返回并结束方法
+                return;
+            }
+            // 终止本次循环，继续下次循环
+            continue;
+        }
+        // 标号':' - 合法的标识符/可以跳出指定的循环
+        a: for (int i = 0; i < 5; i++) {
+            b: for (int j = 0; j < 4; j++) {
+                if (j == 3) {
+                    // 跳出外层循环 - 可以用于'循环语句'和'switch语句'
+                    break a;
+                }
+                // 跳出内层循环 - 只能用于'循环语句'
+                break b;
+            }
+        }
+        // 面试题
+        System.out.println("hello world");
+        http://www.baidu.com    // "http:"表示一个标号 / "//www.baidu.com"代表注释
+        System.out.println("大家好"); // 最终输出"hello world"/"大家好"，不会访问百度
+    }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    // 19.方法
+    /*
+    1>.方法格式
+    // 修饰符 - public/protected/private/static
+    // 返回值类型 - 数据类型
+    // 方法名 - 标识符
+    // 参数类型 - 数据类型
+    // 参数名1 - 标识符
+    // 函数体 - java语句
+    // 返回值 - 与"返回值类型"保持一致
+    修饰符 返回值类型 方法名(参数类型 参数名1, 参数类型 参数名2...) {
+        // 函数体
+        return 返回值;
+    }
+    */
+    public static void sendMsg(int phoneNum, String name) {
 
     }
+
+
+
 }
