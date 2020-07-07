@@ -457,6 +457,75 @@ class DMGameProxy {
         System.out.println("hello world");
         http://www.baidu.com    // "http:"表示一个标号 / "//www.baidu.com"代表注释
         System.out.println("大家好"); // 最终输出"hello world"/"大家好"，不会访问百度
+
+        // 20.数组 - 存储同一种数据类型多个元素的集合
+        // 1>.数组定义 - 有两种定义方式（此处定义完成数组中是没有元素的）
+        // 数据类型[] 数组名 - 推荐使用
+        int[] mList;
+        // 数据类型 数组名[]
+        String sList[];
+        // 2>.数组初始化 - 为数组中的元素分配内存空间，并为数组每个元素赋值
+        // 一、java中的数组必须先初始化才可以使用
+        // 二、动态初始化 - 只指定数组长度，由系统为数组分配初始值
+        // new - 关键字/用于创建对象
+        // 5 - 代表数组长度
+        int[] array1 = new int[5];
+        array1[0] = 1;
+        array1[1] = 2;
+        array1[2] = 3;
+        array1[3] = 4;
+        array1[4] = 5;
+//        array1[5] = 6; // 报错 - 数组越界
+        // 三、静态初始化 - 指定每个数组元素的初始化值，根据"值的个数"决定数组长度
+        // 不用指定数组长度/数组长度 == 3
+        int[] array2 = new int[]{1, 2, 3};
+//        // 数组越界异常 - java.lang.ArrayIndexOutOfBoundsException
+//        System.out.println(array1[4]);
+//        // 空指针异常 - java.lang.NullPointerException
+//        array1 = null;
+//        System.out.println(array1[0]);
+        int[] array3 = {1, 2, 3};
+        /*
+        int[] list;
+        list = new int[]{1, 2, 4}; // 可以
+        list = {1, 2, 3}; // 报错
+         */
+        /*
+        1.动态初始化 - 在内存中开辟连续的5个空间
+        2.内存分区
+        堆 - 存放对象
+        栈 - 存储局部变量（定义在'方法上/形参'和'方法中'的变量）
+        方法区 - xxx
+        本地方法区 - xxx
+        寄存器 - xxx
+        */
+        // 当没有'任何引用'指向'堆内存的对象'的时候该对象变成垃圾，'jvm的垃圾回收机制'会在不定时对其进行回收
+        int[] array4 = new int[5];
+        // 3>.数组的遍历
+        int[] array5 = new int[]{1, 2, 3, 4, 5};
+        // 第一种方式
+        // array5.length - 数组长度
+        for (int i = 0; i < array5.length; i++) {
+            System.out.println(array5[i]);
+        }
+        // 第二种方式
+        for (int bean:
+             array5) {
+            System.out.println(bean);
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
     }
 
     // 19.方法
@@ -474,10 +543,21 @@ class DMGameProxy {
         return 返回值;
     }
     */
+    // 方法必须调用才会执行
+    // java不支持嵌套定义
     public static void sendMsg(int phoneNum, String name) {
-
+        sum(1, 2);
     }
-
-
-
+    // 2>.方法重载 - java允许方法名称相同，参数列表不同/只看参数列表，不看返回值类型
+    public static int sum(int a, int b) {
+        return  a + b;
+    }
+    // 参数个数不同
+    public static int sum(int a, int b, int c) {
+        return a + b + c;
+    }
+    // 参数类型不同
+    public static double sum(int a, int b, double c) {
+        return a + b + c;
+    }
 }
