@@ -458,7 +458,7 @@ class DMGameProxy {
         http://www.baidu.com    // "http:"表示一个标号 / "//www.baidu.com"代表注释
         System.out.println("大家好"); // 最终输出"hello world"/"大家好"，不会访问百度
 
-        // 20.数组 - 存储同一种数据类型多个元素的集合
+        // 20.一维数组 - 存储同一种数据类型多个元素的集合
         // 1>.数组定义 - 有两种定义方式（此处定义完成数组中是没有元素的）
         // 数据类型[] 数组名 - 推荐使用
         int[] mList;
@@ -514,18 +514,20 @@ class DMGameProxy {
             System.out.println(bean);
         }
 
+        // 21.二维数组
+        /*
+        5 - 5个一维数组
+        3 - 每个一维数组中有三个元素
+         */
+        int[][] arrayList1 = new int[5][3]; // 推荐写法
+        System.out.println(arrayList1[0]); // 代表二维数组中第一个一维数组
+        System.out.println(arrayList1[1][2]); // 代表二维数组中第二个一维数组第三个元素
+        int[][] arrayList2 = {{1, 2, 3}, {1, 2, 3}, {1, 2, 3}}; // 简写
+        int[] arrayList3[] = new int[5][5]; // 不推荐写法
 
-
-
-
-
-
-
-
-
-
-
-
+        // java中到底是'传数值'还是'传指针'
+        // 1>.在java中'基本数据类型传数值'，'引用数据类型传指针'
+        // 2>.在java中'传数值'（因为指针也是值）
     }
 
     // 19.方法
@@ -561,3 +563,25 @@ class DMGameProxy {
         return a + b + c;
     }
 }
+
+// 22.面向对象
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

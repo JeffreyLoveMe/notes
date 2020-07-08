@@ -283,7 +283,6 @@ class Demo {
     do {} while (m1 < m2);
   }
 
-  // FIMXE - 复习到这里
   // 函数 - 可读/可维护/可重用代码的代码块
   // Function - 函数也是对象/函数也是对象/函数也是对象
   // 1>.普通函数
@@ -449,6 +448,7 @@ class CustomException implements Exception {
 // 枚举不能被继承，不能创建实例
 enum enumName { normalLoginType, phoneLoginType, codeLoginType }
 
+// FIXME - 复习到这里
 // 类
 // dart是一门面向对象的语言 - 支持面向对象编程
 // 声明一个类/dart不支持多继承/支持多重继承
