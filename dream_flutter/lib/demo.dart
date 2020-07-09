@@ -1,4 +1,24 @@
 // https://www.yiibai.com/dart/dart_programming_data_types.html
+
+// dart语言简介
+// 1>.dart语言是一个由Google开发的通用编程语言。后来被Ecma（Ecma-408）批准为标准。用于构建web/服务器/桌面和移动应用
+// 2>.dart语言是一种面向对象的，类定义的，垃圾回收语言。使用C样式语法可以随意地转换成js
+// 3>.dart语言支持接口/mixin/抽象类/具体化泛型/静态类型
+
+// dart语言特性
+// 1>.dart语言中一切（无论变量、数字、函数、null）皆对象，所有对象都是Object类的子类
+// 2>.dart语言是强类型语言（一旦确定类型就不可以改变变量类型，编译的时候会进行语法检查）/Dart语言允许弱类型语言式的编程
+// 3>.dart语言在运行前解析（指定数据类型和编译时常量）可以提高运行速度
+// 4>.dart语言的统一入口是main函数
+// 5>.dart语言的私有特性是在变量名或者函数名前面加上"_"
+// 6>.dart支持async/await异步处理
+
+// dart语言类型系统
+// 1>.dart语言是类型安全的（dart语言使用静态类型检查和动态类型检查以确保变量的值总是与变量的静态类型匹配）
+// 2>.dart语言中类型声明是可选的（因为会在编译时执行类型推导）
+// 3>.num/double/int/String/List/Set/bool/Map/Object/dymamic/Function(/Symbol/runes)
+// 4>.dart语言中所有的类型都是对象（都继承自Object类）/在dart语言中null类型也继承自Object类
+
 /*
 文件导入
 1>.import 'xxx' - 全部导入
@@ -448,7 +468,6 @@ class CustomException implements Exception {
 // 枚举不能被继承，不能创建实例
 enum enumName { normalLoginType, phoneLoginType, codeLoginType }
 
-// FIXME - 复习到这里
 // 类
 // dart是一门面向对象的语言 - 支持面向对象编程
 // 声明一个类/dart不支持多继承/支持多重继承

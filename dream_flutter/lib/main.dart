@@ -1,3 +1,4 @@
+// FIXME - 复习到这里
 // 跨平台解决方案
 // 1>.Web/Hybrid - 基于web相关技术来实现界面和功能/cordova
 // 2>.jsCore - 通过JsCore桥接调用原生服务/React Native/Weex
@@ -98,25 +99,6 @@ dependencies:
 2.如果flutter项目中的iOS文件夹下有Podfile文件，但是只有在添加平台相关所需要的依赖关系时才使用这些文件。否则应该使用pubspec.yaml来声明用于flutter的外部依赖项
 */
 
-// dart语言简介
-// 1>.dart语言是一个由Google开发的通用编程语言。后来被Ecma（Ecma-408）批准为标准。用于构建web/服务器/桌面和移动应用
-// 2>.dart语言是一种面向对象的，类定义的，垃圾回收语言。使用C样式语法可以随意地转换成js
-// 3>.dart语言支持接口/mixin/抽象类/具体化泛型/静态类型
-
-// dart语言概念
-// 1>.dart语言中一切（无论变量、数字、函数、null）皆对象，所有对象都是Object类的子类
-// 2>.dart语言是强类型语言（一旦确定类型就不可以改变变量类型，编译的时候会进行语法检查）/Dart语言允许弱类型语言式的编程
-// 3>.dart语言在运行前解析（指定数据类型和编译时常量）可以提高运行速度
-// 4>.dart语言的统一入口是main函数
-// 5>.dart语言的私有特性是在变量名或者函数名前面加上"_"
-// 6>.dart支持async/await异步处理
-
-// dart语言类型系统
-// 1>.dart语言是类型安全的（dart语言使用静态类型检查和动态类型检查以确保变量的值总是与变量的静态类型匹配）
-// 2>.dart语言中类型声明是可选的（因为会在编译时执行类型推导）
-// 3>.num/double/int/String/List/Set/bool/Map/Object/dymamic/Function(/Symbol/runes)
-// 4>.dart语言中所有的类型都是对象（都继承自Object类）/在dart语言中null类型也继承自Object类
-
 // flutter详情介绍
 // 1>.dart语法编译 - dart是一种强类型、跨平台的客户端开发语言。具有专门为客户端优化、高生产力、快速高效、可移植易学的风格
 // 2>.flutter插件 - dart语言无法直接调用Android系统提供的Java接口，需要使用flutter插件来实现中转
@@ -171,7 +153,7 @@ dependencies:
 // flutter中状态管理
 // 1>.什么是状态state -构建widget时可以同步读取的信息/在widget生命周期中可以更改的信息
 // 2>.怎么管理状态 - 利用statefulWidget
-// 
+//
 
 // // 新建一个类 - 类名首字母大写
 // /*
@@ -296,25 +278,22 @@ dependencies:
 // }
 /*自动生成代码end*/
 
-
 /*组件学习start*/
 // flutter一切皆Widget
-import 'package:flutter/material.dart';  // 引入库
+import 'package:flutter/material.dart'; // 引入库
 
-void main() => runApp(MyApp(
-  items: new List<String>.generate(1000, (index) => 'Item $index')
-));
+void main() => runApp(
+    MyApp(items: new List<String>.generate(1000, (index) => 'Item $index')));
 
 /*
 StatelessWidget - 适用于当我们描述的用户界面不依赖于对象中的配置信息/无状态的widget
 StatefulWidget - 动态更新UI/具有state对象存储状态数据并将其传递到树重建中
 */
 class MyApp extends StatelessWidget {
-
   // 1.声明一个List
   final List<String> items;
 
-  MyApp({Key key, @required this.items}): super(key: key);
+  MyApp({Key key, @required this.items}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -462,7 +441,7 @@ class MyApp extends StatelessWidget {
         //   //     BoxFit.cover - 按比例填满
         //   //     BoxFit.scaleDown - 不能改变原图大小
         //   //      */
-        //   //     fit: BoxFit.cover, 
+        //   //     fit: BoxFit.cover,
         //   //     // 图片混合颜色
         //   //     color: Colors.greenAccent,
         //   //     colorBlendMode: BlendMode.darken,
@@ -588,7 +567,7 @@ class MyApp extends StatelessWidget {
         // ),
 
         // // 2>.垂直布局 - Column
-        // body: Center( 
+        // body: Center(
         //   child: Column(
         //     // 对齐方法
         //     // 垂直布局 - 主轴就是垂直方法/副轴就是水平方法
@@ -614,10 +593,8 @@ class MyApp extends StatelessWidget {
 
         // 导航
         body: Center(
-          // 按钮
-          child: Button()
-        ),
-        
+            // 按钮
+            child: Button()),
       ),
     );
   }
@@ -642,7 +619,7 @@ class Button extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return RaisedButton(
-      onPressed: (){
+      onPressed: () {
         // 点击事件
         // // MaterialPageRoute - 路由组件
         // Navigator.push(context, MaterialPageRoute(
@@ -658,11 +635,9 @@ class Button extends StatelessWidget {
   _jumpSecondScreen(BuildContext context) async {
     // 获取方法的result
     final result = await Navigator.push(
-      context,
-      MaterialPageRoute(
-          builder: (contxt) => new SecondScreen(productId: '1234567890')
-      )
-    );
+        context,
+        MaterialPageRoute(
+            builder: (contxt) => new SecondScreen(productId: '1234567890')));
     // Toast
     Scaffold.of(context).showSnackBar(SnackBar(content: Text('$result')));
   }
@@ -676,7 +651,7 @@ class SecondScreen extends StatelessWidget {
   * @required - 表示参数是必选的
   * : super(key:key) - 表示调用父类
   * */
-  SecondScreen({Key key, @required this.productId}): super(key:key);
+  SecondScreen({Key key, @required this.productId}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -684,8 +659,8 @@ class SecondScreen extends StatelessWidget {
       home: Scaffold(
         appBar: AppBar(title: Text('商品详情页')),
         body: Center(
-          child: RaisedButton(
-          onPressed: (){
+            child: RaisedButton(
+          onPressed: () {
             // 点击事件
             // Navigator.pop(context);
             // 带参数回来
@@ -693,8 +668,7 @@ class SecondScreen extends StatelessWidget {
             print(this.productId);
           },
           child: Text('返回'),
-        )
-      ),
+        )),
       ),
     );
   }

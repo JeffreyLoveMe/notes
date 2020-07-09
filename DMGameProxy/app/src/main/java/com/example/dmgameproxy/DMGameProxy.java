@@ -493,9 +493,9 @@ class DMGameProxy {
         /*
         1.动态初始化 - 在内存中开辟连续的5个空间
         2.内存分区
-        堆 - 存放对象
+        堆 - 存放对象（每new一次就会在堆中新增一个新的对象/不会覆盖以前的对象）
         栈 - 存储局部变量（定义在'方法上/形参'和'方法中'的变量）
-        方法区 - xxx
+        方法区/代码区 - xxx.class(源代码)首先加载到方法区（只会加载一次）
         本地方法区 - xxx
         寄存器 - xxx
         */
@@ -528,6 +528,15 @@ class DMGameProxy {
         // java中到底是'传数值'还是'传指针'
         // 1>.在java中'基本数据类型传数值'，'引用数据类型传指针'
         // 2>.在java中'传数值'（因为指针也是值）
+
+        // 创建对象
+        Person p = new Person();  // 创建对象
+        p.name = "谢吴军";        // 属性赋值
+        p.age = 18;
+        p.speak(20);         // 调用方法
+        // 方法入参是对象
+        DMGameProxy d = new DMGameProxy();
+        p.run(d);
     }
 
     // 19.方法
@@ -565,6 +574,24 @@ class DMGameProxy {
 }
 
 // 22.面向对象
+class Person {
+    // 对象入堆 - 成员变量属于对象
+    String name;  // 定义在类中、方法外 - 成员变量/存在于堆中/有默认值/随着对象的创建而创建，随着对象的消失而消失
+    int age;
+
+    // 方法入栈 - 局部变量属于方法
+    public void speak(int x) {  // 定义在方法上 - 局部变量/存在于栈中/没有默认值，使用之前必须赋值/随着方法的调用而存在，随着方法的调用完毕而消失
+        int y = 0;              // 定义在方法内 - 局部变量/存在于栈中/没有默认值，使用之前必须赋值/随着方法的调用而存在，随着方法的调用完毕而消失
+        int age = 12;           // 成员变量和局部变量可以同名 - 就近原则
+
+        System.out.println(name + "今年" + age + "岁");
+        System.out.println(age);  // 输出12
+    }
+
+    public void run(DMGameProxy d) {
+        System.out.println("run");
+    }
+}
 
 
 
