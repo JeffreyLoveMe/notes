@@ -1,75 +1,77 @@
-// FIXME - 复习到这里
 // 跨平台解决方案
-// 1>.Web/Hybrid - 基于web相关技术来实现界面和功能/cordova
-// 2>.jsCore - 通过JsCore桥接调用原生服务/React Native/Weex
-// 3>.Native - 将某个语言编译成二进制文件，生成动态库/打包成apk&iap/flutter
+// 1>.Web/Hybrid - 基于web相关技术来实现界面和功能 - cordova
+// 2>.jsCore - 通过JsCore桥接调用原生服务 - React Native/Weex
+// 3>.Native - 将某个语言编译成二进制文件，生成动态库、打包成apk和iap - flutter
 
 // 选择flutter的原因
 // 1>.Web/Hybrid - UI性能差，功能性Api缺失
 // 2>.RN - UI性能一般，开发体验差
 // 3>.flutter - UI性能好，开发体验较好
 
-// 什么是flutter
+// flutter概述
 // 1>.概念 - flutter是google开发的移动UI框架。可以快速的在iOS/Android上构建高质量的原生用户界面
-// 2>.特点 - flutter可以与现有的代码一起工作/flutter是完全免费、开源的
+// 2>.特点 - flutter可以与现有的代码一起工作 ｜ flutter是完全免费、开源的
 // 3>.兼容 - iOS/Android/wp/web
+// 4>.组成 - Engine(C++) - Skia/Dart/Text ｜ Framework - Dart
 
-// flutter组成
-// 1>.Engine(C++) - Skia/Dart/Text
-// 2>.Framework - Dart
-
-/*
- 1.开发电脑选择：mac(windows不能开发iOS)
- 2.IDE选择：Android Studio > VsCode
- */
+// flutter详情
+// 1>.dart语法编译 - dart是一种强类型、跨平台的客户端开发语言。具有专门为客户端优化、高生产力、快速高效、可移植易学的风格
+// 2>.flutter插件 - dart语言无法直接调用Android系统提供的Java接口，需要使用flutter插件来实现中转
+// 3>.Skia（siQ）图像处理引擎 - 2005年问世/用于Chrome浏览器/2007年被移植到Android平台
+// 4>.开发电脑选择：mac(windows不能开发iOS)
+// 5>.IDE选择：Android Studio > VsCode
 
 // flutter环境搭建
 /*
- * 11.flutter环境准备
- * 1>.打开官网https://flutter.io
- * 2>.点击Docs->选择MacOS
- * 3>.下载flutterSDK（以后flutter升级直接可以用命令行）
- * 4>.将下载完成的flutterSDK放在某个位置（开始配置环境变量）
- 1.vim ~/.bash_profile
+ 一.flutter环境准备
+ 1>.打开官网https://flutter.io
+ 2>.点击Docs->点击Get Started->选择macOS
+ 3>.下载flutterSDK（以后flutter升级直接可以用命令行）
+ 4>.将下载完成的flutterSDK放在某个位置（例如 - /Applications/flutter）
+ 二、开始配置环境变量
+ 1>.vim ~/.bash_profile
+ 2>.写入一下语句
+ '''
  // 配置环境变量
  export PATH=/Applications/flutter/bin:$PATH
  // 针对国内用户 - 设置Flutter临时镜像（随时可以会换）
  export FLUTTER_STORAGE_BASE_URL=https://storage.flutter-io.cn
  export PUB_HOSTED_URL=https://pub.flutter-io.cn
- 2.source ~/.bash_profile
- 3.flutter doctor #检测flutter环境
- * 5>.在iOS上配置环境 - 下载Xcode/安装git/安装CocoaPods
- * 6>.Android Studio - Preferences - Plugins(下载Dart/Flutter)
+ '''
+ 3>.source ~/.bash_profile
+ 4>.flutter doctor #检测flutter环境
+ 5>.在iOS上配置环境 - 下载Xcode/安装git/安装CocoaPods
+ 6>.Android Studio - Preferences - Plugins(下载Dart插件/Flutter插件)
  */
 // 注意点
 // 1>.shift + command + p - 打开控制器面板
 // 2>.运行flutter项目之前可以使用“flutter doctor”命令行检测一下
 // 3>.？？？怎么升级flutterSDK？？？1.终端输入flutter upgrade/2.直接下载flutterSDK覆盖
-// Using Flutter in China - https://flutter.dev/community/china
-// 4>.VSCode新建项目命令
+// 4>.Using Flutter in China - https://flutter.dev/community/china
+// 5>.VSCode新建项目命令 - xxx是项目名称，必须小写
 // flutter create -i swift -a kotlin xxx
-// 5>.将项目导入到AS
-// 将flutter项目导入AS中会引导AS安装flutter插件/Dart插件
-// 6>.flutter run - 运行项目
-// 7>.flutter run -d 'iphone X' - 利用
+// 6>.将项目导入到AS
+// 将flutter项目导入AS中会自动引导AS安装Dart插件/Flutter插件
+// 7>.flutter run - 运行项目
+// 8>.flutter run -d 'iphone X' - 利用iphone X运行项目
 
 // flutter项目文件
 /*
  * dream_flutter - projectName
  * .dart_tool - 工具包
  * .idea - 环境配置
- * android - 安卓包工程文件
+ ** android - 安卓包工程文件
  * build - xxx
- * ios - iOS包工程文件
- * lib - 主要工程目录（dart源文件）/可以包含其他资源文件
+ ** ios - iOS包工程文件
+ ** lib - 主要工程目录（dart源文件）/可以包含其他资源文件
  * test - 测试相关文件
  * .gitignore - 忽略文件
  * .metadata - 元信息
  * .packages - 包信息
  * donewflutter.iml - xxx
  * pubspec.lock - xxx
- * pubspec.yaml - 项目依赖配置文件（很重要）
- * README.md - xxx
+ ** pubspec.yaml - 项目依赖配置文件（很重要）
+ * README.md - 相关介绍文档
  */
 
 // flutter中怎么归档资源文件
@@ -78,9 +80,13 @@
 // 3>.flutter中的assets文件夹可以是任意文件夹（只要在pubspec.yaml中声明）
 /*
 assets:
-- myAssets/logo.png
+# 这里只需要声明一个就行
+- images/dm_main_logo.png
 */
-// 注意 - 项目中怎么使用该图片？？？
+/*
+项目中怎么使用该图片
+new Image.asset(images/dm_main_logo.png);
+ */
 
 // flutter中如何处理不同分辨率 - 与iOS一致遵循一个简单的基于像素密度的格式
 
@@ -99,11 +105,7 @@ dependencies:
 2.如果flutter项目中的iOS文件夹下有Podfile文件，但是只有在添加平台相关所需要的依赖关系时才使用这些文件。否则应该使用pubspec.yaml来声明用于flutter的外部依赖项
 */
 
-// flutter详情介绍
-// 1>.dart语法编译 - dart是一种强类型、跨平台的客户端开发语言。具有专门为客户端优化、高生产力、快速高效、可移植易学的风格
-// 2>.flutter插件 - dart语言无法直接调用Android系统提供的Java接口，需要使用flutter插件来实现中转
-// 3>.Skia（siQ）图像处理引擎 - 2005年问世/用于Chrome浏览器/2007年被移植到Android平台
-
+// FIMXE - 复习到这里
 /*第一个程序start*/
 // import 'package:flutter/material.dart';  // 必须使用‘;’结尾
 

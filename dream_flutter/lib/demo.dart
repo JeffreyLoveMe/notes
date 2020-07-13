@@ -195,7 +195,7 @@ class Demo {
 
   // 变量 - 使用变量之前必须先声明变量
   // 变量存储对值的引用/dart语言支持类型检查
-  // 注意 - dart语言中一切皆对象/未初始化的变量默认为null/数字类型、布尔类型没有初始化都默认为null
+  // 注意 - dart语言���一切皆对象/未初始化的变量默认为null/数字类型、布尔类型没有初始化都默认为null
   /*
    * 问题 - var/Object/dynamic都可以声明变量，它们的区别是什么？
    * var - 如果没有初始化值可以变成任何类型/如果有初始化值声明的变量类型固定不能改变
@@ -469,7 +469,7 @@ class CustomException implements Exception {
 enum enumName { normalLoginType, phoneLoginType, codeLoginType }
 
 // 类
-// dart是一门面向对象的语言 - 支持面向对象编程
+// dart是一门面向��象的语言 - 支持面向对象编程
 // 声明一个类/dart不支持多继承/支持多重继承
 // 继承 - 子类可以继承父类除构造函数以外的所有属性和函数
 // dart支持方法重写
@@ -553,3 +553,5 @@ class BackMassage implements Massage {
     print('背部按摩');
   }
 }
+
+// FIXME - 异步操作
