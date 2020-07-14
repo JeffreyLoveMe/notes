@@ -532,11 +532,24 @@ class DMGameProxy {
         // 创建对象
         Person p = new Person();  // 创建对象
         p.name = "谢吴军";        // 属性赋值
-        p.age = 18;
+        p.setAge(18);            // setter方法
+        System.out.println(p.getAge()); // getter方法
         p.speak(20);         // 调用方法
         // 方法入参是对象
         DMGameProxy d = new DMGameProxy();
         p.run(d);
+
+        // 23.匿名对象 - 没有名称的对象/只是节省了代码
+        // 1>.p1就是对象的名字/不是匿名对象
+        Person p1 = new Person();
+        p1.speak(18);
+        // 2>.匿名对象可以调用属性，但是没有意义
+        new Person().name = "xwj";
+        // 3>.匿名对象可以调用方法
+        new Person().speak(10);
+        // 4>.多个匿名对象会开辟多个内存空间
+        new Person().speak(13);
+        // 5>.匿名对象可以当作参数传递
     }
 
     // 19.方法
@@ -574,10 +587,36 @@ class DMGameProxy {
 }
 
 // 22.面向对象
+// 一、面向对象的三大特性
+// 1>.封装 - 隐藏对象的属性和实现细节，仅对外提供公共访问方式
+// 1.好处 - 提高了代码的复用性和安全
+// 2.原则 - 将不需要对外提供的内容都隐藏起来（属性隐藏，提供公共方法对其访问）
+// 2>.继承
+// 3>.多态
 class Person {
     // 对象入堆 - 成员变量属于对象
     String name;  // 定义在类中、方法外 - 成员变量/存在于堆中/有默认值/随着对象的创建而创建，随着对象的消失而消失
-    int age;
+    /*
+    private
+    protected
+    public
+     */
+    // 使用private修饰的属性必须对外提供setter方法/getter方法
+    private int age;
+
+    // setter方法
+    // 可以对属性进行控制
+    public void setAge(int age) {
+        if (age > 0 && age < 200) {
+            this.age = age;
+        } else {
+           System.out.println("回火星吧");
+        }
+    }
+    // getter方法
+    public int getAge() {
+        return age;
+    }
 
     // 方法入栈 - 局部变量属于方法
     public void speak(int x) {  // 定义在方法上 - 局部变量/存在于栈中/没有默认值，使用之前必须赋值/随着方法的调用而存在，随着方法的调用完毕而消失
@@ -592,6 +631,10 @@ class Person {
         System.out.println("run");
     }
 }
+
+
+
+
 
 
 

@@ -105,7 +105,6 @@ dependencies:
 2.如果flutter项目中的iOS文件夹下有Podfile文件，但是只有在添加平台相关所需要的依赖关系时才使用这些文件。否则应该使用pubspec.yaml来声明用于flutter的外部依赖项
 */
 
-// FIMXE - 复习到这里
 /*第一个程序start*/
 // import 'package:flutter/material.dart';  // 必须使用‘;’结尾
 
@@ -158,10 +157,6 @@ dependencies:
 //
 
 // // 新建一个类 - 类名首字母大写
-// /*
-//  * StatelessWidget - 死控件/不会随数据动态改变/无状态
-//  * StatefulWidget - 活控件/会随数据动态改变/有状态
-//  */
 // class MyApp extends StatelessWidget {
 //   // 万物皆Widget
 //   // 选中 -> command -> 内部实现
@@ -288,8 +283,8 @@ void main() => runApp(
     MyApp(items: new List<String>.generate(1000, (index) => 'Item $index')));
 
 /*
-StatelessWidget - 适用于当我们描述的用户界面不依赖于对象中的配置信息/无状态的widget
-StatefulWidget - 动态更新UI/具有state对象存储状态数据并将其传递到树重建中
+StatelessWidget - 适用于当我们描述的用户界面不依赖于对象中的配置信息/死控件/不会随数据动态改变/无状态
+StatefulWidget - 动态更新UI/具有state对象存储状态数据并将其传递到树重建中/活控件/会随数据动态改变/有状态
 */
 class MyApp extends StatelessWidget {
   // 1.声明一个List
@@ -507,6 +502,7 @@ class MyApp extends StatelessWidget {
         //   itemCount: items.length,
         // )
 
+        // FIXME - 复习到这里
         // // 5.GridView
         // // 1>.静态GridView
         // body: GridView.count(
