@@ -154,7 +154,6 @@ dependencies:
 // flutter中状态管理
 // 1>.什么是状态state -构建widget时可以同步读取的信息/在widget生命周期中可以更改的信息
 // 2>.怎么管理状态 - 利用statefulWidget
-//
 
 // // 新建一个类 - 类名首字母大写
 // class MyApp extends StatelessWidget {
@@ -502,7 +501,6 @@ class MyApp extends StatelessWidget {
         //   itemCount: items.length,
         // )
 
-        // FIXME - 复习到这里
         // // 5.GridView
         // // 1>.静态GridView
         // body: GridView.count(

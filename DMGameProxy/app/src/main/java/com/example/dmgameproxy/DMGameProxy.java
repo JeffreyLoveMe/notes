@@ -550,6 +550,7 @@ class DMGameProxy {
         // 4>.多个匿名对象会开辟多个内存空间
         new Person().speak(13);
         // 5>.匿名对象可以当作参数传递
+        Person p2 = new Person("王五", 25);
     }
 
     // 19.方法
@@ -602,12 +603,40 @@ class Person {
     public
      */
     // 使用private修饰的属性必须对外提供setter方法/getter方法
+    // 如果是成员变量都需要加上私有/swift也是一样
     private int age;
+
+    // 构造方法 - 给对象的属性进行初始化
+    // 1>.创建对象的时候就会调用构造方法
+//    // 2>.如果在一个类中没有构造方法，系统会默认给一个空参的构造方法（给一个默认的）
+//    public 类名() {
+//
+//    }
+    // 3>.如果自定义了一个构造函数，系统不会默认给一个空参的构造方法（啥也不给）
+    // 4>.有参构造函数 - 给对象中的属性进行初始化
+    // 5>.无参构造函数 - 不需要对属性进行初始化，但是创建对象的时候使用
+    // 6>.定义了"有参构造函数"以后建议再定义"无参构造函数"（永远自己给出无参构造方法）
+    public Person() {
+        // 方法名与类名相同（大小写也要相同）/没有返回值类型（连void都没有）/没有具体返回值
+        name = "谢吴军";
+        age = 23;
+    }
+    // 构造方法的重载
+    public Person(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+    /*
+    构造方法和setter方法的区别？
+    1>.构造方法 - 用来给对象中的属性进行初始化
+    2>.setter方法 - 用来修改属性值（在原对象的基础上）
+    */
 
     // setter方法
     // 可以对属性进行控制
     public void setAge(int age) {
         if (age > 0 && age < 200) {
+            // this - 代表当前对象的引用/谁调用这个方法就指代谁
             this.age = age;
         } else {
            System.out.println("回火星吧");
@@ -615,7 +644,7 @@ class Person {
     }
     // getter方法
     public int getAge() {
-        return age;
+        return this.age;
     }
 
     // 方法入栈 - 局部变量属于方法
