@@ -25,7 +25,7 @@ buildscript {
     }
     dependencies {
         // 声明Gradle编译插件
-        classpath 'com.android.tools.build:gradle:4.0.0'
+        classpath 'com.android.tools.build:gradle:4.0.1'
         
 
         // NOTE: Do not place your application dependencies here; they belong
