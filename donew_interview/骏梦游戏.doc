@@ -84,17 +84,241 @@ http://www.zyiz.net/tech/detail-99945.html
 
 
 
+/**
+ * 1.计算机基本概念
+ * 1>.什么是计算机 - 计算机(computer)俗称电脑/是一种能够按照程序运行，自动、高速处理海量数据的现代化智能电子设备
+ * 2>.计算机的作用 - 科学计算/数据处理/自动控制/计算机辅助设计/人工智能/多媒体应用
+ * 3>.计算机硬件 - CPU/主板/内存/电源/主机箱/硬盘/显卡/键盘/鼠标/显示器
+ * 4>.计算机软件 - 系统软件（DOS/Windows/Linux/Mac）/应用软件（QQ/微信）
+ */
+
+/**
+ * 2.常见的Linux命令
+ * 1>.dir + 目录 -> 当前目录下的子文件和子目录
+ * 2>.cd + 目录 -> 进入指定目录
+ * 3>.cd.. -> 退回到上一级目录
+ * 4>.cls -> 清屏
+ * 5>.exit -> 退出DOS命令行
+ * 6>.md + 目录 -> 创建目录
+ * 7>.rd + 目录 -> 删除目录
+ * 8>.del -> 删除文件
+ */
+
+package com.example.dmgameproxy;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.os.Bundle;
+import android.util.Base64;
+import android.util.Log;
+
+
+import java.security.MessageDigest;
+
+import javax.crypto.Cipher;
+import javax.crypto.SecretKey;
+import javax.crypto.SecretKeyFactory;
+import javax.crypto.spec.DESedeKeySpec;
+
+public class MainActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+
+        try {
+            System.out.print("TAG" + getKey());
+            String s = encryptThreeDESECB("ROMGNIDNO0011558689315", getKey());
+            Log.d("TAG", s);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private byte[] getKey() {
+        //加密
+        byte[] temp = toMD5("SdkTestKey00002");
+        System.out.println("111222" + temp[0]);
+
+        byte[] key = new byte[24];
+        for (int i = 0; i < 24; i++) {
+            if (i < 16) {
+                key[i] = temp[i];
+            } else {
+                key[i] = temp[i - 16];
+            }
+        }
+        System.out.println("111222" + key[0]);
+        return key;
+    }
+
+    public static byte[] toMD5(String plainText) {
+        String result;
+        try {
+            //生成实现指定摘要算法的 MessageDigest 对象。
+            MessageDigest md = MessageDigest.getInstance("MD5");
+            //使用指定的字节数组更新摘要。
+            md.update(plainText.getBytes());
+            //通过执行诸如填充之类的最终操作完成哈希计算。
+            byte b[] = md.digest();
+            //生成具体的md5密码到buf数组
+            int i;
+            StringBuffer buf = new StringBuffer();
+            for (int offset = 0; offset < b.length; offset++) {
+                i = b[offset];
+                if (i < 0)
+                    i += 256;
+                if (i < 16)
+                    buf.append("0");
+                // Integer.toHexString(i)
+                // Integer.toBinaryString(i)
+                buf.append(i);
+            }
+            result = buf.toString();
+            System.out.println("32位: " + result);
+            System.out.println("16位: " + result.substring(8, 24));// 16位的加密，其实就是32位加密后的截取
+            return b;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return new byte[]{};
+//        return result;
+    }
+
+    public static String encryptThreeDESECB(final String src, byte[] key) throws Exception {
+
+        final DESedeKeySpec dks = new DESedeKeySpec(key);
+        final SecretKeyFactory keyFactory = SecretKeyFactory.getInstance("DESede");
+        final SecretKey securekey = keyFactory.generateSecret(dks);
+
+        final Cipher cipher = Cipher.getInstance("DESede/ECB/PKCS5Padding");
+        cipher.init(Cipher.ENCRYPT_MODE, securekey);
+        final byte[] b = cipher.doFinal(src.getBytes());
+
+        return byteToBase64(b).replaceAll("\r", "").replaceAll("\n", "");
+    }
+
+    public static String byteToBase64(byte[] data) {
+        if (data == null) {
+            return "";
+        }
+        return new String(Base64.encode(data, Base64.DEFAULT));
+    }
+}
 
 
 
+using System;
+using System.Security.Cryptography;
+using System.Text;
+
+namespace HelloWorldApplication {
+    class HelloWorld {
+    	static void Main(string[] args) {
+        	Demo m = new Demo();
+			byte[] s = m.Hash("SdkTestKey00002");
+    		Console.WriteLine(s);
+    		Console.ReadKey();	
+        }
+    }
+	
+	class Demo {
+        public string Hash(string toHash) {
+            MD5CryptoServiceProvider crypto = new MD5CryptoServiceProvider();
+            byte[] bytes = Encoding.UTF7.GetBytes(toHash);
+            bytes = crypto.ComputeHash(bytes);
+            StringBuilder sb = new StringBuilder();
+            foreach (byte num in bytes){
+            	sb.AppendFormat("{0:x2}", num);
+            }
+            return sb.ToString();        //32位
+            return sb.ToString().Substring(8,16); //16位
+        }
+	}
+}
+
+241150214317155184869232195183146164183136
+
+
+7716816178219101881981055056104235141481
+
+
+using System;
+using System.Security.Cryptography;
+using System.Text;
+
+namespace HelloWorldApplication {
+    class HelloWorld {
+        static void Main(string[] args) {
+			Demo m = new Demo();
+			String s = m.Encrypt3DES("ROMGNIDNO0011558689315", "SdkTestKey00002");
+            Console.WriteLine(s);
+            Console.ReadKey();
+        }
+    }
+	
+	class Demo {
+		public string Encrypt3DES(string a_strString, string a_strKey) {
+			MD5CryptoServiceProvider HashProvider = new MD5CryptoServiceProvider();
+			byte[] TDESKey = HashProvider.ComputeHash(Encoding.UTF8.GetBytes(a_strKey));
+			StringBuilder builder = new StringBuilder();
+    		foreach (var item in bytes){
+        		builder.AppendFormat("{0:x2}", item);
+    		}
+
+			TripleDESCryptoServiceProvider DES = new TripleDESCryptoServiceProvider();
+			DES.Key = Encoding.UTF8.GetBytes(builder.ToString());
+			DES.Mode = CipherMode.ECB;
+			DES.Padding = System.Security.Cryptography.PaddingMode.PKCS7;
+			ICryptoTransform DESEncrypt = DES.CreateEncryptor();
+
+			string result = "";
+			byte[] Buffer = UTF8Encoding.UTF8.GetBytes(a_strString);
+			result = Convert.ToBase64String(DESEncrypt.TransformFinalBlock(Buffer, 0, Buffer.Length));
+			return result;
+		}
+	}
+}
+
+// 苹果回复邮件格式
+很抱歉我们APP的一些操作给您的审核带来了不便，我们之间的理解可能有些误会。
+我们只是为业务员提供一个平台，其中业务员的范围不仅仅是我们公司内部人员，可能是路人甲也可能是路人乙。我们提供平台，是为了方便业务员的管理。对于注册用户，我们将审查服务器来决定是否开放该用户的所有功能，而不限于公司内部使用。所以企业项目不适合我们。
+如果现在定性我们的app为一个内部应用程序的话，不便我们迭代新的版本。
+也许目前部分功能还未能完善，但以后我们会将做得更好。我们重新打包，到时还请继续审核，谢谢
+请您继续审查我们应用程序, 有任何问题可即时和我取得联系,我为您做出解答, 谢谢.
+
+1.检查传参
+2.检查path
+3.检查delegate
+4.检查多语言
 
 
 
-
-
-
-
-
+https://m.lizhiweike.com/channel2/821038
+这是一篇flutter基础框架_插件式_架构篇的教学视频感兴趣的可以了解一下
+1:配置插件的方式进行开发,每个组件,插件可以配置
+2:优势后期某个页面想要修改只需要调配不同的组件到页面中,不用修改代码
+3:ui代码和业务代码进行剥离
+4: 优势ui代码可配到服务器,将来修改ui只需要修改服务器ui配置
+5:模版拷贝的方式进行开发
+6:优势提高开发效率
+7:底层架构适合于不同类型的项目
+8:动态配置组件的初始化参数
+9:页面标题栏配置化
+10:配置方式启动插件(参数可调配)
+11:封装一套类似ormlite的API,怎么使用ormlite就怎么使用zpubsqflite
+12:常用界面基类
+13:动态构建属性页面
+14:模块与模块之间进行解偶
+15:插件组件和函数注册中心
+16:脚本执行类封装
+17:适合于不同类型的项目
+18:模块细分随意组装(想要依赖哪些底层模块就依赖哪些底层模块)
+19:业务组件可以配置，底层组件也可以配置显示成什么样子
+https://m.lizhiweike.com/channel2/833897 这是一篇flutter基础教学视频感兴趣的可以了解一下
+https://www.ximalaya.com/keji/38158790/  这是一篇免费版，程序员在职场的那些事的音频版本，感兴趣的可以了解一下！ 
 
 
 

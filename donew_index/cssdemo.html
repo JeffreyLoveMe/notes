@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS_Demo</title>
+    <!-- 开始写样式 -->
+    <style type="text/css">
+        /* 
+        1.css概述
+        1>.概念 - 层叠样式表
+        2>.作用 - 美化html标签
+         */
+        /*
+        2.常用属性 - (px - 像素)
+        1>.width:20px; - 宽
+        2>.height:20px; - 高
+        3>.color - 内容颜色
+        4>.background-color:red; - 背景颜色
+        5>.font-size:24px; - 文字大小
+        6>.text-align:left/center/right; - 内容的水平对齐方式
+        7>.text-indet:20em; - 首行缩进
+         */
+        /* 
+        3.选择器 - 选择标签的过程
+        1>.格式 - 选择器{属性:值;}
+        2>.基础选择器 - 标签选择器/类选择器（重点）/id选择器/通配符选择器
+        3>.复合选择器 - 
+         */
+        /* 
+        4.标签选择器 - 设置一片
+        1>.格式
+        标签 {
+            属性:值;
+            属性:值;
+        }
+         */
+        
+        div {
+            font-size: 50px;
+            /* 
+            颜色的显示
+            1>.直接写颜色
+            2>.十六进制显示颜色#000000
+            3>.rgb(255, 255, 255)/rgba(255, 255, 255, 1)
+             */
+            color: brown;
+            background-color: #009900;
+            color: rgb(255, 255, 255);
+            /* 
+            red/green/blue - 0 ~ 255
+            alpha - 0 ~ 1
+             */
+            color: rgba(255, 255, 255, 1);
+        }
+        
+        p {
+            width: 100px;
+            height: 200px;
+        }
+        /* 
+        5.类选择器 - 单独设置
+        1>.格式
+        .自定义类名 {
+            属性:值;
+            属性:值;
+        } 
+        2>.特点 - 谁调用谁生效/可以多次使用
+        3>.类选择器命名规则/标识符 - 只能包含‘数字/字母/下划线’ && 不能以数字开头 && 不建议使用汉字
+         */
+        
+        .sb_box {
+            font-size: 40px;
+            color: #ff0000;
+            width: 400.px;
+            height: 300.px;
+            background-color: #999999;
+        }
+        
+        .miss {
+            text-indent: 2em;
+            text-align: right;
+        }
+        
+        .m123 {
+            font-size: 40px;
+            color: #ff0000;
+            width: 400.px;
+            height: 300.px;
+            background-color: #999999;
+        }
+        /* 
+        ID选择器
+        1>.格式
+        #自定义名称 {
+            属性:值;
+            属性:值;
+        }
+        2>.特点
+        1.一个ID选择器在一个页面只能使用一次，如果多次使用不符合w3c规范，js调用会出现问题
+        2.一个标签只可以调用一个ID选择器
+        3.通常与js搭配使用
+         */
+        
+        #sp_box {
+            font-size: 40px;
+            color: #009900;
+            background-color: rgb(0, 0, 255);
+        }
+        /* 
+        ‘类选择器’与‘ID选择器’可以同名
+         */
+        
+        #miss {
+            font-size: 40px;
+            color: #009900;
+            background-color: rgb(0, 0, 255);
+        }
+        /* 
+        通配符选择器 - 整个页面全部设置
+        1>.格式
+        * {
+            属性:值;
+            属性:值;
+        }
+        2>.不推荐使用 - 增加浏览器和服务器负担
+         */
+        /* * {
+            font-size: 40px;
+            color: #009900;
+            background-color: rgb(0, 0, 255);
+        } */
+        /* 
+        复合选择器 - 两个或者两个以上的基础选择器通过不同的方式连接在一起
+        1.交集选择器
+        1>.格式
+        标签.类选择器/#ID选择器 {
+            属性:值;
+            属性:值;
+        }
+        2>.特点 - 先去找“某个标签”，并且该标签使用了“.类选择器/#ID选择器”
+        2.后代选择器
+        3.子代选择器
+        4.并集选择器
+         */
+        
+        .s_box {
+            font-size: 50px;
+        }
+        
+        #s_miss {
+            color: #ff0000;
+        }
+        /* 
+        1.交集选择器
+        1>.格式
+        标签.类选择器/#ID选择器 {
+            属性:值;
+            属性:值;
+        }
+        2>.特点 - 先去找“某个标签”，并且该标签使用了“.类选择器/#ID选择器”
+         */
+        
+        div.sb_box {
+            background-color: #009900;
+        }
+        
+        p#s_miss {
+            color: aqua;
+        }
+        /* 
+        2.后代选择器
+        1>.格式
+        选择器 + 空格 + 选择器 {
+            属性:值;
+            属性:值;
+        }
+        2>.特点 - 可以无限隔代/只要能够代表标签，“类选择器/ID选择器”可以自由组合
+         */
+        
+        div p span {
+            font-size: 50px;
+        }
+        
+        .m_box span {
+            background-color: #009900;
+        }
+        /* 
+        子代选择器 - 使用较少
+        1>.格式
+        选择器 > 选择器 {
+            属性:值;
+            属性:值;
+        }
+        2>.特点 - 只能选中“直接下代”
+         */
+        
+        div>span {
+            font-size: 50px;
+        }
+        
+        p>span {
+            color: #009900;
+        }
+        /* 
+        并集选择器 - 标签（类选择器/ID选择器）的样式一致
+        1>.格式
+        选择器 , 选择器 {
+            属性:值;
+            属性:值;
+        }
+        2>.
+         */
+        
+        div,
+        p,
+        span,
+        h1 {
+            font-size: 100px;
+            color: #ff0000;
+        }
+        
+        .k_miss,
+        #k_miss,
+        span,
+        h1 {
+            /* 
+            常见文字属性
+             */
+            /* 文字大小 */
+            font-size: 40px;
+            /* 
+            文字粗细
+            范围 - 100 - 900/加粗 >= 700
+             */
+            font-weight: 700;
+            /* 
+            文字字体 
+            escape("宋体") - /5B8B/4F53
+            escape("微软雅黑") - /5FAE/8F6F/96C5/9ED1
+            */
+            font-family: "/5B8B/4F53";
+            /* 
+            文字风格 
+            normal - 默认值/正常 ｜ italic - 斜体
+            */
+            font-style: italic;
+            /* 行高 */
+            line-height: 40px;
+            /* 
+            文字属性连写 - 注意顺序/必须包含“font-size/font-family”
+            font: font-style font-weight font-size/line-height font-family;
+             */
+            /* font: italic 700 40px/400px "/5B8B/4F53" */
+        }
+    </style>
+</head>
+<div>标签选择器01</div>
+<div>标签选择器02</div>
+<p>标签选择器03</p>
+<p>标签选择器04</p>
+
+<!-- 
+    类选择器谁调用谁生效
+ -->
+<div class="box, miss">类选择器01</div>
+<div>类选择器02</div>
+<p class="miss">类选择器03</p>
+<p class="m123">类选择器04</p>
+
+<!-- 
+    1.一个ID选择器在一个页面只能使用一次，如果多次使用不符合w3c规范，js调用会出现问题
+    2.一个标签只可以调用一个ID选择器
+    3.通常与js搭配使用
+ -->
+<div id="sp_box">ID选择器01</div>
+<div>ID选择器02</div>
+<!-- 
+一个标签同时可以使用‘ID选择器’/‘类选择器’
+ -->
+<p id="miss" class="miss">ID选择器03</p>
+<p>ID选择器04</p>
+
+<!-- 
+    交集选择器
+ -->
+<div class="s_box">交集选择器01</div>
+<div>交集选择器02</div>
+<p id="s_miss">交集选择器03</p>
+
+<!-- 
+    后代选择器
+ -->
+<div class="m_box">
+    <p>
+        <span>后代选择器01</span>
+    </p>
+</div>
+<div>后代选择器02</div>
+
+<!-- 
+    子代选择器
+ -->
+<div>
+    <p>
+        <!-- 非直接子代 -->
+        <span>子代选择器01</span>
+    </p>
+    <!-- 直接子代 -->
+    <span>子代选择器02</span>
+</div>
+
+<!-- 
+    并集选择器
+ -->
+<div class="k_box">并集选择器01</div>
+<p id="k_miss">并集选择器02</p>
+<span>并集选择器03</span>
+<h1>并集选择器04</h1>
+
+<body>
+
+</body>
+
+</html>

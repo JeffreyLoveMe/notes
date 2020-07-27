@@ -224,37 +224,116 @@
         GET - 通过地址栏传输信息/明文/安全性较差
         POST - 通过文件传递信息/非明文/安全性较高
      -->
-    <form action="login.php" method="POST">
-        <!-- 文本输入框 -->
+    <fieldset>
+        <form action="login.php" method="POST">
+            <!-- 文本输入框 -->
+            <!-- 
+                maxlength - 限制输入字符的长度
+                readonly - 设置输入框为“只读状态”/不能输入字符
+                disabled - 设置输入框为“未激活状态”/不能输入字符
+                name - 标识输入框
+                value - 输入框的值
+             -->
+            用户名：<input type="text" maxlength="6" name="userName" value="大前端" readonly disabled>
+            <br>
+            <br>
+            <!-- 密码输入框 -->
+            <!-- 
+                maxlength - 限制输入字符的长度
+                readonly - 设置输入框为“只读状态”/不能输入字符
+                disabled - 设置输入框为“未激活状态”/不能输入字符
+                name - 标识输入框
+                value - 输入框的值
+             -->
+            密&nbsp;码：<input type="password">
+            <br>
+            <input type="submit">
+            <br>
+            <!-- 单选框 -->
+            <!-- 将‘name="gendar"’设置成一样可以实现单选效果 -->
+            <!-- checked - 选中 -->
+            <input type="radio" name="gendar" checked>男
+            <br>
+            <input type="radio" name="gendar" checked>女
+
+            <!-- 补充 -->
+            <!-- 网址控件 - 空也可以提交 -->
+            <input type="url">
+            <!-- 日期控件 -->
+            <input type="date">
+            <!-- 时间控件 -->
+            <input type="time">
+            <!-- 邮件控件 -->
+            <input type="email">
+            <!-- 数字控件 -->
+            <input type="number" step="5">
+            <!-- 滑块控件 -->
+            <input type="range" step="50">
+        </form>
+
+    </fieldset>
+
+    <!-- 27.给表单分组 -->
+    <fieldset>
+        <legend>分组名称</legend>
+        <!-- 19.下拉列表 -->
+        <!-- multiple - 多选 -->
+        <select multiple>
+            <!-- 分组 -->
+            <optgroup label="北京市">
+                <option>下拉列表选项01</option>
+                <option>下拉列表选项02</option>
+                <option>下拉列表选项03</option>
+                <!-- selected - 设置默认选中项 -->
+                <option selected>下拉列表选项04</option>
+            </optgroup>
+            <optgroup label="上海市">
+                <option>下拉列表选项01</option>
+                <option>下拉列表选项02</option>
+                <option>下拉列表选项03</option>
+                <!-- selected - 设置默认选中项 -->
+                <option selected>下拉列表选项04</option>
+            </optgroup>
+        </select>
+        <br>
+
+        <!-- 20.多选框 -->
+        <input type="checkbox">喝酒
+        <input type="checkbox">喝酒
+        <input type="checkbox">喝酒
+
+        <!-- 21.多行文本框 -->
         <!-- 
-            maxlength - 限制输入字符的长度
-            readonly - 设置输入框为“只读状态”/不能输入字符
-            disabled - 设置输入框为“未激活状态”/不能输入字符
-            name - 标识输入框
-            value - 输入框的值
-         -->
-        用户名：<input type="text" maxlength="6" name="userName" value="大前端" readonly disabled>
-        <br>
-        <br>
-        <!-- 密码输入框 -->
-        <!-- 
-            maxlength - 限制输入字符的长度
-            readonly - 设置输入框为“只读状态”/不能输入字符
-            disabled - 设置输入框为“未激活状态”/不能输入字符
-            name - 标识输入框
-            value - 输入框的值
-         -->
-        密&nbsp;码：<input type="password">
-        <br>
+        cols - 最大可输入列数
+        rows - 最大可输入行数
+        -->
+        <textarea name="" id="" cols="30" rows="10"></textarea>
+
+        <!-- 22.文件上传控件 -->
+        <input type="file">
+
+        <!-- 23.文件提交：可以实现提交功能 -->
         <input type="submit">
-        <br>
-        <!-- 单选框 -->
-        <!-- 将‘name="gendar"’设置成一样可以实现单选效果 -->
-        <!-- checked - 选中 -->
-        <input type="radio" name="gendar" checked>男
-        <br>
-        <input type="radio" name="gendar" checked>女
-    </form>
+
+        <!-- 24.普通按钮：一般配合js使用/不可以实现提交功能 -->
+        <input type="button" value="login">
+
+        <!-- 25.图片按钮：可以实现提交功能 -->
+        <input type="image" src="jd_icon.png">
+
+        <!-- 26.重置按钮：将信息还原为默认状态 -->
+        <input type="reset">
+
+    </fieldset>
+
+    <!-- 
+        27.标签语义化
+        1>.概念 - 根据内容的结构化来选择适合的标签
+        2>.意义 - 1.网页结构合理/2.有利于SEO/3.便于团队开发和维护
+        3>.好的语义化网站标准 - 去掉样式表文件以后结构依旧清晰
+        4>.怎么做 - 1.尽可能少的使用无语义的标签div/span | 2.div/p之间尽量使用p
+     -->
+
 </body>
 
 </html>
