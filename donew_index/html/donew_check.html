@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<!-- 1.根标签 -->
+<html lang="en">
+<!-- 2.头部标签 -->
+
+<head>
+    <!-- meta -->
+    <!-- 编码格式 -->
+    <meta charset="utf-8">
+    <!-- 网站关键字 - 给“搜索引擎”看的 -->
+    <meta name="keywords" content="123, 123">
+    <!-- 网页描述 - 给“搜索引擎”看的 -->
+    <meta name="description" content="123, 123">
+    <!-- 网页重定向 -->
+    <meta http-equiv="refresh" content="5;www.baidu.com">
+    <!-- link -->
+    <!-- 链接外部’样式表文件/login.css‘ -->
+    <link rel="stylesheet" type="text/css" href="../css/login.css">
+    <!-- 网页顶部小图标 -->
+    <link rel="icon" href="../image/jd_icon.png">
+    <!--  ！！！超链接优化写法！！！ -->
+    <base target="_black">
+    <!-- 4.标题标签 -->
+    <title>HTML标签速查</title>
+    <!-- css -->
+    <style type="text/css">
+        /* css写在这里 */
+    </style>
+    <!-- js -->
+    <script type="text/javascript">
+        // js写在这里
+    </script>
+</head>
+<!-- 3.主体标签 -->
+
+<body>
+    <!-- 5.标题标签 -->
+    <h1>标题标签h1</h1>
+    <!-- 6.换行标签 -->
+    <br>
+    <h2>标题标签h2</h2>
+    <!-- 7.水平线标签 -->
+    <hr>
+    <h3>标题标签h3</h3>
+    <h4>标题标签h4</h4>
+    <h5>标题标签h5</h5>
+    <h6>标题标签h6</h6>
+    <!-- 8.段落标签 -->
+    <p id="sp">
+        锚点 - 可以定位到这里
+    </p>
+    <!-- 
+		9.下标标签
+		H20
+	 -->
+    H<sub>2</sub>0
+    <!-- 
+	 	10.上标标签
+	 	2^3
+	  -->
+    2<sub>3</sub>
+    <!-- 
+		11.图片标签
+		src - 来源
+		alt - 替换文本（图片未显示在网页上显示的文字）
+		title - 显示文本（鼠标放在图片上显示的文字）
+		width - 宽
+		height - 高
+		1.当width/height都不设置的时候 - 显示原图
+		2.当width/height只设置一个的时候 - 另一个属性按照比例显示/不会变形
+		3.当width/height都设置的时候 - 会变形
+	-->
+    <img src="../image/jd_icon.png" alt="替换文本" title="显示文本" width="100" height="100">
+    <!-- 
+		12.超链接
+		href - 链接去向
+		title - 显示文本（鼠标放在链接上面显示的文本）
+		target - 打开超链接的方式 - 1._self(关闭自身)/2._black(不关闭自身)
+	-->
+    <a href="https://www.baidu.com" title="我的超链接" target="_self">百度一下</a>
+    <a href="#sp">锚点</a>
+    <a href="#">空链（开发中很常用）</a>
+    <!-- 
+		特殊字符
+		&nbsp; - 空格
+		&lt; - 小于号/small
+		&gt; - 大于号/big
+	 -->
+    <a href="#">空&nbsp;&lt;&gt;白</a>
+    <!-- 
+	 	路径 - 绝对路径/相对路径
+	 	绝对路径 - 从我的电脑出发（基本不使用）
+	 	相对路径 - 从当前文件出发
+	 	1>.如果“当前文件xxx”和“查找文件yyy”在同一个目录下 - 直接写“查找文件yyy”
+	 	2>.如果“当前文件xxx”在“查找文件yyy”上一个目录下 - zzz/yyy(zzz与“当前文件xxx”处在同一个目录下) - '/'表示进入下一个目录
+	 	3>.如果“当前文件xxx”在“查找文件yyy”下一个目录下 - ../../yyy' - '../'表示跳出当前文件夹(两个表示跳出两级目录)
+	  -->
+    <!-- 
+	13.列表
+	-->
+    <!-- 
+	无序列表 - wu - ul
+	-->
+    <ul>
+        <li>中国</li>
+        <li>美国</li>
+        <li>英国</li>
+        <li>法国</li>
+        <li>俄罗斯</li>
+    </ul>
+    <!-- 
+	有序列表 - you - ol
+	 -->
+    <ol type="0" start="0">
+        <li>中国</li>
+        <li>美国</li>
+        <li>英国</li>
+        <li>法国</li>
+        <li>俄罗斯</li>
+    </ol>
+    <!-- 
+	 自定义列表 - ding - dl
+	  -->
+    <dl>
+        <!-- 小标题 - title - dt -->
+        <dt>小标题</dt>
+        <dd>中国</dd>
+        <dd>中国</dd>
+        <dd>中国</dd>
+        <dd>中国</dd>
+        <dd>中国</dd>
+    </dl>
+    <!-- 
+	    14.音频标签
+	    embed - in_bed
+	 -->
+    <embed src="../image/donew.mp3" hidden="false">
+    <!-- 
+		页面滚动设置
+		marquee
+	  -->
+    <!-- 
+		15.表格
+	 -->
+    <table border="1" cellspacing="10" cellpadding="20" bgcolor="yellow" bordercolor="red" align="center">
+        <!-- 表格标题 -->
+        <caption>表格标题</caption>
+        <!-- 表格头部 -->
+        <thead>
+            <!-- 表格的行 -->
+            <tr>
+                <!-- 
+				单元格 - th(表格头部一般使用th/默认加粗)
+				 -->
+                <th bgcolor="white" valign="top" align="left">姓名</th>
+                <th>性别</th>
+                <th>年龄</th>
+                <th>身高</th>
+                <th>体重</th>
+            </tr>
+        </thead>
+        <!-- 表格主体 -->
+        <tbody>
+            <tr>
+                <!-- 
+				单元格 - th(表格主体一般使用td)
+				 -->
+                <!-- 
+				 colspan - 列与列合并 - 同一行合并列 - 列 - 写在左边第一个
+	  			 rowspan - 行与行合并 - 同一列合并行 - 行 - 写在上边第一个
+	  			 -->
+                <td colspan="4">谢吴军</td>
+                <!-- <td>男</td>
+				<td>27</td>
+				<td>172</td> -->
+                <td>170</td>
+            </tr>
+            <tr>
+                <td>陈凤军</td>
+                <td rowspan="3">女</td>
+                <td>25</td>
+                <td>165</td>
+                <td>105</td>
+            </tr>
+            <tr>
+                <td>谢吴军</td>
+                <!-- <td>男</td> -->
+                <td>27</td>
+                <td>172</td>
+                <td>170</td>
+            </tr>
+            <tr>
+                <td>陈凤军</td>
+                <!-- <td>女</td> -->
+                <td>25</td>
+                <td>165</td>
+                <td>105</td>
+            </tr>
+        </tbody>
+        <!-- 表格尾部 -->
+        <tfoot>
+            <tr>
+                <!-- 
+				单元格 - th(表格尾部一般使用td)
+				 -->
+                <td>谢吴军</td>
+                <td>男</td>
+                <td>27</td>
+                <td>172</td>
+                <td>170</td>
+            </tr>
+        </tfoot>
+
+    </table>
+    <!-- 
+		16.表单
+	  -->
+    <!-- 
+	  	表单分组
+	   -->
+    <fieldset>
+        <legend>京东商城登录</legend>
+        <!-- 
+			GET - 在浏览器中提交/明文/不安全
+			POST - 在文件中提交的/密文/安全
+		 -->
+        <form action="login.php" method="POST">
+            <!-- 
+				type - 输入框类型
+				name - 输入框的标志
+				value - 输入框的内容
+				readonly - 只读
+				disabled - 不可点击
+			 -->
+            账号：<input type="text" name="" value="谢吴军" readonly="readonly" disabled="disabled">
+            <br> 密码：
+            <input type="password">
+            <br>
+            <br>
+            <input type="submit">
+            <br>
+            <!-- 单选框 -->
+            <input type="radio">男
+            <br>
+            <input type="radio">女
+            <!-- 其他类型 -->
+            <input type="url">
+            <input type="date">
+            <input type="time">
+            <input type="number" step="5">
+            <input type="range" step="1">
+            <input type="button" name="login" value="登录">
+            <input type="image" src="../image/jd_icon.png">
+            <!-- 多行文本输入框 -->
+            <textarea rows="10" cols="10"></textarea>
+            <br>
+            <select multiple="multiple">
+				<optgroup label="北京市">
+					<option>海淀区</option>
+					<option>丰台区</option>
+					<option>大兴区</option>
+					<option>朝阳区</option>
+				</optgroup>
+				<optgroup label="上海市">
+					<option>黄浦区</option>
+					<option>浦东新区</option>
+					<option>嘉定区</option>
+					<option selected="selected">徐汇区</option>
+				</optgroup>
+			</select>
+        </form>
+    </fieldset>
+</body>
+
+</html>

@@ -18,9 +18,9 @@
     <!-- xxx -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- 链接外部’样式表文件/.css‘ -->
-    <link rel="stylesheet" href="login.css">
+    <link rel="stylesheet" href="../css/login.css">
     <!-- 网页顶部小图标 -->
-    <link rel="icon" href="jd_icon.png">
+    <link rel="icon" href="../image/jd_icon.png">
     <!-- 3.标题标签 -->
     <title>HTML基础</title>
     <!-- ！！！超链接优化写法！！！ -->
@@ -94,7 +94,7 @@
              2>.文件和图片在下一级文件夹（目录）- 文件夹名称/文件名（'/'表示进入下一个文件夹）
              3>.文件和图片在上一级文件夹（目录）- ../文件名（'../'表示跳出文件夹）
           -->
-    <img src="swk.jpg" alt="林志玲" title="我的女神" width="300" height="300" /> <br/>
+    <img src="../image/swk.jpg" alt="林志玲" title="我的女神" width="300" height="300" /> <br/>
     <!-- 
             2.绝对路径 - 从我的电脑出发（基本不使用）
          -->
@@ -149,7 +149,7 @@
     </dl>
 
     <!-- 14.音乐标签 -->
-    <embed src="donew.mp3" hidden="true">
+    <embed src="../image/donew.mp3" hidden="true">
 
     <!-- 
                 15.页面滚动效果
@@ -173,8 +173,8 @@
     <!-- 缩写 - “table>tr*3>td*3 + 回车键” -->
     <!-- 表格细线(直接设置不行可以取巧) - 使用背景绿色/设置cellspacing = 1/不需要border -->
     <table border="1" width="600" height="300" cellspacing="10" cellpadding="10" align="center" bgcolor="yellow" bordercolor="red">
-        <!-- 表头 -->
-        <caption>表头标题</caption>
+        <!-- 表格标题 -->
+        <caption>表格标题</caption>
         <!-- 表格头部 -->
         <thead>
             <!-- 行 -->
@@ -185,7 +185,7 @@
                 <!-- valign - 内容垂直对齐方式 -->
                 <th valign="top" colspan="2">张三</th>
                 <th>18</th>
-                <!-- <td>挖掘机</td> -->
+                <!-- <th>挖掘机</th> -->
             </tr>
         </thead>
         <!-- 表格身体 -->
@@ -270,7 +270,6 @@
             <!-- 滑块控件 -->
             <input type="range" step="50">
         </form>
-
     </fieldset>
 
     <!-- 27.给表单分组 -->
@@ -319,7 +318,7 @@
         <input type="button" value="login">
 
         <!-- 25.图片按钮：可以实现提交功能 -->
-        <input type="image" src="jd_icon.png">
+        <input type="image" src="../image/jd_icon.png">
 
         <!-- 26.重置按钮：将信息还原为默认状态 -->
         <input type="reset">
