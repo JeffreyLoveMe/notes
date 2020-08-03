@@ -144,7 +144,7 @@
 ```Objective-C
 // 初始化 - 必须使用[DMSDK getInstance]实例化DMSDK，否则可能会发生未知错误
 // 设置DMSDKDelegate为您的"回调处理类（通常是当前类）"
-[[DMSDK getInstance] initWithDelegate:self];;
+[[DMSDK getInstance] initWithDelegate:self];
 ```
 
 * 初始化回调
