@@ -29,6 +29,36 @@
             background-color: #eeeeee;
             text-decoration: underline;
         }
+        /* 5.表单控件 */
+        
+        input.username {
+            background-color: #ccc;
+            /*去掉表单边框*/
+            border: 0 none;
+            /*去掉轮廓线（选中时的边框）*/
+            outline-style: none;
+            border: dashed 1px green;
+        }
+        /*获取光标焦点*/
+        
+        input.username:focus {
+            background-color: red;
+        }
+        
+        input.email {
+            border: 0 none;
+            outline-style: none;
+            border-bottom: dotted 1px red;
+        }
+        
+        input.search {
+            border: 0 none;
+            outline-style: none;
+            border: solid 1px #999;
+            background: url();
+            background-repeat: no-repeat;
+            background-position: right;
+        }
     </style>
 </head>
 
@@ -182,6 +212,48 @@
         <br>
         <input type="image" src="im.jpg">
     </fieldset>
+    <!-- 5.表格案例 -->
+    <table cellspacing="0" width="400" height="400" border="1" bgcolor="pink" align="center">
+        <tr>
+            <th colspan="2" align="center">京东会员</th>
+        </tr>
+
+        <tr>
+            <td>用户名:</td>
+            <td>
+                <input type="text" value="请输入用户名" maxlength="6">
+                <font color="red" size="1">最多输入6个字符</font>
+            </td>
+        </tr>
+        <tr>
+            <td>密 码:</td>
+            <td>
+                <input type="password" maxlength="6">
+                <font color="red" size="1">最多输入6个字符</font>
+            </td>
+        </tr>
+        <tr>
+            <td>验证码:</td>
+            <td>
+                <input type="text">
+                <br>
+                <br>
+                <img src="../image/yzm.jpg" height="24">
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" align="center">
+                <a href="#" target="_black">登录</a> ｜
+                <a href="#" target="_black">注册用户</a>
+            </td>
+        </tr>
+    </table>
+    <!-- 5.表单控件 -->
+    <!-- 获取光标焦点 -->
+    <label for="username">获取焦点</label>
+    <input type="text" class="username" id="username">
+    <input type="email" class="email">
+    <input type="text" class="search">
 </body>
 
 </html>

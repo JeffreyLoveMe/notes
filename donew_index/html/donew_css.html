@@ -495,6 +495,87 @@
         代码简写 - ul>li*5>a[#]
     -->
 
+    <!-- FIXME - 复习到这里 -->
+    <!-- 
+        行高 - 基线与基线之间的距离
+        1>.浏览器默认文字大小 - 16px
+        2>.行高 = 上边距 + 文字高度 + 下边距
+        3>.？？？一行文字行高和父元素高度一致的时候，垂直居中显示？？？
+        4>.行高的单位 - 推荐使用px
+        *********************************************************************
+        单位        文字大小        行高
+        40px       20px           40px/与文字的大小无关/默认写死
+        2em        20px           40px/与文字大小有关/单位 * 文字大小
+        150%       20px           30px/与文字大小有关/单位 * 文字大小
+        2          20px           40px/与文字大小有关/单位 * 文字大小
+        *********************************************************************
+        单位        父元素文字大小        子元素文字大小        行高 
+        40px       20px                30px               40px/与文字的大小无关/默认写死
+        2em        20px                30px               40px/与文字大小有关/单位 * 父元素文字大小
+        150%       20px                30px               30px/与文字大小有关/单位 * 父元素文字大小
+        2          20px                30px               60px/与文字大小有关/单位 * 子元素文字大小
+        *********************************************************************
+     -->
+
+    <!-- 盒子模型 -->
+    <!-- 1>.边框 -->
+    <!-- 
+        border-top-style - 上部边框的线型 - solid实线/dotted点线/dashed虚线
+        border-top-color - 上部边框的颜色
+        border-top-width - 上部边框的粗细
+     -->
+    <div class="box" style="width: 300px; 
+    height: 390px; 
+    background: #999999; 
+    border-top-style: dashed;
+    border-top-color: #009900;
+    border-top-width: 5px;">
+        14期威武
+    </div>
+    <!-- 
+        简写 - border-top: #009900 solid 5px;/与顺序无关/border-top-style必不可少
+        border - 
+     -->
+    <div style="width: 400px; 
+    height: 390px; 
+    background: #999999; 
+    border-top: #009900 solid 5px;">
+        14期高薪
+    </div>
+    <!-- 
+        四个边框都一样
+     -->
+    <div style="width: 400px; 
+    height: 390px; 
+    background: #999999;
+    border: #009900 solid 5px;">
+        14期无敌
+    </div>
+
+    <!-- 
+        边框合并
+        border-collapse: collapse; - 边框合并
+     -->
+    <table style="width: 300px; 
+    height: 500px;
+    border: 1px solid red;
+    border-collapse: collapse;">
+        <tr>
+            <td style="border: 1px solid red;">123</td>
+            <td style="border: 1px solid red;">123</td>
+            <td style="border: 1px solid red;">123</td>
+        </tr>
+        <tr>
+            <td style="border: 1px solid red;">123</td>
+            <td style="border: 1px solid red;">123</td>
+            <td style="border: 1px solid red;">123</td>
+        </tr>
+        <tr>
+            <td style="border: 1px solid red;">123</td>
+            <td style="border: 1px solid red;">123</td>
+            <td style="border: 1px solid red;">123</td>
+        </tr>
+    </table>
 </body>
 
 </html>
