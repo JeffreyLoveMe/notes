@@ -1,0 +1,20 @@
+{
+    "folders": [
+		{
+			"path": "flutter_shop"
+		},
+		{
+			"path": "donew_index"
+		},
+		{
+			"path": "donew_interview"
+		}
+	],
+    "settings": {
+        "workbench.colorCustomizations": {
+            "activityBar.background": "#3F2907",
+            "titleBar.activeBackground": "#593A09",
+            "titleBar.activeForeground": "#FEFAF3"
+        }
+    }
+}
