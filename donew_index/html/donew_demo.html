@@ -64,69 +64,53 @@
 
 <body>
     <!-- 1.课程表 -->
-    <table width="300" height="200" bgcolor="green" cellspacing="1" align="center">
-        <!-- 表头 -->
+    <table cellspacing="1" bgcolor="green" width="300" height="200" align="center">
         <caption>课程表</caption>
         <thead>
-            <!-- 
-                // 设置细线
-                <table bgcolor="green">
-                    
-                </table>
-                <tr bgcolor="white">
-
-                </tr>
-             -->
-            <!-- 
-                 加粗
-              -->
             <tr bgcolor="white">
-                <th width="80" colspan="2"></th>
-                <!-- <th></th> -->
+                <th colspan="2"></th>
                 <th>星期一</th>
-                <th>星期二</th>
-                <th>星期三</th>
-                <th>星期四</th>
-                <th>星期五</th>
+                <th>星期一</th>
+                <th>星期一</th>
+                <th>星期一</th>
+                <th>星期一</th>
             </tr>
         </thead>
 
         <tbody>
             <tr bgcolor="white">
-                <td width="50" rowspan="2">上午</td>
-                <td width="30">1</td>
+                <td rowspan="2" width="50">上午</td>
+                <td>1</td>
                 <td>语文</td>
-                <td>数学</td>
-                <td>物理</td>
-                <td>化学</td>
-                <td>生物</td>
+                <td>语文</td>
+                <td>语文</td>
+                <td>语文</td>
+                <td>语文</td>
             </tr>
             <tr bgcolor="white">
-                <!-- <td></td> -->
                 <td>2</td>
-                <td>体育</td>
-                <td>音乐</td>
-                <td>几何</td>
-                <td>画画</td>
-                <td>舞蹈</td>
+                <td>语文</td>
+                <td>语文</td>
+                <td>语文</td>
+                <td>语文</td>
+                <td>语文</td>
             </tr>
             <tr bgcolor="white">
                 <td rowspan="2">下午</td>
                 <td>1</td>
-                <td>体育</td>
-                <td>画画</td>
-                <td>音乐</td>
                 <td>语文</td>
-                <td>音乐</td>
+                <td>语文</td>
+                <td>语文</td>
+                <td>语文</td>
+                <td>语文</td>
             </tr>
             <tr bgcolor="white">
-                <!-- <td></td> -->
                 <td>2</td>
-                <td>英语</td>
-                <td>舞蹈</td>
-                <td>体育</td>
-                <td>唱歌</td>
-                <td>体育</td>
+                <td>语文</td>
+                <td>语文</td>
+                <td>语文</td>
+                <td>语文</td>
+                <td>语文</td>
             </tr>
         </tbody>
     </table>
@@ -212,6 +196,7 @@
         <br>
         <input type="image" src="im.jpg">
     </fieldset>
+
     <!-- 5.表格案例 -->
     <table cellspacing="0" width="400" height="400" border="1" bgcolor="pink" align="center">
         <tr>
@@ -248,12 +233,83 @@
             </td>
         </tr>
     </table>
-    <!-- 5.表单控件 -->
+
+    <!-- 6.表单控件 -->
     <!-- 获取光标焦点 -->
     <label for="username">获取焦点</label>
     <input type="text" class="username" id="username">
     <input type="email" class="email">
     <input type="text" class="search">
+
+    <!-- 7.用户注册综合案例 -->
+    <fieldset>
+        <legend>账户信息</legend>
+        <font style="color: red;">*</font>用户名:<input type="text">
+        <br>
+        <br>
+        <font style="color: red;">*</font>密&nbsp;码:
+        <input type="password">
+        <br>
+        <br> 性 别：<input type="radio" name="sex" checked>男
+        <input type="radio" name="sex">女
+    </fieldset>
+    <fieldset>
+        <legend>公司信息</legend>
+        <br> 公司名称：
+        <input type="text">
+        <br>
+        <br> 公司所在地址：
+        <select>
+            <option>---请选择---</option>
+            <option>北京</option>
+            <option>河北</option>
+            <option>上海</option>
+            <option>山东</option>
+            <option>河南</option>
+        </select>
+        <select>
+            <option>---请选择---</option>
+            <optgroup label="北京">
+                <option>朝阳</option>
+                <option>丰台</option>
+                <option>海淀</option>
+            </optgroup>
+            <optgroup label="河北">
+                <option>石家庄</option>
+                <option>唐山</option>
+                <option>邯郸</option>
+            </optgroup>
+        </select>
+        <select>
+            <option>---请选择---</option>
+            <option>上地</option>
+            <option>中关村</option>
+            <option>软件园</option>
+        </select>
+        <br>
+        <br> 购买类型用途：
+        <input type="checkbox" checked>IT
+        <input type="checkbox">通讯设备
+        <input type="checkbox">大家电
+        <input type="checkbox">办公耗材
+        <br>
+        <br> 公司行业：
+        <select multiple>
+            <option selected>IT行业</option>
+            <option>计算机软件</option>
+            <option>市场推广</option>
+            <option>广告</option>
+        </select>
+        <br>
+        <br> 公司介绍：
+        <textarea cols="30" rows="10"></textarea>
+        <br>
+        <br> 营业执照上传：
+        <input type="file">
+        <br>
+        <br>
+        <input type="image" src="../image/jd_reg.jpg">
+    </fieldset>
 </body>
 
 </html>

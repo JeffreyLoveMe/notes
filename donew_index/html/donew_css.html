@@ -456,7 +456,7 @@
     <!-- 
         标签分类 - 按照“显示方式”分类
         1>.块元素 - div/p/h1-h6/ul/li
-        1.特点 - 独占一行/可以设置width、height/如果没有设置width以父块元素为准（一样宽度）
+        1.特点 - 独占一行/可以设置width、height/如果没有设置宽度，宽度与父元素一样/如果没有设置高度，高度为0
         2>.行内元素 - span/a/strong/em/del/ins
         1.特点 - 在一行显示/不能直接定义width、height（与内容的宽度保持一致）
         3>.行内块元素（内联元素） - input/img
@@ -517,7 +517,10 @@
         *********************************************************************
      -->
 
-    <!-- 盒子模型 -->
+    <!-- 
+        盒子模型div - 用于页面布局
+        ！！！“行内元素span/a”可以定义左右的内外边距，上下内外边距会忽略！！！
+     -->
     <!-- 1>.边框 -->
     <!-- 
         border-top-style - 上部边框的线型 - solid实线/dotted点线/dashed虚线
@@ -576,6 +579,129 @@
             <td style="border: 1px solid red;">123</td>
         </tr>
     </table>
+
+    <!-- 
+        2.内边距 - 内容距离盒子边框的距离/写在父元素上
+        1>.默认情况下内容处于父元素的左上角
+     -->
+    <div style="padding-left: 20px; 
+    padding-right: 50px; 
+    padding-top: 20px; 
+    padding-bottom: 50px;">
+        14期威武
+    </div>
+    <!-- 表示距离上下左右25px -->
+    <div style="padding: 25px;">
+        14期无敌
+    </div>
+    <!-- 表示距离“上下25px 左右40px” -->
+    <div style="padding: 25px 40px;">
+        14期高薪
+    </div>
+    <!-- 表示距离“上25px 左右40px 下30px” -->
+    <div style="padding: 25px 40px 30px;">
+        14期牛逼
+    </div>
+    <!-- 表示距离“上25px 右40px 下30px 左50px” -->
+    <div style="padding: 25px 40px 30px 50px;">
+        14期奥力给
+    </div>
+
+    <!-- 
+    内边距撑大盒子问题
+    1>盒子宽度 = 定义的宽度 + 2 * 边框宽度 + 左右内边距
+     -->
+    <div style="width: 300px;
+    height: 150px;
+    padding-left: 100px;
+    padding-top: 75px;
+    background-color: pink;">
+        <div style="width: 300px;
+        height: 150px;
+        background-color: red;">
+        </div>
+    </div>
+
+    <!-- 
+        继承的盒子一般不会被撑大 - 仅仅作用于水平方向
+        1>.嵌套的盒子，如果’子盒子‘没有定义宽度，给’子盒子‘设置左右内边距一般不会撑大盒子
+        2>.padding-left <= ‘父元素宽度500’都不会被撑大
+        3>.
+     -->
+    <div class="father" style="width: 500px; 
+    height: 300px; 
+    background-color: #ccc;">
+        <div class="son" style="height: 100px; 
+        background-color: #009900; 
+        padding-left: 30px; 
+        padding-top: 200px;">
+            1414
+        </div>
+    </div>
+
+    <!-- 
+        3.外边距
+     -->
+    <div style="width: 300px; 
+     height: 300px; 
+     background: red;
+     margin-left: 20px;
+     margin-left: 30px;
+     margin-right: 40px;
+     margin-bottom: 50px;">
+        14期无敌
+    </div>
+    <!-- 表示距离上下左右25px -->
+    <div style="margin: 25px;">
+        14期无敌
+    </div>
+    <!-- 表示距离“上下25px 左右40px” -->
+    <div style="margin: 25px 40px;">
+        14期高薪
+    </div>
+    <!-- 表示距离“上25px 左右40px 下30px” -->
+    <div style="margin: 25px 40px 30px;">
+        14期牛逼
+    </div>
+    <!-- 表示距离“上25px 右40px 下30px 左50px” -->
+    <div style="margin: 25px 40px 30px 50px;">
+        14期奥力给
+    </div>
+
+    <!-- 
+        垂直方向外边距合并 - 垂直方向的2个盒子，如果都设置了垂直方向外边距会合并取最大值
+     -->
+    <!-- 它们之间的距离不是120px，而是100px -->
+    <div style="width: 300px; 
+    height: 300px; 
+    background-color: red; 
+    margin-bottom: 20px;">
+        14期高薪
+    </div>
+    <div style="width: 300px; 
+    height: 300px; 
+    background-color: red; 
+    margin-top: 100px;">
+        14期奥力给
+    </div>
+
+    <!-- 
+        外边距塌陷 - 当嵌套的盒子直接给“子盒子设置垂直方向外边距”的时候会发生外边距塌陷（父盒子也会跟着下移）
+        1>.padding - 影响盒子的大小/margin - 影响盒子的位置
+        2>.解决办法 - 1.给父盒子设置边框 - 不推荐使用/给父盒子设置overflow: hidden; - 推荐使用
+     -->
+    <div style="width: 300px; 
+     height: 300px; 
+     background-color: red; 
+     overflow: hidden;">
+        <div style="width: 200px; 
+         height: 200px; 
+         background-color: #eee; 
+         margin-top: 20px;">
+
+        </div>
+    </div>
+
 </body>
 
 </html>
