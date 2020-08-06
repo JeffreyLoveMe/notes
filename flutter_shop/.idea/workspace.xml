@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="3fdac07b-8f06-4b7e-9d8b-6bbd6c468990" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/lib/config/service_url.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/config/service_url.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/home_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/home_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/service/service_method.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/service/service_method.dart" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <projects_view>
+          <tree_state>
+            <expand />
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1clBxWhfOsQF9xu2hXkQYUenwtF" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="dart.analysis.tool.window.force.activate" value="false" />
+    <property name="io.flutter.reload.alreadyRun" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="show.migrate.to.gradle.popup" value="false" />
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="AndroidJUnit" factoryName="Android JUnit">
+      <option name="TEST_OBJECT" value="class" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <method v="2">
+        <option name="Android.Gradle.BeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="3fdac07b-8f06-4b7e-9d8b-6bbd6c468990" name="Default Changelist" comment="" />
+      <created>1591093546974</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1591093546974</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="220" y="46" key="#Notifications" timestamp="1593509069981">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state x="220" y="46" key="#Notifications/0.23.1440.877/-1883.23.1883.1177@0.23.1440.877" timestamp="1593509069981" />
+    <state width="1829" height="304" key="GridCell.Tab.0.bottom" timestamp="1593516121769">
+      <screen x="-1884" y="23" width="1884" height="1177" />
+    </state>
+    <state width="914" height="304" key="GridCell.Tab.0.bottom/0.23.1440.877/-1881.23.1881.1177@-1881.23.1881.1177" timestamp="1593515998768" />
+    <state width="1830" height="312" key="GridCell.Tab.0.bottom/0.23.1440.877/-1882.23.1882.1177@-1882.23.1882.1177" timestamp="1593514266177" />
+    <state width="1830" height="213" key="GridCell.Tab.0.bottom/0.23.1440.877/-1883.23.1883.1177@-1883.23.1883.1177" timestamp="1593515304167" />
+    <state width="1388" height="214" key="GridCell.Tab.0.bottom/0.23.1440.877/-1883.23.1883.1177@0.23.1440.877" timestamp="1593509471324" />
+    <state width="1829" height="304" key="GridCell.Tab.0.bottom/0.23.1440.877/-1884.23.1884.1177@-1884.23.1884.1177" timestamp="1593516121769" />
+    <state width="1388" height="214" key="GridCell.Tab.0.bottom/0.23.1440.877/-1890.23.1890.1177@0.23.1440.877" timestamp="1593504571766" />
+    <state width="1829" height="304" key="GridCell.Tab.0.center" timestamp="1593516121768">
+      <screen x="-1884" y="23" width="1884" height="1177" />
+    </state>
+    <state width="914" height="304" key="GridCell.Tab.0.center/0.23.1440.877/-1881.23.1881.1177@-1881.23.1881.1177" timestamp="1593515998768" />
+    <state width="1830" height="312" key="GridCell.Tab.0.center/0.23.1440.877/-1882.23.1882.1177@-1882.23.1882.1177" timestamp="1593514266176" />
+    <state width="1830" height="213" key="GridCell.Tab.0.center/0.23.1440.877/-1883.23.1883.1177@-1883.23.1883.1177" timestamp="1593515304166" />
+    <state width="1388" height="214" key="GridCell.Tab.0.center/0.23.1440.877/-1883.23.1883.1177@0.23.1440.877" timestamp="1593509471323" />
+    <state width="1829" height="304" key="GridCell.Tab.0.center/0.23.1440.877/-1884.23.1884.1177@-1884.23.1884.1177" timestamp="1593516121768" />
+    <state width="1388" height="214" key="GridCell.Tab.0.center/0.23.1440.877/-1890.23.1890.1177@0.23.1440.877" timestamp="1593504571765" />
+    <state width="1829" height="304" key="GridCell.Tab.0.left" timestamp="1593516121768">
+      <screen x="-1884" y="23" width="1884" height="1177" />
+    </state>
+    <state width="914" height="304" key="GridCell.Tab.0.left/0.23.1440.877/-1881.23.1881.1177@-1881.23.1881.1177" timestamp="1593515998768" />
+    <state width="1830" height="312" key="GridCell.Tab.0.left/0.23.1440.877/-1882.23.1882.1177@-1882.23.1882.1177" timestamp="1593514266175" />
+    <state width="1830" height="213" key="GridCell.Tab.0.left/0.23.1440.877/-1883.23.1883.1177@-1883.23.1883.1177" timestamp="1593515304166" />
+    <state width="1388" height="214" key="GridCell.Tab.0.left/0.23.1440.877/-1883.23.1883.1177@0.23.1440.877" timestamp="1593509471321" />
+    <state width="1829" height="304" key="GridCell.Tab.0.left/0.23.1440.877/-1884.23.1884.1177@-1884.23.1884.1177" timestamp="1593516121768" />
+    <state width="1388" height="214" key="GridCell.Tab.0.left/0.23.1440.877/-1890.23.1890.1177@0.23.1440.877" timestamp="1593504571765" />
+    <state width="1829" height="304" key="GridCell.Tab.0.right" timestamp="1593516121768">
+      <screen x="-1884" y="23" width="1884" height="1177" />
+    </state>
+    <state width="914" height="304" key="GridCell.Tab.0.right/0.23.1440.877/-1881.23.1881.1177@-1881.23.1881.1177" timestamp="1593515998768" />
+    <state width="1830" height="312" key="GridCell.Tab.0.right/0.23.1440.877/-1882.23.1882.1177@-1882.23.1882.1177" timestamp="1593514266176" />
+    <state width="1830" height="213" key="GridCell.Tab.0.right/0.23.1440.877/-1883.23.1883.1177@-1883.23.1883.1177" timestamp="1593515304166" />
+    <state width="1388" height="214" key="GridCell.Tab.0.right/0.23.1440.877/-1883.23.1883.1177@0.23.1440.877" timestamp="1593509471324" />
+    <state width="1829" height="304" key="GridCell.Tab.0.right/0.23.1440.877/-1884.23.1884.1177@-1884.23.1884.1177" timestamp="1593516121768" />
+    <state width="1388" height="214" key="GridCell.Tab.0.right/0.23.1440.877/-1890.23.1890.1177@0.23.1440.877" timestamp="1593504571765" />
+    <state x="-1884" y="23" width="1214" height="877" key="SettingsEditor" timestamp="1593577924756">
+      <screen x="-1884" y="23" width="1884" height="1177" />
+    </state>
+    <state x="0" y="23" key="SettingsEditor/0.23.1440.877/-1881.23.1881.1177@0.23.1440.877" timestamp="1593511480859" />
+    <state x="0" y="23" width="1214" height="877" key="SettingsEditor/0.23.1440.877/-1882.23.1882.1177@0.23.1440.877" timestamp="1593512347318" />
+    <state x="-1884" y="23" key="SettingsEditor/0.23.1440.877/-1884.23.1884.1177@-1884.23.1884.1177" timestamp="1593577924756" />
+    <state x="0" y="23" width="1214" height="877" key="SettingsEditor/0.23.1440.877/-1886.23.1886.1177@0.23.1440.877" timestamp="1592382068144" />
+    <state x="0" y="23" key="SettingsEditor/0.23.1440.877/-1890.23.1890.1177@0.23.1440.877" timestamp="1593503721791" />
+    <state x="578" y="121" width="1240" height="677" key="com.android.tools.idea.avdmanager.AvdListDialog" timestamp="1592382087406">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state x="100" y="123" width="1240" height="677" key="com.android.tools.idea.avdmanager.AvdListDialog/0.23.1440.877/-1886.23.1886.1177@0.23.1440.877" timestamp="1592382077074" />
+    <state x="578" y="121" width="1240" height="677" key="com.android.tools.idea.avdmanager.AvdListDialog/0.23.1440.877/-1887.23.1887.1177@0.23.1440.877" timestamp="1592382087406" />
+  </component>
+</project>
