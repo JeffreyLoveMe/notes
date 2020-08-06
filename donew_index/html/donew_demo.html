@@ -39,7 +39,9 @@
             outline-style: none;
             border: dashed 1px green;
         }
-        /*获取光标焦点*/
+        /*
+        获取光标焦点 - 一般用于'超链接a'/'input输入框'
+        */
         
         input.username:focus {
             background-color: red;
@@ -58,6 +60,23 @@
             background: url();
             background-repeat: no-repeat;
             background-position: right;
+        }
+        /* 8.五彩导航 */
+        
+        a.one {
+            display: inline-block;
+            width: 120px;
+            height: 58px;
+            background-image: url("../image/bg1.png");
+            background-repeat: no-repeat;
+            line-height: 50px;
+            text-align: center;
+            text-decoration: none;
+        }
+        /* 必须加上"" */
+        
+        a.one:hover {
+            background-image: url("../image/bg2.png");
         }
     </style>
 </head>
@@ -310,6 +329,12 @@
         <br>
         <input type="image" src="../image/jd_reg.jpg">
     </fieldset>
+
+    <!-- 8.五彩导航 -->
+    <a href="#" class="one">五彩导航</a>
+    <a href="#" class="one">五彩导航</a>
+    <a href="#" class="one">五彩导航</a>
+    <a href="#" class="one">五彩导航</a>
 </body>
 
 </html>

@@ -862,7 +862,7 @@ dependencies:
 //         //   //   // color: Colors.red,
 //         //   //   // 内边距 - 容器与容器子元素（文字/图片）之间的距离
 //         //   //   padding: const EdgeInsets.fromLTRB(10, 15, 15, 10),
-//         //   //   // 外边距 - 容器与父试图之间的距离
+//         //   //   // 外边距 - 容器与父元素之间的距离
 //         //   //   margin: const EdgeInsets.all(10.0),
 //         //   //   // decoration - 装饰
 //         //   //   decoration: new BoxDecoration(
