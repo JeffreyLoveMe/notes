@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CSS_Demo</title>
-    <!-- 开始写css样式 -->
+    <title>css_demo</title>
+    <!-- 这里写css样式 -->
     <style type="text/css">
         /* 
         1.css概述
@@ -39,30 +39,27 @@
             属性:值;
             属性:值;
         }
-         */
-        
+        2>.举例
+        // html代码
+        <div>标签选择器01</div>
+        <div>标签选择器02</div>
+        <p>标签选择器03</p>
+        <p>标签选择器04</p>
+        // css代码
         div {
             font-size: 50px;
-            /* 
             颜色的显示
             1>.直接写颜色
             2>.十六进制显示颜色#000000
             3>.rgb(255, 255, 255)/rgba(255, 255, 255, 1)
-             */
             color: brown;
             background-color: #009900;
             color: rgb(255, 255, 255);
-            /* 
             red/green/blue - 0 ~ 255
             alpha - 0 ~ 1
-             */
             color: rgba(255, 255, 255, 1);
         }
-        
-        p {
-            width: 100px;
-            height: 200px;
-        }
+         */
         /* 
         5.类选择器 - 单独设置
         1>.格式
@@ -72,21 +69,27 @@
         } 
         2>.特点 - 谁调用谁生效/可以多次使用（一个标签可以调用多个类选择器/多个标签可以调用同一个类选择器）
         3>.类选择器命名规则/标识符 - 只能包含‘数字/字母/下划线’ && 不能以数字开头 && 不建议使用汉字
-         */
-        
-        .sb_box {
+        4>.举例
+        // html代码
+        <!-- 
+        类选择器谁调用谁生效
+        -->
+        <div class="box, miss">类选择器01</div>
+        <div>类选择器02</div>
+        <p class="miss">类选择器03</p>
+        <p class="m123">类选择器04</p>
+        // css代码
+        .box {
             font-size: 40px;
             color: #ff0000;
             width: 400.px;
             height: 300.px;
             background-color: #999999;
         }
-        
         .miss {
             text-indent: 2em;
             text-align: right;
-        }
-        
+        }    
         .m123 {
             font-size: 40px;
             color: #ff0000;
@@ -94,6 +97,7 @@
             height: 300.px;
             background-color: #999999;
         }
+         */
         /* 
         ID选择器
         1>.格式
@@ -105,22 +109,33 @@
         1.谁调用谁生效/一个ID选择器在一个页面只能使用一次（如果多次使用不符合w3c规范，js调用会出现问题）
         2.一个标签只可以调用一个ID选择器
         3.通常与js搭配使用
-         */
-        
+        3>.举例
+        // html代码
+        <!-- 
+        1.一个ID选择器在一个页面只能使用一次，如果多次使用不符合w3c规范，js调用会出现问题
+        2.一个标签只可以调用一个ID选择器
+        3.通常与js搭配使用
+        -->
+        <div id="sp_box">ID选择器01</div>
+        <div>ID选择器02</div>
+        <!-- 
+        一个标签同时可以使用‘ID选择器’/‘类选择器’
+        -->
+        <p id="miss" class="miss">ID选择器03</p>
+        <p>ID选择器04</p>
+        // css代码
         #sp_box {
             font-size: 40px;
             color: #009900;
             background-color: rgb(0, 0, 255);
         }
-        /* 
         ‘类选择器’与‘ID选择器’可以同名
-         */
-        
-        #miss {
+         #miss {
             font-size: 40px;
             color: #009900;
             background-color: rgb(0, 0, 255);
         }
+         */
         /* 
         通配符选择器 - 整个页面全部设置
         1>.格式
@@ -129,40 +144,38 @@
             属性:值;
         }
         2>.不推荐使用 - 增加浏览器和服务器负担
-         */
-        /* * {
+        3>.举例
+        * {
             font-size: 40px;
             color: #009900;
             background-color: rgb(0, 0, 255);
-        } */
+        }
+         */
         /* 
         复合选择器 - 两个或者两个以上的基础选择器通过不同的方式连接在一起 | 交集选择器/后代选择器/子代选择器/并集选择器
          */
-        
-        .s_box {
-            font-size: 50px;
-        }
-        
-        #s_miss {
-            color: #ff0000;
-        }
         /* 
-        1.交集选择器
+        1.交集选择器 - 常用
         1>.格式
         标签（此处必须是标签） + .类选择器/#ID选择器 {
             属性:值;
             属性:值;
         }
         2>.特点 - 先去找“某个标签”，并且该标签使用了“.类选择器/#ID选择器”
-         */
-        
+        3>.举例
+        // html代码
+        <div class="s_box">交集选择器01</div>
+        <div>交集选择器02</div>
+        <p id="s_miss">交集选择器03</p>
+        // css代码
         div.sb_box {
             background-color: #009900;
         }
-        
+
         p#s_miss {
             color: aqua;
-        }
+        } 
+        */
         /* 
         2.后代选择器
         1>.格式
@@ -172,15 +185,21 @@
         }
         2>.特点 - 可以无限隔代/只要能够代表标签，“类选择器/ID选择器”可以自由组合
         3>.基本条件 - 必须有“包含/嵌套关系”
-         */
-        
+        // html代码
+        <div class="m_box">
+            <p>
+                <span>后代选择器01</span>
+            </p>
+        </div>
+        <div>后代选择器02</div>
+        // css代码
         div p span {
             font-size: 50px;
         }
-        
         .m_box span {
             background-color: #009900;
-        }
+        } 
+         */
         /* 
         子代选择器 - 使用较少
         1>.格式
@@ -189,15 +208,24 @@
             属性:值;
         }
         2>.特点 - 只能选中“直接下代”
-         */
-        
+        // html代码
+        <div>
+            <p>
+                <!-- 非直接子代 -->
+                <span>子代选择器01</span>
+            </p>
+            <!-- 直接子代 -->
+            <span>子代选择器02</span>
+        </div>
+        // css代码
         div>span {
             font-size: 50px;
         }
         
         p>span {
             color: #009900;
-        }
+        } 
+         */
         /* 
         并集选择器 - 标签（类选择器/ID选择器）的样式一致
         1>.格式
@@ -205,134 +233,116 @@
             属性:值;
             属性:值;
         }
-         */
-        
+        // html代码
+        <div class="k_box">并集选择器01</div>
+        <p id="k_miss">并集选择器02</p>
+        <span>并集选择器03</span>
+        <h1>并集选择器04</h1>   
+        // css代码
         div,
         p,
         span,
         h1 {
             font-size: 100px;
             color: #ff0000;
-        }
+        } 
+         */
         /* 
         常见文字属性
-         */
-        
         .k_miss,
         #k_miss,
         span,
         h1 {
-            /* 文字大小 */
+            // 文字大小
             font-size: 40px;
-            /* 
-            文字粗细
-            范围 - 100 - 900/加粗 >= 700
-             */
+            // 文字粗细
+            // 范围 - 100 - 900/加粗 >= 700
             font-weight: 700;
-            /* 
-            文字字体 
-            escape("宋体") - /5B8B/4F53
-            escape("微软雅黑") - /5FAE/8F6F/96C5/9ED1
-            */
+            // 文字字体 
+            // escape("宋体") - /5B8B/4F53
+            // escape("微软雅黑") - /5FAE/8F6F/96C5/9ED1
             font-family: "/5B8B/4F53";
-            /* 
-            文字风格 
-            normal - 默认值/正常 ｜ italic - 斜体
-            */
+            // 文字风格 
+            // normal - 默认值/正常 ｜ italic - 斜体
             font-style: italic;
-            /* 行高 */
+            // 行高
             line-height: 40px;
-            /* 
-            文字属性连写 - 注意顺序/必须包含“font-size/font-family”
-            font: font-style font-weight font-size/line-height font-family;
-             */
-            /* font: italic 700 40px/400px "/5B8B/4F53" */
+            // 文字属性连写 - 注意顺序/必须包含“font-size/font-family”
+            // font: font-style font-weight font-size/line-height font-family;
+            // font: italic 700 40px/400px "/5B8B/4F53"
         }
-        /* 
-        块元素 -> 行内元素
          */
-        
+        /* 
+        <!-- 
+        标签分类 - 按照“显示方式”分类
+        1>.块元素 - div/p/h1-h6/ul/li
+        1.特点 - 独占一行/可以设置width、height/如果没有设置宽度，宽度与父元素一样/如果没有设置高度，高度为0
+        2>.行内元素 - span/a/strong/em/del/ins
+        1.特点 - 在一行显示/不能直接定义width、height（与内容的宽度保持一致）
+        3>.行内块元素（内联元素） - input/img
+        1.特点 - 在一行显示/可以设置width、height
+        -->
+        // 块元素 -> 行内元素
         div,
         p {
             display: inline;
-            /* 
-            不能再设置width/height
-             */
-            /* width: 200px;
-            height: 200px; */
+            // 不能再设置width/height
+            width: 200px;
+            height: 200px;
         }
-        /* 
-        行内元素 -> 块元素
-         */
-        
+        // 行内元素 -> 块元素
         span {
             display: block;
             width: 200px;
             height: 400px;
         }
-        /* 
-        块元素/行内元素 -> 行内块元素
-         */
-        
+        // 块元素/行内元素 -> 行内块元素
         span,
         div {
             display: inline-block;
             background-color: yellow !important;
             text-align: left;
         }
-        /* 
-        链接伪类
          */
         /* 
-        链接默认状态 - ！！！常用！！！
+        // 链接伪类
+        // 1>.链接默认状态 - ！！！常用！！！
         a {
 
         }
         a:link {
-
-        }
-        效果一样
-         */
-        
-        a:link {
-            color: red;
-            /* 
-            none - 没有下划线
-            underline - 有下划线
-            line-through - 删除线
-             */
+            // none - 没有下划线
+            // underline - 有下划线
+            // line-through - 删除线
             text-decoration: line-through;
         }
-        /* 
-        链接访问之后的状态
-        怎么清除浏览器缓存 - ’设置 -> 隐私 -> 清除数据‘
-         */
-        
+        效果一样
+        // 2>.链接访问之后的状态
+        // 怎么清除浏览器缓存 - ’设置 -> 隐私 -> 清除数据‘
+        // html代码
+        <!-- 
+        链接伪类
+        1>.如果四个链接伪类都使用必须按顺序书写
+        -->
+        <a href="http://www.baidu.com">百度一下</a>
+        // css代码
         a:visited {
             color: #999999;
         }
-        /* 
-        鼠标放在链接上（鼠标经过）显示的状态 - ！！！常用！！！
-         */
-        
+        // 3>.鼠标放在链接上（鼠标经过）显示的状态 - ！！！常用！！！
         a:hover {
             color: pink;
             text-decoration: underline;
         }
-        /* 
-        链接激活状态 - 鼠标选中按下不松手
-         */
-        
+        // 4>.链接激活状态 - 鼠标选中按下不松手
         a:active {
             color: yellow;
         }
-        /* 
-        获取焦点 
-         */
-        
+        // 5>.获取焦点 
         a:focus {
             color: #009900;
         }
+         */
         /* 
         背景属性
         background-color - 背景颜色
@@ -351,128 +361,21 @@
         3>.写“两个具体值”：第一份代表水平方向/第二个代表垂直方向
         boxbackground-position: 20px 30px;
         background-attachment - 背景是否滚动 ｜ scroll滚动/默认 - 以元素定位/fixed固定 - 以浏览器定位
-         */
-        
         div {
             background-color: #009900;
             background-image: url("jd_icon.png");
             background-repeat: no-repeat;
-            /* 上下默认居中 */
+            // 上下默认居中
             background-position: left;
             background-position: 20px 30px;
             background-attachment: fixed;
-            /* 
-            背景属性连写
-            1>.顺序没有要求
-            2>.background-image不能省略，其他可以
-            */
+            // 背景属性连写
+            // 1>.顺序没有要求
+            // 2>.background-image不能省略，其他可以
             background: red url("jd_icon.png") no-repeat bottom fixed;
         }
-    </style>
-</head>
-
-<body>
-    <div>标签选择器01</div>
-    <div>标签选择器02</div>
-    <p>标签选择器03</p>
-    <p>标签选择器04</p>
-
-    <!-- 
-        类选择器谁调用谁生效
-    -->
-    <div class="box, miss">类选择器01</div>
-    <div>类选择器02</div>
-    <p class="miss">类选择器03</p>
-    <p class="m123">类选择器04</p>
-
-    <!-- 
-        1.一个ID选择器在一个页面只能使用一次，如果多次使用不符合w3c规范，js调用会出现问题
-        2.一个标签只可以调用一个ID选择器
-        3.通常与js搭配使用
-    -->
-    <div id="sp_box">ID选择器01</div>
-    <div>ID选择器02</div>
-    <!-- 
-    一个标签同时可以使用‘ID选择器’/‘类选择器’
-    -->
-    <p id="miss" class="miss">ID选择器03</p>
-    <p>ID选择器04</p>
-
-    <!-- 
-        交集选择器
-    -->
-    <div class="s_box">交集选择器01</div>
-    <div>交集选择器02</div>
-    <p id="s_miss">交集选择器03</p>
-
-    <!-- 
-        后代选择器
-    -->
-    <div class="m_box">
-        <p>
-            <span>后代选择器01</span>
-        </p>
-    </div>
-    <div>后代选择器02</div>
-
-    <!-- 
-        子代选择器
-    -->
-    <div>
-        <p>
-            <!-- 非直接子代 -->
-            <span>子代选择器01</span>
-        </p>
-        <!-- 直接子代 -->
-        <span>子代选择器02</span>
-    </div>
-
-    <!-- 
-        并集选择器
-    -->
-    <div class="k_box">并集选择器01</div>
-    <p id="k_miss">并集选择器02</p>
-    <span>并集选择器03</span>
-    <h1>并集选择器04</h1>
-
-    <!-- 
-        css的三种书写方式
-        1>.内嵌式 - 只作用于当前文件/没有实现结构表现分离
-        <head>
-            <style type="text/css">
-                // css样式表书写位置
-
-            </style>
-        </head>
-        2>.外链式 - 作用于当前站点（范围广）/实现结构表现分离/推荐使用
-        // login.css - css样式表书写位置
-        <link rel="stylesheet" href="../css/login.css">
-        3>.行内样式表 - 作用于当前标签/结构表现混合/不推荐使用
-        <h1 style="css样式表书写位置">
-            行内样式表
-        </h1>
-    -->
-
-    <!-- 
-        标签分类 - 按照“显示方式”分类
-        1>.块元素 - div/p/h1-h6/ul/li
-        1.特点 - 独占一行/可以设置width、height/如果没有设置宽度，宽度与父元素一样/如果没有设置高度，高度为0
-        2>.行内元素 - span/a/strong/em/del/ins
-        1.特点 - 在一行显示/不能直接定义width、height（与内容的宽度保持一致）
-        3>.行内块元素（内联元素） - input/img
-        1.特点 - 在一行显示/可以设置width、height
-    -->
-    <!-- 
-        块元素 -> 行内元素
-     -->
-    <div>14期威武</div>
-    <p>14期霸气</p>
-    <!-- 
-        行内元素 -> 块元素
-    -->
-    <span>14期威武</span>
-
-    <!-- 
+         */
+        /* 
         CSS的三大特性
         1>.层叠性 - 当多个样式表作用于同一个标签时样式发生冲突，总是执行后面的样式 -> 就近原则（与调用顺序无关、与浏览器解析代码顺序有关）
         2>.继承性 - 必须有包含（嵌套）关系 - 文字的所有属性（文字颜色/文字大小/字体样式/字体粗细）都可以被继承
@@ -480,19 +383,62 @@
         3>.优先级/权重(作用于同一个标签发生冲突的时候) - 默认样式/0 < 继承/0 < 标签选择器/1 < 类选择器/10 < ID选择器/100 < 行内样式表/1000 < !important/1000以上
         1.复合选择器 - 权重会叠加
         2.0、1、10、100、1000只是一个抽象的量化 - 真正上“100个标签选择器 < 1个类选择器”
-    -->
-    <div class="father">
-        <p class="son">14期威武</p>
-    </div>
+        <div class="father">
+            <p class="son">14期威武</p>
+        </div>
+         */
+        /* .header,
+        .main,
+        .footer {
+            width: 500px;
+            background-color: #000000;
+        }
+        
+        .header,
+        .footer {
+            height: 100px;
+            background-color: #000000;
+        }
+        
+        .main {
+            height: 300px;
+            background-color: #eee;
+            margin-top: 10px 0;
+        }
+        
+        .content {
+            width: 300px;
+            height: 300px;
+            background-color: orange;
+            float: left;
+        }
+        
+        .sidebar {
+            width: 190px;
+            height: 300px;
+            background-color: green;
+            float: right;
+        } */
+    </style>
+</head>
 
+<body>
     <!-- 
-        链接伪类
-        1>.如果四个链接伪类都使用必须按顺序书写
-    -->
-    <a href="http://www.baidu.com">百度一下</a>
+    css的三种书写方式
+    1>.内嵌式 - 只作用于当前文件/没有实现结构表现分离
+    <head>
+        <style type="text/css">
+            // css样式表书写位置
 
-    <!-- 
-        代码简写 - ul>li*5>a[#]
+        </style>
+    </head>
+    2>.外链式 - 作用于当前站点（范围广）/实现结构表现分离/推荐使用
+    // login.css - css样式表书写位置
+    <link rel="stylesheet" href="../css/login.css">
+    3>.行内样式表 - 作用于当前标签/结构表现混合/不推荐使用
+    <h1 style="css样式表书写位置">
+        行内样式表
+    </h1> 
     -->
 
     <!-- 
@@ -526,181 +472,231 @@
         border-top-color - 上部边框的颜色
         border-top-width - 上部边框的粗细
      -->
-    <div class="box" style="width: 300px; 
-    height: 390px; 
-    background: #999999; 
-    border-top-style: dashed;
-    border-top-color: #009900;
-    border-top-width: 5px;">
-        14期威武
-    </div>
+    <!-- <div class="box" style="width: 300px; 
+     height: 390px; 
+     background: #999999; 
+     border-top-style: dashed;
+     border-top-color: #009900;
+     border-top-width: 5px;">
+         14期威武
+     </div> -->
     <!-- 
-        简写 - border-top: #009900 solid 5px;/与顺序无关/border-top-style必不可少
-        border - xxx
-     -->
-    <div style="width: 400px; 
-    height: 390px; 
-    background: #999999; 
-    border-top: #009900 solid 5px;">
-        14期高薪
-    </div>
+         简写 - border-top: #009900 solid 5px;/与顺序无关/border-top-style必不可少
+         border - xxx
+      -->
+    <!-- <div style="width: 400px; 
+     height: 390px; 
+     background: #999999; 
+     border-top: #009900 solid 5px;">
+         14期高薪
+     </div> -->
     <!-- 
-        四个边框都一样
-     -->
-    <div style="width: 400px; 
-    height: 390px; 
-    background: #999999;
-    border: #009900 solid 5px;">
-        14期无敌
-    </div>
+         四个边框都一样
+      -->
+    <!-- <div style="width: 400px; 
+     height: 390px; 
+     background: #999999;
+     border: #009900 solid 5px;">
+         14期无敌
+     </div> -->
 
     <!-- 
-        边框合并
-        border-collapse: collapse/ke'la'p's; - 边框合并
-     -->
-    <table style="width: 300px; 
-    height: 500px;
-    border: 1px solid red;
-    border-collapse: collapse;">
-        <tr>
-            <td style="border: 1px solid red;">123</td>
-            <td style="border: 1px solid red;">123</td>
-            <td style="border: 1px solid red;">123</td>
-        </tr>
-        <tr>
-            <td style="border: 1px solid red;">123</td>
-            <td style="border: 1px solid red;">123</td>
-            <td style="border: 1px solid red;">123</td>
-        </tr>
-        <tr>
-            <td style="border: 1px solid red;">123</td>
-            <td style="border: 1px solid red;">123</td>
-            <td style="border: 1px solid red;">123</td>
-        </tr>
-    </table>
+         边框合并
+         border-collapse: collapse/ke'la'p's; - 边框合并
+      -->
+    <!-- <table style="width: 300px; 
+     height: 500px;
+     border: 1px solid red;
+     border-collapse: collapse;">
+         <tr>
+             <td style="border: 1px solid red;">123</td>
+             <td style="border: 1px solid red;">123</td>
+             <td style="border: 1px solid red;">123</td>
+         </tr>
+         <tr>
+             <td style="border: 1px solid red;">123</td>
+             <td style="border: 1px solid red;">123</td>
+             <td style="border: 1px solid red;">123</td>
+         </tr>
+         <tr>
+             <td style="border: 1px solid red;">123</td>
+             <td style="border: 1px solid red;">123</td>
+             <td style="border: 1px solid red;">123</td>
+         </tr>
+     </table> -->
 
     <!-- 
-        2.内边距 - 内容距离盒子边框的距离/写在父元素上
-        1>.默认情况下内容处于父元素的左上角
-     -->
-    <div style="padding-left: 20px; 
-    padding-right: 50px; 
-    padding-top: 20px; 
-    padding-bottom: 50px;">
+         2.内边距 - 内容距离盒子边框的距离/写在父元素上
+         1>.默认情况下内容处于父元素的左上角
+      -->
+    <!-- <div style="padding-left: 20px; 
+     padding-right: 50px; 
+     padding-top: 20px; 
+     padding-bottom: 50px;">
         14期威武
     </div>
-    <!-- 表示距离上下左右25px -->
+    // 表示距离上下左右25px
     <div style="padding: 25px;">
         14期无敌
     </div>
-    <!-- 表示距离“上下25px 左右40px” -->
+    // 表示距离“上下25px 左右40px”
     <div style="padding: 25px 40px;">
         14期高薪
     </div>
-    <!-- 表示距离“上25px 左右40px 下30px” -->
+    // 表示距离“上25px 左右40px 下30px”
     <div style="padding: 25px 40px 30px;">
         14期牛逼
     </div>
-    <!-- 表示距离“上25px 右40px 下30px 左50px” -->
+    // 表示距离“上25px 右40px 下30px 左50px”
     <div style="padding: 25px 40px 30px 50px;">
         14期奥力给
-    </div>
+    </div> -->
 
     <!-- 
-    内边距撑大盒子问题
-    1>盒子宽度 = 定义的宽度 + 2 * 边框宽度 + 左右内边距
-     -->
-    <div style="width: 300px;
-    height: 150px;
-    padding-left: 100px;
-    padding-top: 75px;
-    background-color: pink;">
-        <div style="width: 300px;
-        height: 150px;
-        background-color: red;">
-        </div>
-    </div>
+     内边距撑大盒子问题
+     1>盒子宽度 = 定义的宽度 + 2 * 边框宽度 + 左右内边距
+      -->
+    <!-- <div style="width: 300px;
+     height: 150px;
+     padding-left: 100px;
+     padding-top: 75px;
+     background-color: pink;">
+         <div style="width: 300px;
+         height: 150px;
+         background-color: red;">
+         </div>
+     </div> -->
 
     <!-- 
-        继承的盒子一般不会被撑大 - 仅仅作用于水平方向
-        1>.嵌套的盒子，如果’子盒子‘没有定义宽度，给’子盒子‘设置左右内边距一般不会撑大'父盒子'
-        2>.padding-left <= ‘父元素宽度500’都不会被撑大
-     -->
-    <div class="father" style="width: 500px; 
-    height: 300px; 
-    background-color: #ccc;">
-        <div class="son" style="height: 100px; 
-        background-color: #009900; 
-        padding-left: 30px; 
-        padding-top: 200px;">
-            1414
-        </div>
-    </div>
-
-    <!-- 
-        3.外边距
-     -->
-    <div style="width: 300px; 
+         继承的盒子一般不会被撑大 - 仅仅作用于水平方向
+         1>.嵌套的盒子，如果’子盒子‘没有定义宽度，给’子盒子‘设置左右内边距一般不会撑大'父盒子'
+         2>.padding-left <= ‘父元素宽度500’都不会被撑大
+      -->
+    <!-- <div class="father" style="width: 500px; 
      height: 300px; 
-     background: red;
-     margin-left: 20px;
-     margin-left: 30px;
-     margin-right: 40px;
-     margin-bottom: 50px;">
+     background-color: #ccc;">
+         <div class="son" style="height: 100px; 
+         background-color: #009900; 
+         padding-left: 30px; 
+         padding-top: 200px;">
+             1414
+         </div>
+     </div> -->
+
+    <!-- 
+         3.外边距
+      -->
+    <!-- <div style="width: 300px; 
+      height: 300px; 
+      background: red;
+      margin-left: 20px;
+      margin-left: 30px;
+      margin-right: 40px;
+      margin-bottom: 50px;">
         14期无敌
     </div>
-    <!-- 表示距离上下左右25px -->
+    // 表示距离上下左右25px
     <div style="margin: 25px;">
         14期无敌
     </div>
-    <!-- 表示距离“上下25px 左右40px” -->
+    // 表示距离“上下25px 左右40px”
     <div style="margin: 25px 40px;">
         14期高薪
     </div>
-    <!-- 表示距离“上25px 左右40px 下30px” -->
+    // 表示距离“上25px 左右40px 下30px”
     <div style="margin: 25px 40px 30px;">
         14期牛逼
     </div>
-    <!-- 表示距离“上25px 右40px 下30px 左50px” -->
+    // 表示距离“上25px 右40px 下30px 左50px”
     <div style="margin: 25px 40px 30px 50px;">
         14期奥力给
-    </div>
+    </div> -->
 
     <!-- 
-        垂直方向外边距合并 - 垂直方向的2个盒子，如果都设置了垂直方向外边距会合并取最大值
-     -->
+         垂直方向外边距合并 - 垂直方向的2个盒子，如果都设置了垂直方向外边距会合并取最大值
+      -->
     <!-- 它们之间的距离不是120px，而是100px -->
-    <div style="width: 300px; 
-    height: 300px; 
-    background-color: red; 
-    margin-bottom: 20px;">
-        14期高薪
-    </div>
-    <div style="width: 300px; 
-    height: 300px; 
-    background-color: red; 
-    margin-top: 100px;">
-        14期奥力给
-    </div>
-
-    <!-- 
-        外边距塌陷 - 当嵌套的盒子直接给“子盒子设置垂直方向外边距”的时候会发生外边距塌陷（父盒子也会跟着下移）
-        1>.padding - 影响盒子的大小/margin - 影响盒子的位置
-        2>.解决办法 - 1.给父盒子设置边框 - 不推荐使用/给父盒子设置overflow: hidden; - 推荐使用
-     -->
-    <div style="width: 300px; 
+    <!-- <div style="width: 300px; 
      height: 300px; 
      background-color: red; 
-     overflow: hidden;">
-        <div style="width: 200px; 
-         height: 200px; 
-         background-color: #eee; 
-         margin-top: 20px;">
+     margin-bottom: 20px;">
+         14期高薪
+     </div>
+     <div style="width: 300px; 
+     height: 300px; 
+     background-color: red; 
+     margin-top: 100px;">
+         14期奥力给
+     </div> -->
+
+    <!-- 
+         外边距塌陷 - 当嵌套的盒子直接给“子盒子设置垂直方向外边距”的时候会发生外边距塌陷（父盒子也会跟着下移）
+         1>.padding - 影响盒子的大小/margin - 影响盒子的位置
+         2>.解决办法 - 1.给父盒子设置边框 - 不推荐使用/给父盒子设置overflow: hidden; - 推荐使用
+      -->
+    <!-- <div style="width: 300px; 
+      height: 300px; 
+      background-color: red; 
+      overflow: hidden;">
+         <div style="width: 200px; 
+          height: 200px; 
+          background-color: #eee; 
+          margin-top: 20px;">
+         </div>
+     </div> -->
+
+    <!-- 
+         三种布局技术 - 文档流布局/浮动布局/定位布局 
+     -->
+    <!-- 
+         文档流（标准流） 
+         1>.概念 - 元素自上而下、自左而右，块元素、行内元素在一行上显示，碰到父元素边框换行
+     -->
+    <!-- 
+         浮动布局
+         1>.浮动布局有两个方向 - float:left | right;
+         2>.元素浮动之后不占据原来的位置（脱标）
+         3>.浮动的盒子在一行上显示
+         4>.行内元素（只能定义左右的内边距、不能定义上下的内边距）浮动以后转为行内块元素 - 不推荐使用（转换以后会“脱标”）
+         5>.文本绕图/制作导航/网页布局
+      -->
+    <!-- 
+        1>.文本绕图 - 文字不参与浮动（文字与浮动元素没有关系）
+     -->
+    <!-- <div style="width: 400px; height: 300px;">
+        <img src="../image/top.jpg" style="float: left;">
+        <p>文本绕图文本绕图文本绕图文本绕图文本绕图</p>
+        <p>文本绕图文本绕图文本绕图文本绕图文本绕图</p>
+        <p>文本绕图文本绕图文本绕图文本绕图文本绕图</p>
+        <p>文本绕图文本绕图文本绕图文本绕图文本绕图</p>
+        <p>文本绕图文本绕图文本绕图文本绕图文本绕图</p>
+    </div> -->
+
+    <!-- 
+        2>.制作导航 - xxx
+     -->
+
+    <!-- 
+        3>.网页布局
+     -->
+    <!--
+    <div class="header">
+
+    </div>
+
+    <div class="main">
+        <div class="content">
+
+        </div>
+        <div class="sidebar">
+
         </div>
     </div>
 
-    <!-- FIXME - 复习到这里 -->
-    <!-- 标准流 -->
+    <div class="footer">
+
+    </div> -->
+
 </body>
 
 </html>

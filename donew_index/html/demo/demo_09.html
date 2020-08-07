@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>表单控件</title>
+    <style type="text/css">
+        input.username {
+            background-color: #ccc;
+            /*去掉表单边框*/
+            border: 0 none;
+            /*去掉轮廓线（选中时的边框）*/
+            outline-style: none;
+            border: dashed 1px green;
+        }
+        /*
+        获取光标焦点 - 一般用于'超链接a'/'input输入框'
+        */
+        
+        input.username:focus {
+            background-color: red;
+        }
+        
+        input.email {
+            border: 0 none;
+            outline-style: none;
+            border-bottom: dotted 1px red;
+        }
+        
+        input.search {
+            border: 0 none;
+            outline-style: none;
+            border: solid 1px #999;
+            background: url();
+            background-repeat: no-repeat;
+            background-position: right;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 6.表单控件 -->
+    <!-- 获取光标焦点 -->
+    <label for="username">获取焦点</label>
+    <input type="text" class="username" id="username">
+    <input type="email" class="email">
+    <input type="text" class="search">
+
+</body>
+
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>新浪导航案例</title>
+    <style type="text/css">
+        /* 块元素不需要设置宽、需要设置高 */
+        
+        .nav {
+            height: 40px;
+            background-color: #eee;
+            border-top: 3px solid orange;
+            border-bottom: 1px solid #aaaaaa;
+        }
+        
+        .nav_content {
+            width: 1000px;
+            height: 40px;
+            background-color: #fff;
+            /* 让盒子居中 */
+            margin: 0 auto;
+            /* 盒子内容居中 */
+            /* text-align: center; */
+        }
+        
+        a {
+            display: inline-block;
+            height: 40px;
+            font-size: 12px;
+            font-weight: "/5FAE/8F6F/96C5/9ED1";
+            color: #aaa;
+            text-decoration: none;
+            padding: 0px 12px;
+            /* ？？？行高为什么写到这里？？？ */
+            line-height: 40px;
+        }
+        
+        a:hover {
+            background-color: #999;
+            color: orange;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 此处div不需要设置尺寸 -->
+    <div class="nav">
+        <!-- 此处div需要设置尺寸 -->
+        <div class="nav_content">
+            <a href="#">设为首页</a>
+            <a href="#">手机新浪网</a>
+            <a href="#">移动客户端</a>
+        </div>
+    </div>
+</body>
+
+</html>
