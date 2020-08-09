@@ -387,7 +387,8 @@
             <p class="son">14期威武</p>
         </div>
          */
-        /* .header,
+        /* 
+        .header,
         .main,
         .footer {
             width: 500px;
@@ -401,15 +402,24 @@
         }
         
         .main {
+            // 1、需要在这里设置高度
             height: 300px;
-            background-color: #eee;
-            margin-top: 10px 0;
+            background-color: #eeeeee;
+            margin: 10px 0;
+            // 盒子的属性 - 内容溢出处理方式
+            // 给父元素使用‘overflow: hidden;’ - bfc
+            // overflow: visible; - 默认值。内容不会被裁剪，会呈现在元素框之外
+            // overflow: hidden; - 内容会被裁剪，裁剪的内容不可见
+            // overflow: scroll; - 内容会被裁剪，浏览器会显示滚动条以便查看裁剪的内容（内容没有溢出盒子也会有滚动条）
+            // overflow: auto; - 如果内容被裁剪，浏览器会显示滚动条以便查看裁剪的内容
+            overflow: hidden;
         }
         
         .content {
             width: 300px;
             height: 300px;
             background-color: orange;
+            // 因为此处有浮动 - 所以不占有位置（需要在‘1、’处设置高度）
             float: left;
         }
         
@@ -418,7 +428,85 @@
             height: 300px;
             background-color: green;
             float: right;
-        } */
+        }
+        // ‘:after’表示给某个标签后面插入一个标签
+        .clearfix:after {
+            content: ".";
+            display: block;
+            height: 0;
+            line-height: 0;
+            visibility: hidden;
+            clear: both;
+        }
+        // 兼容IE浏览器 - 让IE浏览器也清除浮动
+        .clearfix {
+            zoom: 1;
+        } 
+         */
+        /* 
+        问题 - 因为浏览器的兼容问题，不同的浏览器对某些标签的默认样式是不同的，这样就会造成浏览器之间的页面差异
+        解决办法 - CSS初始化
+         */
+        /* 
+        定位 - 静态定位/绝对定位/相对定位
+         */
+        /* 
+        // 1>.静态定位
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            // 默认值 - 文档流
+            // 定位方向 - left | right | top | bottom;
+            position: static;
+        } 
+         */
+        /* 
+        // 2>.绝对定位
+        // 1.元素使用绝对定位之后不占据原来的位置（脱标）
+        // 2.元素使用绝对定位，位置是从浏览器出发（与父元素无关）
+        // 3.嵌套的盒子：父盒子没有使用定位，子盒子使用绝对定位，位置是从浏览器出发
+        // 4.嵌套的盒子：父盒子使用定位，子盒子使用绝对定位，位置是从父盒子出发
+        // 5.行内元素使用绝对定位以后转换成行内块元素（不推荐使用）
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            position: absolute;
+            left: 100px;
+            top: 100px;
+            // 调整元素的层叠顺序/默认值0-999，值越大，元素越在上面
+            z-index: 2;
+        } 
+         */
+        /* 
+        3>.相对定位
+        // 1.使用相对定位，位置从自身出发（没有脱标 - 还占据原来的位置）
+        // 2.子绝父相（父元素相对定位（因为不会脱标），子元素绝对定位）
+        // 3.行内元素使用相对定位不能转行内块元素
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            position: relative;
+            left: 100px;
+            top: 100px;
+        } 
+         */
+        /* 
+        4>.固定定位
+        // 1.元素使用固定定位之后不占据原来的位置（脱标）
+        // 2.元素使用固定定位，位置是从浏览器出发（与父元素无关）
+        // 3.元素使用固定定位之后会转化为行内块元素（不推荐使用）
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            position: fixed;
+            left: 100px;
+            top: 100px;
+        } 
+         */
     </style>
 </head>
 
@@ -664,7 +752,7 @@
         1>.文本绕图 - 文字不参与浮动（文字与浮动元素没有关系）
      -->
     <!-- <div style="width: 400px; height: 300px;">
-        <img src="../image/top.jpg" style="float: left;">
+        <img src="../image/jd_icon.png" style="float: left;">
         <p>文本绕图文本绕图文本绕图文本绕图文本绕图</p>
         <p>文本绕图文本绕图文本绕图文本绕图文本绕图</p>
         <p>文本绕图文本绕图文本绕图文本绕图文本绕图</p>
@@ -677,26 +765,24 @@
      -->
 
     <!-- 
-        3>.网页布局
+        3>.网页布局 - xxx
      -->
-    <!--
-    <div class="header">
-
+    <!-- <div class="header"></div>
+    <div class="main clearfix">
+        <div class="content"></div>
+        <div class="sidebar"></div>
+        // 额外标签法（在最后一个浮动元素后添加标签）
+        // clear:left | right | both 
+        // <div style="clear: both;"></div>
     </div>
+    <div class="footer"></div>  -->
 
-    <div class="main">
-        <div class="content">
-
-        </div>
-        <div class="sidebar">
-
-        </div>
-    </div>
-
-    <div class="footer">
-
-    </div> -->
-
+    <!-- 
+        清除浮动 - 不是清除浮动的效果，而是清除浮动的不好效果
+        1>.产生原因 - 当父盒子没有定义高度，嵌套的盒子浮动以后下边的元素会发生位置错误
+        2>.清除浮动的方法（三种） - 额外标签法（在最后一个浮动元素后添加标签/不推荐使用）| 给父元素
+        使用‘overflow: hidden;’(有弊端 - 如果有内容出了盒子就不能使用该方法) ｜ 伪元素清除浮动（推荐使用）   
+     -->
 </body>
 
 </html>
