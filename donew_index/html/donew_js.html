@@ -70,11 +70,11 @@
 
         // 数据类型
         // 一、简单数据类型
-        // 1.number - 数字类型（包含‘正数、负数、小数’）/表示的数字有范围
-        // 1>.判断数据类型 - typeof
+        // 1>.number - 数字类型（包含‘正数、负数、小数’）/表示的数字有范围
+        // 1.判断数据类型 - typeof
         var a1 = 1.45;
         alert(typeof(a1)); // 判断数据类型
-        // 数字类型的表达方式 - 十进制表示法/十六进制表示法/八进制表示法
+        // 2.数字类型的表达方式 - 十进制表示法/十六进制表示法/八进制表示法
         var a2 = 147;  // 十进制表示法
         var a3 = 0x178; // 十六进制表示法 - 0x
         var a4 = 0367;  // 八进制表示法 - 0
@@ -93,85 +93,85 @@
         var a9 = null;
         alert(a9);
         
-        // // 运算符
-        // // 一、算术运算符 - +｜-｜*｜/｜% / 优先级 - 有()先计算()、先*/后+-
-        // // 1>.+
-        // var a10 = 1;
-        // var a11 = 2;
-        // // 两个数字类型的变量相加结果是数字类型（实现加法运算）
-        // var a12 = a10 + a11; 
-        // alert(a12); // 3
-        // alert(typeof(a12));
-        // // 一个数字类型和一个字符串相加结果是一个字符串（实现字符串链接）
-        // var a13 = "12";
-        // var a14 = a10 + a13; 
-        // alert(a14); // "123"
-        // // 2>.-
-        // // 两个数字类型相减结果是一个数字类型
-        // var a15 = a10 - a11;
-        // alert(a15); // -1
-        // // 一个数字类型和一个数字字符串相减结果是一个数字类型(隐式类型转换)
-        // var a16 = a10 - a13;
-        // alert(a16); // -11
-        // // 一个数字类型和一个非数字字符串相减结果是NaN
-        // // NaN - not a number/NaN是一个数字类型（不是一个数字）
-        // var a17 = "124ABC";
-        // var a18 = a16 - a17; // NaN
-        // // 3>.*|/ - 两个整数相除会出现小数
-        // // 两个数字类型相乘除结果是一个数字类型
-        // var a19 = 6;
-        // var a20 = 2;
-        // var a21 = a19 / a20; // 3
-        // // 一个数字类型和一个数字字符串相乘除结果是一个数字类型(隐式类型转换)
-        // var a22 = "2";
-        // var a23 = a19 / a21; // 3
-        // // 一个数字类型和一个非数字字符串相乘除结果是NaN
-        // var a24 = "2ABC";
-        // var a25 = a23 / a24; // NaN
-        // // 0作为除数的时候结果为Infinity(无限大)/Infinity是数字类型
-        // var a26 = a23 / 0; // Infinity
-        // // 4>.%
-        // // 二、赋值运算符 - +=|-=|*=|/=
-        // var a27 = 5;
-        // var a28 = 8;
-        // a27 += a28; a27 = a27 + a28;
-        // a27 -= a28; a27 = a27 - a28;
-        // a27 *= a28; a27 = a27 * a28;
-        // a27 /= a28; a27 = a27 / a28;
-        // // 三、比较运算符 - </>/<=/>=/==/!=
-        // var b0 = "2";
-        // var b1 = 2;
-        // var b2 = 3;
-        // alert(b1 > b2);
-        // alert(typeof(b1 > b2));
-        // // 四、逻辑运算符 - 只有两个结果true/false
-        // // 1>.&& - 两个表达式为true结果为true/只要一个表达式为false结果为false
-        // if (b1 > b2 && b1 < b2) {}
-        // // 2>.|| - 只要一个表达式为true结果为true
-        // if (b1 > b2 || b1 < b2) {}
-        // // 3.! - 与表达式结果相反
-        // if (!(b1 > b2)) {}
-        // // 五、赋值运算符=/比较运算符==/比较运算符===
-        // // "比较运算符(等于==)"只判断内容是否相同，不判断数据类型
-        // // “不等于!=”只判断内容是否相同，不判断数据类型
-        // alert(b1 == b2); // false
-        // alert(b0 == b1); // true
-        // alert(b0 != b1); // false
-        // // "比较运算符(全等===)"既要判断内容是否相同，又需要判断数据类型是否相同
-        // // “不全等!==”既要判断内容是否相同，又需要判断数据类型是否相同
-        // alert(b0 === b1); // false
-        // alert(b0 !== b1); // true
-        // // 六、逗号运算符
-        // var c1 = 1, c2 = 2, c3 = 3;
-        // // 七、三元运算符 - 表达式结果为true执行“结果1”，结果为false执行“结果2”
-        // 表达式 ? 结果1 : 结果2
-        // // 八、自增自减运算符
-        // var index = 10;
-        // alert(index++); // index++ = 10/index = 11
-        // alert(++index); // ++index = 12/index = 12
-        // alert(index--); // index-- = 12/index = 11
-        // alert(--index); // --index = 10/index = 10
-        // alert(index);   // index = 10
+        // 运算符
+        // 一、算术运算符 - +｜-｜*｜/｜% / 优先级 - 有()先计算()、先*/后+-
+        // 1>.+
+        var a10 = 1;
+        var a11 = 2;
+        // 两个数字类型的变量相加结果是数字类型（实现加法运算）
+        var a12 = a10 + a11; 
+        alert(a12); // 3
+        alert(typeof(a12));
+        // 一个数字类型和一个字符串相加结果是一个字符串（实现字符串链接）
+        var a13 = "12";
+        var a14 = a10 + a13; 
+        alert(a14); // "123"
+        // 2>.-
+        // 两个数字类型相减结果是一个数字类型
+        var a15 = a10 - a11;
+        alert(a15); // -1
+        // 一个数字类型和一个数字字符串相减结果是一个数字类型(隐式类型转换)
+        var a16 = a10 - a13;
+        alert(a16); // -11
+        // 一个数字类型和一个非数字字符串相减结果是NaN
+        // NaN - not a number/NaN是一个数字类型（不是一个数字）
+        var a17 = "124ABC";
+        var a18 = a16 - a17; // NaN
+        // 3>.*|/|% - 两个整数相除会出现小数
+        // 两个数字类型相乘除结果是一个数字类型
+        var a19 = 6;
+        var a20 = 2;
+        var a21 = a19 / a20; // 3
+        // 一个数字类型和一个数字字符串相乘除结果是一个数字类型(隐式类型转换)
+        var a22 = "2";
+        var a23 = a19 / a21; // 3
+        // 一个数字类型和一个非数字字符串相乘除结果是NaN
+        var a24 = "2ABC";
+        var a25 = a23 / a24; // NaN
+        // 0作为除数的时候结果为Infinity(无限大)/Infinity是数字类型
+        var a26 = a23 / 0; // Infinity
+        // 4>.%
+        // 二、赋值运算符 - +=|-=|*=|/=
+        var a27 = 5;
+        var a28 = 8;
+        a27 += a28; a27 = a27 + a28;
+        a27 -= a28; a27 = a27 - a28;
+        a27 *= a28; a27 = a27 * a28;
+        a27 /= a28; a27 = a27 / a28;
+        // 三、比较运算符 - </>/<=/>=/==/!=
+        var b0 = "2";
+        var b1 = 2;
+        var b2 = 3;
+        alert(b1 > b2);
+        alert(typeof(b1 > b2));
+        // 四、逻辑运算符 - 只有两个结果true/false
+        // 1>.&& - 两个表达式为true结果为true/只要一个表达式为false结果为false
+        if (b1 > b2 && b1 < b2) {}
+        // 2>.|| - 只要一个表达式为true结果为true
+        if (b1 > b2 || b1 < b2) {}
+        // 3.! - 与表达式结果相反
+        if (!(b1 > b2)) {}
+        // 五、赋值运算符=/比较运算符==/比较运算符===
+        // "比较运算符(等于==)"只判断内容是否相同，不判断数据类型
+        // “不等于!=”只判断内容是否相同，不判断数据类型
+        alert(b1 == b2); // false
+        alert(b0 == b1); // true
+        alert(b0 != b1); // false
+        // "比较运算符(全等===)"既要判断内容是否相同，又需要判断数据类型是否相同
+        // “不全等!==”既要判断内容是否相同，又需要判断数据类型是否相同
+        alert(b0 === b1); // false
+        alert(b0 !== b1); // true
+        // 六、逗号运算符
+        var c1 = 1, c2 = 2, c3 = 3;
+        // 七、三元运算符 - 表达式结果为true执行“结果1”，结果为false执行“结果2”
+        表达式 ? 结果1 : 结果2
+        // 八、自增自减运算符
+        var index = 10;
+        alert(index++); // index++ = 10/index = 11
+        alert(++index); // ++index = 12/index = 12
+        alert(index--); // index-- = 12/index = 11
+        alert(--index); // --index = 10/index = 10
+        alert(index);   // index = 10
         
         // Date对象
         var myDate = new Date();  // 通过new创建对象
@@ -196,44 +196,45 @@
         alert(Math.min(x1, y1)); // 最小值
         alert(Math.pow(x1, y1)); // x1^y1
         alert(Math.random());   // 返回“0 - 1的随机数”/不包括”0和1“ - 常用
-        alert(Math.round(x1));  // 四舍五入取整
+        alert(Math.round(x1));  // 四舍五入取整/-15.5四舍五入为-15
 
-        // // 强制数据类型转换
-        // var b3 = 123;
-        // var b4 = 24.01;
-        // var b5 = "123";
-        // var b6 = "123abc";
-        // var b7 = "mylove";
-        // var b8 = "12.34";
-        // var b9;
-        // var b10 = null;
-        // // 一、数字类型Number -> 字符串String
-        // // 第一种方式
-        // alert(String(b3));
-        // alert(typeof(String(b3)));
-        // // 第二种方式
-        // alert(b4.toString);
-        // alert(typeof(b4.toString));
-        // // 二、字符串String -> 数字类型Number
-        // // 第一种方式 - 数字字符串转换之后结果为数字/非数字字符串转换结果为NaN/小数类型的字符串转换结果为原数字
-        // alert(Number(b5));
-        // alert(typeof(Number(b5)));
-        // // 第二种方式 - 整数数字类型字符串转换结果为整数数字/数字开头的字符串转换结果为前面的数字/非数字开头的字符串转换结果为NaN
-        // alert(parseInt(b5));
-        // alert(typeof(parseInt(b5)));
-        // alert(parseInt(b8)); // ‘小数字符串’转换以后取整（不识别小数点后面的数字）
-        // // 第三种方式 - 整数数字类型字符串转换结果为整数数字/数字开头的字符串转换结果为前面的数字/非数字开头的字符串转换结果为NaN
-        // alert(parseFloat(b5)); // 与parseInt()效果一致
-        // alert(typeof(parseFloat(b5)));
-        // alert(parseInt(b8)); // ‘小数字符串’转换结果为原数字
-        // // 三、转布尔类型 - 数字和字符串转换结果为true/undefined、null、0转换结果为false
-        // alert(Boolean(b3)); // true
-        // alert(typeof(Boolean(b3)));
-        // alert(Boolean(b5)); // true
-        // alert(Boolean(b9)); // false
-        // alert(Boolean(b10)); // false
-
-        // 隐式类型转换 - 运算过程中，程序自动进行的数据转换（程序员不参与）
+        // 类型转换
+        // 一、强制数据类型转换
+        var b3 = 123;
+        var b4 = 24.01;
+        var b5 = "123";
+        var b6 = "123abc";
+        var b7 = "mylove";
+        var b8 = "12.34";
+        var b9;
+        var b10 = null;
+        // 一、数字类型Number -> 字符串String
+        // 第一种方式
+        alert(String(b3));
+        alert(typeof(String(b3)));
+        // 第二种方式
+        alert(b4.toString());
+        alert(typeof(b4.toString()));
+        // 二、字符串String -> 数字类型Number
+        // 第一种方式 - 数字字符串转换之后结果为数字/非数字字符串转换结果为NaN/小数类型的字符串转换结果为原数字
+        alert(Number(b5));
+        alert(typeof(Number(b5)));
+        alert(Number(b6)); // NaN
+        // 第二种方式 - 整数数字类型字符串转换结果为整数数字/数字开头的字符串转换结果为前面的数字/非数字开头的字符串转换结果为NaN
+        alert(parseInt(b5));
+        alert(typeof(parseInt(b5)));
+        alert(parseInt(b8)); // ‘小数字符串’转换以后取整（不识别小数点后面的数字）
+        // 第三种方式 - 整数数字类型字符串转换结果为整数数字/数字开头的字符串转换结果为前面的数字/非数字开头的字符串转换结果为NaN
+        alert(parseFloat(b5)); // 与parseInt()效果一致
+        alert(typeof(parseFloat(b5)));
+        alert(parseInt(b8)); // ‘小数字符串’转换结果为原数字
+        // 三、转布尔类型 - 数字和字符串转换结果为true/undefined、null、0转换结果为false
+        alert(Boolean(b3)); // true
+        alert(typeof(Boolean(b3)));
+        alert(Boolean(b5)); // true
+        alert(Boolean(b9)); // false
+        alert(Boolean(b10)); // false
+        // 二、隐式类型转换 - 运算过程中，程序自动进行的数据转换（程序员不参与）
         var b11 = 12;
         var b12 = "3";
         var b13 = b11 - b12;
