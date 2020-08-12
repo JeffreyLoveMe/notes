@@ -28,70 +28,70 @@
         注意 - 推荐将js代码写在‘html标签’之后/建议将多个js文件合成问一个js文件
         */
 
-        // // 输出信息的几种方式
-        // // 1.对话框（不含'取消'）
-        // alert("14期高薪");
-        // var alert_title = "谢吴军";
-        // alert("我的姓名是" + alert_title); // 字符串的拼接
-        // // 2.对话框（含‘取消’）- 常配合if判断使用
-        // // result - true表示点击了确定/false表示点击了取消
-        // var result = confirm("14期高薪");
-        // // 3.控制台输出 - 使用较多
-        // console.log("14期高薪");
-        // // 4.对话框（含’输入框‘用于接收用户信息）
-        // prompt("请输入你的银行卡号");
-        // // bankCardNo变量可以接收输入的内容/！！！bankCardNo是一个字符串！！！
-        // var bankCardNo = prompt("请输入你的银行卡号");
-        // // 5.在页面输出消息/输出标签
-        // document.write("14期<br><strong>高薪</strong>");
-        // // 转义字符 - 常见的转义字符可以百度
-        // // \n - 换行
-        // // \r - 回车
-        // // \"\" = ""
-        // // \'\' = ''
-        // alert("我叫\"js\""); // 结果输出 - 我是"js"
+        // 输出信息的几种方式
+        // 1.对话框（不含'取消'）
+        alert("14期高薪");
+        var alert_title = "谢吴军";
+        alert("我的姓名是" + alert_title); // 字符串的拼接
+        // 2.对话框（含‘取消’）- 常配合if判断使用
+        // result - true表示点击了确定/false表示点击了取消
+        var result = confirm("14期高薪");
+        // 3.控制台输出 - 使用较多
+        console.log("14期高薪");
+        // 4.对话框（含’输入框‘用于接收用户信息）
+        prompt("请输入你的银行卡号");
+        // bankCardNo变量可以接收输入的内容/！！！bankCardNo是一个字符串！！！
+        var bankCardNo = prompt("请输入你的银行卡号");
+        // 5.在页面输出消息/输出标签
+        document.write("14期<br><strong>高薪</strong>");
+        // 转义字符 - 常见的转义字符可以百度
+        // \n - 换行
+        // \r - 回车
+        // \"\" = ""
+        // \'\' = ''
+        alert("我叫\"js\""); // 结果输出 - 我是"js"
 
         // 注释
         // 单行注释 - //
         // 多行注释 - /*多行注释*/
 
-        // // 变量 - 会变化的量
-        // // 1.作用 - 用来存储数据的容器
-        // var name;   // 定义变量 - 与swift一样
-        // name = "123"; // 赋值
-        // var age = 18; // 定义变量并赋值
-        // alert(name);
-        // alert("name"); // 直接量/常量
+        // 变量 - 会变化的量
+        // 1.作用 - 用来存储数据的容器
+        var name;   // 定义变量 - 与swift一样
+        name = "123"; // 赋值
+        var age = 18; // 定义变量并赋值
+        alert(name);
+        alert("name"); // 直接量/常量
 
         // 变量的命名规则 - 以“字母、下划线”开头，只能包含“数字、字母、下划线”
         // 支持中文（不推荐使用）、不能使用特殊符号
         // 不能使用‘关键字’作为标识符、可以使用‘保留关键字’作为标识符（不推荐）
         // js严格区分大小写
 
-        // // 数据类型
-        // // 一、简单数据类型
-        // // 1.number - 数字类型（包含‘正数、负数、小数’）/表示的数字有范围
-        // // 1>.判断数据类型 - typeof
-        // var a1 = 1.45;
-        // alert(typeof(a1)); // 判断数据类型
-        // // 数字类型的表达方式 - 十进制表示法/十六进制表示法/八进制表示法
-        // var a2 = 147;  // 十进制表示法
-        // var a3 = 0x178; // 十六进制表示法 - 0x
-        // var a4 = 0367;  // 八进制表示法 - 0
-        // // 2>.字符串类型 - 凡是使用“双引号”或“单引号”引起来的都是字符串
-        // var a5 = "14期高薪";
-        // alert(a5);
-        // alert(typeof(a5)); // 判断数据类型
-        // // 3>.布尔类型 - 只有两个值（true == 1/false == 0）
-        // var a6 = true;
-        // var a7 = false;
-        // // 4>.undefined - 变量未初始化（初始化 - 第一次赋值）/变量在内存中存在
-        // var a8;
-        // alert(a8); // undefined
-        // // 5>.null - 变量未引用（值为空）/变量在内存中不存在（类似于Objective-C中的nil）
-        // // 作用 - 销毁变量
-        // var a9 = null;
-        // alert(a9);
+        // 数据类型
+        // 一、简单数据类型
+        // 1.number - 数字类型（包含‘正数、负数、小数’）/表示的数字有范围
+        // 1>.判断数据类型 - typeof
+        var a1 = 1.45;
+        alert(typeof(a1)); // 判断数据类型
+        // 数字类型的表达方式 - 十进制表示法/十六进制表示法/八进制表示法
+        var a2 = 147;  // 十进制表示法
+        var a3 = 0x178; // 十六进制表示法 - 0x
+        var a4 = 0367;  // 八进制表示法 - 0
+        // 2>.字符串类型 - 凡是使用“双引号”或“单引号”引起来的都是字符串
+        var a5 = "14期高薪";
+        alert(a5);
+        alert(typeof(a5)); // 判断数据类型
+        // 3>.布尔类型 - 只有两个值（true == 1/false == 0）
+        var a6 = true;
+        var a7 = false;
+        // 4>.undefined - 变量未初始化（初始化 - 第一次赋值）/变量在内存中存在
+        var a8;
+        alert(a8); // undefined
+        // 5>.null - 变量未引用（值为空）/变量在内存中不存在（类似于Objective-C中的nil）
+        // 作用 - 销毁变量
+        var a9 = null;
+        alert(a9);
         
         // // 运算符
         // // 一、算术运算符 - +｜-｜*｜/｜% / 优先级 - 有()先计算()、先*/后+-
@@ -173,30 +173,30 @@
         // alert(--index); // --index = 10/index = 10
         // alert(index);   // index = 10
         
-        // // Date对象
-        // var myDate = new Date();  // 通过new创建对象
-        // alert(myDate); // 完整的当前日期时间/Mon Aug 10 2020 10:37:28 GMT+0800 (中国标准时间)
-        // alert(myDate.getDate()); // 返回一个月的某一天（1 - 31）
-        // alert(myDate.getDay()); // 返回当前是周几（0/周天 - 6/周六）- 常用
-        // alert(myDate.getMonth()); //返回当前月份(0/一月 - 11/十二月) - 返回正常的月份需要“+1”/常用
-        // alert(myDate.getFullYear()); // 返回当前年份（四位数）- 常用
-        // alert(myDate.getHours()); // 返回当前的小时（0 - 23）
-        // alert(myDate.getMinutes()); // 返回当前的分钟（0 - 59）
-        // alert(myDate.getSeconds()); // 返回当前的秒数（0 - 59）
-        // alert(myDate.getTime()); // 返回时间戳（1970年01月01日至今的毫秒数）
-        // alert(myDate.getTimezoneOffset()); // 返回本地时间与格林尼治标准时间(GMT)的分钟差
+        // Date对象
+        var myDate = new Date();  // 通过new创建对象
+        alert(myDate); // 完整的当前日期时间/Mon Aug 10 2020 10:37:28 GMT+0800 (中国标准时间)
+        alert(myDate.getDate()); // 返回一个月的某一天（1 - 31）
+        alert(myDate.getDay()); // 返回当前是周几（0/周天 - 6/周六）- 常用
+        alert(myDate.getMonth()); //返回当前月份(0/一月 - 11/十二月) - 返回正常的月份需要“+1”/常用
+        alert(myDate.getFullYear()); // 返回当前年份（四位数）- 常用
+        alert(myDate.getHours()); // 返回当前的小时（0 - 23）
+        alert(myDate.getMinutes()); // 返回当前的分钟（0 - 59）
+        alert(myDate.getSeconds()); // 返回当前的秒数（0 - 59）
+        alert(myDate.getTime()); // 返回时间戳（1970年01月01日至今的毫秒数）
+        alert(myDate.getTimezoneOffset()); // 返回本地时间与格林尼治标准时间(GMT)的分钟差
 
-        // // Math对象 - 常用于执行数学任务
-        // var x1 = 10.5;
-        // var y1 = - 20;
-        // alert(Math.abs(y1));   // 返回“绝对值”
-        // alert(Math.ceil(x1)); // 向上取整（天花板函数）
-        // alert(Math.floor(x1)); // 向下取整（地板函数）
-        // alert(Math.max(x1, y1)); // 最大值
-        // alert(Math.min(x1, y1)); // 最小值
-        // alert(Math.pow(x1, y1)); // x1^y1
-        // alert(Math.random());   // 返回“0 - 1的随机数”/不包括”0和1“ - 常用
-        // alert(Math.round(x1));  // 四舍五入取整
+        // Math对象 - 常用于执行数学任务
+        var x1 = 10.5;
+        var y1 = - 20;
+        alert(Math.abs(y1));   // 返回“绝对值”
+        alert(Math.ceil(x1)); // 向上取整（天花板函数）
+        alert(Math.floor(x1)); // 向下取整（地板函数）
+        alert(Math.max(x1, y1)); // 最大值
+        alert(Math.min(x1, y1)); // 最小值
+        alert(Math.pow(x1, y1)); // x1^y1
+        alert(Math.random());   // 返回“0 - 1的随机数”/不包括”0和1“ - 常用
+        alert(Math.round(x1));  // 四舍五入取整
 
         // // 强制数据类型转换
         // var b3 = 123;
@@ -233,127 +233,127 @@
         // alert(Boolean(b9)); // false
         // alert(Boolean(b10)); // false
 
-        // // 隐式类型转换 - 运算过程中，程序自动进行的数据转换（程序员不参与）
-        // var b11 = 12;
-        // var b12 = "3";
-        // var b13 = b11 - b12;
-        // alert(b13); // 9
-        // alert(typeof(b13)); // number
-        // alert(typeof(b12)); // string
+        // 隐式类型转换 - 运算过程中，程序自动进行的数据转换（程序员不参与）
+        var b11 = 12;
+        var b12 = "3";
+        var b13 = b11 - b12;
+        alert(b13); // 9
+        alert(typeof(b13)); // number
+        alert(typeof(b12)); // string
 
-        // // if语句 - 与其他语言一致
-        // var b14 = 12;
-        // var b15 = 15;
-        // // 第一种格式
-        // if (b14 > b15) {
-        //     alert("js");
-        // }
-        // // 第二种格式
-        // if (b14 < b15) {
-        //     alert("js");
-        // } else {
-        //     alert("js");
-        // }
-        // // 第三种格式
-        // if (b14 < b15) {
-        //     alert("js");
-        // } else if (b14 > b15) {
-        //     alert("js");
-        // } else {
-        //     alert("js");
-        // }
+        // if语句 - 与其他语言一致
+        var b14 = 12;
+        var b15 = 15;
+        // 第一种格式
+        if (b14 > b15) {
+            alert("js");
+        }
+        // 第二种格式
+        if (b14 < b15) {
+            alert("js");
+        } else {
+            alert("js");
+        }
+        // 第三种格式
+        if (b14 < b15) {
+            alert("js");
+        } else if (b14 > b15) {
+            alert("js");
+        } else {
+            alert("js");
+        }
 
-        // // switch语句
-        // var c4 = 10;
-        // var c5 = 20;
-        // // ”switch后面’()‘中的表达式“数据类型（可以是number也可以是string）必须与“case后面的value”数据类型（可以是number也可以是string）保持一致
-        // switch (c4 + c5) {
-        //     case 1: {
-        //         // 如果“表达式/变量 = 1”执行这里
-        //     }
-        //         break; // 可以阻断代码执行
-        //     case 2: {
-        //         // 如果“表达式/变量 = 2”执行这里
-        //     }
-        //         break;
-        //     case 3:
-        //     case 4:
-        //     case 5: {
-        //         // 多个case可以gong yong e w
-        //     }
-        //         break;
-        //     default: {
-        //         // 如果“表达式/变量”和以上的值都不相等执行这里
-        //     }
-        //         break;
-        // }
+        // switch语句
+        var c4 = 10;
+        var c5 = 20;
+        // ”switch后面’()‘中的表达式“数据类型（可以是number也可以是string）必须与“case后面的value”数据类型（可以是number也可以是string）保持一致
+        switch (c4 + c5) {
+            case 1: {
+                // 如果“表达式/变量 = 1”执行这里
+            }
+                break; // 可以阻断代码执行
+            case 2: {
+                // 如果“表达式/变量 = 2”执行这里
+            }
+                break;
+            case 3:
+            case 4:
+            case 5: {
+                // 多个case可以gong yong e w
+            }
+                break;
+            default: {
+                // 如果“表达式/变量”和以上的值都不相等执行这里
+            }
+                break;
+        }
 
-        // // 循环语句 - 与其他语言一致
-        // // 第一种 - while循环
-        // // 重复执行某一段代码（循环体），直到"不满足条件/false"终止循环
-        // while (true) {
-        //     // 循环体
-        // }
-        // // 第二种 - do...while循环
-        // // 重复执行某一段代码（循环体），直到"不满足条件/false"终止循环
-        // // 至少循环一次
-        // do {
-        //     // 循环体
-        // } while (true);
-        // // 第三种 - for循环（最常用）
-        // // let和var的区别 - https://www.cnblogs.com/fly_dragon/p/8669057.html
-        // for (let index = 0; index < 100; index++) {
-        //     // 循环体
-        // }
-        // // 循环嵌套
-        // // break - 结束当前循环
-        // // continue - 结束本次循环，开始下次循环
-        // for (let i = 0; i < 2; i++) {
-        //     for (let j = 0; j < 10; j++) {
-        //         document.write("*");
-        //         // break; // 结束内部小循环
-        //         // continue;
-        //     }
-        //     document.write("<br>");
-        //     // break; // 结束外部大循环
-        // }
+        // 循环语句 - 与其他语言一致
+        // 第一种 - while循环
+        // 重复执行某一段代码（循环体），直到"不满足条件/false"终止循环
+        while (true) {
+            // 循环体
+        }
+        // 第二种 - do...while循环
+        // 重复执行某一段代码（循环体），直到"不满足条件/false"终止循环
+        // 至少循环一次
+        do {
+            // 循环体
+        } while (true);
+        // 第三种 - for循环（最常用）
+        // let和var的区别 - https://www.cnblogs.com/fly_dragon/p/8669057.html
+        for (let index = 0; index < 100; index++) {
+            // 循环体
+        }
+        // 循环嵌套
+        // break - 结束当前循环
+        // continue - 结束本次循环，开始下次循环
+        for (let i = 0; i < 2; i++) {
+            for (let j = 0; j < 10; j++) {
+                document.write("*");
+                // break; // 结束内部小循环
+                // continue;
+            }
+            document.write("<br>");
+            // break; // 结束外部大循环
+        }
         
-        // // 数组
-        // // 1>.创建数组
-        // // 第一种方式
-        // var array01 = new Array(); 
-        // array01[0] = 12;  // 通过下标给数组赋值 - 数组元素从0开始
-        // array01[1] = 18;
-        // // 第二种方式
-        // var array02 = []; // 常用
-        // array02[0] = "谢吴军";
-        // array02[1] = "中国人";
-        // alert(array01); // 显示数组
-        // // 第三种方式
-        // var array03 = [12, 35, "中国人"]; // 定义数组的同时初始化（js数组中可以有不同的数据类型）
-        // alert(array03);
-        // alert(array03.length);  // 数组长度
-        // // 2>.数组遍历
-        // // 第一种方式
-        // for (let index = 0; index < array03.length; index++) {
-        //     alert(array03[index]);
-        // }
-        // // 3>.数组合并
-        // var array04 = [12, 14, 18, "吴军"];
-        // var array05 = [3, "xwj"];
-        // var array06 = array04.concat(array05);
-        // // 4>.返回一个字符串 - 将数组元素以“,”连接成string返回
-        // var array07 = [12, 13, 14, 15];
-        // var separatorString = array07.join(",");
-        // alert(typeof(separatorString));
+        // 数组
+        // 1>.创建数组
+        // 第一种方式
+        var array01 = new Array(); 
+        array01[0] = 12;  // 通过下标给数组赋值 - 数组元素从0开始
+        array01[1] = 18;
+        // 第二种方式
+        var array02 = []; // 常用
+        array02[0] = "谢吴军";
+        array02[1] = "中国人";
+        alert(array01); // 显示数组
+        // 第三种方式
+        var array03 = [12, 35, "中国人"]; // 定义数组的同时初始化（js数组中可以有不同的数据类型）
+        alert(array03);
+        alert(array03.length);  // 数组长度
+        // 2>.数组遍历
+        // 第一种方式
+        for (let index = 0; index < array03.length; index++) {
+            alert(array03[index]);
+        }
+        // 3>.数组合并
+        var array04 = [12, 14, 18, "吴军"];
+        var array05 = [3, "xwj"];
+        var array06 = array04.concat(array05);
+        // 4>.返回一个字符串 - 将数组元素以“,”连接成string返回
+        var array07 = [12, 13, 14, 15];
+        var separatorString = array07.join(",");
+        alert(typeof(separatorString));
 
-        // // 函数入门 - 函数是完成特定功能的代码块
-        // // 1.创建函数
-        // function test() {
-        //     alert("14期高薪");
-        // }
-        // // 2.调用函数
-        // test();
+        // 函数入门 - 函数是完成特定功能的代码块
+        // 1.创建函数
+        function test() {
+            alert("14期高薪");
+        }
+        // 2.调用函数
+        test();
 
         // 代码调试 - js代码错误会暴露在运行时
     </script>
