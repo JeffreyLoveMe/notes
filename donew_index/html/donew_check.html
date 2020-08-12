@@ -24,6 +24,108 @@
     <!-- css -->
     <style type="text/css">
         /* css写在这里 */
+        /* css属性速查 */
+        div {
+            /* 基础属性 - start */
+            /* 宽度 */
+            width: 100px;
+            /* 高度 */
+            height: 100px;
+            /* 内容颜色 */
+            color: #999999;
+            /* 内容的水平对齐方式 */
+            text-align: center;
+            /* 首行缩进 */
+            text-indent: 2em;
+            /* 
+            标签转换 
+            block - 块元素
+            inline - 行内元素
+            inline-block - 行内块元素
+            */
+            display: inline-block;
+            /* 
+            文本装饰
+            none - 没有下划线
+            overline - 有上划线
+            underline - 有下划线
+            line-through - 删除线
+             */
+            text-decoration: overline;
+            /* 基础属性 - end */
+
+            /* 文字属性 - start */
+            /* 文字大小 */
+            font-size: 40px;
+            /* 
+            文字粗细
+            范围 - 100 - 900/加粗 >= 700
+             */
+            font-weight: 700;
+            /* 
+            文字字体
+            escape("宋体") - /5B8B/4F53
+            escape("微软雅黑") - /5FAE/8F6F/96C5/9ED1
+             */
+            font-family: "/5FAE/8F6F/96C5/9ED1";
+            /* 
+            文字风格
+            normal - 默认值/正常
+            italic - 斜体
+             */
+            font-style: normal;
+            /* 
+            行高
+             */
+            line-height: 100px;
+             /* 
+             文字属性连写 - 注意顺序/必须包含“font-size/font-family”
+             font-style font-weight font-size/line-height font-family
+              */
+            font: italic 700 40px/400px "/5FAE/8F6F/96C5/9ED1";
+            /* 文字属性 - end */
+
+            /* 背景属性 - start */
+            /* 背景颜色 */
+            background-color: rgba(255, 0, 0, 1);
+            /* 背景图片 - 不要忘记"" */
+            background-image: url("../image/swk.jpg");
+            /* 
+            背景平铺
+            repeat - 平铺/默认
+            no-repeat - 不平铺
+            repeat-x - 沿x轴平铺
+            repeat-y - 沿y轴平铺
+             */
+            background-repeat: no-repeat;
+            /* 
+            背景定位 - left/right/top/center/bottom
+            1>.只写“一个方位值”：另外“一个方位值”默认居中
+            // 上下默认居中
+            background-position: left;
+            // 左右默认居中    
+            background-position: top;
+            2>.写“两个方位值”：不考虑顺序
+            // left/center/right - 水平
+            // top/center/bottom - 垂直
+            background-position: left top;
+            3>.写“两个具体值”：第一份代表水平方向/第二个代表垂直方向
+            // 水平20px 垂直30px
+            boxbackground-position: 20px 30px;
+             */
+            background-position: left center;
+            /* 
+            背景是否滚动
+            1>.scroll滚动/默认 - 以当前元素定位
+            2>.fixed固定 - 以浏览器定位
+             */
+            background-attachment: fixed;
+            /* 
+            背景属性连写 - 顺序没有要求/background-image不能省略，其他可以省略
+             */
+             background: red url("../image/swk.jpg") no-repeat bottom fixed;
+            /* 背景属性 - end */
+        }
     </style>
     <!-- js -->
     <script type="text/javascript">

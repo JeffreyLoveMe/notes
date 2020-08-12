@@ -78,22 +78,23 @@
         <!-- 
         类选择器谁调用谁生效
         -->
+        // .miss属性生效 - 谁后调用谁生效/与定义顺序无关
         <div class="box, miss">类选择器01</div>
         <div>类选择器02</div>
         <p class="miss">类选择器03</p>
         <p class="m123">类选择器04</p>
         // css代码
+        .miss {
+            text-indent: 2em;
+            text-align: right;
+        } 
         .box {
             font-size: 40px;
             color: #ff0000;
             width: 400.px;
             height: 300.px;
             background-color: #999999;
-        }
-        .miss {
-            text-indent: 2em;
-            text-align: right;
-        }    
+        }   
         .m123 {
             font-size: 40px;
             color: #ff0000;
@@ -124,7 +125,7 @@
         <div id="sp_box">ID选择器01</div>
         <div>ID选择器02</div>
         <!-- 
-        一个标签同时可以使用‘ID选择器’/‘类选择器’
+        一个标签同时可以使用‘ID选择器’/‘类选择器’ - 显示以权重为准
         -->
         <p id="miss" class="miss">ID选择器03</p>
         <p>ID选择器04</p>
@@ -192,7 +193,7 @@
             属性:值;
             属性:值;
         }
-        2>.特点 - 可以无限隔代/只要能够代表标签，“类选择器/ID选择器”可以自由组合
+        2>.特点 - 可以无限隔代/只要能够代表标签，“标签选择器/类选择器/ID选择器”可以自由组合
         3>.基本条件 - 必须有“包含/嵌套关系”
         // html代码
         <div class="m_box">
@@ -202,6 +203,7 @@
         </div>
         <div>后代选择器02</div>
         // css代码
+        // 只能有两个选择器 - 此处无效
         div p span {
             font-size: 50px;
         }
@@ -217,7 +219,7 @@
             属性:值;
             属性:值;
         }
-        2>.特点 - 只能选中“直接下代”
+        2>.特点 - 只能选中“直接子代”
         // html代码
         <div>
             <p>
@@ -228,10 +230,15 @@
             <span>子代选择器02</span>
         </div>
         // css代码
+        // 只能选中“直接子代” - 此处无效
         div>span {
             font-size: 50px;
         }
-        p>span {
+        // 只能有两个选择器 - 此处无效
+        div>p>span {
+            font-size: 50px;
+        }
+        div>span {
             color: #009900;
         } 
          */
@@ -318,7 +325,7 @@
          */
 
         /* 
-        // 链接伪类
+        // 链接伪类 - 5种状态
         // 1>.链接默认状态 - ！！！常用！！！
         a {
 
@@ -373,6 +380,7 @@
         // top/center/bottom - 垂直
         background-position: left top;
         3>.写“两个具体值”：第一份代表水平方向/第二个代表垂直方向
+        // 水平20px 垂直30px
         boxbackground-position: 20px 30px;
         background-attachment - 背景是否滚动 ｜ scroll滚动/默认 - 以元素定位/fixed固定 - 以浏览器定位
         div {
@@ -385,11 +393,12 @@
             background-attachment: fixed;
             // 背景属性连写
             // 1>.顺序没有要求
-            // 2>.background-image不能省略，其他可以
+            // 2>.background-image不能省略，其他可以省略
             background: red url("jd_icon.png") no-repeat bottom fixed;
         }
          */
 
+        /* FIXME - 复习到这里 */
         /* 
         CSS的三大特性
         1>.层叠性 - 当多个样式表作用于同一个标签时样式发生冲突，总是执行后面的样式 -> 就近原则（与调用顺序无关、与浏览器解析代码顺序有关）
