@@ -19,12 +19,13 @@
             width: 1000px;
             height: 40px;
             background-color: #fff;
-            /* 让盒子居中 */
+            /* 让盒子水平居中 */
             margin: 0 auto;
-            /* 盒子内容居中 */
+            /* 盒子内容水平居中 */
             /* text-align: center; */
         }
         
+        /* 行内块元素也是一个盒子 */
         a {
             display: inline-block;
             height: 40px;
@@ -32,8 +33,10 @@
             font-weight: "/5FAE/8F6F/96C5/9ED1";
             color: #aaa;
             text-decoration: none;
+            /* 因为已经定义height -> 不需要设置’上下padding‘ */
             padding: 0px 12px;
             /* ？？？行高为什么写到这里？？？ */
+            /* 想要子元素垂直居中“行高要写在子元素” */
             line-height: 40px;
         }
         

@@ -31,11 +31,24 @@
             width: 100px;
             /* 高度 */
             height: 100px;
-            /* 内容颜色 */
+            /* 
+            内容颜色 
+            rgb(255, 255, 255)
+            rgba(255, 255, 255, 1) - alpha(透明度 - 0完全透明（什么都看不见） ～ 1完全不透明（正常显示）)
+            #999999
+            #000
+            #090876
+            */
             color: #999999;
-            /* 内容的水平对齐方式 */
+            /* 
+            内容的水平对齐方式
+            ？？？怎么设置垂直居中？？？ - https://www.html.cn/qa/css3/16770.html
+             */
             text-align: center;
-            /* 首行缩进 */
+            /* 
+            首行缩进
+            1em = 1个汉字大小 
+            */
             text-indent: 2em;
             /* 
             标签转换 
@@ -45,7 +58,7 @@
             */
             display: inline-block;
             /* 
-            文本装饰
+            文本修饰
             none - 没有下划线
             overline - 有上划线
             underline - 有下划线
@@ -60,12 +73,15 @@
             /* 
             文字粗细
             范围 - 100 - 900/加粗 >= 700
+            (不推荐使用font-weight: bold;)
              */
             font-weight: 700;
             /* 
             文字字体
             escape("宋体") - /5B8B/4F53
             escape("微软雅黑") - /5FAE/8F6F/96C5/9ED1
+            escape("新宋体") - "\65B0\5B8B\4F53"
+            escape("楷体_GB2312") - "\6977\4F53_GB2312"
              */
             font-family: "/5FAE/8F6F/96C5/9ED1";
             /* 
@@ -75,7 +91,11 @@
              */
             font-style: normal;
             /* 
-            行高
+            行高 - 基线与基线之间的距离
+            行高 = 上边距 + 文字高度 + 下边距
+            使内容水平居中 - text-align: center;
+            使内容垂直居中 - 一行文字行高和父元素高度一致的时候，垂直居中显示
+            行高的单位 - 推荐使用px
              */
             line-height: 100px;
              /* 
@@ -116,15 +136,23 @@
             background-position: left center;
             /* 
             背景是否滚动
-            1>.scroll滚动/默认 - 以当前元素定位
-            2>.fixed固定 - 以浏览器定位
+            1>.scroll滚动/默认 - background-position以当前元素定位/跟着浏览器滚动
+            2>.fixed固定 - background-position以浏览器定位/不跟着浏览器滚动
              */
             background-attachment: fixed;
             /* 
             背景属性连写 - 顺序没有要求/background-image不能省略，其他可以省略
              */
              background: red url("../image/swk.jpg") no-repeat bottom fixed;
+             /* 简写成立 */
+             background: red;
             /* 背景属性 - end */
+
+            /* 盒子模型 - start */
+            /* 边框 */
+            /* 内边距 */
+            /* 外边距 */
+            /* 盒子模型 - end */
         }
     </style>
     <!-- js -->

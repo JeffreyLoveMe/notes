@@ -18,6 +18,7 @@ Bluetooth - 蓝牙
 Back - 返回
 Bool - 布尔类型
 Begin - 开始
+Banner - 广告
 
 ### C
 Code - 代码
@@ -34,6 +35,9 @@ Cache - 缓存
 Coupon - 优惠券
 Create - 建立
 Constant - 常量
+Column - 栏目/列
+Center - 中部
+CopyRight - 版权
 
 ### D
 Dialog - 对话框
@@ -42,6 +46,7 @@ Debug - 调试
 Destroy - 销毁
 Delete - 删除
 Detected - 被检查到/察觉
+DownLoad - 下载
 
 ### E
 End - 结束
@@ -60,6 +65,7 @@ Footer - 页脚
 Framework - 框架
 Focus - 关注
 Follow - 跟随
+FriendLink - 友情链接
 
 ### G
 Game - 游戏
@@ -68,6 +74,7 @@ Gesture - 手势
 ### H
 Header - 头部
 HotFix - 热修复
+Hot - 热点
 
 ### I
 Init - 初始化
@@ -96,6 +103,8 @@ Link - 链接
 Least - 最少的
 Log - 输出
 Loop - 循环
+Left - 左边
+Logo - 标志
 
 ### M
 Mobile - 手机
@@ -107,10 +116,13 @@ Media - 媒体
 Message(Msg) - 信息
 Modify - 修改
 Manual - 手动/说明书
+Main - 主体
 
 ### N
 NetWork - 网络
 Notification - 通知
+Nav - 导航
+News - 新闻
 
 ### O
 Other - 其他的
@@ -132,8 +144,9 @@ QRCoder - 二维码
 Result - 结果
 Router - 路由
 Report - 举报
-remove - 移除
-review - 回顾/检查/复审
+Remove - 移除
+Review - 回顾/检查/复审
+Right - 右边
 
 ### S
 Start - 开始
@@ -151,6 +164,8 @@ Should - 允许
 Search - 搜索
 Score - 分数
 Statistic/Stat - 统计
+Sidebar - 侧边栏
+Scroll - 滚动
 
 ### T
 Table - 表格
@@ -178,6 +193,7 @@ WebView - 网络视图
 WebSite - 网站
 WidGet - 小装置
 Wear - 穿戴
+Wrapper - xxx
 
 ### X
 
