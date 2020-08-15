@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style type="text/css">
+        /* 1.初始化元素 */
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        ul, li {
+            list-style: none;
+        }
+        /* 2.设置最外层div */
+        .main {
+            width: 260px;
+            margin: 10px auto;
+            border: solid #009900 1px;
+            background: url("../image/bg.gif");
+        }
+        /* 3.设置顶部div */
+        .title {
+            height: 23px;
+            margin: 10px 10px 5px;
+            padding-left: 10px;
+            border-left: solid #c9e143 4px;
+            line-height: 36px;
+            font: 16px/23px "/5FAE/8F6F/96C5/9ED1";
+            color: #ffffff;
+        }
+        /* 4.设置内容div */
+        .content {
+            /* 这里需要考虑边框长度 */
+            height: 280px;
+            margin: 0 10px 10px;
+            /* 内边距和宽度/高度设置可能会冲突 */
+            padding-left: 10px;
+            padding-right: 10px;
+            background: #ffffff;
+        }
+         /* 5.设置列表 */
+        li {
+            height: 30px;
+            background: url("../image/tb.gif") no-repeat left;
+            border-bottom: dashed #666666 1px;
+            /* 内容缩进 */
+            /* text-indent: 1em; */
+            /* 可以直接使用padding */
+            padding-left: 15px;
+        }
+        /* 6.设置超链接 */
+        a {
+            text-decoration: none;
+            font: 16px/30px "/5FAE/8F6F/96C5/9ED1";
+        }
+    </style>
+</head>
+<body>
+    <div class="main">
+        <div class="title">
+            爱宠知识
+        </div>
+        <div class="content">
+            <ul>
+                <li><a href="#">养狗比养猫更健康</a></li>
+                <li><a href="#">养狗比养猫更健康</a></li>
+                <li><a href="#">养狗比养猫更健康</a></li>
+                <li><a href="#">养狗比养猫更健康</a></li>
+                <li><a href="#">养狗比养猫更健康</a></li>
+                <li><a href="#">养狗比养猫更健康</a></li>
+                <li><a href="#">养狗比养猫更健康</a></li>
+                <li><a href="#">养狗比养猫更健康</a></li>
+                <li><a href="#">养狗比养猫更健康</a></li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

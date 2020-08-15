@@ -1,72 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>行业动态案例</title>
+    <title>Document</title>
     <style type="text/css">
-        .news {
-            width: 238px;
-            height: 166px;
-            /* 层叠性 */
-            border: 1px solid #d9e0ee;
-            border-top: 3px solid orange;
-            /* 
-            0 - 上下
-            auto - 左右auto
-             */
-            margin: 0 auto;
-        }
-        
-        .news_title {
-            height: 35px;
-            border-bottom: 1px solid #d9e0ee;
-            /* 垂直居中 */
-            line-height: 35px;
-            /* ？？？为什么盒子没有被撑大？？？ */
-            padding-left: 12px;
-        }
-        /* 清除默认设置 */
-        
-        ul,
-        li {
-            /* 清除左边小圆点 */
-            list-style-type: none;
+        /* 
+        ul默认会产生一个外边距
+         */
+        * {
             margin: 0;
             padding: 0;
         }
-        
-        ul {
-            margin-top: 14px;
+
+        .main {
+            width: 240px;
+            /* 盒子水平居中 */
+            margin: 10px auto;
+            border: solid #d9e0ee 1px;
+            border-top: solid #ff8400 2px;
         }
-        
-        li {
-            padding-left: 19px;
-            background: url("../../image/li_bg.jpg") no-repeat 9px 7px;
-            font-size: 13px;
-            height: 23px;
+        .title {
+            height: 36px;
+            border-bottom: solid #d9e0ee 1px; 
+            /* 内容垂直居中 */
+            line-height: 36px;
+            padding-left: 20px;
+        }
+        .content li {
+            list-style: none;
+            padding-left: 10px;
+            line-height: 20px;
+            background: url("") no-repeat left;
+        }
+        .content a {
+            color: #666666;
+            font-size: 14px;
+            text-decoration: none;
+        }
+        .content ul {
+            margin-left: 10px;
+            margin-right: 10px;
         }
     </style>
 </head>
-
 <body>
-    <div class="news">
-        <div class="news_title">
+    <div class="main">
+        <div class="title">
             行业动态
         </div>
-        <div>
+        <div class="content">
             <ul>
-                <li>气质不错气质不错</li>
-                <li>气质不错气质不错</li>
-                <li>气质不错气质不错</li>
-                <li>气质不错气质不错</li>
-                <li>气质不错气质不错</li>
+                <li><a href="#">气质不错气质不错</a></li>
+                <li><a href="#">气质不错气质不错</a></li>
+                <li><a href="#">气质不错气质不错</a></li>
+                <li><a href="#">气质不错气质不错</a></li>
+                <li><a href="#">气质不错气质不错</a></li>
             </ul>
         </div>
-
     </div>
-
 </body>
-
 </html>
