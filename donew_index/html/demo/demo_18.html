@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        ul,li {
+            list-style: none;
+        }
+        .main {
+            width: 1259px;
+            height: 472px;
+            background: url("../../image/sf.png") no-repeat;
+            position: relative;
+            margin: 0 auto;
+        }
+        .sub_main {
+            width: 960px;
+            height: 60px;
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            margin-left: -480px;
+        }
+        li {
+            /* 此处不需要设置宽高 - 直接子元素撑大 */
+            /* width: 160px;
+            height: 60px; */
+            float: left;
+        }
+        a {
+            display: inline-block;
+            width: 160px;
+            height: 60px;
+            background: #000000;
+            color: #ffffff;
+            text-align: center;
+            line-height: 60px;
+        }
+        a:hover {
+            background: #eeeeee;
+            color: #000000;
+        }
+        li.y_check {
+            position: relative;
+        }
+        .sf_login {
+            position: absolute;
+            bottom: 60px;
+            left: 0;
+        }
+        .sf_drog {
+            position: absolute;
+            bottom: 51px;
+            left: 50%;
+            margin-left: -4.5px;
+            /* 如果图片被压在底部可以使用该属性 - 数值越大越在上面 */
+            z-index: 10;
+        }
+    </style>
+</head>
+<body>
+    <!-- 子绝父相 - 此处可以考虑一个大盒子，其他盒子都是子盒子 -->
+    <div class="main">
+        <div class="sub_main">
+            <ul>
+                <li class="y_check">
+                    <a href="#">运单查询</a>
+                    <img class="sf_login" src="../../image/sf_login.png">
+                    <img class="sf_drog" src="../../image/sf_drog.png">
+                </li>
+                <li><a href="#">运费查询</a></li>
+                <li><a href="#">时效查询</a></li>
+                <li><a href="#">服务网点查询</a></li>
+                <li><a href="#">收送范围查询</a></li>
+                <li><a href="#">客户专区</a></li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

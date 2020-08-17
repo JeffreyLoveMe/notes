@@ -145,6 +145,30 @@
          */
 
         /* 
+        属性选择器
+        1>.格式
+        标签[属性=属性值][属性=属性值] {
+            属性:值;
+            属性:值;
+        }
+        2>.举例
+        // html代码
+        <input type="text">
+        <input type="text" id="username">
+        // css代码
+        input[type="text"] {
+             width: 300px;
+             height: 300px;
+             background: #000;
+         }
+         input[type="text"][id="username"] {
+             width: 300px;
+             height: 300px;
+             background: #000;
+         }
+         */
+         
+        /* 
         通配符选择器 - 给所有的标签都使用相同的样式/增加浏览器和服务器负担-不推荐使用
         1>.格式
         * {
@@ -535,6 +559,24 @@
             top: 100px;
         } 
          */
+
+         /* 定位的盒子居中对齐
+         .father {
+             height: 1000px;
+             position: relative;
+         }
+         .son {
+             width:500px;
+             height: 50px;
+             position: absolute;
+             bottom:0;
+             // 只能让文档流盒子居中对齐 - 此处无效
+             margin:0 auto;
+             // 此处可以居中 - 250px"子盒子"为宽度的一半
+             left: 50%;
+             margin-left:250px;
+         }
+          */
     </style>
 </head>
 
@@ -822,6 +864,83 @@
         2>.清除浮动的方法（三种） - 额外标签法（在最后一个浮动元素后添加标签/不推荐使用）| 给父元素
         使用‘overflow: hidden;’(有弊端 - 如果有内容超出父盒子就不能使用该方法) ｜ 伪元素清除浮动（父盒子/推荐使用）   
      -->
+
+     <!-- FIXME - 复习到这里 -->
+     <!-- 
+         标签的包含规范
+         1>.div标签可以包含所有标签
+         2>.p标签不能包含div标签/h1标签
+         3>.h1标签能够包含div标签/p标签
+         注意 - 有些块元素（p标签）不能包含块元素/行内元素尽量包含行内元素（不推荐包含块元素）
+      -->
+
+      <!-- 
+          规避脱标流
+          1>.尽量使用标准流（文档流）
+          2>.标准流解决不了使用浮动定位
+          3>.浮动布局解决不了使用定位布局
+          // 一、规避脱标流例子
+          margin-left:auto; // 让盒子左侧充满，尽量往右侧靠
+          margin-right:auto; // 让盒子右侧充满，尽量往左侧靠
+          margin:0 auto; // 让盒子左侧充满，尽量往右侧靠 + 让盒子右侧充满，尽量往左侧靠 = 居中
+          // 二、图片和文字垂直居中对齐 - ？？？百度一下vertical-align？？？
+          <div class="box">
+            <img src="../image/jd_reg.jpg">立即注册
+          </div>
+          img {
+            baseline - 基线对齐/默认值
+            top - 顶部对齐
+            middle - 垂直居中对齐
+            bottom - 底部对齐
+            vertical-align: baseline; // 对“行内块元素”最敏感
+          }
+       -->
+
+       <!-- 
+           CSS可见性
+           overflow: hidden; // 溢出隐藏 - 子盒子溢出会被隐藏/默认不隐藏
+           visibility: hidden; // 隐藏元素 - 隐藏之后还占据原来的位置
+           display: none; // 隐藏元素 - 隐藏之后不占据原来的位置
+           display: block; // 元素可见性 - "display: none;/display: block;"相反（需要配合js使用）
+        -->
+        <!-- <div class="red" style="width: 300px; height: 300px; background: red; display: none;"></div>
+        <div class="green" style="width: 300px; height: 300px; background: green;"></div> -->
+
+        <!-- 
+            内容移出 - 网页优化
+            一、logo优化 - 给网站logo添加一个a标签然后将文字（内容）移出/对SEO更加友好
+            // 第一种方式
+            <a href="#">百度一下</a>
+            a {
+                display: inline-block;  // 必须先转换成行内块元素
+                text-indent: -5000px;
+            }
+            // 第二种方式
+            <div class="box">14期无敌</div>
+            div {
+                width: 300px;
+                height: 0;
+                background: red;
+                padding-top: 100px;
+                overflow: hidden;
+            }
+         -->
+
+         <!-- 
+             精灵图
+             1>.由来 - 一个网页有很多背景图像，如果每张背景图片都需要请求网络会大大降低页面的加载速度。为了有效的减少服务器接收和发送网络请求的次数，提高网页的加载速度，引入"CSS精灵技术/CSS Sprites"
+             2>.概念 - 一种处理网页背景图像的方式（将一个网页涉及到的图片都集中到一种大图中，然后将大图应用于网页，背景图像即可全部展示出来）/通常情况下，这个由很多小的背景图片合成的大图被称为精灵图
+             3>.原理 - 通过背景定位“background-position: 150px 200px;”完成
+             4>.制作精灵图 - 透明背景/小图片之间需要一点距离
+          -->
+          
+          <!-- 
+              emmet快捷键
+              ! + tab - 生成html基础代码
+              标签.类选择器名 + tab - 生成标签代码
+              标签>子标签>孙标签 -> 生成后代标签代码
+              标签+标签+标签 -> 生成同级标签代码
+           -->
 </body>
 
 </html>
