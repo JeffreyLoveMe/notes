@@ -14,11 +14,11 @@
         */
 
         /*
-        js介绍
-        1.概念 - js是一款运行在客户端的网页编程语言
+        js介绍 - https://koudashijie.com
+        1.概念 - js是一款运行在客户端的网页编程语言/脚本语言
         2.组成部分 - ECMAScript(js标准) + DOM(通过js操作网页元素) + BOM(通过api操作浏览器)
         3.特点 - 简单易用、解释执行（对应于'编译执行'）、基于对象
-        4.作用 - 表单验证、轮播特效、开发游戏
+        4.作用 - 页面特效（pc端的网页特效）/移动端/异步网络交互/服务端开发nodejs
         */
 
         /*
@@ -27,6 +27,8 @@
         2.无论当前脚本式内嵌式还是外链式，页面的下载和渲染都必须停下来等待脚本执行完成才能继续。
         注意 - 推荐将js代码写在‘html标签’之后/建议将多个js文件合成问一个js文件
         */
+
+        // 代码提示左边小图标的含义 - https://www.zhihu.com/question/370258254/answer/1003317979
 
         // 输出信息的几种方式
         // 1.对话框（不含'取消'）
@@ -37,7 +39,9 @@
         // result - true表示点击了确定/false表示点击了取消
         var result = confirm("14期高薪");
         // 3.控制台输出 - 使用较多
-        console.log("14期高薪");
+        console.log("14期高薪"); // 显示灰色
+        console.error("输出错误"); // 显示红色
+        console.warn("输出警告"); // 显示黄色
         // 4.对话框（含’输入框‘用于接收用户信息）
         prompt("请输入你的银行卡号");
         // bankCardNo变量可以接收输入的内容/！！！bankCardNo是一个字符串！！！
@@ -62,15 +66,23 @@
         var age = 18; // 定义变量并赋值
         alert(name);
         alert("name"); // 直接量/常量
+        var height, weight; // js支持一行定义多个变量
+        // ！！！不推荐这样定义！！！
+        // var str = "xwj";
+        // str = 18;
 
-        // 变量的命名规则 - 以“字母、下划线”开头，只能包含“数字、字母、下划线”
+        // 字面量 - 常量/固定的值/也是使用var修饰（这点区别于swift）
+        var width = 100;
+
+        // 变量的命名规则 - 以“字母、下划线(_/$)”开头，只能包含“数字、字母、下划线”
         // 支持中文（不推荐使用）、不能使用特殊符号
         // 不能使用‘关键字’作为标识符、可以使用‘保留关键字’作为标识符（不推荐）
-        // js严格区分大小写
+        // js严格区分大小写/变量长度不超过255个字符
+        // 推荐使用“驼峰命名” - getElementById
 
         // 数据类型
         // 一、简单数据类型
-        // 1>.number - 数字类型（包含‘正数、负数、小数’）/表示的数字有范围
+        // 1>.Number - 数字类型（包含‘正数、负数、小数’）/表示的数字有范围
         // 1.判断数据类型 - typeof
         var a1 = 1.45;
         alert(typeof(a1)); // 判断数据类型
@@ -78,20 +90,31 @@
         var a2 = 147;  // 十进制表示法
         var a3 = 0x178; // 十六进制表示法 - 0x
         var a4 = 0367;  // 八进制表示法 - 0
-        // 2>.字符串类型 - 凡是使用“双引号”或“单引号”引起来的都是字符串
+        // 3.最大值和最小值（区别于Infinity/-Infinity）
+        // 最大值/最小值 - 指js可以表示的最大值和最小值
+        // Infinity/-Infinity - 表示无穷大/无穷小（js无法表示）
+        alert(Number.MAX_VALUE);  // 最大值
+        alert(Number.MIN_VALUE);  // 最小值
+        // 2>.String - 字符串类型/凡是使用“双引号”或“单引号”引起来的都是字符串
+        // 字符串不可修改 - 给字符串重复赋值会在栈中重新开辟一个内存，原来的内存会被回收
         var a5 = "14期高薪";
         alert(a5);
         alert(typeof(a5)); // 判断数据类型
-        // 3>.布尔类型 - 只有两个值（true == 1/false == 0）
+        alert(a5.length);  // 字符串长度
+        // 3>.Boolean - 布尔类型/只有两个值（true == 1/false == 0）/必须是小写
+        // 任何数据类型都可以转换成布尔类型 - 0/""/null/false/undefined/NaN转换成false，其他数值/任何对象转换成true
         var a6 = true;
         var a7 = false;
-        // 4>.undefined - 变量未初始化（初始化 - 第一次赋值）/变量在内存中存在
+        // 4>.Undefined - 变量未初始化（初始化 - 第一次赋值）/变量在内存中存在
+        // Undefined与任何数值计算都是NaN
         var a8;
-        alert(a8); // undefined
-        // 5>.null - 变量未引用（值为空）/变量在内存中不存在（类似于Objective-C中的nil）
+        alert(a8); // Undefined
+        // 5>.null - 变量未引用（值为空）/变量在内存中不存在（类似于Objective-C中的nil）/属于复杂数据类型（object）
+        // null和任何数值计算null都可以当作'0'处理
         // 作用 - 销毁变量
         var a9 = null;
         alert(a9);
+        // 二、引用数据类型 - Object/function/Array/Date
         
         // 运算符
         // 一、算术运算符 - +｜-｜*｜/｜% / 优先级 - 有()先计算()、先*/后+-
@@ -115,8 +138,10 @@
         alert(a16); // -11
         // 一个数字类型和一个非数字字符串相减结果是NaN
         // NaN - not a number/NaN是一个数字类型（不是一个数字）
+        // NaN与"任何数值（包括NaN）"都不相等
         var a17 = "124ABC";
         var a18 = a16 - a17; // NaN
+        alert(isNaN(a18));  // 任何不能被转换成数值的值都会返回true
         // 3>.*|/|% - 两个整数相除会出现小数
         // 两个数字类型相乘除结果是一个数字类型
         var a19 = 6;
@@ -128,7 +153,8 @@
         // 一个数字类型和一个非数字字符串相乘除结果是NaN
         var a24 = "2ABC";
         var a25 = a23 / a24; // NaN
-        // 0作为除数的时候结果为Infinity(无限大)/Infinity是数字类型
+        // 0作为除数的时候结果为Infinity(无穷大)/Infinity是数字类型
+        // -Infinity(无穷小)
         var a26 = a23 / 0; // Infinity
         // 4>.%
         // 二、赋值运算符 - +=|-=|*=|/=
@@ -144,13 +170,18 @@
         var b2 = 3;
         alert(b1 > b2);
         alert(typeof(b1 > b2));
-        // 四、逻辑运算符 - 只有两个结果true/false
+        // 四、逻辑运算符 - 不光只有两个结果true/false(与别的语言的区别)
         // 1>.&& - 两个表达式为true结果为true/只要一个表达式为false结果为false
+        // 假前真后
         if (b1 > b2 && b1 < b2) {}
         // 2>.|| - 只要一个表达式为true结果为true
+        // 真前假后
         if (b1 > b2 || b1 < b2) {}
         // 3.! - 与表达式结果相反
         if (!(b1 > b2)) {}
+        // 真遇到||不再执行 - 只要一个为真就行
+        // 假遇到&&不再执行 - 必须全部为真
+        var aaaaa = 3 || 0 && 2; // 3...为什么？？？
         // 五、赋值运算符=/比较运算符==/比较运算符===
         // "比较运算符(等于==)"只判断内容是否相同，不判断数据类型
         // “不等于!=”只判断内容是否相同，不判断数据类型
@@ -164,7 +195,7 @@
         // 六、逗号运算符
         var c1 = 1, c2 = 2, c3 = 3;
         // 七、三元运算符 - 表达式结果为true执行“结果1”，结果为false执行“结果2”
-        表达式 ? 结果1 : 结果2
+        // 表达式 ? 结果1 : 结果2
         // 八、自增自减运算符
         var index = 10;
         alert(index++); // index++ = 10/index = 11
@@ -268,6 +299,7 @@
         var c4 = 10;
         var c5 = 20;
         // ”switch后面’()‘中的表达式“数据类型（可以是number也可以是string）必须与“case后面的value”数据类型（可以是number也可以是string）保持一致
+        // 底层原理 - 使用的是“===”
         switch (c4 + c5) {
             case 1: {
                 // 如果“表达式/变量 = 1”执行这里
@@ -318,11 +350,21 @@
             document.write("<br>");
             // break; // 结束外部大循环
         }
+        // 死循环
+        // for(;;) {
+
+        // }
+        // while (true) {
+            
+        // }
+        // do {
+            
+        // } while (true);
         
         // 数组
         // 1>.创建数组
         // 第一种方式
-        var array01 = new Array(); 
+        var array01 = new Array(); // 空数组
         array01[0] = 12;  // 通过下标给数组赋值 - 数组元素从0开始
         array01[1] = 18;
         // 第二种方式
@@ -334,19 +376,41 @@
         var array03 = [12, 35, "中国人"]; // 定义数组的同时初始化（js数组中可以有不同的数据类型）
         alert(array03);
         alert(array03.length);  // 数组长度
-        // 2>.数组遍历
+        // 2>.数组遍历 - 数组的长度 == 数组下一个元素的索引值
+        // 因为数组中的元素数据类型不一样所以筛选数据最好使用‘===’/‘!==’
         // 第一种方式
         for (let index = 0; index < array03.length; index++) {
             alert(array03[index]);
         }
-        // 3>.数组合并
+        // 3>.添加元素
+        array04.unshift("name"); // 往数组最前面添加新元素
+        array04.push("xwj");  // 往数组最后面添加新元素
+        // 4>.删除元素
+        array04.shift("name"); // 删除数组最前面的元素
+        array04.pop("xwj");  // 删除数组最后面的元素
+        // 5>.数组合并
         var array04 = [12, 14, 18, "吴军"];
         var array05 = [3, "xwj"];
         var array06 = array04.concat(array05);
-        // 4>.返回一个字符串 - 将数组元素以“,”连接成string返回
+        // 6>.返回一个字符串 - 将数组元素以“,”连接成string返回
         var array07 = [12, 13, 14, 15];
         var separatorString = array07.join(",");
         alert(typeof(separatorString));
+        // 7>.冒泡排序 - 此处以后使用java写
+        var bubbleSortArray = [6, 1, 2, 7, 9, 3, 4, 5, 10, 8];
+        // 需要排序 (bubbleSortArray.length - 1) 轮
+        for (let i = 0; i < bubbleSortArray.length - 1; i++) {
+            // 需要比较 (bubbleSortArray.length - i - 1) 次数
+            for (let j = 0; j < bubbleSortArray.length - i - 1; j++) {
+                // 交换前后位置
+                if (bubbleSortArray[j] > bubbleSortArray[j + 1]) {
+                    var temp = bubbleSortArray[j];
+                    bubbleSortArray[j] = bubbleSortArray[j + 1];
+                    bubbleSortArray[j + 1] = temp;
+                }
+            }
+        }
+        alert(bubbleSortArray);
 
         // 函数入门 - 函数是完成特定功能的代码块
         // 1.创建函数
@@ -372,8 +436,9 @@
         // 2.外链式
         <script src="login.js"></script>
         注意 - 写js代码‘;’最好不要省略（语句单独一行可以省略';'，类似swift）
+        // 3.行内式
+        <div onclick="alert('我是行内式')">你好</div>
      -->
-
 </body>
 
 </html>
