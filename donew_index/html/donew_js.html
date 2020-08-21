@@ -468,6 +468,8 @@
         }
         alert(bubbleSortArray);
 
+        // 代码调试 - js代码错误会暴露在运行时
+
         // 函数基础
         // 1>.概念 - 可以重复执行的代码块/方便调用
         // 2>.格式 - function 函数名() {}
@@ -521,9 +523,48 @@
             return a - b;
         }
         alert(getMax); // 打印整个函数（函数名 == 整个函数）
+        alert(typeof(getMax)); // function也是一种数据类型（属于object）
         alert(getMax(1, 2));  // 打印函数返回值（先执行getMax(1, 2) -> 再执行alert(getMax(1, 2))）
-        
-        // 代码调试 - js代码错误会暴露在运行时
+        // 5>.函数递归 - 函数自己调用自己/必须有结束条件
+        // 6>.回调函数 - 函数作为参数进行传递和使用
+        // 怎么传递有参数的函数？？？
+        function getWeight(a, b, test) {
+            console.log("开始回调函数");
+            test(a, b);
+            console.log("结束回调函数");
+        }
+        function do_test(a, b) {
+            alert("我是测试" + a + b);
+            return a + b;
+        }
+        getWeight(11, 12, do_test);
+        // 7>.匿名函数
+        // 1.直接调用
+        (function () {
+            console.log("直接调用");
+        })()
+        // 2.绑定事件
+        document.onclick = function () {
+            console.log("绑定事件");
+        }
+        // 3.定时器
+        setInterval(function () {
+            console.log("定时器");
+        }, 1000);
+
+        // 面向对象和基于对象
+        // 1>.概念 - 面向对象（可以创建自定义对象，支持封装、继承、多态，例如java）/基于对象（不可以创建自定义对象、不能友好的支持继承、多态，例如js）
+        // 2>.属性（颜色、体重）和行为（睡觉、吃饭）- 可以自定义属性和方法
+        // 创建对象
+        var hero = new Object();
+        // 绑定属性
+        hero.name = "xwj";
+        hero.age = 18;
+        // 绑定行为
+        hero.attack = function () {
+            console.log("攻击" + hero.name);
+        }
+        alert(hero);
     </script>
 </head>
 

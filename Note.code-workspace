@@ -8,6 +8,9 @@
 		},
 		{
 			"path": "donew_interview"
+		},
+		{
+			"path": "../msg"
 		}
 	],
     "settings": {
