@@ -57,12 +57,12 @@
         console.log(a); // 因为a是局部变量所以会报错
         */
         f3();
-        console.log(c);
-        console.log(b);
-        console.log(a);
+        console.log(c); // 9
+        console.log(b); // 9
+        console.log(a); // undefined
         function f3() {
             var a = b = c = 9;
-            console.log(a); // undefined
+            console.log(a); // 9
             console.log(b); // 9
             console.log(c); // 9
             var a = '123';

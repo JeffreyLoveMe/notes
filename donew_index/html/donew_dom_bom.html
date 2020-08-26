@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style type="text/css">
+        div {
+            width: 100px;
+            height: 100px;
+            background: pink;
+        }
+    </style>
+</head>
+<body>
+     <div id="box" class="box" name="name" onclick="test()"></div>
+     <!-- 
+         此时js代码必须放在这里 - https://www.cnblogs.com/shidengyun/p/5123377.html
+         -->
+     <script type="text/javascript">
+        /*
+        js核心概述
+        1.DOM - 文档对象模型
+        2.BOM - 浏览器对象模型
+        3.js是一门以事件驱动为核心的语言
+        */
+
+        // 事件三要素 - 事件源、事件、事件处理程序
+        // 需求 - 点击盒子弹出“盒子弹出了”弹窗
+        // 1>.获取事件源（引发后续事件的标签）
+        // Element - ai‘li'men't
+        var a1 = document.getElementById("box"); // 返回单个
+        // var a2 = document.getElementsByTagName("div"); // 返回数组
+        // var a3 = document.getElementsByClassName("box"); // 返回数组 - h5以后才会支持
+        // // 目前不要求掌握
+        // var a4 = document.getElementsByName("name"); // 基本不使用
+        // var a5 = document.getElementsByTagNameNS(""); // 通过命名空间
+        // 2>.事件 - js已经定义完成（直接使用）
+        // 绑定事件
+        // 第一种方式
+        a1.onclick = function () {
+            // 事件驱动程序 - 可以操作标签的属性和样式
+            alert("盒子弹出了");
+            // 可以操作标签的属性和样式
+            // 格式 - 事件源.style.样式 = "";
+            a1.style.width = "200px";
+            a1.style.backgroundColor = "red";
+        }
+        // // 第二种方式 - 此处不能写"()"（写了代表函数返回值）
+        // a1.onclick = test;
+        // function test() {
+        //    // 事件驱动程序 - 可以操作标签的属性和样式
+        //    alert("盒子弹出了"); 
+        //    a1.style.width = "200px";
+        // }
+        // // 第三种方式 - 行内绑定/此处需要写"()"（不写会误认为是字符串）
+        // <div id="box" class="box" name="name" onclick="test()"></div>
+        // // 3>.事件驱动程序 - 对样式和html的操作（DOM操作）
+        // // 可以操作标签的属性和样式
+        
+        // onload事件
+        // 01:02:16
+    </script>
+</body>
+</html>

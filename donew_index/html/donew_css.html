@@ -31,7 +31,7 @@
             属性:值;
             属性:值;
         }
-        2>.基础选择器 - 标签选择器/类选择器（重点）/id选择器/通配符选择器
+        2>.基础选择器 - 标签选择器/类选择器（重点）/id选择器/属性选择器/通配符选择器
         3>.复合选择器 - 交集选择器/后代选择器/子代选择器/并集选择器
          */
 
@@ -72,7 +72,7 @@
             属性:值;
         } 
         2>.特点 - 谁调用谁生效/可以多次使用（一个标签可以调用多个类选择器/多个标签可以调用同一个类选择器）
-        3>.类选择器命名规则/标识符 - 只能包含‘数字/字母/下划线’ && 不能以数字开头 && 不建议使用汉字
+        3>.类选择器命名规则/标识符 - 只能包含‘数字/字母/下划线’ && 不能以数字开头 && 不建议使用汉字 & 建议使用-
         4>.举例
         // html代码
         <!-- 
@@ -323,7 +323,7 @@
         2>.行内元素 - span/a/strong/em/del/ins
         1.特点 - 在一行显示/不能直接定义width、height（与内容的宽度保持一致）
         3>.行内块元素（内联元素） - input/img
-        1.特点 - 在一行显示/可以设置width、height
+        1.特点 - 在一行显示/可以设置width、height（如果不设置宽，度宽将于度保持一致）
         -->
         // 块元素 -> 行内元素
         div,
@@ -560,7 +560,8 @@
         } 
          */
 
-         /* 定位的盒子居中对齐
+         /* 
+         定位的盒子居中对齐
          .father {
              height: 1000px;
              position: relative;
@@ -574,7 +575,7 @@
              margin:0 auto;
              // 此处可以居中 - 250px"子盒子"为宽度的一半
              left: 50%;
-             margin-left:250px;
+             margin-left:-250px;
          }
           */
     </style>
@@ -900,7 +901,7 @@
            overflow: hidden; // 溢出隐藏 - 子盒子溢出会被隐藏/默认不隐藏
            visibility: hidden; // 隐藏元素 - 隐藏之后还占据原来的位置
            display: none; // 隐藏元素 - 隐藏之后不占据原来的位置
-           display: block; // 元素可见性 - "display: none;/display: block;"相反（需要配合js使用）
+           display: block | inline | inline-block; // 元素可见性 - "display: none;/display: block | inline | inline-block;"相反（需要配合js使用）
         -->
         <!-- <div class="red" style="width: 300px; height: 300px; background: red; display: none;"></div>
         <div class="green" style="width: 300px; height: 300px; background: green;"></div> -->
@@ -942,7 +943,7 @@
            -->
 
            <!-- 
-               滑动门 - 字体随着文字的宽度而撑大（转成行内块元素）
+               滑动门 - 元素随着文字的宽度而撑大（转成行内块元素）
             -->
 </body>
 

@@ -4,8 +4,186 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="css/index.css">
 </head>
 <body>
-    
+    <!-- 顶部导航 -->
+    <!-- class命名一般使用‘-’ -->
+    <div class="top-nav">
+        <div class="top-nav-content">
+            <!-- 此处不需要',' -->
+            <div class="left-top-content fl">您好，欢迎来到建材网！</div>
+            <div class="right-top-content fr">
+                <ul>
+                    <li><a href="#">建材网首页</a></li>
+                    <li><a href="#">我的商务室</a></li>
+                    <li><a href="#">我的收藏</a></li>
+                    <li><a href="#">建材服务</a></li>
+                    <li><a href="#">客服中心</a></li>
+                    <li><a href="#">网站导航</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- 搜索/logo -->
+    <!-- 
+        .main-search>.left-logo>img[src="images/top_drop.png"]+^.right-search>input[type="text"]+input[type="button"]
+     -->
+    <div class="main-search">
+        <div class="left-logo fl">
+            <img src="images/shop_logo.png" alt="logo">
+        </div>
+        <div class="right-search fr">
+            <input type="text" value="请输入关键字">
+            <input type="button">
+        </div>
+    </div>
+
+    <!-- 主导航 -->
+    <div class="main-nav">
+        <ul>
+            <li><a href="#">首页</a></li>
+            <li><a href="#">建筑材料</a></li>
+            <li><a href="#">儿童安全座椅</a></li>
+            <li><a href="#">工艺美术品</a></li>
+        </ul>
+    </div>
+
+    <!-- 商机市场 -->
+    <div class="business-market">
+        <!-- 左盒子 -->
+        <div class="left-market fl">
+            <div class="left-market-title">商机市场</div>
+            <div class="left-market-list">
+                <!-- 此处可以使用精灵图 -->
+                <!-- 此处虽然可以使用img标签，但是使用background更加灵活 -->
+                <!-- 因为列表每个前面的图标都不一样所以需要单独设置 -->
+                <ul>
+                    <li class="icon1"><a href="#">建筑材料</a></li>
+                    <li class="icon2"><a href="#">儿童安全座椅</a></li>
+                    <li class="icon3"><a href="#">工艺美术品</a></li>
+                    <li class="icon4"><a href="#">建筑材料</a></li>
+                    <li class="icon5"><a href="#">儿童安全座椅</a></li>
+                    <li class="icon6"><a href="#">工艺美术品</a></li>
+                </ul>
+            </div>
+        </div>
+        <!-- 中盒子 -->
+        <div class="center-market fl">
+            <img src="images/shop_center.png" alt="banner">
+        </div>
+        <!-- 右盒子 -->
+        <div class="right-market fr">
+            <img src="images/shop_right_top.png" alt="details">
+            <img src="images/shop_right_bottom.png" alt="telephone">
+        </div>
+    </div>
+
+    <!-- 建筑材料 -->
+    <div class="building-materials">建筑材料</div>
+
+    <!-- 
+        建筑材料列表
+        从内到外 - 先写大盒子（一般不会浮动） - 再写小盒子（一般需要浮动）
+     -->
+     <div class="building-product">
+         <!-- 左盒子 -->
+        <div class="left-product fl">
+            <div class="left-top-product">
+                <div class="left-product-itme fl">
+                    <div class="left-image fl">
+                        <div class="top-product-image">
+                            <img src="images/shop_product_icon.png" alt="商品图片">
+                        </div>
+                        <div class="bottom-product-button">
+                            <input type="button">
+                        </div>
+                    </div>
+                    <!-- 先将两个盒子都左浮动贴合在一起然后使用margin设置距离 -->
+                    <div class="right-title fl">
+                        <p class="right-top-product-title">好太太晾衣架 铝钛合金 升降双杆</p>
+                        <p class="right-center-product-title">自动换挡 安全耐用<br>稳定性好 抗氧化强</p>
+                        <p class="right-bottom-product-title"><span>239.00</span> <del>¥386.00</del></p>
+                        <p class="right-more-bottom-product-title">限量<span>99</span>件已售出<span>20</span>件</p>
+                    </div>
+                </div>
+                <div class="left-product-itme fr">
+                    <div class="left-image fl">
+                        <div class="top-product-image">
+                            <img src="images/shop_product_icon.png" alt="商品图片">
+                        </div>
+                        <div class="bottom-product-button">
+                            <input type="button">
+                        </div>
+                    </div>
+                    <!-- 先将两个盒子都左浮动贴合在一起然后使用margin设置距离 -->
+                    <div class="right-title fl">
+                        <p class="right-top-product-title">好太太晾衣架 铝钛合金 升降双杆</p>
+                        <p class="right-center-product-title">自动换挡 安全耐用<br>稳定性好 抗氧化强</p>
+                        <p class="right-bottom-product-title"><span>239.00</span> <del>¥386.00</del></p>
+                        <p class="right-more-bottom-product-title">限量<span>99</span>件已售出<span>20</span>件</p>
+                    </div>
+                </div>
+            </div>
+            <!-- 中间横线 -->
+            <div class="product-line"></div>
+            <div class="left-top-product">
+                <div class="left-product-itme fl">
+                    <div class="left-image fl">
+                        <div class="top-product-image">
+                            <img src="images/shop_product_icon.png" alt="商品图片">
+                        </div>
+                        <div class="bottom-product-button">
+                            <input type="button">
+                        </div>
+                    </div>
+                    <!-- 先将两个盒子都左浮动贴合在一起然后使用margin设置距离 -->
+                    <div class="right-title fl">
+                        <p class="right-top-product-title">好太太晾衣架 铝钛合金 升降双杆</p>
+                        <p class="right-center-product-title">自动换挡 安全耐用<br>稳定性好 抗氧化强</p>
+                        <p class="right-bottom-product-title"><span>239.00</span> <del>¥386.00</del></p>
+                        <p class="right-more-bottom-product-title">限量<span>99</span>件已售出<span>20</span>件</p>
+                    </div>
+                </div>
+                <div class="left-product-itme fr">
+                    <div class="left-image fl">
+                        <div class="top-product-image">
+                            <img src="images/shop_product_icon.png" alt="商品图片">
+                        </div>
+                        <div class="bottom-product-button">
+                            <input type="button">
+                        </div>
+                    </div>
+                    <!-- 先将两个盒子都左浮动贴合在一起然后使用margin设置距离 -->
+                    <div class="right-title fl">
+                        <p class="right-top-product-title">好太太晾衣架 铝钛合金 升降双杆</p>
+                        <p class="right-center-product-title">自动换挡 安全耐用<br>稳定性好 抗氧化强</p>
+                        <p class="right-bottom-product-title"><span>239.00</span> <del>¥386.00</del></p>
+                        <p class="right-more-bottom-product-title">限量<span>99</span>件已售出<span>20</span>件</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 右盒子 -->
+        <div class="right-product fr">
+            <div class="right-product-title">建材资讯</div>
+            <ul>
+                <li><a href="#">贵阳钢铁市场7月份价格行情</a></li>
+                <li><a href="#">贵阳钢铁市场7月份价格行情</a></li>
+                <li><a href="#">贵阳钢铁市场7月份价格行情</a></li>
+                <li><a href="#">贵阳钢铁市场7月份价格行情</a></li>
+                <li><a href="#">贵阳钢铁市场7月份价格行情</a></li>
+                <li><a href="#">贵阳钢铁市场7月份价格行情</a></li>
+                <li><a href="#">贵阳钢铁市场7月份价格行情</a></li>
+                <li><a href="#">贵阳钢铁市场7月份价格行情</a></li>
+                <li><a href="#">贵阳钢铁市场7月份价格行情</a></li>
+                <li><a href="#">贵阳钢铁市场7月份价格行情</a></li>
+                <li><a href="#">贵阳钢铁市场7月份价格行情</a></li>
+                <li><a href="#">贵阳钢铁市场7月份价格行情</a></li>
+            </ul>
+        </div>
+     </div>
+
+     <!--  -->
 </body>
 </html>
