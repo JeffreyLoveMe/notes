@@ -9,6 +9,12 @@
             width: 100px;
             height: 100px;
             background: pink;
+            /* 
+            鼠标放在元素上会呈现不同的样式
+            一般情况下如果元素可以点击都需要设置这个 - 表示可以点击
+            ke'se'r
+            */
+            cursor: pointer;
         }
     </style>
 </head>
@@ -44,7 +50,7 @@
         onkeyup - 按下并释放键盘上的一个键
         onchange - 本文内容或者下拉菜单内容发生改变
         onfocus - 获取焦点（文本框获得鼠标光标）
-        onblur - 失去焦点（文本框失去鼠标光标）
+        onblur - 失去焦点（文本框失去鼠标光标）/bu'le'r
         onmouseover - 鼠标悬停（鼠标停在元素上方）
         onmouseout - 鼠标移出（鼠标离开元素上方）
         // 作用于window
@@ -57,7 +63,7 @@
             a1.style.width = "200px";
             a1.style.backgroundColor = "red";
             // 操作类选择器名称
-            a1.className += "box"; // 保留“原类选择器名称”，添加“新类选择器名称”
+            a1.className += "box"; // 保留“原类选择器名称” - 在该选择器名称后面继续添加字符串
             a1.className = "box"; // 替换“原类选择器名称”
         }
         // 第二种方式 - 此处不能写"()"（写了代表函数返回值）
@@ -96,9 +102,11 @@
         // // 目前不要求掌握
         // var b1 = document.getElementsByName("name"); // 基本不使用
         // var b2 = document.getElementsByTagNameNS(""); // 通过命名空间
-        // 2>.通过访问关系
-        // 父节点 - 调用者就是节点、一个节点最多只有一个父节点｜使用很广
+        // 2>.通过访问关系 - 节点的访问关系是以属性形式存在/！！！希望后面有具体事例！！！
+        // 一、父节点
+        // 调用者就是节点、一个节点最多只有一个父节点｜使用很广
         var a5 = a1.parentNode;
+        // 二、兄弟节点
         // IE678 - 下一个元素节点（标签）
         // 火狐+谷歌+IE9+ - 下一个节点（包括空文档和换行节点）
         var a6 = a1.nextSibling;
@@ -111,6 +119,7 @@
         var a8 = a1.previousSibling;
         // 火狐+谷歌+IE9+ - 上一个元素节点（标签）
         var a9 = a1.previousElementSibling;
+        // 三、子节点
         // 第一个子节点 - 调用者是父节点
         // IE678 - 第一个元素节点（标签）
         // 火狐+谷歌+IE9+ - 第一个节点（包括空文档和换行节点）
@@ -143,12 +152,12 @@
             return siblingElements;
         }
         // 注意 - 节点的访问关系都是属性｜节点的操作都是函数和方法
-        // 7.操作节点
+        // 7.操作节点 - ！！！重中之重！！！
         // 创建节点
         var a17 = document.createElement("div");
         // 新增节点
         // 在a1节点（父节点）的最后插入一个新节点
-        a1.appendChild();
+        a1.appendChild(a17);
         // 插入节点
         // 在a16节点（参考节点）之前插入a17节点（新节点）
         // 如果参考节点为null则会在节点最后插入一个节点
@@ -160,13 +169,17 @@
         node.parentNode.removeChild(node);
         // 复制节点
         // true - 深复制（复制节点及其所有子节点）
-        // false - 浅复制（复制节点本身，不复制子节点）
+        // false - 浅复制（复制节点本身，不复制子节点）/默认
         var a18 = a17.cloneNode(true);
         // 8.节点属性 - IE6、7不支持
         // 1>.元素节点.属性 ｜ 元素节点[属性]
-        // 2>.元素节点.方法() - 既能获取也能设置
-        // XXX
-
+        a1.src = "../image/jd_red.png";
+        a1["src"] = "../image/jd_green.png";
+        // 2>.元素节点.方法() - 既能获取也能设置/elementNode
+        a1.getAttribute("id");
+        a1.setAttribute("id", "box");
+        a1.removeAttribute("id");
+        
         // DOM详解 - 属性操作
         // 1.概述 - DOM就是HTML文档的模型对象，数据以树的形式在内存中排列
         // 2.组成 - DOM的组成为节点（元素节点（标签）、属性节点、文本节点）
