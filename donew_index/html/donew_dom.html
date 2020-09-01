@@ -151,8 +151,9 @@
             }
             return siblingElements;
         }
+        /*************************重点 - start*************************/
         // 注意 - 节点的访问关系都是属性｜节点的操作都是函数和方法
-        // 7.操作节点 - ！！！重中之重！！！
+        // 7.操作节点
         // 创建节点
         var a17 = document.createElement("div");
         // 新增节点
@@ -171,7 +172,7 @@
         // true - 深复制（复制节点及其所有子节点）
         // false - 浅复制（复制节点本身，不复制子节点）/默认
         var a18 = a17.cloneNode(true);
-        // 8.节点属性 - IE6、7不支持
+        // 8.操作节点属性 - IE6、7不支持
         // 1>.元素节点.属性 ｜ 元素节点[属性]
         a1.src = "../image/jd_red.png";
         a1["src"] = "../image/jd_green.png";
@@ -179,7 +180,8 @@
         a1.getAttribute("id");
         a1.setAttribute("id", "box");
         a1.removeAttribute("id");
-        
+        /*************************重点 - end*************************/
+
         // DOM详解 - 属性操作
         // 1.概述 - DOM就是HTML文档的模型对象，数据以树的形式在内存中排列
         // 2.组成 - DOM的组成为节点（元素节点（标签）、属性节点、文本节点）
@@ -202,11 +204,13 @@
         }
         // 在此处无法访问fn
 
-        // value - 标签的value属性 
+        // value - 标签的value属性
         // innerHTML - 获取双闭合标签里面的内容（识别标签）
         // innerText - 获取双臂和标签里面的内容（不识别标签）
 
         // 制作空白图片 - https://placeholdit.imgix.net
+        // IDE - HBuilder.7.5.1
+        // ？？？demo_24.html有问题没有理解？？？
     </script>
 </body>
 </html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style type="text/css">
+        .wrong {
+            border: 2px solid red;
+        }
+        .correct {
+            border: 2px solid #91B81D;
+        }
+    </style>
+</head>
+<body>
+    账号：<input type="text" oninput="fn(this)">
+    <br><br>
+    密码：<input type="password" onblur="fn(this)">
+    <script type="text/javascript">
+        // 第一种方式 - 使用行内调用
+        function fn(defaultLabel) {
+            // // 使用行内调用函数实质上是先通过window调用函数，所以this指代window
+            // if (this.value.length == 0) {
+            //     this.className = "";
+            // } else if (this.value.length < 6 || this.value.length > 10) {
+            //     this.className = "wrong";
+            // } else {
+            //     this.className = "correct";
+            // }
+            if (defaultLabel.value.length == 0) {
+                defaultLabel.className = "";
+            } else if (defaultLabel.value.length < 6 || defaultLabel.value.length > 10) {
+                defaultLabel.className = "wrong";
+            } else {
+                defaultLabel.className = "correct";
+            }
+        }
+        // // 第二种方式 - 使用匿名函数
+        // var account_input = document.getElementsByTagName("input")[0];
+        // var pwd_input = document.getElementsByTagName("input")[1];
+        // account_input.oninput = function () {
+        //     if (account_input.value.length == 0) {
+        //         account_input.className = "";
+        //     } else if (account_input.value.length < 6 || account_input.value.length > 10) {
+        //         account_input.className = "wrong";
+        //     } else {
+        //         account_input.className = "correct";
+        //     }
+        // }
+        // pwd_input.oninput = function () {
+        //     if (pwd_input.value.length == 0) {
+        //         pwd_input.className = "";
+        //     } else if (pwd_input.value.length < 6 || pwd_input.value.length > 10) {
+        //         pwd_input.className = "wrong";
+        //     } else {
+        //         pwd_input.className = "correct";
+        //     }
+        // }
+    </script>
+</body>
+</html>

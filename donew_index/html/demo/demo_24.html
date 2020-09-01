@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        table, tr, th, td {
+            border: 1px solid #c0c0c0;
+            border-collapse: collapse;
+            border-spacing: 0;
+        }
+        table {
+            width: 300px;
+            height: 300px;
+            margin: 100px auto;
+        }
+        th, td {
+            color: #404060;
+            padding: 10px;
+        }
+        .top-row {
+            background: #0099cc;
+            /* 内部的字体 */
+            font: bold 16px "/5FAE/8F6F/96C5/9ED1";
+            color: #ffffff;
+        }
+        input[type="checkbox"] {
+            width: 25px;
+            margin: 0 auto;
+        }
+        tbody tr {
+            background: #f0f0f0;
+        }
+        /* 多数节点都有这个属性 */
+        tbody tr:hover {
+            cursor: pointer;
+            background: #fafafa;
+        }
+    </style>
+    <script type="text/javascript">
+        // 页面加载完成 -> 给每个节点一个方法
+        window.onload = function () {
+            // 页面加载完成触发此处代码
+            var allSelect = false;
+            var inputArray = document.getElementsByTagName("input");
+            for (let i = 0; i < inputArray.length; i++) {
+                console.log(i);
+                inputArray[i].onclick = function () {
+                    // 点击以后触发此处代码
+                    // ？？？此处i不是应该等于4吗？？？
+                    console.log(this.checked);
+                    // 触发此处的时候"i=4"
+                    console.log(i);
+                    console.log(inputArray[i].checked);
+                    if (i === 0) {
+                        for (let j = 1; j < inputArray.length; j++) {
+                            // 所以此处只能使用this
+                            inputArray[j].checked = this.checked;
+                        }
+                    } else {
+                        for (let k = 1; k < inputArray.length; k++) {
+                            if (inputArray[k].checked) {
+                                allSelect = true;
+                            } else {
+                                allSelect = false;
+                                break;
+                            }
+                        }
+                        if (allSelect) {
+                            inputArray[0].checked = true;
+                        } else {
+                            inputArray[0].checked = false;
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="wrap">
+        <table>
+            <thead>
+                <!-- 表示一行单元格 -->
+                <tr class="top-row">
+                    <th>
+                        <input type="checkbox" id="thead_input">
+                    </th>
+                    <!-- 表示一个单元格 -->
+                    <th>菜名</th>
+                    <th>饭店</th>
+                </tr>
+            </thead>
+            <tbody id="tbody">
+                <tr>
+                    <td>
+                        <input type="checkbox">
+                    </td>
+                    <td>地三鲜</td>
+                    <td>田老师</td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="checkbox">
+                    </td>
+                    <td>西红柿鸡蛋</td>
+                    <td>田老师</td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="checkbox">
+                    </td>
+                    <td>醋溜土豆丝</td>
+                    <td>田老师</td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="checkbox">
+                    </td>
+                    <td>萝卜干炒黄豆儿</td>
+                    <td>田老师</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

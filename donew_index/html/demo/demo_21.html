@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style type="text/css">
+        .node-qrcode {
+            /* 
+            此处我们将大盒子设计成与标签a一样大小（因为超出父盒子默认一样可以显示/这是一种思路）
+            当然也可以将大盒子设计的足够大（可以同时装下两个二维码（但是这样有可能会遮挡住内容吧、试一试？/不会遮挡）） */
+            width: 50px;
+            height: 50px;
+            /* 精灵图应用 */
+            background: url("../../image/bgs.png") no-repeat -159px -51px;
+            /* 
+            因为这个二维码不会随着网页的滚动而滚动 - 一般来讲都是固定定位
+            固定定位 - 相对于浏览器而言
+             */
+            position: fixed;
+            top: 40%;
+            right: 10px;
+        }
+        /* 
+        因为子盒子超出父盒子默认也可以显示：所以此处可以考虑这样操作
+        相对于父盒子定位
+        */
+        .float-qrcode {
+            position: absolute;
+            top: 0;
+            right: 50px;
+        }
+        /* 后代选择器 */
+        .node-qrcode a {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+        }
+        /* js需要使用 */
+        .hide {
+            display: none;
+        }
+        .show {
+            display: block;
+        }
+    </style>
+    <script type="text/javascript">
+        window.onload = function () {
+            var nodeQrCode = document.getElementById("node_qrcode");
+            var floatQrCode = document.getElementById("float_qrcode");
+            nodeQrCode.onmouseover = function () {
+                // 字符串的使用
+                floatQrCode.className = floatQrCode.className.replace("hide", "show");
+            }
+            nodeQrCode.onmouseout = function () {
+                floatQrCode.className = floatQrCode.className.replace("show", "hide");
+            }
+        }
+    </script>
+</head>
+<body>
+    <!-- 分析UI - 最外层盒子固定定位/里面有两个盒子（一个悬浮的二维码、一个可以点击的二维码） -->
+    <!-- 1.拿到UI图需要分析该UI图可以分割成几个部分？？？- 这个UI图很明显就是一个大盒子里面两个小盒子（一个小盒子可以隐藏、另一个小盒子可以点击） -->
+    <div class="node-qrcode" id="node_qrcode">
+        <!-- 2.按钮、鼠标放在某个元素上这种元素最好使用a -->
+        <a href="#"></a>
+        <div class="float-qrcode hide" id="float_qrcode">
+            <img src="../../image/float_qrcode.png" class="qrcode-img">
+        </div>
+    </div>
+</body>
+</html>
