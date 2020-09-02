@@ -48,15 +48,17 @@
             // 页面加载完成触发此处代码
             var allSelect = false;
             var inputArray = document.getElementsByTagName("input");
-            for (let i = 0; i < inputArray.length; i++) {
-                console.log(i);
+            // let/var在js中的区别
+            // https://blog.csdn.net/chenqiwen2017/article/details/77447176
+            // 查找运行环境中的i
+            for (var i = 0; i < inputArray.length; i++) {
                 inputArray[i].onclick = function () {
                     // 点击以后触发此处代码
                     // ？？？此处i不是应该等于4吗？？？
                     console.log(this.checked);
-                    // 触发此处的时候"i=4"
-                    console.log(i);
-                    console.log(inputArray[i].checked);
+                    // 此处不能使用'i === 0'判断（因为此时i = 4）
+                    // this === inputArray[0]
+                    // ！！！其实可以把这两个需求单独提取出来处理！！！
                     if (i === 0) {
                         for (let j = 1; j < inputArray.length; j++) {
                             // 所以此处只能使用this

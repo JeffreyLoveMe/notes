@@ -172,14 +172,23 @@
         // true - 深复制（复制节点及其所有子节点）
         // false - 浅复制（复制节点本身，不复制子节点）/默认
         var a18 = a17.cloneNode(true);
-        // 8.操作节点属性 - IE6、7不支持
-        // 1>.元素节点.属性 ｜ 元素节点[属性]
-        a1.src = "../image/jd_red.png";
-        a1["src"] = "../image/jd_green.png";
-        // 2>.元素节点.方法() - 既能获取也能设置/elementNode
-        a1.getAttribute("id");
-        a1.setAttribute("id", "box");
-        a1.removeAttribute("id");
+        // 8.操作节点属性 - IE6、7不支持（不考虑IE8以下的方式）
+        /*
+        <div class="box" style="width: 100px;height: 100px;background: pink;">
+        </div>
+        */
+        // 错误 - Uncaught TypeError: Cannot set property 'id' of undefined
+        var a19 = document.getElementsByTagName("div")[0];
+        // 1>.元素节点.属性 ｜ 元素节点[属性] - 绑定的属性值不会出现在标签上
+        a19.id = "box";
+        a19["id"] = "box";
+        console.log(a19.id);
+        console.log(a19.getAttribute("id"));
+        // 2>.元素节点.方法() - 绑定的属性值会出现在标签上/既能获取也能设置/elementNode
+        a19.setAttribute("id", "box");
+        console.log(a19.id);
+        console.log(a19.getAttribute("id"));
+        a19.removeAttribute("id");
         /*************************重点 - end*************************/
 
         // DOM详解 - 属性操作
