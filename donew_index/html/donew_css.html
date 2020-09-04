@@ -660,7 +660,9 @@
 
     <!-- 
          边框合并 - 适用于表格的边框合并
-         border-collapse: collapse/ke'la'p's; - 边框合并
+         collapse/ke'la'p's; - 边框合并
+         separate/se'p'ri't - 默认值（边框不会合并）
+         inherit/in'ha'rit - 与父元素一致
       -->
     <!-- <table style="width: 300px; 
      height: 500px;
@@ -728,7 +730,7 @@
 
     <!-- 
          继承的盒子一般不会被撑大 - 仅仅作用于水平方向
-         1>.包含（嵌套）的盒子，如果’子盒子‘没有定义宽度，给’子盒子‘设置左右内边距一般不会撑大'父盒子'
+         1>.包含（嵌套）的盒子，如果’子盒子‘没有定义宽度，给’子盒子‘设置左右内边距一般不会撑大'子盒子'（继续保持与'父盒子'宽度一致、除非padding超过'父盒子'宽度）
          2>.padding-left <= ‘父元素宽度500’都不会被撑大
       -->
     <!-- <div class="father" style="width: 500px;
@@ -883,7 +885,10 @@
           margin-left:auto; // 让盒子左侧充满，尽量往右侧靠
           margin-right:auto; // 让盒子右侧充满，尽量往左侧靠
           margin:0 auto; // 让盒子左侧充满，尽量往右侧靠 + 让盒子右侧充满，尽量往左侧靠 = 居中
-          // 二、图片和文字垂直居中对齐 - ？？？百度一下vertical-align？？？
+          // 二、图片和文字垂直居中对齐 - ？？？百度一下vertical-align？？？/vertical - vo'ti'kou ｜ horizontal - ha'ri'zang'ter
+          // vertical-align - 仅仅可以作用于"行内元素"和"行内块元素" ｜ 表示“子盒子的top/middle/bottom”与“父盒子top/middle/bottom/baseline”对齐方式
+          // https://www.cnblogs.com/wfeicherish/p/8884903.html
+          // https://blog.csdn.net/weixin_45264991/article/details/104355508
           <div class="box">
             <img src="../image/jd_reg.jpg">立即注册
           </div>
