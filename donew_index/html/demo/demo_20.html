@@ -67,6 +67,28 @@
             console.log(c); // 9
             var a = '123';
         }
+
+        /*
+        // 与其他语言一致 - 如果“局部变量”和“全局变量”定义的标识符一样：“局部变量”改变不会导致“全局变量”改变
+        var a = 99;
+        function test() {
+            var a;
+            console.log(a); // undefined
+            a = 10;
+            console.log(a); // 10
+        }
+        test();
+        console.log(a); // 99
+        */
+        var a = 99;
+        test();
+        console.log(a); // 99
+        function test() {
+            var a;
+            console.log(a); // undefined
+            a = 10;  
+            console.log(a); // 10
+        }
     </script>
 </head>
 <body>

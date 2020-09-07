@@ -81,7 +81,7 @@
         // ！！！不推荐这样定义！！！
         // var str = "xwj";
         // str = 18;
-        // 2.分类 - 按照作用范围，变量可以分为“局部变量”和“全局变量”/js不支持“块级作用域”
+        // 2.分类 - 按照作用范围，变量可以分为“局部变量”和“全局变量”/js不支持“块级作用域”（ES6以后开始支持“块级作用域”、“块级作用域” - if语言｜循环语言）
         // 局部变量 - 只有局部能够访问的变量（函数内部使用var定义的变量）
         // 全局变量/成员变量 - 任何位置都可以访问到的变量（函数外部定义的变量/函数内部不使用var定义的变量）
         // 隐式全局变量
@@ -93,10 +93,11 @@
             // h/i都是不是隐式全局变量
             var g = 1, h = 2, i = 1;
         }
-        // 3.预解析
+
+        // 预解析
         // 1>.原理 - js的解析器在页面加载的时候，首先检查页面的语法错误，把变量声明提升起来
         // 2>.作用 - 查看语法错误/变量声明提升和函数整体提升
-        // 3>.变量声明提升 - 只会提升变量名，不提升变量值（局部变量 -> 全局变量 -> 前面变量）
+        // 3>.变量声明提升 - 只会提升变量名，不提升变量值（全局变量会提升至全局最顶层、局部变量会提升到函数内部最顶层）
         getHeight();  // undefined（此处是下面函数使用的）
         /*
         ‘
@@ -112,7 +113,7 @@
         */
         console.log(aaa);
         var aaa = 11;
-        // 4>.函数整体提升 - 只有这一种定义函数方式会整体提升
+        // 4>.函数整体提升 - 只有这一种定义函数方式会整体提升（匿名函数不会整体提升）
         /*
         ‘
         getHeight();
@@ -132,6 +133,11 @@
         function getHeight() {
             // 函数内部也适用预解析
             // 函数内部的局部变量不会相互影响
+            console.log(aaa);
+        }
+        // ！！！这种情况下不会“函数声明提升” - 会报错！！！
+        getMore();
+        var getMore = function () {
             console.log(aaa);
         }
         // 5>.面试题 - 见demo_20.html
@@ -174,7 +180,7 @@
         // Undefined与任何数值计算都是NaN
         var a8;
         alert(a8); // Undefined
-        // 二复杂数据类型 - Object/function/Array/Date
+        // 二复杂数据类型 - Object（function/Array/Date）
         // 1>.null - 变量未引用（值为空）/变量在内存中不存在（类似于Objective-C中的nil）/属于复杂数据类型（object）
         // null和任何数值计算null都可以当作'0'处理
         // 作用 - 销毁变量
@@ -182,7 +188,7 @@
         alert(a9);
         
         // 运算符
-        // 一、算术运算符 - +｜-｜*｜/｜% / 优先级 - 有()先计算()、先*/后+-
+        // 一、算术运算符 - +｜-｜*｜/｜% / 优先级 - 先计算()、在计算*/、后计算+-
         // 1>.+
         var a10 = 1;
         var a11 = 2;
@@ -249,7 +255,7 @@
         // 0.总纲 - 真遇到||不再执行 - 只要一个为真就行 ｜ 假遇到&&不再执行 - 必须全部为真
         // 1.a&&b -> 如果a为true则返回b、如果a为false则返回a
         // 2.a||b -> 如果a为true则返回a、如果a为false则返回b
-        // 3.&& (逻辑与) 优先级高于||（逻辑或）
+        // 3.优先级 - !（逻辑非）>> && (逻辑与) >>（逻辑或）
         // 4.!（逻辑非）始终返回true/false
         // 五、赋值运算符=/比较运算符==/比较运算符===
         // "比较运算符(等于==)"只判断内容是否相同，不判断数据类型
@@ -274,7 +280,7 @@
         alert(index);   // index = 10
 
         // 类型转换
-        // 一、强制数据类型转换
+        // 1>.强制数据类型转换
         var b3 = 123;
         var b4 = 24.01;
         var b5 = "123";
@@ -296,6 +302,7 @@
         alert(typeof(Number(b5)));
         alert(Number(b6)); // NaN
         // 第二种方式 - 整数数字类型字符串转换结果为整数数字/数字开头的字符串转换结果为前面的数字/非数字开头的字符串转换结果为NaN
+        // parse - pa'z
         alert(parseInt(b5));
         alert(typeof(parseInt(b5)));
         alert(parseInt(b8)); // ‘小数字符串’转换以后取整（不识别小数点后面的数字）
@@ -309,7 +316,7 @@
         alert(Boolean(b5)); // true
         alert(Boolean(b9)); // false
         alert(Boolean(b10)); // false
-        // 二、隐式类型转换 - 运算过程中，程序自动进行的数据转换（程序员不参与）
+        // 2>.隐式类型转换 - 运算过程中，程序自动进行的数据转换（程序员不参与）
         var b11 = 12;
         var b12 = "3";
         var b13 = b11 - b12;
@@ -318,6 +325,7 @@
         alert(typeof(b12)); // string
 
         // if语句 - 与其他语言一致
+        // 推荐使用'==='
         var b14 = 12;
         var b15 = 15;
         // 第一种格式
@@ -438,6 +446,7 @@
             return sum;
         }
         // 第五种、匿名函数 - 使用该方法调用有局限性（函数定义必须在使用函数之前）
+        // 定义
         var fn_1 = function getMin() {
             alert("匿名函数");
         }
@@ -449,6 +458,19 @@
         var fn_3 = new Function("alert(\"匿名函数\");")
         fn_3();
         alert(getSum(1, 2));
+        // 作用
+        // 1.直接调用
+        (function () {
+            console.log("直接调用");
+        })()
+        // 2.绑定事件
+        document.onclick = function () {
+            console.log("绑定事件");
+        }
+        // 3.定时器
+        setInterval(function () {
+            console.log("定时器");
+        }, 1000);
         /*
         4>.函数特性
         1.函数不调用不执行 - js加载函数只会加载函数名，不加载函数体
@@ -473,20 +495,7 @@
             return a + b;
         }
         getWeight(11, 12, do_test);
-        // 7>.匿名函数
-        // 1.直接调用
-        (function () {
-            console.log("直接调用");
-        })()
-        // 2.绑定事件
-        document.onclick = function () {
-            console.log("绑定事件");
-        }
-        // 3.定时器
-        setInterval(function () {
-            console.log("定时器");
-        }, 1000);
-
+        
         // 面向对象和基于对象
         // 1>.概念 - 面向对象（可以创建自定义对象，支持封装、继承、多态，例如java）/基于对象（不可以创建自定义对象、不能友好的支持继承、多态，例如js）
         // 2>.属性（颜色、体重）和行为（睡觉、吃饭）- 可以自定义属性和方法
@@ -526,6 +535,7 @@
         // 5>.构造函数 - 可以创建对象的函数/首字母大写
         // 1.创建一个构造函数 - 类似其他语言中的类
         function Student(name) {
+            // this指代new出来的对象 - https://www.jianshu.com/p/554917dc1692
             this.name = name;
             this.say = function () {
                 console.log(this.name + "你好");
@@ -667,9 +677,9 @@
         // 3.数组截取 - 原数组改变
         array06 = array04.splice(0);
         // 4.元素查询索引
-        console.log(array04.indexOf("吴军")); // 从前往后查询到第一个元素立刻返回
+        console.log(array04.indexOf("吴军")); // 从前往后查询到第一个元素立刻返回索引
         console.log(array04.indexOf("15")); // 如果查询不到返回-1
-        console.log(array04.lastIndexOf("吴军")); // 从后往前查询到第一个元素立刻返回
+        console.log(array04.lastIndexOf("吴军")); // 从后往前查询到第一个元素立刻返回索引
         console.log(array04.lastIndexOf("15")); // 如果查询不到返回-1
         // 5.数组迭代
         // item - 元素值
@@ -684,6 +694,7 @@
         // index - 元素索引
         // array - 原数组
         // 返回[]
+        // filter - fi't'r
         array04.filter(function (item, index, array) {
             return true;
         }); // 对每个数组元素都执行该函数：返回结果为true的元素组成新数组返回

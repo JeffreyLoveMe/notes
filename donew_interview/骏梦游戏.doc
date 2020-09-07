@@ -72,17 +72,10 @@ http://www.zyiz.net/tech/detail-99945.html
 https://www.jianshu.com/p/3a46eb4a107f
 
 
-
-
-
-
-
-
-
-
-
-
-
+关于本周任务：
+1.支付宝实名认证：https://www.cnblogs.com/liaolijun/p/7764983.html（写出demo）
+2.研究H5方案（写出相关方案）
+3.利用charles抓包 - https://www.jianshu.com/p/8825179786ac
 
 
 /**
@@ -289,13 +282,6 @@ namespace HelloWorldApplication {
 如果现在定性我们的app为一个内部应用程序的话，不便我们迭代新的版本。
 也许目前部分功能还未能完善，但以后我们会将做得更好。我们重新打包，到时还请继续审核，谢谢
 请您继续审查我们应用程序, 有任何问题可即时和我取得联系,我为您做出解答, 谢谢.
-
-1.检查传参
-2.检查path
-3.检查delegate
-4.检查多语言
-
-
 
 https://m.lizhiweike.com/channel2/821038
 这是一篇flutter基础框架_插件式_架构篇的教学视频感兴趣的可以了解一下

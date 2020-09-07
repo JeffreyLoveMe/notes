@@ -86,11 +86,11 @@
         }
 
         // DOM概述
-        // 1.概述 - document object model/文档对象模型（处理网页内容的方法和接口）
-        // 2.目的 - 为了让js能够操作html元素而定制的规范
+        // 1.概述 - document object model/文档对象模型
+        // 2.目的 - 处理网页内容/实质 - 为了让js能够操作html元素而定制的规范
         // 3.解析过程 - HTML加载完毕，渲染引擎会在内存中把HTML文档生成DOM树
-        // 4.操作 - 使用“getElementById()”获取DOM上的元素节点，然后操作元素修改属性
-        // 5.HTML组成部分 - 节点（在HTML中一切都是节点）- 整个文档就是文档节点｜HTML标签就是元素节点｜标签中的文字就是文字节点｜标签属性就是属性节点
+        // 4.HTML组成部分 - 节点（在HTML中一切都是节点）- 整个文档就是文档节点｜HTML标签就是元素节点｜标签中的文字就是文字节点｜标签属性就是属性节点
+        // 5.操作 - 使用“getElementById()”获取DOM上的元素节点，然后操作元素修改属性
         // 6.怎么找到节点 - 需要操作节点必须先找到节点
         // 1>.直接获取
         // 第一种方式 - 通过‘id’找到节点/返回标签
@@ -139,14 +139,14 @@
         // 只返回HTML节点
         // 在IE6、7、8中包含注释节点
         var a15 = a1.children;
-        // 获取任意兄弟节点
+        // 获取兄弟节点
         var a16 = a1.parentNode.children;
         function sibling(element) {
             var siblingElements = [];
             var p = element.parentNode.children;
             for(var index = 0; index < p.length; index++) {
                 if (p[index] != element) {
-                    siblingElements.push[p[index]];
+                    siblingElements.push(p[index]);
                 }
             }
             return siblingElements;
@@ -157,7 +157,7 @@
         // 创建节点
         var a17 = document.createElement("div");
         // 新增节点
-        // 在a1节点（父节点）的最后插入一个新节点
+        // 在a1节点（父节点）的最后新增一个新节点
         a1.appendChild(a17);
         // 插入节点
         // 在a16节点（参考节点）之前插入a17节点（新节点）
@@ -167,6 +167,7 @@
         // 使用父节点删除子节点 - 必须指定要删除的子节点
         a1.removeChild(a17);
         // 不清楚父节点的情况下 - 节点自己删除自己
+        // node - 指代节点
         node.parentNode.removeChild(node);
         // 复制节点
         // true - 深复制（复制节点及其所有子节点）
