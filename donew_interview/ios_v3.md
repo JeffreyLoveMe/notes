@@ -26,11 +26,12 @@
 ### <span id="jump1.2">1.2 库&资源文件引用</span> 
 引用系统依赖库:
 * AdSupport.framework
-* CoreTelephony.framework
+* AuthenticationServices.framework
+* CoreGraphics.framework
 * libc++.tbd
-* libsqlite3.tbd
-* libz.tbd
+* Security.framework
 * StoreKit.framework
+* WebKit.framework
 
 ### <span id="jump1.3">1.3 info.plist修改</span>  
 * 添加白名单
@@ -38,8 +39,8 @@
 ```xml
 <key>LSApplicationQueriesSchemes</key>
 <array>
-    <string>wechat</string>
-	<string>weixin</string>
+    <string>weixin</string>
+    <string>weixinULAPI</string>
 </array>
 ```
 
@@ -73,6 +74,8 @@
     * 平台分配的渠道ID（必传）
 * WECHAT_APPID
     * 微信的APP_ID（必传）
+* UNIVERSAL_LINK
+    * 通用链接（微信登录使用、必传）
 
 ### <span id="jump1.5">1.5 其它配置</span>  
 * 支持iOS版本
@@ -84,10 +87,17 @@
 * 设置-ObjC
      * 选择{project}->build Settings->Other Linker Flags->-ObjC -all_load
 
+* 支持Sign In with Apple
+     * 选择{project}->Signing & Capabilities -> + Capability -> 搜索Sign In with Apple，增加Sign In with Apple选项
+
 * 支持In-App Purchase
      * 选择{project}->Signing & Capabilities，增加In-App Purchase选项
-    
 
+* 支持微信登录
+     * 选择{project}->Signing & Capabilities -> + Capability -> 搜索Associated Domains，增加Associated Domains选项，填写UNIVERSAL_LINK（将"https://"替换成"applinks:"）
+     * 示例 - "UNIVERSAL_LINK = https://dcms.thedream.cc/applelinks/sdk/testgame99/" ==> 填写"applinks:dcms.thedream.cc/applelinks/sdk/testgame99"
+     * 注意 - SDK会提供UNIVERSAL_LINK参数
+    
 ## <span id="jump2">2.接入任务</span>  
 ### <span id="jump2.1">2.1 初始化 (必接)</span>
 
@@ -126,6 +136,18 @@
 }
 ```
 
+* 在SceneDelegate.m中：
+
+```Objective-C
+#import <DreamSDK/DreamSDK.h>
+
+// ！！！如果项目存在SceneDelegate.m文件/支持iPadOS多窗口（iOS13.0以上）需要调用该方法！！！
+// ！！！选接！！！
+- (void)scene:(UIScene *)scene continueUserActivity:(NSUserActivity *)userActivity API_AVAILABLE(ios(13.0)) {
+    // TODO：
+    [[DreamSDK getInstance] scene:scene continueUserActivity:userActivity];
+}
+```
 
 * 在AppDelegate.m中：
 
@@ -158,6 +180,11 @@
            options:(NSDictionary<UIApplicationOpenURLOptionsKey, id> *)options API_AVAILABLE(ios(9.0)) {
     // TODO：
     return [[DreamSDK getInstance] application:app openURL:url options:options];
+}
+
+- (BOOL)application:(UIApplication *)application continueUserActivity:(NSUserActivity *)userActivity restorationHandler:(void(^)(NSArray<id<UIUserActivityRestoring>> * __nullable restorableObjects))restorationHandler API_AVAILABLE(ios(8.0)) {
+    // TODO：
+    return [[DreamSDK getInstance] application:application continueUserActivity:userActivity restorationHandler:restorationHandler];
 }
 ```
 

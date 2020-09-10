@@ -19,7 +19,7 @@
     </style>
 </head>
 <body>
-    <div class="father">
+    <div class="father" style="width: 100px;height: 100px;background: #000;">
         <div class="box-click" id="boxClick">
             <div class="son">
     
@@ -36,7 +36,7 @@
     <script type="text/javascript">
         /*
         事件 - js是以“事件驱动”为核心的一门语言 | https://www.runoob.com/js/js-events.html
-        1.三要素 - 事件源、事件、书写事件驱动程序
+        1.三要素 - 事件源、事件、事件驱动程序
         2.DOM - 文档对象模型
         3.BOM - 浏览器对象模型
         */
@@ -53,16 +53,24 @@
         onblur - 失去焦点（文本框失去鼠标光标）/bu'le'r
         onmouseover - 鼠标悬停（鼠标停在元素上方）
         onmouseout - 鼠标移出（鼠标离开元素上方）
+        oninput - 当用户尝试input“输入&删除”
         // 作用于window
         onload - 网页文档加载事件
         onunload - 关闭网页
         */
         a1.onclick = function () {
             // 3>.书写事件驱动程序 - 可以操作标签的属性和样式
-            // 格式 - 事件源.style.样式 = "";
+            // 1.操作样式 - 事件源.style.样式 = "";
+            // 只能获取行内式（不能获取内嵌式｜外链式）/样式少的时候使用（样式多的时候使用className）/value为字符串（没有设置为""）/命名规则为驼峰命名（与css不一样/background-color）
+            // typeof(a1.style); - object
             a1.style.width = "200px";
+            a1.style.height = "200px";
             a1.style.backgroundColor = "red";
-            // 操作类选择器名称
+            // 不透明度opacity - a'pase't
+            a1.style.opacity = "0.2";
+            // 多个赋值 - 字符串形式
+            a1.style.cssText = "width: 100px;height: 100px;background: #000;";
+            // 2.操作类选择器名称
             a1.className += "box"; // 保留“原类选择器名称” - 在该选择器名称后面继续添加字符串
             a1.className = "box"; // 替换“原类选择器名称”
         }
@@ -82,23 +90,25 @@
         // 触发 - 页面加载完毕（文本和图片）
         // 作用 - 为保证js操作元素的时候元素已经定义（js的加载顺序导致如果元素定义靠后会先加载script）
         window.onload = function () {
-
+            // 代码块
         }
 
         // DOM概述
         // 1.概述 - document object model/文档对象模型
         // 2.目的 - 处理网页内容/实质 - 为了让js能够操作html元素而定制的规范
         // 3.解析过程 - HTML加载完毕，渲染引擎会在内存中把HTML文档生成DOM树
-        // 4.HTML组成部分 - 节点（在HTML中一切都是节点）- 整个文档就是文档节点｜HTML标签就是元素节点｜标签中的文字就是文字节点｜标签属性就是属性节点
+        // 4.HTML组成部分 - 节点（在HTML中一切都是节点）- 整个文档就是文档节点｜HTML标签就是元素节点｜标签属性就是属性节点｜标签中的文字就是文字节点
         // 5.操作 - 使用“getElementById()”获取DOM上的元素节点，然后操作元素修改属性
         // 6.怎么找到节点 - 需要操作节点必须先找到节点
         // 1>.直接获取
-        // 第一种方式 - 通过‘id’找到节点/返回标签
+        // 第一种方式 - 通过‘id’找到节点/返回标签 - id没有下面两个方法（因为id整个也看唯一）
         var a2 = document.getElementById("boxClick");
         // 第二种方式 - 通过‘标签名’找到节点/返回标签数组（伪数组）
         var a3 = document.getElementsByTagName("div");
+        var sub_a3 = a2.getElementsByTagName("div"); // 获取a2父元素底下的div
         // 第三种方式 - 通过‘类名’找到节点/html5以后才会支持（IE5、6、7、8不支持）/返回标签数组（伪数组）
         var a4 = document.getElementsByClassName("box-click");
+        var sub_a4 = a2.getElementsByClassName("box-click"); // 获取a2父元素底下的box-click
         // // 目前不要求掌握
         // var b1 = document.getElementsByName("name"); // 基本不使用
         // var b2 = document.getElementsByTagNameNS(""); // 通过命名空间
@@ -112,6 +122,8 @@
         var a6 = a1.nextSibling;
         // 火狐+谷歌+IE9+ - 下一个元素节点（标签）
         var a7 = a1.nextElementSibling;
+        // 封装 - 获取兄弟节点的元素节点
+        a7 = a1.nextElementSibling || a1.nextSibling;
         // IE678 - 上一个元素节点（标签）
         // 火狐+谷歌+IE9+ - 上一个节点（包括空文档和换行节点）
         // previous - pu'ri'vr's
@@ -151,8 +163,7 @@
             }
             return siblingElements;
         }
-        /*************************重点 - start*************************/
-        // 注意 - 节点的访问关系都是属性｜节点的操作都是函数和方法
+        // 注意 - 节点的访问关系都是属性｜节点的操作都是函数
         // 7.操作节点
         // 创建节点
         var a17 = document.createElement("div");
@@ -168,7 +179,8 @@
         a1.removeChild(a17);
         // 不清楚父节点的情况下 - 节点自己删除自己
         // node - 指代节点
-        node.parentNode.removeChild(node);
+        // node.parentNode.removeChild(node);
+        a1.parentNode.removeChild(a1);
         // 复制节点
         // true - 深复制（复制节点及其所有子节点）
         // false - 浅复制（复制节点本身，不复制子节点）/默认
@@ -190,8 +202,7 @@
         console.log(a19.id);
         console.log(a19.getAttribute("id"));
         a19.removeAttribute("id");
-        /*************************重点 - end*************************/
-
+        
         // DOM详解 - 属性操作
         // 1.概述 - DOM就是HTML文档的模型对象，数据以树的形式在内存中排列
         // 2.组成 - DOM的组成为节点（元素节点（标签）、属性节点、文本节点）
@@ -214,9 +225,12 @@
         }
         // 在此处无法访问fn
 
+        // 见"demo_27.html" - 不仅仅可以取值还可以赋值
         // value - 标签的value属性
-        // innerHTML - 获取双闭合标签里面的内容（识别标签）
-        // innerText - 获取双臂和标签里面的内容（不识别标签）
+        // innerHTML - 获取双闭合标签里面的内容（识别标签（赋值的标签当标签处理）、不包含本身）
+        // outerHTML - 获取双闭合标签里面的内容（识别标签、包含本身）
+        // innerText - 获取双闭合标签里面的内容（不识别标签（赋值的标签当文本处理）、不包含本身）
+        // outerText - 获取双闭合标签里面的内容（不识别标签、包含本身）
 
         // 制作空白图片 - https://placeholdit.imgix.net
         // IDE - HBuilder.7.5.1

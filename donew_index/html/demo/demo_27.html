@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="father">
+        我是父亲
+        <div class="first-son">我是大儿子</div>
+        <div class="second-son">我是小儿子</div>
+    </div>
+    <script type="text/javascript">
+        var father_box = document.getElementsByTagName("div")[0];
+        // value - 标签的value属性
+        /*
+        undefined
+        */
+        console.log(father_box.value);
+        // innerHTML - 获取双闭合标签里面的内容（识别标签、不包含本身）
+        /*
+        我是父亲
+        <div class="first-son">我是大儿子</div>
+        <div class="second-son">我是小儿子</div>
+        */
+        console.log(father_box.innerHTML);
+        // outerHTML - 获取双闭合标签里面的内容（识别标签、包含本身）
+        /*
+        <div class="father">
+            我是父亲
+            <div class="first-son">我是大儿子</div>
+            <div class="second-son">我是小儿子</div>
+        </div>
+        */
+        console.log(father_box.outerHTML);
+        // innerText - 获取双闭合标签里面的内容（不识别标签、不包含本身）
+        /*
+        我是父亲
+        我是大儿子
+        我是小儿子
+        */
+        console.log(father_box.innerText);
+        // outerText - 获取双闭合标签里面的内容（不识别标签、包含本身）
+        /*
+        我是父亲
+        我是大儿子
+        我是小儿子
+        */
+        console.log(father_box.outerText);
+        // DIV
+        console.log(father_box.nodeName);
+        // 1
+        console.log(father_box.nodeType);
+        // null
+        console.log(father_box.nodeValue);
+    </script>
+</body>
+</html>

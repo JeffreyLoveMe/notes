@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        ul, li {
+            list-style: none;
+        }
+        .content {
+            width: 500px;
+            height: 400px;
+            margin: 100px auto;
+            border: 1px solid #cccccc;
+            /* 超出父元素部分隐藏 - 可以通过隐藏/显示来达到目的 */
+            overflow: hidden;
+        }
+        .top {
+            height: 40px;
+            background: pink;
+            cursor: pointer;
+        }
+        span {
+            display: inline-block;
+            width: 500px;
+            height: 360px;
+            background: yellow;
+            font: normal 700 150px/360px "simsun";
+            text-align: center;
+        }
+        li {
+            float: left;
+            width: 100px;
+            height: 40px;
+            text-align: center;
+        }
+        a {
+            display: inline-block;
+            width: 100px;
+            height: 40px;
+            font: normal 600 18px/40px "simsun";
+            text-decoration: none;
+            color: #000000;
+        }
+        .current {
+            background: yellow;
+        }
+        .show {
+            display: inline-block;
+        }
+        .hide {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <div class="top">
+            <ul>
+                <li><a href="#" class="current">鞋子</a></li>
+                <li><a href="#">袜子</a></li>
+                <li><a href="#">帽子</a></li>
+                <li><a href="#">裤子</a></li>
+                <li><a href="#">裙子</a></li>
+            </ul>
+        </div>
+        <!-- 
+            1.因为此处可能会有很多UI样式，如果通过替换会很麻烦，我们一般是通过位移让某个UI部分显示来达到效果
+            2.此处逻辑原理与iOS中UIScrollView类似
+         -->
+        <!-- <div>鞋子</div> -->
+        <span class="show">鞋子</span>
+        <span>袜子</span>
+        <span>帽子</span>
+        <span>裤子</span>
+        <span>裙子</span>
+    </div>
+    <script type="text/javascript">
+        var links = document.getElementsByTagName("a");
+        var spans = document.getElementsByTagName("span");
+        for (let i = 0; i < links.length; i++) {
+            links[i].onmouseover = function () {
+                // ！！！排他思想 - 先把所有的全部关闭、然后打开特定的！！！
+                for (let j = 0; j < links.length; j++) {
+                    // // 第一种操作属性的方法
+                    // links[j].className = "";
+                    // spans[j].className = "hide";
+                    // 第二种操作属性的方法
+                    links[j].setAttribute("class", "");
+                    spans[j].setAttribute("class", "hide");
+                }
+                // // 第一种操作属性的方法
+                // links[i].className = "current";
+                // spans[i].className = "show";
+                // 第二种操作属性的方法
+                // 如果使用var修饰i则此处需要this
+                links[i].setAttribute("class", "current");
+                spans[j].setAttribute("class", "show");
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        table {
+            width: 300px;
+            height: 250px;
+            border: 1px solid #c0c0c0;
+            border-collapse: collapse;
+            margin: 100px auto;
+        }
+        th, td {
+            border: 1px solid #d0d0d0;
+            font: 700 16px "/5FAE/8F6F/96C5/9ED1";
+        }
+        thead tr {
+            height: 50px;
+            background: blue;
+            color: #ffffff;
+        }
+        tbody td {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th>
+                    <input type="checkbox" id="all_checkbox">
+                </th>
+                <th>菜名</th>
+                <th>饭店</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    <input type="checkbox">
+                </td>
+                <td>红烧肉</td>
+                <td>田老师</td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="checkbox">
+                </td>
+                <td>红烧肉</td>
+                <td>田老师</td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="checkbox">
+                </td>
+                <td>红烧肉</td>
+                <td>田老师</td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="checkbox">
+                </td>
+                <td>红烧肉</td>
+                <td>田老师</td>
+            </tr>
+        </tbody>
+    </table>
+    <script type="text/javascript">
+        var allCheckBoxBtn = document.getElementById("all_checkbox");
+        var checkBoxBtns = document.getElementsByTagName("input");
+        // 全选
+        allCheckBoxBtn.onclick = function () {
+            for (let index = 0; index < checkBoxBtns.length; index++) {
+                checkBoxBtns[index].checked = this.checked;
+            }
+        }
+        // 分选
+        for (let i = 1; i < checkBoxBtns.length; i++) {
+                checkBoxBtns[i].onclick = function () {
+                    var isFlag = true;
+                    for (let j = 1; j < checkBoxBtns.length; j++) {
+                        if (checkBoxBtns[j].checked === false) {
+                            isFlag = false;
+                        }
+                    }
+                    checkBoxBtns[0].checked = isFlag;
+                }
+            }
+    </script>
+</body>
+</html>
