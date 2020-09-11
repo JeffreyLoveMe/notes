@@ -64,8 +64,8 @@ function getSiblingNodes(element) {
     var siblingElements = [];
     var p = element.parentNode.children;
     for (var i = 0; i < p.length; i++) {
-        if (p[index] != element) {
-            siblingElements.push(p[index]);
+        if (p[i] != element) {
+            siblingElements.push(p[i]);
         }
     }
     return siblingElements;

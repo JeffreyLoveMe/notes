@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        div {
+            width: 505px;
+            height: 30px;
+            margin: 40px auto;
+            text-align: center;
+        }
+        li {
+            width: 80px;
+            height: 30px;
+            list-style: none;
+            float: left;
+            background: pink;
+            margin-right: 5px;
+            line-height: 30px;
+        }
+        a {
+            text-decoration: none;
+        }
+        #last_li {
+            margin-right: 0;
+        }
+        .current {
+            background-color: brown;
+        }
+    </style>
+    <script src="../../js/demo/utils.js"></script>
+    <script type="text/javascript">
+        window.onload = function () {
+            var links = document.getElementsByTagName("a");
+            for (let i = 0; i < links.length; i++) {
+                links[i].onclick = function () {
+                    for (let j = 0; j < links.length; j++) {
+                        links[j].parentNode.className = "";
+                    }
+                    links[i].parentNode.className = "current";
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="content">
+        <ul>
+            <li><a href="#">首页</a></li>
+            <li><a href="#">播客</a></li>
+            <li><a href="#">博客</a></li>
+            <li><a href="#">相册</a></li>
+            <li><a href="#">关于</a></li>
+            <li id="last_li"><a href="#">帮助</a></li>
+        </ul>
+    </div>
+</body>
+</html>

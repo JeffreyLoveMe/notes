@@ -1,3 +1,31 @@
-function test() {
-    var a = document.getElementById("box")
-}
+/*
+.jshintrc
+"esversion_comment" : "指定的ECMAScript版本代码",
+"esversion": 6,
+"sub_comment" : "允许 [] . 形式来访问对象",
+"sub": true,  
+"laxbreak_comment" : "不检查换行",      
+"laxbreak": true,
+"regexp_comment" : "不允许使用.和[^...]的正则",   
+"regexp": true,  
+"asi_comment" : "无视没有加分号的行尾",   
+"asi": true,  
+"bitwise_comment" : "会禁用位运算符",      
+"bitwise": true,
+"curly_comment" : "要求使用if和while等结构语句时加上{}来明确代码块",    
+"curly": true,
+"immed_comment" : "要求匿名函数的调用为(function(){//}());",      
+"immed": true, 
+"eqeqeq_comment" : "要求代码中使用===或!==，而不是使用==和!=",     
+"eqeqeq": true,
+"eqnull_comment" : "允许使用\"== null\"作比较",   
+"eqnull": true,
+"newcap_comment" : "要求每一个构造函数名都要大写字母开头",    
+"newcap": true,
+"noarg_comment" : "禁止arguments.caller和arguments.callee的使用",    
+"noarg": true,  
+"undef_comment" : "要求所有的非全局变量,在使用前都被声明",    
+"undef": false,
+"strict_comment" : "要求使用use strict;语法",    
+"strict": false 
+ */

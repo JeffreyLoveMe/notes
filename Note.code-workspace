@@ -15,9 +15,15 @@
 	],
     "settings": {
         "workbench.colorCustomizations": {
+			
             "activityBar.background": "#3F2907",
             "titleBar.activeBackground": "#593A09",
             "titleBar.activeForeground": "#FEFAF3"
-        }
+		},
+		"editor.tabCompletion": "on",
+		"tslint.exclude": "",
+		"jslint.exclude": {
+		
+		},
     }
 }
