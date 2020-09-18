@@ -94,7 +94,7 @@
          * 调用者 - 事件源
          * 参数1 - 事件名（不带on）
          * 参数2 - 执行函数
-         * 参数3 - xxx
+         * 参数3 - 可选（true - 事件在捕获阶段执行/false默认 - 事件在冒泡阶段执行）
          */
         a1.addEventListener("click", eventTest); // 火狐/谷歌/IE9+
         a1.attachEvent("onclick", eventTest); // IE6/7/8 - 目前已经不需要兼容
@@ -142,10 +142,12 @@
         }
         btn.onclick = null;
         // 第二种方式
+        // 火狐/谷歌/IE9+
         btn.addEventListener("click", test);
         btn.removeEventListener("click", test);
-        // btn.attachEvent("onclick", test);
-        // btn.detachEvent("onclick", test);
+        // IE6/7/8 - 目前已经不需要兼容
+        btn.attachEvent("onclick", test);  
+        btn.detachEvent("onclick", test);
 
         // onload事件
         // 触发 - 页面加载完毕（文本和图片）
@@ -297,7 +299,7 @@
         // outerText - 获取双闭合标签里面的内容（不识别标签、包含本身）
 
         // 制作空白图片 - https://placeholdit.imgix.net
-        // IDE - HBuilder.7.5.1
+        
         // ？？？demo_24.html有问题没有理解？？？
     </script>
 </body>

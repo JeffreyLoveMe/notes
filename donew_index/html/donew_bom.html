@@ -11,7 +11,7 @@
         window.alert("123");
         var x = 1;
         alert(window.x);
-        // // 开发关闭网页
+        // 开发关闭网页
         /**
          * 打开网页
          * https://www.baidu.com - 跳转的方向
@@ -60,9 +60,8 @@
         // 第一种方式
         var num = 0;
         setInterval(function () {
-            
+            alert(num);
         }, 1000);
-        
         var timer = setInterval(function () {
             console.log(num);
             num++;
@@ -73,7 +72,7 @@
         }, 1000);
         alert(typeof(timer));
         // 第二种方式 - 使用较少
-        setInterval("test(123)",1000);
+        setInterval("test(123)", 1000);
         function test(a) {
             console.log(a);
         }
