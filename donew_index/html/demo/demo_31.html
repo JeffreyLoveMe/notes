@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>通过js写html</title>
+</head>
+<body>
+    <ul></ul>
+    <script type="text/javascript">
+        // 第一种方式 - 基本不会使用（会覆盖原有页面）
+        document.write("<ul><li>谢吴军02</li><li>陈凤军</li><li>创建DEMO</li></ul>");
+        // 第二种方式 - 常用（绑定标签、属性、文本都很方便）
+        var ul = document.getElementsByTagName("ul")[0];
+        ul.innerHTML = "<li>谢吴军01</li><li>陈凤军</li><li>创建DEMO</li>";
+        // 第三种方式 - 较多（指定数量的时候使用较多）
+        var newLi = document.createElement("li");
+        newLi.innerHTML = "谢吴军03";
+        var oldLi = document.createElement("li");
+        oldLi.innerHTML = "陈凤军";
+        ul.insertBefore(newLi, null);
+        ul.insertBefore(oldLi, newLi);
+    </script>
+</body>
+</html>

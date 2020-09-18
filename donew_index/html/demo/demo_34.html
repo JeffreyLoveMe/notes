@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style type="text/css">
+        select {
+            width: 180px;
+            height: 240px;
+            font-size: 16px;
+            background: pink;
+        }
+    </style>
+</head>
+<body>
+    <select id="left_select" multiple>
+        <option value="">香蕉</option>
+        <option value="">苹果</option>
+        <option value="">梨子</option>
+        <option value="">葡萄</option>
+    </select>
+    <button>>>></button>
+    <button><<<</button>
+    <button>></button>
+    <button><</button>
+    <select id="right_select" multiple></select>
+    <script type="text/javascript">
+        // 思路 - 获取所有子元素然后添加到另一边
+        var left_select = document.getElementById("left_select");
+        var right_select = document.getElementById("right_select");
+        var btns = document.getElementsByTagName("button");
+        // >>>
+        btns[0].onclick = function () {
+            // 4
+            var options = left_select.children;
+            // for (let index = 0; index < options.length; index++) {
+            //     // 此处会先删除再插入 - options.length在改变
+            //     right_select.appendChild(options[index]);
+            //     // options.length === 3
+            //     // 香蕉 - 梨子 - 苹果 - 葡萄
+            // }
+            for (let index = options.length - 1; index >= 0; index--) {
+                right_select.appendChild(options[index]);
+            }
+        }
+        // <<<
+        btns[1].onclick = function () {
+            var options = right_select.children;
+            // for (let index = 0; index < options.length; index++) {
+            //     left_select.appendChild(options[index]);
+            // }
+            for (let index = options.length - 1; index >= 0; index--) {
+                left_select.appendChild(options[index]);
+            }
+        }
+        // >
+        btns[2].onclick = function () {
+            var options = left_select.children;
+            for (let index = 0; index < options.length; index++) {
+                if (options[index].selected) {
+                    right_select.appendChild(options[index]);
+                }
+            }
+        }
+        // <
+        btns[3].onclick = function () {
+            var options = right_select.children;
+            for (let index = 0; index < options.length; index++) {
+                if (options[index].selected) {
+                    left_select.appendChild(options[index]);
+                }
+            }
+        }
+    </script>
+</body>
+</html>

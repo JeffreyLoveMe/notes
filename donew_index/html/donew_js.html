@@ -50,8 +50,8 @@
         var result = confirm("14期高薪");
         // 3.控制台输出 - 使用较多
         console.log("14期高薪"); // 显示灰色
-        console.error("输出错误"); // 显示红色
-        console.warn("输出警告"); // 显示黄色
+        // console.error("输出错误"); // 显示红色
+        // console.warn("输出警告"); // 显示黄色
         // 4.对话框（含’输入框‘用于接收用户信息）
         prompt("请输入你的银行卡号");
         // bankCardNo变量可以接收输入的内容/！！！bankCardNo是一个字符串！！！
@@ -135,11 +135,11 @@
             // 函数内部的局部变量不会相互影响
             console.log(aaa);
         }
-        // ！！！这种情况下不会“函数声明提升” - 会报错！！！
-        getMore();
-        var getMore = function () {
-            console.log(aaa);
-        }
+        // // ！！！这种情况下不会“函数声明提升” - 会报错！！！
+        // getMore();
+        // var getMore = function () {
+        //     console.log(aaa);
+        // }
         // 5>.面试题 - 见demo_20.html
 
         // 字面量 - 常量/固定的值/也是使用var修饰（这点区别于swift）
@@ -152,7 +152,7 @@
         // 推荐使用“驼峰命名” - getElementById
 
         // 数据类型
-        // 一、简单数据类型
+        // 一、简单数据类型 - 没法绑定属性和方法
         // 1>.Number - 数字类型（包含‘正数、负数、小数’）/表示的数字有范围
         // 1.判断数据类型 - typeof
         var a1 = 1.45;
@@ -168,10 +168,44 @@
         alert(Number.MIN_VALUE);  // 最小值
         // 2>.String - 字符串类型/凡是使用“双引号”或“单引号”引起来的都是字符串
         // 字符串不可修改 - 给字符串重复赋值会在栈中重新开辟一个内存，原来的内存会被回收
-        var a5 = "14期高薪";
+        var a5 = "abc";
         alert(a5);
         alert(typeof(a5)); // 判断数据类型
+        /*
+        // 此处在底层有一个数据类型转换
+        // 对象 - 可以绑定属性和方法
+        var strObject = new String("abc");
+        */
         alert(a5.length);  // 字符串长度
+        alert(a5.indexOf("a")); // 查询字符 - 从前向后查询，查询到第一个就返回字符/未查到返回-1
+        alert(a5.lastIndexOf("a")); // 查询字符 - 从后向前查询，查询到第一个就返回字符/未查到返回-1
+        alert(a5.charAt(0));  // 查看当前索引的字符 - 返回当前字符
+        alert(a5.charCodeAt(1)); // 查找当前索引的字符 - 返回当前字符unicode编码（一个英文占一个字符｜一个汉字占两个字符）
+        // 了解内容 - 数据传递的时候经常需要通过编码后再传递，接收以后还需要反编译回来
+        alert(encodeURIComponent(a5)); // 编码 - 将字符串做为URI组件
+        alert(decodeURIComponent(a5)); // 解码 - 将字符串做为URI组件
+        alert(a5.concat(a6)); // 连接两个字符串（返回新字符串、a5/a6不会被修改）
+        // 字符串的截取
+        var x1 = "I Love Js";
+        // slice()
+        alert(x1.slice(2));  // 从第2位开始截取到最后
+        alert(x1.slice(2, 5)); // 从第2位开始截取到第5位（包左不包右）
+        alert(x1.slice(-3)); // 截取最后3个
+        alert(x1.slice(5, 2)); //空字符串
+        // sub
+        alert(x1.sub(2)); // 从第2位开始截取到最后
+        alert(x1.substr(2, 5)); // 从第2位开始截取5位
+        alert(x1.substr(-3)); // 截取最后3个
+        // substring
+        alert(x1.substring(2)); // 从第2位开始截取到最后
+        alert(x1.substring(2, 5)); // 从第2位开始截取5位
+        alert(x1.substring(-3)); // 全部截取
+        // 去掉前后空格
+        alert(a5.trim());
+        // 替换字符串
+        alert(a5.replace("today", "to")); // 把today替换成to - 支持"正则表达式"
+        // 字符串 -> 数组 - (join()相反)
+        alert(a5.split(",")); // 返回数组
         // 3>.Boolean - 布尔类型/只有两个值（true == 1/false == 0）/必须是小写
         // 任何数据类型都可以转换成布尔类型 - 0/""/null/false/undefined/NaN转换成false，其他数值/任何对象转换成true
         var a6 = true;
@@ -605,6 +639,7 @@
         // 内置对象 - js本身已经帮我们写好的对象（不需要我们创建）
         // 查看文档 - https://developer.mozilla.org/zh-CN
         // 1.Date对象
+        // 第一种方式
         var myDate = new Date();  // 通过new创建对象
         alert(myDate); // 完整的当前日期时间/Mon Aug 10 2020 10:37:28 GMT+0800 (中国标准时间)
         alert(myDate.getDate()); // 返回一个月的某一天（1 - 31）
@@ -614,8 +649,12 @@
         alert(myDate.getHours()); // 返回当前的小时（0 - 23）
         alert(myDate.getMinutes()); // 返回当前的分钟（0 - 59）
         alert(myDate.getSeconds()); // 返回当前的秒数（0 - 59）
+        alert(myDate.getMilliseconds()); // 返回当前的秒数（0 - 59）
         alert(myDate.getTime()); // 返回时间戳（1970年01月01日至今的毫秒数）
         alert(myDate.getTimezoneOffset()); // 返回本地时间与格林尼治标准时间(GMT)的分钟差
+        // 第二种方式
+        var fixDate = new Date("2020/09/17 13:45:00");
+
         // 2.Math对象 - 常用于执行数学任务
         var x1 = 10.5;
         var y1 = - 20;
@@ -761,7 +800,6 @@
         alert(bubbleSortArray);
         // 4.RegExp对象 - 正则表达式
         // 5.Error对象 - 错误对象
-        // 6.String对象 - 字符串对象
     </script>
 </head>
 

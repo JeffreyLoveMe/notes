@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript">
+        // BOM - 浏览器对象模型
+        // 1.window对象 - window对象是js的顶级对象 ｜ 所有定义在全局作用域中的变量、函数都会变成window对象的属性和方法 ｜ window对象下的属性和方法调用的时候可以省略window
+        // 2.https://www.cnblogs.com/lowerma/p/10968829.html
+        window.alert("123");
+        var x = 1;
+        alert(window.x);
+        // // 开发关闭网页
+        /**
+         * 打开网页
+         * https://www.baidu.com - 跳转的方向
+         * _self - 是否打开新窗口
+         * 123 - 新窗口参数
+         */
+        // window.open("https://www.baidu.com", "_self", "123");
+        // 关闭网页
+        // window.close();
+
+        // document - DOM
+
+        // frames - 先不讲
+
+        // history - 历史记录管理
+        // 后退
+        history.back(); 
+        history.go(-1); // 0是刷新
+        // 前进
+        history.forward();
+        history.go(1);
+
+        // location
+        // 1.概念 - 相当于浏览器地址栏
+        // 2.作用 - 可以将url解析成独立的片段
+        // 3.案例 - 查找不到某页面回到特定页面
+        setTimeout(function () {
+            // scheme://host.domain:port/path/filename
+            location.href = "https://www.baidu.com";
+            console.log(location.hash); // 返回url中#后面的内容（包括#）
+            console.log(location.host); // 返回主机名（包括端口）
+            console.log(location.hostname); // 返回主机名
+            console.log(location.pathname); // url中的路径部分
+            console.log(location.protocol); // 协议
+            console.log(location.search); // 查询字符串
+        }, 1000);
+
+        // navigator - 可以获取客户端的一些信息
+        console.log(navigator.userAgent); // UA
+        console.log(navigator.platform);  // 浏览器支持的系统
+
+        // screen - 先不讲
+
+        // 定时器
+        // 1.setInterval() - 循环定时器（循环执行）
+        // 第一种方式
+        var num = 0;
+        setInterval(function () {
+            
+        }, 1000);
+        
+        var timer = setInterval(function () {
+            console.log(num);
+            num++;
+            // 清除定时器
+            if (num === 0) {
+                clearInterval(timer);
+            }
+        }, 1000);
+        alert(typeof(timer));
+        // 第二种方式 - 使用较少
+        setInterval("test(123)",1000);
+        function test(a) {
+            console.log(a);
+        }
+        // 2.setTimeout() - 炸弹定时器（执行一次）
+        setTimeout(function () {
+            console.log(num);
+            num++;
+        }, 1000);
+        var timeOut = setTimeout(function () {
+            clearTimeout(timeOut);
+        }, 1000);
+    </script>   
+</head>
+<body>
+    
+</body>
+</html>

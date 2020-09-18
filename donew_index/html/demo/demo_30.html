@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .father {
+            position: relative;
+        }
+        .bottom {
+            width: 100px;
+            height: 180px;
+            background: yellow;
+            position: absolute;
+        }
+        .top {
+            width: 100px;
+            height: 200px;
+            background: pink;
+            position: absolute;
+            top: 30px;
+        }
+    </style>
+    <script type="text/javascript">
+        window.onload = function () {
+            var btn = document.getElementsByTagName("button")[0];
+            var bottomDiv = document.getElementById("bottom");
+            var fatherDiv = document.getElementById("father");
+            btn.onclick = function () {
+                fatherDiv.style.left = "100px";
+                fatherDiv.style.top = "200px";
+                bottomDiv.style.zIndex = "100";
+            }
+        }
+    </script>
+</head>
+<body>
+    <button>动起来</button>
+    <br><br>
+    <div class="father" id="father">
+        <div class="bottom" id="bottom"></div>
+        <div class="top"></div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .content {
+            width: 1125px;
+            height: 1000px;
+            background: url("../../image/one.jpg") no-repeat;
+            text-align: center;
+        }
+        .top-content {
+            height: 165px;
+            background: rgba(255, 255, 255, 0.3);
+        }
+        img {
+            width: 200px;
+            cursor: pointer;
+            margin: 0 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="content" id="content">
+        <div class="top-content" id="top_content">
+            <img src="../../image/one.jpg" alt="">
+            <img src="../../image/two.jpg" alt="">
+            <img src="../../image/three.jpg" alt="">
+            <img src="../../image/four.jpg" alt="">
+            <img src="../../image/five.jpg" alt="">
+        </div>
+    </div>
+    <script type="text/javascript">
+        var contentDiv = document.getElementById("content");
+        var topContentDiv = document.getElementById("top_content");
+        var imgs = topContentDiv.children;
+        for (let index = 0; index < imgs.length; index++) {
+            imgs[index].onclick = function () {
+                // 此处要求字符串 - url("../../image/one.jpg")
+                // "../../image/one.jpg" 可以替换成 imgs[index].src
+                // url(imgs[index].src)怎么拼接？
+                // "url(" + imgs[index].src + ")"
+                contentDiv.style.backgroundImage = "url(" + imgs[index].src + ")";
+            }
+        }
+    </script>
+</body>
+</html>

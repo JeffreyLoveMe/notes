@@ -11,8 +11,8 @@ function getElement(elementId) {
 }
 
 /**
- * 获取该元素的第一个元素子节点
  * @param {HTMLElement} element
+ * @returns {Element | ChildNode}
  */
 function getFirstChildNode(element) {
     var node = element.firstElementChild || element.firstChild;
@@ -22,6 +22,7 @@ function getFirstChildNode(element) {
 /**
  * 获取该元素的最后一个元素子节点
  * @param {HTMLElement} element
+ * @returns {Element | ChildNode}
  */
 function getLastChildNode(element) {
     var node = element.lastElementChild || element.lastChild;
@@ -31,6 +32,7 @@ function getLastChildNode(element) {
 /**
  * 获取该元素的下一个兄弟节点
  * @param {HTMLElement} element
+ * @returns {Element | ChildNode}
  */
 function getNextSiblingNode(element) {
     var node = element.nextElementSibling || element.nextSibling;
@@ -40,6 +42,7 @@ function getNextSiblingNode(element) {
 /**
  * 获取该元素的上一个兄弟节点
  * @param {HTMLElement} element
+ * @returns {Element | ChildNode}
  */
 function getPreviousSiblingNode(element) {
     var node = element.previousElementSibling || element.previousSibling;
@@ -49,6 +52,7 @@ function getPreviousSiblingNode(element) {
 /**
  * 获取给定index的兄弟节点
  * @param {HTMLElement} element
+ * @returns {Element | ChildNode}
  */
 function getSiblingNode(element, index) {
     var node = element.parentNode.children[index];
@@ -64,7 +68,7 @@ function getSiblingNodes(element) {
     var siblingElements = [];
     var p = element.parentNode.children;
     for (var i = 0; i < p.length; i++) {
-        if (p[i] != element) {
+        if (p[i] !== element) {
             siblingElements.push(p[i]);
         }
     }

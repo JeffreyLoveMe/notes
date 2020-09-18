@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul>
+        <li id="one">我是参考标签</li>
+    </ul>
+    <script type="text/javascript">
+        // 1>.找到参考标签
+        var ul = document.getElementsByTagName("ul")[0];
+        var oneLi = document.getElementById("one");
+        // 2>.appendChild
+        var twoLi = document.createElement("li"); // 1.新建标签
+        twoLi.style.backgroundColor  = "red";     // 2.设置标签属性
+        twoLi.innerHTML = "我是createElement创建的标签，用的是appendChild的方法添加的"; // 3.设置标签内容
+        ul.appendChild(twoLi); // 3.新增节点
+        // 3.insertBefore
+        var threeLi = document.createElement("li");
+        threeLi.style.backgroundColor = "yellow";
+        threeLi.innerHTML = "我是createElement创建的标签，用的是insertBefore的方法添加的";
+        ul.insertBefore(threeLi, twoLi);  // 插入节点
+        // 4.removeChild
+        ul.removeChild(twoLi);
+        // 5.replaceChild
+        ul.replaceChild(twoLi, threeLi); // 把threeLi替换成twoLi
+        // 6.appendChild
+        for (let index = 0; index < 3; index++) {
+            var newLi = threeLi.cloneNode(true);
+            ul.appendChild(newLi);
+        }
+    </script>
+</body>
+</html>

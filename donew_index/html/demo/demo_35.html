@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>祝愿墙</title>
+    <style type="text/css">
+        /* css初始化 */
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .clearfix:after {
+            content: ".";
+            display: block;
+            height: 0;
+            line-height: 0;
+            visibility: hidden;
+            clear: both;
+        }
+        /* 兼容IE浏览器 */
+        .clearfix {
+            zoom: 1;
+        }
+        /* 业务代码 */
+        body {
+            text-align: center;
+            font-size: 12px;
+            background: url("../../image/wish_wall_bg.gif");
+        }
+        div.wishWall-content {
+            width: 960px;
+            height: 627px;
+            margin: 0 auto;
+            background: url("../../image/wishwall_content_bg.jpg") no-repeat;
+            position: relative;
+            overflow: hidden;
+        }
+        div.tip-content {
+            width: 227px;
+            position: absolute;
+            left: 200px;
+            top: 100px;
+        }
+        div.tip-top {
+            height: 23px;
+            padding-top: 45px;
+            background: url("../../image/tip_top.gif") no-repeat;
+            cursor: move;
+        }
+        /* 内边距撑大盒子 */
+        div.tip-center {
+            width: 200px;
+            min-height: 40px;
+            max-height: 160px;
+            padding-left: 12px;
+            padding-right: 15px;
+            text-align: left;
+            background: url("../../image/tip_center.gif") repeat-y;
+            /* 这是什么？？？ */
+            word-wrap: break-word;
+            word-break: break-all;
+            overflow: hidden;
+        }
+        div.tip-bottom {
+            width: 227px;
+            height: 53px;
+            padding-top: 20px;
+            background: url("../../image/tip_bottom.gif") no-repeat;
+        }
+        /* ？？？怎么让文字保证在一行显示？？？ */
+        div.tip-title {
+            float: left;
+            margin-left: 8px;
+            color: #000000;
+            max-lines: 1;
+        }
+        div.tip-close {
+            float: right;
+            margin-right: 12px;
+            color: #000000;
+            cursor: pointer;
+        }
+        div.tip-icon {
+            float: left;
+            width: 35px;
+            height: 35px;
+            margin-left: 15px;
+            text-align: center;
+        }
+        div.tip-name {
+            height: 35px;
+            float: right;
+            margin-right: 15px;
+            font-size: 14px;
+            line-height: 35px;
+            color: #cc00ff;
+            text-align: right;
+        }
+        .tip-top span {
+            color: #c30230;
+        }
+    </style>
+    <script text="text/javascript">
+        window.onload = function () {
+            // 需求 - 祝愿墙上会有很多卡片
+            // 解决 - 使用cloneNode()
+            var maxCount = 9;
+            var wishWallDiv = document.getElementById("wish_wall_content");
+            var tipDiv = document.getElementById("tip_content");
+            for (let i = 0; i < maxCount; i++) {
+                // 1.克隆出来的节点必须要修改id
+                var newTipDiv = tipDiv.cloneNode(true);
+                newTipDiv.id = newTipDiv.id + i;
+                // 2.设置属性
+                var leftValue = parseInt(Math.random() * 700);
+                var topValue = parseInt(Math.random() * 400);
+                newTipDiv.style.left = leftValue + "px"; // 此处必须是字符串
+                newTipDiv.style.top = topValue + "px"; // 此处必须是字符串
+                // 3.追加
+                wishWallDiv.appendChild(newTipDiv);
+            }
+            // 需求 - 点击卡片出现在最上面
+            // 解决 - 给卡片添加事件
+            var index = 0; // 保证index永远都在增加
+            var tipDivs = wishWallDiv.children;
+            for (let j = 0; j < tipDivs.length; j++) {
+                tipDivs[j].onclick = function () {
+                    tipDivs[j].style.zIndex = index;
+                    index++;
+                }
+            }
+        }
+    </script>
+</head>
+<!-- 背景 -->
+<body>
+    <!-- 祝愿墙 -->
+    <div id="wish_wall_content" class="wishWall-content">
+        <!-- tip -->
+        <div id="tip_content" class="tip-content clearfix">
+            <!-- top -->
+            <div class="tip-top">
+                <div class="tip-title">第[<span>49568</span>]条 2016-07-7 22:51:52</div>
+                <div class="tip-close">x</div>
+            </div>
+            <!-- center -->
+            <div class="tip-center">普天同庆，天下大同！</div>
+            <!-- bottom -->
+            <div class="tip-bottom">
+                <div class="tip-icon">
+                    <img src="../../image/wish_bp_icon.gif">
+                </div>
+                <div class="tip-name">不愿意透露姓名的谢先生</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -58,6 +58,8 @@
         onload - 网页文档加载事件
         onunload - 关闭网页
         */
+        // 第一种方式 - 该方法绑定事件会被层叠掉
+        // 1.匿名函数
         a1.onclick = function () {
             // 3>.书写事件驱动程序 - 可以操作标签的属性和样式
             // 1.操作样式 - 事件源.style.样式 = "";
@@ -66,25 +68,84 @@
             a1.style.width = "200px";
             a1.style.height = "200px";
             a1.style.backgroundColor = "red";
-            // 不透明度opacity - a'pase't
+            // 不透明度opacity - a'pa'city
+            // "opacity == 1"表示"alpha == 0" - 表示物体可以看见
             a1.style.opacity = "0.2";
+            // // alpha - 阿尔法
+            // a1.style.alpha = "1.0";
             // 多个赋值 - 字符串形式
             a1.style.cssText = "width: 100px;height: 100px;background: #000;";
             // 2.操作类选择器名称
             a1.className += "box"; // 保留“原类选择器名称” - 在该选择器名称后面继续添加字符串
             a1.className = "box"; // 替换“原类选择器名称”
         }
-        // 第二种方式 - 此处不能写"()"（写了代表函数返回值）
+        // 2.函数赋值 - 此处不能写"()"（写了代表函数返回值）
         a1.onclick = test;
         function test() {
            // 事件驱动程序 - 可以操作标签的属性和样式
            alert("盒子弹出了"); 
            a1.style.width = "200px";
         }
-        // 第三种方式 - 行内绑定/此处需要写"()"（不写会误认为是字符串）
-        <div id="box" class="box" name="name" onclick="test()"></div>
+        // 3.行内绑定/此处需要写"()"（不写会误认为是字符串）
+        // <div id="box" class="box" name="name" onclick="test()"></div>
+        // 第二种方式 - 该方法绑定事件不会被层叠掉
+        // 事件监听器 - 原事件被执行的时候，后面绑定的事件也会执行（更合适团队开发 - 常用）
+        /**
+         * 调用者 - 事件源
+         * 参数1 - 事件名（不带on）
+         * 参数2 - 执行函数
+         * 参数3 - xxx
+         */
+        a1.addEventListener("click", eventTest); // 火狐/谷歌/IE9+
+        a1.attachEvent("onclick", eventTest); // IE6/7/8 - 目前已经不需要兼容
+        // 兼容写法
+        EventListen = {
+            /**
+             * @param {string} str
+             * @param {Function} func
+             * @param {HTMLElement} element
+             */
+            addEvent: function (str,func,element) {
+                if (element.addEventListener) {
+                    element.addEventListener(str, func, element);
+                } else if (a1.attachEvent) {
+                    a1.attachEvent("on" + str, func);
+                } else {
+                    element["on" + str] = func;
+                }
+            }
+        }
         // 3>.事件驱动程序 - 对样式和html的操作（DOM操作）
         // 可以操作标签的属性和样式
+
+        // 事件监听原理
+        function eventTest(str, func, element) {
+            // 获取旧事件必须在新事件之前 - 如果进入绑定事件本身，那么该事件已经被绑定
+            var oldEvent = element("on" + str);
+            element("on" + str) = function () {
+                // 不能直接执行函数 - 因为我们还不知道以前有没有绑定同样的事件
+                // 如果以前有绑定事件需要执行完毕以后再执行函数
+                if (oldEvent) {
+                    oldEvent();
+                    func();
+                } else {
+                    func();
+                }
+            }
+        }
+
+        // 事件解除绑定
+        // 第一种方式
+        var btn = document.getElementById("button");
+        btn.onclick = function () {
+            alert("onclick");
+        }
+        btn.onclick = null;
+        // 第二种方式
+        btn.addEventListener("click", test);
+        btn.removeEventListener("click", test);
+        // btn.attachEvent("onclick", test);
+        // btn.detachEvent("onclick", test);
 
         // onload事件
         // 触发 - 页面加载完毕（文本和图片）
@@ -164,16 +225,19 @@
             return siblingElements;
         }
         // 注意 - 节点的访问关系都是属性｜节点的操作都是函数
-        // 7.操作节点
+        // 7.操作节点 - demo_31.html ｜ demo_32.html ｜ demo_34.html
+        // 可以通过js操作html写网页（不需要在手动写html）
         // 创建节点
         var a17 = document.createElement("div");
         // 新增节点
+        // 如果文档树中有newChild必须“先删除再插入”（移动） - https://blog.csdn.net/zxsrendong/article/details/7244792
         // 在a1节点（父节点）的最后新增一个新节点
         a1.appendChild(a17);
         // 插入节点
         // 在a16节点（参考节点）之前插入a17节点（新节点）
-        // 如果参考节点为null则会在节点最后插入一个节点
         a1.insertBefore(a17, a16);
+        // 如果参考节点为null则会在节点最后插入一个节点
+        a1.insertBefore(a17, null);
         // 删除节点
         // 使用父节点删除子节点 - 必须指定要删除的子节点
         a1.removeChild(a17);
@@ -181,7 +245,7 @@
         // node - 指代节点
         // node.parentNode.removeChild(node);
         a1.parentNode.removeChild(a1);
-        // 复制节点
+        // 复制节点 - 最高不要操作含有id的节点（因为一个页面中id是唯一的）
         // true - 深复制（复制节点及其所有子节点）
         // false - 浅复制（复制节点本身，不复制子节点）/默认
         var a18 = a17.cloneNode(true);
