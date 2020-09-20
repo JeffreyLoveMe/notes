@@ -13,7 +13,7 @@
 -(instancetype)itemWithDict:(NSDictionary *)dic {
     SyPostItem *item = [[SyPostItem alloc]init];
 //    // 第一种方式
-//    // 1.key 容易写错
+//    // 1.key 容易写错 - 将可能出现的错误集中在此处
 //    item.citys = dic[@"citys"];
 //    item.name = dic[@"name"];
 //    return item;

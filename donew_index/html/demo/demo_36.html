@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>体验jQuery</title>
+    <style type="text/css">
+        div {
+            height: 100px;
+            background: pink;
+            display: none;
+            margin: 10px;
+        }
+    </style>
+    // 引入jQuery包
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script type="text/javascript">
+        // // 原生js
+        // window.onload = function () {
+        //     var btn = document.getElementsByTagName("button")[0];
+        //     var divs = document.getElementsByTagName("div");
+        //     btn.onclick = function () {
+        //         for (let index = 0; index < divs.length; index++) {
+        //             divs[index].style.display = "block";
+        //             divs[index].innerHTML = "ABC";
+        //         }
+        //     }
+        // }
+
+        // jQuery
+        // 2.入口函数
+        $(document).ready(function () {
+            // 3.实现逻辑
+            // 获取元素
+            var jQBtn = $("button");
+            var jQDiv = $("div");
+            // 绑定事件 - 通过方法绑定
+            jQBtn.click(function () {
+                // 事件驱动程序
+                jQDiv.show(1000);
+                jQDiv.html("ABC");
+                // 1.链式编程/2.隐式迭代
+            });
+        });
+    </script>
+</head>
+<body>
+    <button>显示盒子和设置内容</button>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+</body>
+</html>

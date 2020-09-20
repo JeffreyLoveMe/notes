@@ -32,20 +32,20 @@
 //冒泡排序
 //选择排序
 //快速排序
-//堆排序 - xx
-//插入排序 - xx
-//希尔排序 - xx
-//归并排序 - xx
+//堆排序
+//插入排序
+//希尔排序
+//归并排序
 //二分查找
 //函数
 //局部变量/全局变量
 //内存管理
 //字符串
 //预处理指令 - 宏/条件编译/头文件导入
-//指针 - xx
-//结构体 - xx
-//枚举 - xx
-//共用体 - xx
+//指针
+//结构体
+//枚举
+//共用体
 /**************************Objective-C基础**************************/
 //认识Objective-C语言
 //面向对象OOP
@@ -287,6 +287,8 @@ https://blog.csdn.net/pjk1129/article/details/39644477
 9>.Apple常见设备尺寸 - https://www.jianshu.com/p/c4aad5b6771e
 10>.打包 xxx.a 的静态库 - https://www.jianshu.com/p/a1dc024a8a15
 11>.AutoLayout - https://www.jianshu.com/p/4ef0277e9c5e
+12>.SceneDelegate - xxx
+13>.Appclip - xxx
 
 //工具网站：
 https://soft.macx.cn

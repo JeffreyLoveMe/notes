@@ -349,18 +349,7 @@ UIButton *btn = ({
 UIButton *btn = [UIButton alloc]init];
 btn.tag = 1;
 btn;//最后一句设置返回什么
-});
-
-#Model：字典转模型
-好处：字典的key不会提示错误、Model的属性会提示错误；
-//1.实现：需要封装
-Shop *shop = [[Shop alloc]init];
-shop.icon = dict[@"icon"];
-shop.name = dict[@"name"];
-[_arrM addObject:shop];
-//2.实现：最终方案
-//Shop *shop = [Shop alloc] initWithDict:dict];
-Shop *shop = [Shop shopWithDict:dict];
+})
 /******************************Objective-C语言基础******************************/
 #类对象：保存当前对象所有的对象方法，可以通过类对象来创建实例对象，实例对象中有一个isa指针，指向创建自己的类对象
 1.获取类对象：一个类在内存中只有一份类对象
@@ -932,8 +921,7 @@ char * MyStr(char * str,char c) {
     if(NULL == str) {
         return NULL;
     }
-    
-    while (*str != '\0') {
+    while (* != '\0') {
         if(*str == c)
         {
             break;
@@ -954,7 +942,6 @@ int main(int argc, const char * argv[]) {
 }
 
 char * MyStr2(char * str,char c);
-
 
 2.结构体
 定义：相同或不同数据类型变量的集合
@@ -1136,60 +1123,6 @@ NSFileHandle *readWriteHandle = [NSFileHandle fileHandleForUpdatingAtPath:path]
 [readOnlyHandle closeFile];
 [readWriteHandle closeFile];
 [writeOnlyHandle closeFile];
-
-
-#json解析：JavaScript Object Notification
-定义：json可以将js对象中表示的一组数据转换为字符串；
-格式：
-//字典：key是：字符串、value可以是：字符串&数值&true&false&null&对象&数组
-{
-    key1:value1,
-    key1:value1,
-    ...
-}
-//数组
-[
-    {
-        key1:value1,
-        key1:value1,
-    },
-    {
-        key1:value1,
-        key1:value1,
-    }
-]
-解析：见AnalyzeViewController.h/m
-第三方库：JSONKit
-4.json数据解析
-(JavaScript Object Notation)
-简单地说，JSON 可以将 JavaScript 对象中表示的一组数据转换为字符串，然后就可以在函数之间轻松地传递这个字符串，或者在异步应用程序中将字符串从 Web 客户机传递给服务器端程序。这个字符串看起来有点儿古怪，但是JavaScript很容易解释它，而且 JSON 可以表示比"名称 / 值对"更复杂的结构。例如，可以表示数组和复杂的对象，而不仅仅是键和值的简单列表。
-
-<1>Json数据的格式
-JSON有两种表示结构
-{}中表示一个字典  []中表示一个数组
-对象结构以”{”大括号开始，以”}”大括号结束。中间部分多个以”，”分隔的”key(关键字)/value(值)”对构成，关键字和值之间以”：”分隔，语法结构如代码。
-{
-    key1:value1,
-    key2:value2,
-    ...
-}
-关键字是字符串，值可以是字符串，数值，true,false,null,对象或数组
-数组结构以”[”开始，”]”结束。中间多个以”，”分隔的值列表组成，语法结构如代码。
-[
-    {
-        key1:value1,
-        key2:value2
-    },
-    {
-         key3:value3,
-         key4:value4
-    }
-]
-
-<2> 如何解析
-NSDictionary * dict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
-
-
 1.什么是XML？
 extensible Markup Language   可扩展性标记语言
 特点：1.可扩展性   2.标记
@@ -1216,9 +1149,7 @@ students是标签，董佳迪是标签的值
     <name>高家兴</name>
     <age>48</age>
   </Student>
-
 </Students>
-
 XML的相关概念：
 XML经常被理解成倒挂一棵树
 根节点:只能有一对根节点，位于嵌套结构中最外层的节点
@@ -18342,23 +18273,6 @@ gcc test.c -o t  //将c源文件通过gcc编译器编译成可以运行的程序
  * @return
  */
 /******************************C语言基础******************************/
-#标识符：系统命名基本使用的是驼峰法
-定义：由字母、数字和_组成，数字不能在第一位，区分大小写；
-包：最好是域名倒过来，要求所有的字母小写；cn.itcast.javabean
-类名/接口：首字母大写；Student
-方法：从第二个字母开始首字母大写；initView //驼峰法
-常量：所有字母大写；GET_MAX
-Hello World //不合法
-Hello_World //合法
-
-#关键字：
-定义：被C语言赋予特殊含义的单词，都是小写字母、不能做为标识符；
-特点：C语言中有32个关键字；
-goto //保留关键字
-nullable //可能为空：用于属性、参数、方法返回值，为了迎合swift
-__kindof //表示当前类或者子类：给某个类提供类方法、可以让外界知道创建了什么对象
-+ (__kindof Person *)person;
-
 #变量：先定义、再使用
 定义：可以改变的量；
 格式：int a; //定义一个变量：申请一块存储空间
@@ -19184,61 +19098,6 @@ XX管理系统
 类的消息机制
 */
 /******************************网络基础******************************/
-#json解析：JavaScript Object Notification
-定义：json可以将js对象中表示的一组数据转换为字符串；
-格式：
-//字典：key是：字符串、value可以是：字符串&数值&true&false&null&对象&数组
-{
-    key1:value1,
-    key1:value1,
-    ...
-}
-//数组
-[
-    {
-        key1:value1,
-        key1:value1,
-    },
-    {
-        key1:value1,
-        key1:value1,
-    }
-]
-解析：见AnalyzeViewController.h/m
-第三方库：JSONKit
-
-#xml解析：
-定义：可扩展性标记语言；
-特点：可扩展性、标记语言、标签成对出现、区分大小写；
-示例：
-<?xml version="1.0" encoding="utf-8"?> //声明
-<Students> //根节点
-    <Student id="1"> //id表示属性
-        <name>王也</name>
-        <age>18</age>
-    </Student>
-
-    <Student id="2">
-    <name>孟凡路</name>
-    <age>17</age>
-    </Student>
-
-    <Student id="3">
-    <name>高家兴</name>
-    <age>48</age>
-    </Student>
-</Students>
-#结构：
-根节点：只有一对根节点，位于嵌套结构中最外层的节点；
-属性：属性值必须加""；
-注意：文档扩展名.xml、跨平台
-作用：网络传输数据
-区别：json/xml的对比
-1.目前90%的使用json、10%的使用xml；
-2.json解析简单，但是结构不易理解、xml结构容易理解，但是数据冗余；
-解析：见AnalyzeViewController.h/m
-https://blog.csdn.net/qxuewei/article/details/52369067
-
 #xPath：NO
 
 #网络请求：
