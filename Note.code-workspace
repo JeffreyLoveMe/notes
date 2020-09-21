@@ -1,13 +1,13 @@
 {
     "folders": [
 		{
-			"path": "flutter_shop"
-		},
-		{
 			"path": "donew_index"
 		},
 		{
 			"path": "donew_interview"
+		},
+		{
+			"path": "flutter_donew"
 		}
 	],
     "settings": {
