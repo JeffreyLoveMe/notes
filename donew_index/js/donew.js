@@ -24,8 +24,10 @@
 "newcap": true,
 "noarg_comment" : "禁止arguments.caller和arguments.callee的使用",    
 "noarg": true,  
-"undef_comment" : "要求所有的非全局变量,在使用前都被声明",    
+"undef_comment" : "要求所有的非全局变量在使用前都被声明",    
 "undef": false,
-"strict_comment" : "要求使用use strict;语法",    
-"strict": false 
+"unused_comment" : "变量、函数定义未使用",
+"unused": true,
+"strict_comment" : "强制使用ES5的严格模式",    
+"strict": false
  */

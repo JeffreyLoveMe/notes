@@ -11,6 +11,11 @@
     "eqnull": true,
     "newcap": true,
     "noarg": true,
-    "undef": false, 
-    "strict": false 
+    "undef": false,
+    "unused": true,
+    "latedef": true,
+    "boss": true,
+    "node": true,
+    "strict": false,
+    "predef": [ "describe", "it", "xit", "before", "after", "beforeEach", "afterEach" ]
 }
