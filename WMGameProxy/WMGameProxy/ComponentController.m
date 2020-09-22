@@ -55,9 +55,9 @@
  */
 -(void)setupView {
 //    // 坐标系
-//    CGPoint point = CGPointMake(100, 100); // 坐标
-//    CGSize size = CGSizeMake(100, 100);  // 尺寸
-//    CGRect rect = CGRectMake(100, 100, 100, 100); // 矩形
+//    CGPoint point = CGPointMake(100, 100); // 坐标 - 保存坐标x,y
+//    CGSize size = CGSizeMake(100, 100);  // 尺寸 - 保存尺寸
+//    CGRect rect = CGRectMake(100, 100, 100, 100); // 矩形 - 保存坐标 + 尺寸
 //    CGRectZero - "高度/宽度 = 0"的矩形常量
     UIView *view = [[UIView alloc]init];
     /// 设置是否能接收事件 / UIView默认是true
@@ -1370,18 +1370,6 @@
 - (void)tabBarController:(UITabBarController *)tabBarController didEndCustomizingViewControllers:(NSArray<__kindof UIViewController *> *)viewControllers changed:(BOOL)changed {
     // 结束编辑
 }
-
-
-#pragma mark - 状态栏
-// 设置状态栏样式
--(UIStatusBarStyle)preferredStatusBarStyle {
-    return UIStatusBarStyleLightContent;
-}
-// 设置状态栏的可见性
--(BOOL)prefersStatusBarHidden {
-    return true;
-}
-
 
 #pragma mark - UINavigationBar导航条/UIToolBar工具条
 -(void)setupNavigationBar {

@@ -28,6 +28,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 
 // 不能直接继承 UIView
+// 需要继承UICollectionReusableView
 @interface SyHeaderView : UICollectionReusableView
 
 @end

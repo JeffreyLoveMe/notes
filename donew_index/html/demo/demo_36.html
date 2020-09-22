@@ -37,7 +37,9 @@
             // 绑定事件 - 通过方法绑定
             jQBtn.click(function () {
                 // 事件驱动程序
-                jQDiv.show(1000);
+                jQDiv.show(); // 显示
+                jQBtn.hide(); // 隐藏
+                // jQBtn.toggle(); // 切换 === 显示 -> 隐藏/隐藏 -> 显示
                 jQDiv.html("ABC");
                 // 1.链式编程/2.隐式迭代
             });

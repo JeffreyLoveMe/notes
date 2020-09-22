@@ -669,8 +669,8 @@
 
 
 #pragma mark - UIApplication
-// UIApplication对象是应用程序的象征
-// iOS程序启动以后创建的第一个对象就是UIApplication对象
+// 1.UIApplication对象是应用程序的象征
+// 2.iOS程序启动以后创建的第一个对象就是UIApplication对象
 // https://www.cnblogs.com/wendingding/p/3766347.html
 - (void)showApplication {
     // 单例
@@ -701,7 +701,8 @@
     // App很容易受到打扰
     // 来电、锁屏
 }
-/// 方法一
+// 3.隐藏状态栏
+/// 方法一、通过UIViewController管理状态栏(每个VC都拥有自己不同的状态栏)
 // 状态栏样式
 // UIStatusBarStyleDarkContent黑色
 // UIStatusBarStyleLightContent白色
@@ -713,12 +714,11 @@
     return YES;
 }
 /**
- 通过 UIApplication 管理状态栏 - app状态栏统一管理
+ 方法二、通过UIApplication管理状态栏(app状态栏统一管理)
  不让VC管理状态栏 - 修改 info.plist（View controller-based status bar appearance，设置为NO）
  [UIApplication sharedApplication].statusBarHidden = YES;
  [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
  */
-
 
 #pragma mark - UIDevice
 // [UIDevice currentDevice]代表设备，通过它可以获取一些设置相关信息

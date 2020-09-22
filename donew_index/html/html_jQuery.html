@@ -4,6 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style type="text/css">
+        .current {
+            width: 100px;
+            height: 100px;
+            background: pink;
+        }
+    </style>
+    <script src="../js/jquery/jquery-3.5.1.js"></script>
     <script type="text/javascript">
         // jQuery概述 - j'kwa'ri
         // 1.为什么要学习jQuery - 因为原生js编程太繁琐
@@ -12,10 +20,149 @@
         // 4.jQuery官网 - http://jquery.com
 
         // 体验jQuery - demo_36.html
+        // jquery-3.5.1.min.js - 压缩以后的文件（部署到正式环境中使用）
+        // jquery-3.5.1.js - 未压缩文件（开发中使用）
 
+        // 入口函数
+        // 1.原生入口函数 - 页面上所有内容加载完毕才会执行
+        window.onload = function () {
+
+        }
+        // 2.jQuery的入口函数
+        // 第一种情况 - 文档加载完毕就会执行（图片未加载完毕）
+        $(document).ready(function () {
+            
+        });
+        // 第二种情况 - 文档加载完毕就会执行（图片未加载完毕）
+        $(function () {
+
+        });
+        // 第三种情况 - 文本和图片都加载完毕才可以执行
+        $(window).ready(function () {
+
+        });
+        // "原生入口函数"&"jQuery的入口函数"的区别
+        // 1.书写不一样 - "原生入口函数"只能出现一次，"jQuery的入口函数"可以出现任意多次
+        // 2.执行时机不同 - "原生入口函数"需要所有资源加载完毕，"jQuery的入口函数"只需要文档加载完成
+        // 文档加载顺序 - 从上往下，边解析边执行
+
+        // jQuery和$的区别 - 没有区别（都是代表函数名）
+        console.log($);
+        console.log(jQuery);
+        console.log($ === jQuery);
+        // 传入不同的参数，返回jQuery对象
+        jQuery(document).ready(function () {
+
+        });
+
+        // jQuery中DOM对象和js中DOM对象的区别和联系
+        // 1.jQuery中DOM对象
+        $(document).ready(function () {
+            // 1.获取事件源
+            var jqBox = $("div"); // 根据tag获取事件源
+            var jqBox = $(".box"); // 根据class获取事件源
+            var jqBox = $("#box"); // 根据id获取事件源
+            // 传入json
+            jqBox.css({
+                "width": "100px",
+                "height": "100px",
+                "background": "pink",
+                "margin": "10px"
+            });
+        });
+        // 2.js中DOM对象 -> jQuery中DOM对象
+        var box = document.getElementById("box");
+        $(box).css({
+            "width": "100px",
+            "height": "100px",
+            "background": "pink",
+            "margin": "10px"
+        });
+        // 3.jQuery中DOM对象 -> js中DOM对象
+        var jqBox = $("div");
+        jqBox[0].style.backgroundColor = "pink"; // 推荐使用
+        jqBox.get(4).style.backgroundColor = "red";
+
+        // jQuery选择器
+        // 1.基本选择器
+        var jqBox = $("div"); // 根据tag获取事件源
+        var jqBox = $(".box"); // 根据class获取事件源
+        var jqBox = $("#box"); // 根据id获取事件源
+        // 设置多个属性需要传入json
+        jqBox.css({
+            "width": "100px",
+            "height": "100px",
+            "background": "pink",
+            "margin": "10px"
+        });
+        jqBox.click = function () {
+            // 此处this是DOM对象
+            $(this).css({
+                "width": "100px",
+                "height": "100px",
+                "background": "pink",
+                "margin": "10px"
+            });
+        }
+        // 设置一个属性不需要传入json
+        jqBox.css("width", "100px");
+        // 获取属性值
+        console.log(jqBox.css("width"));
+        // 2.层级选择器
+        var jqSonDiv = $(".box div"); // 后代选择器
+        var jqSonDiv = $("#box>div"); // 子代选择器
+        var jqSonDiv = $("div#box"); // 交集选择器
+        var jqSonDiv = $("div.box"); // 交集选择器
+        jqSonDiv.css({
+            "width": "100px",
+            "height": "100px",
+            "background": "pink",
+            "margin": "10px"
+        });
+        // 3.基础过滤选择器
+        var jqOdd = $("div div:odd"); // 获取奇数位元素
+        var jqEven = $("div div:even"); // 设置偶数位元素｜even - yi'wen
+        var jqfirst = $("div div:eq(0)"); // 获取指定位元素
+        // 4.筛选选择器 - jQuery对象调用（重点）
+        var jqDiv = $("div");
+        jqDiv.find("div"); // 从jQuery对象后代中查找 - 传入"选择器"（必传）
+        jqDiv.children("div"); // 从jQuery对象子代中查找 - 传入"选择器"（不传入参数获取所有子代选择器）
+        jqDiv.children().eq(0); // 从jQuery对象子代中查找 - 传入"索引值"
+        jqDiv.children().eq(0).next(); // 该元素的下一个兄弟元素
+        jqDiv.children().eq(0).siblings(); // 该元素的所有兄弟元素
+        jqDiv.children().parent(); // 该元素的父元素
+
+        // jQuery的样式操作
+        // 1.直接操作属性value
+        // 1>.设置属性
+        // 第一种方式 - 传入json/可以同时操作多个属性
+        jqDiv.css({
+            "width": "100px",
+            "height": "100px",
+            "background": "pink",
+            "margin": "10px"
+        });
+        // 第二种方式 - 传入(key,value)/只能一次操作一个属性
+        jqDiv.css("width", "100px");
+        // 2>.获取属性
+        console.log(jqDiv.css("width"));
+        // 2.类操作
+        if (jqDiv.hasClass("current")) { // 是否有类（选择器）
+            jqDiv.removeClass("current");  // 移除类（选择器）
+        } else {
+            jqDiv.addClass("current"); // 添加类（选择器）
+        }
+        // toggle - to'go
+        jqDiv.toggleClass("current"); // 切换类（选择器）
+
+        // 00:49:18
     </script>
 </head>
 <body>
-    
+    <div id="box" class="box">
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
 </body>
 </html>

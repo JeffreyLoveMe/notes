@@ -1,5 +1,5 @@
 // https://blog.csdn.net/zgz682000/article/details/81223266
-// jslint > jshint
+// shint
 /**
  * 根据elementId获取节点
  * @param {string} elementId

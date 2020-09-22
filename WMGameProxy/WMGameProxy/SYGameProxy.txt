@@ -9,6 +9,7 @@
 //Xcode中选择模拟器编译，在 products 中生成的二进制文件后缀是什么？
 /// 换一种通用写法
 77.图片裁剪方法
+
 107.版本控制
 /*
 1.在MAC环境下,自带了SVN服务器端和SVN客户端功能,所以只需做一下简单地配置
@@ -315,28 +316,6 @@ for(MusicInformation *newMusic in [MusicManager sharedIntance].selectMusics) {
 */
 http://hao.jobbole.com/magicalrecord
 
-//隐藏NavigationBar
-[self.navigationController setNavigationBarHidden:YES animated:YES];
-//跳转：隐藏TabBar
-TestViewController *vc = [[TestViewController alloc] init];
-vc.hidesBottomBarWhenPushed = YES;
-[self.navigationController pushViewController:vc animated:YES];
-//时间格式
-NSString *data = [NSString stringWithFormat:@"%.2d:%.2d:%.2d",self.hour,self.minute,self.second];
-//json转换成字典
-NSDictionary *dict=[NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableContainers error:nil];
-//根据字体计算高度：一行
-NSString *name = @"谢吴军";
-NSDictionary *nameAtt = @{NSFontAttributeName : [UIFont systemFontOfSize:15]};
-CGSize nameSize = [name sizeWithAttributes:nameAtt];
-CGFloat width = nameSize.width;
-//根据最大宽度计算高度：多行
-NSString *name = @"谢吴军";
-NSDictionary *nameAtt = @{NSFontAttributeName : [UIFont systemFontOfSize:15]};
-CGSize nameSize = CGSizeMake(100, MAXFLOAT);//宽度固定100，高度不确定
-CGSize textSize = [name boundingRectWithSize:nameSize options:NSStringDrawingUsesLineFragmentOrigin attributes:nameAtt context:nil].size;
-CGFloat height = textSize.height;
-//https://www.cnblogs.com/niit-soft-518/p/6373601.html
 /******************************补充知识点******************************/
 #函数式编程思想(高聚合：代码聚合、方便管理)：把很多功能放在一个函数块(block)去处理
 int a = ({
@@ -19598,13 +19577,6 @@ self.dataArr; //每次使用均会调用-(NSArray *)dataArr;
 4.自定义UICollectionViewFlowLayout；NO
 代码：见MyCollectionViewController.h/m
 
-#自定义可重用的View：
-步骤：1.新建view，继承UICollectionReusableView；
-2.给view布局；
-3.注册cell，实现delegate；
-代码：见MyCollectionViewController.h/m
-eg.定制段头/段尾
-
 #瀑布流：
 //实现原理：
 我们利用多个UITableView联动就可以实现瀑布流效果：调用UIScrollView的代理方法
@@ -19634,21 +19606,6 @@ https://www.cnblogs.com/wendingding/p/3766347.html //程序启动原理
 3.可以重写UIWindow；
 https://www.jianshu.com/p/af2a6a438a0a
 
-#状态栏：
-//通过UIViewController管理状态栏(每个VC都拥有自己不同的状态栏)
-//状态栏样式
-- (UIStatusBarStyle)preferredStatusBarStyle {
-return UIStatusBarStyleLightContent;
-}
-//隐藏状态栏
-- (BOOL)prefersStatusBarHidden {
-return YES;
-}
-//通过UIApplication管理状态栏(app状态栏统一管理)
-//修改info.plist：不让VC管理状态栏-添加key：View controller-based status bar appearance，设置为NO
-[UIApplication sharedApplication].statusBarHidden = YES;
-[UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
-
 #像素和点之间的转换：效果图上标注的怎么转换？
 https://blog.csdn.net/ridxmc/article/details/51346472
 
@@ -19658,16 +19615,16 @@ https://blog.csdn.net/ridxmc/article/details/51346472
 
 #常见硬件：
 机型            尺寸            状态栏            导航栏            工具栏
-4s          320*480            20pt             44pt               44pt
-5s          320*568            20pt             44pt               44pt
-6s          375*667            20pt             44pt               44pt
-6p          414*736            20pt             44pt               44pt
-X            375*821            44pt            44pt                  ——
-XR          414*736            44pt             44pt                 ——
-XS          375*821            44pt             44pt                 ——
-XS MAX    375*896            44pt             44pt                 ——
-iPad            ——                 ——                ——                   ——
-iWatch        ——                 ——                ——                   ——
+4s          320*480            20pt             44pt              44pt
+5s          320*568            20pt             44pt              44pt
+6s          375*667            20pt             44pt              44pt
+6p          414*736            20pt             44pt              44pt
+X           375*821            44pt             44pt                ——
+XR          414*736            44pt             44pt                ——
+XS          375*821            44pt             44pt                ——
+XS MAX      375*896            44pt             44pt                ——
+iPad          ——                 ——                ——               ——
+iWatch        ——                 ——                ——               ——
 https://www.jianshu.com/p/c4aad5b6771e
 /*
 iOS动画
@@ -20353,35 +20310,20 @@ NSArray *words = [fileConent componentsSeparatedByString:@"\n"];//转换成NSArr
         NSLog(@"远离");
     }
 }
-
-#常用类：
-//1.NSNumber：把基础类型转化成对象
-NSNumber *intNumber = [[NSNumber alloc]initWithInt:50];
-NSNumber *intNumber = @50
-NSNumber *floatNumber = [[NSNumber alloc]initWithFloat:45.3];
-NSNumber *boolNumber = @YES
-NSNumber *ageN = [NSNumber numberWithDouble:25.0];
-int num = 10;
-NSNumber *temp = @(num);
-//从对象中取出基础类型
-int age = [intNumber intValue];
-float age = [floatNumber floatValue];
-//2.NSValue：NSNumber的父类，可以存储任何类型的数据(包括指针、结构体)
-//3.NSNull：值为空的对象x
-[NSNull null];//创建表示空的对象
-nil-对象指针为空
-Nil-类指针为空
-NULL-基本类型指针为空
-注意：空指针不能加入到数组和字典，所以可以采用[NSNull null]方式加入空对象；
-[dic setObject:nil forKey:@""];//错误
-[dic setObject:[NSNull null] forKey:@""];//正确
-//4.NSDate：见TimeViewController.h/m
-//5.日历类NSCalendar：需要时自行百度-https://blog.csdn.net/wiki_su/article/details/77452357
-//6.NSObject：基类、基协议
-//常用结构体：开发中推荐使用
-CGPoint //保存坐标x,y
-CGSize //保存尺寸
-CGRect //保存坐标、尺寸
+//json转换成字典
+NSDictionary *dict=[NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableContainers error:nil];
+//根据字体计算高度：一行
+NSString *name = @"谢吴军";
+NSDictionary *nameAtt = @{NSFontAttributeName : [UIFont systemFontOfSize:15]};
+CGSize nameSize = [name sizeWithAttributes:nameAtt];
+CGFloat width = nameSize.width;
+//根据最大宽度计算高度：多行
+NSString *name = @"谢吴军";
+NSDictionary *nameAtt = @{NSFontAttributeName : [UIFont systemFontOfSize:15]};
+CGSize nameSize = CGSizeMake(100, MAXFLOAT);//宽度固定100，高度不确定
+CGSize textSize = [name boundingRectWithSize:nameSize options:NSStringDrawingUsesLineFragmentOrigin attributes:nameAtt context:nil].size;
+CGFloat height = textSize.height;
+//https://www.cnblogs.com/niit-soft-518/p/6373601.html
 
 #常见系统库：
 //数据库相关库

@@ -588,7 +588,7 @@
     NSUInteger count = [newSet count];
     // 从集合中随机取一个元素
     NSString *s3 = [oldSet anyObject];
-    NSLog(@"%@==%ld==%@", array1, count, s3);
+    NSLog(@"%@==%lu==%@", array1, (unsigned long)count, s3);
     
     /// 1).可变集合
     
@@ -643,7 +643,7 @@
     NSValue *value = [NSValue valueWithRange:range];
     // 2.解包
     range = [value rangeValue];
-    NSLog(@"%lu, %lu", range.location, range.length);
+    NSLog(@"%lu, %lu", (unsigned long)range.location, (unsigned long)range.length);
     // 3.自定义结构体
     typedef struct{
         float x;
@@ -698,7 +698,7 @@
     NSTimeZone *zone = [NSTimeZone systemTimeZone];
     // 获取 “当前时区” 和 “指定时间” 的时间差
     NSUInteger secondCount = [zone secondsFromGMTForDate:now];
-    NSLog(@"secondCount = %lu", secondCount);
+    NSLog(@"secondCount = %lu", (unsigned long)secondCount);
     // 3.当前时间 / 北京东八区
     NSDate *currentDate = [now dateByAddingTimeInterval:secondCount];
     // 4.时间格式化
@@ -790,7 +790,7 @@
 
 
 
-/// 10.NSCalendar
+/// 10.NSCalendar - https://blog.csdn.net/wiki_su/article/details/77452357
 // 获取时间中某一部分/不用截取直接获取
 - (void)showCalendar {
     // 1>.获取当前时间的"年月日时分秒"
@@ -802,14 +802,15 @@
     NSCalendarUnit nowType = NSCalendarUnitYear |  NSCalendarUnitMonth |   NSCalendarUnitDay |
     NSCalendarUnitHour | NSCalendarUnitMinute |  NSCalendarUnitSecond;
     NSDateComponents *nowCmps = [nowCalendar components:nowType fromDate:nowDate];
-    NSLog(@"%ld年%ld月%ld日%ld小时%ld分钟%ld秒钟", nowCmps.year, nowCmps.month, nowCmps.day, nowCmps.hour, nowCmps.minute, nowCmps.second);
+    NSLog(@"%ld年%ld月%ld日%ld小时%ld分钟%ld秒钟", (long)nowCmps.year, (long)nowCmps.month, (long)nowCmps.day, (long)nowCmps.hour, (long)nowCmps.minute, (long)nowCmps.second);
     // 2>.比较两个时间
     NSCalendar *currentCalendar = [NSCalendar currentCalendar];
     NSCalendarUnit currentType = NSCalendarUnitYear |  NSCalendarUnitMonth |   NSCalendarUnitDay |
     NSCalendarUnitHour |  NSCalendarUnitMinute |  NSCalendarUnitSecond;
     // 两个时间的时间间隔
     NSDateComponents *currentCmps = [currentCalendar components:currentType fromDate:nowDate toDate:nowDate options:0];
-    NSLog(@"%ld年%ld月%ld日%ld小时%ld分钟%ld秒钟", currentCmps.year, currentCmps.month, currentCmps.day, currentCmps.hour, currentCmps.minute, currentCmps.second);
+    // NSInteger输出使用什么格式化 - https://www.colabug.com/2018/0222/2395613
+    NSLog(@"%ld年%ld月%ld日%ld小时%ld分钟%ld秒钟", (long)currentCmps.year, (long)currentCmps.month, (long)currentCmps.day, (long)currentCmps.hour, (long)currentCmps.minute, (long)currentCmps.second);
 }
 
 
