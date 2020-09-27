@@ -9,6 +9,7 @@ function getElement(elementId) {
     var node = document.getElementById(elementId);
     return node;
 }
+var box = getElement("box");
 
 /**
  * @param {HTMLElement} element
@@ -18,6 +19,7 @@ function getFirstChildNode(element) {
     var node = element.firstElementChild || element.firstChild;
     return node;
 }
+getFirstChildNode(box);
 
 /**
  * 获取该元素的最后一个元素子节点
@@ -28,6 +30,7 @@ function getLastChildNode(element) {
     var node = element.lastElementChild || element.lastChild;
     return node;
 }
+getLastChildNode(box);
 
 /**
  * 获取该元素的下一个兄弟节点
@@ -38,6 +41,7 @@ function getNextSiblingNode(element) {
     var node = element.nextElementSibling || element.nextSibling;
     return node;
 }
+getNextSiblingNode(box);
 
 /**
  * 获取该元素的上一个兄弟节点
@@ -48,6 +52,7 @@ function getPreviousSiblingNode(element) {
     var node = element.previousElementSibling || element.previousSibling;
     return node;
 }
+getPreviousSiblingNode(box);
 
 /**
  * 获取给定index的兄弟节点
@@ -58,6 +63,7 @@ function getSiblingNode(element, index) {
     var node = element.parentNode.children[index];
     return node;
 }
+getSiblingNode(box, 1);
 
 /**
  * 查找给定元素的所有兄弟元素
@@ -74,3 +80,4 @@ function getSiblingNodes(element) {
     }
     return siblingElements;
 }
+getSiblingNodes(box);

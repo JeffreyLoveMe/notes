@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>jQuery</title>
     <style type="text/css">
         .current {
             width: 100px;
@@ -12,6 +12,7 @@
         }
     </style>
     <script src="../js/jquery/jquery-3.5.1.js"></script>
+    <script src="../js/demo/review.js"></script>
     <script type="text/javascript">
         // jQuery概述 - j'kwa'ri
         // 1.为什么要学习jQuery - 因为原生js编程太繁琐
@@ -152,17 +153,166 @@
         } else {
             jqDiv.addClass("current"); // 添加类（选择器）
         }
-        // toggle - to'go
+        // toggle - t'o'go
         jqDiv.toggleClass("current"); // 切换类（选择器）
 
-        // 00:49:18
+        // jQuery动画 - jQuery提供一组网页中常见的动画效果
+        // 1>.隐藏显示动画 - 可以将"show <---> hide <---> toggle"
+        jqDiv.show(); // 显示动画 - 用法一（常用）
+        jqDiv.show(2000); // 显示动画的时间(ms) - 用法二
+        jqDiv.show("slow"); // 显示动画 - 用法三 / slow慢 === 600ms | normal正常 === 400ms | fast快 === 200ms
+        jqDiv.show(2000, function () {
+
+        }); // 显示动画完毕执行函数 - 用法四（常用）
+        // 2>.滑入滑出动画 - 可以将"slideDown <---> slideUp <---> slideToggle"
+        jqDiv.slideDown(); // 滑入动画 - 用法一（常用）
+        jqDiv.slideDown(2000); // 滑入动画的时间(ms) - 用法二
+        jqDiv.slideDown("slow"); // 滑入动画 - 用法三 / slow慢 === 600ms | normal正常 === 400ms | fast快 === 200ms
+        jqDiv.slideToggle(2000, function () {
+
+        }); // 滑入动画完毕执行函数 - 用法四（常用）
+        // 3>.淡入淡出动画 - 可以将"fadeIn <---> fadeOut <---> fadeToggle"
+        jqDiv.fadeIn(); // 淡入动画 - 用法一（常用）
+        jqDiv.fadeIn(2000); // 淡入动画的时间(ms) - 用法二
+        jqDiv.fadeIn("slow"); // 淡入动画 - 用法三 / slow慢 === 600ms | normal正常 === 400ms | fast快 === 200ms
+        jqDiv.fadeToggle(2000, function () {
+
+        }); // 淡入动画完毕执行函数 - 用法四（常用）
+        jqDiv.fadeTo(1000, 0.5, function () {
+
+        }); // 毫秒值、不透明度、函数
+        // 4>.自定义动画 - json、毫秒值、匿名函数（可以省略）
+        jqDiv.animate({
+            "width": "100px",
+            "height": "100px",
+            "background": "pink",
+            "margin": "10px",
+            // 设置圆角
+            "border-radius": "100px"
+        }, 1000, function () {
+            // 动画完成
+        });
+        // 5.停止动画
+        jqDiv.stop(); // 默认为false
+        // true - 后续动画不执行｜false - 后续动画执行
+        jqDiv.stop(true);
+        // ？？？演示一下4种情况？？？
+        // 1.true - 后续动画不执行｜false - 后续动画执行
+        // 2.true - 立即执行完成当前动画｜false - 立即停止当前动画
+        jqDiv.stop(true, false);
+
+        // jQuery操作元素
+        // 1.创建元素（jQuery对象）
+        // 第一种方式 - $("标签")
+        $("<div>我是div标签</div>"); // document.createElement("div");
+        // 第二种方式 - 设置属性
+        $("div").html("<div>我是div标签</div>"); // 默认"<div>我是div标签</div>"添加到HTML网页
+        // 2.添加节点
+        var jqNewLi = $("<li>我是大傻逼</li>");
+        // 一、操作子元素
+        // 1>.在jqDiv最后一个子元素的后面添加jqNewLi元素
+        jqDiv.append(jqNewLi);
+        jqNewLi.appendTo(jqDiv); // 交换参数 - 逆向思维
+        // 2>.在jqDiv第一个子元素的前面添加jqNewLi元素
+        jqDiv.prepend(jqNewLi);
+        jqNewLi.prependTo(jqDiv); // 交换参数 - 逆向思维
+        // 二、操作兄弟元素
+        // 把jqNewLi添加到jqDiv后面
+        jqDiv.after(jqNewLi);
+        // 把jqNewLi添加到jqDiv前面
+        jqDiv.before(jqNewLi);
+        // 3.删除元素/清空元素
+        // 第一种方式
+        jqDiv.html("");
+        // 第二种方式
+        jqDiv.empty();
+        // 第三种方式
+        jqDiv.remove();
+        // 4.复制元素 - 深复制
+        jqDiv.clone();
+
+        // jQuery操作属性
+        jqDiv.click(function () {
+            // 1>.添加属性
+            // // 没有效果 - 没有绑定到标签上
+            // jqBox.title = "donew";
+            // console.log(jqBox.title);
+            // 绑定到标签上
+            jqBox.attr("title", "donew"); // 赋值
+            console.log(jqBox.attr("title")); // 取值
+            // 2>.移除属性
+            jqBox.removeAttr("title");
+            console.log(jqBox.attr("title"));
+            // 注意（强行记忆） - 对于"checked、selected、disabled"要使用"prop()方法"
+            var jqInput = $("input:checked");
+            jqInput.prop("checked", true); // 设置属性
+            // val()
+            console.log(jqInput.val()); // 获取元素的value值
+            jqInput.val("我变身input"); // 赋值元素的value值
+            // text() - 获取双标签中的文本值（不识别标签/innerText）
+            console.log(jqBox.text()); // 获取双标签中的文本值
+            jqBox.text("我变身box"); // 赋值双标签中的文本值
+            // 获取双标签中的文本值（识别标签/innerHTML）
+            jqBox.html(); // 获取双标签中的文本值
+            jqBox.html("我变身div"); // 赋值双标签中的文本值
+        });
+
+        // 尺寸位置操作
+        // 1.尺寸操作
+        jqDiv.height(); // 获取宽度 - 不包含border、padding、margin
+        jqDiv.height(200); // 设置宽度
+        jqDiv.width(); // 获取高度 - 不包含border、padding、margin
+        jqDiv.width("200px"); // 设置高度
+        // 2.位置（坐标值）操作
+        // 距离页面最顶端/最左端的距离 - 与定位无关
+        jqDiv.offset().top = 15;
+        jqDiv.offset().left = 15;
+        // 距离父系盒子中带有定位的盒子的距离 - 与padding、margin无关
+        jqDiv.position().top = 15;
+        jqDiv.position().left = 15;
+        // xxx
+        jqDiv.scrollTop();
+        jqDiv.scrollLeft(100);
+
+        // jquery事件绑定
+        // 第一种方式
+        jqDiv.click(function () {
+
+        });
+        jqDiv.mousedown(function () {
+
+        });
+        // 第二种方式
+        jqDiv.bind("click mousedown", function () {
+
+        });
+        // 第三种方式
+        jqDiv.delegate(".box", "click mousedown", function () {
+
+        });
+        // 第四种方式 - 常用
+        jqDiv.on("click mousedown", ".box", {"name": "donew"}, function (event) {
+            console.log(event.data.name);
+        });
+
+        // jquery事件解绑 - 自行补充/怎么绑定怎么解绑
+
+        // jquery事件触发 - 自行补充
+
+        // 多库共存 - 版本新的写在底下
+
+        // 插件之懒加载
+
+        // 自定义插件
+
     </script>
 </head>
 <body>
     <div id="box" class="box">
-        <div></div>
-        <div></div>
-        <div></div>
+        <div>这是第一个div</div>
+        <div>这是第二个div</div>
+        <div>这是第三个div</div>
+        <input type="text" value="我是input" checked>
     </div>
 </body>
 </html>

@@ -2,20 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="16e435bf-91d0-4784-a0da-dec4003c7039" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../donew_index/image/res/jQuery对象和DOM对象.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GNGameProxy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GNGameProxy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Note.code-workspace" beforeDir="false" afterPath="$PROJECT_DIR$/../Note.code-workspace" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../WMGameProxy/WMGameProxy/SYGameProxy.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../WMGameProxy/WMGameProxy/SYGameProxy.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../donew_index/html/demo/demo_28.html" beforeDir="false" afterPath="$PROJECT_DIR$/../donew_index/html/demo/demo_28.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../donew_index/html/demo/demo_36.html" beforeDir="false" afterPath="$PROJECT_DIR$/../donew_index/html/demo/demo_36.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../donew_index/html/html_jQuery.html" beforeDir="false" afterPath="$PROJECT_DIR$/../donew_index/html/html_jQuery.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../donew_index/js/demo/utils.js" beforeDir="false" afterPath="$PROJECT_DIR$/../donew_index/js/demo/utils.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../donew_interview/dream_msg.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../donew_interview/iOS文档.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../donew_interview/ios_oversea.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../donew_interview/ios_v3.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../donew_interview/谢吴军简历.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../donew_interview/骏梦游戏.md" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,7 +33,7 @@
     <property name="project.structure.last.edited" value="Global Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="settings.editor.selected.configurable" value="File.Encoding" />
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -60,7 +47,10 @@
       <workItem from="1600674433853" duration="414000" />
       <workItem from="1600741608995" duration="1788000" />
       <workItem from="1600759409589" duration="1367000" />
-      <workItem from="1600772228490" duration="304000" />
+      <workItem from="1600772228490" duration="549000" />
+      <workItem from="1601002393879" duration="112000" />
+      <workItem from="1601002522432" duration="1092000" />
+      <workItem from="1601012647920" duration="2198000" />
     </task>
     <servers />
   </component>
@@ -68,9 +58,10 @@
     <option name="version" value="3" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="187" y="26" key="SettingsEditor" timestamp="1600772324060">
+    <state x="187" y="26" key="SettingsEditor" timestamp="1601030525029">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state x="187" y="26" key="SettingsEditor/0.23.1440.877/-1877.23.1877.1177@0.23.1440.877" timestamp="1600772324060" />
+    <state x="216" y="23" key="SettingsEditor/0.23.1440.877/-1876.23.1876.1177@0.23.1440.877" timestamp="1601024955630" />
+    <state x="187" y="26" key="SettingsEditor/0.23.1440.877/-1877.23.1877.1177@0.23.1440.877" timestamp="1601030525029" />
   </component>
 </project>
