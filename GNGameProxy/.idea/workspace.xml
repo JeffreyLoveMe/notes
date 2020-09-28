@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="16e435bf-91d0-4784-a0da-dec4003c7039" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../donew_index/html/html_jQuery.html" beforeDir="false" afterPath="$PROJECT_DIR$/../donew_index/html/html_jQuery.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../donew_index/html/donew_check.html" beforeDir="false" afterPath="$PROJECT_DIR$/../donew_index/html/donew_check.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../donew_index/html/donew_html.html" beforeDir="false" afterPath="$PROJECT_DIR$/../donew_index/html/donew_html.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../donew_index/html/donew_review.html" beforeDir="false" afterPath="$PROJECT_DIR$/../donew_index/html/donew_review.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,6 +53,7 @@
       <workItem from="1601002393879" duration="112000" />
       <workItem from="1601002522432" duration="1092000" />
       <workItem from="1601012647920" duration="2198000" />
+      <workItem from="1601267476319" duration="368000" />
     </task>
     <servers />
   </component>

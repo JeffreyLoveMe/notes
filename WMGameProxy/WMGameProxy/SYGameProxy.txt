@@ -20325,45 +20325,6 @@ CGSize textSize = [name boundingRectWithSize:nameSize options:NSStringDrawingUse
 CGFloat height = textSize.height;
 //https://www.cnblogs.com/niit-soft-518/p/6373601.html
 
-#常见系统库：
-//数据库相关库
-libsqlite3.tbd
-libsqlite3.0.tbd
-//音频
-AVFoundation.framework
-//视频
-MediaPlayer.framework
-//位置
-CoreLocation.framework
-//地图
-MapKit.framework
-//系统加密接口
-CommonCrypto/Security.framework
-//检查网络环境
-SystemConfiguration.framework
-//画图相关库
-CoreGraphics.framework
-QuartzCore.framework
-//发送短信、邮件
-MessageUI.framework
-
-#常用第三方库(Objective-C)：
-https://github.com/nicklockwood/FXBlurView //高斯模糊
-https://github.com/SPStore/SPAlertController //各种alert
-https://github.com/HJaycee/JCAlertView //各种alert
-https://github.com/search?q=SPScrollPageView //集成UIScrollView
-https://github.com/topfunky/hpple //解析html：http://www.cnblogs.com/W-Kr/p/5248316.html
-https://github.com/SnapKit/Masonry //Masonry：自动布局
-https://github.com/AFNetworking/AFNetworking //AFNetworking：网络请求、下载
-https://github.com/CoderMJLee/MJRefresh //MJReFresh：下拉刷新、加载
-https://github.com/CoderMJLee/MJExtension //MJExtension：字典转模型
-https://github.com/SDWebImage/SDWebImage //SDWebImage：图片缓存
-https://github.com/jsonmodel/jsonmodel //JSONModel：json解析
-https://github.com/johnezang/JSONKit //JSONKit：json解析
-https://github.com/magicalpanda/MagicalRecord //MagicalRecord：对CoreData的封装
-https://blog.csdn.net/liuzhihui666/article/details/70152940
-https://blog.csdn.net/MinggeQingchun/article/details/77160892
-
 #常见第三方库(Swift)：
 https://github.com/SnapKit/Snapkit //Snapkit：自动布局
 https://github.com/dacaizhao/MJExtensionSwift //MJExtensionSwift：字典转模型
@@ -20378,29 +20339,6 @@ https://www.jianshu.com/p/a1dc024a8a15
 https://blog.csdn.net/sadsadaadsd/article/details/77878279
 //swift打包静态库：不支持静态库
 https://blog.csdn.net/lvchenqiang_/article/details/79077679
-
-#Xcode介绍：
-概述：Mac系统中所有的目录都是文件夹，Mac系统/iOS都是基于unix系统；
-Xcode4之前，Xcode使用GCC编译器来翻译代码；
-Xcode4以后，LLVM(虚拟机)、Clang前端专门用来编译代码；
-//新建C语言、C++、Objective-C项目
-File->New->Project...->macOS->Application->Command Line Tool->选择语言
-右键->New Files...->macOS->Source-选择文件
-//新建App项目
-File->New->Project...->iOS->Single View App
-右键->New Files...->iOS->Source->选择文件
-//新建Storyboard
-右键->New Files...->iOS->User Interface->Storyboard
-//协议、类别
-右键->New Files...->macOS->Objective-C File->选择父类
-//停止运行：command + .
-//程序退到后台：shift + command+H
-//中止程序：shift + command + 2H
-//创建工程：shift + command + N
-//模拟内存警告：shift + command + M
-//替换单词：OK
-//添加类前缀：Class Prefix
-
 #DrawRect：NO
 概念：Quartz 2D是一个基于CoreGraphics框架来实现的二维绘制引擎，同时支持iOS和Mac系统；
 作用：绘制图形、线、三角形、圆、弧形；绘制文字；绘制/生成pdf；截图/裁剪图片；自定义UI；
