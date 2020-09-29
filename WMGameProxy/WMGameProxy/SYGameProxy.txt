@@ -592,6 +592,11 @@ pod 'EaseMobSDKFull', :git => 'https://github.com/easemob/sdk-ios-cocoapods-inte
 应用：ZBarSDK第三方库
 https://blog.csdn.net/he_jiabin/article/details/47786031
 
+#App数据统计：
+//实时在线人数：使用NSTimer
+//热云
+//TD
+
 #App换肤：
 http://www.cocoachina.com/ios/20171012/20762.html
 
@@ -648,57 +653,6 @@ git push origin tag名
 1.公钥：存在github上用来解密的key
 2.私钥：存在本地一个.ssh文件夹下用来加密
 
-#CocoaPods：https://segmentfault.com/a/1190000011428874
-//安装Cocoapods
-1.安装Ruby
-1>安装RVM:
-curl -L get.rvm.io | bash -s stable
-rvm -v
-2>安装homebrew:
-/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-brew -v
-3>安装xcode command line:
-xcode-select --install
-xcode-select -v
-4>安装ruby:
-rvm list known
-rvm install 2.4.0
-ruby -v
-2.安装Cocoapods
-sudo gem install cocoapods
-教程：https://blog.csdn.net/zhanglizhi111/article/details/76657982
-//使用Cocoapods
-cd ./project
-pod init
-pod install --no-repo-update
-#Podfile
-platform :ios, '8.0'
-target '项目名' do
-use_frameworks!
-pod 'NSLogger'
-pod 'AFNetworking'
-pod 'FMDB'
-pod 'UICKeyChainStore'
-pod 'SCLAlertView-Objective-C'
-pod 'FTIndicator/FTProgressIndicator'
-pod 'FTIndicator/FTToastIndicator'
-pod 'IQKeyboardManager'
-pod 'MKDropdownMenu'
-pod 'CLGO', :git => 'ssh://git@git.changmeng.com/ios/sdk.v3.8.git', :branch => 'appstore-bt'
-end
-pod update --no-repo-update
-//升级本机pod库
-pod repo update master
-//编写podspec文件：NO
-//利用CocoaPods创建静态库：NO
-//新建静态库
-https://segmentfault.com/a/1190000011428874
-//打包静态库
-#sudo gem install cocoapods-packager
-#cd ./CLGO.podspec
-#pod package CLGO.podspec --force --verbose //常规打包
-#pod package CLGO.podspec --force --no-mangle --verbose //含.a的打包
-http://www.jianshu.com/p/605350a7b1dd
 /******************************补充知识点******************************/
 #正则表达式：
 代码：NewNetworkViewController.h/m
@@ -1185,7 +1139,6 @@ NSData *data = [[NSData alloc]initWithContentsOfFile:PATH];
         
 //建立节点数对象
 GDataXMLDocument *doc = [[GDataXMLDocument alloc]initWithData:data options:0 error:nil];
-
 
 3）网络解析
 转换为URL类型网址
@@ -2178,7 +2131,6 @@ App中哪些需要存放在本机|App中的缓存机制
 
 如果是字典就是DateModel/DateInfo
 
-safeArea // 这是什么意思
 constrain to magins //没有作用：为了plus/iPhone X布局尽量到中间
 
 对于cell 我们一般不需要把model传进去 再传出来 我们一般是把cell传出来 然后通过cell拿到indexPath 再通过indexPath拿到model
@@ -2210,9 +2162,6 @@ self.page = model.page
 self.maxPage = self.maxPage(byTotalSize: model.total, pageSize: model.size)
 判断当前页面是否大于最大页面：大于停止刷新
 /////CommunityCommentDetailController.swift
-
-iOS中每个专有名词的读音都需要学会
-
 15.什么是"Jenkins"/TabBar这么实现动画效果/hook
 
 1. 一般项目都是使用cocoaPods管理：更加方便；
@@ -2359,8 +2308,6 @@ UIImage.resiezableImage(with: UIImage(named: "calendar_bg_white"), edgeInsets: U
 
 swift中main函数消失：https://blog.csdn.net/zhao18933/article/details/46640657
 
-command + D   //收藏书签
-
 1.修复线上bug/增加线上内容...base分支
 2.新功能/新需求_01...新建分支 <br>
 3.新功能/新需求_02...新建分支 <br>
@@ -2502,16 +2449,6 @@ NSLog(@"%d", [str retainCount]);
   TCP(Transmission Control Protocol ，传输控制协议)是基于连接的协议，正 式收发数据前必须和对方建立可靠的连接 (“三次握手”)，传输速度相对 UDP较慢。
   UDP(User Data Protocol ，用户数据报协议)是与 TCP相对应的协议。它是面 向非连接的协议 ,UDP适用于一次只传送少量数据、对可靠性要求不高的应用环境， 但是传输速度快
 
-1.main(){
-
-inta[5]={};
-
-int *ptr=(int*)( a+1);
-
-printf("%d%d",*(a+1),*(ptr-1));
-
-}
-答：25
 
 *(a+1）就是a[1]，*(ptr-1)就是a[4]执行结果是2，5
  a+1不是首地址+1，编制会认为加一个a数组的偏移，是偏移了一个数组的大小（本例是5个int）
@@ -2590,11 +2527,6 @@ e) int *a[10]; // An assortment of 10 pointers tointegers
 f) int (*a)[10]; // A pointer to some kind of assortment of 10integers
 g) int (*a)(int); // A pointer to a function athattakes some kind of integer argument some kind ofd returns some kind ofinteger
 h) int (*a[10])(int); // An assortment of 10 pointers tofunctionsthat take some kind of integer argument some kind ofdreturn some kind of integer
-
-2.CALayer和View的关系
-一个UIView包括CALayer树，CALayer是一个数据模型，听说iPhone。包括了一些用于显示的对象，但本身不用于显示。
-CALayer相当于photoshop的一个层，很多动画可以通过设置CALayer来完成。据说有人用CALayer显示图片来播放视频。
-Coresome kind ofimation应该是用CAlayer来完成各种动画。
 
 9.iphone应用程序的项目基本结构
 classes:里面存放object-c类源代码文件(可以创建子文件夹来组织代码);
@@ -2795,7 +2727,6 @@ Singleton 了，用的越多对水平就越表示怀疑。对设计模式自信�
 面试制胜之招: 1.原理性的知识，必须背下来，代码不需要会写，没人要求写原理、底层的代码 (这是一个空子，可以钻 )
 2.链表操作，排序算法最好是能默写 3.面试始终保持平静，冷静，镇静，面试再刁难也要保持端坐，面带一丝微笑
 4.对喜欢的公司最好能表现出对加入目标公司的渴望，对技术的追求 5.加分的地方:对简历上的项目很熟悉，技术点都有所研究，包括封装，细节实现;最好能把 MJExtension 框架多敲几遍，包装成自己开发的工具(显示自 己大神的威力)
-工作建议:没人查个人背景 (这点不用太担心， 大不了重新找 );上班后勤勉工作， 最好不要泡在 QQ 上，不懂赶紧问，别拖延时间，转正期也是适应期多，花点时 间在工作上，工作态度非常非常重要。
 
 7.请简述 KVO 内部的实现，使用条件 --- 新浪微博
 8.请用代码描述错误消息处理 ---腾讯，百度 9.消息转发内部原理(结构指针，方法选择器， forwarding... 一串破玩意儿) -- 百度
@@ -2807,27 +2738,6 @@ Singleton 了，用的越多对水平就越表示怀疑。对设计模式自信�
 15.AFN 与 asi 的本质区别 ---腾讯，百度，新浪微博(主要问底层实现) 16.clayer 的坐标与 frame 的坐标如何转化 ---腾讯，百度，新浪微博
 17.循环引用 ---腾讯，百度，新浪微博 18.runloop 原理---腾讯，百度，新浪微博
 ---腾讯
-二 .算法题
-1.定义指针函数实现数组排序(百度)
-2.实现一单链表的逆转，排序( DML 方面)(腾讯，百度)
-3.已知一组数字: 32,35,9,25,19,34,43,47,3 要求按以下规则进行排序:第一个数 最大，第二个数最小，第三个数是剩下中的最大的， 第四个数是剩下中的最小的， 依此类推。(腾讯)
-4.函数将字符串中的字符 '*' 移到串的前部分，前面的非 '*' 字符后移，但不能改变 非'*'字符的先后顺序，函数返回串中字符 '*'的数量。如原始串为:ab**cd**e*12， 处理后为*****abcde12，函数并返回值为5(,要求使用尽量少的时间和辅助空间) (百度)
-5.实现 memmove 算法(金山网络)
-6.求 1+2+3+...+n 要求不能使用除法、 for、while、if、else、switch、case等关 键字以及条件判断语句 (A?B:C)(金山网络)
-7.判断一个 IP的有效性(百度)
-
-1、 简述你对 UIView、UIWindow 和 CALayer的理解
-2、 写一个完整的代理，包括声明，实现
-3、 分析 json、xml 的区别? json、xml 解析方式的底
-层是如何处理的?
-7、 简述 NotificationCenter、KVC、KVO、Delegate?
-并说明它们之间的区别?
-8、 What is lazy loading?
-9、 什么是 Protocol?什么是代理?写一个委托的
-interface?委托的 property声明用什么属性?为什
-么?
-10、 分别描述类别( categories)和延展( extensions)
-是什么?以及两者的区别?继承和类别在实现中 有何区别?为什么 Category只能为对象添加方法， 却不能添加成员变量?
 
 3.下面程序有什么错误
 for(int i =0; i< someLageNumber; i++) {
@@ -5069,35 +4979,6 @@ A.4 B. 5 C.6 D.7
 B.有些参观了德国馆的职工既没有参观日本馆，也没有参观丹麦馆。 C.有些参观了丹麦馆的职工既没有参观德国馆，也没有参观日本馆。 D.所有参观丹麦馆的职工或参观了德国馆，或参观了日本馆，或参观了沙特馆。
 10. 33.1,88.1,47.1 ，()
 
- A. 29.3 B.34.5 C.16.1 D.28.9
-11. 某中学在高考前夕进行了 4次的数学摸底考试，成绩一次比一次好，第一次得分在 80分
-以上的比例是 70%;第二次是 75%;第三次是 85%;第四次是 90%，请问在四次考试中都在 80 分以上的学生的百分比至少是多少?()
-A. 20% B. 40% C. 50% D. 80%
-12. 左边给定的是纸盒的外表面，下面哪项能由它叠出()
-13. 所得税是工资加奖金总和的 30%，如果一个人的所得税为 工资为()
-A. 12000 元 B. 15900 元 C.19500 元 D.25900 元 E.62000 元
-14. 现有 5分和 2分的硬币共 100枚，总币值 4元 1角，则其中 A.20 枚 B.30 枚 C.40 枚D.50 枚 E.35 枚
-15. 0,1 ，()， 2,3,4,4,5 A.0 B.4 C.2 D.3
-6810元，奖金为 3200元，则他的
-5分的硬币比
-2分的硬币多()
-
-
-
-   1         
-- (void)savePNGAsJPG
-{
-  UIImage *image = [UIImage imageWithContentsOfFile:@"/
- path/to/image.png"];
- NSData *imageData = UIImageJPEGRepresentation(image,
- 1.0);
- BOOL result = [imageData writeToFile:@"/path/to/
- newImage.jpg" atomically:YES];
- if (result) NSLog(@"NFCLog: Succeeded saving converted
- image.");
- else NSLog(@"NFCLog: Failed to save converted image.”);
-}
-
  敏捷原则: 开放 --封闭原则 工厂模式优缺点
  优点: 简单工厂模式的优点是客户端可以直接消费产品， 而不必关心具体产品的实现， 消除了客 户端直接创建产品对象的责任，实现了对责任的分割。
  缺点是工厂类几种了所有产品的创建逻辑， 一旦不能正常工作， 整个系统都会受到影响， 产品类多结构复杂的时候，把所有创建工作放进一个工厂中来，回事后期程序的扩展较为困难。
@@ -5355,39 +5236,9 @@ Xcode 需要源
 种语言里对象都是指针，可以在任何地方使用。例 的指针作为数据成员， Objective-C 类也可以有 文件以 ".mm" 为扩展名，这样才能启动编译器的
 如， C++ 类可以使用 C++ 对象指针做实例变量。
 Objective-C++ 扩展。
-34. 常见的语言编码 (utf-8,unicode,gb2312,gbk)
-常见的语言编码有:
-GB2312: 简体中文编码，一个汉字占用 2 字节，在大陆是主要编码方式。
-BIG5: 繁体中文编码。主要在台湾地区采用。
-GBK: 支持简体及繁体中文，但对他国非拉丁字母语言还是有问题。
-UTF-8:Unicode 编码的一种。 Unicode 用一些基本的保留字符制定了三套编码方式， 它们分 别 UTF-8,UTF-16 和 UTF-32 。在 UTF -8 中，字符是以 8 位序列来编码的，用一个或几个 字节来表示一个字符。这种方式的最大好处，是 UTF - 8 保留了 ASCII 字符的编码做为它
 
- 的一部分。 UTF-8 俗称 “万国码 ”，可以同屏显示多语种，一个汉字占用 3 字节。为了做到国 际化，网页应尽可能采用 UTF-8 编码。
-当然，处理中文时 http 头也要改成 UTF-8 编码的 ----- 加上 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"> 。
-语言
-英语、西欧语 简体中文
-繁体中文
-简繁中文 中文、日文及朝鲜语 各国语言
-35. 常见的加解密方式
-常见的加解密方式有:
-字符集
-ASCII ， ISO-8859-1
-GB2312 BIG5 GBK
-GB18030 UNICODE ，UCS
-(rsa,aes,md5)
-正式名称 MBCS 多字节
-MBCS 多字节 MBCS 多字节
-MBCS 多字节 MBCS 多字节
-DBCS 宽字节
-RSA :基于公钥和私钥的非对程加密算法。适用范围广。
-AES :是一种对程加密的流行方式。加密涉及矩阵运算。
-MD5: 将任意长度的 “字节串 ”变换成一个 128bit 的大整数， 并且它是一个不可逆的字符串变
-换算法，
-36.objective -c 语言的优缺点 objc 优点:
-
-
-
- 23. 使用自动释放池( Use AutoRelease Pool ) 24. 缓存图像( Cache Images-Or not )
+ 23. 使用自动释放池( Use AutoRelease Pool )
+ 24. 缓存图像( Cache Images-Or not )
 25. 尽可能避免日期格式化器(
 39.UIScrollView 的 contentSize contentSize 表示 UIScrollView
 Avoid Date Formatters Where Possible )
@@ -18260,11 +18111,6 @@ Dog *dog = [[Dog alloc]init];
 SEL s1 = @selector(onClick:);
 [dog performSelector:@selector(setName:) withObject:@"Tom"];
 #pragma clang diagnostic pop
-/*
-Core Data
-通知中心
-kVC/KVO
-*/
 /******************************UI基础******************************/
 #UI介绍：UI全称User Interface(用户接口)
 作用：用户通过UI与应用程序进行交互；
@@ -18391,10 +18237,6 @@ block传值：实现回调
 代理传值：OK
 2).通过导航控制器迁移：见WidgetViewController.h/m
 
-#UIWebView&WKWebView：代理型视图
-作用：加载URL、加载HTML网页；
-练习：WKWebView添加进度条；
-
 #多控制器：利用下列2种控制器管理多控制器
 //导航控制器：UINavigationController
 特征：以栈的形式管理子控制器-push压栈、pop出栈；
@@ -18476,19 +18318,6 @@ PostStore类网络请求完成，需要告诉VC网络请求操作完成；
 }
 self.dataArr; //每次使用均会调用-(NSArray *)dataArr;
 
-#UISearchController：navigationItem中的一部分
-
-#UITableView自适应：NO
-
-#UITableView多选/删除：OK
-
-#UICollectionView：
-1.需要自定义collectionViewCell/UICollectionReusableView；
-2.实现VC中的各种代理协议；
-3.注意计算各种间距：item<->cell
-4.自定义UICollectionViewFlowLayout；NO
-代码：见MyCollectionViewController.h/m
-
 #瀑布流：
 //实现原理：
 我们利用多个UITableView联动就可以实现瀑布流效果：调用UIScrollView的代理方法
@@ -18502,21 +18331,6 @@ self.dataArr; //每次使用均会调用-(NSArray *)dataArr;
 //正好相反的操作
 [self.view addSubview:_topLineVc.view];
 [_societyVc.view removeFromSuperview];
-
-#UIApplication：应用程序的象征、程序启动第一个创建的对象
-作用：1.通过代理类AppDelegate去处理系统事件；
-2.设置应⽤提醒数字；
-3.设置连网状态；
-4.设置状态栏；
-获取：[UIApplication sharedApplication];//不能手动创建
-代码：AppDelegate.h/m
-https://www.cnblogs.com/wendingding/p/3766347.html //程序启动原理
-
-#UIWindow：一种特殊的UIView、一个app至少有一个UIWindow
-特点：1.程序启动完毕，创建的第一个控件就是UIWindow，接着创建VC的view，最后将view添加到UIWindow上；
-2.没有UIWindow就没有显示UI界面；
-3.可以重写UIWindow；
-https://www.jianshu.com/p/af2a6a438a0a
 
 #像素和点之间的转换：效果图上标注的怎么转换？
 https://blog.csdn.net/ridxmc/article/details/51346472
@@ -18829,33 +18643,6 @@ https://blog.csdn.net/u010407865/article/details/62886943
 https://www.jianshu.com/p/9f757a09eacd
 //Swift工程调用Objective-C代码
 https://blog.csdn.net/pjk1129/article/details/39644477
-
-#二维码：
-应用：ZBarSDK第三方库
-https://blog.csdn.net/he_jiabin/article/details/47786031
-
-#App数据统计：
-//实时在线人数：使用NSTimer
-//热云
-//TD
-
-#App换肤：
-http://www.cocoachina.com/ios/20171012/20762.html
-
-#图文混排：
-https://blog.csdn.net/qcx321/article/details/52194835
-
-#webview混排：
-https://blog.csdn.net/u010960265/article/details/80563668
-
-#传感器：NO
-#近景通讯技术：蓝牙、Bonjour、iBeacons
-
-#iPad开发：
-//iPad和iPhone开发的异同
-https://blog.csdn.net/wujakf/article/details/80223046
-//iPad项目开发总结
-https://www.jianshu.com/p/522c8993572b
 /******************************实战操作******************************/
 #svn：开源的集中式版本控制工具(trunk/branches/tags)
 官网：https://subversion.apache.org/
@@ -19073,7 +18860,6 @@ typedef 原有数据类型 别名
 注意：1.typedef不仅能给原生的数据类型起别名，也可以给自定义的类型起别名；
 2.利用typedef给数据起别名，并不会生成新的数据类型
 
-#常见概念：
 //僵尸对象：只要一个对象被释放了，我们就称这个对象为“僵尸对象”
 开启监听“僵尸对象”：Edit Scheme->Run->Diagnostics->勾选Zombie Objects
 //野指针：当一个指针指向一个僵尸对象，我们就称这个指针为“野指针”

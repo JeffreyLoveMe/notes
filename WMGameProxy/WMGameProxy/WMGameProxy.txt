@@ -102,6 +102,7 @@
 //UIView
 //UILabel
 //UIButton
+//UIImage
 //UIImageView
 //UITextField
 //UITextView
@@ -119,17 +120,19 @@
 //UIPickerView
 //UIDatePicker
 //UITableView
-//UICollectionView
+//UICollectionView - 自定义UICollectionViewFlowLayout
 //UIPageController
 //UIMenuController菜单
-//UIAlertController警告框
+//UIAlertController警告框 - iOS8.0以上推荐使用 - UIViewControlelr的子类
 //UIWebView/WKWebView
-//UIRefreshControl
+//UIRefreshControl - 下拉刷新控件、不能上拉加载
 //UIImagePickerController - x
 //UIPopoverContrller - x
 //UIActivityViewController - x
 //UIStackView - x
 //UIPasteboard - xx
+//UIToolBar - 工具条：可以实现毛玻璃效果
+//UINavigationBar - 导航条：44px
 //NSShadow阴影 - xx
 //富文本 - xx
 //Gif动画
@@ -246,7 +249,7 @@ LBS - x
 iOS动画 - x
 */
 /*
-1.有时间需要加强的知识点
+//有时间需要加强的知识点
 多语言
 二维码
 通讯录
@@ -258,6 +261,7 @@ iOS动画 - x
 多媒体
 地图
 iPad开发
+实现画折线图
 */
 /**************************补充部分**************************/
 //“原生” 与 “js交互”

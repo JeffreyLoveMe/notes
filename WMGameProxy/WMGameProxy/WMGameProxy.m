@@ -155,7 +155,7 @@
 // 单例的创建方法通常以 default/shared 开头
 /**
  常见单例
- UIApplication - xxx
+ UIApplication - 应用程序
  NSNotificationCenter - 通知中心
  NSFileManager - 文件管理
  */

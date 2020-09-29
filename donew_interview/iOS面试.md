@@ -591,14 +591,14 @@ extern NSString * const name;
 
 //#include和#import的区别？@class呢？
 1.#include/#import都会将xxx.h复制到当前文件中，但是 #import不会重复复制、#include会重复复制
-2.@class仅仅是告诉编译器xxx.h是一个类，至于这个类如何定义的，有什么属性和方法当前类不知道（无法使用）；@class可以解决 #import 引起的相互导入问题
+2.@class仅仅是告诉编译器xxx.h是一个类，至于这个类如何定义的，有什么属性和方法当前类不知道（无法使用）；@class可以解决 #import引起的相互导入问题
 3.@class一般用于.h文件（除继承关系）/#import一般用于.m文件
 
 //Objective-C语言有私有方法吗？私有变量呢？
-1.Objective-C语言没有私有方法/有私有变量（@private修饰的变量）
+1.Objective-C语言没有私有方法（声明函数在xxx.m中）/有私有变量（@private修饰的变量/声明在xxx.m中的变量）
 
 //Objective-C语言有多继承吗？没有的话用什么代替？
-1.Objective-C语言没有多继承。可以使用protocol代替多继承。
+1.Objective-C语言没有多继承。可以使用protocol（委托）代替多继承。
 
 //类方法和对象方法的区别？
 1.类方法 - '+'开头的方法/必须使用类名调用/不可以直接访问属性/调用效率相对较高
