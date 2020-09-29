@@ -366,7 +366,7 @@
     NSLog(@"%@===%@", firstStr, lastStr);
     // 元素个数
     NSUInteger count = [array4 count];
-    NSLog(@"%lu", count);
+    NSLog(@"%lu", (unsigned long)count);
     
     // 数组排序
     // 1.使用方法对数组元素排序
@@ -455,7 +455,7 @@
             // 停止遍历
             *stop = YES;
         }
-        NSLog(@"obj = %@, idx = %lu", obj, idx);
+        NSLog(@"obj = %@, idx = %lu", obj, (unsigned long)idx);
     }];
     // 4.枚举器法
     // 获取一个枚举器
@@ -527,7 +527,7 @@
     NSArray *keys = [dic0 allKeys];
     // 返回所有的值
     NSArray *values = [dic2 allValues];
-    NSLog(@"%ld==%@==%@==%@==%@==%@", count, value0, keys, values,[dic1 objectForKey:@"key0"], dic1[@"key1"]);
+    NSLog(@"%lu==%@==%@==%@==%@==%@", (unsigned long)count, value0, keys, values,[dic1 objectForKey:@"key0"], dic1[@"key1"]);
     
     /// 2).可变字典
     // 如果 key 同名则后面的会覆盖前面的

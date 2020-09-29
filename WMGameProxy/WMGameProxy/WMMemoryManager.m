@@ -236,6 +236,26 @@
     /// 不会生成新的对象
     // 此时不会生成一个新对象 - 因为原来的对象和拷贝出来的对象都是"不可变对象"/不能修改所以符合条件
     NSString *copyStr = [str copy];
+    /**
+     深拷贝：生成值一样，内存地址不一样的全新对象-内容拷贝
+     浅拷贝：使原对象的引用计数 + 1，没有创建全新的对象，直接返回被拷贝对象的地址-指针拷贝
+     // 不可变字符串：右侧如果是copy，那么就是浅拷贝；右侧如果是mutableCopy,那么就是深拷贝
+     NSString *msg0 = @"";
+     NSString *msg2 = [msg1 mutableCopy]; // 深拷贝
+     NSString *msg1 = [msg0 copy]; // 浅拷贝：对原对象进行一次retain、对拷贝出来的对象进行一次release
+     // 可变字符串：右侧无论是copy还是mutableCopy，都是深拷贝
+     NSMutableString *msg3 = [NSMutableString stringWithString:@""];
+     NSString *msg1 = [msg0 copy];//深拷贝
+     NSString *msg2 = [msg1 mutableCopy];//深拷贝
+     1.浅拷贝类似retain，深拷贝类似copy
+     2.https://blog.csdn.net/chenyufeng1991/article/details/51771728
+     -(id)copyWithZone:(NSZone *)zone {
+
+     }
+     -(id)mutableCopyWithZone:(NSZone *)zone {
+
+     }
+     */
 //    // ！！！Copy内存管理的正确写法！！！
 //    NSString *str = [[NSString alloc]initWithString:@"xwj"];
 //    NSString *newStr = [str copy];
@@ -245,3 +265,8 @@
 }
 
 @end
+
+
+
+
+

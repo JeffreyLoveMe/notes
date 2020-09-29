@@ -2694,7 +2694,6 @@ BAD_ACCESS 在什么情况下出现?
 使用系统的某些 block api (如 UIView 的 block 版本写动画时) ，是否也考虑引用循 环问题?
 GCD 的队列( dispatch_queue_t)分哪两种类型?
 如何用 GCD 同步若干个异步调用? (如根据若干个 url 异步加载多张图片， 然后在都下载完成后合成一张整图)
-dispatch_barrier_async 的作用是什么?
 苹果为什么要废弃 dispatch_get_current_queue ?
 addObserver:forKeyPath:options:context: 实现哪个方法才能获得 KVO 回调?
 各个参数的作用分别是什么，
@@ -5467,10 +5466,6 @@ NSString类的实现 + (id)initWithCString:(constchar *)nullTerminatedCString en
 obj = [self allocWithZone: NSDefaultMallocZone()];
 obj = [obj initWithCString: nullTerminatedCString encoding: encoding]; return [obj autorelease];
 }
-30、Objective-C有私有方法么 ?私有变量呢 ?如多没 有的话 ,有没有什么代替的方法 ? objective-c类里面 的方法只有两种 , 静态方法和实例方法 .但是可以 通过把方法的声明和定义都放在 .m文件中来实现 一个表 面上的私有方法。有私有变量 ,可以通过 @private来修饰,或者把声明放到 .m文件中。在 Objective‐C中,所有实例变 量默认都是私有的 ,所
-
-有实例方法默认都是公有的 31、#import 、#include 和 @class有什么区别 @class一般用于头文件中需 要声明该类的某个实例变量的时候用到 ,它只是声 明了一个类名 ,关于这个类的内部实现都没 有告 诉编译器 ,在m文件中还是需要使用 #import。
-而 #import 比起 #include的好处就是不会引起交叉 编译。
 
 ; 33、
 { self = [super init]; if (self) {
@@ -6367,10 +6362,6 @@ weakSelf = self)
 block 内部代码生成对应函数
 ( __weak typeof(self)
 
-六十七、 NSValue和 NSNumber 的区别?
-1、NSNumber 继承自 NSValue，是 NSValue的子类 2、NSNumber 可以将基本数据类型包装成对象放到数组或字典中
-3、NSValue 可以包装任意类型，可以是系统框架提供的数据结构也可以是自定 义的结构体
-
 六十九、用 @property 声明的 NSString 属性通常使用 copy 修饰，为什么?如果 换成 strong 会有什么影响?
 1、因为父类指针可以指向子类对象 ,使用 copy 可以让对象的属性不受外界影响 , 使用 copy 后无论给属性传入是一个可变对象还是不可对象 ,属性本身持有的就是 一个不可变的副本 .
 2、如果使用是 strong, 那么这个属性就有可能指向一个可变对象 ,如果这个可变对 象在外部被修改了 ,那么会影响该属性 .
@@ -6389,12 +6380,6 @@ A:对象方法属于实例对象 B;对象方法只能通过实例对象调用 C:
 用 weak 指向的对象内存地址作为 key ，当此对象的引用计数为
 dealloc，假如 weak 指向的对象内存地址是 a，那么就会以 a 为键，在这个 weak
 表中搜索，找到所有以 a 为键的 weak 对象，并设置为 nil
-
-
-七十八、 dispatch_barrier_async 的作用是什么? 1、通俗来讲:在并发队列中，为了保持某些任务的顺序，需要等待一些任务完
-成后才能继续进行，使用 barrier 来等待之前任务完成，避免数据竞争等问题 2、专业来讲: 使用 dispatch_barrier_async 添加的 block 会在之前添加的 block
-全部运行结束之后， 才在同一个线程顺序执行， 从而保证对非线程安全的对象进 行正确的操作!
-3、使用注意: 必须使用自定义并发队列，否则执行效果和全局队列一致，无法 阻塞线程
 七十九、 addObserver:forKeyPath:options:context: 各个参数的作用分别是什么， observer 中需要实现哪个方法才能获得 KVO回调?
 1、添加观察者方法的参数:观察者、观察的属性、观察的选项、上下文 2、回调方法的参数:观察的属性、观察的对象、 change 属性变化的字典、上下 文(与添加时一致 )
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context;
@@ -7992,41 +7977,6 @@ UIWebView *webView = [[UIWebView alloc] initWithFrame:self.view.frame];
  }
 @end
 
-20 OC中有没没多重继承？ 如果没有用什么方法替代？
-答 没有多重继承 可以委托的方法来替代
-
-21 #import和#include的区别 @class
-答 防止重复包含 @class类的前置声明 会在下边的类中使用某个类的对象
-
-22 self.name = "object"  name = "object"的区别
-答
-self.name 需要要合成属性然后系统会默认生成set get方法 所以在赋值是会调用set方法
-name = "object"则直接赋值
-
-23 实例化一个UITableView对象 要求写出关键语句
-答
-
-UITableView *my = [[UITableView alloc] initWithFrame:<#(CGRect)frame#> style:<#(UITableViewStyle)style#>];
-    
-my.delegate = self;
-    
-my.dataSource = self;
-首先需要分配空间 设置表格类型
-然后需要设置两个必须的委托对象。
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
 [单选]以下说法正确的是
 A.Object-C支持多重继承
 B.Object-C中的类可以实现多个接口
@@ -8334,45 +8284,6 @@ B.ABPersonViewController
 C.ABUnknownPersonViewController
 D.ABNewPersonViewController
 答案：ABCD
-
-本套题目由百一测评考试中心提供，本套试题支持微信考试，PC在线考试。
-
-
-
-
-
-【面试】 iOS 开发面试题 (一)
-? 1. #import 跟#include 又什么区别， @class 呢, #import<> 跟 #import ””又什么区别?? 答: #import 是Objective-C 导入头文件的
-关键字， #include 是 C/C++ 导入头文件的关键字 ,使用 #import 头文件 会自动只导入一次，不会重复导入，相当于 #include 和#pragma once;@class 告诉编译器某个类的声明，当执行时，才去查看类的实 现文件， 可以解决头文件的相互包含 ;#import<> 用来包含系统的头文 件， #import ””用来包含用户头文件。
-?
-? 2. 属性 readwrite ，readonly ，assign ，retain ，copy ，nonatomic
-各是什么作用，在那种情况下用 ?? 需要生成 getter 方法和 setter 方法时 ?
-会生成 getter 方法 不会生成 setter 方法
-3. assign 是赋值特性， setter 方法将传入参数赋值给实例变量 ;仅设 置变量时 ;? 4. retain 表示持有特性， setter 方法将传入参数先保 留，再赋值，传入参数的 retaincount 会+1;? 5. copy 表示赋值特 性， setter 方法将传入对象复制一份 ;需要完全一份新的变量时。 ?
-6. nonatomic 非原子操作，决定编译器生成的 setter getter 是否是原 子操作， atomic 表示多线程安全，一般使用 nonatomic
-1. readwrite 是可读可写特性 ; 2. readonly 是只读特性 只
-;不希望属性在类外改变 ?
-
-3. Object-c 的类可以多重继承么 ?可以实现多个接口 么?Category 是什么 ?重写一个类的方式用继承好还是分类好 ?为什 么?
-答: Object-c 的类不可以多重继承 ;可以实现多个接口，通过实 现多个接口可以完成 C++ 的多重继承 ;Category 是类别，一般情况用 分类好，用Category 去重写类的方法， 仅对本Category 有效，不会影 响到其他类与原有类的关系。
-4.写一个setter方法用于完成 @property (nonatomic,retain)NSString *name, 写一个 setter 方法用于完成 @property(nonatomic ，copy)NSString *name
-- (void) setName:(NSString*) str {
-[str retain];
-[name release];
-name = str;
-}
-- (void)setName:(NSString *)str {
-id t = [str copy];
-
-[name release]; name = t;
-}
-5. 对于语句 NSString*obj = [[NSData alloc] init]; obj 在编译时和 运行时分别时什么类型的对象 ?
-编译时是 NSString 的类型 ;运行时是 NSData 类型的对象
-6.常见的 object-c 的数据类型有那些， 和C的基本数据类型有什么区 别?如:NSInteger 和int
-object-c 的数据类型有 NSString ，NSNumber ，NSArray ， NSMutableArray ，NSData等等，这些都是 class，创建后便是对象， 而 C语言的基本数据类型 int，只是一定字节的内存空间，用于存放数 值;NSInteger 是基本数据类型，并不是 NSNumber 的子类，当然也不 是NSObject的子类。NSInteger是基本数据类型 Int或者Long的别名 (NSInteger 的定义 typedef long NSInteger) ，它的区别在于， NSInteger 会根据系统是 32 位还是 64位来决定是本身是 int还是 Long 。
-7.id 声明的对象有什么特性 ?
-Id 声明的对象具有运行时的特性，即可以指向任意类型的
-objcetive-c 的对象 ;
 
 8.Objective-C 如何对内存管理的 ,说说你的看法和解决方法 ? Objective-C 的内存管理主要有三种方式 ARC( 自动内存计数 )、手
 动内存计数、内存池。
@@ -9302,21 +9213,6 @@ bool 是 C 语言 C99标准中增添的变量类型， Object-C 仅仅是从 C �
 种类型，该类型有 true 和 false 两个值，表示真和假。 BOOL是 Obj-C 独有的
 
 布尔类型，有 YES和 NO两个值，分别是 1 和 0 的宏。 Obj-C 中同时认为所有非 0 的值都是真值， 0 为假值
-24. OC 如何实现私有方法 ?
-Obj-C 语法中并没有私有方法的概念，但是由于 Obj-C 是通过导入其他类的头
-文件来获取其他类所拥有的成员方法的声明，因此可以采用编写方法时，不声 明，或仅在 .m文件中的匿名类别中声明的方式，使方法对外不可见，即可达到 方法私有化的目的。但是外部类仍然可以通过 @selector 来访问确实存在的私 有方法，因此严格来讲 Obj-C 确实不能真正实现方法私有化
-25. #import 和#include 的区别 @ class 代表什么 预编译指令
-Objective-C : #import
-C，C++: #include
-#import 由 gcc 编译器支持
-在 Objective-C 中， #import 被当成 #include 指令的改良版本来使用。除此 之外， #import 确定一个文件只能被导入一次，这使你在递归包含中不会出现 问题。
-使用哪一个还是由你来决定。一般来说，在导入 Objective-C 头文件的时候使 用 #import ，包含 C 头文件时使用 #include 。比如:
-#import
-#include #include
-#import 比起 #include 的好处就是不会引起交叉编译 二、 @class 是用来做类引用的
-@class 就是告诉编译器有这么一个类，至于类的定义是啥不知道
-@class 一般用于头文件中需要声明该类的某个实例变量的时候用到，在 m文件
-中还是需要使用 #import
 26. NSString 和 NSMutableString 的区别
 NSString 是一个不可变的字符串对象。这不是表示这个对象声明的变量的值不 可变，而是表示它初始化以后，你不能改变该变量所分配的内存中的值，但你 可以重新分配该变量所处的内存空间。而 NSMutableString 是可变的，意味着 你可以追加它的内存空间，或者修改它所分配的内存空间中的值。
 
@@ -9854,19 +9750,8 @@ _name = [name copy]; }
 
 2在该类定义了代理属性，但是代理属性的语义特性为 retain 。 在代理对象类
 中也定义了属性来存储该类的对象，语义特性也是 retain ，就会造成互相保 有，循环引 ?用。
-3在 A中定义了 B类对象的属性，语义特性为 retain 。 并在 B类中定义了 A类对 象的属性，语义特性为 retain 。 当属性都存储对应的对象时，就产 ?生的循环引
-?用。
-10.#import 和 #include 的区别 @class?
-答:
-#import 和#include 都是 ?用来导 ?入头 ?文件，只不#过import 多?用于OC中导 ?入头 ?文 件， ?而#include 多?用于C语?言中。#import ?比#include 更加智能， ?无论将同 ?一个
-头?文件导 ?入多少次，#import 只会导 ?入?一次， ?#而include 会导 ?入多次，从 ?而会产 ?生重复导 ?入，交叉编译， ?#而import 不会。
-@class 的作 ?用是声明后 ?面的字符串可以当做类名使 ?用， ?比@如cla:ss A ，A可 以当做类名使 ?用，但是A 不具备该类的功能。如果想使 ?用该类的功能，必须要 在.m?文件中使 ?用#import 导?入头 ?文件。
-@class 和#import 结合可以避免循环导 ?入问题。
-11.使?用self.name = @ “object 和”;_name = @ “object ”有什么不
-同吗? 答:
-self.name = @ “ object 是”调, ?用属性 ?生成s的etter ?方法，该属性的语义特性如果 为retain ，会先判断该对象和实例变量 _name 之前的值是否 ?一致，如果不 ?一
-致，先将之前对象 release ，再将新对象 retain ，引 ?用计数加1，拥有所有权。 ?而_name = @“object ”只. 是实例变量的简单赋值， ?用来存储对象的地址 ?而已，
-引?用计数不会发 ?生任何变化。
+3在 A中定义了 B类对象的属性，语义特性为 retain 。 并在 B类中定义了 A类对 象的属性，语义特性为 retain 。 当属性都存储对应的对象时，就产生的循环引用。
+
 12.请简述 self.name = nil 的机制 ,以及与 [_name release] 的区别 ?
 答:
 self.name = nil; 是调 ?用属性 ?生成s的etter ?方法，会先将原有对象释放 release ，
@@ -10746,7 +10631,6 @@ a+1 是数组下一元素的地址，即 a[1],&a+1 是下一个对象的地址�
 37、 不不要阻塞主线程 38、谈谈你对多线程开发的理理解?ios中有⼏几种实现多线程的⽅方法? 39、进程和线程的区别?同步异步的区别?并⾏行行和并发的区别? 40、ViewController⽣生命周期
 41、iOS 中的多线程 42、内存管理理的⼏几条原则时什什么?按照默认法则.那些关键字⽣生成的对象 需要⼿手动释放?在和property结合的时候怎样有效的避免内存泄露露?
 谁申请，谁释放
-43、dispatch_barrier_async的作⽤用是什什么? 44、如何⽤用GCD同步若⼲干个异步调⽤用?(如根据若⼲干个url异步加载多张图⽚片，然后在 都下载完成后合成⼀一张整图)
 
 48、1.什什么⽅方式可以看到上架App的头⽂文件? 2.阅读过哪些框架的源码?能说说它的架构⽅方式吗 49、iOS iAP内购审核可能失败的问题 50、IAP内购中虚拟货币导致审核⽆无法通过的问题?
 
@@ -11185,16 +11069,12 @@ GCD
 42、内存管理理的⼏几条原则时什什么?按照默认法则.那些关键字⽣生成的对象 需要⼿手动释放?在和property结合的时候怎样有效的避免内存泄露露? 谁申请，谁释放
 遵循Cocoa Touch的使⽤用原则; 内存管理理主要要避免“过早释放”和“内存泄漏漏”，对于“过早释放”需要注意@property 设置特性时，⼀一定要⽤用对特性关键字，对于“内存泄漏漏”，⼀一定要申请了了要负责释放， 要细⼼心。
 关键字alloc 或new ⽣生成的对象需要⼿手动释放; 设置正确的property属性，对于retain需要在合适的地⽅方释放，
-43、dispatch_barrier_async的作⽤用是什什么? 在并⾏行行队列列中，为了了保持某些任务的顺序，需要等待⼀一些任务完成后才能继续进⾏行行， 使⽤用 barrier 来等待之前任务完成，避免数据竞争等问题。 dispatch_barrier_async 函数会等待追加到Concurrent Dispatch Queue并⾏行行队列列中的操作全部执⾏行行完之后， 然后再执⾏行行 dispatch_barrier_async 函数追加的处理理，等 dispatch_barrier_async 追加的处理理执⾏行行结束之后，Concurrent Dispatch Queue才恢复之前的动作继续执 ⾏行行。
-打个⽐比⽅方:⽐比如你们公司周末跟团旅游，⾼高速休息站上，司机说:⼤大家都去上厕所， 速战速决，上完厕所就上⾼高速。超⼤大的公共厕所，⼤大家同时去，程序猿很快就结束 了了，但程序媛就可能会慢⼀一些，即使你第⼀一个回来，司机也不不会出发，司机要等待所 有⼈人都回来后，才能出发。 dispatch_barrier_async 函数追加的内容就如同 “上完厕 所就上⾼高速”这个动作。
-(注意:使⽤用 dispatch_barrier_async ，该函数只能搭配⾃自定义并⾏行行队列列 dispatch_queue_t 使⽤用。不不能使⽤用: dispatch_get_global_queue ，否则
 
-dispatch_barrier_async 的作⽤用会和 dispatch_async 的作⽤用⼀一模⼀一样。 )
 44、如何⽤用GCD同步若⼲干个异步调⽤用?(如根据若⼲干个url异步加载多张图⽚片，然后在 都下载完成后合成⼀一张整图)
 使⽤用Dispatch Group追加block到Global Group Queue,这些block如果全部执⾏行行完 毕，就会执⾏行行Main Dispatch Queue中的结束处理理的block。
 dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0); dispatch_group_t group = dispatch_group_create(); dispatch_group_async(group, queue, ^{ /*加载图⽚片1 */ }); dispatch_group_async(group, queue, ^{ /*加载图⽚片2 */ }); dispatch_group_async(group, queue, ^{ /*加载图⽚片3 */ }); dispatch_group_notify(group, dispatch_get_main_queue(), ^{
 // 合并图⽚片 });
-\
+
 47、服务器器能否知道APNS推送后有没有到达客户端的⽅方法? APNS是苹果提供的远程推送的服务，APP开发此功能之后，⽤用户允许推送之后，服务端可以向安 装了了此app的⽤用户推送信息。但是APNS推送⽆无法保证100%到达。
 
 ⽬目前关于APNS苹果更更新了了新的策略略，即 APNS/HTTP2.
@@ -11561,24 +11441,14 @@ xib 文件设计时，其设置其为
 •       为了防止通过copy方法得到新的实例，需要实现-copyWithZone方法
 •       只需在此方法中返回本身对象即可，引用计数也不需要进行改变，因为单例模式下的对象是不允许销毁的，所以也就不用保留
 •       因为全局实例不允许释放，所以retain,release,autorelease方法均需重写
-11、@class的作用是什么？
-答：在头文件中,一般只需要知道被引用的类的名称就可以了。 不需要知道其内部的实体变量和方法，所以在头文件中一般使用@class来声明这个名称是类的名称。 而在实现类里面，因为会用到这个引用类的内部的实体变量和方法，所以需要使用#import来包含这个被引用类的头文件。
-•       @class的作用是告诉编译器，有这么一个类，用吧，没有问题
-•       @class还可以解决循环依赖的问题，例如A.h导入了B.h，而B.h导入了A.h，每一个头文件的编译都要让对象先编译成功才行
-•       使用@class就可以避免这种情况的发生
+
 12、KVC是什么?KVO是什么?有什么特点？
-•       KVC是键值编码，特点是通过指定表示要访问的属性名字的字符串标识符，可以进行类的属性读取和设置
-•       KVO是键值观察，特点是利用键值观察可以注册成为一个对象的观察者，在该对象的某个属性变化时收到通知
+KVC是键值编码，特点是通过指定表示要访问的属性名字的字符串标识符，可以进行类的属性读取和设置
+KVO是键值观察，特点是利用键值观察可以注册成为一个对象的观察者，在该对象的某个属性变化时收到通知
 
-
- 
-
- 
 16.id 声明的对象有什么特性？
 答：Id声明的对象具有运行时的特性，即可以指向任意类型的objcetive-c的对象；
-  
 
- 
 27、struct strA {
    int a;
    float b;
@@ -12101,12 +11971,7 @@ nil ，如果nil
 ? 只需在此方法中返回本身对象即可，引用计数也不需要进行改变， 因为 单例模式下的对象是不允许销毁的，所以也就不用保留
 
 ? 因为全局实例不允许释放，所以 retain,release,autorelease 方法均 需重写
-11、 @class的作用是什么?
-答:在头文件中，一般只需要知道被引用的类的名称就可以了。不需要知道其内部的实 体变量和方法，所以在头文件中一般使用 @class来声明这个名称是类的名称。而在实 现类里面，因为会用到这个引用类的内部的实体变量和方法，所以需要使用 #import 来 包含这个被引用类的头文件。
-? @class 的作用是告诉编译器，有这么一个类，用吧，没有问题
-? @class 还可以解决循环依赖的问题，例如 A.h 导入了 B.h ，而 B.h 导入了
-A.h ，每一个头文件的编译都要让对象先编译成功才行
-? 使用 @class就可以避免这种情况的发生
+
 12、 KVC是什么 ?KVO是什么 ?有什么特点?
 ? KVC是键值编码，特点是通过指定表示要访问的属性名字的字符串标识 符，可以进行类的属性读取和设置
 ? KVO是键值观察， 特点是利用键值观察可以注册成为一个对象的观察者， 在该对象的某个属性变化时收到通知
@@ -12861,8 +12726,6 @@ ViewController 的 didReceiveMemoryWarning 是在什么时候被调用的？默�
 What is lazy loading?
 什么是Protocol？什么是代理？写一个委托的interface？委托的property声明用什么属性？为什么？
 分别描述类别（categories）和延展（extensions）是什么？以及两者的区别？继承和类别在实现中有何区别？为什么Category只能为对象添加方法，却不能添加成员变量？
-Objective-C有私有方法么？私有变量呢？如多没有的话，有没有什么代替的方法？
-#import、#include和@class有什么区别
 谈谈你对MVC的理解？为什么要用MVC？在Cocoa中MVC是怎么实现的？你还熟悉其他的OC设计模式或别的设计模式吗？
 如监测系统键盘的弹出
 举出5个以上你所熟悉的ios  sdk库有哪些和第三方库有哪些？
@@ -13822,64 +13685,10 @@ int a;
 char b; } c;
 c.a = 1;
 return (c.b ==1); }
-}
-剖析:嵌入式系统开发者应该对
-模式的 CPU 对操作数的存放方式是从低字节到高字节， Big-endian 模式的 CPU 对操作数
-Little-endian 和 Big-endian 模式非常了解。 采用 Little-endian
-
-的存放方式是从高字节到低字节。 在弄清楚这个之前要弄清楚这个问题: 字节从右到坐为从 高到低 ! 假设从地址 0x4000 开始存放 : 0x12345678, 是也个 32 位四个字节的数据，最高字 节是 0x12, 最低字节是 0x78 :在 Little-endian 模式 CPU 内存中的存放方式为: (高字节在 高地址 , 低字节在低地址 )
-内存地址 0x4000 0x4001 0x4002 0x4003 存放内容 0x78 0x56 0x34 0x12 大端机则相反。
-有的处理器系统采用了小端方式进行数据存放，如 Intel 的奔腾。有的处理器系统采用了大 端方式进行数据存放，如 IBM 半导体和 Freescale 的 PowerPC 处理器。不仅对于处理器， 一些外设的设计中也存在着使用大端或者小端进行数据存放的选择。 因此在一个处理器系统 中，有可能存在大端和小端模式同时存在的现象。 这一现象为系统的软硬件设计带来了不小
-的麻烦， 这要求系统设计工程师， 必须深入理解大端和小端模式的差别。 差别体现在一个处理器的寄存器，指令集，系统总线等各个层次中。 顺序是所有成员都从低地址开始存放的。以上是网上的原文。让我们看看在
-大端与小端模式的 联合体 union 的存放
-union 是如何存储的呢 ? 地址 A ---------------- |A
-ARM 处理器上 |A+1 |A+2 |A+3 |int a;
-| | | | ---------
-------------------- |A
-|0x01 |0x00 |0x00 ---------
-如果是大端如何存储 地址 A ---------------------
---------- |A |A+1 |A+2 |A+3 ------------------------------------------ |A ---------
-58
--------------------- |A
-地址 A -----------
-|A+2 |A+3 | int a;
-|char b; | |
-如果是小端如何存储
-c.a 的呢?
-|
-|
-|A+1
-|0x00 | ------------------------------------- |A
-c.a 的呢?
-|char b; |
-|0x00 |0x00 |0x01
-|int a; |0x00 |char b; | |
-现在知道为什么 c.b==0 的话是大端， c.b==1 的话就是小端了吧。
-堆和栈上的指针
-指针所指向的这块内存是在哪里分配的 ,在堆上称为堆上的指针 ,在栈上为栈上的指针 . 在堆上的指针 , 可以保存在全局数据结构中 ,供不同函数使用访问同一块内存 .
-
-在栈上的指针 , 在函数退出后 ,该内存即不可访问 . 59 什么是指针的释放 ?
-具体来说包括两个概念 .
-1 释放该指针指向的内存 ,只有堆上的内存才需要我们手工释放 ,栈上不需要 . 2 将该指针重定向为 NULL.
-60 数据结构中的指针 ? 其实就是指向一块内存的地址
-7 函数指针 ? 指向一块函数的入口地址 .
-8 指针作为函数的参数 ? 比如指向一个复杂数据结构的指针作为函数变量 这种方法避免整个复杂数据类型内存的压栈出栈操作 注意 :指针本身不可变 ,但指针指向的数据结构可以改变
-9 指向指针的指针 ?
-指针指向的变量是一个指针 ,即具体内容为一个指针的值
-此时指针指向的变量长度也是 4 位 . 61 指针与地址的区别 ?
-区别 :
-1 指针意味着已经有一个指针变量存在 ,他的值是一个地址
-,通过指针传递 , 可实现复杂的内存访问 .
-,指针变量本身也存放在一个长度 为四个字节的地址当中 , 而地址概念本身并不代表有任何变量存在 .
-2 指针的值 ,如果没有限制 ,通常是可以变化的 , 也可以指向另外一个地址 . 地址表示内存空间的一个位置点 , 他是用来赋给指针的 ,地址本身是没有大小概念 ,指针指
-向变量的大小 , 取决于地址后面存放的变量类型 . 62 指针与数组名的关系 ?
-其值都是一个地址 ,但前者是可以移动的 ,后者是不可变的 .
 12 怎样防止指针的越界使用问题 ? 必须让指针指向一个有效的内存地址 ,
 1 防止数组越界
-,提高效率 . .
-,是一个地址 .
-
- 2 防止向一块内存中拷贝过多的内容 3 防止使用空指针
+ 2 防止向一块内存中拷贝过多的内容
+  3 防止使用空指针
 4 防止改变 const 修改的指针
 5 防止改变指向静态存储区的内容
 6 防止两次释放一个指针 7 防止使用野指针 .
@@ -13895,12 +13704,7 @@ c.a 的呢?
 64 全局变量和局部变量在内存中是否有区别?如果有，是什么区别? 全局变量储存在静态数据库，局部变量在堆栈
 10. 什么是平衡二叉树? 左右子树都是平衡二叉树且左右子树的深度差值的绝对值不大于 1
 65 堆栈溢出一般是由什么原因导致的? 没有回收垃圾资源
-12. 什么函数不能声明为虚函数? constructor
 13. 冒泡排序算法的时间复杂度是什么? O(n^2)
-14. 写出 float x 与―零值 ‖比较的 if 语句。
-?
-
- 区
 if(x>0.000001&&x<-0.000001)
 16. Internet 采用哪种网络协议?该协议的主要层次结构? tcp/ip 应用层 /传输层 /网络层 /数据链路层 / 物理层
 17. Internet 物理地址和 IP 地址转换采用什么协议? ARP (Address Resolution Protocol) (地址解析協議) 18.IP 地址的编码分为哪俩部分?
@@ -13914,7 +13718,7 @@ M 输出该数值，直至全
 而
 循环链表，用取余操作做
 3. 不能做 switch() 的参数类型是: switch 的参数不能为实型。
-華為
+
 1 、局部变量能否和全局变量重名?
 答:能，局部会屏蔽全局。要用全局变量，需要使用 "::" 局部变量可以与全局变量同名， 在函数内引用这个变量时， 会用到同名的局部变量，
 不会用到全局变量。对于有些编译器而言，在同一个函数内可以定义多个同名的局 部变
@@ -13926,10 +13730,7 @@ M 输出该数值，直至全
 某个
     在头文件中声明的全局变理，假定你将那个变写错了，那么在编译期间会报错，如
 果你
-用 extern 方式引用时，假定你犯了同样的错误，那么在编译期间不会报错，而在连
-
- 接期
-间报错
+用 extern 方式引用时，假定你犯了同样的错误，那么在编译期间不会报错，而接期间报错
 3、全局变量可不可以定义在可被多个 .C 文件包含的头文件中?为什么? 答:可以，在不同的 C 文件中以 static 形式来声明同名全局变量。
 可以在不同的 C 文件中声明同名的全局变量， 前提是其中只能有一个 C 文件中对此
 变量赋
@@ -13944,8 +13745,7 @@ M 输出该数值，直至全
 线程是指进程内的一个执行单元 ,也是进程内的可调度实体 . 与进程的区别 :
 (1) 调度:线程作为调度和分配的基本单位，进程作为拥有资源的基本单位
 (2) 并发性: 不仅进程之间可以并发执行， 同一个进程的多个线程之间也可并发执行 (3) 拥有资源:进程是拥有资源的一个独立单位，线程不拥有系统资源，但可以访问
-隶属
-于进程的资源 .
+隶属于进程的资源 .
 (4) 系统开销:在创建或撤消进程时，由于系统都要为之分配和回收资源，导致系统 的开
 销明显大于创建或撤消线程时的开销。 2. 测试方法
 人工测试:个人复查、抽查和会审 机器测试:黑盒测试和白盒测试
@@ -13954,8 +13754,7 @@ M 输出该数值，直至全
 Heap 是堆， stack 是栈。
 Stack 的空间由操作系统自动分配 /释放， Heap 上的空间手动分配 / 释放。 Stack 空间有限， Heap 是很大的自由存储区
 C 中的 malloc 函数分配的内存空间即在堆上
-    程序在编译期对变量和函数分配内存都在栈上进行
-参数的
+    程序在编译期对变量和函数分配内存都在栈上进行参数的
 传递也在栈上进行
 3 . Windows 下的内存是如何管理的?
 4.介绍 .Net 和.Net 的安全性。
@@ -13975,262 +13774,10 @@ FindWindow ，互斥，写标志到文件或注册表 ,共享内存。
 以后再运行速度比单独执行 SQL 快很多 15 . Template 有什么特点?什么时候用?
 ,C++ 中对应的是 new 操作符。
 , 且程序运行过程中函数调用时
-
- 品。
 16 .谈谈 Windows DNA 结构的特点和优点。 网络编程中设计并发服务器，使用多进程与多线程，请问有什么区别?
 1 ，进程:子进程是父进程的复制品。子进程获得父进程数据空间、堆和栈的复制
 2 ，线程:相对与进程而言，线程是一个更加接近与执行体的概念，它可以与同进 程的其
-他线程共享数据，但拥有自己的栈空间，拥有独立的执行序列。 两者都可以提高程序的并发度，提高程序运行效率和响应时间。 线程和进程在使用上各有优缺点:线程执行开销小，但不利于资源管理和保护;而
-进程
-68 2. 找错题
-试题 1:
-void test1() {
-char string[10];
-char* str1 = "0123456789"; strcpy( string, str1 );
-}
-试题 2:
-void test2()
-{
-char string[10], str1[10];
-int i;
-for(i=0; i<10; i++) {
-str1 = 'a'; }
-正相反。同时，线程适合于在 思科
-SMP 机器上运行，而进程则可以跨机器迁移。
-
-strcpy( string, str1 ); }
-试题 3:
-void test3(char* str1) {
-char string[10];
-if( strlen( str1 ) <= 10 ) {
-strcpy( string, str1 ); }
-}
-解答:
-试题 1 字符串 str1 需要 11 个字节才能存放下(包括末尾的 字节的空间， strcpy 会导致数组越界;
-‘0‘)，而 string 只有 10 个
-对试题 2，如果面试者指出字符数组 str1 不能在数组内结束可以给 3 分;如果面试者 指出 strcpy(string, str1) 调用使得从 str1[url=] 内存 [/url] 起复制到 string 内存起所复制的字节 数具有不确定性可以给 7 分，在此基础上指出库函数 strcpy 工作方式的给 10 分;
-对试题 3 ，if(strlen(str1) <= 10) 应改为 if(strlen(str1) < 10) ，因为 strlen 的结果未统计 ‘0‘ 所占用的 1 个字节。
-剖析:
-考查对基本功的掌握:
-(1)字符串以 ‘\0‘结尾;
-(2) 对数组越界把握的敏感度;
-
-(3) 库函数 strcpy 的工作方式， 如果编写一个标准 strcpy 函数的总分值为 10 ，下面给出 几个不同得分的答案:
-2分
-void strcpy( char *strDest, char *strSrc ) {
-while( (*strDest++ = * strSrc++) != ?
-}
-4分
-0‘ );
-void strcpy( char *strDest, const char *strSrc ) //将源字符串加 const ，表明其为输入参数，加 2 分 {
-while( (*strDest++ = * strSrc++) != ? 0‘ ); }
-7分
-void strcpy(char *strDest, const char *strSrc) {
-// 对源地址和目的地址加非 0 断言，加 3 分 assert( (strDest != NULL) && (strSrc != NULL) ); while( (*strDest++ = * strSrc++) != ? 0‘ );
-}
-10 分
-//为了实现链式操作，将目的地址返回，加
-char * strcpy( char *strDest, const char *strSrc ) {
-3 分!
-assert( (strDest != NULL) && (strSrc != NULL) ); char *address = strDest;
-
-while( (*strDest++ = * strSrc++) != ? 0‘ ); return address;
-}
-从 2 分到 10 分的几个答案我们可以清楚的看到， 真不是盖的!需要多么扎实的基本功才能写一个完美的
-(4) 对 strlen 的掌握，它没有包括字符串末尾的
-小小的 strcpy 竟然暗藏着这么多玄机， strcpy 啊!
-'\0' 。
-读者看了不同分值的 strcpy 版本，应该也可以写出一个 10 分的 strlen 函数了，完美的 版本为: int strlen( const char *str ) // 输入参数 const
-{
-}
-return len; }
-试题 4:
-void GetMemory( char *p )
-{
-p = (char *) malloc( 100 );
-}
-void Test( void ) {
-char *str = NULL; GetMemory( str );
-strcpy( str, "hello world" );
-断言字符串地址非 0
-assert( strt != NULL ); // int len;
-while( (*str++) != '\0' )
-{
-len++;
-
-printf( str ); }
-试题 5:
-char *GetMemory( void ) {
-char p[] = "hello world";
-return p; }
-void Test( void ) {
-char *str = NULL; str = GetMemory(); printf( str );
-}
-试题 6:
-void GetMemory( char **p, int num ) {
-*p = (char *) malloc( num ); }
-void Test( void ) {
-char *str = NULL; GetMemory( &str, 100 ); strcpy( str, "hello" ); printf( str );
-}
-试题 7:
-
-void Test( void ) {
-char *str = (char *) malloc( 100 ); strcpy( str, "hello" );
-free( str );
-... // 省略的其它语句
-}
-试题 4 传入中 GetMemory( char *p ) 函数的形参为字符串指针， 在函数内部修改形参并 不能真正的改变传入形参的值，执行完
-char *str = NULL; GetMemory( str );
-后的 str 仍然为 NULL ;
-试题 5 中
-char p[] = "hello world"; return p;
-的 p[]数组为函数内的局部自动变量，在函数返回后，内存已经被释放。这是许多程序 员常犯的错误，其根源在于不理解变量的生存期。
-试题 6 的 GetMemory 避免了试题 4 的问题，传入 GetMemory 的参数为字符串指针的 指针，但是在 GetMemory 中执行申请内存及赋值语句
-*p = (char *) malloc( num );
-  后未判断内存是否申请成功，应加上:
-if ( *p == NULL ) {
-...// 进行申请内存失败处理
-解答:
-
-}
-试题 7 存在与试题 6 同样的问题，在执行
-char *str = (char *) malloc(100);
-后未进行内存是否申请成功的判断;另外，在 一个 ―野 ‖指针，应加上:
-free(str) 后未置 str 为空，导致可能变成
-str = NULL;
-试题 6 的 Test 函数中也未对 malloc 的内存进行释放。
-剖析:
-试题 4~7 考查面试者对内存操作的理解程度，基本功扎实的面试者一般都能正确的回 答其中 50~60 的错误。但是要完全解答正确，却也绝非易事。
-  对内存操作的考查主要集中在:
-( 1)指针的理解;
-( 2)变量的生存期及作用范围;
-( 3)良好的动态内存申请和释放习惯。
-再看看下面的一段程序有什么错误:
-swap( int* p1,int* p2 ) {
-int *p;
-*p = *p1; *p1 = *p2; *p2 = *p;
-}
-
- 在 swap 函数中，p 是一个 ―野‖指针，有可能指向系统区， 导致程序运行的崩溃。 在 VC++ 中 DEBUG 运行时提示错误 ―Access Violation 。‖该程序应该改为:
-swap( int* p1,int* p2 ) {
-int p;
-p = *p1; *p1 = *p2; *p2 = p;
-} [img=12,12]file:///D:/ /temp/{56068A28-3D3B-4D8B-9F82-AC1C3E9B128C}_arc_d[1].gif[/img]
-鱼鱼软件 /鱼鱼多媒体日记本
-试题 1:分别给出 BOOL ，int，float ，指针变量 与―零值 ‖比较的 if 语句(假设变量名为 var )
-解答:
-BOOL 型变量: if(!var)
-int 型变量: if(var==0)
-float 型变量:
-const float EPSINON = 0.00001;
-if ((x >= - EPSINON) && (x <= EPSINON)
-指针变量: if(var==NULL)
-剖析:
-考查对 0 值判断的 ―内功 ‖，BOOL 型变量的 0 判断完全可以写成
-if(var==0) ，而 int 型变
-3. 内功题
-
-量也可以写成 if(!var) ，指针变量的判断也可以写成 if(!var) ，上述写法虽然程序都能正确运 行，但是未能清晰地表达程序的意思。
-一般的， 如果想让 if 判断一个变量的 ―真 ‖、―假 ‖，应直接使用 if(var) 、if(!var) ，表明其为 ―逻 辑 ‖判断;如果用 if 判断一个数值型变量 (short 、int 、long 等 )，应该用 if(var==0) ，表明是与
-0 进行 ―数值 ‖上的比较;而判断指针则适宜用 if(var==NULL) ，这是一种很好的编程习惯。
-浮点型变量并不精确，所以不可将 float 变量用 ―==或‖―!=‖与数字比较，应该设法转化 成―>=‖或―<=形‖式。如果写成 if (x == 0.0) ，则判为错，得 0 分。
-试题 2:以下为 Windows NT 下的 32 位 C++ 程序，请计算 sizeof 的值
-void Func ( char str[100] )
-{
-sizeof( str ) = ?
-}
-void *p = malloc( 100 ); sizeof ( p ) = ?
-解答:
-sizeof( str ) = 4 sizeof ( p ) = 4
-剖析:
-函数中数组名作为函数形参时，在函数体内，数组名失去了本身 的内涵，仅仅只是一个指针;在失去其内涵的同时，它还失去了其常量特性，可以作自增、
-自减等操作，可以被修改。
-数组名的本质如下:
-( 1)数组名指代一种数据结构，这种数据结构就是数组;
-Func ( char str[100] )
-
-例如:
-char str[10];
-cout << sizeof(str) << endl;
-输出结果为 10 ， str 指代数据结构 char[10] 。
-(2)数组名可以转换为指向其指代实体的指针，而且是一个指针常量，不能作自增、 自减等操作，不能被修改;
-char str[10];
-str++; // 编译出错，提示 str 不是左值
-( 3)数组名作为函数形参时，沦为普通指针。
-Windows NT 32 位平台下， 指针的长度 (占用内存的大小) 为 4 字节，故 sizeof( str ) 、 sizeof ( p ) 都为 4。
-试题 3:写一个 ―标准‖宏 MIN，这个宏输入两个参数并返回较小的一个。另外，当你写 下面的代码时会发生什么事?
-least = MIN(*p++, b);
-解答:
-#define MIN(A,B) ((A) <= (B) ? (A) : (B)) MIN(*p++, b) 会产生宏的副作用
-剖析:
-这个面试题主要考查面试者对宏定义的使用，
-它终归不是函数，而宏定义中括弧中的 ―参数 ‖也不是真的参数，在宏展开的时候对 ―参数 ‖进
-行的是一对一的替换。
-  程序员对宏定义的使用要非常小心，特别要注意两个问题:
-宏定义可以实现类似于函数的功能， 但是
-
-(1)谨慎地将宏定义中的 ―参数 ‖和整个宏用用括弧括起来。所以，严格地讲，下述解 答:
-#define MIN(A,B) (A) <= (B) ? (A) : (B) #define MIN(A,B) (A <= B ? A : B )
-都应判 0 分;
-( 2)防止宏的副作用。
-宏定义 #define MIN(A,B) ((A) <= (B) ? (A) : (B))
-((*p++) <= (b) ? (*p++) : (*p++))
-对 MIN(*p++, b) 的作用结果是:
-这个表达式会产生副作用，指针 p 会作三次 ++ 自增操作。
-除此之外，另一个应该判 0 分的解答是:
-#define MIN(A,B) ((A) <= (B) ? (A) : (B));
-这个解答在宏定义的后面加 ― ;，‖显示编写者对宏的概念模糊不清，只能被无情地判 0
-分并被面试官淘汰。
-试题 4:为什么标准头文件都有类似以下的结构?
-#ifndef __INCvxWorksh #define __INCvxWorksh #ifdef __cplusplus
-extern "C" { #endif
-/*...*/
-#ifdef __cplusplus
-
- }
-#endif
-#endif /* __INCvxWorksh */
-解答:
-头文件中的编译宏
-#ifndef __INCvxWorksh
-#define __INCvxWorksh
-#endif
-的作用是防止被重复引用。
-作为一种面向对象的语言， C++ 支持函数重载， 而过程式语言 C 则不支持。 函数被 C++ 编译后在 symbol 库中的名字与 C 语言的不同。例如，假设某个函数的原型为:
-void foo(int x, int y);
-该函数被 C 编译器编译后在 symbol 库中的名字为 _foo ，而 C++ 编译器则会产生像
-_foo_int_int 之类的名字。 _foo_int_int 这样的名字包含了函数名和函数参数数量及类型信息， C++ 就是考这种机制来实现函数重载的。
-为了实现 C 和 C++ 的混合编程， C++ 提供了 C 连接交换指定符号 extern "C" 来解决名 字匹配问题， 函数声明前加上 extern "C" 后，则编译器就会按照 C 语言的方式将该函数编译 为_foo ，这样 C 语言中就可以调用 C++ 的函数了。 [img=12,12]file:///D:/ 鱼鱼软件 /鱼鱼多媒 体日记本 /temp/{C74A38C4-432E-4799-B54D-73E2CD3C5206}_arc_d[1].gif[/img]
-试题 5:编写一个函数，作用是把一个 char 组成的字符串循环右移 n 个。比如原来是 ― abcdefghi如果‖ n=2 ，移位后应该是 ― hiabcdefgh ‖
-函数头是这样的:
-//pStr 是指向以 '\0'结尾的字符串的指针 //steps 是要求移动的 n
-
-void LoopMove ( char * pStr, int steps ) {
-//请填充 ... }
-解答:
-正确解答 1:
-void LoopMove ( char *pStr, int steps )
-{
-int n = strlen( pStr ) - steps;
-char tmp[MAX_LEN];
-strcpy ( tmp, pStr + n ); strcpy ( tmp + steps, pStr);
-*( tmp + strlen ( pStr ) ) = '\0'; strcpy( pStr, tmp );
-}
-正确解答 2:
-void LoopMove ( char *pStr, int steps ) {
-int n = strlen( pStr ) - steps; char tmp[MAX_LEN];
-memcpy( tmp, pStr + n, steps ); memcpy(pStr + steps, pStr, n ); memcpy(pStr, tmp, steps );
-}
-剖析:
-这个试题主要考查面试者对标准库函数的熟练程度， 程度上简化程序编写的工作量。
-在需要的时候引用库函数可以很大
-
-最频繁被使用的库函数包括:
-(1) strcpy
-(2) memcpy
-(3) memset
-3
-
+他线程共享数据，但拥有自己的栈空间，拥有独立的执行序列。 两者都可以提高程序的并发度，提高程序运行效率和响应时间。 线程和进程在使用上各有优缺点:线程执行开销小，但不利于资源管理和保护;进程
 
 
  无限互联 iOS 开发工程师面试题【 1-30 】 1、请你自我介绍一下你自己 ?
@@ -14861,12 +14408,10 @@ OBJECT - C 的类可以多重继承么?可以实现多个接口么?重写一个�
 59. 线程与进程的区别和联系 ? 14 60.IOS平台怎么做数据的持久化?COREDATA和SQLITE有无必然联系?COREDAT是A一个关系型数据库吗?
 61. 62.
 63. 64. 分)。 65. 66. 67. 68. 69. 70. 71. 73. 74. 75. 76. 77.
-OBJ- C 有多重继承么 ? 如果没有什么替代方法 ? OBJ- C 有私有方法么 ? 私有变量呢?
 14
 14 14 15
 * 号外， 15 15
 获取项目根路径，并在其下创建一个名称为
-TABLEVIEW 的重用机制( 10 分)?
 这段代码有什么问题吗
 用变量 A 给出下面的定义
 给定一个字符串，输出本字符串中只出现一次并且最靠前的那个字符的位置? 17 OBJECTIVE- C 中的数字对象都有哪些，简述它们与基本数据类型的区别是什么? 18 用 NSLOG 函数输出一个浮点类型，结果四舍五入，并保留一位小数 18 获取项目根路径，并在其下创建一个名称为 USERDATA 的目录。 19 DO- WHILE 与 WHILE- DO 的区别? 19
@@ -14877,42 +14422,6 @@ TABLEVIEW 的重用机制( 10 分)?
 USERDATA
 的目录。(10 分)。 15 16 16 16
 FUN，功能是，除了中间和尾部的
-
-1.#import 和 #include 的区别 @class?
-@class 一般用于头文件中需要声明该类的某个实例变量的时候用到，在 而#import 比起 #include 的好处就是不会引起交叉编译
-2. readwrite， readonly， assign， retain ， copy， nonatomic 属性的作用
-m 文
-件中还是需要使用
-#import
-@property 是 一个属性访问声明，扩号内支持以下几个属性:
-1， getter=getName， setter=setName，设置 setter 与 getter 的方法名
-2， readwrite,readonly，设置可供访问级别
-2，assign，setter 方法直接赋值，不进行任何 retain 操作，为了解决原类型与环循引用问题
-3， retain， setter 方法对参数进行 release 旧值再 retain 新值，所有 实现都是这个顺序 (CC 上有相关资料
-)
-retainCount 为 1。这是为
-4，copy ， setter 方法进行 Copy 操作，与
-了减少对上下文的依赖而引入的机制。
-5，nonatomic ，非原子性访问，不加同步， 原子型事务访问。锁被加到所属对象实例级
-retain 处理流程一样，先旧值 release，再 Copy 出新的对象，
-多线程并发访问会提高性能。注意，如果不加此属性，则默认是两个访问方法都为 (我是这么理解的, )。
-3.在一个对象的方法里面: self.name= “object”;和 name =”object” 有什么不同吗 ?
-答:
-self.name =” object”:会调用对象的 setName()方法;
-name = “object”:会直接把 object 赋值给当前对象的 name 属性。
-4.请简述 self.name= nil 的机制，以及与 [namerelease]的区别?
-self.name =nil; // 使用 nil 参数调用 setName:方法
-[name release]生成的访问器将自动释放以前的 name对象
-5.请简要说明 viewDidLoad 和 viewDidUnload 何时调用
-答:
-viewDidLoad 在 view 从 nib 文件初始化时调用，
-loadView 在 controller 的 view 为 nil 时调用。
-此方法在编程实现 view 时调用， view 控制器默认会注册 memory warning notification ，
-当 view controller 的任何 view 没有用的时候，
-viewDidUnload 会被调用， 在这里实现将 retain 的 view release，如果是 retain 的 IBOutlet view 属性则不要在这里 release，IBOutlet 会负责 release 。
-6.实例化一个 UITableView 对象，要求写出关键语句?
-答: UITableView *my = [[UITableView alloc]initWithFrame:<(CGRect)frame> style:<(UITableViewStyle)style>]; my.delegate = self;
-my.dataSource = self;
 
 首先需要分配空间设置表格类型 然后需要设置两个必须的委托对象。
 7.使用 sql 语句查询出省名以湖开头，邮编为 436001 所在的市区?(
@@ -15892,7 +15401,6 @@ if ([keyPath isEqualToString:@"highlighted"] ) { [self setNeedsDisplay];
 推送则是服务器端主动 push。测试 push的实现可以查看该博文。 25. 关于多态性
 答:多态，子类指针可以赋值给父类。
 
-
 30. OC的垃圾回收机制 ?
 答: OC2.0有Garbage collection，但是 iOS平台不提供。
 一般我们了解的 objective-c对于内存管理都是手动操作的，但是也有自 动释放池。
@@ -15999,25 +15507,6 @@ dispatch_async(dispatch_get_main_queue(),^(void){finishBlock();}); 62.谈谈 Obj
 block ，不阻塞当前线程 通过 queue来控制 block执行的线程。主线程执行前文定义的 finishBlock
 功能:在指定的队列里提交一个异步执行的
 block
-
-2).当你通过任何其他方法获得一个对象时 ,则假设该对象的保留计数器 值为 1,而且已经被设置为自动释放 ,你不需要执行任何操作来确保该对 象被清理 .如果你打算在一段时间内拥有该对象 ,则需要保留它并确保在 操作完成时释放它 .
-3).如果你保留了某个对象 ,你需要 (最终 )释放或自动释放该对象 .必须保 持retain方法和 release方法的使用次数相等 .
-63.Object-C 有私有方法吗?私有变量呢?
-答: objective-c –类里面的方法只有两种 , 静态方法和实例方法 . 这似乎 就不是完整的面向对象了 ,按照 OO的原则就是一个对象只暴露有用的东 西 . 如果没有了私有方法的话 , 对于一些小范围的代码重用就不那么顺 手了. 在类里面声名一个私有方法
-@interface Controller : NSObject { NSString *something; } + (void)thisIsAStaticMethod; –(void)thisIsAnInstanceMethod;
-@end
-@interface Controller (private) - (void)thisIsAPrivateMethod; @end
-@private可以用来修饰私有变量
-在 Objective‐C中，所有实例变量默认都是私有的，所有实例方法默认
-都是公有的
-64.Object-C 有多继承吗?没有的话用什么代替?
-是 NSObject 的子类
-答: 多继承在这里是用 protocol 委托代理来实现的 你不用去考虑繁琐的多继承 ,虚基类的概念 .
-ood的多态特性在 obj-c 中通过委托来实现 .
-cocoa 中所有的类都
-
-
-
 TCP提供的是面向连接的、可靠的数据流传输，而 UDP提供的是非面向 连接的、不可靠的数据流传输。
 简单的说， TCP注重数据安全，而 UDP数据传输快点，但安全性一般 89. 你了解 svn,cvs等版本控制工具么?
 答:版本控制 svn,cvs是两种版控制的器 ,需要配套相关的 svn，cvs服务 器。
@@ -16121,18 +15610,15 @@ sql 的主要的 API 来直接操作数据表。 Core Data 不是一个关系型
 SQLite 作为一种存储类型，但它不能使用任意的 SQLite 数据库。
 Core Data 在使用的过程种自己创建这个数据库。 Core Data 支持对一、
 对多的关系。
+
 116. tableView 的重用机制?
 答: UITableView 通过重用单元格来达到节省内存的目的 : 通过为每个 单元格指定一个重用标识符 (reuseIdentifier),即指定了单元格的种类 , 以 及当单元格滚出屏幕时 ,允许恢复单元格以便重用 .对于不同种类的单元 格使用不同的 ID,对于简单的表格 ,一个标识符就够了 .
-
-
-
 
 __block 和 __weak 修饰符的区别其实是挺明显的:
 1.__block 不管是 ARC 还是 MRC 模式下都可以使用， 可以修饰对象， 还可以修饰基本数据 类型。
 2.__weak 只能在 ARC 模式下使用，也只能修饰对象( NSString )，不能修饰基本数据类 型( int )。
 3.__block 对象可以在 block 中被重新赋值， __weak 不可以。
 ，否则不能循环执行。
-等熟悉。。
 
  tableView 滑动卡的问题主要是因为:从缓存中或者是从本地读取图片给 UIImage 的时候
 耗费的时间。需要把下面的两句话放到子线程里面:
@@ -16145,6 +15631,7 @@ n]]; // 得到图像数据
 原子属性。 并且用 strong ，，，并且写一个遍历和修改的方法。 加上锁。 Lock UnLock
 __weak ViewController* weakSelf = self;
 GCD 里面用 __weak 防止内存释放不了，循环引用。
+
 二、 SDWebImage 内部实现过程
 1. 入口 setImageWithURL:placeholderImage:options: 会先把 placeholderImage 显示，
 然后 SDWebImageManager 根据 URL 开始处理图片。
@@ -16153,10 +15640,7 @@ SDImageCache 从缓存查找图片是否已经下载 queryDiskCacheForKey:delega
 3. 先从内存图片缓存查找是否有图片，如果内存中已经有图片缓存， SDImageCacheDelegate 回调 imageCache:didFindImage:forKey:userInfo: SDWebImageManager 。
 4. SDWebImageManagerDelegate 回调 webImageManager:didFinishWithImage: UIImageView+WebCache 等前端展示图片。
 ，交给
-到
-到
 5. 如果内存缓存中没有，生成 NSInvocationOperation 添加到队列开始从硬盘查找图片 是否已经缓存。
-
  6. 根据 URLKey 在硬盘缓存目录下尝试读取图片文件。 这一步是在 NSOperation 进行 的操作，所以回主线程进行结果回调 notifyDelegate: 。
 7. 如果上一操作从硬盘读取到了图片，将图片添加到内存缓存中(如果空闲内存过小， 会先清空内存缓存)。 SDImageCacheDelegate 回调
 imageCache:didFindImage:forKey:userInfo: 。进而回调展示图片。
@@ -16226,17 +15710,6 @@ dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAUL T, 0), ^
 // 耗时的操作 dispatch_async(dispatch_get_main_queue(), ^{
 // 更新界面
 }); });
-如果这样还不清晰的话，那我们还是用上两篇博客中的下载图片为例子，代码如下:
-1.
-2.
-3.
-4.
-5.
-6.
-7.
-8.
-9.
-10. });
 运行显示:
 dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAUL T, 0), ^{
 NSURL * url = [NSURL URLWithString:@ "http://avatar.csdn.net/2/C/D/1_toto go2010.jpg" ];
@@ -16273,34 +15746,7 @@ dispatch_group_async 是异步的方法，运行后可以看到打印结果:
 2012-09-25 16:04:16.737 gcdTest[43328:11303] group1 2012-09-25 16:04:17.738 gcdTest[43328:12a1b] group2 2012-09-25 16:04:18.738 gcdTest[43328:13003] group3 2012-09-25 16:04:18.739 gcdTest[43328:f803] updateUi
 
  每个一秒打印一个，当第三个任务执行后， upadteUi 被打印。
-3 、dispatch_barrier_async dispatch_barrier_async 是在前面的任务执行结束后它才执行，
-成之后才会执行
-例子代码如下:
-的使用 而且它后面的任务等它执行完
-1.
-2. 3.
-4. 5.
-6. 7. 8. 9. 10. 11. 12. 13. 14. 15. 16. 17. 18.
-dispatch_queue_t queue = dispatch_queue_create( H_QUEUE_CONCURRENT); dispatch_async(queue, ^{
-[NSThread sleepForTimeInterval:2];
-NSLog(@ "dispatch_async1" ); });
-dispatch_async(queue, ^{
-[NSThread sleepForTimeInterval:4]; NSLog(@ "dispatch_async2" );
-}); dispatch_barrier_async(queue, ^{
-NSLog(@ "dispatch_barrier_async" ); [NSThread sleepForTimeInterval:4];
-}); dispatch_async(queue, ^{
-[NSThread sleepForTimeInterval:1];
-NSLog(@ "dispatch_async3" ); });
-"gcdtest.rongfzh.yc"
-, DISPATC
-打印结果:
-2012-09-25 16:20:33.967 gcdTest[45547:11203] dispatch_async1
-2012-09-25 16:20:35.967 gcdTest[45547:11303] dispatch_async2
-2012-09-25 16:20:35.967 gcdTest[45547:11303] dispatch_barrier_async
-2012-09-25 16:20:40.970 gcdTest[45547:11303] dispatch_async3
-请注意执行的时间，可以看到执行的顺序如上所述。 4 、dispatch_apply
-
-
+ 4 、dispatch_apply
 
 1. 1. 写一个 NSString 类的实现
  + (id)initWithCString:(c*****t char *)nullTerminatedCString encoding:(NSStringEncoding)encoding;
@@ -16335,13 +15781,6 @@ obj = [obj initWithCString: nullTerminatedCString encoding: encoding]; return AU
 
  栈:在 Windows 下 ,栈是向低地址扩展的数据结构，是一块连续的内存的区域。这句话的意 思是栈顶的地址和栈的最大容量是系统预先规定好的，在 WINDOWS 下，栈的大小是 2M (也有的说是 1M ，总之是一个编译时就确定的常数)，如果申请的空间超过栈的剩余空间 时，将提示 overflow 。因此，能从栈获得的空间较小。
 堆: 堆是向高地址扩展的数据结构， 是不连续的内存区域。 这是由于系统是用链表来存储的 空闲内存地址的， 自然是不连续的， 而链表的遍历方向是由低地址向高地址。 堆的大小受限 于计算机系统中有效的虚拟内存。由此可见，堆获得的空间比较灵活，也比较大。 碎片问题:对于堆来讲，频繁的 new/delete 势必会造成内存空间的不连续，从而造成大量 的碎片，使程序效率降低。对于栈来讲，则不会存在这个问题，因为栈是先进后出的队列， 他们是如此的一一对应，以至于永远都不可能有一个内存块从栈中间弹出 分配方式:堆都是动态分配的，没有静态分配的堆。栈有 2 种分配方式:静态分配和动态 分配。 静态分配是编译器完成的， 比如局部变量的分配。 动态分配由 alloca 函数进行分配， 但是栈的动态分配和堆是不同的， 他的动态分配是由编译器进行释放， 无需我们手工实现。 分配效率: 栈是机器系统提供的数据结构， 计算机会在底层对栈提供支持: 分配专门的寄存 器存放栈的地址， 压栈出栈都有专门的指令执行， 这就决定了栈的效率比较高。 堆则是 C/C++ 函数库提供的，它的机制是很复杂的。
-
-
-
-
-
-
-
 
 16 什么时候用 delegate ，什么时候用 Notification ?答: delegate 针对 one-to-one 关系， 并且 reciever 可以返回值 给 sender ，notification 可以针对 one-to-one/many/none,reciever 无法返回值给 sender. 所以，delegate 用于 sender 希望接受到 reciever 的某个功能反馈值， notification 用于通知多个 object 某个事件。
 17 什么是 KVC 和 KVO ?答: KVC(Key-Value-Coding) 内部的实现:一个对象在调用 setValue 的时候，( 1)首先根据方法名找到运行方法的时候所需要的环境参数。( 2 )他
@@ -16444,8 +15883,6 @@ oc 中可修改和不可以修改类型。
 代理按我们的理解， 到不是直接说不能一对多， 比如我们知道的明星经济代理人， 很多时候 一个经济人负责好几个明星的事务。 只是对于不同明星间，代理的事物对象都是不一样的，一一对应，不可能说明天要处理 A 明星要一个发布会，代理人发出处理发布会的消息后，别称 B 的 发布会了。但是通知就不一样，他只关心发出通知，而不关心多少接收到感兴趣要处理。 因此控制链( has-a 从英语单词大致可以看出，单一拥有和可控制的对应关系。
 以及调用该类别对象指 意思就是假设生物类 ( life )
 eat ，但是调用是我们只需 eat 这个选择器)。
-
-
 
  36 NSOperation queue? 答案:存放 NSOperation 的集合类。
 操作和操作队列，基本可以看成 java 中的线程和线程池的概念。用于处理 的问题。
@@ -16674,462 +16111,7 @@ UDP 适用于一次只传送
 UICollectionViewController. 可以把表格分成多列。
 Social Framework( 社交集成 ) UIActivityViewController 来询问用户的社交行为
 缓存: 就是存放在临时文件里， 比如新浪微博请求的数据，和图片，下次请求看这里有没有 值。
-56Singleton (单例模式)，也叫单子模式，是一种常用的软件设计模式。在应用这个 模式时，单例对象的类必须保证只有一个实例存在。
-代码如下:
-static ClassA *classA = nil ; //静态的该类的实例
-+ (ClassA *)sharedManager
-{
 
- @synchronized(self) {
-if (!classA) {
-classA = [[super allocWithZone:NULL]init]; }
-return classA;
-}
-}
-+ (id)allocWithZone:(NSZone *)zone { return [[self sharedManager] retain];
-}
-- (id)copyWithZone:(NSZone *)zone { return self;
-}
-- (id)retain {
-return self;
-}
-- (NSUIntger)retainCount { return NSUIntgerMax;
-}
-- (oneway void)release { }
-- (id)autorelease { return self;
-}
--(void)dealloc{
-}
-57 请写一个 C 函数，若处理器是 Big_endian 的，则返回 0;若是 Little_endian 的，
-则返回 1 int checkCPU( ) {
-{
-union w
-{
-int a;
-char b; } c;
-c.a = 1;
-return (c.b ==1);
-
- } }
-剖析:嵌入式系统开发者应该对 Little-endian 和 Big-endian 模式非常了解。 采用 Little-endian 模式的 CPU 对操作数的存放方式是从低字节到高字节， Big-endian 模式的 CPU 对操作数 的存放方式是从高字节到低字节。 在弄清楚这个之前要弄清楚这个问题: 字节从右到坐为从 高到低 ! 假设从地址 0x4000 开始存放 : 0x12345678, 是也个 32 位四个字节的数据，最高字 节是 0x12, 最低字节是 0x78 :在 Little-endian 模式 CPU 内存中的存放方式为: (高字节在 高地址 , 低字节在低地址 )
-内存地址 0x4000 0x4001 0x4002 0x4003 存放内容 0x78 0x56 0x34 0x12 大端机则相反。
-有的处理器系统采用了小端方式进行数据存放，如 Intel 的奔腾。有的处理器系统采用了大 端方式进行数据存放，如 IBM 半导体和 Freescale 的 PowerPC 处理器。不仅对于处理器， 一些外设的设计中也存在着使用大端或者小端进行数据存放的选择。 因此在一个处理器系统 中，有可能存在大端和小端模式同时存在的现象。 这一现象为系统的软硬件设计带来了不小
-的麻烦， 这要求系统设计工程师， 必须深入理解大端和小端模式的差别。 差别体现在一个处理器的寄存器，指令集，系统总线等各个层次中。 顺序是所有成员都从低地址开始存放的。以上是网上的原文。让我们看看在
-大端与小端模式的 联合体 union 的存放 ARM 处理器上
-union 是如何存储的呢 ? 地址 A ---------------- |A
-|A+1 |A+2 |A+3 |int a; |char b; | |
-| | | | ---------
-------------------- |A |0x01 |0x00 |0x00 ---------
-如果是大端如何存储 地址 A ---------------------
---------- |A |A+1 |A+2 |A+3 ------------------------------------------ |A ---------
-58
--------------------- |A
-地址 A -----------
-|A+2 |A+3 | int a;
-如果是小端如何存储
-c.a 的呢?
-|
-|
-|A+1
-|0x00 | ------------------------------------- |A
-|char b; |
-c.a 的呢? |int a; |0x00
-现在知道为什么 c.b==0 的话是大端， c.b==1 的话就是小端了吧。
-|0x00 |0x00 |0x01 |char b; | |
-堆和栈上的指针
-指针所指向的这块内存是在哪里分配的 ,在堆上称为堆上的指针 ,在栈上为栈上的指针 . 在堆上的指针 , 可以保存在全局数据结构中 ,供不同函数使用访问同一块内存 .
-
- 在栈上的指针 , 在函数退出后 ,该内存即不可访问 . 59 什么是指针的释放 ?
-具体来说包括两个概念 .
-1 释放该指针指向的内存 ,只有堆上的内存才需要我们手工释放 ,栈上不需要 .
-2 将该指针重定向为 NULL. 60 数据结构中的指针 ?
-其实就是指向一块内存的地址 7 函数指针 ?
-指向一块函数的入口地址 .
-8 指针作为函数的参数 ? 比如指向一个复杂数据结构的指针作为函数变量
-这种方法避免整个复杂数据类型内存的压栈出栈操作 注意 :指针本身不可变 ,但指针指向的数据结构可以改变
-9 指向指针的指针 ?
-指针指向的变量是一个指针 ,即具体内容为一个指针的值
-此时指针指向的变量长度也是 4 位 . 61 指针与地址的区别 ?
-区别 :
-1 指针意味着已经有一个指针变量存在 ,他的值是一个地址
-,通过指针传递 , 可实现复杂的内存访问 .
-,指针变量本身也存放在一个长度 为四个字节的地址当中 , 而地址概念本身并不代表有任何变量存在 .
-2 指针的值 ,如果没有限制 ,通常是可以变化的 , 也可以指向另外一个地址 . 地址表示内存空间的一个位置点 , 他是用来赋给指针的 ,地址本身是没有大小概念 ,指针指
-向变量的大小 , 取决于地址后面存放的变量类型 . 62 指针与数组名的关系 ?
-其值都是一个地址 ,但前者是可以移动的 ,后者是不可变的 .
-12 怎样防止指针的越界使用问题 ? 必须让指针指向一个有效的内存地址 ,
-1 防止数组越界
-2 防止向一块内存中拷贝过多的内容 3 防止使用空指针
-4 防止改变 const 修改的指针
-5 防止改变指向静态存储区的内容
-,提高效率 . .
-,是一个地址 .
-
- 6 防止两次释放一个指针 7 防止使用野指针 .
-13 指针的类型转换
-指针转换通常是指针类型和 void * 类型之前进行强制转换 ,从而与期望或返回 void 指针的函
-数进行正确的交接 .
-63static 有什么用途?(请至少说明两种)
-1. 限制变量的作用域
-2. 设置变量的存储域
-7. 引用与指针有什么区别?
-1) 引用必须被初始化，指针不必。
-2) 引用初始化以后不能被改变，指针可以改变所指的对象。 2) 不存在指向空值的引用，但是存在指向空值的指针。
-8. 描述实时系统的基本特性
-    在特定时间内完成特定的任务，实时性与可靠性
-64 全局变量和局部变量在内存中是否有区别?如果有，是什么区别? 全局变量储存在静态数据库，局部变量在堆栈
-10. 什么是平衡二叉树? 左右子树都是平衡二叉树且左右子树的深度差值的绝对值不大于 1
-区
-?
-65 堆栈溢出一般是由什么原因导致的? 没有回收垃圾资源
-12. 什么函数不能声明为虚函数? constructor
-13. 冒泡排序算法的时间复杂度是什么? O(n^2)
-14. 写出 float x 与―零值 ‖比较的 if 语句。 if(x>0.000001&&x<-0.000001)
-16. Internet 采用哪种网络协议?该协议的主要层次结构? tcp/ip 应用层 /传输层 /网络层 /数据链路层 / 物理层
-17. Internet 物理地址和 IP 地址转换采用什么协议? ARP (Address Resolution Protocol) (地址解析協議) 18.IP 地址的编码分为哪俩部分?
-IP 地址由两部分组成，网络号和主机号。不过是要和
-分哪些是网络位哪些是主机位。
-―子网掩码 ‖按位与上之后才能
-
- 2.用户输入 M,N 值，从 1 至 N 开始顺序循环数数，每数到 部输出。写
-M 输出该数值，直至全
-而
-出 C 程序。 循环链表，用取余操作做
-3. 不能做 switch() 的参数类型是:
-switch 的参数不能为实型。 華為
-1 、局部变量能否和全局变量重名?
-答:能，局部会屏蔽全局。要用全局变量，需要使用 "::" 局部变量可以与全局变量同名， 在函数内引用这个变量时， 会用到同名的局部变量，
-不会用到全局变量。对于有些编译器而言，在同一个函数内可以定义多个同名的局 部变
-量，比如在两个循环体内都定义一个同名的局部变量，而那个局部变量的作用域就 在那
-个循环体内
-2 、如何引用一个已经定义过的全局变量?
-答: extern
-可以用引用头文件的方式，也可以用 extern 关键字，如果用引用头文件方式来引用 某个
-    在头文件中声明的全局变理，假定你将那个变写错了，那么在编译期间会报错，如
-果你
-用 extern 方式引用时，假定你犯了同样的错误，那么在编译期间不会报错，而在连 接期
-间报错
-3、全局变量可不可以定义在可被多个 .C 文件包含的头文件中?为什么?
-答:可以，在不同的 C 文件中以 static 形式来声明同名全局变量。
-可以在不同的 C 文件中声明同名的全局变量， 前提是其中只能有一个 C 文件中对此 变量赋
-初值，此时连接不会出错
-4 、语句 for( ; 1 ; )有什么问题?它是什么意思?
-答:和 while(1) 相同。
-5 、 do⋯⋯ while 和 while ⋯⋯ do 有什么区别?
-答:前一个循环一遍再判断，后一个判断以后再循环
-661.IP Phone 的原理是什么 ? IPV6
-
- 2.TCP/IP 通信建立的过程怎样，端口有什么作用? 三次握手，确定是哪个应用程序使用该协议
-3.1 号信令和 7 号信令有什么区别，我国某前广泛使用的是那一种?
-4.列举 5 种以上的电话新业务? 微软亚洲技术中心的面试题!!!
-1 .进程和线程的差别。
-线程是指进程内的一个执行单元 ,也是进程内的可调度实体 . 与进程的区别 :
-(1) 调度:线程作为调度和分配的基本单位，进程作为拥有资源的基本单位
-(2) 并发性:不仅进程之间可以并发执行，同一个进程的多个线程之间也可并发执行 (3) 拥有资源:进程是拥有资源的一个独立单位，线程不拥有系统资源，但可以访问
-隶属
-于进程的资源 .
-(4) 系统开销:在创建或撤消进程时，由于系统都要为之分配和回收资源，导致系统 的开
-销明显大于创建或撤消线程时的开销。 2. 测试方法
-人工测试:个人复查、抽查和会审 机器测试:黑盒测试和白盒测试
-2.Heap 与 stack 的差别。
-Heap 是堆， stack 是栈。
-Stack 的空间由操作系统自动分配 /释放， Heap Stack 空间有限， Heap 是很大的自由存储区
-C 中的 malloc 函数分配的内存空间即在堆上
-    程序在编译期对变量和函数分配内存都在栈上进行
-参数的
-传递也在栈上进行
-上的空间手动分配
-/ 释放。
-3 . Windows 下的内存是如何管理的?
-4.介绍 .Net 和.Net 的安全性。
-5.客户端如何访问 .Net 组件实现 Web Service ? 6.C/C++ 编译器中虚表是如何完成的?
-7 .谈谈 COM 的线程模型。然后讨论进程内 / 外组件的差别。
-8 .谈谈 IA32 下的分页机制
-小页 (4K) 两级分页模式，大页 (4M) 一级
-9 .给两个变量，如何找出一个带环单链表中是什么地方出现环的? 一个递增一，一个递增二，他们指向同一个接点时就是环出现的地方
-,C++ 中对应的是 new 操作符。
-, 且程序运行过程中函数调用时
-
- 10.在 IA32 中一共有多少种办法从用户态跳到内核态?
-通过调用门，从 ring3 到 ring0 ，中断从 ring3 到 ring0 ，进入 vm86 等等
-11 .如果只想让程序有一个实例运行，不能运行两个。像 winamp 一样，只能开一 个窗
-口，怎样实现? 用内存映射或全局原子(互斥变量)、查找窗口句柄 ..
-FindWindow ，互斥，写标志到文件或注册表 ,共享内存。
-67 如何截取键盘的响应，让所有的 ?a‘变成 ?b‘? 键盘钩子 SetWindowsHookEx
-13 . Apartment 在 COM 中有什么用?为什么要引入?
-14 .存储过程是什么?有什么用?有什么优点?
-我的理解就是一堆 sql 的集合，可以建立非常复杂的查询，编译运行，所以运行一
-次后，
-以后再运行速度比单独执行 SQL 快很多
-15 . Template 有什么特点?什么时候用?
-16 .谈谈 Windows DNA 结构的特点和优点。 网络编程中设计并发服务器，使用多进程与多线程，请问有什么区别?
-品。
-1 ，进程:子进程是父进程的复制品。子进程获得父进程数据空间、堆和栈的复制 2 ，线程:相对与进程而言，线程是一个更加接近与执行体的概念，它可以与同进
-程的其
-他线程共享数据，但拥有自己的栈空间，拥有独立的执行序列。 两者都可以提高程序的并发度，提高程序运行效率和响应时间。 线程和进程在使用上各有优缺点:线程执行开销小，但不利于资源管理和保护;而
-进程
-68 2. 找错题 试题 1:
-void test1()
-{
-char string[10];
-char* str1 = "0123456789"; strcpy( string, str1 );
-正相反。同时，线程适合于在 思科
-SMP 机器上运行，而进程则可以跨机器迁移。
-
- }
-试题 2:
-void test2() {
-char string[10], str1[10];
-int i;
-for(i=0; i<10; i++) {
-str1 = 'a'; }
-strcpy( string, str1 ); }
-试题 3:
-void test3(char* str1) {
-char string[10];
-if( strlen( str1 ) <= 10 ) {
-strcpy( string, str1 ); }
-}
-字节的空间， strcpy 会导致数组越界;
-解答:
-试题 1 字符串 str1 需要 11 个字节才能存放下(包括末尾的
-‘0‘)，而 string 只有 10 个
-对试题 2，如果面试者指出字符数组 str1 不能在数组内结束可以给 3 分;如果面试者指 出 strcpy(string, str1) 调用使得从 str1[url=] 内存 [/url] 起复制到 string 内存起所复制的字节数 具有不确定性可以给 7 分，在此基础上指出库函数 strcpy 工作方式的给 10 分;
-对试题 3 ，if(strlen(str1) <= 10) 应改为 if(strlen(str1) < 10) ，因为 strlen 的结果未统计 ‘0‘ 所占用的 1 个字节。
-剖析:
-
- 考查对基本功的掌握:
-(1)字符串以 ‘0‘结尾;
-(2) 对数组越界把握的敏感度;
-(3) 库函数 strcpy 的工作方式， 如果编写一个标准 strcpy 函数的总分值为 10 ，下面给出 几个不同得分的答案:
-2分
-void strcpy( char *strDest, char *strSrc ) {
-while( (*strDest++ = * strSrc++) != ?
-}
-4分
-0‘ );
-void strcpy( char *strDest, const char *strSrc ) //将源字符串加 const ，表明其为输入参数，加 2 分
-{
-while( (*strDest++ = * strSrc++) != ? 0‘ );
-}
-7分
-void strcpy(char *strDest, const char *strSrc) {
-// 对源地址和目的地址加非 0 断言，加 3 分 assert( (strDest != NULL) && (strSrc != NULL) ); while( (*strDest++ = * strSrc++) != ? 0‘ );
-}
-10 分
-//为了实现链式操作，将目的地址返回，加
-char * strcpy( char *strDest, const char *strSrc )
-3 分!
-
- {
-assert( (strDest != NULL) && (strSrc != NULL) ); char *address = strDest;
-while( (*strDest++ = * strSrc++) != ? 0‘ );
-return address; }
-从 2 分到 10 分的几个答案我们可以清楚的看到， 真不是盖的!需要多么扎实的基本功才能写一个完美的
-小小的 strcpy 竟然暗藏着这么多玄机， strcpy 啊!
-(4) 对 strlen 的掌握，它没有包括字符串末尾的
-读者看了不同分值的 strcpy 版本，应该也可以写出一个 10 分的 strlen 函数了，完美的
-版本为: int strlen( const char *str ) // 输入参数 const
-{
-len++; }
-return len; }
-试题 4:
-void GetMemory( char *p )
-{
-p = (char *) malloc( 100 );
-}
-void Test( void ) {
-char *str = NULL; GetMemory( str );
-strcpy( str, "hello world" ); printf( str );
-断言字符串地址非 0
-assert( strt != NULL ); // int len;
-while( (*str++) != '\0' )
-{
-'\0' 。
-
- }
-试题 5:
-char *GetMemory( void ) {
-char p[] = "hello world";
-return p; }
-void Test( void ) {
-char *str = NULL; str = GetMemory(); printf( str );
-}
-试题 6:
-void GetMemory( char **p, int num )
-{
-*p = (char *) malloc( num );
-}
-void Test( void )
-{
-char *str = NULL; GetMemory( &str, 100 ); strcpy( str, "hello" ); printf( str );
-}
-试题 7:
-void Test( void )
-{
-char *str = (char *) malloc( 100 );
-strcpy( str, "hello" ); free( str );
-
- ... // 省略的其它语句 }
-解答:
-试题 4 传入中 GetMemory( char *p ) 函数的形参为字符串指针， 在函数内部修改形参并 不能真正的改变传入形参的值，执行完
-char *str = NULL; GetMemory( str );
-后的 str 仍然为 NULL ; 试题 5 中
-char p[] = "hello world"; return p;
-的 p[]数组为函数内的局部自动变量，在函数返回后，内存已经被释放。这是许多程序 员常犯的错误，其根源在于不理解变量的生存期。
-试题 6 的 GetMemory 避免了试题 4 的问题，传入 GetMemory 的参数为字符串指针的 指针，但是在 GetMemory 中执行申请内存及赋值语句
-*p = (char *) malloc( num );
-  后未判断内存是否申请成功，应加上:
-if ( *p == NULL ) {
-...// 进行申请内存失败处理 }
-试题 7 存在与试题 6 同样的问题，在执行
-char *str = (char *) malloc(100);
-后未进行内存是否申请成功的判断;另外，在 一个 ―野 ‖指针，应加上:
-free(str) 后未置 str 为空，导致可能变成
-str = NULL;
-试题 6 的 Test 函数中也未对 malloc 的内存进行释放。
-
- 剖析:
-试题 4~7 考查面试者对内存操作的理解程度，基本功扎实的面试者一般都能正确的回
-答其中 50~60 的错误。但是要完全解答正确，却也绝非易事。 对内存操作的考查主要集中在:
-( 1)指针的理解;
-( 2)变量的生存期及作用范围;
-( 3)良好的动态内存申请和释放习惯。
-再看看下面的一段程序有什么错误:
-swap( int* p1,int* p2 ) {
-int *p;
-*p = *p1; *p1 = *p2; *p2 = *p;
-}
-在 swap 函数中，p 是一个 ―野‖指针，有可能指向系统区， 导致程序运行的崩溃。 在 VC++
-中 DEBUG 运行时提示错误 ―Access Violation 。‖该程序应该改为:
-swap( int* p1,int* p2 ) {
-int p;
-p = *p1; *p1 = *p2; *p2 = p;
-鱼鱼软件 /鱼鱼多媒体日记本
-} [img=12,12]file:///D:/ /temp/{56068A28-3D3B-4D8B-9F82-AC1C3E9B128C}_arc_d[1].gif[/img]
-3. 内功题
-试题 1:分别给出 BOOL ，int，float，指针变量 与―零值 ‖比较的 if 语句(假设变量名为
-
- var ) 解答:
-BOOL 型变量: if(!var)
-int 型变量: if(var==0)
-float 型变量:
-const float EPSINON = 0.00001;
-if ((x >= - EPSINON) && (x <= EPSINON) 指针变量: if(var==NULL)
-剖析:
-考查对 0 值判断的 ―内功 ‖，BOOL 型变量的 0 判断完全可以写成
-量也可以写成 if(!var) ，指针变量的判断也可以写成 if(!var) ，上述写法虽然程序都能正确运 行，但是未能清晰地表达程序的意思。
-一般的， 如果想让 if 判断一个变量的 ―真 ‖、―假 ‖，应直接使用 if(var) 、if(!var) ，表明其为 ―逻 辑 ‖判断;如果用 if 判断一个数值型变量 (short 、int 、long 等 )，应该用 if(var==0) ，表明是与
-0 进行 ―数值 ‖上的比较;而判断指针则适宜用 if(var==NULL) ，这是一种很好的编程习惯。 浮点型变量并不精确，所以不可将 float 变量用 ―==或‖―!=‖与数字比较，应该设法转化
-成―>=‖或―<=形‖式。如果写成 if (x == 0.0) ，则判为错，得 0 分。
-试题 2:以下为 Windows NT 下的 32 位 C++ 程序，请计算 sizeof 的值
-void Func ( char str[100] ) {
-sizeof( str ) = ? }
-void *p = malloc( 100 );
-if(var==0) ，而 int 型变
-
- sizeof ( p ) = ?
-解答:
-sizeof( str ) = 4 sizeof ( p ) = 4
-剖析:
-函数中数组名作为函数形参时，在函数体内，数组名失去了本身 的内涵，仅仅只是一个指针;在失去其内涵的同时，它还失去了其常量特性，可以作自增、
-自减等操作，可以被修改。 数组名的本质如下:
-( 1)数组名指代一种数据结构，这种数据结构就是数组;
-例如:
-char str[10];
-cout << sizeof(str) << endl;
-输出结果为 10 ， str 指代数据结构 char[10] 。 (2)数组名可以转换为指向其指代实体的指针，而且是一个指针常量，不能作自增、
-自减等操作，不能被修改;
-char str[10];
-str++; // 编译出错，提示 str 不是左值
-( 3)数组名作为函数形参时，沦为普通指针。
-Windows NT 32 位平台下， 指针的长度 (占用内存的大小) 为 4 字节，故 sizeof( str ) 、
-sizeof ( p ) 都为 4。
-试题 3:写一个 ―标准‖宏 MIN，这个宏输入两个参数并返回较小的一个。另外，当你写
-下面的代码时会发生什么事?
-least = MIN(*p++, b);
-解答:
-Func ( char str[100] )
-
- #define MIN(A,B) ((A) <= (B) ? (A) : (B)) MIN(*p++, b) 会产生宏的副作用
-剖析:
-这个面试题主要考查面试者对宏定义的使用， 宏定义可以实现类似于函数的功能， 但是 它终归不是函数，而宏定义中括弧中的 ―参数 ‖也不是真的参数，在宏展开的时候对 ―参数 ‖进 行的是一对一的替换。
-  程序员对宏定义的使用要非常小心，特别要注意两个问题:
-(1)谨慎地将宏定义中的 ―参数 ‖和整个宏用用括弧括起来。所以，严格地讲，下述解 答:
-#define MIN(A,B) (A) <= (B) ? (A) : (B) #define MIN(A,B) (A <= B ? A : B )
-都应判 0 分;
-( 2)防止宏的副作用。
-宏定义 #define MIN(A,B) ((A) <= (B) ? (A) : (B))
-((*p++) <= (b) ? (*p++) : (*p++))
-对 MIN(*p++, b) 的作用结果是:
-这个表达式会产生副作用，指针 p 会作三次 ++ 自增操作。 除此之外，另一个应该判 0 分的解答是:
-#define MIN(A,B) ((A) <= (B) ? (A) : (B));
-这个解答在宏定义的后面加 ― ;，‖显示编写者对宏的概念模糊不清，只能被无情地判 0
-分并被面试官淘汰。
-试题 4:为什么标准头文件都有类似以下的结构?
-#ifndef __INCvxWorksh
-
- #define __INCvxWorksh #ifdef __cplusplus
-extern "C" { #endif
-/*...*/
-#ifdef __cplusplus }
-#endif
-#endif /* __INCvxWorksh */
-解答: 头文件中的编译宏
-#ifndef __INCvxWorksh #define __INCvxWorksh #endif
-的作用是防止被重复引用。
-作为一种面向对象的语言， C++ 支持函数重载， 而过程式语言 C 则不支持。 函数被 C++
-编译后在 symbol 库中的名字与 C 语言的不同。例如，假设某个函数的原型为:
-void foo(int x, int y);
-该函数被 C 编译器编译后在 symbol 库中的名字为 _foo ，而 C++ 编译器则会产生像
-_foo_int_int 之类的名字。 _foo_int_int 这样的名字包含了函数名和函数参数数量及类型信息， C++ 就是考这种机制来实现函数重载的。
-为了实现 C 和 C++ 的混合编程， C++ 提供了 C 连接交换指定符号 extern "C" 来解决名 字匹配问题， 函数声明前加上 extern "C" 后，则编译器就会按照 C 语言的方式将该函数编译 为_foo ，这样 C 语言中就可以调用 C++ 的函数了。 [img=12,12]file:///D:/ 鱼鱼软件 /鱼鱼多媒 体日记本 /temp/{C74A38C4-432E-4799-B54D-73E2CD3C5206}_arc_d[1].gif[/img]
-试题 5:编写一个函数，作用是把一个 char 组成的字符串循环右移 n 个。比如原来是 ― abcdefghi如果‖ n=2 ，移位后应该是 ― hiabcdefgh ‖
-函数头是这样的:
-
- //pStr 是指向以 '\0'结尾的字符串的指针 //steps 是要求移动的 n
-void LoopMove ( char * pStr, int steps ) {
-//请填充 ... }
-解答: 正确解答 1:
-void LoopMove ( char *pStr, int steps ) {
-int n = strlen( pStr ) - steps; char tmp[MAX_LEN];
-strcpy ( tmp, pStr + n ); strcpy ( tmp + steps, pStr);
-*( tmp + strlen ( pStr ) ) = '\0'; strcpy( pStr, tmp );
-}
-正确解答 2:
-void LoopMove ( char *pStr, int steps ) {
-int n = strlen( pStr ) - steps; char tmp[MAX_LEN];
-memcpy( tmp, pStr + n, steps ); memcpy(pStr + steps, pStr, n ); memcpy(pStr, tmp, steps );
-}
-剖析:
-这个试题主要考查面试者对标准库函数的熟练程度， 程度上简化程序编写的工作量。
-在需要的时候引用库函数可以很大
-
- 最频繁被使用的库函数包括:
- (1) strcpy
-(2) memcpy
-(3) memset
-1. ==================================================== ===
-2. NSMutableArray* ary = [[NSMutableArray array] retain
-];
-
- 3. NSString *str = [NSString stringWithFormat:@"test"];
-4. [strretain];
-5. [aryaddObject:str];
-6. NSLog(@"%@%d",str,[str retainCount]);
-7. [strretain];
-8. [strrelease];
-9. [strrelease];
-10. NSLog(@"%@%d",str,[str retainCount]);
-11. [aryremoveAllObjects];
-12. NSLog(@"%@%d",str,[str retainCount]);
-13. ====================================================
-===
-str 的 retainCount 创建 +1， retain+1 ，加入数组自动 +1 3
-retain+1 ， release-1 ， release-1
-2
-数组删除所有对象，所有数组内的对象自动 -1
-1
 12. Object C 中创建线程的方法是什么?如果在主线程中执行代码，方法 是什么?如果想延时执行代码、方法又是什么?
 线程创建有三种方法:使用 NSThread 创建、使用 GCD的 dispatch 、使用 子类化的 NSOperation, 然后将其加入 NSOperationQueue;在主线程执行代 码，方法是 performSelectorOnMainThread ，如果想延时执行代码可以用 performSelector:onThread:withObject:waitUntilDone:
 
@@ -17170,8 +16152,6 @@ if ([keyPath isEqualToString:@"highlighted"] ) { [self setNeedsDisplay];
 我 们 说 的 oc 是 动 态 运 行 时 语 言 是 什 么 意 思 ? 答案:多态。 主要是将数据类型的确定由编译时，推迟到了运行时。 这个问题其实浅涉及到两个概念，运行时和多态。 简单来说，运行时机制使我们直到运行时才去决定一个对象的类别，以及 调用该类别对象指定方法。 多态:不同对象以自己的方式响应相同的消息的能力叫做多态。意思就是
 假 设 生 物 类 ( life ) 都 用 有 一 个 相 同 的 方 法 -eat; 那人类属于生物，猪也属于生物，都继承了 life 后，实现各自的 eat ，但 是 调 用 是 我 们 只 需 调 用 各 自 的 eat 方 法 。 也就是不同的对象以自己的方式响应了相同的消息(响应了 eat 这个选择 器)。 因此也可以说，运行时机制是多态的基础? ~~~
 9.what is difference between NSNotification and protocol? 通知和协议的不同之处? 答案:协议有控制链(has-a) 的关系，通知没有。 首先我一开始也不太明白，什么叫控制链(专业术语了 ~)。但是简单分析 下通知和代理的行为模式，我们大致可以有自己的理解 简单来说，通知的话，它可以一对多，一条消息可以发送给多个消息接受 者。 代理按我们的理解，到不是直接说不能一对多，比如我们知道的明星经济 代理人，很多时候一个经济人负责好几个明星的事务。 只是对于不同明星间，代理的事物对象都是不一样的，一一对应，不可能 说明天要处理 A 明星要一个发布会，代理人发出处理发布会的消息后，别 称B的 发布会了。但是通知就不一样，他只关心发出通知，而不关心多少接收到 感兴趣要处理。 因此控制链( has-a 从英语单词大致可以看出，单一拥有和可控制的对应 关系。
-
-
 
 17.NSOperation queue? 答案:存放 NSOperation 的集合类。 操作和操作队列， 基本可以看成 java 中的线程和线程池的概念。 用于处理 ios 多 线 程 开 发 的 问 题 。 网上部分资料提到一点是，虽然是 queue，但是却并不是带有队列的概念， 放入的操作并非是按照严格的先进现出。 这边又有个疑点是， 对于队列来说， 先进先出的概念是 Afunc 添加进队列， Bfunc 紧跟着也进入队列，Afunc 先执行这个是必然的， 但是 Bfunc 是等 Afunc 完全操作完以后， B 才开始启动并且执行，因此队 列的概念理论上有点违背了多线程处理这个概念。 但是转念一想其实可以参考银行的取票和叫号系统。 因此对于 A 比 B 先排队取票但是 B 率先执行完操作，我们亦然可以感性认 为这还是一个队列。 但是后来看到一票关于这操作队列话题的文章，其中有一句提到 “因为两个操作提交的时间间隔很近，线程池中的线程，谁先启动是不定 的。” 瞬间觉得这个 queue 名字有点忽悠人了，还不如 pool~ 综合一点，我们知道他可以比较大的用处在于可以帮助多线程编程就好了。 楼上区分了线程执行时的次序( Afunc 和 Bfunc 谁先启动)和线程执行完 成(Afunc 和 Bfunc 谁先执行完)时的次序不同，而多线程的重要概念是 并发(同时执行多个任务)， NSOperationQueue 是管理并发线程的对象， 可以在其中放入 NSOpertation 对象(对象化的线程实体)，通过设置 maxConcurrentOperationCount 的大小，控制并发数目，如楼上所说希望 “Afunc 添加进队列，执行完后， Bfunc 紧跟进入队列，继续执行”，那只 需将 maxConcurrentOperationCount 设为 1，变会依次执行，这时候实际 是在单线程依次执行。 所以这里的 NSOperationQueue就是对象化抽象的去 管理多线程，这样的好处，使用者通过继承 NSOperation 对象，可以方便 的用对象来管理线程，而不再用关心线程同步、信号量等细节，更多地关 注于业务逻辑。
 18.What is lazy loading? 答案:懒汉模式，只在用到的时候才去初始化。 也可以理解成延时加载。 我觉得最好也最简单的一个列子就是 tableView 中图片的加载显示了。 一个延时载，避免内存过高，一个异步加载，避免线程堵塞。
@@ -17233,7 +16213,6 @@ n
 答案:谓词是通过 NSPredicate ，是通过给定的逻辑条件作为约束条件，完成对数据 的筛选。
 predicate = [NSPredicate predicateWithFormat:@"customerID == %d",n]; a = [customers filteredArrayUsingPredicate:predicate];
 
-
 1. 什么情况使用 weak 关键字，相比 assign有什么不同? 什么情况使用 weak 关键字?
 1)在 ARC中,在有可能出现循环引用的时候 ,往往要通过让其中一端使用 weak 来解 决,比如 :delegate 代理属性
 2)自身已经对它进行一次强引用 , 没有必要再强引用一次 义 IBOutlet 控件属性一般也使用 weak ;当然，也可以使用
@@ -17243,7 +16222,6 @@ predicate = [NSPredicate predicateWithFormat:@"customerID == %d",n]; a = [custom
 为这种属性设置新值时， 设置方法既不保留新值， 也不释放旧值。 此特质同 assign 类似，
 (nonowning relationship) 。 然而在属性所指的对象遭到摧毁时， 属性值也会清空 (nil out) 。而 assign 的“设置方法”
 只会执行针对 “纯量类型” (scalar type，例如 CGFloat或 NSlnteger 等)的简单赋值操作。 2) assigin 可以用非 OC对象 ,而 weak 必须用于 OC 对象
-
 
  7. runtime 如何通过 selector 找到对应的 IMP 地址?(分别考虑类方法和实例 方法)
 每一个类对象中都一个方法列表 , 方法列表中记录着方法的名称 ,方法实现 , 以及参数类型 , 其实 selector 本质就是方法名称 ,通过这个方法名称就可以在方法列表中找到对应的方法
@@ -17300,7 +16278,6 @@ release
 曾经接触过一个客户， 原本就有耳闻他们以挑剔出名， 所以事前的准备功夫做得十分充分， 入了相当多的时间与精力， 最后客户虽然并没有照单全收， 但是接受的程度已经出乎我们意料之 外了。 原以为从此可以合作愉快， 却得知客户最后因为预算关系选择了另一家代理商， 之前的努 力因而付诸流水。尽管如此，我还是从这次的经验学到很多， 如对该产业的了解，整个 team 的默 契也更好了 。
 (表现出遇到问题时相应地解决方法和学习到的东西)
 
-
 9、内存管理的几条原则是什么?按照默认法则，哪些关键字生成的对象需要手 动释放?哪些情况下不需要手动释放，会直接进入自动释放池?
 ? 当使用 new、alloc 或copy方法创建一个对象时，该对象引用计数器为 1。 如果不需要使用该对象， 可以向其发送 release 或 autorelease 消息，在其使用完 毕时被销毁。
 ? 如果通过其他方法获取一个对象， 则可以假设这个对象引用计数为 1，并 且被设置为 autorelease ，不需要对该对象进行清理，如果确实需要 retain 这个 对象，则需要使用完毕后 release 。
@@ -17318,7 +16295,6 @@ release
 ? 只需在此方法中返回本身对象即可，引用计数也不需要进行改变，因为
 单例模式下的对象是不允许销毁的，所以也就不用保留
 ? 因为全局实例不允许释放，所以 retain,release,autorelease 方法均需 重写
-
 
 11. Object C 中创建线程的方法是什么?如果在主线程中执行代码，方法是什 么?如果想延时执行代码、方法又是什么?
 线程创建有三种方法: 使用NSThread创建、使用 GCD的dispatch 、使用子类化的 NSOperation, 然后将其加入 NSOperationQueue;在主线程执行代码，方法是 performSelectorOnMainThread ， 如 果 想 延 时 执 行 代 码 可 以 用 performSelector:onThread:withObject:waitUntilDone
@@ -17363,19 +16339,16 @@ aTest = [newaTest copy]; }
 2、代理:也叫委托，当某个对象收到多个事件，并要求同一个对象来处理所有 事件时。委托机制依赖于某个协议定义的方法来发送消息。
 3、通告机制:当需要多个对象或两个无关对象处理同一个事件时。
 
-
 10、JSON中 { } 代表 _____，[ ] 代表 _____，试将下面的 JSON串用 OC对象表示出来: { "people": [
 { "firstName":"Brett", "lastName":"McLaughlin","email": "aaaa" },
 { "firstName":"Jason", "lastName":"Hunter", "email":"bbbb"},
 { "firstName":"Elliotte", "lastName":"Harold","email": "cccc" } ]，
 “location ”: ”中华人民共和国” }
 JSON中{ } 代表对象，数据结构为{ key1:value1, key2:value2, key3: ,, } [ ] 代表数组，与其他语言中的数组类似。
-//
 @interfacePeople : NSObject
 @property(nonatomic, copy) NSString* strFirstName; @property(nonatomic, copy) NSString* strLastName; @property(nonatomic, copy) NSString* strEmail;
 @end
 
- //
 @interfaceJSonData : NSObject
 @property(nonatomic, retain) NSMutableArray* arrPeople; //
 对象
@@ -17403,9 +16376,6 @@ sprintf 格式化的函数的长度不可控，有可能格式化后的字符串
 integers g) int (*a)(int); // A pointer to afunction a that takes an integerargument and returns an integer h) int (*a[10])(int); // An
 array of 10pointers to functions that take aninteger argument and return an integer
 
-
-
-
 面试能力要求:精通 iphone 的 UI 开发，能熟练操作复杂表视图，熟练使用图层技术， 可以自定义 UI 控件，使用类别扩展系统控件功能 ;
 擅长通讯技术， 熟悉各种通信协议， 精通 xml, json, 二进制或其他形式的自定义解析， 能架设服务器实现 客户端与服务器的通讯以提交开发效率 ;
 熟练掌握各种数据存储技术，如 core data, sqlite, 对象序列化，文件读写操作，熟悉数据库的设计。 精通 object-c ，java ， c 等编程语言 , 熟悉 c++ ，对于 面向对象编程思想有深入理解，熟悉常见设计 模式的应用，
@@ -17431,8 +16401,6 @@ least = MIN(*p++, b);
 结果是:
 ((*p++) <= (b) ? (*p++) : (*p++))
 这个表达式会产生副作用，指针 p 会作三次 ++自增操作。
-
-
 
 25. 你了解 svn,cvs 等版本控制工具么?
 版本控制 svn,cvs 是两种版控制的器 , 需要配套相关的
@@ -17533,7 +16501,6 @@ iphone 常见私有 api 的应用(比如直接发送短信，访问沙箱之外�
 而 NSOpertionQueue 可以很好的处理他。 34.init 和 initwithobject 区别(语法)?
 init 创建的对象不带自动释放
 
-
 38. 协议是什么，有什么作用 . ?
 协议很像 java 中的接口，某个类实现协议后， 就必须实现协议中规定的 @require 的方法，比如一个类 A, 一 个类 B都实现某“协议”后，
 这个类 A 的对象和 B 的对象都可以赋值给这个协议的类型变量，比如 id< 协议 > 变量名 = A 类或 B 类的对 象，
@@ -17610,7 +16577,6 @@ b. 主分线程
 3 网络层:
 2 数据链路层: STP,VT 1 物理层:
 
-
 {
 int a[5]={1,2,3,4,5};
 int *ptr=(int *)(&a+1); printf("%d,%d",*(a+1),*(ptr-1));
@@ -17632,8 +16598,6 @@ a,&a 的地址是一样的，但意思不一样
 a 是数组首地址，也就是 a[0] 的地址， &a 是对象(数组)首地址，
 a+1 是数组下一元素的地址，即 a[1],&a+1 是下一个对象的地址，即 a[5].
 +1 之后增加的大小不同。
-
-
 
 类别的作用?继承和类别在实现中有何区别?
 答案: category 可以在不获悉，不改变原来代码的情况下往里面添加新的方法， 只能添加，不能删除修改。?并 且如果类别和原来类中的方法产生名称冲突，则 类别将覆盖原来的方法，因为类别具有更高的优先级。? 类别主要有 3 个作 用:?(1) 将类的实现分散到多个不同文件或多个不同框架中。? (2) 创建对私有方法 的前向引用。?(3) 向对象添加非正式协议。? 继承可以增加，修改或者删除方法， 并且可以增加属性。
@@ -17663,10 +16627,6 @@ button?[cpp] [self addObserver:self forKeyPath:@"highlighted" options:0 context:
 答案:协议有控制链 (has-a) 的关系，通知没有。?首先我一开始也不太明白，什 么叫控制链(专业术语了 ~)。但是简单分析下通知和代理的行为模式，我们 大致可以有自己的理解?简 单来说，通知的话，它可以一对多，一条消息可以发 送给多个消息接受者。?代 理按我们的理解，到不是直接说不能一对多，比如我 们知道的明星经济代理人，很多时候一个经济人负责好几个明星的事务。? 只 是 对于不同明星间，代理的事物对象都是不一样的，一一对应，不可能说明天要
 处理 A 明星要一个发布会，代理人发出处理发布会的消息后，别称 B 的?发布会
 
-
-10.What is push notification? 什么是推送消息?
-
-
 15.Difference between method and selector? 方法和选择器 有何不同?
 答案: selector 是一个方法的名字， method 是一个组合体，包含了名字和实 现.详? 情可以看 apple 文档。
 16.Is there any garbage collection mechanism in Objective C.? OBC的垃圾回收机制?
@@ -17686,8 +16646,6 @@ tableViewController 也不能放吧，?只 能说可以嵌入一个 tableview �
 20.Can we use one tableview with two different datasources? How you will achieve this? 一个 tableView 是否可以关联两 个不同的数据源?你会怎么处理?
 答案:首先我们从代码来看，数据源如何关联上的，其实是在数据源关联的代 理方法里实现的。?因 此我们并不关心如何去关联他，他怎么关联上，方法只是
 让我返回根据自己的需要去设置如相关的数据源。? 因此，我觉得可以设置多个
-
-
 
 34.Cocoa 中有虚基类的概念么?怎么简洁的实现?
 35. 自动释放池跟 GC(垃圾回收)有什么区别? iPhone 上有 GC么?[ pool release] 和[ pool drain]有什么区别?
@@ -17956,7 +16914,6 @@ contentoffset ，展示对应的新闻列表;同样，当切换 下面展示的�
 5、可以实现:如果文件下载不成功或者下载没有完成，下次打开程序的时候，移除这些没 有成功或者没有下载完成的文件。
 6、可以实现:同时请求或者下载多个资源。
 
-
 多线程都有哪些实现， GCD 要注意些什么
 (1)NSThread :轻量级的方式 (具有很少的规则和惯例， 依赖的东西少)，比较底层和原始。
 需要自己手动管理线程的生命周期，同步的时候需要加锁来 控制线程执行顺序，会增加系统开销。不推荐使用。 (2)NSOperationQueue :一个 NSoperation 对象可以通过 调用 start 方法执行任务，默认是同步执行;也可以将 NSOperation 添加到一个 NSOperationQueue 中执行，这时 是异步的。 通过这个方式开启线程后，可以中途停止、继续、取消等操
@@ -17964,8 +16921,6 @@ contentoffset ，展示对应的新闻列表;同样，当切换 下面展示的�
 
 优点:不需要关心线程管理，数据同步的事情，可以把精力 放在自己需要执行的操作上。 对于上传、下载这种复杂的操作，推荐使用。
 (3)GCD :苹果提供的，异步执行。提高了代码执行效率 和多核的利用率，性能更好。对于复杂的不推荐使用，但是 简单的提交数据推荐使用。
-
-
 
 如何在子线程中更新界面， 如何让线程延迟 执行?
 多线程编程有一个原则，就是一切和 UI 有关的操作都必须放 到主线程做，子线程只负责事务，数据方面的处理。
@@ -18660,13 +17615,6 @@ union date {
 大小：1.共用体变量所占内存长度等于最长成员的长度；
 2.共用体是同一段内存存储相同或不同类型的成员，同一时刻只存放一种；
 3.共用体变量中起作用的成员是最后一次存放的成员；
-
-/*
-冒泡排序
-选择排序
-快速排序
-二分查找
-*/
 /******************************Objective-C语言基础******************************/
 #Objective-C语言：面向对象(oop)的C语言
 特点：Objective-C语言区分大小写，并且完全兼容C语言，C语言可以直接编译在Objective-C语言的工程中；
@@ -18686,15 +17634,6 @@ Objective-C语言：NSLog(@""); //打印有时间信息、工程名、线程号�
 C语言：不需要加@
 Objective-C语言：需要加@
 注意：C语言可以直接操作硬件；
-//面向对象和面向过程?
-面向对象编程：封装成类Objective-C语言
-面向过程编程：C语言等
-
-#@class：一般写在.h文件中、可以提升编译效率
-@class 类名; //告诉编译期后面的是一个类
-//#import和@class的区别？？？
-注意：1.防止循环copy(A拷贝B、B拷贝A)；
-2.在.h文件中用@class、在.m文件中用#import；
 
 #主头文件：
 1.定义：拷贝了该工具箱中所有工具的头文件，只需要导入主头文件就可以使用该工具箱中所有的
@@ -19416,33 +18355,6 @@ CAKeyframeAnimation/CABasicAnimation/CATransition
 1).实现UIView的启动动画：WidgetViewController.h/m
 2).gif：WidgetViewController.h/m
 
-#常见UI控件：
-UILabel //文本框：行的内容模式lineBreakMode/默认字体、粗体、斜体
-UIButton //按钮：有几种类型
-UIView //视图
-UIImage //Image
-UIImageView //图片视图：内容模式contentMode
-UITextField //编辑框
-UITextView //编辑文本框：可以滚动
-UISlider //滑块：事件驱动型
-UISwitch //开关：事件驱动型
-UIStepper //步数器：事件驱动型-NO
-UISegmentControl //多段选择视图：事件驱动型
-UIAlertView //警告框：协议代理型
-UIActionSheet //表单视图：协议代理型
-UIProgressView //进度条：一般型
-UIActivityIndicatorView //活动指示框：一般型
-UIWebView/WKWebView //web视图
-UIMenuController //菜单：https://blog.csdn.net/woyangyi/article/details/45896859
-UIPageControl //圆点
-UIRefreshControl //下拉刷新控件：不能上拉加载
-UIAlertController //警告框：iOS8.0以上推荐使用-UIViewControlelr的子类
-UIImagePickerController //相机、相册
-UIPickView //选择器、类似UITableView
-UIDatePicker //日期选择器
-UIToolBar //工具条：可以实现毛玻璃效果
-UINavigationBar //导航条：44px
-
 #UILabel的包裹模式：自适应
 特点：UILabel的高度是随着文字内容的增加而拉伸的；
 应用：评论/朋友圈等；
@@ -19612,31 +18524,6 @@ https://blog.csdn.net/ridxmc/article/details/51346472
 #实现画折线图：利用第三方库
 1.加入tk库文件；
 2.添加QuartzCore.framework；
-
-#常见硬件：
-机型            尺寸            状态栏            导航栏            工具栏
-4s          320*480            20pt             44pt              44pt
-5s          320*568            20pt             44pt              44pt
-6s          375*667            20pt             44pt              44pt
-6p          414*736            20pt             44pt              44pt
-X           375*821            44pt             44pt                ——
-XR          414*736            44pt             44pt                ——
-XS          375*821            44pt             44pt                ——
-XS MAX      375*896            44pt             44pt                ——
-iPad          ——                 ——                ——               ——
-iWatch        ——                 ——                ——               ——
-https://www.jianshu.com/p/c4aad5b6771e
-/*
-iOS动画
-UIWindow
-自定义控件
-实现画折线图
-程序启动原理
-WKWebView
-UIApplication
-UISegmentControl
-自定义UICollectionViewFlowLayout
-*/
 /******************************iOS高级******************************/
 #可视化布局：
 //xib：可视化文件，可以通过拖拽进行界面布局，实质是一个xml文件
@@ -20180,62 +19067,11 @@ iTunes图标：512*512\1024*1024两张
 NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF CONTAINS[c] %@",searcgString];
 _ArrM = [NSMutableArray arrayWithArray:[_Arr filteredArrayUsingPredicate:predicate];//过滤数据
 
-#深拷贝/浅拷贝：
-//定义
-深拷贝：生成值一样，内存地址不一样的全新对象-内容拷贝
-浅拷贝：使原对象的引用计数+1，没有创建全新的对象，直接返回被拷贝对象的地址-指针拷贝
-//不可变字符串：右侧如果是copy，那么就是浅拷贝；右侧如果是mutableCopy,那么就是深拷贝
-NSString *msg0 = @"";
-NSString *msg2 = [msg1 mutableCopy];//深拷贝
-NSString *msg1 = [msg0 copy];//浅拷贝：对原对象进行一次retain、对拷贝出来的对象进行一次release
-//可变字符串：右侧无论是copy还是mutableCopy，都是深拷贝
-NSMutableString *msg3 = [NSMutableString stringWithString:@""];
-NSString *msg1 = [msg0 copy];//深拷贝
-NSString *msg2 = [msg1 mutableCopy];//深拷贝
-注意：1.浅拷贝类似retain，深拷贝类似copy；
-2.参考：https://blog.csdn.net/chenyufeng1991/article/details/51771728
--(id)copyWithZone:(NSZone *)zone {
-
-}
--(id)mutableCopyWithZone:(NSZone *)zone {
-
-}
-
 #常见指令：
-//self
-定义：self是一个指针，哪个对象调用该方法，self指针就指向哪个对象；
-用途：1.self出现在对象方法中就代表对象、self出现在类方法中就代表类；
-2.对象方法中：self->成员变量名;//访问当前对象内部的成员变量；
-3.[self 方法名];//调用其他对象方法/类方法；
-//super：编译器的指令符号
-作用：直接调用父类中的某个方法；
-场合：子类重写父类的方法时想保留父类的一些行为；
-//id：动态数据类型
-定义：id是万能的指针，可以指向/操作任何对象；
-作用：定义变量、作为函数参数、作为函数返回值；
-id p = [Person new];//id相当于Person*；
-注意：1.由于动态数据类型可以调用任意方法(有可能调用到不属于自己的方法)、这样可能导致运行期错误；
-2.应用场景：多态-可以减少代码量、避免调用子类特有的方法需要强制类型转换；
-3.怎么避免动态数据类型运行期错误？
-id obj = [person new];
-if ([obj isKindOfClass:[Person class]]) { //判断指定对象是否属于某一个类/子类
-[obj eat];
-}
-//instancetype
-定义：id是万能的指针，可以指向/操作任何对象；
-特性：在编译期可以判断对象的真实类型、只能作为返回值；
 //typedef：可以给已知的数据类型起别名(外号)
 typedef 原有数据类型 别名
 注意：1.typedef不仅能给原生的数据类型起别名，也可以给自定义的类型起别名；
-2.利用typedef给数据起别名，并不会生成新的数据类型；
-//new
-1.开辟存储空间-alloc
-2.开辟所有的属性-init
-3.返回对象的地址
-//@available
-if(@available(macOS10.1,iOS 11,*)) {
-    //code
-}
+2.利用typedef给数据起别名，并不会生成新的数据类型
 
 #常见概念：
 //僵尸对象：只要一个对象被释放了，我们就称这个对象为“僵尸对象”
@@ -20245,9 +19081,6 @@ if(@available(macOS10.1,iOS 11,*)) {
 的指针设置为空指针；
 //控制器：凡是继承于UIViewController的对象都是控制器
 特点：每个控制器都有一个UIView、本身不可见、每个控制器都有一个UIView属性、管理一个软件界面
-//Xcode中保存自定义代码块
-//UUID：设备唯一标识(https://www.jianshu.com/p/0dce89cdf9f6)
-//UDID：设备识别码(真机调试、App上架)
 //nil：0x0
 
 //获取当前时间
@@ -20258,18 +19091,6 @@ __weak typeof(self) weakSelf = self;
 UIImage *img = [UIImage imageNamed:@"logo.png"];//加载小图片、经常被使用的图片
 NSString *path =  [[NSBundle mainBundle] pathForResource:@"logo" ofType: @"png"];
 UIImage *img = [UIImage imageWithContentsOfFile:path];//加载大图片、不经常使用的图片
-//UIWebView可以打开doc/pdf文件
-UIWebView *webView = [[UIWebView alloc] initWithFrame: [UIScreen mainScreen].bounds];
-webView.delegate = self;
-webView.multipleTouchEnabled = YES;
-webView.scalesPageToFit = YES;
-NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-NSString *documentsDirectory = [paths objectAtIndex:0];
-NSString *docPath = [documentsDirectory stringByAppendingString:@"/readMe.doc"];
-NSURL *url = [NSURL fileURLWithPath:docPath];
-NSURLRequest *request = [NSURLRequest requestWithURL:url];
-[webView loadRequest:request];
-[webview loadHTMLString:str baseURL:nil];//加载html页面
 //屏幕常亮不变暗
 [UIApplication sharedApplication].idleTimerDisabled = YES;
 //隐藏NavigationBar

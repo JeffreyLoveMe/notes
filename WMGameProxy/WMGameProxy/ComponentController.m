@@ -649,6 +649,11 @@
     // 可以通过 self.automaticallyAdjustsScrollViewInsets = NO; 设置
     scrollView.contentInset = UIEdgeInsetsMake(10, 10, 10, 10);  // 内边距 - cell到边的距离
     // 不要自动设置偏移量
+    /**
+     if(@available(macOS10.1, iOS 11, *)) {
+         //code
+     }
+     */
     if (@available(iOS 11, *)) {
         // >= iOS 11
         scrollView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
