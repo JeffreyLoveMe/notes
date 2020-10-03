@@ -20,6 +20,7 @@ NS_ASSUME_NONNULL_BEGIN
  2.客户端和服务器交互
  1>.URL - 统一资源定位符/网址/在互联网上每个资源都是唯一的/协议+主机ip地址+端口号+资源/使用利于记忆的符号来代替IP地址
  2>.HTTP协议 - 超文本传输协议/规定客户端和服务端之间的数据传输格式/交互方法GET、POST、PUT、DELETE
+ 3>.网络中的数据 - 都是字符串/json格式/xml格式
  */
 /**
  3.GET/POST的区别
@@ -48,6 +49,13 @@ NS_ASSUME_NONNULL_BEGIN
  1).你平时在工作中使用过抓包工具吗？一般是用来干嘛的？
  2).抓包的步骤是怎么样的？通过步骤你能猜测一下抓包的工作原理吗？
  3).抓包可以抓https吗？怎么才可以让https不被抓包工具抓取？
+ */
+/**
+ 6.网络的数据下载
+ //同步下载：使用主线程进行下载，在下载完成前，线程阻塞
+ NSURL *url = [NSURL URLWithString:@"http://10.0.8.8/sns/my/user_list.php?number=20&page=1"]; //OC中使用NSURL类型的网址
+ NSData *data = [NSData dataWithContentsOfURL:url];
+ //异步下载：开辟新线程负责下载，主线程不会卡死，当子线程完成，回调主线程
  */
 @interface WMNetworkViewController : UIViewController
 

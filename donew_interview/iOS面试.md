@@ -381,7 +381,7 @@ func selectedSort(array: inout [Int]) -> [Int] {
         // 保存最小值的位置，默认为 i
         var min = i
         // 从 (i + 1) 开始遍历找到真正最小值的位置
-        for j in (i + 1)..<array.count {
+        for j in (i + 1) ..< array.count {
             if array[j] < array[min] {
                 min = j
             }

@@ -486,6 +486,7 @@ NSLocationAlwaysUsageDescription
 练习：找出实用的第三方框架开发出商用级别项目；
 https://blog.csdn.net/Dreamandpassion/article/details/82459246
 https://www.jianshu.com/p/d8062b1856f3
+
 92.多媒体（图片、音乐、录音、视频）
 /*
 1.多媒体：图片,声音,录音,视频
@@ -3132,12 +3133,7 @@ UIImagePickerController可以从相册，相机，胶卷里获得图片。
 50. 对像序列化
 NSCoding    encodeWithCoder   initWithCoder
 NSKeyedUnarchiver   NSKeyedArchiver
-51. 各种picker
-UIDatePicker   UIPickerView
-52. 电影播放
-     MPMoviePlayerController
-     音乐播放
-     MPMusicPlayerController
+     
 53.线程 ？
   a. 线程的创建和使用规则?
 答：NSThread三种方法
@@ -3157,8 +3153,6 @@ sleep(n);//线程休眠
  [thread singnal];//相当于通知，线程启动
  [thread unlock];//解锁
  [thread exit];//线程退出
-54.各种 排序算法？
-希尔排序、快速排序
 
 答： 会引起循环引用所有的引用计数系统，都存在循环应用的问题。例如下面的引用关系：
 * 对象a创建并引用到了对象b.
@@ -3171,16 +3165,8 @@ sleep(n);//线程休眠
       [person retain]; retain  count 2
       [person release];retain count 1
       [person release];retain count = 0
- 
-58.在一个对象的方法里面:
-self.name = “object”; 和name ＝”object” 有什么不同吗?
-答：self.name = "object"会调用对象的setName()方法,会使object引用计数加1，name = "object"会直接把object赋值给当前对象的name 属性，引用计数不增加。 59.readwrite，readonly，assign，retain，copy，nonatomic属性的作用？
-@property是一个属性访问声明，扩号内支持以下几个属性： 1，getter=getterName，setter=setterName，设置setter与getter的方法名 2，readwrite,readonly，设置可供访问级别 3，assign，setter方法直接赋值，不进行任何retain操作，为了解决原类型与环循引用问题 4，retain，setter方法对参数进行release旧值再retain新值，所有实现都是这个顺序(CC上有相关资料) 5，copy，setter方法进行Copy操作，与retain处理流程一样，先旧值release，再Copy出新的对象，retainCount为1。这是为了减少对上下文的依赖而引入的机制。 
-6，nonatomic，非原子性访问，不加同步，多线程并发访问会提高性能。注意，如果不加此属性，则默认是两个访问方法都为原子型事务访问。锁被加到所属对象实例级(我是这么理解的…)。7，@synthesize xxx; 来实现实际代码
-  60.1.main()  {    int a[5]={1,2,3,4,5};    int *ptr=(int *)(&a+1);    printf("%d,%d",*(a+1),*(ptr-1)); } 答：2,5      *(a+1）就是a[1]，*(ptr-1)就是a[4],执行结果是2，5&a+1不是首地址+1，系统会认为加一个a数组的偏移，是偏移了一个数组的大小（本例是5个int）int *ptr=(int *)(&a+1); 则ptr实际是&(a[5]),也就是a+5 原因如下： 　　&a是数组指针，其类型为 int (*)[5]; 　　而指针加1要根据指针类型加上一定的值，不同类型的指针+1之后增加的大小不同。a是长度为5的int数组指针，所以要加 5*sizeof(int) 所以ptr实际是a[5] 但是prt与(&a+1)类型是不一样的(这点很重要) 所以prt-1只会减去sizeof(int*)a,&a的地址是一样的，但意思不一样a是数组首地址，也就是a[0]的地址，&a是对象（数组）首地址， a+1是数组下一元素的地址，即a[1],&a+1是下一个对象的地址，即a[5].
+  60.1.main()  {    int a[5]={1,2,3,4,5};    int *ptr=(int *)(&a+1);    printf("%d,%d",*(a+1),*(ptr-1)); } 答：2,5      *(a+1）就是a[1]，*(ptr-1)就是a[4],执行结果是2，5&a+1不是首地址+1，系统会认为加一个a数组的偏移，是偏移了一个数组的大小（本例是5个int）int *ptr=(int *)(&a+1); 则ptr实际是&(a[5]),也就是a+5 原因如下： 　　&a是数组指针，其类型为 int (*)[5]; 　　而指针加1要根据指针类型加上一定的值，不同类型的指针+1之后增加的大小不同。a是长度为5的int数组指针，所以要加 5*sizeof(int) 所以ptr实际是a[5] 但是prt与(&a+1)类型是不一样的(这点很重要) 所以prt-1只会减去sizeof(int*)a,&a的地址是一样的，但意思不一样a是数组首地址，也就是a[0]的地址，&a是对象（数组）首地址， a+1是数组下一元素的地址，即a[1],&a+1是下一个对象的地址，即a[5].
 
-
-  OC部分：
  int *a;
 int b[4]={1,2,3,4};
 char *c;
@@ -3195,17 +3181,10 @@ const int * const a;
 有integer :5,6,10,34,25,用NSArray实现逆序
 NSThread  NSLock 等实现线程锁，即当一个线程说话时锁定另一个线程，说完后再解锁
 
-
-考试吧面试题
-
-
 2、Notification封装了哪3个内容
     1.）(NSString *)name;
     2.）(id)object;
     3.）(NSDictionary *)userInfo;
-
-
-
 
 3.     你如何理解代理/委托
     委托代理（delegate），顾名思义，把某个对象要做的事情委托给别的对象去做，那么别的对象就是这个对象的代理，代替它来打理要做的事。
@@ -3233,41 +3212,12 @@ UDP 用户数据报协议  是 OSI 参考模型中一种无连接的传输层协
 UDP协议的主要作用是将网络数据流量压缩成数据包的形式
    长链接协议
 
-
 TCP协议和UDP协议的区别
 1，TCP协议面向连接，UDP协议面向非连接
 2，TCP协议传输速度慢，UDP协议传输速度快
 3，TCP协议保证数据顺序，UDP协议不保证
 4，TCP协议保证数据正确性，UDP协议可能丢包
 5，TCP协议对系统资源要求多，UDP协议要求少
-
-
-HTTP (Hyper Text Transfer Protocol)超文本传送协议   是一种详细规定了浏览器和万维网服务器之间互相通信的规则，通过因特网传送万维网文档的数据传送协议。  长链接协议
-
-特点：
-支持客户/服务器模式
-简单快速
-灵活
-无连接
-无状态
-
-
-json和xml解析
-
-json解析更快一些 json解析采用哈希查找
-json数据格式  字典
-
-xml采用树形查找
-xml数据格式  数组
-
-
-
-
-
-
-
-
-
 
 流媒体  流媒体技术也称流式媒体技术。所谓流媒体技术就是把连续的影像和声音信息经过压缩处理后放上网站服务器，让用户一边下载一边观看、收听，而不需要等整个压缩文件下载到自己的计算机上才可以看到的网络传输技术。
    该技术先在使用者端的计算机上创建一个缓冲区，在播放前预先下一段数据作为缓冲
@@ -3296,7 +3246,6 @@ NSLog(@”%@”, string);
 }
 10.请扩展NSString类，增加一个isEmpty方法，要求字符串有内容是返回YES无内容时返回NO
 
-
 程序运行的时候内存分几个区？各区的用途？
 C中分配内存的方式有哪些？
 Kvo/kvc的机制？
@@ -3307,12 +3256,6 @@ Object-c中创建一个工程需要用到那两个框架？
 
 写出下面a的含义：
  int a，int *a，int a[10]，int *a[10]，int (*a)[10]， int (*a)(int)， int (*a[10])(int);
-
-11.引用和指针的区别？
-12.加号函数和减号函数的区别？
-13.写一个"标准"宏MIN ，这个宏输入两个参数并返回较小的一个。
-
-
 
 1、如何定义实现notification，参数如何传递？
 [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeLabel:) name:@"changeLabel" object:nil];
@@ -3361,42 +3304,6 @@ id a = [_notifcation object];
         }
 }
 
-5、创建一个线程，并写出线程执行函数
-- (void)updateImageForCellAtIndexPath:(NSIndexPath *)indexPath
-{
-    NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
-    UIImage *image = [self getImageForCellAtIndexPath:indexPath];
-    UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
-    [cell.imageView performSelectorOnMainThread:@selector(setImage:) withObject:image waitUntilDone:NO];
-    [pool release];
-}
-然后再新开一个线程去做这件事情
-- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    [NSThread detachNewThreadSelector:@selector(updateImageForCellAtIndexPath:) toTarget:self withObject:indexPath];
-}
-
-6、
-    id object = nil;
-        NSArray * array = [[NSArray alloc] init];
-        for (id obj in array)
-    {
-               if ([obj isEqual:object])
-        {
-            
-            }
-            if ([obj isEqual:nil])
-         {
-            
-               }
-                if ([obj isEqual:NULL])
-        {
-            
-            }
-        }
-
-
-
 category 和 extension 的区别
 * 分类有名字，类扩展没有分类名字，是一种特殊的分类
 * 分类只能扩展方法（属性仅仅是声明，并没真正实现），类扩展可以扩展属性、成员变量和方法
@@ -3416,28 +3323,6 @@ static关键字的作用
 * 在模块内的 static 函数只可被这一模块内的其它函数调用，这个函数的使用范围被限制在声明 它的模块内；
 * 在类中的 static 成员变量属于整个类所拥有，对类的所有对象只有一份拷贝；
 * 在类中的 static 成员函数属于整个类所拥有，这个函数不接收 this 指针，因而只能访问类的static 成员变量
-
-￼
-
-* 修改后的代码
-typedef NS_ENUM(NSInteger, CYLSex)
-{
-  CYLSexMan,
-  CYLSexWoman
-};
-
-@interface CYLUser : NSObject<NSCopying>
-
-@property (nonatomic, copy, readonly) NSString *name;
-@property (nonatomic, assign, readonly) NSUInteger age;
-@property (nonatomic, assign, readwrite) CYLSex sex;
-
-- (instancetype)initWithName:(NSString *)name age:(NSUInteger)age sex:(CYLSex)sex;
-- (instancetype)initWithName:(NSString *)name age:(NSUInteger)age;
-+ (instancetype)userWithName:(NSString *)name age:(NSUInteger)age sex:(CYLSex)sex;
-
-@end
-
 
 +(void)load;
 +(void)initialize;有什么用处？
@@ -3583,9 +3468,6 @@ KVC和KVO的keyPath一定是属性么？
 apple用什么方式实现对一个对象的KVO？
 * 此题就是问KVO的实现原理
 
-
-2. iOS面试题UI篇
-
 Size Classes 具体使用
 * 对屏幕进行分类
 UIView和CALayer是什么关系?
@@ -3597,7 +3479,7 @@ UIView和CALayer是什么关系?
     return ([CAEAGLLayer class]);
 }
 
-* UIView的CALayer类似UIView的子View树形结构，也可以向它的layer上添加子layer，来完成某些特殊的显示。例如下面的代码会在目标View上敷上一层黑色的透明薄膜。
+ UIView的CALayer类似UIView的子View树形结构，也可以向它的layer上添加子layer，来完成某些特殊的显示。例如下面的代码会在目标View上敷上一层黑色的透明薄膜。
 grayCover = [[CALayer alloc]init];
 grayCover.backgroudColor = [[UIColor blackColor]colorWithAlphaComponent:0.2].CGColor;
 [self.layer addSubLayer:grayCover];
@@ -3611,7 +3493,6 @@ loadView的作用？
 * loadView用来自定义view，只要实现了这个方法，其他通过xib或storyboard创建的view都不会被加载
     •    看懂控制器view创建的这个图就行
 ￼
-*
 IBOutlet连出来的视图属性为什么可以被设置成weak?
 * 因为父控件的subViews数组已经对它有一个强引用
 IB中User Defined Runtime Attributes如何使用？
@@ -3636,8 +3517,7 @@ pushViewController和presentViewController有什么区别
 * 不好的解决方案
     * 使用下面的方式会强制Core Animation提前渲染屏幕的离屏绘制, 而离屏绘制就会给性能带来负面影响，会有卡顿的现象出现 self.view.layer.cornerRadius = 5;
     * self.view.layer.masksToBounds = YES;
-    *
-    *  
+
 * 正确的解决方案：使用绘图技术 
 - (UIImage *)circleImage
 {
@@ -3801,13 +3681,6 @@ UIGraphicsEndImageContext();
 {
     // 初始化代码
 }
-
-如何进行iOS6、7的适配
-* 通过判断版本来控制，来执行响应的代码
-* 功能适配：保证同一个功能在6、7上都能用
-* UI适配：保证各自的显示风格
-// iOS版本为7.0以上（包含7.0）
-#define iOS7 ([[UIDevice currentDevice].systemVersion doubleValue]>=7.0)
 
 如何渲染UILabel的文字？
 * 通过NSAttributedString/NSMutableAttributedString（富文本）
@@ -10371,9 +10244,6 @@ UIImagePickerController 可以从相册，相机，胶卷里获得图片。
 50. 对像序列化
 NSCoding encodeWithCoder initWithCoder
 NSKeyedUnarchiver NSKeyedArchiver
-51. 各种 picker
-UIDatePicker UIPickerView
-52. 电影播放 MPMoviePlayerController 音乐播放 MPMusicPlayerController
 53.线程 ?
 a. 线程的创建和使用规则 ?
 答: NSThread
@@ -16392,12 +16262,6 @@ ASIHTTPRequest 是一个直接在 CFNetwork 上做的开源项目:提供直接�
 UIImagePickerController 可以从相册，相机，胶卷里获得图片。 50. 对像序列化
 NSCoding encodeWithCoder initWithCoder
 NSKeyedUnarchiver NSKeyedArchiver
-51. 各种 picker
-UIDatePicker UIPickerView
-52. 电影播放
-MPMoviePlayerController
-音乐播放
-MPMusicPlayerController
 53.线程 ?
 a. 线程的创建和使用规则 ?
 答: NSThread
@@ -17637,27 +17501,6 @@ NSString *name = [xiaoming getName];==NSString *name = xiaoming.name;
 3.真正OC语法：self->_age = 15;
 代码：WMBook.h/m
 
-#@property：编译器指令
-作用：1.让编译器自动声明set/get方法；
-2.生成_xxx的成员变量；
-属性：UI所有的属性都要用nonatomic
-atomic(缺省) //原子性：对当前属性进行加锁，消耗性能，访问速度慢，但是线程安全；
-nonatomic //非原子性：不需要加锁，访问速度快，但是线程不安全；
-assign //直接赋值修饰符：一般用在基本类型；
-readonly/readwrite(缺省) //读写操作：readonly只需要提供get方法；
-copy //复制一份原来的对象：修饰字符串、不可变字符串可以直接使用strong
-注意：多个属性修饰符需要使用,隔开；
-get方法   set方法     属性
-   YES        YES       可读可写
-   YES         NO           只读
-    NO         YES          只写
-    NO          NO           私有
-注意：1.如果想对传入的数据进行过滤，就必须重写set/get方法；否则可以直接使用@property；
-2.如果重写了set/get方法，@property将不会再生成set/get方法；
-
-#@synthesize：编译器指令、Xcode4.4以后可以省略
-作用：让编译器自动实现set/get方法；
-
 #继承：派生
 定义：父类的属性(不包括私有)和方法，子类可以直接获取，叫做继承；子类在父类的基础上，创建自己的属性和方法，叫做派生；
 提示：每个类中都有一个[super class]指针指向自己的父类；
@@ -17702,8 +17545,6 @@ NSString采用了“抽象工厂”模式，内部是个类簇(class cluster)，
 多方法接口，但是这些方法的实现是由具体的内部类来实现的，当使用NSString生成一个对象时，
 初始化方法会判断哪个“自己内部的类”最适合生成这个对象，然后这个“工厂”就会生成这个具体的
 类对象返回给你，这种由外层类提供统一抽象的接口，然后隐藏具体的内部类来实现；
-
-#类的消息机制：NO
 
 #内存管理：
 //C语言：sizeof()是一个运算符，用来计算变量或数据类型的大小
@@ -17780,10 +17621,6 @@ ARC中的strong相当于MRC中的retain；
 #ARC和MRC的混合编程：
 //MRC转ARC：选中工程->target->Build Settings->Automatic Reference Counting改成NO
 
-#万国码：unicode
-定义：mac下默认的编码格式称为UTF-8编码格式，是万国码的一个分支，理念是不同的
-字符，用不同的字节来存储，比如一个汉字3个字节，一个字母1个字节；
-
 #协议protocol：直接新建、可以实现多继承
 定义：Objective-C语言中用来规范方法的声明，可以实现多继承和对象间通信；
 格式：见WMBook.h
@@ -17853,56 +17690,7 @@ NSLog(@"%d",block(3,5));
 4.block内部修改了外部变量、会影响外部变量的值；
 #作用：实现回调-见CLGO代码；
 https://blog.csdn.net/liu537192/article/details/45579791
-/*
-主头文件
-类对象
-遍历数组
-遍历字典
-XX管理系统
-继承和组合之间的区别
-虚方法
-重写和重载的区别
-工厂方法
-工厂类
-类的消息机制
-*/
 /******************************网络基础******************************/
-#xPath：NO
-
-#网络请求：
-1).基础概念：
-客户端(Client)：移动应用(iOS、Android应用)；
-服务端(Server)：为客户端提供服务、数据和资源；
-请求(Request)：客户端向服务端索取数据的一种行为；
-响应(Response)：服务端对客户端请求的反应；
-2).URL：
-定位：统一资源定位符(网址)；
-组成：协议 主机ip地址+端口号 资源；
-域名：用利于记忆的符号来代替IP地址；
-域名解析器DNS：把网址里写的域名解析成对应的IP地址；
-创建：WMPayInfo.h/m
-3).HTTP协议：
-定义：超文本传输协议，访问远程的网络资源；
-格式：http://
-作用：1).规定客户端和服务端之间的数据传输格式；
-2).让客户端和服务端能有效地进行数据沟通；
-App发送请求->服务端->服务端处理->App获取数据；
-交互方法：GET|POST|PUT|DELETE；
-//GET和POST：
-GET用来从服务端获取数据、没有请求体、GET不安全；
-http://www.baidu.com/login?wd=ios开发&id=changmeng&name=畅梦
-协议+主机地址+接口名称+?+参数1&参数2&参数3
-POST向服务端上传数据、有请求体、POST安全；
-http://www.baidu.com/login
-协议+主机地址+接口名称
-3).网络中的数据：都是字符串
-格式：json格式、xml格式
-4).网络的数据下载：
-//同步下载：使用主线程进行下载，在下载完成前，线程阻塞
-NSURL *url = [NSURL URLWithString:@"http://10.0.8.8/sns/my/user_list.php?number=20&page=1"];//OC中使用NSURL类型的网址
-NSData *data = [NSData dataWithContentsOfURL:url];
-//异步下载：开辟新线程负责下载，主线程不会卡死，当子线程完成，回调主线程
-
 #异步网络请求：
 //分类：
 网络请求：get
@@ -17937,15 +17725,6 @@ Xcode7.0以后：NSAppTransportSecurity->NSAllowsArbitraryLoads->YES
 3.网络请求第三方库的使用
 4.KVC在网络请求中的应用
 5.进入VC以后怎么加载操作
-
-#socket通信：NO
-/*
-json解析
-xml解析
-xPath
-socket通信
-NSURLSession原生网络请求
-*/
 /******************************iOS进阶******************************/
 #App的主目录：沙盒机制NSHomeDirectory()
 概念：沙盒机制是一种安全体系，规定了应用程序只能在该应用创建的文件夹内读取文件，不可以
@@ -18140,66 +17919,11 @@ https://blog.csdn.net/zhuzhihai1988/article/details/7742881
     //执行代码：只能修改关于坐标系的属性以及色彩和透明度
 }];
 
-#关于父子视图关系的属性和方法：
-概述：任何视图都可以添加到另一个视图，但是每个视图只能有一个父视图；
-特点：子视图的坐标是相对于父视图的，移动父视图，子视图会一起移动；
-1).同父视图的子视图的层次关系：view是父视图
-[view bringSubviewToFront:redLabel];//将子视图拿到最上层
-[view sendSubviewToBack:yellowLabel];//将子视图放到最下面
-[view insertSubview:blueLabel atIndex:0];//将子视图插入：如果blueLabel不是view的子视图，则
-会添加为子视图，如果已经是子视图，则会改变层次
-[view insertSubview:redLabel aboveSubview:yellowLabel];//插入
-[view insertSubview:redLabel belowSubview:subviews[1]];//插入
-[view exchangeSubviewAtIndex:0 withSubviewAtIndex:2];//交换两个子视图层次
-注意：1.一个父视图可以有多个子视图，但是一个子视图只能有一个父视图；
-2.先添加到父视图中的子视图，会被后添加到父视图的子视图覆盖；
-3.父视图不能移除子视图，子视图可以从父视图移除：[subView removeFromSuperview];//只要有父控件就可以移除
-4.self.view.superview();//返回父视图UIView
-5.self.view.subviews();//返回所有子视图NSArray
-
-#.层次与事件监听：
-1.父视图不能监听事件，则子视图无法监听事件；
-2.子视图超出父视图的部分，不能监听事件；
-3.同一个父视图下，最上面的视图，首先监听事件，如果能够响应，则不再向下传递事件，如果不能响应，则向下传递事件；
-
-#停靠模式：Autoresize
-定义：控制父视图改变大小时，子视图的变化方式；
-特点：服务于父视图边界修改后，子视图的重新布局；
-作用：等比例缩放、横竖屏旋转；
-@property (strong,nonatomic) UIViewAutoresizing autoresizingMask;
-UIViewAutoresizingNone                 = 0, //NO
-UIViewAutoresizingFlexibleLeftMargin   = 1 << 0 //右边界和父视图的距离不变，左边界自由
-UIViewAutoresizingFlexibleWidth        = 1 << 1 //自由的宽度：左右边距与父视图保持不变
-UIViewAutoresizingFlexibleRightMargin  = 1 << 2 //左边界和父视图的距离不变，右边界自由
-UIViewAutoresizingFlexibleTopMargin    = 1 << 3 //下边界和父视图的距离不变，上边界自由
-UIViewAutoresizingFlexibleHeight       = 1 << 4 //自由的高度，上下边距保持不变
-UIViewAutoresizingFlexibleBottomMargin = 1 << 5 //上边界和父视图的距离不变，下边界自由
-//在xib中怎么使用autoresizingMask？？？
-注意6根线：外部4根线固定边距、内部2根线固定宽高和父视图的比例；
-
 #自定义控件：
 1.在initWithFrame:方法中添加子控件，提供便利构造方法；
 2.在layoutSubviews方法中设置子控件的frame：一定要调用[super layoutSubviews]；
 3.增加模型属性，在模型属性set方法中设置数据到子控件；
 代码：见WMGame
-
-#iOS动画：
-//帧动画
-_imgArray = [[NSMutableArray alloc]init];
-for (int i =0;i<20;i++) {
-    UIImage *image = [UIImage imageNamed:[NSString stringWithFormat:@"%d", i+1]];
-    [_imgArray addObject:image];
-}
-_imgView.animationImages = _imgArray;//设置动画数组
-_imgView.animationDuration = 0.5;//设置动画执行时间
-_imgView.animationRepeatCount = 0;//设置播放动画次数：0表示无限重复
-[_imgView startAnimating];//开始动画
-[_imgView stopAnimating];//停止动画
-//渐变动画
-//核心动画
-CAKeyframeAnimation/CABasicAnimation/CATransition
-1).实现UIView的启动动画：WidgetViewController.h/m
-2).gif：WidgetViewController.h/m
 
 #UILabel的包裹模式：自适应
 特点：UILabel的高度是随着文字内容的增加而拉伸的；
@@ -18215,20 +17939,6 @@ CAKeyframeAnimation/CABasicAnimation/CATransition
 https://blog.csdn.net/wanglei0918/article/details/53286597
 https://blog.csdn.net/wwc455634698/article/details/55252719
 https://www.jianshu.com/p/a4755c789545
-
-#VC的生命周期：
-1.第一次加载vc：loadView->viewDidLoad->viewWillAppear->viewDidAppear；
-//push
-2.跳转第二个vc：viewWillDisappear->loadView->viewDidLoad->viewWillAppear->
-viewDidDisappear->viewDidAppear；
-//present
-2.跳转第二个vc：loadView->viewDidLoad->viewWillDisappear->viewWillAppear->
-viewDidAppear->viewDidDisappear；
-//pop、dismiss
-3.返回第一个vc：viewWillDisappear->viewWillAppear->viewDidDisappear->viewDidDisappear
-->dealloc；//不重新创建第一个vc，第二个vc销毁
-代码：LifetimeViewController.h/m
-https://blog.csdn.net/spicyshrimp/article/details/70886516
 
 #跳转：
 1).模态方式：见WidgetViewController.h/m->TimeViewController.h/m
@@ -18376,87 +18086,6 @@ https://www.jianshu.com/p/4ef0277e9c5e
 
 #VFL实现AutoLayout：NO
 
-#多线程：三种形式
-//基本概念
-进程(类似于车间)：系统中正在运行的应用程序(进程相互独立、每一个进程至少有一个线程)；//CPU给进程分配资源
-线程(类似于工人)：程序执行任务的最小调度单位(进程中所有的任务都是在线程中执行的)；
-任务：在GCD中，任务就是block中需要执行的代码；
-队列：用来存放“任务”的数组；FIFO原则
-串行：队列中的任务要按照顺序执行；
-并行：队列中的任务同时执行；
-同步：不能开新线程，任务创建以后需要执行完毕；
-异步：可以开新线程，任务创建以后可以先绕开；
-线程锁NSLock：百度
-信号量：指同时可以执行几个多线程
-//多线程：并发执行是假象，实质是CPU快速的在多条线程之间调度
-1.使用场景：ASI网络请求、SDWebImage图片下载
-2.使用目的：为了使界面流畅，防止界面假死；
-3.原理：1s---1000个0.001s
-//主线程(UI线程)：程序一启动，系统就会默认创建一条线程
-作用：显示刷新UI界面、处理与用户的交互事件；
-注意：1.不要处理耗时操作；
-2.程序默认开启、程序员不能手动开启主线程；
-//线程的状态
-新建New-->就绪Runnable-->运行状态Running-->阻塞Blocked
-//线程安全：
-问题：多个线程访问同一块资源，容易引发数据混乱和数据安全
-解决办法：互斥锁(使用线程同步技术)
-格式：@synchronized(锁对象) {
-    //需要锁定的代码
-}
-优点：能有效防止因多线程抢夺资源造成的数据混乱和安全问题；
-缺点：需要消耗大量CPU资源；
-//线程间通信：
-定义：在一个进程中，多个线程往往不是彼此独立，需要经常进行通信；
-体现：1.一个线程传递数据给另一个线程；
-2.一个线程中执行完特定任务后，转到另一个线程继续执行任务；
-//实现方案
-一.pthread：一套通用的多线程API、跨平台、可移植
-二.NSThread：创建线程的通用类
-代码：ThreadViewController.h/m
-三.NSOperation：基于GCD、任务为导向的多线程模型、需要管理线程
-//1.创建多线程：NSOperation是抽象类，两个子类都可以创建对象
-NSInvocationOperation *operation = [[NSInvocationOperation alloc]initWithTarget:self
-selector:@selector(downloadImage:) object:nil];
-NSBlockOperation *blockOperation = [NSBlockOperation blockOperationWithBlock:^{
-    //3.先加载、再更新UI
-}]
-//2.添加到队列：即可以并行、也可以串行，默认是并发队列、默认_queue.maxConcurrentOperationCount为8
-_queue = [[NSOperationQueue alloc]init];//创建NSOperationQueue的队列
-_queue.maxConcurrentOperationCount = 2;//设置队列的最大并发数量：同一时间最多有多少任务可以执行
-[_queue setSuspended:YES];//暂停：可以恢复、不能暂停当前正在处于执行状态的任务
-[_queue setSuspended:NO];//继续执行
-[_queue cancelAllOperations];//取消：不可以恢复
-[_queue addOperation:operation];
-[_queue addOperation:blockOperation];//多线程加到队列中
-//可以跨队列依赖
-[blockOperation addDependency:operation];//操作依赖：不能循环依赖、blockOperation依赖于operation
-//操作监听
-blockOperation.completionBlock = ^{
-    //注意：执行该block块代码的线程和执行blockOperation操作的线程不一定一致，因为使用GCD和NSOperation技术线程的分配是系统内部决定的
-    NSLog(@"任务已经执行完毕--%@",[NSThread currentThread]);
-};
-//3.先加载、再更新UI
--(void)downloadImage:(NSOperation*)operation {
-    //1.加载线程代码
-    //2.在主线程更新UI
-    [self performSelectorOnMainThread:@selector(updateUI:) withObject:image waitUntilDone:YES];
-}
-/*
-串行执行：不代表只开一条线程(线程同步)
-maxConcurrentOperationCount = 0 不会执行任务
-maxConcurrentOperationCount = 1 串行队列
-maxConcurrentOperationCount > 1 并发队列
-maxConcurrentOperationCount = -1 特殊意义：最大值、表示不受限制
-*/
-_queue.maxConcurrentOperationCount = 1;
-四.GCD：充分利用设备的多核、自动管理线程的生命周期；
-代码：ThreadViewController.h/m
-http://www.cocoachina.com/ios/20161031/17887.html
-//swift
-https://blog.csdn.net/u011146511/article/details/79300015
-https://www.jianshu.com/p/96032a032c7c
-
 #用户通知：
 //概述：
 推送功能一般分为两种：本地推送和远程推送；
@@ -18504,19 +18133,6 @@ https://www.jianshu.com/p/b0169d332918
 1.登录LBS开放平台，获取参数；
 2.下载相关SDK和实例代码；
 https://blog.csdn.net/liyun123gx/article/details/44222255
-
-#多媒体：图片、音乐、录音、视频
-//上传照片：UIImagePickerController-选择图片类(代理类)
-注意：保存图片、UIAlertController打不开
-//音频：流的形式
-音频录音机-AVAudioRecorder
-音频播放器-AVAudioPlayer
-//视频：vitamio
-视频播放器-MPMoviePlayerController
-代码：MediaViewController.h/m
-练习：找出实用的第三方框架开发出商用级别项目；
-https://blog.csdn.net/Dreamandpassion/article/details/82459246
-https://www.jianshu.com/p/d8062b1856f3
 
 #多语言：en/tw/cn
 定义：根据用户设置的Language and Region Format(语言和区域格式)修改应用
@@ -18871,18 +18487,10 @@ typedef 原有数据类型 别名
 
 //获取当前时间
 NSString *currentTime = [NSString stringWithFormat@"%@",[NSDate date]];
-//block中使用self
-__weak typeof(self) weakSelf = self;
-//加载图片
-UIImage *img = [UIImage imageNamed:@"logo.png"];//加载小图片、经常被使用的图片
-NSString *path =  [[NSBundle mainBundle] pathForResource:@"logo" ofType: @"png"];
-UIImage *img = [UIImage imageWithContentsOfFile:path];//加载大图片、不经常使用的图片
 //屏幕常亮不变暗
 [UIApplication sharedApplication].idleTimerDisabled = YES;
 //隐藏NavigationBar
 [self.navigationController setNavigationBarHidden:YES animated:YES];
-//判断msg是否是NSString
-[msg isKindOfClass:[NSString class]];
 //plist转NSArray
 NSString *path = [[NSBundle mainBundle] pathForResource:@"Flower" ofType:@"plist"];
 NSArray *array = [NSArray arrayWithContentsOfFile:path];
@@ -18951,17 +18559,6 @@ https://blog.csdn.net/lvchenqiang_/article/details/79077679
 作用：绘制图形、线、三角形、圆、弧形；绘制文字；绘制/生成pdf；截图/裁剪图片；自定义UI；
 https://blog.csdn.net/potato512/article/details/56845385
 https://blog.csdn.net/mangosnow/article/details/37054765#0-qzone-1-85099-d020d2d2a4e8d1a374a433f596ad1440
-
-#iOS11/12新特性：
-https://www.jianshu.com/p/39a5aee18778
-
-#Xcode9.x/Xcode10.x的新特性：
-//怎么研究新特性？
-使用新Xcode创建项目，用旧Xcode去打开；
-//泛型：见KeyViewController.h/m
-1.协变__convariant-子类转父类
-2.逆变__contravariant-父类转子类
-注意：在数组中，一般用可变数组添加方法泛型才会生效，如果使用不可变数组，泛型没有效果；
 /******************************面试部分******************************/
 #Instruments：NO
 

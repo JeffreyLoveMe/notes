@@ -144,6 +144,11 @@
     [self.view insertSubview:view belowSubview:superView];
     // 插入子视图：默认会添加
     [self.view insertSubview:superView atIndex:0];
+    // 任何视图都可以添加到另一个视图/每个视图只能有一个父视图
+    // 子视图的坐标是相对于父视图的，移动父视图会使子视图一起移动
+    [self.view addSubview:superView];
+    // 获取superView的父视图
+    [superView superview];
     // ！！！父视图不能移除子视图/子视图可以从父视图中移除！！！
     [superView removeFromSuperview];
     view.tag = 0;
@@ -342,8 +347,11 @@
     // 进入 "资源包" 获取资源
     NSString *path = [[NSBundle mainBundle] pathForResource:@"image_demo" ofType:@"png"];
     NSData *data = [NSData dataWithContentsOfFile:path];
+    // 方法一
     UIImage *image1 = [UIImage imageWithData:data];
-    NSLog(@"%@", image1);
+    // 方法二
+    UIImage *image2 = [UIImage imageWithContentsOfFile:path];
+    NSLog(@"%@===%@", image1, image2);
     /// UIImageView
     UIImageView *imageView = [[UIImageView alloc]init];
 //    // 第一种设置位置（常用）

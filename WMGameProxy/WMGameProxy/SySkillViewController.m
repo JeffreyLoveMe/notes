@@ -138,7 +138,7 @@
 }
 
 
-#pragma mark - MPMoviePlayerController
+#pragma mark - MPMoviePlayerController/MPMusicPlayerController
 
 
 #pragma mark - iOS自动布局框架 / Masonry详解
@@ -1061,22 +1061,25 @@
     return [mArray componentsJoinedByString:oprater];
 }
 /**
+ 问题 - 怎么研究新特性？- 使用新Xcode创建项目，用旧Xcode去打开
  泛型 - 1.限制类型；2.提高代码规范；3.迎合swift
  类型 <限制类型>
  最大作用 - 限制集合类型
  https://blog.csdn.net/imkata/article/details/78859482
- __covariant协变
- __contravariant逆变
+ __covariant协变/子类转父类
+ __contravariant逆变/父类转子类
  */
 // 自定义泛型
 -(void)showObj {
     WMGameProxy<NSString *> *wm = [WMGameProxy new];
     wm.obj = @"哈哈";
 }
+// 注意 - 在数组中，一般用可变数组添加方法泛型才会生效，如果使用不可变数组，泛型没有效果
 
 
 #pragma mark - 系统相关
 - (void)dealloc {
+    [super dealloc];
     // 对象销毁之前自动调用该方法
 }
 - (void)didReceiveMemoryWarning {
