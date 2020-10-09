@@ -2450,22 +2450,6 @@ NSLog(@"%d", [str retainCount]);
   TCP(Transmission Control Protocol ，传输控制协议)是基于连接的协议，正 式收发数据前必须和对方建立可靠的连接 (“三次握手”)，传输速度相对 UDP较慢。
   UDP(User Data Protocol ，用户数据报协议)是与 TCP相对应的协议。它是面 向非连接的协议 ,UDP适用于一次只传送少量数据、对可靠性要求不高的应用环境， 但是传输速度快
 
-
-*(a+1）就是a[1]，*(ptr-1)就是a[4]执行结果是2，5
- a+1不是首地址+1，编制会认为加一个a数组的偏移，是偏移了一个数组的大小（本例是5个int）
-int *ptr=(int *)( a+1);
-则ptr实际 是 (a[5])也就是a+5
-原因如下：
- a是数组指针，其类型为int (*)[5];
-而 指针加1要根据指针类型加上一定的值，不同类型的指针+1之后增加的大小不同。
-a是长度为5的int数组指针，所以要加 5*sizeof(int)
-所以ptr实际是a[5]
-但是prt与( a+1)类型是不一样的(这点很严重)
-所以prt-1只会减去sizeof(int*)
-a的地址是一样的，但意思不一样
-a是数组首地址，也就是a[0]的地址， a是对象（数组）首地址，
-a+1是数组下一元素的地址，即a[1] a+1是下一个对象的地址，即a[5].
-
 10.为什么标准头文件都有类似以下的布局？
 #ifndef__INCvxWorksh
 #define__INCvxWorksh
@@ -2508,27 +2492,6 @@ dispatch_semaphore_signal
 比如说信号定义了堵塞数量为2，同方向前车在那堵着，但是另外一条车道有一个空的，所以后车可以选择绕过去
 但是如果同方向两车道都有车在那停着，后车必须也等待，等待到有任何一个车被释放，才可以继续往前开
 
-27. 用变量a给出下面的定义
-a) 一个整型数（Aninteger）
-b)一 个指向整型数的指针（ A pointer to some kind ofinteger）
-c)一个指向指针的的指针，它指向的指针是指向一个整型数（ A pointer to a pointer to some kind ofintege）r
-d)一个有10个整型数的数组（ An assortment of 10integers）
-e) 一个有10个指针的数组，该指针是指向一个整型数的。（An assortment of 10 pointers tointegers）
-f) 一个指向有10个整型数数组的指针（ A pointer to some kind of assortment of 10integers）
-g) 一个指向函数的指针，该函数有一个整型参数并返回一个整型数（A pointer to a function that takessome kind of integer as some kind of argument
-some kind ofd returns some kind ofinteger）
-h) 一个有10个指针的数组，该指针指向一个函数，该函数有一个整型参数并返回一个整型数（ An assortment of tenpointers to functions t
-hat take some kind of integer argument some kind ofd return some kind of integer）
-答 案是：
-a) int a; // Aninteger
-b) int *a; // A pointer to some kind ofinteger
-c) int **a; // A pointer to a pointer to some kind ofinteger
-d) int a[10]; // An assortment of 10integers
-e) int *a[10]; // An assortment of 10 pointers tointegers
-f) int (*a)[10]; // A pointer to some kind of assortment of 10integers
-g) int (*a)(int); // A pointer to a function athattakes some kind of integer argument some kind ofd returns some kind ofinteger
-h) int (*a[10])(int); // An assortment of 10 pointers tofunctionsthat take some kind of integer argument some kind ofdreturn some kind of integer
-
 9.iphone应用程序的项目基本结构
 classes:里面存放object-c类源代码文件(可以创建子文件夹来组织代码);
 other sources:存放除objective-c类之外的源代码文件；
@@ -2544,7 +2507,6 @@ Products：包含项目在编译时生成的应用程序(xxx.app);
 //// 可变字符串生成新的对象
 //@property (copy, nonatomic) NSString *name;
 
-    技术
 1.WWDC是什么？你关注过哪些？
 7.数据保存怎么实现？
 8.block和gcd的并发执行
@@ -2684,8 +2646,6 @@ Singleton 了，用的越多对水平就越表示怀疑。对设计模式自信�
 20.什么是序列化或者Acrchiving,可以用来做什么,怎样与copy结合,原理是什么?.
  
 22.在iphone上有两件事情要做,请问是在一个线程里按顺序做效率高还是两个线程里做效率高？为什么？
-
-24.ios平台怎么做数据的持久化?coredata和sqlite有无必然联系？coredata是一个关系型数据库吗？
  
 25.阐述一个nil对象从interface bulider产生，到载入程序运行空间，最后被释放时所经历的生命周期.
  
@@ -2928,28 +2888,7 @@ id a = [_notifcation object];
     [NSThread detachNewThreadSelector:@selector(updateImageForCellAtIndexPath:) toTarget:self withObject:indexPath];
 }
 
-6、
-    id object = nil;
-        NSArray * array = [[NSArray alloc] init];
-        for (id obj in array)
-    {
-               if ([obj isEqual:object])
-        {
-            
-            }
-            if ([obj isEqual:nil])
-         {
-            
-               }
-                if ([obj isEqual:NULL])
-        {
-            
-            }
-        }
-
-
 AsyncSocket套接字
-
 Socket描述了一个IP、端口对。它简化了程序员的操作，知道对方的IP以及PORT就可以给对方发送消息，再由服务器端来处理发送的这些消息。所以，Socket一定包含了通信的双发，即客户端（Client）与服务端（server）。
 1）服务端利用Socket监听端口；
 2）客户端发起连接；
@@ -3062,14 +3001,10 @@ iphone 的标准推荐CFNetwork C库编程.但是编程比较烦躁。在其它O
 
 16、 cell行数太多，如何滑动流畅
  
-18.自动释放池是什么,如何工作  当您向一个对象发送一个autorelease消息时，Cocoa就会将该对象的一个引用放入到最新的自动释放池。
+18.自动释放池是什么如何工作  当您向一个对象发送一个autorelease消息时，Cocoa就会将该对象的一个引用放入到最新的自动释放池。
 它仍然是个正当的对象，因此自动释放池定义的作用域内的其它对象可以向它发送消息。
-当程序执行到作用域结束的位置时，自动释放池就会被释放，池中的所有对象也就被释放。 1.  ojc-c 是通过一种"referring counting"(引用计数)的方式来管理内存的, 对象在开始分配内存(alloc)的时候引用计数为一, 以后每当碰到有copy,retain的时候引用计数都会加一, 每当碰到release和autorelease的时候引用计数就会减一,如果此对象的计数变为了0, 就会被系统销毁. 2. NSAutoreleasePool 就是用来做引用计数的管理工作的,这个东西一般不用你管的. 3. autorelease和release没什么区别,只是引用计数减一的时机不同而已,autorelease会在对象的使用真正结束的时候才做引用计数减一.
-19.objc优点：   1) Cateogies   2) Posing   3) 动态识别   4) 指标计算   5）弹性讯息传递   6) 不是一个过度复杂的 C 衍生语言   7) Objective-C 与 C++ 可混合编程   objc缺点:   1) 不支援命名空間   2)  不支持运算符重载   3） 不支持多重继承   4） 使用动态运行时类型，所有的方法都是函数调用，所以很多编译时优化方法都用不到。（如内联函数等），性能低劣。
-20.sprintf,strcpy,memcpy使用上有什么要注意的地方    srcpy是一个字符串拷贝的函数，它的函数原型为strcpy(char *dst, const char *src);  将src开始的一段字符串拷贝到dst开始的内存中去结束的标志符号为 '\0'，由于拷贝的长度不是由我们自己控制的，所以这个字符串拷贝很容易出错。具备字符串拷贝功能的函数有memcpy，这是一个内存拷贝函数，它的函数原型为memcpy(char *dst, const char* src, unsigned int len);将长度为len的一段内存，从src拷贝到dst中去，这个函数的长度可控。但是会有内存叠加的问题。 sprintf是格式化函数。将一段数据通过特定的格式，格式化到一个字符串缓冲区中去。sprintf格式化的函数的长度不可控，有可能格式化后的字符串会超出缓冲区的大小，造成溢出。 21. 用变量a给出下面的定义 a) 一个整型数（An integer）   b)一个指向整型数的指针（ A pointer to an integer）   c)一个指向指针的的指针，它指向的指针是指向一个整型数（ A pointer to a pointer to an intege）r   d)一个有10个整型数的数组（ An array of 10 integers）
-e) 一个有10个指针的数组，该指针是指向一个整型数的。（An array of 10 pointers to integers）   f) 一个指向有10个整型数数组的指针（ A pointer to an array of 10 integers）   g) 一个指向函数的指针，该函数有一个整型参数并返回一个整型数（A pointer to a function that takes an integer as an argumentand returns an integer）   h) 一个有10个指针的数组，该指针指向一个函数，该函数有一个整型参数并返回一个整型数（ An array of ten pointers to functions that take an integer argument and return an integer ）   答案是：   a) int a; // An integer   b) int *a; // A pointer to an integer   c) int **a; // A pointer to a pointer to an integer   d) int a[10]; // An array of 10 integers   e) int *a[10]; // An array of 10 pointers to integers   f) int (*a)[10]; // A pointer to an array of 10 integers   g) int (*a)(int); // A pointer to a function a that  takes an integer argument and returns an integer   h) int (*a[10])(int); // An array of 10 pointers to functions  that take an integer argument and return an integer
- 
-22.readwrite，readonly，assign，retain，copy，nonatomic 属性的作用@property是一个属性访问声明，扩号内支持以下几个属性： 1，getter=getterName，setter=setterName，设置setter与 getter的方法名 2，readwrite,readonly，设置可供访问级别 2，assign，setter方法直接赋值，不进行任何retain操作，为了解决原类型与环循引用问题 3，retain，setter方法对参数进行release旧值再retain新值，所有实现都是这个顺序(CC上有相关资料) 4，copy，setter方法进行Copy操作，与retain处理流程一样，先旧值release，再 Copy出新的对象，retainCount为1。这是为了减少对上下文的依赖而引入的机制。 5，nonatomic，非原子性访问，不加同步，多线程并发访问会提高性能。注意，如果不加此属性，则默认是两个访问方法都为原子型事务访问。锁被加到所属对象实例级 25.你了解svn,cvs等版本控制工具么？ 版本控制 svn,cvs 是两种版控制的器,需要配套相关的svn，cvs服务器。 scm是xcode里配置版本控制的地方。版本控制的原理就是a和b同时开发一个项目，a写完当天的代码之后把代码提交给服务器，b要做的时候先从服务器得到最新版本，就可以接着做。 如果a和b都要提交给服务器，并且同时修改了同一个方法，就会产生代码冲突，如果a先提交，那么b提交时，服务器可以提示冲突的代码，b可以清晰的看到，并做出相应的修改或融合后再提交到服务器。
+当程序执行到作用域结束的位置时，自动释放池就会被释放，池中的所有对象也就被释放。 1.  ojc-c 是通过一种"referring counting"(引用计数)的方式来管理内存的, 对象在开始分配内存(alloc)的时候引用计数为一, 以后每当碰到有copy,retain的时候引用计数都会加一, 每当碰到release和autorelease的时候引用计数就会减一,如果此对象的计数变为了0, 就会被系统销毁 2. NSAutoreleasePool 就是用来做引用计数的管理工作的,这个东西一般不用你管的 3. autorelease和release没什么区别,只是引用计数减一的时机不同而已,autorelease会在对象的使用真正结束的时候才做引用计数减一.
+ 25.你了解svn,cvs等版本控制工具么？ 版本控制 svn,cvs 是两种版控制的器,需要配套相关的svn，cvs服务器。 scm是xcode里配置版本控制的地方。版本控制的原理就是a和b同时开发一个项目，a写完当天的代码之后把代码提交给服务器，b要做的时候先从服务器得到最新版本，就可以接着做。 如果a和b都要提交给服务器，并且同时修改了同一个方法，就会产生代码冲突，如果a先提交，那么b提交时，服务器可以提示冲突的代码，b可以清晰的看到，并做出相应的修改或融合后再提交到服务器。
 26.什么是push(了解一下）。
 客户端程序留下后门端口，客户端总是监听针对这个后门的请求，于是 服务器可以主动像这个端口推送消息。
 27.静态链接库(了解一下）
@@ -5950,26 +5885,6 @@ Xcode scheme 定义了编译集合中的若干 target,编译时的一些设置�
 员变量 ; (5)对于类的成员函数
 值”。
 
-6.ios 平台怎么做数据的持久化 数据库吗?
-iOS 中可以有四种持久化数据的方式: 可以使你以图形界面的方式快速的定义
-,const 可以修饰形参 ,表明它是一个输入参数 ,在函数内部不能改变
-,若指定其为 const 类型 ,则表明其是一个常函数 , 不能修改类的成
-,有时候必须指定其返回值为 const 类型 ,以使得其 返回值不为 “左
-?coredata 和 sqlite 有无必然联系? coredata 是一个关系型
-属性列表、 对象归档、 SQLite3 和 CoreData;coredata app 的数据模型，同时在你的代码中容易获取到它。
-core data 提供了基础结构去处理常用的功能，例如保存，恢复，撤销和重做，允许你在 app 中继续创建新的任务。 在使用 core data 的时候，你不用安装额外的数据库系统， 因为 core data 使用内置的 sqlite 数据库。 coredata 将你 app 的模型层放入到一组定义在内存中的数据对象。
-core data 会追踪这些对象的改变， 同时可以根据需要做相反的改变， 例如用户执行撤销命令。
-当 core data 在对你 app 数据的改变进行保存的时候， core data 会把这些数据归档， 并永久性 保存。
-mac os x 中 sqlite 库，它是一个轻量级功能强大的关系数据引擎， 也很容易嵌入到应用程序。 可以在多个平台使用， sqlite 是一个轻量级的嵌入式 sql 数据库编程。 与 coredata 框架不同的
-是， sqlite 是使用程序式的， sql 的主要的 API 来直接操作数据表。
-Core Data 不是一个关系型数据库，也不是关系型数据库管理系统 (RDBMS) 。虽然 CoreDta
-支持 SQLite 作为一种存储类型， 但它不能使用任意的 SQLite 数据库。 CoreData 在使用的过 程种自己创建这个数据库。 Core Data 支持对一、对多的关系。
-
-XML 数据解析方式各有什么不同， JSON解析有哪些框架?
- XML数据解析的两种解析方式: DOM解析和 SAX解析;
-DOM解析必须完成 DOM树的构造， 在处理规模较大的 XML文档时就很耗内 存， 占用资源较多， 读入整个 XML文档并构建一个驻留内存的树结构 (节 点树) ，通过遍历树结构可以检索任意 XML节点， 读取它的属性和值， 通 常情况下，可以借助 XPath 查询 XML节点;
-SAX与 DOM不同，它是事件驱动模型，解析 XML文档时每遇到一个开始或 者结束标签、属性或者一条指令时， 程序就产生一个事件进行相应的处理， 一边读取 XML文档一边处理， 不必等整个文档加载完才采取措施， 当在读 取解析过程中遇到需要处理的对象，会发出通知进行处理。因此， SAX相 对于 DOM来说更适合操作大的 XML文档。
-JSON解析: 性能比较好的主要是第三方的 JSONKIT和 iOS 自带的 JSON解 析类，其中自带的 JSON解析性能最高，但只能用于 iOS5 之后。
 如何进行真机调试?
 1. 首先需要用钥匙串创建一个钥匙( key);
 2. 将钥匙串上传到官网，获取 iOS Development 证书;
@@ -6607,271 +6522,20 @@ void test1()
 {
 char string[10];
 char* str1 = "0123456789"; strcpy( string, str1 );
-}
-试题 2:
-void test2()
-{
-char string[10], str1[10]; int i;
-for(i=0; i<10; i++)
-{
-str1 = 'a'; } strcpy( string, str1 ); }
-试题 3:
-void test3(char* str1) {
-char string[10];
-if( strlen( str1 ) <= 10 ) {
-strcpy( string, str1 ); }
-}
-试题 1字符串 str1需要11个字节才能存放下 (包括末尾的’ \0’)，而 string 只有 10个字 节的空间， strcpy 会导致数组越界;
-解答:
 
- 对试题 2，如果面试者指出字符数组 str1 不能在数组内结束可以给 3分;如果面试者指出 strcpy(string, str1) 调用使得从 str1[url=] 内存 [/url] 起复制到 string 内存起所复制的字节数具
-有不确定性可以给 7分，在此基础上指出库函数 strcpy 工作方式的给
-对试题 3 ， if(strlen(str1) <= 10) 计’ \0’所占用的 1个字节。
-剖析:
-考查对基本功的掌握:
-(1) 字符串以’ \0 ’结尾;
-(2) 对数组越界把握的敏感度;
-应改为 if(strlen(str1) < 10)
-的结果未统
-(3) 库函数 strcpy 的工作方式，如果编写一个标准 strcpy 几个不同得分的答案:
-函数的总分值为
-10 ，下面给出
-2分
-void strcpy( char *strDest, char *strSrc ) {
-while( (*strDest++ = * strSrc++) !=
-}
-4分
-‘\0’ );
-void strcpy( char *strDest, const char *strSrc ) //将源字符串加 const ，表明其为输入参数，加 2分
-{
-while( (*strDest++ = * strSrc++) != ‘\0’ );
-}
-7分
-void strcpy(char *strDest, const char *strSrc) {
-//对源地址和目的地址加非 0断言，加 3分
-10 分; ，因为 strlen
-
- assert( (strDest != NULL) && (strSrc != NULL) ); while( (*strDest++ = * strSrc++) != ‘\0’ );
-}
-10分
-//为了实现链式操作，将目的地址返回，加 3分!
-char * strcpy( char *strDest, const char *strSrc ) {
-assert( (strDest != NULL) && (strSrc != NULL) ); char *address = strDest;
-while( (*strDest++ = * strSrc++) != ‘\0’ );
-return address; }
-从2分到10分的几个答案我们可以清楚的看到，小小的 真不是盖的!需要多么扎实的基本功才能写一个完美的
-strcpy 竟然暗藏着这么多玄机， strcpy 啊!
-(4) 对 strlen 的掌握，它没有包括字符串末尾的 '\0' 。
-读者看了不同分值的 strcpy 版本，应该也可以写出一个 10 分的 strlen 函数了，完美的
-版本为: int strlen( const char *str ) // 输入参数 const
-{
-len++; }
-return len; }
-试题 4:
-void GetMemory( char *p )
-{
-p = (char *) malloc( 100 );
-断言字符串地址非 0
-assert( strt != NULL ); // int len;
-while( (*str++) != '\0' )
-{
-
- }
-void Test( void )
-{
-char *str = NULL; GetMemory( str );
-strcpy( str, "hello world" ); printf( str );
-}
-试题 5:
-char *GetMemory( void )
-{
-char p[] = "hello world";
-return p; }
-void Test( void )
-{
-char *str = NULL;
-str = GetMemory(); printf( str );
-}
-试题 6:
-void GetMemory( char **p, int num )
-{
-*p = (char *) malloc( num );
-}
-void Test( void ) {
-char *str = NULL; GetMemory( &str, 100 ); strcpy( str, "hello" ); printf( str );
-
- }
-试题 7:
-void Test( void ) {
-char *str = (char *) malloc( 100 );
-strcpy( str, "hello" ); free( str );
-... // 省略的其它语句
-}
-试题 4传入中 GetMemory( char *p ) 函数的形参为字符串指针，在函数内部修改形参并 不能真正的改变传入形参的值，执行完
-char *str = NULL; GetMemory( str );
-后的 str 仍然为 NULL ; 试题 5中
-char p[] = "hello world"; return p;
-的 p[]数组为函数内的局部自动变量，在函数返回后，内存已经被释放。这是许多程序 员常犯的错误，其根源在于不理解变量的生存期。
-试题 6的 GetMemory 避免了试题 4 的问题，传入 GetMemory 的参数为字符串指针的指 针，但是在 GetMemory 中执行申请内存及赋值语句
-*p = (char *) malloc( num );
-  后未判断内存是否申请成功，应加上:
-if ( *p == NULL ) {
-...// 进行申请内存失败处理 }
-解答:
-
- 试题 7存在与试题 6同样的问题，在执行
-char *str = (char *) malloc(100);
-后未进行内存是否申请成功的判断;另外，在 free(str) 后未置 str 为空，导致可能变成
-一个“野”指针，应加上:
-str = NULL;
-试题 6的 T est 函数中也未对 malloc 的内存进行释放。
-剖析:
-试题 4~ 7考查面试者对内存操作的理解程度，基本功扎实的面试者一般都能正确的回
-答其中 50~60 的错误。但是要完全解答正确，却也绝非易事。 对内存操作的考查主要集中在:
-( 1)指针的理解;
-( 2)变量的生存期及作用范围;
-( 3)良好的动态内存申请和释放习惯。 再看看下面的一段程序有什么错误:
-swap( int* p1,int* p2 ) {
-int *p;
-*p = *p1; *p1 = *p2; *p2 = *p;
-}
-在 swap 函数中， p 是一个“野”指针，有可能指向系统区，导致程序运行的崩溃。在
-VC++ 中 DEBUG 运行时提示错误“ Access Violation ”。该程序应该改为:
-swap( int* p1,int* p2 ) {
-
- int p;
-p = *p1; *p1 = *p2; *p2 = p;
-} [img=12,12]file:///D:/ 鱼鱼软件 /鱼鱼多媒体日记本 /temp/{56068A28-3D3B-4D8B-9F82-AC1C3E9B128C}_arc_d[1].gif[/img]
-题 1 :分别给出 BOOL ，int ，float ，指针变量 解答:
-与“零值”比较的
-3. 内功题
-if 语句(假设变量名为
-试 var )
-BOOL 型变量: if(!var)
-int 型变量: if(var==0)
-float 型变量:
-const float EPSINON = 0.00001;
-if ((x >= - EPSINON) && (x <= EPSINON) 指针变量: if(var==NULL)
-剖析:
-考查对 0值判断的“内功”， BOOL 型变量的 0判断完全可以写成 if(var==0) ，而 int 型 变量也可以写成 if(!var) ，指针变量的判断也可以写成 if(!var) ，上述写法虽然程序都能正确 运行，但是未能清晰地表达程序的意思。
-一般的，如果想让 if 判断一个变量的“真”、“假”，应直接使用 if(var) 、if(!var) ，表明 其为“逻辑”判断; 如果用 if 判断一个数值型变量 (short 、int 、long 等 )，应该用 if(var==0) ， 表明是与 0进行“数值”上的比较;而判断指针则适宜用 if(var==NULL) ，这是一种很好的 编程习惯。
-浮点型变量并不精确，所以不可将 float 变量用“ == ”或“! =”与数字比较，应该设 法转化成“ >=”或“ <=”形式。如果写成 if (x == 0.0) ，则判为错，得 0分。
-试题 2:以下为 Windows NT 下的 32 位 C++ 程序，请计算 sizeof 的值
-
- void Func ( char str[100] ) {
-sizeof( str ) = ? }
-void *p = malloc( 100 ); sizeof ( p ) = ?
-解答:
-sizeof( str ) = 4 sizeof ( p ) = 4
-剖析:
-函数中数组名作为函数形参时，在函数体内，数组名失去了本身 的内涵，仅仅只是一个指针;在失去其内涵的同时，它还失去了其常量特性，可以作自增、
-自减等操作，可以被修改。 数组名的本质如下:
-( 1)数组名指代一种数据结构，这种数据结构就是数组; 例如:
-char str[10];
-cout << sizeof(str) << endl;
-输出结果为 10 ， str 指代数据结构 char[10] 。
-( 2)数组名可以转换为指向其指代实体的指针，而且是一个指针常量，不能作自增、
-自减等操作，不能被修改;
-char str[10];
-str++; // 编译出错，提示 str 不是左值
-( 3)数组名作为函数形参时，沦为普通指针。
-Windows NT 32 位平台下，指针的长度(占用内存的大小)为 4字节，故 sizeof( str ) 、
-Func ( char str[100] )
-
- sizeof ( p ) 都为 4。
-试题 3:写一个“标准”宏 MIN ，这个宏输入两个参数并返回较小的一个。另外，当你
-写下面的代码时会发生什么事?
-least = MIN(*p++, b);
-解答:
-#define MIN(A,B) ((A) <= (B) ? (A) : (B)) MIN(*p++, b) 会产生宏的副作用
-剖析:
-这个面试题主要考查面试者对宏定义的使用， 它终归不是函数，而宏定义中括弧中的“参数”也不是真的参数，在宏展开的时候对“参 数”进行的是一对一的替换。
-  程序员对宏定义的使用要非常小心，特别要注意两个问题:
-( 1)谨慎地将宏定义中的“参数”和整个宏用用括弧括起来。所以，严格地讲，下述 解答:
-#define MIN(A,B) (A) <= (B) ? (A) : (B) #define MIN(A,B) (A <= B ? A : B )
-都应判 0分;
-( 2)防止宏的副作用。
-宏定义 #define MIN(A,B) ((A) <= (B) ? (A) : (B))
-((*p++) <= (b) ? (*p++) : (*p++))
-对 MIN(*p++, b) 的作用结果是:
-这个表达式会产生副作用，指针 p会作三次 ++自增操作。 除此之外，另一个应该判 0分的解答是:
-宏定义可以实现类似于函数的功能， 但是
-
- #define MIN(A,B) ((A) <= (B) ? (A) : (B));
-这个解答在宏定义的后面加“ ;”， 显示编写者对宏的概念模糊不清， 只能被无情地判 0
-分并被面试官淘汰。
-试题 4:为什么标准头文件都有类似以下的结构?
-#ifndef __INCvxWorksh #define __INCvxWorksh #ifdef __cplusplus
-extern "C" { #endif
-/*...*/
-#ifdef __cplusplus }
-#endif
-#endif /* __INCvxWorksh */
-解答: 头文件中的编译宏
-#ifndef __INCvxWorksh #define __INCvxWorksh #endif
-的作用是防止被重复引用。
-作为一种面向对象的语言， C++ 支持函数重载， 而过程式语言 C 则不支持。 函数被 C++
-编译后在 symbol 库中的名字与 C 语言的不同。例如，假设某个函数的原型为:
-void foo(int x, int y);
-该函数被 C 编译器编译后在 symbol 库中的名字为 _foo ，而 C++ 编译器则会产生像
-_foo_int_int 之类的名字。 _foo_int_int 这样的名字包含了函数名和函数参数数量及类型信 息， C++ 就是考这种机制来实现函数重载的。
-为了实现 C 和 C++ 的混合编程， C++ 提供了 C 连接交换指定符号 extern "C" 来解决名
-
- 字匹配问题， 函数声明前加上 extern "C" 后，则编译器就会按照 C 语言的方式将该函数编译 为_foo ，这样 C 语言中就可以调用 C++ 的函数了。 [img=12,12]file:///D:/ 鱼鱼软件 /鱼鱼多媒 体日记本 /temp/{C74A38C4-432E-4799-B54D-73E2CD3C5206}_arc_d[1].gif[/img]
-试题 5:编写一个函数，作用是把一个 char 组成的字符串循环右移 n 个。比如原来是 “abcdefghi ”如果 n=2 ，移位后应该是“ hiabcdefgh ”
-函数头是这样的:
-//pStr 是指向以 '\0'结尾的字符串的指针 //steps 是要求移动的 n
-void LoopMove ( char * pStr, int steps ) {
-//请填充 ... }
-解答:
-正确解答 1:
-void LoopMove ( char *pStr, int steps )
-{
-int n = strlen( pStr ) - steps;
-char tmp[MAX_LEN];
-strcpy ( tmp, pStr + n ); strcpy ( tmp + steps, pStr);
-*( tmp + strlen ( pStr ) ) = '\0'; strcpy( pStr, tmp );
-}
-正确解答 2:
-void LoopMove ( char *pStr, int steps ) {
-int n = strlen( pStr ) - steps; char tmp[MAX_LEN];
-memcpy( tmp, pStr + n, steps ); memcpy(pStr + steps, pStr, n );
-
- memcpy(pStr, tmp, steps ); }
-剖析:
-这个试题主要考查面试者对标准库函数的熟练程度， 程度上简化程序编写的工作量。
-  最频繁被使用的库函数包括:
-在需要的时候引用库函数可以很大
-( 1) ( 2) ( 3)
-strcpy
-memcpy
-memset
-
-
-
-
-网讯IOS笔试题
-答案是我自己的想法 仅供参考
 
 1 程序在内存中运行时，内存分几个区？各自用途？
-答：
-栈区 由编译器自动分配释放存放函数的参数值，局部变量的值等。在高级语言中不需要显式的分配和释放
+答：栈区 由编译器自动分配释放存放函数的参数值，局部变量的值等。在高级语言中不需要显式的分配和释放
 堆区 一般由程序员手动分配释放，如果不释放可有由OS释放。
 数据区 存储全局和静态变量。初始化的全局和静态变量在一块区域，未初始化的放在相邻的一块区域，程序结束后由系统释放。
 代码区 存放函数体的二进制代码。
 
 2 引用与指针有什么区别？
-答
-引用是给变量起一个别名 也就是一个变量有两个名字 他们是同一块空间
+答：引用是给变量起一个别名 也就是一个变量有两个名字 他们是同一块空间
 指针是分配一块内存用来保存变量的地址 间接引用变量
 
 3 int retVal = UIApplicationMain(argc, argv, nil, nil); 是什么意思？
-答
-对UIApplication对象进行了初始化，这个方法除了argc 和 argv 参数外，另外这个函数还有2个两个字符串参数来识别UIApplication类和UIApplication代理类，在这里默认是2个nil,第一个参数为nil就默认把UIApplication类作为缺省值进行初始化，可以在这里不填nil而是使用自己定义的UIApplication子类。至于第二个参数nil就设置为nil就把模板生成的HelloWorldAppdelegate类作为默认值。
-
-4
-
-5
+答：对UIApplication对象进行了初始化，这个方法除了argc 和 argv 参数外，另外这个函数还有2个两个字符串参数来识别UIApplication类和UIApplication代理类，在这里默认是2个nil,第一个参数为nil就默认把UIApplication类作为缺省值进行初始化，可以在这里不填nil而是使用自己定义的UIApplication子类。至于第二个参数nil就设置为nil就把模板生成的HelloWorldAppdelegate类作为默认值。
 
 6 保存一个变量到本地，列举两个简单的方法
 答
@@ -6895,55 +6559,25 @@ ClassA *obj2 = obj1;
 答 一般情况下我们不显式的调用dealloc方法 这个方法系统在对象引用计数为零的时候自动调用
 另外obj2和obj1指向的是同一块空间释放一次就可以了
 
-10
-
 11 类方法创造的对象要不要用release释放？
-答 任何方法创建的对象对遵从内存管理原则 用alloc方法分配的对象就需要释放
+答：任何方法创建的对象对遵从内存管理原则 用alloc方法分配的对象就需要释放
 如果用类方法创建对象时候，没有用到alloc，那么分配空间的问题，已经在方法内部做了处理，所以我们就不需要去释放了
 
 12 下面请求数据用了什么协议，请求的数据格式是什么？
 UIWebView *webView = [[UIWebView alloc] initWithFrame:self.view.frame];
 [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:http://pzpromop.s3.amazonaws.com/PromoNeutral.html]]];
 [self.view addSubview:webView];
-答 使用了http协议请求的是html格式的数据
+答：使用了http协议请求的是html格式的数据
 
 13 想传输一张图片，可以用什么协议传输？
-答 可以用http ftp等协议。
+答：可以用http ftp等协议。
 
 14 用NSURL初始化的NSData对象，用哪个类去解析？
 
-答
-这个需要根据NSData数据是什么类型 然后可以用对应的解析工具来解析。
+答：这个需要根据NSData数据是什么类型 然后可以用对应的解析工具来解析。
 
 15 OC中加号方法与减号的区别？
-答
-加号方法是类方法 可以用类名来调用
-减号方法是实例方法 必须由类的实例来调用
-
-16 如何修饰私有变量？
-答 在OC中默认变量属性都是有私有的 我们可以property关键字来修饰 以便可以不同过接口直接访问
-
-17 建一个工程用到最基本的两个框架是什么？
-答 cocoa Touch框架  Function框架
-
-18 一个UITableView的实例，重新加载数据的方法是什么？
-答 [tableView reloadData]方法
-
-19 写一个委托的interface
-答
-@protocol SimpleProtocol
--(void)doSomething:(NSString *)str;
-@end
- 
-@interface SimpleClass:NSObject< SimpleProtocol >{
-}
-@end
- 
-@implementation SimpleClass
--(void) doSomething:(NSString *)str{
-   NSLog(str);
- }
-@end
+答：加号方法是类方法 可以用类名来调用/减号方法是实例方法 必须由类的实例来调用
 
 [单选]以下说法正确的是
 A.Object-C支持多重继承
@@ -7003,7 +6637,6 @@ B.readonly是只读特性，只有getter方法，没有setter方法
 C.assign是赋值属性，setter方法将传入参数赋值给实例变量
 D.retain表示持有特性，copy属性表示拷贝属性，都会建立一个相同的A.对象
 答案：D
-
 [单选]以下哪一段代码不会抛出异常____
 A.NSArray*array=@[1，2，3];NSNumber*number=array[3];
 B.NSDictionary*dict=@{@"key":nil};
@@ -7016,8 +6649,6 @@ B.if(x<0.00001f)
 C.if(fabs(x)<0.00001f)
 D.if(x>-0.00001f)
 答案：C
-
-[单选]
 1 NSStringa[]={@"abc",@"def"};
 2 NSArray*a=@[@"abc",@"def"];
 3 NSArray*a=[NSArrayarrayWithObjects:@"abc",@"def"];
@@ -7028,17 +6659,6 @@ B.1
 C.2
 D.3
 答案：C
-[单选]判断是否为iPad设备语句是？
-A.if([[UIDevicecurrentDevice]userInterfaceIdiom]==UIUserInterfaceIdiomPhone){...}
-B.if([[UIDevicecurrentDevice]userInterfaceIdiom]!=UIUserInterfaceIdiomPhone){...}
-C.if([[UIDevicecurrentDevice]userInterfaceIdiom]==UIUserInterfaceIdiomPad){...}
-答案：C
-多选题
-每题分值：2分
-是否题目乱序：是
-是否选项乱序：是
-是否可回溯：是
-
 [多选]关于NSOperationqueue的说法，正确的是？
 A.主要用于多线程并发处理
 B.它是一个队列，有严格的先进先出
@@ -7909,27 +7529,7 @@ xml 文件，
 是什么意思
 对UIApplication 对象进行了初始化，这个方法除了
 这个函数还有 2个两个字符串参数来识别 UIApplication 类和 UIApplication 代理 类，在这里默认是 2个nil, 第一个参数为 nil 就默认把 UIApplication 类作为缺省 值进行初始化，可以在这里不填 nil 而是使用自己定义的 UIApplication 子类。 至于第二个参数 nil 就设置为 nil 就把模板生成的 HelloWorldAppdelegate 类作为 默认值。
-31.iOS 平台怎么做数据的持久化 ?Core Data 和 SQLite 有无必然联系? Core Data 是一个关系型数据库吗 ?
-答: iOS中可以有四种持久化数据的方式: 属性列表、对象归档、 SQLite3 和
-30.int retVal=UIApplication(argc,argv,nil,nil):
-argc 和argv 参数外，另外
 
-Core Data
-Core data 与sqlite 还是有联系的， core data 是对sqlite 的封装，因为
-sqlite 是c语言的 api ，然而有人也需要 obj-c 的api ，所以有了 core data 另 外， core data 不仅仅是把 c的api 翻译成 oc 的api ，还提供了一些管理的功能， 使用更加方便
-Core Data 不是一个关系型数据库，也不是关系型数据库管理系统 (RDBMS。) 虽 然 Core Dta 支持 SQLite 作为一种存储类型，但它不能使用任意的 SQLite 数据 库。 Core Data 在使用的过程种自己创建这个数据库。 Core Data 支持对一、对 多的关系
-
-
-34. 简述以下在 iOS 中使用 SQLIte
-_fmdb = [[ FMDatabasealloc ] initWithPath :path];
-[_fmdb open];
-[ _fmdbexecuteUpdate : @"create table Article(ArticleId integer primary
-key autoincrement,ArticleTitle text,ArticleContent text)" ];
-[ _fmdbclose ];
-35. 设计一个新闻浏览需要用到哪些技术
-网络下载，数据解析，表单控件等
-36. 谈谈你对多线程的理解
-iOS 多线程分为三种 NSThread，NSOperation，GCD，NSThread以线程为导向， NSOperation 以任务为导向， GCD是 Block 模式的 NSOperation
 36. ViewController 的loadView ，viewDidLoad ， viewDidUnload 分别是在什么 时候调用的?在自定义 ViewController 的时候这几个函数里面应该做做什么工 作?
 loadView :
 每次访问 UIViewController 的view( 比如controller.view 、self.view) 而且 view为nil ，loadView方法就会被调用。
@@ -8484,11 +8084,8 @@ Caches 目录:用于存放应用程序专用的支持文件，保存应用程 �
 32.在调?用?支付宝接 ?口?支付p时ar，tner，seller，private分别是什么意思 ? 20 33.谈谈如何在 MVC模式中减轻 ViewController 的重量(减少代码) 20
 34.为什么很多内置的类，如 TableViewController 的delegate的属性是assign不v是retain? 20
 35.列举?几个你曾经 ?用过的第三 ?方库? 20 36. ?用宏定义来写出 ?一个判断系统是否是iOS7 以上的版本的例 ?子 21
-37. Objective-C 的动态性体现在哪些 ?方?面 38. 下 ?面的代码会造成什么问题
-21 21
-39. ios 平台怎么做数据的持久化 数据库吗?
-和 sqlite 有 ?无必然联系?coredata 是 ?一个关系型
-?coredata
+37. Objective-C 的动态性体现在哪些 ?方?面
+
 40. 多线程中堆与栈分别是共有的还是私有的?(记住) 22
 41.Objective-C 声明 ?一个类所有要 ?用到的编译指令是? 22 42.?用预编译指令#de?ne 声明?一个常数， ?用以表1?年示中有多少秒(忽略闰年问题) 22 43.解析XML?文件有哪 ?几种?方式? 22 44.下?面哪个 ?方法不属于NSObject 的内省( Introspection )?方法 22 45.iOS 开发中，开发证书根据 ?用途划分可以分为哪两 ?大类，分别作 ?用是什么?22?用途 46. 关键字 const 有什么含义? static 的作 ?用?还有extem C 的作 ?用? 23
 47. 让 ?一个物体从界 ?面中的 ?一点运动到另外 ?一点，有哪些 ?方法? 23
@@ -8837,14 +8434,6 @@ AFN, SDWebImage, FMDB ，MBProgressHUD ，LORefresh ，ZBar， MagicRecord 等
 37. Objective-C 的动态性体现在哪些 ?方 ?面 答:
 17
 
-39. ios 平台怎么做数据的持久化 ?coredata 和sqlite 有?无必然联系?
-coredata 是?一个关系型数据库吗?
-答: iOS 中可以有四种持久化数据的 ?方式:属性列表(plist) 、对象写 ?入本地(所
-谓归档 )、 SQLite3 和 Core Data ; core data 可以使你以图形界 ?面的 ?方式快速 的定义 app 的数据模型，同时在你的代码中容易获取到它。 coredata 提供了 基础结构去处理常 ?用的功能，例如保存，恢复，撤销和重做，允许你在 app 中 继续创建新的任务。在使 ?用core data 的时候，你不 ?用安装额外的数据库系 统，因为 core data 使?用内置的sqlite 数据库。 core data 将你 app 的模型层 放?入到?一组定义在内存中的数据对象。coredata 会追踪这些对象的改变，同 时可以根据需要做相反的改变，例如 ?用户执 ?行撤销命令。当core data 在对你 app 数据的改变进 ?行保存的时候，core data 会把这些数据归档，并永久性保
-存。 mac os x 中sqlite 库，它是 ?一个轻量级功能强 ?大的关系数据引擎，也很容 易嵌 ?入到应 ?用程序。可以在多个平台使 ?用s，qlite 是?一个轻量级的嵌 ?入式sql
-数据库编程。与 core data 框架不同的是， sqlite 是使 ?用程序式的， sql 的主 要的 API 来直接操作数据表。 Core Data 不是 ?一个关系型数据库，也不是关系
-型数据库管理系统 (RDBMS) 。虽然 Core Dta ?支持SQLite 作为 ?一种存储类 型，但它不能使 ?用任意的SQLite 数据库。 Core Data 在使 ?用的过程种 ?自?己创
-建这个数据库。 Core Data ?支持对 ?一、对多的关系。
 40. 多线程中堆与栈分别是共有的还是私有的?(记住)
 答:
 在多线程环境下，每个线程拥有 ?一个栈和 ?一个程序计数器。栈和程序计数器 ?用 来保存线程的执 ?行历史和线程的执 ?行状态，是线程私有的资源。
@@ -9083,9 +8672,7 @@ HTTP协议:超 ?文本传输协议，是基于请求和响应模式的应 ?用�
 Socket :不是协议，是套接字，由 IP和端 ?口两部分标识，是封装在传输层之上 的。
 HTTP 连接: http 连接就是所谓的短连接，即客户端向服务器端发送 ?一次请求， 服务器端响应后连接即会断掉;
 Socket 连接: socket 连接就是所谓的 ?长连接，理论上客户端和服务器端 ?一旦建 ?立起连接将不会主动断掉;但是由于各种环境因素可能会是连接断开， ?比如说: 服务器端或客户端主机 down 了， ??网络故障，或者两者之间 ?长时间没有数据传 输， ??网络防 ?火墙可能会断开该连接以释放 ??网络资源。
-27
 
- 千锋教育 12/29
 84.Core Foundation 中提供了哪 ?几种操作Socket 的 ?方法? 答: CFNetwork 、 CFSocket 和 BSD Socket 。
 85.请描述 Xcode 打包签名机制中 Certi?cates & Identi?ers & Provisioning Pro?les 三者的关系?
 答:
@@ -9112,7 +8699,6 @@ cellForRowAtIndexPath:( NSIndexPath *)indexPath; 常?用(当然也可以多罗�
 ??目，标识必须唯
 ?一，对项 ??目
 
- 千锋教育 12/29
 只在.m?文件实现，未在.h?文件声明的 ?方法叫做类的私有 ?方法，只能在本类中访
 问。但是 OC中没有绝对的私有， ?一旦知道了 ?方法的名字，就可调 ?用，前提是 MRC 环境。有私有变量。
 89.UITableView 重新加载数据有 ?几种 ?方式?那种更好?如何对
@@ -9153,7 +8739,6 @@ Goods( 商品表 ):ID商品编号、 NAME 商品名称、 MANEFACTURER ?生产�
 SID 规格编号
 30
 
- 千锋教育 12/29
 Spec(规格表):ID规格编号、 COLOR 颜?色、SIZE尺?寸
 Sales_record( 销售记录表 ):ID 销售记录流 ?水号、GID销售商品编号、 COUNT 销售量
 (1)请设计查询语句查出规格号为 1销售量最多的商品编号、商品名称、颜 ?色、尺 ?寸;
@@ -9169,17 +8754,14 @@ Goods where ?生产商like 上海“”% )
 APPStore 上时，配置签名过程。 答:参考应 ?用程序发布流程。
 98.如何设计 ?一个可变 ?高度(根据内容适应 ?高度)的 UITableViewCell ?
 答:参考课程 cell?自定义?高度。
-99.?一瓶啤酒 ?一块,钱两瓶空瓶 ?子可以换 ?一瓶啤,现酒在你有20块钱,问 你总共能喝多少瓶啤酒 ?
-答: 39
+
 100. UIView 与CLayer 有什么区别? 答:
 1).UIView 是 iOS 系统中界 ?面元素的基础，所有的界 ?面元素都是继承 ?自它。它 本?身完全是由 CoreAnimation 来实现的。它真正的绘图部分，是由 ?一个
 CALayer 类来管理。 UIView 本?身更像是 ?一个CALayer 的管理器，访问它的跟 绘图和跟坐标有关的属性。
 2).UIView 有个重要属性 layer ，可以返回它的主 CALayer 实例。
 3).UIView 的 CALayer 类似 UIView 的?子View 树形结构，也可以向它的 layer
 上添加 ?子layer ，来完成某些特殊的表 ?示。即CALayer 层是可以嵌套的。
-31
 
- 千锋教育 12/29
 4).UIView 的 layer 树形在系统内部，被维护着三份 copy 。分别是逻辑树，这 ?里是代码可以操纵的;动画树，是 ?一个中间层，系统就在这 ?一层上更改属性， 进?行各种渲染操作;显 ?示树，其内容就是当前正被显 ?示在屏幕上得内容。
 5). 动画的运作:对 UIView 的 subLayer ( ?非主Layer )属性进 ?行更改，系统 将?自动进?行动画?生成，动画持续时间的缺省值似乎是0.5 秒。
 6). 坐标系统: CALayer 的坐标系统 ?比UIView 多了 ?一个anchorPoint 属性，使 ?用CGPoint 结构表 ?示，值域是 0~1 ，是个 ?比例值。这个点是各种图形变换的坐
@@ -9205,9 +8787,7 @@ NSString *str2 = [responseString substringFromIndex:location+1];
 NSDictionary NSMutableDictionary
 NSMutableDictionary *dic = [NSMutableDictionary dictionaryWithObjectsAndKeys:@"value1",@"key1",@"value2",@"key2",nil];
 [dic setObject:@"value3" forKey:@"key3"];
-
- [dic removeObjectForKey:@"key3"]; [dic objectForKey:@"key1"];
-第 5 题:
+[dic removeObjectForKey:@"key3"]; [dic objectForKey:@"key1"];
 // 获取根路径 NSArray
 =NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,NSUserDomainMask, NSString *documentsDirectory = [paths objectAtIndex:];
 // 创建文件系统管理器
@@ -9220,38 +8800,6 @@ documentsDirectory]]) {
 [fileManager createDirectoryAtPath:[NSString documentsDirectory]withIntermediateDirectories:false
 }
 
-
-
-
-
-
-17.cocoa touch 框架
-iPhone OS 应用程序的基础 Cocoa Touch 框架重用了许多 Mac 系统的成熟模式， 但是它更 多地专注于触摸的接口和优化。
-UIKit 为您提供了在 iPhone OS 上实现图形，事件驱动程序的基本工具，其建立在和 Mac OS X 中一样的 Foundation 框架上，
-包括文件处理，网络，字符串操作等。
-obj-c 的东
-mm 。
-
- Cocoa Touch 具有和 iPhone 用户接口一致的特殊设计。 有了 UIKit ，您可以使用 iPhone OS 上的独特的图形接口控件，按钮，
-以及全屏视图的功能，您还可以使用加速仪和多点触摸手势来控制您的应用。
-各色俱全的框架 除了 UIKit 外， Cocoa Touch 包含了创建世界一流 iPhone 应用程序需要 的所有框架，从三维图形，到专业音效，
-甚至提供设备访问 API 以控制摄像头，或通过 GPS 获知当前位置。
-Cocoa Touch 既包含只需要几行代码就可以完成全部任务的强大的 Objective-C 框架，也在
-需要时提供基础的 C 语言 API 来直接访问系统。这些框架包括:
-Core Animation :通过 Core Animation ，您就可以通过一个基于组合独立图层的简单的编程
-模型来创建丰富的用户体验。
-Core Audio :Core Audio 是播放，处理和录制音频的专业技术，能够轻松为您的应用程序添 加强大的音频功能。
-Core Data:提供了一个面向对象的数据管理解决方案，它易于使用和理解，甚至可处理任 何应用或大或小的数据模型。
-功能列表:框架分类
-下面是 Cocoa Touch 中一小部分可用的框架:
-音频和视频: Core Audio ， OpenAL ， Media Library ， AV Foundation 数据管理 : Core Data ， SQLite
-图形和动画 : Core Animation ，OpenGL ES ， Quartz 2D
-网络: Bonjour ， WebKit ， BSD Sockets
-用户应用: Address Book ， Core Location ， Map Kit ，Store Kit
-18.自动释放池是什么 ,如何工作
-当您向一个对象发送一个 autorelease消息时， Cocoa 就会将该对象的一个引用放入到最新
-的自动释放池。 它仍然是个正当的对象，因此自动释放池定义的作用域内的其它对象可以向它发送消息。 当程序执行到作用域结束的位置时， 自动释放池就会被释放， 池中的所有对象也就被释放。
-
  1. ojc-c 是通过一种 "referring counting"( 引用计数 )的方式来管理内存的 , 对象在开始分配 内存 (alloc) 的时候引用计数为一 ,
 以后每当碰到有 copy,retain 的时候引用计数都会加一 , 每当碰到 release和 autorelease 的时候引用计数就会减一 ,如果此
 对象的计数变为了 0, 就会被系统销毁 .
@@ -9263,52 +8811,7 @@ Core Data:提供了一个面向对象的数据管理解决方案，它易于使�
 4) 指标计算
 5)弹性讯息传递
 6) 不是一个过度复杂的
-7) Objective-C 与 C++ 可混合编程
-objc 缺点 :
-1) 不支援命名空間
-2) 不支持运算符重载 3) 不支持多重继承
-4)使用动态运行时类型， 所有的方法都是函数调用， 所以很多编译时优化方法都用不到。 (如内联函数等)，性能低劣。
-20.sprintf,strcpy,memcpy 使用上有什么要注意的地方
-strcpy 是一个字符串拷贝的函数，它的函数原型为 strcpy(char *dst, const char *src);
-将 src 开始的一段字符串拷贝到 dst 开始的内存中去， 结束的标志符号为 '\0'，由于拷贝的长
-度不是由我们自己控制的，
-所以这个字符串拷贝很容易出错。具备字符串拷贝功能的函数有 memcpy ，这是一个内存拷 贝函数，它的函数原型
-为 memcpy(char *dst, const char* src, unsigned int len);
-将长度为 len 的一段内存， 从 src 拷贝到 dst 中去， 这个函数的长度可控。 但是会有内存叠加
-C 衍生语言 的问题。
-sprintf 是格式化函数。 将一段数据通过特定的格式， 格式化到一个字符串缓冲区中去。 sprintf 格式化的函数的长度不可控，
-有可能格式化后的字符串会超出缓冲区的大小，造成溢出。 21. 用变量 a 给出下面的定义
-a) 一个整型数( An integer ) b)一个指向整型数的指针( A pointer to an integer)
-c)一个指向指针的的指针，它指向的指针是指向一个整型数( intege) r
-A pointer to a pointer to an
-d)一个有 10 个整型数的数组( An array of 10 integers)
-e) 一个有 10 个指针的数组， 该指针是指向一个整型数的。 ( An array of 10 pointers to integers)
-f) 一个指向有 10 个整型数数组的指针( A pointer to an array of 10 integers)
-g) 一个指向函数的指针，该函数有一个整型参数并返回一个整型数( A pointer to a function that takes an integer as an argument
-and returns an integer)
-h) 一个有 10 个指针的数组， 该指针指向一个函数， 该函数有一个整型参数并返回一个整型 数( An array of ten pointers to functions t
-hattakeanintegerargumentandreturnaninteger )
-a) int a; // An integer
-b) int *a; // A pointer to an integer
-c) int **a; // A pointer to a pointer to an integer
-d) int a[10]; // An array of 10 integers
-e) int *a[10]; // An array of 10 pointers to integers
-f) int (*a)[10]; // A pointer to an array of 10 integers
-g) int (*a)(int); // A pointer to a function a that takes an integer argument and returns an integer
-h) int (*a[10])(int); // An array of 10 pointers to functions return an integer
-22.readwrite ， readonly ， assign， retain ， copy ， nonatomic
-that take an integer argument and
-属性的作用
-@property 是一个属性访问声明，扩号内支持以下几个属性:
-1， getter=getterName ， setter=setterName，设置 setter 与
-2，readwrite,readonly ，设置可供访问级别
-2，assign，setter 方法直接赋值，不进行任何 retain 操作，为了解决原类型与环循引用问题 3，retain，setter方法对参数进行 release旧值再 retain 新值，所有实现都是这个顺序 (CC 上 有相关资料 )
-getter 的方法名
 
- 4，copy，setter 方法进行 Copy 操作，与 retain 处理流程一样，先旧值 release，再 Copy 出 新的对象， retainCount 为 1。
-这是为了减少对上下文的依赖而引入的机制。
-5， nonatomic ，非原子性访问，不加同步，多线程并发访问会提高性能。注意，如果不加此 属性，则默认是两个访问方法
-都为原子型事务访问。锁被加到所属对象实例级 (我是这么理解的 ...) 。
 23.http 和 scoket 通信的区别。
 http 是客户端用 http 协议进行请求， 发送请求时候需要封装 http 请求头，并绑定请求的数据，
 服务器一般有 web 服务器配合(当然也非绝对)。 http 请求方式为客户端主动发起请求， 服务器才能给响应， 一次请求完毕后则断开连接， 以节省资源。 服务器不能主动给客户端响 应(除非采取 http 长连接技术)。 iphone 主要使用类是 NSUrlConnection 。
@@ -9538,55 +9041,13 @@ assign 方式的属性而不是 retain 方式 的属性， 赋值不会增加引
 [person retain]; retain count 2
 [person release];retain count 1
 [person release];retain count = 0
-58.在一个对象的方法里面 : self.name = “ object ” ;
-和
-name =”object”
-有什么不同吗 ?
-答:self.name="object"会调用对象的 setName()方法,会使object引用计数加 1，name="object" 会直接把 object 赋值给当前对象的 name 属性，引用计数不增加。
 
- 59.readwrite，readonly，assign，retain，copy，nonatomic 属性的作用?
-@property 是一个属性访问声明，扩号内支持以下几个属性: 1，getter=getterName， setter=setterName，设置 setter 与 getter 的方法名 2，readwrite,readonly ，设置可供访问级别
-3，assign， setter 方法直接赋值，不进行任何 retain 操作，为了解决原类型与环循引用问题
-4， retain ， setter 方法对参数进行 release 旧值再 retain 新值，所有实现都是这个顺序 (CC
-上有相关资料 )
-5，copy，setter 方法进行 Copy 操作，与 retain 处理流程一样，先旧值 release，再 Copy 出新
-的对象， retainCount 为 1。这是为了减少对上下文的依赖而引入的机制。
-6， nonatomic ，非原子性访问，不加同步，多线程并发访问会提高性能。注意，如果不加此
-属性，则默认是两个访问方法都为原子型事务访问。锁被加到所属对象实例级 解的⋯ )。
-7， @synthesize xxx; 来实现实际代码
-60.1.main() {
-int a[5]={1,2,3,4,5};
-int *ptr=(int *)(&a+1); printf("%d,%d",*(a+1),*(ptr-1));
-}
-答: 2,5
-( 我是这么理
-*(a+1 )就是 a[1]， *(ptr-1) 就是 a[4],执行结果是 2， 5
-&a+1 不是首地址 +1 ，系统会认为加一个 a 数组的偏移，是偏移了一个数组的大小(本
-例是 5个int)
-int *ptr=(int *)(&a+1);
-则 ptr 实际是 &(a[5]), 也就是 a+5 原因如下:
-
- &a 是数组指针，其类型为 int (*)[5];
-而指针加 1 要根据指针类型加上一定的值，不同类型的指针
-a 是长度为 5 的 int 数组指针，所以要加 5*sizeof(int) 所以 ptr 实际是 a[5]
-但是 prt 与 (&a+1) 类型是不一样的 ( 这点很重要 ) 所以 prt-1 只会减去 sizeof(int*)
-+1 之后增加的大小不同。
-a,&a 的地址是一样的，但意思不一样
-a 是数组首地址，也就是 a[0] 的地址， &a 是对象(数组)首地址，
-a+1 是数组下一元素的地址，即 a[1],&a+1 是下一个对象的地址，即 a[5].
-
-
-⽬目录:
-基础
-
-5、下⾯面的代码输出什什么?
 8、Category(类别)、 Extension(扩展)和继承的区别 9、为什什么代理理要⽤用weak?代理理的delegate和dataSource有什什么区别?block和代理理 的区别?
 10、id和NSObject*的区别
 14、UIView和 CALayer是什什么关系?
 17、KVO基本原理理?
 18、Swift 下的如何使⽤用 KVC?
 19、:Swift有哪些模式匹配?
-
 
 37、 不不要阻塞主线程 38、谈谈你对多线程开发的理理解?ios中有⼏几种实现多线程的⽅方法? 39、进程和线程的区别?同步异步的区别?并⾏行行和并发的区别? 40、ViewController⽣生命周期
 41、iOS 中的多线程 42、内存管理理的⼏几条原则时什什么?按照默认法则.那些关键字⽣生成的对象 需要⼿手动释放?在和property结合的时候怎样有效的避免内存泄露露?
@@ -11510,26 +10971,6 @@ layer
 9).变形: Quartz Core 的渲染能力，使二维图像可以被自由操纵，就好像是三维的。 以在一个三维坐标系中以任意角度被旋转， 缩放和倾斜。 CATransform3D 的一套方法提供
 了一些魔术般的变换效果。
 108. Quatrz 2D 的绘图功能的三个核心概念是什么并简述其作用。 答:上下文:主要用于描述图形写入哪里; 路径:是在图层上绘制的内容; 状态:用于保存配置变换的值、填充和轮廓， alpha 值等。
-109. iPhone OS 主要提供了几种播放音频的方法? 答: SystemSound Services
-AVAudioPlayer 类
-Audio Queue Services
-OpenAL
-110. 使用 AVAudioPlayer 类调用哪个框架、使用步骤? 答: AVFoundation.framework
-步骤:配置 AVAudioPlayer 对象; 实现 AVAudioPlayer 类的委托方法; 控制 AVAudioPlayer 类的对象; 监控音量水平;
-回放进度和拖拽播放。
-图像可
-
- 111. 有哪几种手势通知方法、写清楚方法名? 答:
--(void)touchesBegan:(NSSet*)touchedwithEvent:(UIEvent*)event; -(void)touchesMoved:(NSSet*)touched withEvent:(UIEvent*)event; -(void)touchesEnded:(NSSet*)touchedwithEvent:(UIEvent*)event; -(void)touchesCanceled:(NSSet*)touchedwithEvent:(UIEvent*)event; 112. CFSocket 使用有哪几个步骤。
-答:创建 Socket 的上下文;创建 Socket ;配置要访问的服务器信息;封装服务器信息; 连接服务器;
-113. Core Foundation 中提供了哪几种操作 Socket 的方法? 答: CFNetwork 、 CFSocket 和 BSD Socket 。
-114. 解析 XML 文件有哪几种方式?
-答:以 DOM 方式解析 XML 文件;以 SAX 方式解析 XML 文件;
-115. ios 平台怎么做数据的持久化 ?coredata 和 sqlite 有无必然联系? coredata 是一个关系 型数据库吗?
-答:iOS 中可以有四种持久化数据的方式: 属性列表 (plist) 、对象归档、 SQLite3 和 Core Data;
-core data 可以使你以图形界面的方式快速的定义 app 的数据模型，同时在你的代码中容易 获取到它。 coredata 提供了基础结构去处理常用的功能，例如保存，恢复，撤销和重做， 允许你在 app 中继续创建新的任务。在使用 core data 的时候，你不用安装额外的数据库 系统， 因为 core data 使用内置的 sqlite 数据库。 core data 将你 app 的模型层放入到一组 定义在内存中的数据对象。 coredata 会追踪这些对象的改变，同时可以根据需要做相反的 改变，例如用户执行撤销命令。 当 core data 在对你 app 数据的改变进行保存的时候， core data 会把这些数据归档，并永久性保存。 mac os x 中 sqlite 库，它是一个轻量级功能强大 的关系数据引擎，也很容易嵌入到应用程序。可以在多个平台使用， sqlite 是一个轻量级 的嵌入式 sql 数据库编程。与 core data 框架不同的是， sqlite 是使用程序式的， sql 的 主要的 API 来直接操作数据表。 Core Data 不是一个关系型数据库，也不是关系型数据库 管理系统 (RDBMS) 。虽然 Core Dta 支持 SQLite 作为一种存储类型，但它不能使用任意
-的 SQLite 数据库。 Core Data 在使用的过程种自己创建这个数据库。 Core Data 支持对 一、对多的关系。
-
 
  一、判断题(每题 2分，共 20分)
 1、UITableView 能够绑定多个数据源。(错)
@@ -11741,10 +11182,6 @@ iphone应用程序的项目基本结构？
 给用户推送的通知的伪代码
 什么是动态链接库和静态链接库？调用一个类的静态方法需不需要release？
 OC中的数字对象都有哪些，简述它们与基本数据类型的区别是什么
-ios平台怎么做数据的持久化?coredata和sqlite有无必然联系？coredata是一个关系型数据库吗？
-objc优缺点
-objective-c中的词典对象、可变词典对象是哪个，初始化一个含有两个键值对的可变词典对象，并动态的添加和删除一条记录，输出第一条记录
-写一个NSString类的实现+ (id)initWithCString:(constchar *)nullTerminatedCString encoding:(NSStringEncoding)encoding;
 UITableView的重用机制？如何在一个view上显示多个tableView,tableView要求不同的数据源以及不同的样式 (要求自定义cell), 如何组织各个tableView 的delegate和dataSource?请说说实 现思路？在一个tableView中需要自定义多种样式的cell(两种或三种),通常你如何实现,说 说思路即可？UITableView的那些元素是可以自定义的？
 一个tableView是否可以关联两个不同的数据源？你会怎么处理？
 在一个对象释放前.如果他被加到了notificationCenter 中，在notificationcenter中remove这个对象可能会出现什么问题？
@@ -11760,7 +11197,6 @@ fmmpeg框架(了解一下)、fmdb框架(了解一下)、320框架（了解一下
 单链表、多链表区别？
 制作相册，写思路和步骤
 做过哪些动画，举例说明
-
 
 环信相关面试题:
 1 、对环信的理解:主要回答环信是干嘛的，有哪些优 缺点，使用的什么通讯协议
@@ -12991,8 +12427,6 @@ performSelector:onThread:withObject:waitUntilDone:
 
 链表逆序( C语言)(10分)。
 
-59. 线程与进程的区别和联系 ? 14 60.IOS平台怎么做数据的持久化?COREDATA和SQLITE有无必然联系?COREDAT是A一个关系型数据库吗?
-
 9.用预处理指令 #define 声明一个常数，用以表明 1 年中有多少秒(忽略闰年问题)
 答: #define SECONDS_PER_YEAR (60 * 60 * 24 * 365)UL
 我在这想看到几件事情:
@@ -13019,24 +12453,10 @@ performSelector:onThread:withObject:waitUntilDone:
 
 13.简述内存分区情况
 ( 1)代码区:存放函数二进制代码
-( 2)数据区:系统运行时申请内存并初始化，系统退出时由系统释放。存放全局变量、静态变量、常量 (3)堆区:通过 malloc 等函数或 new 等操作符动态申请得到，需程序员手动申请和释放
+( 2)数据区:系统运行时申请内存并初始化，系统退出时由系统释放。存放全局变量、静态变量、常量
+(3)堆区:通过 malloc 等函数或 new 等操作符动态申请得到，需程序员手动申请和释放
 ( 4)栈区:函数模块内申请，函数结束时由系统自动释放。存放局部变量、函数参数
 
-17.在 Obj-c 中有没有私有方法?私有变量?一般采用什么方法实现?
-objective-c – 类里面的方法只有两种 , 静态方法和实例方法 . 这似乎就不是完整的面向对象了 ,按照 OO 的原则就是一个对象只
-暴露有用的东西 . 如果没有了私有方法的话 , 对于一些小范围的代码重用就不那么顺手了 @interfaceController : NSObject { NSString *something; }
-+(void)thisIsAStaticMethod;
--(void)thisIsAnInstanceMethod;
-@end
-@interfaceController (private) -(void)thisIsAPrivateMethod;
-@end
-@private 可以用来修饰私有变量
-在 Objective‐ C 中，所有实例变量默认都是私有的，所有实例方法默认都是公有的
-. 在类里面声名一个私有方法
-
-18.OC 中加号方法与减号的区别?
-加号方法是类方法，属于静态方法
-减号方法是实例方法必须由类的实例来调用
 19.free 与 release的区别
 20.在终端环境下，分别说明 4,2,1,0 对应的权限是什么
 21.ARC 机制
@@ -13057,11 +12477,6 @@ retain/release，原先需要手动添加的用来处理内存管
 23.ViewController 的 loadView, viewDidLoad,viewDidUnload 分别是在什么时候调用的?在自定义 ViewController 的时候这几 个函数里面应该做什么工作?
 viewDidLoad 在 view 从 nib 文件初始化时调用， loadView 在 controller 的 view 为 nil 时调用。此方法在编程实现 view 时调用 ,view 控制器默认会注册 memory warning notification, 当 view controller 的任何 view 没有用的时候， viewDidUnload 会被调用，在这里
 实现将 retain 的 view release,如果是 retain 的 IBOutlet view 属性则不要在这里 release,IBOutlet 会负责 release 。
-
-28. 写出几个死循环?
-
-29. 队列和栈有什么区别:
-答:队列和栈是两种不同的数据容器。从”数据结构”的角度看，它们都是线性结构，即数据元素之间的关系相同。 队列是一种先进先出的数据结构，它在两端进行操作，一端进行入队列操作，一端进行出列队操作。 栈是一种先进后出的数据结构，它只能在栈顶进行操作，入栈和出栈都在栈顶操作。
 
 31. iOS 的系统架构分为( 核心操作系统层 theCore OS layer )、( 核心服务层 theCore Services layer )、( 媒体层 theMedia layer )和( Cocoa界面服务层 the Cocoa Touch layer)四个层次。
 32. 控件主要响应 3 种事件:( 基于触摸的事件 )、( 基于值的事件 )和( 基于编辑的事件 )。
@@ -13101,37 +12516,6 @@ viewDidAppear 当视图添加到窗口中以后或者上层视图移出图层后
 42. iPhone OS 主要提供了几种播放音频的方法( 10 分)?
 答: SystemSound Services AVAudioPlayer 类
 Audio Queue Services OpenAL
-43. 使用 AVAudioPlayer 类调用哪个框架、使用步骤( 10 分)?
-答: AVFoundation.framework 步骤:配置 AVAudioPlayer 对象;
-实现 AVAudioPlayer 类的委托方法;
-10 分)。
-
-控制 AVAudioPlayer 类的对象; 监控音量水平; 回放进度和拖拽播放。
-44. 有哪几种手势通知方法、写清楚方法名( 10 分)?
-答:
--(void)touchesBegan:(NSSet*)touchedwithEvent:(UIEvent*)event; -(void)touchesMoved:(NSSet*)touched withEvent:(UIEvent*)event; -(void)touchesEnded:(NSSet*)touchedwithEvent:(UIEvent*)event; -(void)touchesCanceled:(NSSet*)touchedwithEvent:(UIEvent*)event;
-45. 实例化一个 UITableView 对象，要求写出关键语句( 10 分)。
-答: UITableView *my = [[UITableView alloc]initWithFrame:<(CGRect)frame> style:<(UITableViewStyle)style>]; my.delegate = self;
-my.dataSource = self;
-首先需要分配空间设置表格类型
-然后需要设置两个必须的委托对象。
-46. CFSocket 使用有哪几个步骤( 10 分)。
-答:创建 Socket 的上下文;创建 Socket ;配置要访问的服务器信息;封装服务器信息;连接服务器;
-47. Core Foundation 中提供了哪几种操作 Socket的方法( 10 分)?
-答: CFNetwork 、 CFSocket 和 BSD Socket 。
-48. 解析 XML 文件有哪几种方式( 10 分)?
-答:以 DOM 方式解析 XML 文件;以 SAX 方式解析 XML 文件;
-
-46. 写一个 NSString 类的实现 +(id)initWithCString:(const char
-*)nullTerminatedCStringencoding:(NSStringEncoding)encoding;
-+ (id)stringWithCString: (const
-char*)nullTerminatedCString encoding: (NSStringEncoding)encoding
-{ NSString *obj;
-obj = [selfallocWithZone: NSDefaultMallocZone()];
-obj = [objinitWithCString: nullTerminatedCString encoding: encoding];
-}
-returnAUTORELEASE(obj);
-@end
 
 50. 类别的作用?继承和类别在实现中有何区别?
 答案: category可以在不获悉，不改变原来代码的情况下往里面添加新的方法，只能添加，不能删除修改。 来类中的方法产生名称冲突，则类别将覆盖原来的方法，因为类别具有更高的优先级。 类别主要有 分散到多个不同文件或多个不同框架中。 (2) 创建对私有方法的前向引用。 (3) 向对象添加非正式协议。 法，并且可以增加属性。
@@ -13151,7 +12535,6 @@ returnAUTORELEASE(obj);
 tableViewController 也不能放吧， 只能说可以嵌入一个 UIViewController ， 而是宏观的表示视图控制者，那我们倒是可
 TabbarController 那样的感觉。
 
-
 56. Object - c 的类可以多重继承么?可以实现多个接口么?重写一个类的方式用继承好还是分类 好?为什么?
 答案: Objective-c 只支持单继承，如果要实现多继承的话，可以通过类别和协议的方式来实现， cocoa 中所有的类都 是 NSObject 的子类，多继承在这里是用 protocol 委托代理来实现的。
 57. id 声明的对象有什么特性?
@@ -13167,45 +12550,6 @@ iOS 中可以有四种持久化数据的方式:属性列表、对象归档、
 SQLite 作为一种存储类型，但它不能使用任意的 SQLite 数据库。 Core Data 在使用的过程种自己创建这个数据库。 Core Data 支 持对一、对多的关系。
 61. obj-c 有多重继承么 ? 如果没有什么替代方法 ?
 cocoa中所有的类都是 NSObject 的子类， 多继承在这里是用 protocol 委托代理来实现的。 你不用去考虑繁琐的多继承， 虚基类 的概念。
-60. ios平台怎么做数据的持久化 ?coredata和 sqlite有无必然联系?
-coredata 是一个关系型数据库吗?
-SQLite3 和 Core Data; core data 可以使你以图形界面的方 coredata提供了基础结构去处理常用的功能， 例如保存， 恢复，
-
-62. obj-c 有私有方法么 ? 私有变量呢?
-objective-c – 类里面的方法只有两种 , 静态方法和实例方法 . 这似乎就不是完整的面向对象了 ,按照 OO 的原则就是一个对象只
-暴露有用的东西 . 如果没有了私有方法的话 , 对于一些小范围的代码重用就不那么顺手了
-@interface Controller : NSObject { NSString *something; } + (void)thisIsAStaticMethod;
-- (void)thisIsAnInstanceMethod;
-@end
-@interface Controller (private) - (void)thisIsAPrivateMethod; @end
-@private 可以用来修饰私有变量
-在 Objective‐C 中，所有实例变量默认都是私有的，所有实例方法默认都是公有的
-63. 假定输入的字符串中只包含字母和 * 号。编写函数 fun，功能是，除了中间和尾部的
-将字符串中其他 * 号全部删除。编写时，不用 c 的其他函数。
-. 在类里面声名一个私有方法
-例: *****A*BC*DEF*G**** void fun (char *a)
-{
-int j=0;
-char *p=a;
-while (*p== ’ * ’ )p++; while (*p){
-a[j++]=*p;
-p++;
-结果为: A*BC*DEF*G****
-} a[j]=0;
-}
-64. 截取字符串”
-20 | http://www.621life.com“ 中
-65. 获取项目根路径，并在其下创建一个名称为 userData 的目录。(10 分)。
-“20|http://www.621life.com”;
-NSString *str =
-NSRange range = [strrangeOfString:@” |” ];
-int location = range.location;
-NSString *str1 = [strsubstringToIndex:location]; NSString *str2 = [str substringFromIndex:location+1];
-‘|’字符前面及后面的数据，分别输出它们(
-10 分)。
-// 获取根路径
-NSArray *paths=NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,NSUserDomainMask,YES);
-* 号外，
 
 NSString *documentsDirectory = [paths objectAtIndex:];
 // 创建文件系统管理器
@@ -13219,12 +12563,6 @@ if(![fileManagerfileExistsAtPath:[NSStringstringWithFormat:@
 UITableView 通过重用单元格来达到节省内存的目的 : 通过为每个单元格指定一个重用标识符
 (reuseIdentifier),即指定了单元格
 的种类 ,以及当单元格滚出屏幕时 就够了 .
-67. 这段代码有什么问题吗
-@implementation Person
-i. (void)setAge:(int)newAge {
-self.age = newAge;
-}
-死循环
 
 73. 获取项目根路径，并在其下创建一个名称为 userData 的目录。
 // 获取根路径
@@ -13254,7 +12592,6 @@ if(![fileManagerfileExistsAtPath:[NSStringstringWithFormat:@
 答:队列和栈是两种不同的数据容器。 从”数据结构 ”的角度看， 它们都是线 性结构，即数据元素之间的关系相同。
 队列是一种先进先出的数据结构，它在两端进行操作，一端进行入队 列操作，一端进行出列队操作。
 栈是一种先进后出的数据结构，它只能在栈顶进行操作，入栈和出栈 都在栈顶操作。
-
 
 24.TCP/UDP 区别联系
 TCP---传输控制协议 ,提供的是面向连接、可靠的字节流服务。当客户
@@ -13315,16 +12652,6 @@ Objctive-C 对象，这个对象的指针指向空(没有东西就是空)。
 首字母大写的 Nil 和 nil 有一点不一样， Nil 定义一个指向空的类 (是 Class， 而不是对象)。
 SEL是“selecto的r一”个类型，表示一个方法的名字Method(我们常说 的方法)表示一种类型，这种类型与 selector和实现(implementation)相关IMP
 定义为 id(*IMP) (id,SEL, ⋯)。这样说来， IMP 是一个指向函数的指针，这 个被指向的函数包括 id( “sel指f ”针 )，调用的 SEL(方法名)，再加上一些 其他参数 .说白了 IMP 就是实现方法。
-
-4. 写一个委托的 interface @protocol MyDelegate;
-@interface MyClass: NSObject
-{
-id <MyDelegate> delegate;
-}
-// 委托方法
-@protocol MyDelegate
-- (void)didJobs:(NSArray *)args; @end
-p 会作三次 ++ 自增操作。
 
 8. 关键字 const 有什么含意?修饰类呢 ?static 的作用 , 用于类呢 ?还有 extern c 的作用
 const 意味着 " 只读 " ，下面的声明都是什么意思? const int a;
@@ -13698,29 +13025,7 @@ iphone沙箱模型的有四个文件夹 documents，tmp，app，Library ，永�
 3).堆区:通过 malloc等函数或 new等操作符动态申请得到，需程序员手 动申请和释放
 4).栈区:函数模块内申请，函数结束时由系统自动释放。存放局部变 量、函数参数
 
-98. 队列和栈有什么区别:
-答:队列和栈是两种不同的数据容器。从 ‖数据结构 ‖的角度看，它们
-都是线性结构，即数据元素之间的关系相同。
-队列是一种先进先出的数据结构，它在两端进行操作，一端进行入队 列操作，一端进行出列队操作。
-栈是一种先进后出的数据结构，它只能在栈顶进行操作，入栈和出栈 都在栈顶操作。
-99. HTTP 协议中， POST和GET 的区别是什么? 答:
-1).GET方法
-GET 方法提交数据不安全，数据置于请求行，客户端地址栏可见 ;
-
-GET 方法提交的数据大小有限
-GET 方法不可以设置书签
-2).POST方法
-POST 方法提交数据安全，数据置于消息主体内，客户端不可见 POST 方法提交的数据大小没有限制
-POST 方法可以设置书签 100. iOS 的系统架构
-答: iOS的系统架构分为(核心操作系统层 theCore OS layer )、(核 心服务层 theCore Services layer )、(媒体层 theMedia layer )和( Cocoa 界面服务层 the Cocoa Touch layer )四个层次。
-101. 控件主要响应 3种事件
-答:1). 基于触摸的事件 ; 2). 基于值的事件 ; 3).基于编辑的事件。
-102. xib 文件的构成分为哪 3个图标?都具有什么功能。
-答: File ‘s Owne是r 所有 nib 文件中的每个图标，它表示从磁盘加载
-nib 文件的对象;
-First Responder 就是用户当前正在与之交互的对象;
-View 显示用户界面;完成用户交互;是 UIView 类或其子类。 103. 简述视图控件器的生命周期。
-
+103. 简述视图控件器的生命周期。
 答: loadView 尽管不直接调用该方法，如多手动创建自己的视图， 那么应该覆盖这个方法并将它们赋值给试图控制器的 view 属性。
 viewDidLoad 只有在视图控制器将其视图载入到内存之后才调用该方 法，这是执行任何其他初始化操作的入口。
 viewDidUnload 当试图控制器从内存释放自己的方法的时候调用，用 于清楚那些可能已经在试图控制器中创建的对象。
@@ -13752,23 +13057,7 @@ OpenAL
 步骤:配置 AVAudioPlayer 对象;
 实现 AVAudioPlayer 类的委托方法;
 控制 AVAudioPlayer 类的对象;
-监控音量水平;
-
-回放进度和拖拽播放。
-111. 有哪几种手势通知方法、写清楚方法名? 答:
--(void)touchesBegan:(NSSet*)touchedwithEvent:(UIEvent*)event; -(void)touchesMoved:(NSSet*)touched withEvent:(UIEvent*)event; -(void)touchesEnded:(NSSet*)touchedwithEvent:(UIEvent*)event; -(void)touchesCanceled:(NSSet*)touchedwithEvent:(UIEvent*)event; 112. CFSocket使用有哪几个步骤。
-答:创建 Socket 的上下文;创建 Socket ;配置要访问的服务器信息; 封装服务器信息;连接服务器;
-113. Core Foundation 中提供了哪几种操作 Socket的方法? 答: CFNetwork 、 CFSocket 和 BSD Socket 。
-114. 解析 XML 文件有哪几种方式?
-答:以 DOM 方式解析 XML 文件;以 SAX 方式解析 XML 文件;
-115. ios 平台怎么做数据的持久化 ?coredata和sqlite有无必然联系? coredata 是一个关系型数据库吗?
-答:iOS 中可以有四种持久化数据的方式:属性列表 (plist)、对象归档、
-SQLite3 和 Core Data; core data 可以使你以图形界面的方式快速的 定义 app 的数据模型，同时在你的代码中容易获取到它。 coredata 提 供了基础结构去处理常用的功能，例如保存，恢复，撤销和重做，允
-许你在 app 中继续创建新的任务。在使用 core data 的时候，你不用 安装额外的数据库系统，因为 core data 使用内置的 sqlite 数据库。 core data 将你 app 的模型层放入到一组定义在内存中的数据对象。 coredata 会追踪这些对象的改变，同时可以根据需要做相反的改变， 例如用户执行撤销命令。当 core data 在对你 app 数据的改变进行保 存的时候， core data 会把这些数据归档，并永久性保存。 mac os x 中sqlite 库，它是一个轻量级功能强大的关系数据引擎，也很容易嵌入 到应用程序。可以在多个平台使用， sqlite 是一个轻量级的嵌入式 sql 数据库编程。与 core data 框架不同的是， sqlite 是使用程序式的，
-sql 的主要的 API 来直接操作数据表。 Core Data 不是一个关系型数 据库，也不是关系型数据库管理系统 (RDBMS) 。虽然 Core Dta 支持
-SQLite 作为一种存储类型，但它不能使用任意的 SQLite 数据库。
-Core Data 在使用的过程种自己创建这个数据库。 Core Data 支持对一、
-对多的关系。
+监控音量水平;回放进度和拖拽播放。
 
 116. tableView 的重用机制?
 答: UITableView 通过重用单元格来达到节省内存的目的 : 通过为每个 单元格指定一个重用标识符 (reuseIdentifier),即指定了单元格的种类 , 以 及当单元格滚出屏幕时 ,允许恢复单元格以便重用 .对于不同种类的单元 格使用不同的 ID,对于简单的表格 ,一个标识符就够了 .
