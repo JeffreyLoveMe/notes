@@ -344,7 +344,7 @@
         alert(parseFloat(b5)); // 与parseInt()效果一致
         alert(typeof(parseFloat(b5)));
         alert(parseInt(b8)); // ‘小数字符串’转换结果为原数字
-        // 三、转布尔类型 - 数字和字符串转换结果为true/undefined、null、0转换结果为false
+        // 三、转布尔类型 - 数字和字符串转换结果为true ｜ 0/""/null/false/undefined/NaN转换结果为false
         alert(Boolean(b3)); // true
         alert(typeof(Boolean(b3)));
         alert(Boolean(b5)); // true
@@ -479,8 +479,8 @@
             var sum = a + b;
             return sum;
         }
-        // 第五种、匿名函数 - 使用该方法调用有局限性（函数定义必须在使用函数之前）
-        // 定义
+        // 4>.匿名函数 - 使用该方法调用有局限性（函数定义必须在使用函数之前）
+        // 一、定义
         var fn_1 = function getMin() {
             alert("匿名函数");
         }
@@ -492,7 +492,7 @@
         var fn_3 = new Function("alert(\"匿名函数\");")
         fn_3();
         alert(getSum(1, 2));
-        // 作用
+        // 二、作用
         // 1.直接调用
         (function () {
             console.log("直接调用");
@@ -501,22 +501,10 @@
         document.onclick = function () {
             console.log("绑定事件");
         }
-        // 3.定时器
+        // 3.定时器 - 参数
         setInterval(function () {
             console.log("定时器");
         }, 1000);
-        /*
-        4>.函数特性
-        1.函数不调用不执行 - js加载函数只会加载函数名，不加载函数体
-        2.打印整个函数（函数名 == 整个函数）
-        3.参数（形参）相当于局部变量 - 就近原则/两个平级函数中的参数互不影响
-        */
-        function getMax(a, b) {
-            return a - b;
-        }
-        alert(getMax); // 打印整个函数（函数名 == 整个函数）
-        alert(typeof(getMax)); // function也是一种数据类型（属于object）
-        alert(getMax(1, 2));  // 打印函数返回值（先执行getMax(1, 2) -> 再执行alert(getMax(1, 2))）
         // 5>.函数递归 - 函数自己调用自己/必须有结束条件
         // 6>.回调函数 - 函数作为参数进行传递和使用
         function getWeight(a, b, test) {
@@ -529,6 +517,18 @@
             return a + b;
         }
         getWeight(11, 12, do_test);
+        /*
+        7>.函数特性
+        1.函数不调用不执行 - js加载函数只会加载函数名，不加载函数体
+        2.打印整个函数（函数名 == 整个函数）
+        3.参数（形参）相当于局部变量 - 就近原则/两个平级函数中的参数互不影响
+        */
+        function getMax(a, b) {
+            return a - b;
+        }
+        alert(getMax); // 打印整个函数（函数名 == 整个函数）
+        alert(typeof(getMax)); // function也是一种数据类型（属于object）
+        alert(getMax(1, 2));  // 打印函数返回值（先执行getMax(1, 2) -> 再执行alert(getMax(1, 2))）
         
         // 面向对象和基于对象
         // 1>.概念 - 面向对象（可以创建自定义对象，支持封装、继承、多态，例如java）/基于对象（不可以创建自定义对象、不能友好的支持继承、多态，例如js）
@@ -667,6 +667,7 @@
         alert(Math.random());   // 返回“0 - 1的随机数”/不包括”0和1“ - 常用
         alert(Math.round(x1));  // 四舍五入取整/-15.5四舍五入为-15
         alert(Math.PI); // 返回圆周率
+
         // 3.Array对象 - 数组
         // 1>.创建数组
         // 第一种方式
@@ -798,7 +799,9 @@
             }
         }
         alert(bubbleSortArray);
-        // 4.RegExp对象 - 正则表达式
+
+        // 4.RegExp对象 - 正则表达式/ri'gek'sp
+
         // 5.Error对象 - 错误对象
 
         // 关于js代码检测工具

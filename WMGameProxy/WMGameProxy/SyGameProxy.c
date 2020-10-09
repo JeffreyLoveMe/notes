@@ -146,9 +146,9 @@ int getMax(int m, int n);
  6.数据类型 - 任何变量都有数据类型
  1>.静态数据 - 一般以文件的形式存储在硬盘/静态数据类型 -> 动态数据类型（从磁盘加载到内存）
  2.动态数据 - 动态产生的临时数据/一般存储在内存中/访问速度快/动态数据类型 -> 静态数据类型（手机拍照）
- 3.计量单位 - 1B(Byte) = 8bit(10101010)/1KB = 1024B/1MB = 1024KB/1GB = 1024MB/1TB = 1024GB
+ 3.计量单位 - 1TB = 1024GB/1GB = 1024MB/1MB = 1024KB/1KB = 1024B/1B(Byte) = 8bit(10101010)
  4.基本数据类型( short/int/long/char/float/double )
- 1).整型 - 用来存放整数 - 默认是int /short占2个字节 /int占4个字节 /long占8个字节 /unsigned无符号整数（正数）/signed有符号整数
+ 1).整型 - 用来存放整数 - 默认是int/short占2个字节/int占4个字节/long占8个字节/unsigned无符号整数（正数）/signed有符号整数
  2).浮点型 - 用来存放小数 - 默认是double /float占4个字节 /double占8个字节
  3).字符型 - 字符型变量 /'A'对 /'12'错
  4).字符串常量 - "ADC"
@@ -182,7 +182,7 @@ int getMax(int m, int n);
  sum = 9; //给变量赋值：给存储空间存储数据/变量的第一次赋值称为初始化init/使用变量之前必须init、不然存储的都是垃圾数据
  int value,number; //连续定义：开辟两块存储空间/声明的时候就会开辟存储空间
  printf("value = %i",value); //获取value：占位符/编译期间才知道具体数值
- int number = 10; //定义同时初始化：变量第一次赋值称为init/先init、才能使用
+ int number = 10; //定义同时初始化：变量第一次赋值称为init/先init才能使用
  //完全初始化：未init变量的值是随机的，实质是垃圾数据
  int value,number;
  value = number = 10;
