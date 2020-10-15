@@ -116,6 +116,8 @@
     // 批量删除
     // 1.告诉 UITableView 在编辑模式下可以多选
     tableView.allowsMultipleSelectionDuringEditing = YES;
+    // 局部刷新
+    [tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationFade];
     // 2.进入编辑模式
     // 3.获取到选中的 cell/不可以一边遍历一边删除/需要拿到 “所有需要删除的row” 保存起来统一删除
     for (NSIndexPath *indexPath in tableView.indexPathsForSelectedRows) {

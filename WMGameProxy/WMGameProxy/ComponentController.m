@@ -465,6 +465,12 @@
     // 动画部分 - end //
 }
 
+-(void)addRoundCorner {
+    UIImageView *imageView = [[UIImageView alloc] init];
+    imageView.clipsToBounds = YES;    // 会产生离屏渲染，特别消耗性能
+    imageView.layer.cornerRadius = 10;
+    // FIXME - 此处自行百度寻找不会产生离屏渲染的方法
+}
 
 #pragma mark - UITextField文本输入框
 -(void)setupTextField {

@@ -9,7 +9,7 @@
             width: 100px;
             height: 100px;
             background: pink;
-            /* 
+            /*
             鼠标放在元素上会呈现不同的样式
             一般情况下如果元素可以点击都需要设置这个 - 表示可以点击
             ke'se'r
@@ -35,10 +35,9 @@
      -->
     <script type="text/javascript">
         /*
-        事件 - js是以“事件驱动”为核心的一门语言 | https://www.runoob.com/js/js-events.html
-        1.三要素 - 事件源、事件、事件驱动程序
-        2.DOM - 文档对象模型
-        3.BOM - 浏览器对象模型
+        事件 - https://www.runoob.com/js/js-events.html
+        1.js是以“事件驱动”为核心的一门语言
+        2.三要素 - 事件源、事件、事件驱动程序
         */
         // 1>.获取事件源（引发后续事件的标签、事件操作在哪个标签）
         // element - ai'li'men't
@@ -76,7 +75,6 @@
             // 多个赋值 - 字符串形式
             a1.style.cssText = "width: 100px;height: 100px;background: #000;";
             // 2.操作类选择器名称
-            a1.className += "box"; // 保留“原类选择器名称” - 在该选择器名称后面继续添加字符串
             a1.className = "box"; // 替换“原类选择器名称”
         }
         // 2.函数赋值 - 此处不能写"()"（写了代表函数返回值）
@@ -96,8 +94,8 @@
          * 参数2 - 执行函数
          * 参数3 - 可选（true - 事件在捕获阶段执行/false默认 - 事件在冒泡阶段执行）
          */
-        a1.addEventListener("click", eventTest); // 火狐/谷歌/IE9+
-        a1.attachEvent("onclick", eventTest); // IE6/7/8 - 目前已经不需要兼容
+        a1.addEventListener("click", test); // 火狐/谷歌/IE9+
+        // a1.attachEvent("onclick", test); // IE6/7/8 - 目前已经不需要兼容
         // 兼容写法
         EventListen = {
             /**
@@ -118,21 +116,21 @@
         // 3>.事件驱动程序 - 对样式和html的操作（DOM操作）
         // 可以操作标签的属性和样式
 
-        // 事件监听原理
-        function eventTest(str, func, element) {
-            // 获取旧事件必须在新事件之前 - 如果进入绑定事件本身，那么该事件已经被绑定
-            var oldEvent = element("on" + str);
-            element("on" + str) = function () {
-                // 不能直接执行函数 - 因为我们还不知道以前有没有绑定同样的事件
-                // 如果以前有绑定事件需要执行完毕以后再执行函数
-                if (oldEvent) {
-                    oldEvent();
-                    func();
-                } else {
-                    func();
-                }
-            }
-        }
+        // // ？？？事件监听原理？？？
+        // function eventTest(str, func, element) {
+        //     // 获取旧事件必须在新事件之前 - 如果进入绑定事件本身，那么该事件已经被绑定
+        //     var oldEvent = element("on" + str);
+        //     element("on" + str) = function () {
+        //         // 不能直接执行函数 - 因为我们还不知道以前有没有绑定同样的事件
+        //         // 如果以前有绑定事件需要执行完毕以后再执行函数
+        //         if (oldEvent) {
+        //             oldEvent();
+        //             func();
+        //         } else {
+        //             func();
+        //         }
+        //     }
+        // }
 
         // 事件解除绑定
         // 第一种方式
@@ -145,9 +143,9 @@
         // 火狐/谷歌/IE9+
         btn.addEventListener("click", test);
         btn.removeEventListener("click", test);
-        // IE6/7/8 - 目前已经不需要兼容
-        btn.attachEvent("onclick", test);  
-        btn.detachEvent("onclick", test);
+        // // IE6/7/8 - 目前已经不需要兼容
+        // btn.attachEvent("onclick", test);
+        // btn.detachEvent("onclick", test);
 
         // onload事件
         // 触发 - 页面加载完毕（文本和图片）
@@ -156,13 +154,12 @@
             // 代码块
         }
 
-        // DOM概述
-        // 1.概述 - document object model/文档对象模型
-        // 2.目的 - 处理网页内容/实质 - 为了让js能够操作html元素而定制的规范
+        // DOM概述 - document object model/文档对象模型
+        // 1.实质 - 为了让js能够操作html元素而定制的规范
+        // 2.目的 - 处理网页内容
         // 3.解析过程 - HTML加载完毕，渲染引擎会在内存中把HTML文档生成DOM树
         // 4.HTML组成部分 - 节点（在HTML中一切都是节点）- 整个文档就是文档节点｜HTML标签就是元素节点｜标签属性就是属性节点｜标签中的文字就是文字节点
-        // 5.操作 - 使用“getElementById()”获取DOM上的元素节点，然后操作元素修改属性
-        // 6.怎么找到节点 - 需要操作节点必须先找到节点
+        // 5.怎么获取DOM上的元素节点 - 需要操作节点必须先找到节点
         // 1>.直接获取
         // 第一种方式 - 通过‘id’找到节点/返回标签 - id没有下面两个方法（因为id整个也看唯一）
         var a2 = document.getElementById("boxClick");
@@ -258,12 +255,12 @@
         */
         // 错误 - Uncaught TypeError: Cannot set property 'id' of undefined
         var a19 = document.getElementsByTagName("div")[0];
-        // 1>.元素节点.属性 ｜ 元素节点[属性] - 绑定的属性值不会出现在标签上
+        // 1>.元素节点.属性 ｜ 元素节点[属性]
         a19.id = "box";
         a19["id"] = "box";
         console.log(a19.id);
         console.log(a19.getAttribute("id"));
-        // 2>.元素节点.方法() - 绑定的属性值会出现在标签上/既能获取也能设置/elementNode
+        // 2>.元素节点.方法()
         a19.setAttribute("id", "box");
         console.log(a19.id);
         console.log(a19.getAttribute("id"));
@@ -296,7 +293,7 @@
         // innerHTML - 获取双闭合标签里面的内容（识别标签（赋值的标签当标签处理）、不包含本身）
         // outerHTML - 获取双闭合标签里面的内容（识别标签、包含本身）
         // innerText - 获取双闭合标签里面的内容（不识别标签（赋值的标签当文本处理）、不包含本身）
-        // outerText - 获取双闭合标签里面的内容（不识别标签、包含本身）
+        // outerText - 获取双闭合标签里面的内容（不识别标签、包含本身）/与innerText没啥区别（已经移除）
 
         // 制作空白图片 - https://placeholdit.imgix.net
         

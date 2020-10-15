@@ -198,7 +198,7 @@ ps.关于runloop的内部实现我给一个参考（我也不知道对不对）
   为什么AF2.0有常驻子线程？AF3.0没有？
   2.SDWebImageView的缓存策略？
   二级缓存 - 具体说一下
-  3.MJRefresh
+  3.MJRefresh/FMDB/MBProgressHUD/MagicRecord
   4.其他可以拿出来说的第三方库（可以提前想一下）
 
   //多态的作用？
@@ -226,7 +226,7 @@ ps.关于runloop的内部实现我给一个参考（我也不知道对不对）
   百度
 
   //UIViewController的生命周期？+ (void)load（）/+ (void)initialize（）/loadView（）之间的区别？
-百度
+  百度
 
   //[self class]/[self superclass]/[super class]的区别？
   self是隐藏参数-具体使用/指代？
@@ -237,7 +237,7 @@ ps.关于runloop的内部实现我给一个参考（我也不知道对不对）
   2.进程与进程之间可以通信吗？可以（应用跳转）
   3.线程之间的通信？
   4.常见的队列（六个）
-  5.同步+主线程会死锁（一般考代码基本就会考死锁）
+  5.同步+主线程会死锁（一般考代码基本就会考死锁）/死锁的原因？？？
   6.多线程的本质？多线程的作用？
   7.NSThread/GCD/NSOperation都具体说说
   8.GCD的其他方法（延迟方法（还有其他别的延迟方法吗？）、一次性代码、栅栏函数、快速遍历、定时器）

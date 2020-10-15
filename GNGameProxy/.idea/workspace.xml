@@ -2,10 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="16e435bf-91d0-4784-a0da-dec4003c7039" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/java关键字.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GNGameProxy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GNGameProxy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../WMGameProxy/WMGameProxy/SyGameProxy.c" beforeDir="false" afterPath="$PROJECT_DIR$/../WMGameProxy/WMGameProxy/SyGameProxy.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../donew_index/html/donew_js基础.html" beforeDir="false" afterPath="$PROJECT_DIR$/../donew_index/html/donew_js基础.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../WMGameProxy/WMGameProxy/ComponentController.m" beforeDir="false" afterPath="$PROJECT_DIR$/../WMGameProxy/WMGameProxy/ComponentController.m" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../WMGameProxy/WMGameProxy/SYGameProxy.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../WMGameProxy/WMGameProxy/SYGameProxy.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../WMGameProxy/WMGameProxy/SyTableViewController.m" beforeDir="false" afterPath="$PROJECT_DIR$/../WMGameProxy/WMGameProxy/SyTableViewController.m" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../WMGameProxy/WMGameProxy/WMGameProxy.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../WMGameProxy/WMGameProxy/WMGameProxy.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../WMGameProxy/WMGameProxy/WMMemoryManager.m" beforeDir="false" afterPath="$PROJECT_DIR$/../WMGameProxy/WMGameProxy/WMMemoryManager.m" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../donew_index/html/donew_bom.html" beforeDir="false" afterPath="$PROJECT_DIR$/../donew_index/html/donew_bom.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../donew_index/html/donew_dom.html" beforeDir="false" afterPath="$PROJECT_DIR$/../donew_index/html/donew_dom.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../donew_index/html/donew_review.html" beforeDir="false" afterPath="$PROJECT_DIR$/../donew_index/html/donew_review.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../donew_interview/iOS面试.md" beforeDir="false" afterPath="$PROJECT_DIR$/../donew_interview/iOS面试.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,6 +45,36 @@
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="File.Encoding" />
   </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="GNGameProxy" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="GNGameProxy" />
+      <module name="GNGameProxy" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.GNGameProxy" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -61,6 +98,12 @@
       <workItem from="1601625205866" duration="251000" />
       <workItem from="1601711640253" duration="1702000" />
       <workItem from="1601959255378" duration="345000" />
+      <workItem from="1602402517526" duration="155000" />
+      <workItem from="1602402755953" duration="1520000" />
+      <workItem from="1602500837528" duration="2394000" />
+      <workItem from="1602675755142" duration="1096000" />
+      <workItem from="1602730406528" duration="436000" />
+      <workItem from="1602758863033" duration="142000" />
     </task>
     <servers />
   </component>
@@ -68,6 +111,22 @@
     <option name="version" value="3" />
   </component>
   <component name="WindowStateProjectService">
+    <state width="1362" height="231" key="GridCell.Tab.0.bottom" timestamp="1602468258774">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state width="1362" height="231" key="GridCell.Tab.0.bottom/0.23.1440.877/-1876.23.1876.1177@0.23.1440.877" timestamp="1602468258774" />
+    <state width="1362" height="231" key="GridCell.Tab.0.center" timestamp="1602468258773">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state width="1362" height="231" key="GridCell.Tab.0.center/0.23.1440.877/-1876.23.1876.1177@0.23.1440.877" timestamp="1602468258773" />
+    <state width="1362" height="231" key="GridCell.Tab.0.left" timestamp="1602468258772">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state width="1362" height="231" key="GridCell.Tab.0.left/0.23.1440.877/-1876.23.1876.1177@0.23.1440.877" timestamp="1602468258772" />
+    <state width="1362" height="231" key="GridCell.Tab.0.right" timestamp="1602468258773">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state width="1362" height="231" key="GridCell.Tab.0.right/0.23.1440.877/-1876.23.1876.1177@0.23.1440.877" timestamp="1602468258773" />
     <state x="187" y="26" key="SettingsEditor" timestamp="1601030525029">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
