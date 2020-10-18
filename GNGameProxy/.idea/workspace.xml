@@ -2,17 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="16e435bf-91d0-4784-a0da-dec4003c7039" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/java关键字.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GNGameProxy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GNGameProxy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../WMGameProxy/WMGameProxy/ComponentController.m" beforeDir="false" afterPath="$PROJECT_DIR$/../WMGameProxy/WMGameProxy/ComponentController.m" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../WMGameProxy/WMGameProxy/SYGameProxy.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../WMGameProxy/WMGameProxy/SYGameProxy.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../WMGameProxy/WMGameProxy/SyTableViewController.m" beforeDir="false" afterPath="$PROJECT_DIR$/../WMGameProxy/WMGameProxy/SyTableViewController.m" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../WMGameProxy/WMGameProxy/WMGameProxy.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../WMGameProxy/WMGameProxy/WMGameProxy.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../WMGameProxy/WMGameProxy/WMMemoryManager.m" beforeDir="false" afterPath="$PROJECT_DIR$/../WMGameProxy/WMGameProxy/WMMemoryManager.m" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../donew_index/html/donew_bom.html" beforeDir="false" afterPath="$PROJECT_DIR$/../donew_index/html/donew_bom.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../donew_index/html/donew_dom.html" beforeDir="false" afterPath="$PROJECT_DIR$/../donew_index/html/donew_dom.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../donew_index/html/donew_review.html" beforeDir="false" afterPath="$PROJECT_DIR$/../donew_index/html/donew_review.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../donew_interview/iOS面试.md" beforeDir="false" afterPath="$PROJECT_DIR$/../donew_interview/iOS面试.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,17 +50,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Application.GNGameProxy" />
@@ -104,6 +85,7 @@
       <workItem from="1602675755142" duration="1096000" />
       <workItem from="1602730406528" duration="436000" />
       <workItem from="1602758863033" duration="142000" />
+      <workItem from="1602838242580" duration="1635000" />
     </task>
     <servers />
   </component>

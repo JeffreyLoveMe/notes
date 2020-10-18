@@ -66,14 +66,6 @@ public class GNGameProxy {
      */
 
     /**
-     * 主方法
-     * @param args
-     */
-    public static void main(String[] args) { // 这是主方法（程序的入口）
-        System.out.println("我的第一个程序");
-    }
-
-    /**
      * 配置环境变量path（记录可执行文件） - MacOS不需要配置/Win百度自行配置
      * 配置环境变量classpath（记录java类的运行文件） - jdk5.0以后classpath不需要配置
      */
@@ -108,6 +100,39 @@ public class GNGameProxy {
      * 3>.方法/变量 - 从第二个单词开始首字母大写/playGame
      * 4>.常量 - 所有字母大写，以'_'隔开/MAX_VALUE
      */
+
+    /**
+     * 主方法
+     * @param args
+     */
+    public static void main(String[] args) { // 这是主方法（程序的入口）
+        // 我的第一个程序
+        System.out.println("我的第一个程序");
+
+        /**
+         * 常量的概述和使用
+         * 1>.概述 - 在程序执行的过程中其值不可以发生改变
+         * 2>.字面值常量（字符串常量 - 用""括起来、字符常量 - 用''括起来，只能放单个数字/字符、整数常量 - 所有整数、小数常量 - 所有小数、布尔常量 - true/false、空常量 - null）
+         * 3>.自定义常量（面向对象再讲）
+         */
+        System.out.println("abc"); // 字符串常量
+        System.out.println(123); // 整数常量
+        System.out.println(12.3); // 小数常量
+        System.out.println('A'); // 字符常量 - 对
+//        System.out.println('10'); // 字符常量 - 错/''必须放单个字符/10不表示单个字符
+//        System.out.println(''); // 字符常量 - 错/任何字符都不放也不行，因为无法代表任何字符
+        System.out.println(' ');  // 字符常量 - 对/可以放空格
+        System.out.println(true); // 布尔常量 - true/false
+
+        /**
+         * 进制转换
+         *
+         */
+
+
+    }
+
+
 
 
 

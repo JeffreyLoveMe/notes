@@ -394,6 +394,8 @@ http://code4app.com - code4App
 NO1 - iOS开发工程师->iOS开发主管->iOS开发leader/移动端开发leader->大前端开发leader/副研发总监->CTO->联合创始人
 NO2 - iOS开发工程师->iOS开发主管->iOS开发leader/移动端开发leader -> CEO/创始人
 
+基础架构（组件化）/设计模式/音视频/跨平台
+
 //知识点速查
 Res - 资源文件/常见问题截图
 Libs - 常见第三方库
