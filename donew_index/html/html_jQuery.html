@@ -96,7 +96,7 @@
             "background": "pink",
             "margin": "10px"
         });
-        jqBox.click = function () {
+        jqBox.click(function () {
             // 此处this是DOM对象
             $(this).css({
                 "width": "100px",
@@ -104,7 +104,7 @@
                 "background": "pink",
                 "margin": "10px"
             });
-        }
+        })
         // 设置一个属性不需要传入json
         jqBox.css("width", "100px");
         // 获取属性值
