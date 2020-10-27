@@ -5,6 +5,9 @@
 		},
 		{
 			"path": "ml_shop"
+		},
+		{
+			"path": "../../document"
 		}
 	],
 	"settings": {
