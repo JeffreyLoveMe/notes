@@ -59,7 +59,7 @@
         });
 
         // "jQuery中DOM对象"和"js原生DOM对象"的区别和联系
-        // 1.jQuery中DOM对象
+        // 1.jQuery中DOM对象 - “jQuery中DOM对象”是一个数组，数组中包含“js中DOM对象”
         $(document).ready(function () {
             // 1.获取事件源
             var jqBox = $("div"); // 根据tag获取事件源
@@ -78,8 +78,11 @@
                     "margin": "10px"
                 });
             });
+            console.log(jqBox);  // “jQuery中DOM对象”是一个数组，里面包含很多元素（不仅有div）
+            console.log(jqBox.length); // “jQuery中DOM对象”是一个数组，长度以div的个数为准（与其他元素无关）
         });
         // 2.js中DOM对象 -> jQuery中DOM对象
+        // $(js中DOM对象)
         var box = document.getElementById("box");
         $(box).css({
             "width": "100px",
@@ -88,6 +91,7 @@
             "margin": "10px"
         });
         // 3.jQuery中DOM对象 -> js中DOM对象
+        // “jQuery中DOM对象”是一个数组，整个数组相当于包裹一层皮可以调用一些方法，直接获取数组也可以拿到“js中DOM对象”
         var jqBox = $("div");
         jqBox[4].style.backgroundColor = "pink"; // 推荐使用
         jqBox.get(4).style.backgroundColor = "red";
@@ -98,6 +102,8 @@
         var jqBox = $("div"); // 根据tag获取事件源
         var jqBox = $(".box"); // 根据class获取事件源
         var jqBox = $("#box"); // 根据id获取事件源
+        var jqBox = $("*"); // 根据通配符获取事件源
+        // 隐式迭代（底层帮我们直接迭代数组）
         jqBox.click(function () {
             // 赋值 - 此处this是DOM对象
             $(this).css("width", "100px");
@@ -107,8 +113,8 @@
         // 2>.层级选择器
         var jqSonDiv = $(".box div"); // 后代选择器
         var jqSonDiv = $("#box>div"); // 子代选择器
-        var jqSonDiv = $("div#box"); // 交集选择器
-        var jqSonDiv = $("div.box"); // 交集选择器
+        var jqSonDiv = $("div#box"); // 交集选择器 - 第一个必须是标签
+        var jqSonDiv = $("div.box"); // 交集选择器 - 第一个必须是标签
         jqSonDiv.css({
             "width": "100px",
             "height": "100px",
@@ -122,12 +128,13 @@
         // 2.利用关系获取
         // 1>.筛选选择器 - jQuery对象调用（重点）
         var jqDiv = $("div");
-        jqDiv.find("div"); // 从jQuery对象后代中查找 - 传入"选择器"（必传）
-        jqDiv.children("div"); // 从jQuery对象子代中查找 - 传入"选择器"（不传入参数获取所有子代选择器）
-        jqDiv.children().eq(0); // 从jQuery对象子代中查找 - 传入"索引值"
-        jqDiv.children().eq(0).next(); // 该元素的下一个兄弟元素
-        jqDiv.children().eq(0).siblings(); // 该元素的所有兄弟元素
-        jqDiv.children().parent(); // 该元素的父元素
+        jqDiv.find("div"); // 从jQuery对象后代（子子孙孙）中查找 - 传入"选择器"（必传）
+        jqDiv.children("#box"); // 从jQuery对象（jqDiv）子代中查找 - 传入"选择器"（不传入参数获取所有子代选择器）
+        jqDiv.children().eq(0); // 从jQuery对象（jqDiv）子代中查找 - 传入"索引值"
+        jqDiv.children().eq(0).next(); // 该元素（jqDiv）的下一个兄弟元素
+        jqDiv.children().eq(0).prev(); // 该元素（jqDiv）的上一个兄弟元素
+        jqDiv.children().eq(0).siblings(); // 该元素（jqDiv）的所有兄弟元素
+        jqDiv.children().parent(); // 该元素（jqDiv）子代的父元素（自身）
 
         // jQuery操作元素 - 操作节点
         // 1.创建元素（jQuery对象）

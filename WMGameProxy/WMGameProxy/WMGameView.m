@@ -67,7 +67,7 @@
 // 3.返回 “哪个view”，“哪个view” 就是最适合的 view
 // ！！！点击 “父视图” 会调用 “所有子视图的该方法”！！！
 // 调用该方法如果没有找到 “最适合的 View”，“最适合的 view” 就是 “父视图返回的该方法 View”
-- (UIView *)hitTest:(CGPoint)point withEvent:(UIEvent *)event {
+- (UIView *)hitTest:(CGPoint)point withEvent:(UIEvent *)event {  // 每产生一个事件就会产生一个UIEvent对象
     /// 1.系统默认方法
     /**
      该方法 “系统默认方法” 所做的操作就是这个

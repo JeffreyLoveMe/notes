@@ -34,6 +34,7 @@
 		33302F71242B10F200C53F13 /* 静态库:动态库链接方式.png in Resources */ = {isa = PBXBuildFile; fileRef = 33302F70242B10F200C53F13 /* 静态库:动态库链接方式.png */; };
 		33385163246943B3006D458E /* 从证书颁发机构请求证书.png in Resources */ = {isa = PBXBuildFile; fileRef = 33385162246943B3006D458E /* 从证书颁发机构请求证书.png */; };
 		33385166246950C8006D458E /* 真机调试 - 自动生成证书.png in Resources */ = {isa = PBXBuildFile; fileRef = 33385165246950C8006D458E /* 真机调试 - 自动生成证书.png */; };
+		3342DB26254965B300B5D240 /* 新版iOS设备尺寸（更新于2020年）.png in Resources */ = {isa = PBXBuildFile; fileRef = 3342DB25254965B300B5D240 /* 新版iOS设备尺寸（更新于2020年）.png */; };
 		334757E4247CC9AD00EBF4EC /* 提交AppStore选项参考.png in Resources */ = {isa = PBXBuildFile; fileRef = 334757E3247CC9AD00EBF4EC /* 提交AppStore选项参考.png */; };
 		3359FE8E241F3E870014C82C /* iphone设备各种空间尺寸.png in Resources */ = {isa = PBXBuildFile; fileRef = 3359FE52241F3E830014C82C /* iphone设备各种空间尺寸.png */; };
 		3359FE8F241F3E870014C82C /* 下拉加载范例.png in Resources */ = {isa = PBXBuildFile; fileRef = 3359FE53241F3E830014C82C /* 下拉加载范例.png */; };
@@ -219,6 +220,7 @@
 		33302F70242B10F200C53F13 /* 静态库:动态库链接方式.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "静态库:动态库链接方式.png"; sourceTree = "<group>"; };
 		33385162246943B3006D458E /* 从证书颁发机构请求证书.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "从证书颁发机构请求证书.png"; sourceTree = "<group>"; };
 		33385165246950C8006D458E /* 真机调试 - 自动生成证书.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "真机调试 - 自动生成证书.png"; sourceTree = "<group>"; };
+		3342DB25254965B300B5D240 /* 新版iOS设备尺寸（更新于2020年）.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "新版iOS设备尺寸（更新于2020年）.png"; sourceTree = "<group>"; };
 		334757E3247CC9AD00EBF4EC /* 提交AppStore选项参考.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "提交AppStore选项参考.png"; sourceTree = "<group>"; };
 		3359FE52241F3E830014C82C /* iphone设备各种空间尺寸.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iphone设备各种空间尺寸.png"; sourceTree = "<group>"; };
 		3359FE53241F3E830014C82C /* 下拉加载范例.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "下拉加载范例.png"; sourceTree = "<group>"; };
@@ -557,6 +559,7 @@
 				33AC9E8D242B61A100B28AB5 /* Runtime.pdf */,
 				330490E624484F7E003B2439 /* iap支付价格等级.jpg */,
 				3359FE76241F3E850014C82C /* 大神班课程大纲.png */,
+				3342DB25254965B300B5D240 /* 新版iOS设备尺寸（更新于2020年）.png */,
 				336F74182522E75600A18055 /* iOS数据类型输出.png */,
 				33B10E502422272500C6E8C7 /* 华为编程规范.pdf */,
 				3359FE79241F3E850014C82C /* 常见系统库00.png */,
@@ -811,6 +814,7 @@
 				3359FEA1241F3E870014C82C /* UI划分_00.png in Resources */,
 				3359FE94241F3E870014C82C /* UINavigationController的层级结构.png in Resources */,
 				3359FEAB241F3E870014C82C /* UIView常见属性和方法.png in Resources */,
+				3342DB26254965B300B5D240 /* 新版iOS设备尺寸（更新于2020年）.png in Resources */,
 				339D69F0242F449200619804 /* iOS开发工程师-谢吴军.pdf in Resources */,
 				33B10E742422963900C6E8C7 /* 新建xxx.a第一步.png in Resources */,
 				3366E8462431296B00820298 /* 树的基本概念.png in Resources */,
