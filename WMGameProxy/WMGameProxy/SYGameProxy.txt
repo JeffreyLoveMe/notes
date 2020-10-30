@@ -303,20 +303,6 @@ https://blog.csdn.net/ridxmc/article/details/51346472
 http://www.cocoachina.com/ios/20170122/18609.html //特别详细
 https://www.jianshu.com/p/c7a6408410aa
 
-#用户通知：
-//概述：
-推送功能一般分为两种：本地推送和远程推送；
-1.对于本地推送(UILocalNotification)，我们可以先注册通知；
-然后新建本地推送，设置属性；最后执行推送(会调用某个方法)；
-2.对于远程推送，我们使用第三方极光推送，按照极光推送文档操作；
-//本地通知(本地推送)：
-定义：由App发送到当前设备，不需要网络支持；
-问题：什么时候使用本地通知？App在前台需要与客户交互的时候使用本地通知；
-本地通知怎么在AppDelegate.m中使用？
-代码：AppDelegate.m
-//远程通知(远程推送)：由App服务端->APNs服务器->设备
-https://www.jianshu.com/p/ad43bc1a970a
-
 #基于位置的服务LBS：
 //系统定位
 1.导入MapKit.framework，创建MKMapView
@@ -350,6 +336,7 @@ https://www.jianshu.com/p/b0169d332918
 1.登录LBS开放平台，获取参数；
 2.下载相关SDK和实例代码；
 https://blog.csdn.net/liyun123gx/article/details/44222255
+
 96.map（大头针）
 /*
 1.有哪些技术可以实现定位：GPS 基站
@@ -477,52 +464,6 @@ https://www.jianshu.com/p/d8062b1856f3
  }
 }
 */
-//第三方支付：
-http://www.cocoachina.com/ios/20151008/13506.html#0-qzone-1-88885-d020d2d2a4e8d1a374a433f596ad1440
-1.支付宝：
-https://blog.yayuanzi.com/12276.html
-https://openhome.alipay.com/platform/document.htm#down
-http://www.cnblogs.com/siyuan123/p/4872378.html?from=timeline&isappinstalled=0
-2.微信：
-https://www.jianshu.com/p/af8cbc9d51b0
-https://www.jianshu.com/p/162ece335b31
-3.银联：NO
-4.平台币：NO
-5.集成三方平台支付：海马、同步推、爱思
-
-#断点续传：
-定义：指任务在上传/下载的时候被人为划分为几个部分：每个部分采用一个线程进行上传/下载，如果遇到网络故障可以
-继承在未完成的部分继续开始，没必要从头开始下载。
-//原理
-https://www.cnblogs.com/wangzehuaw/p/5610851.html
-https://www.cnblogs.com/findumars/p/5745345.html
-//实现
-https://www.jianshu.com/p/0e6deea7de87
-https://www.jianshu.com/p/01390c7a4957
-https://blog.csdn.net/stree7cleaner/article/details/51440774
-https://blog.csdn.net/lcg910978041/article/details/51487485
-
-#即时通讯IM：
-//底层原理：
-1.协议：XMPP协议(基于xml的协议，具有超强的可扩展性)
-2.XMPP的三个部分：服务器、网关、客户端(可以任意两者双向发生)
-3.XMPP优缺点：
-//优点：
-1).XMPP协议是自由开源的，而且在C/S都有多种实现；
-2).任何IM供应商在遵循XMPP协议下都可以与Google Talk实现连接；
-3).利用XMPP技术开发软件，资源以及支持的来源都是多样的，这样就不会被“绑架”；
-4).XMPP以TCP传递XML数据流，没有中央主服务器，任何人都可以运行自己的XMPP服务器；
-5).XMPP基于XML具有很强的扩展性；
-//缺点：
-1).XMPP协议的服务器流量存在着被重复转发，数据负载太重；
-2).XMPP协议基于XML文件(编码成单一的XML文件)，因此无法提供修改二进制数据；
-//上层实现：环信
-概述：环信通过云端开放的Rest api或者客户端SDK，摆脱IM底层开发，使App内置聊天功能；
-步骤：1.制作推送证书、登录环信后台、创建应用生成AppKey；
-2.通过cocoapods下载SDK：
-pod 'EaseMobSDKFull', :git => 'https://github.com/easemob/sdk-ios-cocoapods-integration.git'
-导入头文件：#import <EaseMobSDKFull/EaseMob.h>
-3.按照环信集成开发文档操作；
 
 #二维码：
 应用：ZBarSDK第三方库
@@ -577,7 +518,6 @@ int arr[4][4]={   {1,2,3,4},
 3）二维数组的赋值
 arr[0][0] = 4;
 arr[2][1] = 4;
-
 
 1.指针
 1）指针就是变量的地址；地址就是唯一标识一块内存的索引
@@ -1919,7 +1859,6 @@ UITableView调用reloadData()会发生什么问题？
 例1.有两张表，用户表(Z_User)和黑名单表(Z_Blackuser)，userid是Z_User的
 主键，Z_BlackUser的外键。现在需要查询用户表中不在黑名单表中的数据，请写出sql语句。
 
-是否参与过GitHubiOS开源项目?
 请描述一下你的iOS应用开发流程？
 
 //UI问题
@@ -1995,27 +1934,16 @@ swift中enum/struct都是比类更厉害
 
 App中哪些需要存放在本机|App中的缓存机制
 
-隐藏View：1.使用隐藏属性、2.将View的宽和高设置为0
-
-如果是数组就是dateList
-
-如果是字典就是DateModel/DateInfo
-
 constrain to magins //没有作用：为了plus/iPhone X布局尽量到中间
-
-对于cell 我们一般不需要把model传进去 再传出来 我们一般是把cell传出来 然后通过cell拿到indexPath 再通过indexPath拿到model
 
 - 创建UILabel/UIButton有固定方法(不使用系统方法)；
 - 封装可以使用的BadgeView；
 - 学习snapkit使用方法；
-- UIView中不能跳转：使用代理让实现在VC中进行；让View具有公用型
 
 ## snapkit中有三个方法
 - makeConstraints  //设置布局
 - remakeConstraints  //移除以前的布局、重新布局
 - updateConstraints //更新布局
-
-App开发不能限制用户的操作
 /***********************json按页下载数据******************************/
 //1.声明当前页数、总页数
 self.page = 1
@@ -2046,16 +1974,10 @@ App哪些信息需要存储在本地：可能会涉及到多表查询
 
 学会了怎么设置cell自适应：配合设置控件高度为0一起使用；/需要预估高度/可以把内部的高度传出来
 
-一般使用svn管理资源文件、使用git管理代码文件
-
 YYText怎么使用、有什么作用？？？
-
-对json的格式还不是很熟悉
 
 //使用SnapKit给控件添加约束常见错误：https://blog.csdn.net/Haikuotiankong11111/article/details/51800761
 1.简单的约束冲突不能有：比如控制了左边和把右边就不能在设置宽度
-
-CGFloat的意思是什么？
 
 iOS中关于图片缓存和缓存cell的高度
 
@@ -2073,8 +1995,6 @@ cell内部如果某一个控件不需要我们可以更新布局为0
 NSNotFound
 int和NSInteger都是基本数据类型、一般OC使用NSInteger代替int/Swift使用Int、然后需要放在字典中的话：需要包装：@(NSInteger)
 
-自定义UI：如果你希望整个UI都可以点击：可以直接在整个UI上面添加touch方法
-
 给对象赋值不需要初始化
 
 1.什么时候更新model?
@@ -2083,8 +2003,6 @@ int和NSInteger都是基本数据类型、一般OC使用NSInteger代替int/Swift
 一般对象我们都设置var
 对象赋值不需要init
 给对象属性赋值：必须要init
-
-不能欺骗Apple
 
 对于布局：一般不建议写死
 一般先把左上角|中点控制好；
@@ -2107,8 +2025,6 @@ https://www.jianshu.com/p/f472fa9f0616
 
 swift中一般都需要init|对于Int等数据类型、默认赋值等于-1
 为什么是-1呢？？？？因为-1代表着不正确
-
-自己的问题自己把关：不能让别人给自己把关
 
 找问题一定要从外向内找、找不到在找旁边的
 千万不要还没有找进去  就开始在旁边找
@@ -2134,15 +2050,11 @@ OC怎么处理网络请求：
 // 返回一个UIImage
 UIImage.resiezableImage(with: UIImage(named: "calendar_bg_white"), edgeInsets: UIEdgeInsets(top: 0.5, left: 0.5, bottom: 0.5, right: 0.5))
 
-拿到页面首先分析UI布局  写出UI界面    然后再分析要不要分页加载
-
 每次写代码如果有疑问  或者测试改了代码   都需要做标记：// FIXME  然后最重要的是
 必须在发版的时候全局搜索FIXME
 
 1.严格按照设计稿设计UI
 2.一般设置UI的时候一定要想到怎么当文字过长会怎么样
-
-如果UI显示不正确  变小了    考虑可能的原因   图片压缩了   图片有边角   但是UI没有给图片   这样一般让图片和UI一样大
 
 如果App的跳转比较像（就是model不一样）
 我们可以对model进行赋值
@@ -2179,9 +2091,6 @@ swift中main函数消失：https://blog.csdn.net/zhao18933/article/details/46640
 3.新功能/新需求_02...新建分支 <br>
 4.新功能/新需求_03...新建分支 <br>
 发版本...把1，2，3，4合并到发版分支->新建v3.3.x发版本分支
-
-cell因为是复用的、所以cell有if/就必须有else
-不然做不到让数据驱动UI
 
 国际化：文字的国际化、图片的国际化
 
@@ -2277,13 +2186,6 @@ NSLog(@"%d", [str retainCount]);
 NSLog(@"%d", [str retainCount]);
 结果：3、2、1
 
-1.loadView方法作用以及注意点有哪些?
-   作用:控制器会调用方法去创建控制器的View.
-   什么时候调用:当第一次使用控制器的View
-   开发中loadView使用场景:自定义控制器的View.
-   1.一旦重写了loadView,表示需要自己创建控制器的View.
-2.如果控制器的View还没有赋值,就不能调用控制器View的get方法.会造成死循环.因为控制器View的get方法底层会调用loadView方法.
-   
 2.KVC底层实现?
   setValue:obj forKeyPath:key的底层实现:
   1.它会调用这个属性的set方法.
@@ -3093,10 +2995,6 @@ grayCover.backgroudColor = [[UIColor blackColor]colorWithAlphaComponent:0.2].CGC
     * 动画树，这是一个中间层，系统正是在这一层上更改属性，进行各种渲染操作
     * 显示树，这棵树的内容是当前正被显示在屏幕上的内容
     * 这三棵树的逻辑结构都是一样的，区别只有各自的属性
-loadView的作用？
-* loadView用来自定义view，只要实现了这个方法，其他通过xib或storyboard创建的view都不会被加载
-    •    看懂控制器view创建的这个图就行
-￼
 IBOutlet连出来的视图属性为什么可以被设置成weak?
 * 因为父控件的subViews数组已经对它有一个强引用
 IB中User Defined Runtime Attributes如何使用？
@@ -5459,13 +5357,7 @@ ARC是 iOS 5 推出的新功能，全称叫 ARC(Automatic Reference Counting) �
 该机能在 iOS 5/ Mac OS X 10.7 开始导入，利用 Xcode4.2 可以使用该机能。 简单地理解 ARC，就是通过指定的语法，让编译器 (LLVM 3.0) 在编译代码时， 自动生成实例的引用计数管理部分代码。有一点， ARC并不是 GC，它只是一种 代码静态分析( Static Analyzer )工具。
 12. 写一个“标准”宏，这个宏输入两个参数并返回较小的 #define MIN(X,Y) ((X)>(Y)?(Y):(X))
 13. Objective-c 中有多重继承么?不是的话有声明替代方式 ? 没有多继承，可以通过协议模拟多继承
-14. Objective-c 中有私有方法吗?私有变量呢? 没有私有方法，但可以将方法直接实现在 .m 文件中不在 .h 文件中声明时，外部
-也不能访问。 有私有变量
-15.iPhone OS 中有没有垃圾回收? 没有
-16. 常见的 object-c 的数据类型有哪些，和 c 的基本类型有什么区别
-答:常见的 object-c 的数据类型有 NSInteger 、 CGFloat 、 NSString 、
-NSNumbe、r NSArray、 NSData，NSInteger 会根据系统是 32 位还是 64 位来决定 是本身是 int 还是 Long,
-CGFloat 会根据系统是 32 位还是 64 位来决定是本身是 float 还是 double,NSString 、NSNumbe、r NSArray、NSData都是指针类型的对象 , 在堆中 分配空间，而 c 语言中的 char ， [] 等都是在栈中分配空间
+14. Objective-c 中有私有方法吗?私有变量呢? 没有私有方法，但可以将方法直接实现在 .m 文件中不在 .h 文件中声明时，外部也不能访问。 有私有变量
 18. 想 nil 对象发送消息会发生什么?
 答:在 Objective-C 中向 nil 发送消息是完全有效的，只是在运行时不会有任 何作用。
 19. 什么是 block ? block 实现原理?
@@ -6421,9 +6313,8 @@ Cell的重⽤用机制，这样就能保证UITbaleView要显示多少内容，�
 解决⽅方案:我个⼈人认为，可以创建⼀一个frame模型，提前计算每个Cell的⾼高度。参考 其中⼀一篇博客的时候，在解决这个问题的时候，可以将计算Cell的⾼高度放⼊入数据模 型，但这与MVC设计模式可能稍微有点冲突，这个时候我就想到MVVM这种设计模 式，这个时候才能稍微有点MVVM这种设计模式的优点(其实还是很不不理理解的)，可 以讲计算Cell⾼高度放⼊入ViewModel(视图模型)中，让Model(数据模型)只负责处 理理数据。
 4.异步绘制(⾃自定义Cell绘制) 遇到⽐比较复杂的界⾯面的时候，如复杂点的图⽂文混排，上⾯面的那种优化⾏行行⾼高的⽅方式可
 能就不不能满⾜足要求了了，当然了了，由于我的开发经验尚短，说实话，还没遇到要将⾃自定 义的Cell重新绘制
-5.滑动时，按需加载 开发的过程中，⾃自定义Cell的种类千奇百怪，但Cell本来就是⽤用来显示数据的，不不说
-
-100%带有图⽚片，也差不不多，这个时候就要考虑，下滑的过程中可能会有点卡顿，尤其 ⽹网络不不好的时候，异步加载图⽚片是个程序员都会想到，但是如果给每个循环对象都加 上异步加载，开启的线程太多，⼀一样会卡顿，我记得好像线程条数⼀一般3-5条，最多 也就6条吧。这个时候利利⽤用UIScrollViewDelegate两个代理理⽅方法就能很好地解决这个问 题。
+5.滑动时，按需加载 开发的过程中，⾃自定义Cell的种类千奇百怪，但Cell本来就是⽤用来显示数据的，不说
+100%带有图片，也差不多，这个时候就要考虑，下滑的过程中可能会有点卡顿，尤其 ⽹网络不不好的时候，异步加载图⽚片是个程序员都会想到，但是如果给每个循环对象都加 上异步加载，开启的线程太多，⼀一样会卡顿，我记得好像线程条数⼀一般3-5条，最多 也就6条吧。这个时候利利⽤用UIScrollViewDelegate两个代理理⽅方法就能很好地解决这个问 题。
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate: (BOOL)decelerate
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 6.缓存View
@@ -6506,10 +6397,6 @@ iOS 设备内存有限，如果使用 UIT ableView 显示非常多的数据，�
 (1 )用于类型隐藏在面向对象领域，抽象类主要用来进行类型隐藏。我们可以构造出一个固定的一组行为的抽象描述， 但是这组行为却能够有任意个可能的具体实现方式。 这个抽象 描述就是抽象类。
 (2 )用于拓展对象的行为功能
 这一组任意个可能的具体实现则表现为所有可能的派生类(子类) ，模块可以操作一个抽象 体。由于模块依赖于一个固定的抽象体， 因此它可以是不允许修改的; 同时，通过从这个抽 象体派生，也可扩展此模块的行为功能。
-四、 objc 中向一个 nil 对象发送消息会发生什么 ? 如果没有返回值， nothing will happen ;
-如果有返回值，基本数据类型返回 0/0.0/NO 个假的东西。
-等，对象类型返回
-nil ，总的来说就是返回一
 
 九. 是否使用过 CoreText 或者 CoreImage 等?如果使用过，请谈谈你使用 CoreText 或 者 CoreImage 的体验?
 用过CoreText 是用于处理文字和字体的底层技术。 Quartz 能够直接处理字体( font )和字形 (glyphs )，将文字渲染到界面上， 它是基础库中唯一能够处理字形的模块。 因此，CoreText 为了排版，需要将显示的文本内容、位置、字体、字形直接传递给 Quartz 。相比其它 UI 组件，由于 CoreText 直接和 Quartz 来交互，所以它具有高速的排版效果。
@@ -6599,8 +6486,6 @@ os 中已有的 NSXMLParse 类,NSXMLParser 实现的是 sax 方法解析 xml 文
 19.http 协议 get post 的区别 POST是安全的 ,GET是不安全的。
 GET 请求地址和参数全放在请求头中 ,POST请求地址和请求参数分离，地址放在请求头中， 参数拼接放入请求体。
 
-GET和POST都是和服务器提交参数 / 通讯的一种方式。 GET参数不能太长 <1024B POST 没 有限制 <4G
-GET不能上传文件 , POST可以上传文件。
 20. 如何避免在 Block 里用 self 造成循环引用
 分类: iOS 开发 Swift 开发 2014-07-29 18:59 3852 人阅读评论 (0) 收藏举报 iOSObjCSwift
 一般来说我们总会在设置 Block 之后，在合适的时间回调 Block ，而不希望回调 Block 的时 候 Block 已经被释放了，所以我们需要对 Block 进行 copy，copy 到堆中，以便后用。
@@ -6627,7 +6512,6 @@ NSInvocationOperation 等技术的很高效和强大的技术。现在的 IOS �
 24.APNS
 第一阶段: net 应用程序把要发送的消息，目的 iPhone 打包，发给 APNS. 第二阶段: APNS在自身已注册的 Push 服务的 iPhone 列表中查找相应标识的 iPhone ，并把消息发送到 iPhone.
 第三阶段: iPhone 把发来的消息传递给相应的应用程序，并按照设定弹出 push 通知
-】 }}}}}}}}}}}}}
 
 28. 内存泄露?
 1、运行 Demo 直接找到 Crash 的地方
@@ -6654,23 +6538,6 @@ finished))completion
 4. 清除缓存 ( 了解原理 )
 我们我们软件很多的设置里边会有，缓存大小，和清除缓存的功能，计算缓存大小:如果我们的软件用 了缓存机制，缓存的文件数据会储存在沙河目录下的 Cache 的文件夹里，我们可以用系统的文件管理 NSFileManager 这个单例，深层便利文件缓存路径 Library/Caches 文件夹下的所有文件，一切的文件类 型，然后累计相加计算出缓存字节的大小。然后进行缓存大小的显示。清除缓存数据:可以用系统的文
 件管理 NSFileManager 这个单例，对缓存区 Library/Caches 文件夹下的所有文件，进行浅层便利，浅层 便利就是只便利 Caches 这一层下的文件和文件夹，然后进行删除。
-
-5.Http (了解)
-http 是一个基于请求与响应模式的，无状态，应用层的协议，基于
-1， 支持客户端 /服务器模式
-2， 简单快捷:客户端向服务器请求时只需传送请求方式和路径，有
-TCP 的连接方式，
-GET/POST 每种方式规定了与服务
-器连接的类型不同，因为简单通讯速度快。
-3， 灵活: HTTP 允许传输任意类型的数据对象，
-4， 无连接:限制每次连接只处理一个请求，处理完客户端请求，收到客户端应答，即断开连接，
-5， 无状态:协议对事务处理没有记忆能力、
-6. 说说 Objective-C, 有哪些优点哪些不足(两三点即可)? 1) Cateogies
-2) Posing
-3) 动态识别
-4) 指标计算
- 5)弹性讯息传递
-6) 不是一个过度复杂的 C 衍生语言
 
 7. 瀑布流怎么理解和实现的
 1. 如果简单的来说 , 用 3 个 tableview 就可以实现瀑布流 ,3 个
@@ -6731,18 +6598,6 @@ Foundation 下大部分类均有简便构造方法，我们可以通过简便构
 •       只需在此方法中返回本身对象即可，引用计数也不需要进行改变，因为单例模式下的对象是不允许销毁的，所以也就不用保留
 •       因为全局实例不允许释放，所以retain,release,autorelease方法均需重写
 
-29、OSI（Open System Interconnection）开放式系统互联参考模型 把网络协议从逻辑上分为了7层，试列举常见的应用层协议。
-       注意问的是应用层协议，有些同学直接答了七层模型。
-       在开放系统互连(OSI)模型中的最高层，为应用程序提供服务以保证通信，但不是进行通信的应用程序本身。
-Telnet协议是TCP/IP协议族中的一员，是Internet远程登陆服务的标准协议和主要方式。它为用户提供了在本地计算机上完成远程主机工作的能力。
-FTP文件传输协议是TCP/IP网络上两台计算机传送文件的协议，FTP是在TCP/IP网络和INTERNET上最早使用的协议之一，它属于网络协议组的应用层。
-超文本传输协议 (HTTP-Hypertext transfer protocol) 是 分布式，协作式，超媒体系统应用之间的通信协议。是万维网（world wide web）交换信息 的基础。
-SMTP（Simple Mail Transfer Protocol）即简单邮件传输协议,它是一组用于由源地址到目的地址传送邮件的规则，由它来控制信件的中转方式，它帮助每台计算机在发送或中转信件时找到下一个目的地。
-时间协议(TIME protocol)是一个在RFC 868内定义的网络协议。它用作提供机器可读的日期时间资讯。
-DNS 是 域名系统 (Domain Name System) 的缩写 ，是因特网的一项核心服务，它作为可以将域名和IP地址相互映射 的一个分布式数据库。
-SNMP(Simple Network Management Protocol ,简单网络管理协议 )的前身是简单网关监控协议(SGMP)，用来对通信 线路进行管理。
-TFTP（Trivial FileTransfer Protocol,简单文件传输协议）是TCP/IP协议族中的一个用来在客户机与服务器之间进行简单文件传输的协议，提供不复杂、开销不大的文件传输服务。端口号为69。
- 
 30、网络传输层协议中，基于TCP/IP协议和UDP/IP的连接有什么区别？
 TCP：TransmissionControl Protocol 传输控制协议TCP是一种面向连接 （连接导向）的、可靠的、基于字节流的运输层（Transport layer）通信协议， 由IETF的RFC 793说明（specified）。
 UDP 是User Datagram Protocol的简称， 中文名是用户数据包协议，是OSI 参考模型中一种无连接的传输层协议，提供面向事务的简单不可靠信息传送服务，IETF RFC 768是UDP的正式规范。
@@ -7008,7 +6863,6 @@ http :请求头、相应头、请求体、相应体
 32.委托是什么?委托的 property 声明用什么属性?为什么? 34.Cocoa 中有虚基类的概念么?怎么简洁的实现?
 35.自动释放池跟 GC(垃圾回收)有什么区别? iPhone 上有GC么? [pool release ]和[pool drain ]有什么区别? iPhone 上没有 GC。 iPhone 开发的时候没有垃圾回收机制。 在垃圾回收环境中， release 是一个空操作。因此， NSAutoreleasePool 提供了 drain 方法，在引用 计数环境中，该方法的作用等同于调用 release ，但在垃圾回收环境 中，它会触发垃圾回收 (如果自上次垃圾回收以来分配的内存大于当 前的阈值)。因此，在通常情况下，您应该使用 drain 而不是 release 来销毁自动释放池。
 36. for(int index = 0; index < 20; index ++){ NSString *tempStr = @”tempStr ”;NSLog(tempStr); NSNumber *tempNumber =
-
 [NSNumber numberWithInt:2]; NSLog(tempNumber); } 这段代 码有什么问题 .?会不会造成内存泄露(多线程)?在内存紧张的设 备上做大循环时自动释放池是写在循环内好还是循环外好?为什么?
 37. 内存管理的几条原则时什么?按照默认法则 . 那些关键字生成的 对象需要手动释放?在和 property 结合的时候怎样有效的避免内存 泄露?
 38. 在一个对象释放前 .如果他被加到了 notificationCenter 中 .不在 notificationcenter 中remove这个对象可能会出现什么问题?
@@ -7030,7 +6884,6 @@ UNIX 主要支持三种通信方式:
 有 copy,retain 的时候引用计数都会加一 , 每当碰到 release 和 autorelease 的时候引用计数就会减一 ,如果此对象的计数变为了 0,
 就会被系统销毁 . 2. NSAutoreleasePool 就是用来做引用计数的管 理工作的 ,这个东西一般不用你管的 . 3. autorelease 和release 没什 么区别 ,只是引用计数减一的时机不同而已 ,autorelease 会在对象的 使用真正结束的时候才做引用计数减一 .
 
-80. autorelease 和垃圾回收机制 (gc)有什么关系? IPhone OS 有没有 垃圾回收( gc)?
 81. Objective C 中的 protocal 是什么?
 @protocal obj 里面的协议就如同 java 里面的 interface 。
 82. Objective C 中的 selector 是什么?
@@ -7209,25 +7062,6 @@ name = @”Habb”;
 [ name  release]；
 请分别写出SEL、id的意思？
 
-说说如何进行后台运行程序？
-sizeof和strlen的区别和联系
-sprintf,strcpy,memcpy的功能？使用上要有哪些要注意的地方
-自己写函数，实现strlen功能
-写一个代码片段输入一个字符串“20130322152832”,输出一个NSDate类型的对象，打印该对象输出2013-03-22 15：28：32
-找错误
-用变量a写出以下定义
-      a、一个整型数 int a
-      b、一个指向整型数的指针   int * a
-      c、一个指向指针的指针，它指向的指针是指向一个整型数int **a3;
-      d、一个有10个整型数的数组 int a4[10];
-      e、一个有10个指针的数组，该指针是指向一个整型数的 int *a5[10];
-      f、一个指向有10个整型数数组的指针int (*a6)[10];
-g、一个指向函数的指针，该函数有一个整型参数，并返回一个整型数int (*a7)(int);
-编写函数_memmove说明如下：实现C语言库函数memmove的功能：将一块缓冲区中的数据移动到另一块缓冲区中。可能有重复。
-什么叫数据结构？
-什么是抽象类？抽象类有什么作用？能实例化吗？
-考察对@interface和@property的理解？
-Iphone开发中控制类有什么作用？
 线程中有哪些函数？写出来。
 有没有写过自定义的控件？
 调用一个类的静态方法需不需要release？
@@ -7287,9 +7121,7 @@ AVAudioPlayer 类继续播放 3 、环信中是怎么实现好友管理的
 到文件，然后通过
 IEMContactManager 类有关，好友
 中好友相关的操作都与
-列表可以通过 FriendListViewController 方法获得，
-
-好友的增加可以通过两种方式，一是主动添加 (addContact )，一是被动添加
+列表可以通过 FriendListViewController 方法获得，好友的增加可以通过两种方式，一是主动添加 (addContact )，一是被动添加
 ( didReceiveFriendInvitationFromUsername )， 删除好友关系的方法是 deleteContact ，同时可以 通过addUserToBlackList 方法将好友拉近黑名单
 4、即时通讯 app 中的气泡聊天是怎么处理图片拉伸的 气泡拉伸有三种方式:
 1、 ios5 之前:
@@ -7305,9 +7137,7 @@ resizingMode:(UIImageResizingMode)resizingMode ，
 来指定拉伸的模式:
 ? UIImageResizingModeStretch :拉伸模式，通过拉伸 UIEdgeInsets 指定的矩形区域来填充图片
 ? UIImageResizingModeTile :平铺模式，通过重复显示 UIEdgeInsets 指定的矩形区域来填充图片
-5 、环信与公司自己的服务器是怎么结合使用的
-
-环信中有自己的一套用户信息，同时我们自己的服务器也有自己的用户表，该表中 保存着 app 中的用户名、密码、性别等嘻嘻，同时存着环信的用户名、密码，客户
+5 、环信与公司自己的服务器是怎么结合使用的环信中有自己的一套用户信息，同时我们自己的服务器也有自己的用户表，该表中 保存着 app 中的用户名、密码、性别等嘻嘻，同时存着环信的用户名、密码，客户
 端的登陆首先会登进自己的服务器，然后在登进环信，这样我们的 app 就可以对用 户提供很多东西
 6 、环信中单聊与群聊消息的区分 环信中的聊天分三种 : EMChatTypeChat( 单
 聊 )/EMChatTypeGroupChat (群聊)
@@ -7365,7 +7195,6 @@ GCD Queue分为三种:
 1，The main queue :主队列，主线程就是在个队列中。
 2，Global queues : 全局并发队列。
 3，用户队列 : 是用函数 dispatch_queue_create 创建的自定义队列 dispatch_sync 和 dispatch_async 区别:
-
 dispatch_async(queue,block) async 异步队列， dispatch_async 函数会立即 返回 , block 会在后台异步执行。
 dispatch_sync(queue,block) sync 同步队列， dispatch_sync 函数不会立即返 回，及阻塞当前线程 , 等待 block 同步执行完成。
 分析上面代码:
@@ -7467,7 +7296,6 @@ Apache 会有很多的子进程或线程。所以，其工作起来相当有效�
  mysql_query( “delete from logs where log_date < ’2015-11- 01’ limit 1000”);
 usleep(50000)
 }
-
 11.connection:didReceiveData: 中利用 ImageIO 做了按图片下载进度加载效 果。
 12.connectionDidFinishLoading: 数据下载完成后交给 SDWebImageDecoder 做图片解码处理。
 13. 图片解码处理在一个 NSOperationQueue 完成，不会拖慢主线程 UI 。如果有 需要对下载的图片进行二次处理，最好也在这里完成，效率会好很多。
@@ -7480,7 +7308,6 @@ SDWebImageDownloade。r
 18.SDImageCache 在初始化的时候会注册一些消息通知， 在内存警告或退到后台 的时候清理内存图片缓存，应用结束的时候清理过期图片。
 19.SDWI 也提供了 UIButton+WebCache 和 MKAnnotationView+WebCache，方便 使用。
 20.SDWebImagePrefetcher 可以预先下载图片，方便后续使用。
-
 SDWebImag库的作用
 通过对 UIImageView的类别扩展来实现异步加载替换图片的工作。
 主要用到的对象:
@@ -7495,8 +7322,7 @@ SDImageCache分两个部分，一个是内存层面的，一个是硬盘层面�
 2、为啥必须做 Decoder??
 由于 UIImage 的 imageWithData 函数是每次画图的时候才将 Data 解压成 ARGB 的图像，所以在每次画图的时候，会有一个解压操作，这样效率 很低，但是只 有瞬时的内存需求。为了提高效率通过 SDWebImageDecode将r包装在Data下的 资源解压，然后画在另外一张图片上， 这样这张新 图片就不再需要重复解压了。
 这种做法是典型的空间换时间的做法。
-
- 有关 SDWebImage 一、 clear 和 clean 的区别 ?
+有关 SDWebImage 一、 clear 和 clean 的区别 ?
 clear 先把之前的缓存文件夹删除掉 ,然后在新建一个文件夹
 clean 先删除过期的文件 ,然后计算剩余缓存文件的大小 (currrentSize)>maxSize, 继续删除 , 按
 照它缓存文件创建的时间删除 ,直到 (currrentSize)<=maxSize 二、内存缓存机制 ?
@@ -7518,7 +7344,6 @@ image.size.height * image.size.width * image.scale * image.scale
 十五、 ios允许最近本地通知数量最大为多少?
 通知完一定要取消 , iOS 最多允许最近本地通知数量是 64 个 ,超过限制的本地通知将被忽略。
 结语 :与 SDWebImage 相关的面试题差不多就这么多了 有遗漏的或者有错误的地方，欢迎小伙伴们在北风社区进行补充和斧正。
-
 CALayer 和 UIView 的区别联系
 (1) UIView 是 UIKIt 的只能在 iOS 使用 , CALayer 是 QuartzCore 的 iOS 和 mac os 通用 (2) CALayer 比 UIView 更加轻量级 ,但是可以实现同样的效果
 (3)UIView 的 CALayer 类似 UIView 的子 View 树形结构
@@ -8881,22 +8706,6 @@ view 从 nib 文件初始化时调用， loadView 在 controller 的 view 为 ni
 有两方面局限性: (1)无法向类中添加新的实例变量，类别没有位置容纳实例变量。
 然后用函数把这些步骤一步一步实现， 使用的 建立对象的目的不是为了完成一个步骤， 而是
  (2)名称冲突，即当类别中的方法与原始类方法名称冲突时，类别具有更高的优先级。类别 方法将完全取代初始方法从而无法再使用初始方法。 无法添加实例变量的局限可以使用字典对象解决
-21 关键字 volatile 有什么含意 ? 并给出三个不同的例子:
-一个定义为 volatile 的变量是说这变量可能会被意想不到地改变，这样，编译器就不会去假 设这个变量的值了。精确地说就是，优化器在用到 这个变量时必须每次都小心地重新读取这个变量的值，而不是使用保存在寄存器里的备份。 下面是 volatile 变量的几个例子:
-? 并行设备的硬件寄存器(如:状态寄存器) ?一个中断服务子程序中会访问到的非自动变量 ? 多线程应用中被几个任务共享的变量
-? 一个参数既可以是 const 还可以是 volatile ? 一个指针可以是 volatile 吗?解释为什么。
-下面是答案:
-? 是的。一个例子是只读的状态寄存器。它是
-(Non-automatic variables)
-吗?解释为什么。
-volatile 因为它可能被意想不到地改变。它是
-const 因为程序不应该试图去修改它。 ?是的。尽管这并不很常见。一个例子是当一个中服务子程序修该一个指向一个 针时。
-22@synthesize 是系统自动生成 getter 和 setter 属性声明
-@dynamic 是开发者自已提供相应的属性声明
-@dynamic 意思是由开发人员提供相应的代码: 对于只读属性需要提供
-性需要提供 setter 和 getter 。@synthesize 意思是， 除非开发人员已经做了， 否则由编译器 生成相应的代码，以满足属性声明。
-查阅了一些资料确定 @dynamic 的意思是告诉编译器 ,属性的获取与赋值方法由用户自己实 现, 不自动生成。
-
 24.类别的作用?继承和类别在实现中有何区别?
 答案: category 可以在不获悉， 不改变原来代码的情况下往里面添加新的方法， 不能删除修改。
 并且如果类别和原来类中的方法产生名称冲突， 则类别将覆盖原来的方法， 高的优先级。
@@ -8961,16 +8770,6 @@ oc 中可修改和不可以修改类型。
 以及调用该类别对象指 意思就是假设生物类 ( life )
 eat ，但是调用是我们只需 eat 这个选择器)。
 
-40id、nil 代表什么?
-id 和 void * 并非完全一样。在上面的代码中， id 是指向 struct objc_object 的一个指针，这 个意思基本上是说， id 是一个指向任何一个继承了 Object (或者 NSObject )类的对象。需 要注意的是 id 是一个指针，所以你在使用 id 的时候不需要加星号。比如 id foo=nil 定义了 一个 nil 指针，这个指针指向 NSObject 的一个任意子类。 而 id *foo=nil 则定义了一个指针， 这个指针指向另一个指针，被指向的这个指针指向 NSObject 的一个子类。
-nil 和 C 语言的 NULL 相同，在 objc/objc.h 中定义。 nil 表示一个 Objctive-C 对象，这个对 象的指针指向空(没有东西就是空)。
-首字母大写的 Nil 和 nil 有一点不一样， Nil 定义一个指向空的类 (是 Class ，而不是对象) 。 SEL 是―selector ‖的一个类型，表示一个方法的名字
-Method (我们常说的方法)表示一种类型，这种类型与 selector 和实现 (implementation) 相关
-IMP 定义为 id (* IMP ) ( id, SEL , ⋯)。这样说来， IMP 是一个指向函数的指针，这个被指向 的函数包括 id( ―self ‖指针 )，调用的 SEL (方法名)，再加上一些其他参数 .说白了 IMP 就是 实现方法。
-
-41 层和 UIView 的区别是什么?
-答:两者最大的区别是 , 图层不会直接渲染到屏幕上， UIView 是 iOS 系统中界面元素的基础， 所有的界面元素都是继承自它。它本身完全是由 CoreAnimation 来实现的。它真正的绘图 部分，是由一个 CALayer 类来管理。UIView 本身更像是一个 CALayer 的管理器。一个 UIView 上可以有 n 个 CALayer ，每个 layer 显示一种东西，增强 UIView 的展现能力。
-
 42GCD 为 Grand Central Dispatch 的缩写。 Grand Central Dispatch (GCD) 是 Apple 开发的一个多核编程的较新的解决方法。在 Mac OS X 10.6 雪豹中首次推出，并在
 最近引入到了 iOS4.0 。 GCD 是一个替代诸如 NSThread 等技术的很高效和强大的技术。 GCD 完全可以处理诸如数据锁定和资源泄漏等复杂的异步编程问题。
 GCD 可以完成很多事情， 但是这里仅关注在 iOS 应用中实现多线程所需的一些基础知识。 在开始之前，需要理解是要提供给 GCD 队列的是代码块，用于在系统或者用户创建的的队 列上调度运行。 声明一个队列
@@ -8995,14 +8794,6 @@ dispatch_async [self print2 ];
 (t1, ^{
 (t2, ^{
 });
-
-43Provider 是指某个 iPhone 软件的 Push 服务器，这篇文章我将使用
-.net 作为 APNS 是 Apple Push Notification Service ( Apple Push 服务器) 的缩写， 是苹果的服务器。
-上图可以分为三个阶段。
-第一阶段: .net 应用程序把要发送的消息、目的 iPhone 的标识打包，发给 APNS 。 第二阶段:APNS 在自身的已注册 Push 服务的 iPhone 列表中，查找有相应标识的 iPhone ，
-Provider 。
-注意， GCD ，会让它变得简并把消息发到 iPhone 。
-第三阶段: iPhone 把发来的消息传递给相应的应用程序，并且按照设定弹出 Push 通知。 http://blog.csdn.net/zhuqilin0/article/details/6527113 // 消息推送机制 看内存泄露时候:在搜索中搜索 run 找到 Run Static Snalyzer
 
  47HTTP 协议详解
 HTTP 是一个属于应用层的面向对象的协议，由于其简捷、快速的方式，适用于分布式超媒
@@ -9259,7 +9050,6 @@ NSUserDefaults 、归档等;
 NSOperation 添加到一个 NSOperationQueue 中执行，这时 是异步的。
 通过这个方式开启线程后，可以中途停止、继续、取消等操 作。
 如果想控制线程执行顺序，可以通过添加依赖完成。 优点:不需要关心线程管理，数据同步的事情，可以把精力 放在自己需要执行的操作上。 对于上传、下载这种复杂的操作，推荐使用。
-
  (4)GCD :苹果提供的，异步执行。提高了代码执行效率 和多核的利用率，性能更好。对于复杂的不推荐使用，但是 简单的提交数据推荐使用。
 ******************************************** nsstring 拼接字符串，内部实现机制
 Objective C 中有很多不定参函数， 例如 NSLog(format, arg1, arg2) ， 还 有 字 符 串 或 数 组 在 构 造 时 所 用 的 [NSString
@@ -9283,8 +9073,6 @@ http://jingyan.baidu.com/article/f0062228c4679efbd3f0c82 7.html
 在开发的过程中，用过很多第三方类库， AFNetWorking 、 SDWebImage 、MBProgressHUD 、FMDB 、MKNetworkKit 、 EGOTableViewPullRefresh 、ShareSDK 等。注意:提到的 可能面试官都会问到。
 大多是从 Github 、 CocoaChina 地方等下载。
 第三方类库主要是用它的功能，对于比较优秀的代码自己也 读了一下，写的非常棒，比如。。。(这个时候可以详细介 绍一个你最熟悉的第三方类库)
-
-********************************************
 
 分享是用什么做的
 <一> 分享功能可以选择使用第三方的 ShareSDK。
@@ -10157,59 +9945,6 @@ ARC中的strong相当于MRC中的retain；
 @property (weak,nonatomic) id <CLGODelegate> delegate;//代理对象使用weak，防止内存泄露
 3.代理方：遵从协议，实现协议中的方法；
 4.怎么实现代理回调？--见NBSDK；
-
-#block：block是一种数据类型
-作用：block用来封装一段代码，效率高，block标志^
-//无参无返回值：(void)可以省略不写
-void (^myBlock)(void);
-myBlock = ^(void) {
-    NSLog(@"");
-};
-myBlock();
-//无参有返回值
-NSString* (^myBlock)(void);
-myBlock = ^(void) {
-    return @"";
-};
-myBlock();
-//有参无返回值
-void(^myBlock)(NSString *);
-myBlock = ^(NSString *msg) {
-    NSLog(msg);
-}
-myBlock();
-//有参有返回值
-int (^myBlock)(int,int);
-myBlock = ^(int a,int b) {
-    return a+b;
-};
-NSLog(@"%d",myBlock(3,4));
-//作为参数
-(int (^)(int,int))myBlock;
-注意：block内部可以访问外部的变量，给局部变量加上__block关键字，就可以在block内部修改该局部变量
-//需要在变量定义的前面加上__block关键字，才可以修改该变量
-__block int i = 1;
-__block int sum = 0;
-int (^sumBlock)(void);
-sumBlock = ^(void) {
-    while (i<=100) {
-    sum += i;
-    i++;
-}
-    return sum;
-};
-NSLog(@"%d",sumBlock());
-注意：1.声明block可以使用typedef取别名：将myblock变成本质跟int、float没有区别，可以多次使用
-typedef int (^myblock) (int a,int b);
-myblock block = ^(int a,int b) {
-    return a+b;
-};
-NSLog(@"%d",block(3,5));
-2.block内部可以访问外部变量、block内部可以定义与外部相同名称的变量：就近原则使用；
-3.默认情况下：不允许在block内部修改外部变量、如果需要修改：必须在变量前面加上__block；
-4.block内部修改了外部变量、会影响外部变量的值；
-#作用：实现回调-见CLGO代码；
-https://blog.csdn.net/liu537192/article/details/45579791
 /******************************网络基础******************************/
 #异步网络请求：
 //分类：
@@ -10411,15 +10146,6 @@ SEL s1 = @selector(onClick:);
 [dog performSelector:@selector(setName:) withObject:@"Tom"];
 #pragma clang diagnostic pop
 /******************************UI基础******************************/
-#UI介绍：UI全称User Interface(用户接口)
-作用：用户通过UI与应用程序进行交互；
-//UIKit坐标系：坐标系(0,0)在左上角，x轴向右x正向延伸、y轴向下正向延伸
-
-#NSTimer：
-应用：定时上传数据、获取验证码、重复执行；
-代码：见TimeViewController.h/m
-https://blog.csdn.net/zhuzhihai1988/article/details/7742881
-
 #UIView：UIView是所有视图的父类，UIView的属性和方法就是所有视图的属性和方法
 //属性：
 @property(class, nonatomic, readonly) Class layerClass; //可以通过+ (Class)layerClass{//修改图层}
@@ -10549,54 +10275,6 @@ https://www.jianshu.com/p/4ef0277e9c5e
 #代码实现AutoLayout：NO
 
 #VFL实现AutoLayout：NO
-
-#用户通知：
-//概述：
-推送功能一般分为两种：本地推送和远程推送；
-1.对于本地推送(UILocalNotification)，我们可以先注册通知；
-然后新建本地推送，设置属性；最后执行推送(会调用某个方法)；
-2.对于远程推送，我们使用第三方极光推送，按照极光推送文档操作；
-//本地通知(本地推送)：
-定义：由App发送到当前设备，不需要网络支持；
-问题：什么时候使用本地通知？App在前台需要与客户交互的时候使用本地通知；
-本地通知怎么在AppDelegate.m中使用？
-代码：AppDelegate.m
-//远程通知(远程推送)：由App服务端->APNs服务器->设备
-https://www.jianshu.com/p/ad43bc1a970a
-
-#基于位置的服务LBS：
-//系统定位
-1.导入MapKit.framework，创建MKMapView
-2.显示用户位置，把MKMapkit加到self.view，设置代理
-3.导入CoreLocation.framework，创建CLLocationManager(定位对象)设置属性
-4.问用户是否允许更新用户信息：开始更新
-5.设置代理
-6.需要在Info里边添加两项:
-1)当APP在前台的时候才使用,会跟用户弹出一个确认框：
-NSLocationWhenInUseUsageDescription
-2)当APP总是请求用户定位的时候,会跟用户弹出一个确认框：
-NSLocationAlwaysUsageDescription
-代码：MapViewController.h/m
-//大头针：知道经纬度就可以标注位置
-1.导入两个框架 MapKit.framework、CoreLocation.framework；
-2.创建MKMapView把地图显示出来；
-3.定义显示标注的类(MyAnnotation类)，实现MKAnnotation协议；
-4.从协议复制属性，初始化协议属性；
-5.给地图添加标注：MyAnnotation *a=[[MyAnnotation alloc]initWith:CLLocationCoordinate2DMake(36.1, 116.8) andTitle:@"title" andSubTitle:@"subtitle"];
-6.给地图添加标注：[self.mapview addAnnotation:a];
-代码：MKAnnotation.h/m
-//高德地图
-1.登录LBS开放平台，申请Key；
-2.下载相关SDK和实例代码；
-https://blog.csdn.net/a910577347/article/details/73499515
-//百度地图
-1.登录LBS开放平台，获取密钥；
-2.下载相关SDK和实例代码；
-https://www.jianshu.com/p/b0169d332918
-//腾讯地图
-1.登录LBS开放平台，获取参数；
-2.下载相关SDK和实例代码；
-https://blog.csdn.net/liyun123gx/article/details/44222255
 
 #多语言：en/tw/cn
 定义：根据用户设置的Language and Region Format(语言和区域格式)修改应用
@@ -10935,6 +10613,7 @@ TCP通过校验、重传控制、确认应答实现可靠传输，UDP具有较�
 TCP连接只能支持点对点，UDP支持交互通信；
 //Internet采用哪种网络协议？该协议的主要层次结构？
 tcp/ip协议，层次结构：应用层/传输层/网络层/数据链路层/物理层
+
 //OSI七层网络模型：
 应用层：为应用程序提供服务
 表示层：数据格式转化、数据加密
@@ -11015,9 +10694,6 @@ notification :消息的发送者告知接收者事件已经发生或者将要发
 答:四种:属性列表、对象归档、 SQLite3 和Core Data 。
 4、Objective-C 如何对内存管理的 , 说说你的看法和解决方法?
 答: Objective-C 的内存管理主要有三种方式 ARC(自动内存计数)、手动内存计数、内 存池。解决方法的话:谁持有，谁释放。
-
-
-2、请阐述 UIViewController 的生命周期，包括代码的执行顺序。
 
 答:当一个视图控制器被创建，并在屏幕上显示的时候。代码的执行顺序 // 视图显示在屏幕上的顺序
 1、 alloc

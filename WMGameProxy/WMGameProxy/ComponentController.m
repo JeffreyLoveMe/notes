@@ -1288,7 +1288,6 @@
     // 每产生一个事件就会产生一个UIEvent对象
     NSSet *touchSet = [event allTouches];
     for (UITouch *touch in touchSet) {
-        // CGRect/CGSize/CGPoint/CGFloat都不是类
         CGPoint currentPoint = [touch locationInView:self.view];
         CGPoint lastPoint = [touch previousLocationInView:self.view];
         NSLog(@"当前触摸点%@=上次触摸点%@", NSStringFromCGPoint(currentPoint), NSStringFromCGPoint(lastPoint));

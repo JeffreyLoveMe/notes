@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>突出显示</title>
+    <style type="text/css">
+        /* 2.开始进行布局 */
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            background: #000;
+        }
+        .content {
+            width: 630px;
+            height: 392px;
+            margin: 100px auto;
+            border: solid 1px white;
+            padding: 5px;
+        }
+        .content>div {
+            float: left;
+            width: 200px;
+            height: 186px;
+            margin: 5px;
+        }
+    </style>
+    <!-- 3.导入jQuery源码 -->
+    <script src="../../js/jquery/jquery-3.5.1.min.js"></script>
+    <script>
+        // 4.jQuery入口函数
+        $(function () {
+            // 5.给html元素设置css
+            var jqDiv = $(".content").find("div");
+            for (let index = 0; index < jqDiv.length; index++) {
+                jqDiv[index].style.backgroundImage = "url(\"../../image/tuchu_0" + (index + 1) + ".jpg\")";
+            }
+            jqDiv.mouseenter(function () {
+                // $(this).css("opacity", 0.5);
+                // $(this).siblings("div").css("opacity", 1);
+                // 可以直接使用“链式编程”
+                // opacity - o'pai'ci't
+                $(this).css("opacity", "0.5").siblings().css("opacity", 1);
+            });
+            $(".content").mouseout(function () {
+                // jqDiv.css("opacity", 1);
+                $(this).children().css("opacity", "1");
+            })
+        });
+    </script>
+</head>
+<body>
+    <!-- 1.想好网页元素利用什么html元素进行布局 -->
+    <div class="content">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+</body>
+</html>

@@ -39,6 +39,13 @@
  https://blog.csdn.net/spicyshrimp/article/details/70886516
  */
 
+//
+/**
+ 作用 - 控制器会调用方法去创建控制器的view
+ 什么时候调用 - 当第一次使用控制器的view
+ 使用场景 - 自定义控制器的view（一旦重写loadView，必须自己创建控制器的view）
+ 注意 - 在view没有赋值之前不可在loadView中调用view的getter方法，因为getter方法底层会调用loadView方法造成死循环
+ */
 - (void)loadView {
     // 保留父类方法
     // 一般都需要调用

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>下拉列表</title>
+    <style type="text/css">
+        /* css初始化 */
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        ul, li {
+            list-style: none;
+        }
+        a {
+            text-decoration: none;
+        }
+        /* 清除浮动 */
+        .clearfix:after {
+            content: ".";
+            display: block;
+            height: 0;
+            line-height: 0;
+            visibility: hidden;
+            clear: both;
+        }
+        .clearfix {
+            zoom: 1;
+        }
+        .content {
+            margin: 100px auto;
+            width: 340px;
+            height: 30px;
+            background: url(../../image/drop_bg.jpg) no-repeat;
+        }
+        .content>ul {
+            margin-left: 10px;
+        }
+        .content>ul>li {
+            float: left;
+            width: 100px;
+            height: 30px;
+            margin-right: 10px;
+            text-align: center;
+            background: url(../../image/drop_li_bg.jpg) no-repeat; 
+        }
+        .content>ul>li>a {
+            display: inline-block;
+            height: 30px;
+            line-height: 30px;
+            color: #000;
+        }
+        .content li ul {
+            display: none;
+        }
+        .content>ul>li>ul>li {
+            width: 100px;
+            height: 30px;
+            text-align: center;
+            line-height: 30px;
+            background: url(../../image/drop_li_bg.jpg) no-repeat;
+        }
+    </style>
+    <script src="../../js/jquery/jquery-3.5.1.js"></script>
+    <script>
+        $(function () {
+            var jqLi = $(".content>ul>li");
+            jqLi.mouseover(function () {
+                // // ！！！此处this是DOM对象！！！
+                // $(this).children("ul").css("display", "inline-block");
+                $(this).children("ul").show();
+            });
+            jqLi.mouseout(function () {
+                // $(this).children("ul").css("display", "none");
+                $(this).children("ul").hide();
+            });
+        })
+    </script>
+</head>
+<body>
+    <div class="content">
+        <ul class=".clearfix">
+            <li>
+                <a href="javascript:void(0);">一级菜单</a>
+                <ul>
+                    <li><a href="javascript:void(0);">二级菜单1</a></li>
+                    <li><a href="javascript:void(0);">二级菜单2</a></li>
+                    <li><a href="javascript:void(0);">二级菜单3</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="javascript:void(0);">一级菜单</a>
+                <ul>
+                    <li><a href="javascript:void(0);">二级菜单1</a></li>
+                    <li><a href="javascript:void(0);">二级菜单2</a></li>
+                    <li><a href="javascript:void(0);">二级菜单3</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="javascript:void(0);">一级菜单</a>
+                <ul>
+                    <li><a href="javascript:void(0);">二级菜单1</a></li>
+                    <li><a href="javascript:void(0);">二级菜单2</a></li>
+                    <li><a href="javascript:void(0);">二级菜单3</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</body>
+</html>

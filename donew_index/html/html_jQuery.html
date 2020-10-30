@@ -78,8 +78,9 @@
                     "margin": "10px"
                 });
             });
-            console.log(jqBox);  // “jQuery中DOM对象”是一个数组，里面包含很多元素（不仅有div）
+            console.log(jqBox); // “jQuery中DOM对象”是一个数组，里面包含很多元素（不仅有div）
             console.log(jqBox.length); // “jQuery中DOM对象”是一个数组，长度以div的个数为准（与其他元素无关）
+            console.log(jqBox.index()); // 获取jQuery对象的索引值
         });
         // 2.js中DOM对象 -> jQuery中DOM对象
         // $(js中DOM对象)
@@ -105,7 +106,7 @@
         var jqBox = $("*"); // 根据通配符获取事件源
         // 隐式迭代（底层帮我们直接迭代数组）
         jqBox.click(function () {
-            // 赋值 - 此处this是DOM对象
+            // 赋值 - ！！！此处this是DOM对象！！！
             $(this).css("width", "100px");
             // 获取
             console.log($(this).css("width"));
@@ -125,7 +126,7 @@
         var jqOdd = $("div div:odd"); // 获取奇数位元素
         var jqEven = $("div div:even"); // 设置偶数位元素｜even - yi'wen
         var jqfirst = $("div div:eq(0)"); // 获取指定位元素
-        // 2.利用关系获取
+        // 2.利用关系获取 - 都是方法
         // 1>.筛选选择器 - jQuery对象调用（重点）
         var jqDiv = $("div");
         jqDiv.find("div"); // 从jQuery对象后代（子子孙孙）中查找 - 传入"选择器"（必传）

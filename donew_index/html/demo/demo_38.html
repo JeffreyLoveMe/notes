@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>隔行变色</title>
+    <script src="../../js/jquery/jquery-3.5.1.min.js"></script>
+    <script>
+        $(function () {
+            var jqOddLi = $("li:odd");
+            var jqEvenLi = $("li:even");
+            jqOddLi.css("background", "red");
+            jqEvenLi.css("background", "pink");
+            // 操作都是以字符串的形式
+            var lastColor = "";
+            $("li").mouseenter(function () {
+                // 先获取颜色
+                lastColor = $(this).css("background");
+                // 再改变颜色
+                $(this).css("background", "blue");
+            })
+            $("li").mouseout(function () {
+                $(this).css("background", lastColor);
+            })
+        });
+    </script>
+</head>
+<body>
+    <ul>
+        <li>我这边有一些作业</li>
+        <li>我这边有一些作业</li>
+        <li>我这边有一些作业</li>
+        <li>我这边有一些作业</li>
+        <li>我这边有一些作业</li>
+        <li>我这边有一些作业</li>
+    </ul>
+</body>
+</html>
