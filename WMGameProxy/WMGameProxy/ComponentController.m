@@ -214,6 +214,10 @@
     // 设置文字的最大宽度
     // 让 UILabel 能够计算出自己最真实的尺寸
     label.preferredMaxLayoutWidth = [UIScreen mainScreen].bounds.size.width - 15 * 2;
+    // 让UILabel设置html文档
+    NSString *htmlString = @"<html><body>Some html string\n<font size= \"13\" color=\"red\">This is some text!</font> </body></html>";
+    NSAttributedString *attrString = [[NSAttributedString alloc]initWithData:[htmlString dataUsingEncoding:NSUnicodeStringEncoding] options:@{NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType} documentAttributes:nil error:nil];
+    label.attributedText = attrString;
 }
 
 

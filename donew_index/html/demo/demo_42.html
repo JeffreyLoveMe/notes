@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style type="text/css">
+        div {
+            width: 100px;
+            height: 100px;
+            background: red;
+        }
+        .current {
+            background: pink;
+        }
+    </style>
+    <script src="../js/jquery/jquery-3.5.1.min.js"></script>
+    <script>
+        $(function () {
+            // // 此处是错误的 - 因为此处不是“获取jQuery对象”而是“将jQuery对象转换成js的DOM对象”
+            // // 添加
+            // $("button").get(0).click(function () {
+            //     $("div").addClass("current");
+            //     alert($("div").hasClass("current"));
+            // })
+            // // 删除
+            // $("button").get(1).click(function () {
+            //     $("div").removeClass("current");
+            // })
+            // 添加 - 通过关系获取
+            $("button").eq(0).click(function () {
+                $("div").addClass("current");
+            })
+            // 删除 - 直接获取
+            $("button:eq(1)").click(function () {
+                $("div").removeClass("current");
+            })
+        })
+    </script>
+</head>
+<body>
+    <button>添加</button>
+    <button>删除</button>
+    <div></div>
+</body>
+</html>

@@ -22,6 +22,7 @@ NS_ASSUME_NONNULL_BEGIN
  */
 /**
  3.推送通知的呈现效果设置 - 由用户自行设置（设置 - 通知中心）/开发人员无法由代码确认
+ APNs - Apple Push Notification Service/苹果推送服务器
  */
 // https://www.jianshu.com/p/ad43bc1a970a
 @interface WMPushViewController : UIViewController

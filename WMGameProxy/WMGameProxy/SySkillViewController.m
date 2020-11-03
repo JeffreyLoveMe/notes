@@ -780,6 +780,12 @@
 
 #pragma mark - 真机调试/打包测试
 - (void)showTrueDevice {
+    /**
+     为什么需要真机调试？
+     1.真机和模拟器的环境（内存环境、网络环境）存在差异
+     2.传感器不能再模拟器上使用
+     3.打电话、发短信、拍照、LBS、蓝牙等功能均不能再模拟器上使用
+     */
     // Xcode7.0以后只要 “Apple ID” 就可以自动生成对应证书进行 “真机调试”
     /**
     // 获取一台设备唯一标识的方法有哪些方法？
@@ -801,26 +807,40 @@
     /**
      2.限制电脑
      1>.需要使用真机调试的电脑生成CSR文件（证书签名请求文件 - 可以唯一识别不同的电脑）
-     2>.真机调试证书最多只能够配置2个
-     3>.不要删除别人的证书 - 别人电脑生成的证书我这边不能直接下载使用（如果需要使用必须让别人生成.p12文件给我）
+     2>.真机调试证书最多只能够配置2个/
+     3>.不要删除别人的证书 - 别人电脑生成的证书（.cer文件是身份证）我这边不能直接下载使用（如果需要使用必须让别人生成.p12文件（.p12是复印件）给我）
      */
     /**
      3.限制App
-     1>.根据bundle ID区分App
+     1>.根据bundle ID区分App - bundle ID使用通配符会导致很多App服务（push/iap）无法使用
      2>.新建App ID - Explicit App ID（确定的App ID）/Wildcard App ID（模糊的App ID）- 不可以使用push/iap
      */
     /**
      4.限制真机设备
      1>.根据UDID区分手机 - 禁止代码获取
-     2>.添加设备 - 最多添加100次/每年有一次机会删除设备
+     2>.添加设备 - 最多添加100次（不是100台）/每年有一次机会删除设备
      关键字 - Reset your device list before adding any new devices.   Get Started
      勾选 - 不需要的设备 -> 删除不需要的设备 -> 保存
      3>.项目的最低部署版本 < 真机设备系统版本
      */
-    // 生成描述文件 - 登录账号 + 证书 + App ID + UDID
+    // 生成描述文件（Provisioning Profiles） - 登录账号 + 证书 + App ID + UDID
     // 描述文件位置 - 点击Finder -> 前往 -> 资源库 -> MobileDevice/Provisioning Profiles
     // /Users/xiewujun/Library/MobileDevice/Provisioning/Profiles
     // 此证书签发者无效 - 不能导出ipa
+}
+
+
+#pragma mark - 应用发布
+-(void)publishApplication {
+    // 1.真机调试/打包测试
+    
+    // 2.TestFlight
+    
+    // 3.广告植入
+    
+    // 4.企业包
+    
+    // 5.上架AppStore
 }
 
 

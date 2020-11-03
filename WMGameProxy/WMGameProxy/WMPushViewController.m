@@ -83,5 +83,21 @@
 
 
 #pragma mark - 远程通知
+-(void)remotePush {
+    // 参考文章 - https://blog.csdn.net/zhuqilin0/article/details/6527113
+    // 一、使用Apple提供的通知服务（APNs服务器）- 无论App再前台还是后台都会收到通知、由于推送服务由Apple服务器提供，会有可能延迟
+    // 1.App找APNs服务器获取deviceToken
+    // 2.App拿到deviceToken传给push服务器
+    // 3.push服务器向APNs服务器发送消息（带deviceToken）
+    // 4.APNs服务器根据deviceToken向特定设备发送消息
+    // 二、Socket机制 - 即时发送、由于iOS系统限制，App不能长时间的后台运行，App退出不会收到通知
+}
+
+
+#pragma mark - 站内信
+-(void)siteInsideLetter {
+    
+}
+
 
 @end

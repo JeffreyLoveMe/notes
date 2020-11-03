@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="16e435bf-91d0-4784-a0da-dec4003c7039" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../WMGameProxy/WMGameProxy/SyGameProxy.c" beforeDir="false" afterPath="$PROJECT_DIR$/../WMGameProxy/WMGameProxy/SyGameProxy.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../donew_index/html/demo/demo_34.html" beforeDir="false" afterPath="$PROJECT_DIR$/../donew_index/html/demo/demo_34.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GNGameProxy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GNGameProxy.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../donew_index/html/html_jQuery.html" beforeDir="false" afterPath="$PROJECT_DIR$/../donew_index/html/html_jQuery.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -50,6 +49,17 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Application.GNGameProxy" />
@@ -86,7 +96,9 @@
       <workItem from="1602730406528" duration="436000" />
       <workItem from="1602758863033" duration="142000" />
       <workItem from="1602838242580" duration="1635000" />
-      <workItem from="1603796937925" duration="3194000" />
+      <workItem from="1603796937925" duration="4127000" />
+      <workItem from="1604045602782" duration="5050000" />
+      <workItem from="1604282866757" duration="5035000" />
     </task>
     <servers />
   </component>
@@ -115,5 +127,9 @@
     </state>
     <state x="216" y="23" key="SettingsEditor/0.23.1440.877/-1876.23.1876.1177@0.23.1440.877" timestamp="1601024955630" />
     <state x="187" y="26" key="SettingsEditor/0.23.1440.877/-1877.23.1877.1177@0.23.1440.877" timestamp="1601030525029" />
+    <state x="411" y="211" key="run.anything.popup" timestamp="1604312019928">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state x="411" y="211" key="run.anything.popup/0.23.1440.877/-1877.23.1877.1177@0.23.1440.877" timestamp="1604312019928" />
   </component>
 </project>

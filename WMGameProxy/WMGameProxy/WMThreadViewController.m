@@ -126,7 +126,7 @@
     UIImage *image = [UIImage imageWithData:imageData];
 //    // 5.显示UI/不能放在子线程修饰
 //    self.imageView.image = image;
-//    // 4.回到主线程
+    // 4.回到主线程
     /**
      1>.第一种方式
      第一个参数 - 回到主线程调用哪个方法
