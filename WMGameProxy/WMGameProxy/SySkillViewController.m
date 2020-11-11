@@ -827,6 +827,8 @@
     // 描述文件位置 - 点击Finder -> 前往 -> 资源库 -> MobileDevice/Provisioning Profiles
     // /Users/xiewujun/Library/MobileDevice/Provisioning/Profiles
     // 此证书签发者无效 - 不能导出ipa
+    // 打包测试：设备选择“Any iOS Device” -> Product -> Archive
+    // 导出ipa：Window -> Organizer
 }
 
 

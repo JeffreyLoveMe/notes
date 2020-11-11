@@ -1866,8 +1866,6 @@ self.age = 10代表set方法[self setAge:10];
 1.dispatch_get_current_queue会引起什么问题？
 1.CoreAnimation/CoreGraphics是否使用过？
 Xcode支持在一个工程里面新建多个项目
-1.怎么开启异步线程、如果需要线程过段时间再开启、如果实现？
-1.列举常见使用到多线程的地方、2.多线程安全的几种解决办法？
 //数据存储
 1.单例保存的数据App杀死、数据清空
 2.数据库/NSUserDefaults保存的数据在App被杀死数据不会清空、App被卸载数据会清空
@@ -2376,8 +2374,6 @@ Singleton 了，用的越多对水平就越表示怀疑。对设计模式自信�
  
 26.notification是同步还是异步? kvo是同步还是异步？notification是全进程空间的通知吗？kvo呢？
  
-29.unix上进程怎么通信？
- 
 30.timer的间隔周期准吗？为什么？怎样实现一个精准的timer?
  
 31.UIscrollVew用到了什么设计模式？还能再foundation库中找到类似的吗？
@@ -2436,29 +2432,9 @@ for(int i =0; i< someLageNumber; i++) {
 31、Notification和KVO有什么不同？
 32、KVO在ObjC中是怎么实现的？  
 14、delegate和notification区别，分别在什么情况下使用？
+15.单项链表逆序
 
-4,c++程序中调用被C编译的函数为什么要加extern "C"
-5,重载重写区别
-7,哪几种情况能使用构造函数初始化列表初始化,有什么好处
-8,内存分配方式简述
-9,单项链表逆序
-10,int a=4;
-A:a+=(a++)
-B:a+=(++a)
-C:(a++)+=a
-D:(++a)+=(a++)
-哪个使用没问题
-还有运行结果
-11,非C++内建类型A,B,哪几种情B隐式转化为A
-
-  OC部分：
-    •     int *a;
-int b[4]={1,2,3,4};
-char *c;
-char d[4]={‘q’,’w’,’r’,’t’};
-printf(“%d,%d,%d,%d”,sizeof(a),sizeof(b),sizeof(c),sizeof(d));
-写出打印结果
-    •    const int a;
+const int a;
 const int *a;
 int * const a;
 const int * const a;
@@ -2483,23 +2459,43 @@ const int * const a;
     }
     同理当我们需要长时间的计算时,也要新开一个线程 去做这个计算以避免程序处于假死状态
 
-
-       系统相机照相之后图片怎么压缩
-        cell很乱的情况下怎么办，有几种方法
-        sorket套接字    http   tcp
-        地图api
-        网络加载大图片时应该怎么做
+系统相机照相之后图片怎么压缩
+cell很乱的情况下怎么办，有几种方法
+sorket套接字    http   tcp
+地图api
+网络加载大图片时应该怎么做
         
- Cocoa中常用多线程实现？多线程安全问题解决方案？什么地方用到多线程？ 另外面试过程中还会问及C语言内存管理，和asihttp请求中断处理？
-
 4.XML有哪些解析方式，有何优缺点？XML解析有哪些解析技术，区别是什么？
 12.IphoneOS有没有垃圾回收?
 13.什么是Notification模式？
 14.什么时候使用delegate什么时候使用Notification？
-1.分别以下列序列构造二叉排序树，与用其他三个序列所构造的结果不同的是( )。 A．(100，80，90，60，120，110，130) B．(100，120，110，130，80，60，90) C．(100，60，80，90，120，110，130) D．(100，80，60，90，120，130，110)   字典是一个二叉树吗？为什么?   2、[array alloca] 和 Narray *array; array 的内存技术是几。把它放入字典中是几。在从字典中remove是几。  4、网络请求为什么用jSON多，XML少 5、工场。IOS还有什么模式。用伪代码表示 6.arc 中unsafe_unretained 是作用。一个@property (strong) NSString *string1 默认是什么操作。 7，宏 和 函数的区别，在什么情况下用宏。宏扩展又是什么 8、多线程是什么，多线程同步是什么，异步？        写一个NSOPENRATION队列，体现初始化和填入队列方法 9、block的作用，不用block可以用什么实现。 10、在多线程中,下面代码有什么问题 怎么改 i nterface a:NSobject { NSmutableArray *array; } .... @im.... -(void)add:(*item item){ [array addObject :item]; } -(void)rem:(*item item){ [array removeobject:item]; }  11.什么是观察者模式。 12.NSOpertaion有几种种形式.
 
+1.分别以下列序列构造二叉排序树，与用其他三个序列所构造的结果不同的是( )。 
+A．(100，80，90，60，120，110，130) 
+B．(100，120，110，130，80，60，90) 
+C．(100，60，80，90，120，110，130) 
+D．(100，80，60，90，120，130，110) 
+字典是一个二叉树吗？为什么?
 
-TCP 传输控制协议  是一种面向连接的、可靠的、基于字节流的运输层通信协议   短链接协议
+2、[array alloc] 和 Narray *array; array 的内存技术是几。把它放入字典中是几。在从字典中remove是几。  
+4、网络请求为什么用jSON多，XML少 
+5、工场。IOS还有什么模式。用伪代码表示 
+6.arc 中unsafe_unretained 是作用。一个@property (strong) NSString *string1 默认是什么操作。 
+7，宏 和 函数的区别，在什么情况下用宏。宏扩展又是什么 
+8、多线程是什么，多线程同步是什么，异步？ 写一个NSOPENRATION队列，体现初始化和填入队列方法 
+9、block的作用，不用block可以用什么实现?
+10、在多线程中,下面代码有什么问题? 怎么改 
+interface a:NSobject { 
+NSmutableArray *array; 
+} 
+-(void)add:(*item item){ 
+[array addObject :item]; 
+} 
+-(void)rem:(*item item){ 
+[array removeobject:item]; 
+} 
+
+11.TCP 传输控制协议  是一种面向连接的、可靠的、基于字节流的运输层通信协议   短链接协议
 TCP层是位于IP层之上，应用层之下的传输层
 文件传送协议FTP(File TransferProtocol）允许用户从一台计算机到另一台取得文件，或发送文件到另外一台计算机。
 UDP 用户数据报协议  是 OSI 参考模型中一种无连接的传输层协议，提供面向事务的简单不可靠信息传送服务
@@ -3129,9 +3125,6 @@ KVC通过传递一个”key”（通常是一个字符串）来获取或更改�
 Protocol是用来定义对象的属性，行为和用于回调的。必须遵守其协议方可使用其方法。
 performSelector:可自定义进行函数回调，可调用实现在其后的方法。
 
-什么时候使用NSMutableArray，什么时候使用NSArray？
-答案：当数组在程序运行时，需要不断变化的，使用NSMutableArray，当数组在初始化后，便不再改变的，使用NSArray。需要指出的是，使用NSArray只表明的是该数组在运行时不发生改变，即不能往NSAarry的数组里新增和删除元素，但不表明其数组內的元素的内容不能发生改变。NSArray是线程安全的，NSMutableArray不是线程安全的，多线程使用到NSMutableArray需要注意。
-
 17.使用coredata有哪几种持久化存储机制？
 答案：kvc:键 - 值编码是一种间接访问对象的属性使用字符串来标识属性，而不是通过调用存取方法，直接或通过实例变量访问的机制。
 很多情况下可以简化程序代码。apple文档其实给了一个很好的例子。
@@ -3733,9 +3726,7 @@ ViewController 的 didReceiveMemoryWarning 是在什么时候调用的?默认的
 如果 view 可以被释放，那么这个函数释放
 你可以重载这个函数来释放 controller
 来允许父类(一般是 UIVIewController
-如果你的 ViewController 保存着 view 的子 view 的引用，那么，在早期的 iOS 版本中，你应该在 这个函数中来释放这些引用。而在 iOS3.0 或更高版本中，你应该在 viewDidUnload 中释放这些 引用。
-列举 Cocoa 中常见的集中多线程的实现，并谈谈多线程安全的几种解决办法，一般什么地方 会用到多线程?
-NSOperation NSThread @sychonized
+如果你的 ViewController 保存着 view 的子 view 的引用，那么，在早期的 iOS 版本中，你应该在 这个函数中来释放这些引用。而在 iOS3.0 或更高版本中，你应该在 viewDidUnload 中释放这些引用。
 delegate 和 notification 区别，分别在什么情况下使用?
 view 并调用 viewDidUnload 。 中使用的其他内存。但要记得调用这个函数的 super 实现
 )释放 view 。
@@ -6800,7 +6791,6 @@ layer 设置了圆角 中所有 layer 的阴影效果将都不显示 .因此要�
 ( 8)渲染:当更新层 改变不能立即显示在屏幕上 .当所有的层都准备好时 , 可以调用 setNeedsDisplay 方法来重绘显示 .
 ( 9 )变换:要在一个层中添加一个 3D 或仿射变换 , 可以分别设置层的 transform 或者 affineTransform 属性
 ( 10 )变形: Quartz Core 的渲染能力 使二维图像可以被自由的操纵 ,就像是三维的 .图像可 以在一个三维坐标系中以任意的角度被旋转 缩放 和倾斜 .CATransform3D 的一套方法提供 了一些魔术般的效果。
-三. 多线程安全怎么控制 ? 用互斥锁 ,队列组 ,栅栏函数 ,依赖
 四. 简要说明什么时候使用继承 ,什么时候使用类别
 在 OC 中 ,一个类继承另一个类 ,就是继承了父类所有的属性和方法 ,并且可以扩充自己的属性 而类别是在不改变原有类的基础上进行方法扩充 ;
 因此 ,根据开发需求 ,如果这个类需要扩充属性 ,或者需要重写系统的类的某些方法 ,用继承 ;如 果只是对一个类扩充接口和模块 , 使用类别更加方便 .

@@ -3,9 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>弹出广告</title>
+    <style type="text/css">
+        /* 
+        子绝父相 - 如果父元素相对定位不满足要求，一般会考虑“绝对定位”，但是“绝对定位”会随着浏览器的滚动而滚动，
+        所以如果是广告之类的固定的可以考虑“固定定位” */
+        .logo {
+            width: 230px;
+            height: 120px;
+            background: url(../../image/ad_czbk.jpg);
+            position: fixed;
+            right: 0;
+            bottom: 0;
+            display: none;
+        }
+        .logo-close {
+            width: 40px;
+            height: 18px;
+            background: url(../../image/ad_close.jpg);
+            position: absolute;
+            top: 0;
+            right: 0;
+            cursor: pointer;
+        }
+    </style>
+    <script src="../../js/jquery/jquery-3.5.1.min.js"></script>
+    <script>
+        $(window).ready(function () {
+            // 这里可以使用链式编程
+            var logoDiv = $(".logo");
+            var logoCloseDiv = logoDiv.children().eq(0);
+            // 加载完成
+            logoDiv.slideDown(1000, function () {
+                logoDiv.slideUp(1000, function () {
+                    logoDiv.fadeIn(1000);
+                })
+            })
+            // 点击关闭按钮
+            logoCloseDiv.click(function () {
+                logoDiv.fadeOut(1000);
+            })
+        });
+    </script>
 </head>
 <body>
-    
+    <div>我是内容～～～</div>
+    <div class="logo">
+        <div class="logo-close">
+
+        </div>
+    </div>
 </body>
 </html>

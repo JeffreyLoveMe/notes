@@ -2,7 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="16e435bf-91d0-4784-a0da-dec4003c7039" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/2020年最新JAVA学习路线图.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GNGameProxy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GNGameProxy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../WMGameProxy/WMGameProxy/SYGameProxy.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../WMGameProxy/WMGameProxy/SYGameProxy.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../WMGameProxy/WMGameProxy/SyGameProxy.c" beforeDir="false" afterPath="$PROJECT_DIR$/../WMGameProxy/WMGameProxy/SyGameProxy.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../WMGameProxy/WMGameProxy/SySkillViewController.m" beforeDir="false" afterPath="$PROJECT_DIR$/../WMGameProxy/WMGameProxy/SySkillViewController.m" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../donew_index/html/demo/demo_37.html" beforeDir="false" afterPath="$PROJECT_DIR$/../donew_index/html/demo/demo_37.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../donew_index/html/demo/demo_41.html" beforeDir="false" afterPath="$PROJECT_DIR$/../donew_index/html/demo/demo_41.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../donew_index/html/html_jQuery.html" beforeDir="false" afterPath="$PROJECT_DIR$/../donew_index/html/html_jQuery.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -49,17 +55,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Application.GNGameProxy" />
@@ -99,6 +94,15 @@
       <workItem from="1603796937925" duration="4127000" />
       <workItem from="1604045602782" duration="5050000" />
       <workItem from="1604282866757" duration="5035000" />
+      <workItem from="1604474446931" duration="1341000" />
+      <workItem from="1604544211294" duration="605000" />
+      <workItem from="1604544902506" duration="77000" />
+      <workItem from="1604544998389" duration="1175000" />
+      <workItem from="1604549429602" duration="38000" />
+      <workItem from="1604555562840" duration="471000" />
+      <workItem from="1604723572469" duration="1185000" />
+      <workItem from="1605075407489" duration="509000" />
+      <workItem from="1605087867782" duration="159000" />
     </task>
     <servers />
   </component>

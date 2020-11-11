@@ -159,9 +159,9 @@
         jqDiv.toggleClass("current"); // 切换类（选择器）
         // 3.添加/移除属性 - 属性操作
         // 1>.添加属性
-        // // 没有效果 - 没有绑定到标签上
-        // jqBox.title = "donew";
-        // console.log(jqBox.title);
+        // 没有绑定到标签上
+        jqBox.title = "donew";
+        console.log(jqBox.title); // 可以输出结果donew（但是只能绑定到jQuery对象的表面，标签上没有绑定）
         // 绑定到标签上
         jqBox.attr("title", "donew"); // 赋值
         console.log(jqBox.attr("title")); // 取值
@@ -174,26 +174,27 @@
         // val()
         jqInput.val("我变身input"); // 赋值元素的value值
         console.log(jqInput.val()); // 获取元素的value值
-        // text() - 获取双标签中的文本值（不识别标签/innerText）
+        // text() - 获取双标签中的文本值（不识别标签、不包含本身/innerText）
         console.log(jqBox.text()); // 获取双标签中的文本值
         jqBox.text("我变身box"); // 赋值双标签中的文本值
-        // 获取双标签中的文本值（识别标签/innerHTML）
+        // 获取双标签中的文本值（识别标签、不包含本身/innerHTML）
         jqBox.html(); // 获取双标签中的文本值
         jqBox.html("我变身div"); // 赋值双标签中的文本值
-        // 4.尺寸位置操作
+        // 4.尺寸位置操作 - 很少使用（不是重点）
         // 1>.尺寸操作
         jqDiv.height(); // 获取宽度 - 不包含border、padding、margin
         jqDiv.height(200); // 设置宽度
         jqDiv.width(); // 获取高度 - 不包含border、padding、margin
-        jqDiv.width("200px"); // 设置高度
+        jqDiv.width("200px"); // 设置高度 - 可以加px也可以不加
         // 2>.位置（坐标值）操作
         // 距离页面最顶端/最左端的距离 - 与定位无关
         jqDiv.offset().top = 15;
         jqDiv.offset().left = 15;
+        jqDiv.offset({"top": 15, "left": 15});
         // 距离父系盒子中带有定位的盒子的距离 - 与padding、margin无关
         jqDiv.position().top = 15;
         jqDiv.position().left = 15;
-        // ？？？
+        // 获取/设置元素垂直方向滚动的位置
         jqDiv.scrollTop();
         jqDiv.scrollLeft(100);
 
@@ -285,48 +286,92 @@
             console.log("动画执行完毕");
         });
         // 5.停止动画
-        jqDiv.stop(); // 默认两个都为false
+        jqDiv.stop(); // 默认两个都为false/推荐使用
         // true - 后续动画不执行｜false - 后续动画执行
         jqDiv.stop(true);
         // 1.true - 后续动画不执行｜false - 后续动画执行
         // 2.true - 立即执行完成当前动画｜false - 立即停止当前动画
         jqDiv.stop(true, false);
+        
 
-        // 34:31
-        // jquery事件绑定
-        // 第一种方式
+        // jquery事件绑定、解绑 - ！！！怎么绑定的怎么解绑！！！
+        // 第一种方式 - 不会层叠/任何方法都可以解绑
         jqDiv.click(function () {
 
         });
         jqDiv.mousedown(function () {
 
         });
-        // 第二种方式 - 不推荐
+        // 第二种方式 - 可以同时绑定多个事件/不推荐
         jqDiv.bind("click mousedown", function () {
 
         });
-        // 第三种方式 - 性能高，支持动态创建的元素
-        jqDiv.delegate(".box", "click mousedown", function () {
+        jqDiv.unbind("click, mousedown", function () {
+
+        })
+        // 第三种方式 - 可以为子元素同时绑定多个事件，性能高，支持动态创建的元素
+        $(document).delegate(".box", "click mousedown", function () {
 
         });
+        $(document).undelegate(".box", "click mousedown", function () {
+
+        })
         // 第四种方式 - 常用
-        jqDiv.on("click mousedown", ".box", {"name": "donew"}, function (event) {
+        $(document).on("click mousedown", ".box", {"name": "donew"}, function (event) {
+            console.log(event.data.name);
+        });
+        $(document).off("click mousedown", ".box", {"name": "donew"}, function (event) {
             console.log(event.data.name);
         });
 
-        // jQuery事件解绑
-        
-        // jQuery事件触发
+        // jQuery事件触发 - 不需要点击等操作（直接使用代码）触发事件
+        $(document).on("click", function (e) {
+            alert("事件被点击");
+        });
+        // 事件触发1
+        $(document).click();
+        // 事件触发2 - 触发浏览器行为（执行程序，触动事件）
+        // trigger - tri'ger
+        $(document).trigger("click");
+        $("input").on("focus", function () {
+            alert("获取到了焦点");
+        });
+        $("input").trigger("focus");
+        // 事件触发3 - 不触发浏览器行为（只执行程序，不触动事件）
+        $(document).triggerHandler("click");
+
+        // jQuery事件对象 - 对比“js事件对象”
+        $(document).keyup(function (event) {
+            // 传递给事件处理程序的额外数据
+            console.log(event.data);
+            // 等同于this，当前DOM对象
+            console.log(event.currentTarget);
+            // 鼠标相对于文档左部边缘的位置
+            console.log(event.pageX);
+            // 触发事件源，不一定 === this
+            console.log(event.target);
+            // 阻止事件冒泡
+            console.log(event.stopPropagation());
+            // 阻止默认事件
+            console.log(event.preventDefault());
+            // 事件类型：click、dbclick
+            console.log(event.type);
+            // 鼠标的按键类型：左1 中2 右3
+            console.log(event.which);
+            // 键盘按键代码
+            console.log(event.keyCode);
+        })
 
         // jQuery补充
-        // 1>.链式编程
+        // 1>.链式编程 - 原理：在函数的默认加上"return this";
+        // 27:22
         // 2>.隐式迭代
         // 3>.多库共存
 
         // jQuery插件机制
         // 1>.第三方插件
         // 2>.制作插件
-        // 3.jQueryUI
+        // 3>.jQueryUI
     </script>
 </head>
 <body>

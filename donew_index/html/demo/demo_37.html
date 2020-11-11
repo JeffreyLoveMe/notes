@@ -66,15 +66,29 @@
     <script>
         $(function () {
             var jqLi = $(".content>ul>li");
-            jqLi.mouseover(function () {
-                // // ！！！此处this是DOM对象！！！
-                // $(this).children("ul").css("display", "inline-block");
-                $(this).children("ul").show();
-            });
-            jqLi.mouseout(function () {
-                // $(this).children("ul").css("display", "none");
-                $(this).children("ul").hide();
-            });
+            // 
+            /**
+             * mouseover和mouseenter的区别 - https://www.cnblogs.com/psxiao/p/11543333.html
+             * mouseover - 当鼠标移入元素或其子元素都会触发事件，所以有一个重复触发，冒泡过程。对应的移除事件是mouseout
+             * mouseenter - 当鼠标移除元素本身（不包含元素的子元素）会触发事件，也就是不会冒泡。对应的移除事件是mouseleave
+             */
+            // jqLi.mouseover(function () {
+            //     // // ！！！此处this是DOM对象！！！
+            //     // $(this).children("ul").css("display", "inline-block");
+            //     $(this).children("ul").show();
+            // });
+            jqLi.mouseenter(function () {
+                // 加上动画
+                $(this).children("ul").slideDown(500);
+            })
+            // jqLi.mouseout(function () {
+            //     // $(this).children("ul").css("display", "none");
+            //     $(this).children("ul").hide();
+            // });
+            jqLi.mouseleave(function () {
+                // 加上动画
+                $(this).children("ul").slideUp(500);
+            })
         })
     </script>
 </head>

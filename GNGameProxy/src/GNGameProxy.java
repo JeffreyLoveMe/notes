@@ -180,9 +180,24 @@ public class GNGameProxy {
         a10 = a10 + a11;
 
         // 强制类型转换 - 数据类型 变量名 = (数据类型)变量值;
+        // 1.强制转换的格式
         int a12 = 10;
         byte a13 = 4;
         a13 = (byte) (a12 + a13);
+        // 2.强制转换超出"数据类型"的取值范围会出错
+        byte a14 = (byte) (126 + 4);
+        System.out.println(a14); // 输出-126（多于8位的会直接砍掉）
+        byte a15 = (byte)300;
+        System.out.println(a15); // 输出44
+        // 3.面试题：以下程序是否有问题？如果有问题请指出问题。
+        byte a16 = 3;
+        byte a17 = 4;
+//        // 1.byte与任何数据类型（char/int/short/byte）进行运算会提升为int，两个int类型相加结果也是int
+//        // 2.a16和a17是两个变量，变量存储的值是变化的，在编译的时候无法判断具体的值，相加有可能会超出byte取值范围
+//        byte a18 = a16 + a17; // 报错
+        // Java编译器有常量优化机制
+        byte a19 = 3 + 4;
+
 
 
 
