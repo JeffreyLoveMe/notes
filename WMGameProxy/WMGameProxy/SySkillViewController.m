@@ -219,6 +219,87 @@
  2.不能随意跨越自己的沙盒去访问别的应用程序沙盒的内容；
  3.应用程序向外请求或接收数据都需要经过权限认证；
  */
+/*
+ 
+ 十七 . 应用程序的沙盒下 ,都有哪些文件夹 ?它们有什么特点 ?本地缓存一般存在哪个文件下?
+ 1 Documents
+ 将应用程序的数据文件保存在该目录下 .不过这些数据类型仅限于不可以再生的数据 ,可再生 的数据文件应该存在 LIbrary/Cache 下
+ 2 Library 它有两个子文件
+ caches 主要是缓存文件 ,用户使用过程中缓存都可以保存在这些目录中 .保存那些可再生的
+ 文件 ,比如网络数据请求 .因此 ,应用程序通常还需要负责删除这些文件 .
+ Preferences 应用程序的偏好设置文件 . 我们使用 NSUserDefaults 写的设置数据都会保存到
+ 该目录下的一个 plist 文件中 它会被 iTunes 同步 3. tmp
+ 各种临时文件 , 保存应用再次启动时不需要的文件 将其删除 ,因为该目录下的东西随时有可能被系统清除
+ 统磁盘存储空间不足的时候
+ .而且 ,当应用不在需要这些文件时应主动 ,目前已知的一种可能清理的原因是系
+ 二十 . plist 和 pct 文件的好处 ?
+ plist 文件以便用来储存数组或者字典 ,它是 iOS 中特有的存储方式 .它可以将数据与代码隔离开 , 更便于数据的管理和展示 .
+ pch 里面可以保存一些全局的宏和头文件 .
+ pct 是预编译头文件 , 其中存放有工程中已有编译的部分代码 编译这些代码 .
+ pct 头文件的内容能被项目中的其他所有源文件共享访问 存放一些全局的宏 (整个项目都用得上的宏 )
+ 用来包含一些全部的头文件 (整个项目都用得上的头文件 能自动打开或者关闭日志的输出功能
+ pct 弊端 : 每个文件都会导入 ,有效率问题 .
+ ; 在以后建立工程时就不用重新)
+
+ 94. 什么是沙盒模型?哪些操作是属于私有 api 范畴 ?
+  答:某个 iphone 工程进行文件操作有此工程对应的指定的位置，不能逾越。
+ iphone 沙箱模型的有四个文件夹 documents， tmp， app， Library ，永久数据存储一般放documents 文件夹，得到模拟器的路径的可使用 NSHomeDirectory() 方法。 Nsuserdefaults 保 存的文件在 tmp 文件夹里。
+
+ 2、沙盒的目录结构是怎样的?各自一般用于什么场合?
+ 参考答案:
+ Application :存放程序源文件，上架前经过数字签名，上架后不可修改
+ Documents: 保存运行时生成的需要持久化的数据 ,iTunes 同步 设备时会备份该目 录。例如 ,游戏应用可将游戏存档保存在该目录 tmp: 保存应 ?运行时所需的临时数据 ,使?完毕后再将相应的文件从 该目录删除。应用 没有运行时 ,系统也可能会清除该目录下的文件。 iTunes 同步设备时 不会备份该目录
+ Library/Caches: 保存应用运行时 ? 成的需要持久化的数据 ,iTunes 同 步设备时不会备份 该目录。?一般存储体积大、 不需要备份的非重要 数据，比如网络数据缓存存储到 Caches 下
+ Library/Preference: 保存应用的所有偏好设置，如 iOS 的Settings( 设 置) 应?会在该目录中查找应 ?的设置信息。iTunes同步设备时会备份 该目录
+
+
+ 对沙盒的理解
+ 每个 iOS 应用都被限制在“沙盒”中， 沙盒相当于一个加了仅主人可见权 限的文件夹， 及时在应用程序安装过程中， 系统为每个单独的应用程序生
+ 成它的主目录和一些关键的子目录。苹果对沙盒有几条限制 :
+ 1. 应用程序在自己的沙盒中运作，但是不能访问任何其他应用程序的沙盒;
+  2. 应用之间不能共享数据， 沙盒里的文件不能被复制到其他应用程序的文件夹中， 也不能把其他应用文件夹复制到沙盒中;
+ 3. 苹果禁止任何读写沙盒以外的文件， 禁止应用程序将内容写到沙盒以外的文件 夹中;
+ 4. 沙盒目录里有三个文件夹: Documents——存储;应用程序的数据文件，存储 用户数据或其他定期备份的信息; Library 下有两个文件夹， Caches存储应用程 序再次启动所需的信息， Preferences 包含应用程序的偏好设置文件，不可在这 更改偏好设置; temp存放临时文件即应用程序再次启动不需要的文件。
+ 获取沙盒根目录的方法，有几种方法:用 NSHomeDirectory 获取。 获取 Document路径:
+ NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,NSUserD omainMask,YES).
+
+ 9.iphone 应用程序的项目基本结构
+ classes: 里面存放 object-c 类源代码文件 ( 可以创建子文件夹来组织代码 );
+ other sources: 存放除 objective-c 类之外的源代码文件;
+ resources: 包含应用程序中的非代码文件 ( 因为应用程序只能在自己的沙盒中运行，不然找 不到 ) ;
+ Frameworks: 特殊的库，可以存放库、框架、图像、声音等资源;
+ Products :包含项目在编译时生成的应用程序 (xxx.app);
+ 10.Info.plist 文件里的 bundle identifier( 束标识符 ) 它是应用程序的唯一标识符，要始终配置，命名格式为:顶级 Internet 应用名称;
+ 域+.+公司名称 +.+
+
+ 77、什么是沙盒 ?沙盒包含哪些文件 ,描述每个文件 的使用场景。如何获取这些文件的路径 ?如何获取 应用程序包 中文件的路径 ?
+ 沙盒是某个 iphone工程进行文件操作有此工程对 应的指定的位臵 ,不能逾越。 包括 :四个文件
+ 夹:documents,tmp,app,Library。 手动保存的文件在 documents文件里。 Nsuserdefaults保存的文件在 tmp文件夹
+ Documents 目录:您应该将所有 de应用程序数据文 件写入到这个目录下。 这个目录用于存储用户数据
+ 或其它应该定期备 份的信息。AppName.app 目录: 这是应用程序的程序包目录 ,包含应用程序的本身。 由于应用程序必须经过签名 ,所以 您在运行时不 能对这个目录中的内容进行修改 ,否则可能会使应 用程序无法启动。 Library 目录 :这个目录下有两个 子目 录:Caches 和 PreferencesPreferences目录包 含应用程序的偏好设臵文件。 您不应该直接创建偏 好设臵文件 ,而是 应该使用 NSUserDefaults类来取 得和设臵应用程序的偏好 .Caches 目录用于存放 应用程序专用的支持文件 ,保存应用程 序再次启 动过程中需要的信息。 tmp 目录 :这个目录用于存 放临时文件 ,保存应用程序再次启动过程中不需要 的信息。
+ 获取这些目录路径的方法 : 1,获取家目录路径的
+ 函数 : NSString *homeDir =
+ NSHomeDirectory(); 2,获取 Documents目录路径的
+ 方法 : NSArray *paths =NSSearchPathForDirectoriesInDomains(NSDocum
+ entDirectory, NSUserDomainMask, YES); NSString *docDir = [paths
+ objectAtIndex:0]; 3,获取 Caches目录路径的方 法: NSArray *paths =
+ NSSearchPathForDirectoriesInDomains(NSCachesDi rectory, NSUserDomainMask, YES); NSString
+ *cachesDir = [paths objectAtIndex:0]; 4,获取 tmp目
+ 录路径的方法 : NSString *tmpDir =
+ NSTemporaryDirectory(); 5,获取应用程序程序包
+ 中资源文件路径的方法 : 例如获取程序包中一个
+ 图片资源 (apple.png)路径的方法 : NSString
+ *imagePath = [[NSBundle mainBundle] pathForResource:@ ” apple ” ofType:@ ” png ” ]; UIImage *appleImage = [[UIImage alloc]
+ initWithContentsOfFile:imagePath]; 代码中的 mainBundle类方法用于返回一个代表应用程序包的对象。
+ 沙盒目录结构是怎样的？各自用于那些场景？
+ * Application：存放程序源文件，上架前经过数字签名，上架后不可修改
+ * Documents：常用目录，iCloud备份目录，存放数据
+ * Library
+     * Caches：存放体积大又不需要备份的数据
+     * Preference：设置目录，iCloud会备份设置信息
+ * tmp：存放临时文件，不会被备份，而且这个文件下的数据有可能随时被清除的可能
+
+ */
 -(void)showSandBox {
     //沙盒根目录
     NSLog(@"获取该应用沙盒根目录===%@", NSHomeDirectory());
@@ -343,6 +424,252 @@
 -(void)showCoreData {
     
 }
+/*
+ 
+ 在 IOS 中，少量的数据持久化可以使用属性列表、
+ NSUserDefaults 、归档等;
+ 大量的数据持久化可以使用 SQLite 数据库、 Core Data 等，
+ 也可以使用 FMDB 第三方类库完成。
+
+ 58. 常见的数据持久化方法有哪些？
+ 1.NSUserDefaults: ?用来保存应 ?用程序设置和属性、 ?用户保存的数据。 ?用户再次 打开程序或开机后这些数据仍然存在。 NSUserDefaults 可以存储的数据类型包
+ 括:NSData 、NSString 、NSNumber 、NSDate 、NSArray 、NSDictionary 。
+ 如果要存储其他类型，则需要转换为前 储。
+ ?面的类型，才能 ?用NSUserDefaults 存
+ 2.归档,反归档 3. ?文件读写 4.SQLite 5.CoreData
+
+
+ 1、 iOS 数据持久化存储方案有哪些?
+ 参考答案:
+ plist属性列表存储(如 NSUserDefaults )
+ 文件存储 (如二进制数据写入文件存储， 通过 NSFileManager 来操作 将下载起来的二进制数据写一篇文件中存储)
+ NSKeydeArchiver 归档存储，常见的是自动化归档 /解档处理，想要 学习如何通过 runtime 实现自动化归档 /解档，可
+ 数据库 SQLite3 存储(如 FMDB 、Core Data )
+ 2. 什么是数据持久化?简单谈一下你所了解的 中的数据持久化的方式。
+ 数据持久化就是将内存中的数据模型转换为存储模型 将存储模型转换为内存中的数据模型的统称 . 数据模型可以 是任何数据结构或对象模型 ,存储模型可以是关系模型、 XML 、 二进制流等。
+ 在 IOS 中，少量的数据持久化可以使用属性列表、 NSUserDefaults 、归档等;
+ 大量的数据持久化可以使用 SQLite 数据库、 CoreData 等， 也可以使用 FMDB 第三方类库完成。
+ 2.NSUserDefaults 适合存储轻量级的本地数据， 以键值对的形 式进行存储，只能存储基本的 OC 对象(不包括自定义的对象)。
+ NSUserDefaults 非常好用，并不需要用户在程序中设置 NSUserDefaults 的全局变量，需要在哪里使用 NSUserDefaults 的数据，那么就在哪里创建一个 NSUserDefaults 对象，然后进行读或者写操作。
+ 针对同一个关键字对应的对象或者数据，可以对它进行重写， 重写之后关键字就对应新的对象或者数据，旧的对象或者数 据会被自动清理。
+ NSUserDefaults 是典型的单例模式。
+ 3. ProtocolList属性列表，是一种用来存储串行化后的对象的文件。因为扩 展名为 plist ，因此通常被称为 plist 文件。
+ plist 文件通常用于储存用户设置，也可以用于存储捆绑的信 息，其内容为 xml 格式。它可以在程序运行期间动态的创建
+ 和读写，因此可以用于少量数据时候的数据持久化。
+ 3. 归档优缺点?
+  归档也叫序列化，是将文件存在硬盘，解档是从硬盘还原数 据。
+ 归档的形式来保存数据，只能一次性归档保存以及一次性解 压。所以只能针对小量数据，而且对数据操作比较笨拙，即 如果想改动数据的某一小部分，还是需要解压整个数据或者 归档整个数据。
+ 除了简单的归档，还可以实现对象的归档。对象归档是指对 象写入文件保存到硬盘上，当再次重写打开程序时，可以还
+ 原这些对象。可以实现对象序列化或者对象持久化。
+ 除了原有的 OC 对象以外，归档还可以对自定义的对象实现 归档，需要注意的是，自定义的归档对象必须要实现 NSCoding 协议，实现里面的解码和编码的方法。
+ 4. 什么是数据库?使用步骤?特点? 数据库是按照数据结构来组织、存储和管理数据的仓库。
+ SQLite 使用步骤:创建数据库、引入类库、获得沙盒路径、 创建或打开数据库
+ SQLite 比较原始，需要通过 sql 语句来创建表格，对数据进 行操作，用起来比较麻烦，但是可控性强。
+ //数据持久化
+ 1.NSCache和数据持久化使用场景有什么区别？
+ 2.常用的数据持久化方法有哪些？各自有什么利弊？
+ 13.iOS怎么做数据持久化？coredata/sqlite之间又什么联系？coredata是关系型数据库吗？
+ 
+ 29.iOS平台怎么做数据持久化
+ 1、NSUserDefaults
+ 2、Plist
+ 3、数据库
+ 4、文件保存
+ 5、归档与反归档
+ 31.iOS平台怎么做数据的持久化?Core Data和SQLite有无必然联系？Core Data是一个关系型数据库吗？
+ 答：iOS中可以有四种持久化数据的方式： 属性列表、对象归档、SQLite3和Core Data
+  Core data与sqlite还是有联系的，core data 是对sqlite的封装，因为sqlite是c语言的api，然而有人也需要obj-c 的api，所以有了 core data 另外，core data不仅仅是把c的api翻译成oc 的api，还提供了一些管理的功能，使用更加方便
+ Core Data不是一个关系型数据库，也不是关系型数据库管理系统(RDBMS)。虽然Core Dta支持SQLite作为一种存储类型，但它不能使用任意的SQLite数据库。Core Data在使用的过程种自己创建这个数据库。Core Data支持对一、对多的关系
+ 
+ 3、iOS有哪些数据持久化方式?
+ 答:四种:属性列表、对象归档、 SQLite3 和Core Data 。
+ 4、Objective-C 如何对内存管理的 , 说说你的看法和解决方法?
+ 答: Objective-C 的内存管理主要有三种方式 ARC(自动内存计数)、手动内存计数、内 存池。解决方法的话:谁持有，谁释放。
+ 
+ #App的主目录：沙盒机制NSHomeDirectory()
+ 概念：沙盒机制是一种安全体系，规定了应用程序只能在该应用创建的文件夹内读取文件，不可以
+ 访问其他地方的内容。所有的非代码文件都保存在这个地方：比如图片、声音、属性列表和文本文件等；
+ 沙盒中的文件：Documents(持久化数据)、Library(缓存)、tmp(临时文件)
+ NSString *home = NSHomeDirectory(); //沙盒根目录
+ NSString *documentPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject]; //获取Documents(持久化数据)
+ NSString *libarayPath = [NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES) lastObject]; //获取Library(缓存)
+ NSString *tempPath = NSTemporaryDirectory(); //获取tmp(临时文件)
+ 注意：1).每个应用程序都在自己的沙盒；
+ 2).不能随意跨越自己的沙盒去访问别的应用程序沙盒的内容；
+ 3).应用程序向外请求或接收数据都需要经过权限认证；
+
+ #数据持久化的方法：存放在沙盒
+ 原因：通常程序在运行中或者程序结束以后，需要保存一些信息，比如登录信息，视频播放记录，收藏等；
+ 常见方法：
+ 1.文件操作：见FileViewController.h/m
+ 2.plist：属性列表文件-只能存储NSString/NSNumber/NSDate/NSArray/NSDictionary
+ 作用：对一些登录、注册和配置信息进行持久化存储；
+ 格式：xml语法；
+ 创建：Xcode创建/代码创建
+ 读取：需要时自行百度
+ 3.NSUserDefaults：见FileViewController.h/m
+ 4.归档/解归档：一种序列化与反序列化
+ //归档
+ //解归档
+ https://www.jianshu.com/p/3e08fa21316d
+ 5.数据库：
+ //sql语句：结构化查询语言
+ 1.创建表
+ create table if not exists sso (
+ id integer primary key autoincrement,//将id设为主键
+ author text,//文本
+ price real,//浮点型
+ pages integer);//整型
+ 2.插入
+ insert into sso (author,price,pages) values(?,?,?);
+ 3.更新
+ update sso set price = ?,pages = ? where author = ?;
+ 4.删除
+ delete from sso where pages > ?;
+ 5.查询
+ select * from sso;
+ //FMDB
+ 代码：SqliteViewController.h/m
+ //MagicalRecord：
+ 一.Core Data：
+ 1.新建Core Data；
+ 2.新建表：写上需要存储的文件；
+ 3.关联生成属性类；
+ 二.导入数据：
+ 4.导入MagicalRecord；
+ 三.app启动：
+ 5.设置数据库存放的文件名；
+ 6.让Magical Record支持数据库版本管理；
+ 7.查询所有的数据库内容，如果有内容则送到数据源；
+ if([MusicInfo MR_findAll].count) {
+     for(MusicInfo *music in [MusicInfo MR_findAll]) {
+         MusicInformation *musicInfo = [[MusicInformation alloc] init];
+         musicInfo.songUrl = music.songUrl;
+         musicInfo.songName = music.songName;
+         musicInfo.songId = music.songId;
+         musicInfo.userName = music.userName;
+         musicInfo.albumName = music.albumName;
+         musicInfo.albumPic = music.albumPic;
+         [[MusicManager sharedIntance].selectMusics addObject:musicInfo];//把对象加到数据源
+     }
+ }
+ 四.app杀掉：
+ 8.删除数据库里的表，将数据源保存；
+ for(MusicInfo *music in [MusicInfo MR_findAll]) {
+     [music MR_deleteEntity];//删除数据表
+ }
+ [[NSManagedObjectContext MR_defaultContext] MR_saveToPersistentStoreAndWait];
+ 9.新建数据库的表，将数据源所有内容放到数据库，保存；
+ for(MusicInformation *newMusic in [MusicManager sharedIntance].selectMusics) {
+     MusicInfo *zNewMusic = [MusicInfo MR_createEntity];//新建数据表
+     zNewMusic.songName = newMusic.songName;
+     zNewMusic.songUrl = newMusic.songName;
+     zNewMusic.songId = newMusic.songId;
+     zNewMusic.userName = newMusic.userName;
+     zNewMusic.albumName = newMusic.albumName;
+     zNewMusic.albumPic = newMusic.albumPic;
+ }
+ 1.数据的增删改查
+ 2.多表的链接查询
+ 3.数据回滚
+ http://hao.jobbole.com/magicalrecord/
+
+文件操作
+1.数据持久化的方法
+通常程序在运行中或者程序结束之后，需要保存一些信息，而且需要持久化存储信息,比如登陆信息、视频播放记录、收藏记录等等,那么我们可以采用以下几种方式对数据进行持久化保存。1.文件    2.plist    3.数据库
+2.常用文件操作类
+1）NSFileManager（文件管理类）
+<1>创建文件管理器单例对象
+[NSFileManager defaultManager];
+
+<2>遍历目录下的内容
+//浅度遍历当前目录下的文件
+[manager contentsOfDirectoryAtPath:path error:&error]
+
+//深度遍历
+[manager subpathsOfDirectoryAtPath:path error:&error]
+
+<3>判断文件是否存在
+[manager fileExistsAtPath:path]
+
+<4>创建文件
+//创建文件
+参数1：创建文件的路径
+参数2：内容，如果nil表示创建一个内容为空的文件。
+参数3：nil表示采用默认的设置
+//如果文件已经存在，会覆盖原来文件。
+[manager createFileAtPath:path contents:data attributes:nil];
+    
+//创建目录
+参数1：文件夹路径
+参数2：是否有中间目录(YES针对所有的情况)
+参数3：nil表示采用默认设置
+参数4：错误
+
+//不会覆盖文件夹内容
+[manager createDirectoryAtPath:path withIntermediateDirectories:YES attributes:nil error:&error];
+
+<5>拷贝文件/目录
+//从哪个路径copy
+NSString *fromPath = @"/Users/qianfeng/Desktop/文件夹/testff.txt";
+//copy哪个路径
+NSString *toPath = @"/Users/qianfeng/Desktop/文件夹/新建文件夹/testff.txt";
+//如果文件已经存在是copy不成功的
+[manager copyItemAtPath:fromPath toPath:toPath error:&error];
+
+<6>移动文件/目录
+[manager moveItemAtPath:fromPath toPath:toPath error:&error];
+
+<7>删除文件/目录
+[manager removeItemAtPath:@"/Users/qianfeng/Desktop/文件夹/新建文件夹" error:nil]
+
+<8>获取文件属性    (返回的是字典)
+[manager attributesOfItemAtPath:@"/Users/qianfeng/Desktop/文件夹/testff.txt" error:nil];
+
+2.3 NSFileHandle（文件句柄类）
+对文件进行读写首先需要NSFileHandle打开文件,NSFileHandle对文件进行读写都是NSData类型的二进制数据.
+                
+<1>打开文件方法
+//以只读方式打开
+NSFileHandle *readOnlyHandle =  [NSFileHandle fileHandleForReadingAtPath:path]
+//以只写方式打开
+NSFileHandle *writeOnlyHandle = [NSFileHandle fileHandleForWritingAtPath:path]
+//以读写方式打开
+NSFileHandle *readWriteHandle = [NSFileHandle fileHandleForUpdatingAtPath:path]
+
+<2>读指定长度的数据（单位为字节)
+[readOnlyHandle readDataOfLength:5]或者 [readWriteHandle readDataOfLength:5]
+
+<3>从当前偏移量读到文件尾
+[readOnlyHandle readDataToEndOfFile];
+
+<4>设置文件偏移量（单位为字节)
+[readOnlyHandle seekToFileOffset:5];
+
+<5>将文件偏移量定位到文件尾
+[readOnlyHandle seekToEndOfFile];
+
+//如果希望这次写入的数据完全覆盖掉原有数据
+//常规做法，短的写入，无法覆盖长的数据
+//可以截断原来数据
+[readWriteHandle truncateFileAtOffset:0];
+//截断到0字节长，即清空原有数据。
+
+<6>写文件(不会覆盖的时候需要设置偏移量)
+//当前偏移量指到文件最后
+[readWriteHandle seekToEndOfFile];
+//写入数据
+[readWriteHandle writeData:data];
+
+[readWriteHandle writeData:[@"12345678945343543534543" dataUsingEncoding:NSUTF8StringEncoding]];
+
+ <7>关闭文件句柄
+//关闭文件句柄,关闭后(不需要)就不能再操作文件了
+[readOnlyHandle closeFile];
+[readWriteHandle closeFile];
+[writeOnlyHandle closeFile];
+ 
+ */
 
 
 #pragma mark - block

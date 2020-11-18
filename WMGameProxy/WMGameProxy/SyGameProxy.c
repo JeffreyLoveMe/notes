@@ -36,6 +36,14 @@
  2.定义一个有参数的宏需要给结果也加上一个()
  */
 #define GIRTH(v1, v2) (2 * PI * (v1) * (v2))
+// 3.例子
+// 用标准宏定义写一个判断系统是否是iOS12以上的版本
+#define isIOS12 ([[[UIDevice currentDevice] systemVersion] floatValue] >= 12.0 ? YES : NO)
+// 用标准宏定义MIN输入两个参数并返回较小一个
+#define MIN(A, B) ((A) <= (B) ? (A) : (B))
+// 用标准宏定义SECONDS_PER_YEAR表示1年中含有多少秒（忽略闰年）
+#define SECONDS_PER_YEAR (365 * 24 * 60 * 60)UL
+
 /// 3>.条件编译
 // 预编译阶段 - 根据条件来选择编译代码（只会将满足条件的代码编译进去/代码不会全部被编译进去）
 // 条件编译不能用于判断变量/一般条件编译和宏定义结合使用

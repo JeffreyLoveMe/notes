@@ -172,71 +172,6 @@ union date {
 查看所有图书信息
 Demo：新建demo，包含Model、Manager、View、Controller？？？
 
-#数据持久化的方法
-1.数据库：
-//sql语句：结构化查询语言
-1.创建表
-create table if not exists sso (
-id integer primary key autoincrement,//将id设为主键
-author text,//文本
-price real,//浮点型
-pages integer);//整型
-2.插入
-insert into sso (author,price,pages) values(?,?,?);
-3.更新
-update sso set price = ?,pages = ? where author = ?;
-4.删除
-delete from sso where pages > ?;
-5.查询
-select * from sso;
-//FMDB
-代码：SqliteViewController.h/m
-//MagicalRecord：
-一.Core Data：
-1.新建Core Data；
-2.新建表：写上需要存储的文件；
-3.关联生成属性类；
-二.导入数据：
-4.导入MagicalRecord；
-三.app启动：
-5.设置数据库存放的文件名；
-6.让Magical Record支持数据库版本管理；
-7.查询所有的数据库内容，如果有内容则送到数据源；
-if([MusicInfo MR_findAll].count) {
-    for(MusicInfo *music in [MusicInfo MR_findAll]) {
-        MusicInformation *musicInfo = [[MusicInformation alloc] init];
-        musicInfo.songUrl = music.songUrl;
-        musicInfo.songName = music.songName;
-        musicInfo.songId = music.songId;
-        musicInfo.userName = music.userName;
-        musicInfo.albumName = music.albumName;
-        musicInfo.albumPic = music.albumPic;
-        [[MusicManager sharedIntance].selectMusics addObject:musicInfo];//把对象加到数据源
-    }
-}
-四.app杀掉：
-8.删除数据库里的表，将数据源保存；
-for(MusicInfo *music in [MusicInfo MR_findAll]) {
-    [music MR_deleteEntity];//删除数据表
-}
-[[NSManagedObjectContext MR_defaultContext] MR_saveToPersistentStoreAndWait];
-9.新建数据库的表，将数据源所有内容放到数据库，保存；
-for(MusicInformation *newMusic in [MusicManager sharedIntance].selectMusics) {
-    MusicInfo *zNewMusic = [MusicInfo MR_createEntity];//新建数据表
-    zNewMusic.songName = newMusic.songName;
-    zNewMusic.songUrl = newMusic.songName;
-    zNewMusic.songId = newMusic.songId;
-    zNewMusic.userName = newMusic.userName;
-    zNewMusic.albumName = newMusic.albumName;
-    zNewMusic.albumPic = newMusic.albumPic;
-}
-/*
-1.数据的增删改查
-2.多表的链接查询
-3.数据回滚
-*/
-http://hao.jobbole.com/magicalrecord
-
 /******************************补充知识点******************************/
 #函数式编程思想(高聚合：代码聚合、方便管理)：把很多功能放在一个函数块(block)去处理
 int a = ({
@@ -782,100 +717,6 @@ int main(int argc, const char * argv[]) {
     return 0;
 }
 
-文件操作
-1.数据持久化的方法
-通常程序在运行中或者程序结束之后，需要保存一些信息，而且需要持久化存储信息,比如登陆信息、视频播放记录、收藏记录等等,那么我们可以采用以下几种方式对数据进行持久化保存。1.文件    2.plist    3.数据库
-2.常用文件操作类
-1）NSFileManager（文件管理类）
-<1>创建文件管理器单例对象
-[NSFileManager defaultManager];
-
-<2>遍历目录下的内容
-//浅度遍历当前目录下的文件
-[manager contentsOfDirectoryAtPath:path error:&error]
-
-//深度遍历
-[manager subpathsOfDirectoryAtPath:path error:&error]
-
-<3>判断文件是否存在
-[manager fileExistsAtPath:path]
-
-<4>创建文件
-//创建文件
-/*参数1：创建文件的路径
-参数2：内容，如果nil表示创建一个内容为空的文件。
-参数3：nil表示采用默认的设置*/
-//如果文件已经存在，会覆盖原来文件。
-[manager createFileAtPath:path contents:data attributes:nil];
-    
-//创建目录
-/*参数1：文件夹路径
-参数2：是否有中间目录(YES针对所有的情况)
-参数3：nil表示采用默认设置
-参数4：错误*/
-
-//不会覆盖文件夹内容
-[manager createDirectoryAtPath:path withIntermediateDirectories:YES attributes:nil error:&error];
-
-<5>拷贝文件/目录
-//从哪个路径copy
-NSString *fromPath = @"/Users/qianfeng/Desktop/文件夹/testff.txt";
-//copy哪个路径
-NSString *toPath = @"/Users/qianfeng/Desktop/文件夹/新建文件夹/testff.txt";
-//如果文件已经存在是copy不成功的
-[manager copyItemAtPath:fromPath toPath:toPath error:&error];
-
-<6>移动文件/目录
-[manager moveItemAtPath:fromPath toPath:toPath error:&error];
-
-<7>删除文件/目录
-[manager removeItemAtPath:@"/Users/qianfeng/Desktop/文件夹/新建文件夹" error:nil]
-
-<8>获取文件属性    (返回的是字典)
-[manager attributesOfItemAtPath:@"/Users/qianfeng/Desktop/文件夹/testff.txt" error:nil];
-
-2.3 NSFileHandle（文件句柄类）
-对文件进行读写首先需要NSFileHandle打开文件,NSFileHandle对文件进行读写都是NSData类型的二进制数据.
-                
-<1>打开文件方法
-//以只读方式打开
-NSFileHandle *readOnlyHandle =  [NSFileHandle fileHandleForReadingAtPath:path]
-//以只写方式打开
-NSFileHandle *writeOnlyHandle = [NSFileHandle fileHandleForWritingAtPath:path]
-//以读写方式打开
-NSFileHandle *readWriteHandle = [NSFileHandle fileHandleForUpdatingAtPath:path]
-
-<2>读指定长度的数据（单位为字节)
-[readOnlyHandle readDataOfLength:5]或者 [readWriteHandle readDataOfLength:5]
-
-<3>从当前偏移量读到文件尾
-[readOnlyHandle readDataToEndOfFile];
-
-<4>设置文件偏移量（单位为字节)
-[readOnlyHandle seekToFileOffset:5];
-
-<5>将文件偏移量定位到文件尾
-[readOnlyHandle seekToEndOfFile];
-
-//如果希望这次写入的数据完全覆盖掉原有数据
-//常规做法，短的写入，无法覆盖长的数据
-//可以截断原来数据
-[readWriteHandle truncateFileAtOffset:0];
-//截断到0字节长，即清空原有数据。
-
-<6>写文件(不会覆盖的时候需要设置偏移量)
-//当前偏移量指到文件最后
-[readWriteHandle seekToEndOfFile];
-//写入数据
-[readWriteHandle writeData:data];
-
-[readWriteHandle writeData:[@"12345678945343543534543" dataUsingEncoding:NSUTF8StringEncoding]];
-
- <7>关闭文件句柄
-//关闭文件句柄,关闭后(不需要)就不能再操作文件了
-[readOnlyHandle closeFile];
-[readWriteHandle closeFile];
-[writeOnlyHandle closeFile];
 1.什么是XML？
 extensible Markup Language   可扩展性标记语言
 特点：1.可扩展性   2.标记
@@ -1692,7 +1533,6 @@ Xcode7.0以后：NSAppTransportSecurity->NSAllowsArbitraryLoads->YES
 3.你通常用什么数据格式与服务端交互：json/xml|json、xml解析方式的底层是如何处理的？
 2.什么时候需要使用delegate/什么时候需要使用notification /// delegate/block/notification有什么不同点？？？
 12.代理delegate/通知/block之间有什么区别？
-13.iOS怎么做数据持久化？coredata/sqlite之间又什么联系？coredata是关系型数据库吗？
 19.使用过哪些第三方库？jsonKit/AFNetworking/SnapKit/MJRefresh///要有针对性，涉及到每个方面；
 20.怎么实现UITableView的懒加载？
 21.iOS开发中常见的异常有哪些？
@@ -1723,7 +1563,6 @@ struct ListNode {
 函数的声明：void DeleteNode(ListNode* pListHead, ListNode* pToBeDeleted);
 2.语句倒序：I am Bruch；（语言随意：不能使用伪代码）
 4.将一个链表逆序？/输出一个字符串是否对称？/输出树的深度？
-5.定义一个标准宏MIN：输入两个参数并返回最小值？
 6.C语言中默认的随机数random()是从x->y?
 9.id obj = [[NSMutableArray alloc]init];/id obj = [NSMutableArray array];初始化
 有什么不同？
@@ -1766,7 +1605,6 @@ Person *person = [Person alloc] init]；
 26.xib/nib之间的区别？
 28.json解析内部是怎么实现的？
 29.试说明SEL和@selector的用途、有什么作用？
-30.iOS中App数据持久化机制有哪几种方案？（详细说明）
 31.请说明Touch和非Touch事件发生时在系统中的传递过程？（事件传递hitest）
 34.如果开启异步线程？如果想要延迟执行某个线程怎么实现？
 42.iOS应用是如何实现后台多任务处理？
@@ -1834,10 +1672,6 @@ UITableView调用reloadData()会发生什么问题？
 44. WWDC是什么？你有关注过WWDC吗？
 45. Xcode选择模拟器编译：在Products中生成的二进制文件后缀是什么？
 46. 重点理解SEL的用法；
-
-//数据持久化
-1.NSCache和数据持久化使用场景有什么区别？
-2.常用的数据持久化方法有哪些？各自有什么利弊？
 
 // 数据库开发：sql语句/连表查询
 例1.有两张表，用户表(Z_User)和黑名单表(Z_Blackuser)，userid是Z_User的
@@ -2387,8 +2221,6 @@ Singleton 了，用的越多对水平就越表示怀疑。对设计模式自信�
 程中使用非 ARC的类和开源框架?
 10.简要说明下 OC的延展和分类的作用和区别 11.OC中多线程的实现方式有哪些?如何实现在一个异步线程中使用一个定时器? 12. 请例举常用的网络请求开源框架、 JSON解析开源框架、 UI 开源框架。
 14. 请列举出你所知道的设计模式及各种设计模式的特点。
- 
-1.iOS 平台怎么做数据持久化(本地保存)，请列举至少 4 种方法。
 2. 什么情况使用 weak 关键字， weak和 assign 的区别是什么?
 3.@synthesize 和@dynamic分别有什么作用?
 4. 列举几种反向传值的方法
@@ -2932,13 +2764,6 @@ IBOutlet连出来的视图属性为什么可以被设置成weak?
 IB中User Defined Runtime Attributes如何使用？
 * User Defined Runtime Attributes是一个不被看重但功能非常强大的的特性，它能够通过KVC的方式配置一些你在interface builder中不能配置的属性
 * 当你希望在IB中作尽可能多得事情，这个特性能够帮助你编写更加轻量级的viewcontroller
-沙盒目录结构是怎样的？各自用于那些场景？
-* Application：存放程序源文件，上架前经过数字签名，上架后不可修改
-* Documents：常用目录，iCloud备份目录，存放数据
-* Library
-    * Caches：存放体积大又不需要备份的数据
-    * Preference：设置目录，iCloud会备份设置信息
-* tmp：存放临时文件，不会被备份，而且这个文件下的数据有可能随时被清除的可能
 pushViewController和presentViewController有什么区别
 * 两者都是在多个试图控制器间跳转的函数
 * presentViewController提供的是一个模态视图控制器(modal)
@@ -3087,23 +2912,6 @@ OpenAL
     reloadData  刷新整个表格  和 reloadSections:     withRowAnimation  刷新一组数据
 29. XML有哪几种解析方式，他们各有什么优点
 答：有Sax和Dom两种解析方式，sax是逐行解析。dom是一次性全部加载xml文件，然后解析
-
-29.iOS平台怎么做数据持久化
-有以下方式做
-1、NSUserDefaults
-2、Plist
-3、数据库
-4、文件保存
-5、归档与反归档
-
-30.int  retVal=UIApplication(argc,argv,nil,nil):是什么意思
-
-对UIApplication对象进行了初始化，这个方法除了argc 和argv 参数外，另外这个函数还有2个两个字符串参数来识别UIApplication类和UIApplication代理类，在这里默认是2个nil,第一个参数为nil就默认把UIApplication类作为缺省值进行初始化，可以在这里不填nil而是使用自己定义的UIApplication子类。至于第二个参数nil就设置为nil就把模板生成的HelloWorldAppdelegate类作为默认值。
-
-31.iOS平台怎么做数据的持久化?Core Data和SQLite有无必然联系？Core Data是一个关系型数据库吗？
-答：iOS中可以有四种持久化数据的方式： 属性列表、对象归档、SQLite3和Core Data
- Core data与sqlite还是有联系的，core data 是对sqlite的封装，因为sqlite是c语言的api，然而有人也需要obj-c 的api，所以有了 core data 另外，core data不仅仅是把c的api翻译成oc 的api，还提供了一些管理的功能，使用更加方便
-Core Data不是一个关系型数据库，也不是关系型数据库管理系统(RDBMS)。虽然Core Dta支持SQLite作为一种存储类型，但它不能使用任意的SQLite数据库。Core Data在使用的过程种自己创建这个数据库。Core Data支持对一、对多的关系
 
 1、给定字符串的长度，还有换行方式 算出高度。
 UIFont *font = [UIFont systemFontOfSize:14];
@@ -3490,28 +3298,8 @@ A. 需要 B. 不需要 C.都可以
  允许一个类在某些特定时刻通知到其他类，而不需要获取到 那些类的指针。可以减少框架复杂度。
   应用场景: 当一个类的某些功能需要由别的类实现，但是又 不确定由哪个类实现，可以使用代理实现。
  实例: tableview 、 Scrollview 等中的 delegete ⋯
-2. 什么是数据持久化?简单谈一下你所了解的 中的数据持久化的方式。
-数据持久化就是将内存中的数据模型转换为存储模型 将存储模型转换为内存中的数据模型的统称 . 数据模型可以 是任何数据结构或对象模型 ,存储模型可以是关系模型、 XML 、 二进制流等。
-在 IOS 中，少量的数据持久化可以使用属性列表、 NSUserDefaults 、归档等;
-大量的数据持久化可以使用 SQLite 数据库、 CoreData 等， 也可以使用 FMDB 第三方类库完成。
-2.NSUserDefaults 适合存储轻量级的本地数据， 以键值对的形 式进行存储，只能存储基本的 OC 对象(不包括自定义的对象)。
-NSUserDefaults 非常好用，并不需要用户在程序中设置 NSUserDefaults 的全局变量，需要在哪里使用 NSUserDefaults 的数据，那么就在哪里创建一个 NSUserDefaults 对象，然后进行读或者写操作。
-针对同一个关键字对应的对象或者数据，可以对它进行重写， 重写之后关键字就对应新的对象或者数据，旧的对象或者数 据会被自动清理。
-NSUserDefaults 是典型的单例模式。
-3. ProtocolList属性列表，是一种用来存储串行化后的对象的文件。因为扩 展名为 plist ，因此通常被称为 plist 文件。
-plist 文件通常用于储存用户设置，也可以用于存储捆绑的信 息，其内容为 xml 格式。它可以在程序运行期间动态的创建
-和读写，因此可以用于少量数据时候的数据持久化。
-3. 归档优缺点?
- 归档也叫序列化，是将文件存在硬盘，解档是从硬盘还原数 据。
-归档的形式来保存数据，只能一次性归档保存以及一次性解 压。所以只能针对小量数据，而且对数据操作比较笨拙，即 如果想改动数据的某一小部分，还是需要解压整个数据或者 归档整个数据。
-除了简单的归档，还可以实现对象的归档。对象归档是指对 象写入文件保存到硬盘上，当再次重写打开程序时，可以还
-原这些对象。可以实现对象序列化或者对象持久化。
-除了原有的 OC 对象以外，归档还可以对自定义的对象实现 归档，需要注意的是，自定义的归档对象必须要实现 NSCoding 协议，实现里面的解码和编码的方法。
-4. 什么是数据库?使用步骤?特点? 数据库是按照数据结构来组织、存储和管理数据的仓库。
-SQLite 使用步骤:创建数据库、引入类库、获得沙盒路径、 创建或打开数据库
-SQLite 比较原始，需要通过 sql 语句来创建表格，对数据进 行操作，用起来比较麻烦，但是可控性强。
 
- 14 ， tableview 的优化 优化:
+14 ， tableview 的优化 优化:
 1.1 正确的复用 cell 。
 1.2 减少在返回每个 cell 里面的处理逻辑和处理时间。尽量将数据进行缓存和复用。
 1.3，尽量减少处理加载和计算的时间，不阻塞 1.4 ，尽量使用绘制每个 cell 。
@@ -3658,29 +3446,6 @@ obj = [obj initWithCString: nullTerminatedCString encoding: encoding]; return [o
 
 75、runloop是什么 ?在主线程中的某个函数里调用 了异步函数 ,怎么样block当前线程 ,且还能响应当 前线程的timer事件 ,touch事件等 .---NSRunLoop,NSTimer 需 要自己实现 ----GCD 的返回主线程的方法 ,看前面的题runloop,正如其名称所示 ,是线程进入和被线程用 来响应事件以及调用事件处理函数的地方。 需要在 代码中使用控制语 句实现 run loop的循环 ,也就是 说 ,需要代码提供 while 或者 for 循环来驱动 run loop。在这个循环中 ,使用一个 runloop对象 [NSRunloop currentRunloop]执行接收消息 ,调用对 应的处理函数。
 
-76、 描述下拉刷新的实现机制获取数据 ,刷新页面。
-
-77、什么是沙盒 ?沙盒包含哪些文件 ,描述每个文件 的使用场景。如何获取这些文件的路径 ?如何获取 应用程序包 中文件的路径 ?
-沙盒是某个 iphone工程进行文件操作有此工程对 应的指定的位臵 ,不能逾越。 包括 :四个文件
-夹:documents,tmp,app,Library。 手动保存的文件在 documents文件里。 Nsuserdefaults保存的文件在 tmp文件夹
-Documents 目录:您应该将所有 de应用程序数据文 件写入到这个目录下。 这个目录用于存储用户数据
-或其它应该定期备 份的信息。AppName.app 目录: 这是应用程序的程序包目录 ,包含应用程序的本身。 由于应用程序必须经过签名 ,所以 您在运行时不 能对这个目录中的内容进行修改 ,否则可能会使应 用程序无法启动。 Library 目录 :这个目录下有两个 子目 录:Caches 和 PreferencesPreferences目录包 含应用程序的偏好设臵文件。 您不应该直接创建偏 好设臵文件 ,而是 应该使用 NSUserDefaults类来取 得和设臵应用程序的偏好 .Caches 目录用于存放 应用程序专用的支持文件 ,保存应用程 序再次启 动过程中需要的信息。 tmp 目录 :这个目录用于存 放临时文件 ,保存应用程序再次启动过程中不需要 的信息。
-获取这些目录路径的方法 : 1,获取家目录路径的
-函数 : NSString *homeDir =
-NSHomeDirectory(); 2,获取 Documents目录路径的
-方法 : NSArray *paths =NSSearchPathForDirectoriesInDomains(NSDocum
-entDirectory, NSUserDomainMask, YES); NSString *docDir = [paths
-objectAtIndex:0]; 3,获取 Caches目录路径的方 法: NSArray *paths =
-NSSearchPathForDirectoriesInDomains(NSCachesDi rectory, NSUserDomainMask, YES); NSString
-*cachesDir = [paths objectAtIndex:0]; 4,获取 tmp目
-录路径的方法 : NSString *tmpDir =
-NSTemporaryDirectory(); 5,获取应用程序程序包
-中资源文件路径的方法 : 例如获取程序包中一个
-图片资源 (apple.png)路径的方法 : NSString
-*imagePath = [[NSBundle mainBundle] pathForResource:@ ” apple ” ofType:@ ” png ” ]; UIImage *appleImage = [[UIImage alloc]
-initWithContentsOfFile:imagePath]; 代码中的 mainBundle类方法用于返回一个代表应用程序包
-的对象。
-
 6. 代理的作用? 答案:代理的目的是改变或传递控制链。允许一个类在某些特定时刻通知到其他类，而不需要获取到
 那些类的指针。可以减少框架复杂度。 7.oc 中可修改和不可以修改类型。
 答案:就是可动态添加修改和不可动态添加修改一样。 比如 NSArray 和 NSMutableArray 。前者在 初始化后的内存控件就是固定不可变的，后者可以添加等，可以动态申请新的内存空间。
@@ -3784,19 +3549,6 @@ someKey 这个方法， 如果没找到， 会继续查找对象是否带有 som
 而 4.0 独有的类名 nsinteger 和 int
 get /set方
 法怎么做?有什么注意事项?
-
-5.nil 表示空指针，相当于 java 的 null
-7. 开发 objc 类，需要创建一个头文件和一个实现文件
-1头文件 (.h): 包含类的实例变量的名称和类型、描述方法参数和返回值类型的方法签名 ; 2实现文件 (.m): 包含这些方法的实现代码，以及对别的类不可见的，仅与实现本身相关的 局部变量的声明和使用。
-8. 九宫格解法原理; ( 右上解法 ) 左出右写入、右出左写入、上出下写入、下出上写入、重排置下;
-9.iphone 应用程序的项目基本结构
-classes: 里面存放 object-c 类源代码文件 ( 可以创建子文件夹来组织代码 );
-other sources: 存放除 objective-c 类之外的源代码文件;
-resources: 包含应用程序中的非代码文件 ( 因为应用程序只能在自己的沙盒中运行，不然找 不到 ) ;
-Frameworks: 特殊的库，可以存放库、框架、图像、声音等资源;
-Products :包含项目在编译时生成的应用程序 (xxx.app);
-10.Info.plist 文件里的 bundle identifier( 束标识符 ) 它是应用程序的唯一标识符，要始终配置，命名格式为:顶级 Internet 应用名称;
-域+.+公司名称 +.+
 
 19. 什么是 KVO 和 KVC?
 20. 代理的作用 ?
@@ -4143,15 +3895,6 @@ Xcode scheme 定义了编译集合中的若干 target,编译时的一些设置�
 2. 典型设备:集线器、中继器
 3. 典型协议、标准和应用: V.35、EIA/TIA-232.
 
-对沙盒的理解
-每个 iOS 应用都被限制在“沙盒”中， 沙盒相当于一个加了仅主人可见权 限的文件夹， 及时在应用程序安装过程中， 系统为每个单独的应用程序生
-成它的主目录和一些关键的子目录。苹果对沙盒有几条限制 :
-1. 应用程序在自己的沙盒中运作，但是不能访问任何其他应用程序的沙盒;
- 2. 应用之间不能共享数据， 沙盒里的文件不能被复制到其他应用程序的文件夹中， 也不能把其他应用文件夹复制到沙盒中;
-3. 苹果禁止任何读写沙盒以外的文件， 禁止应用程序将内容写到沙盒以外的文件 夹中;
-4. 沙盒目录里有三个文件夹: Documents——存储;应用程序的数据文件，存储 用户数据或其他定期备份的信息; Library 下有两个文件夹， Caches存储应用程 序再次启动所需的信息， Preferences 包含应用程序的偏好设置文件，不可在这 更改偏好设置; temp存放临时文件即应用程序再次启动不需要的文件。
-获取沙盒根目录的方法，有几种方法:用 NSHomeDirectory 获取。 获取 Document路径:
-NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,NSUserD omainMask,YES).
 对瀑布流的理解
 首先图片的宽度都是一样的， 1. 将图片等比例压缩，让图片不变形; 2. 计算图片最低应该摆放的位置， 哪一列低就放在哪; 3. 进行最优排列， 在 ScrollView 的基础上添加两个 tableView ，然后将之前所计算的 scrollView 的高度通过 tableView 展示出来。
 如何使用两个 TableView 产生联动:将两个 tableView 的滚动事件禁止掉， 最外层 scrollView 滚动时将两个 TableView 跟着滚动，并且更改 contentOffset ，这样产生效果滚动的两个 tableView 。
@@ -4739,17 +4482,6 @@ completion:NULL];
 对于闭包 (block), 有很多定义，其中闭包就是能够读取其它函数
 内部变量的函数， 这个定义即接近本质又较好理解。 对于刚接触 Block 的同学，会觉得有些绕，因为我们习惯写这样的程序 main(){ funA();} funA(){funB();} funB(){ ⋯..}; 就是函数 main调用函数 A，函数A调用函 数B⋯ 函数们依次顺序执行，但现实中不全是这样的，例如项目经 理M，手下有 3个程序员 A、B、C，当他给程序员 A安排实现功能 F1 时，他并不等着 A完成之后，再去安排 B去实现 F2，而是安排给 A功 能F1，B功能F2，C功能F3，然后可能去写技术文档，而当 A遇到问 题时，他会来找项目经理 M，当 B做完时，会通知 M，这就是一个异 步执行的例子。在这种情形下， Block 便可大显身手，因为在项目经理 M，给 A 安排工作时，同时会告诉 A 若果遇到困难，如何能找到他 报告问题 (例如打他手机号 )，这就是项目经理 M给A的一个回调接口， 要回掉的操作，比如接到电话，百度查询后，返回网页内容给 A ，这 就是一个 Block ，在 M交待工作时，已经定义好，并且取得了 F1的任 务号 (局部变量 )，却是在当 A遇到问题时，才调用执行，跨函数在项 目经理 M查询百度，获得结果后回调该 block 。
 
-1、 iOS 数据持久化存储方案有哪些?
-参考答案:
-plist属性列表存储(如 NSUserDefaults )
-文件存储 (如二进制数据写入文件存储， 通过 NSFileManager 来操作 将下载起来的二进制数据写一篇文件中存储)
-NSKeydeArchiver 归档存储，常见的是自动化归档 /解档处理，想要 学习如何通过 runtime 实现自动化归档 /解档，可
-数据库 SQLite3 存储(如 FMDB 、Core Data ) 2、沙盒的目录结构是怎样的?各自一般用于什么场合?
-参考答案:
-Application :存放程序源文件，上架前经过数字签名，上架后不可修改
-Documents: 保存运行时生成的需要持久化的数据 ,iTunes 同步 设备时会备份该目 录。例如 ,游戏应用可将游戏存档保存在该目录 tmp: 保存应 ?运行时所需的临时数据 ,使?完毕后再将相应的文件从 该目录删除。应用 没有运行时 ,系统也可能会清除该目录下的文件。 iTunes 同步设备时 不会备份该目录
-Library/Caches: 保存应用运行时 ? 成的需要持久化的数据 ,iTunes 同 步设备时不会备份 该目录。?一般存储体积大、 不需要备份的非重要 数据，比如网络数据缓存存储到 Caches 下
-Library/Preference: 保存应用的所有偏好设置，如 iOS 的Settings( 设 置) 应?会在该目录中查找应 ?的设置信息。iTunes同步设备时会备份 该目录
 3、 #define 定义的宏和 const 定义的常量有什么区别?
 参考答案:
 #define 定义宏的指令，程序在预处理阶段将用 #define 所定义的内容 只是进行了替换。因此程序运行时，常量表中并没有用 #define 所定 义的宏，系统并不为它分配内存，而且在编译时不会检查数据类型， 出错的概率要大一些。
@@ -4919,10 +4651,6 @@ Foundation UIKit
 reloadData 刷新整个表格 和 reloadSections: withRowAnimation 刷新一组数据
 29. XML有哪几种解析方式，他们各有什么优点
 答:有 Sax和 Dom两种解析方式， 然后解析
-29.iOS 平台怎么做数据持久化 有以下方式做
-1、 NSUserDefaults
-2、Plist
-3、数据库 4、文件保存 5、归档与反归档
 sax 是逐行解析。
 dom是一次性全部加载
 xml 文件，
@@ -5076,7 +4804,6 @@ protected 保护，加上这个修饰的类或属性，只能在类和同包访�
 ARC是 iOS 5 推出的新功能，全称叫 ARC(Automatic Reference Counting) 。
 简单地说，就是代码中自动加入了 retain/release ，原先需要手动添加的用来 处理内存管理的引用计数的代码可以自动地由编译器完成了。
 该机能在 iOS 5/ Mac OS X 10.7 开始导入，利用 Xcode4.2 可以使用该机能。 简单地理解 ARC，就是通过指定的语法，让编译器 (LLVM 3.0) 在编译代码时， 自动生成实例的引用计数管理部分代码。有一点， ARC并不是 GC，它只是一种 代码静态分析( Static Analyzer )工具。
-12. 写一个“标准”宏，这个宏输入两个参数并返回较小的 #define MIN(X,Y) ((X)>(Y)?(Y):(X))
 13. Objective-c 中有多重继承么?不是的话有声明替代方式 ? 没有多继承，可以通过协议模拟多继承
 14. Objective-c 中有私有方法吗?私有变量呢? 没有私有方法，但可以将方法直接实现在 .m 文件中不在 .h 文件中声明时，外部也不能访问。 有私有变量
 18. 想 nil 对象发送消息会发生什么?
@@ -5267,16 +4994,15 @@ dispatch_async(dispatch_get_main_queue(), <#^(void)block#>) 6 数据存储的方
 31.在.m文件Class Extension中声明的私有方法，其他类能否调用若强行调用会发生什么?
 32.在调?用?支付宝接 ?口?支付p时ar，tner，seller，private分别是什么意思 ? 20 33.谈谈如何在 MVC模式中减轻 ViewController 的重量(减少代码) 20
 34.为什么很多内置的类，如 TableViewController 的delegate的属性是assign不v是retain? 20
-35.列举?几个你曾经 ?用过的第三 ?方库? 20 36. ?用宏定义来写出 ?一个判断系统是否是iOS7 以上的版本的例 ?子 21
-37. Objective-C 的动态性体现在哪些 ?方?面
-40. 多线程中堆与栈分别是共有的还是私有的?(记住) 22
+35.列举几个你曾经用过的第三方库?
+37. Objective-C 的动态性体现在哪些方面?
+40. 多线程中堆与栈分别是共有的还是私有的?(记住)
 41.Objective-C 声明 ?一个类所有要 ?用到的编译指令是? 22 42.?用预编译指令#de?ne 声明?一个常数， ?用以表1?年示中有多少秒(忽略闰年问题) 22 43.解析XML?文件有哪 ?几种?方式? 22 44.下?面哪个 ?方法不属于NSObject 的内省( Introspection )?方法 22 45.iOS 开发中，开发证书根据 ?用途划分可以分为哪两 ?大类，分别作 ?用是什么?22?用途 46. 关键字 const 有什么含义? static 的作 ?用?还有extem C 的作 ?用? 23
 47. 让 ?一个物体从界 ?面中的 ?一点运动到另外 ?一点，有哪些 ?方法?
 48. 什么是多继承?
 49.ViewController 的loadView,viewDidLoad,didReceiverMemoryWarning 分别是什么时候 调?用的,在初始化 ViewController 时在这 ?几个函数中应该做什么 ?工作?
 53. 介绍下 KVC 和 KVO
 55. 谈谈对 Block 的理解 ?
-58. 常见的数据持久化方法有哪些？
 61. 描述 ?一下runtime 的概念 ,message send 理?
 62.什么是 method swizzling? (了解)
 63.Cocoa Touch 包含什么 ? 不包含什么 ?
@@ -5342,21 +5068,6 @@ NSString 是?一个不可变的字符串对象。这不是表 ?示这个对象�
 延展中声明的是私有 ?方法，在其他类中 ?无法直接调 ?用。 内存环境区别:
 MRC :在其他类中可直接调 ?用，只不过会提 ?示警告。 ARC :在其他类中 ?无法直接调 ?用，编译器报错。
 
-36.?用宏定义来写出 ?一个判断系统是否i是OS7 以上的版本的例 ?子 答:
-#define IsIOS7 ([[[UIDevice currentDevice] systemVersion] ?oatValue] >=7.0 ? YES : NO)
-42.用预编译指令#define 声明 ?一个常数， ?用以表1年示中有多少秒
-(忽略闰年问题)
-答: #de?ne SECONDS_PER_YEAR (60 * 60 * 24 * 365)UL
-1). #de?ne 语法的基本知识(例如:不能以分号结束，括号的使 ?用，等等) 2). 意识到这个表达式将使 ?一个16 位机的整型数溢出 -因此要 ?用到 ?长整型符号L,
-告诉编译器这个常数是的 ?长整型数。
-3). 如果你在你的表达式中 ?用到UL (表 ?示 ?无符号 ?长整型)，那么你有了 ?一个好的起点。
-
-58. 常见的数据持久化方法有哪些？
-1.NSUserDefaults: ?用来保存应 ?用程序设置和属性、 ?用户保存的数据。 ?用户再次 打开程序或开机后这些数据仍然存在。 NSUserDefaults 可以存储的数据类型包
-括:NSData 、NSString 、NSNumber 、NSDate 、NSArray 、NSDictionary 。
-如果要存储其他类型，则需要转换为前 储。
-?面的类型，才能 ?用NSUserDefaults 存
-2.归档,反归档 3. ?文件读写 4.SQLite 5.CoreData
 60.实例化 ?一个UITableView 对象 ,要求写出关键语句 ? 答:
 UITableView *tableView = [[UITableView alloc]initWithFrame:<(CGRect)frame> style:<(UITableViewStyle)style>];
 tableView.dataSource = self;
@@ -6454,11 +6165,6 @@ TCP 提供的是面向连接的、可靠的数据流传输，而 UDP 提供的�
 流媒体数据，完成快速接受之目的。 93. fmdb 框架
 答:数据库框架，对 sqllite 的数据操作进行了封装，使用着可把精力都放在 sql语句上面。 94. 320 框架
 答: ui 框架，导入 320 工程作为框架包如同添加一个普通框架一样。 cover(open) flower 框架 (2d 仿射技术 )，内部核心类是 CATransform3D.
-94. 什么是沙盒模型?哪些操作是属于私有 api 范畴 ?
-
- 答:某个 iphone 工程进行文件操作有此工程对应的指定的位置，不能逾越。
-iphone 沙箱模型的有四个文件夹 documents， tmp， app， Library ，永久数据存储一般放documents 文件夹，得到模拟器的路径的可使用 NSHomeDirectory() 方法。 Nsuserdefaults 保 存的文件在 tmp 文件夹里。
-
 107. UIView 与 CLayer 有什么区别? 答:
 1).UIView 是 iOS 系统中界面元素的基础，所有的界面元素都是继承自它。它本身完全是
 由 CoreAnimation 来实现的。它真正的绘图部分，是由一个 CALayer 类来管理。 UIView
@@ -6809,25 +6515,7 @@ NSTimer 需要交定时器添加到当前的 runloop 中 它的时间单位是�
 GCD 一旦执行就不能撤销
 CGD 中的定时器不受 runloop 模式的影响
 时间单位是纳秒
-十七 . 应用程序的沙盒下 ,都有哪些文件夹 ?它们有什么特点 ?本地缓存一般存在哪个文件下?
-1 Documents
-将应用程序的数据文件保存在该目录下 .不过这些数据类型仅限于不可以再生的数据 ,可再生 的数据文件应该存在 LIbrary/Cache 下
-2 Library 它有两个子文件
-caches 主要是缓存文件 ,用户使用过程中缓存都可以保存在这些目录中 .保存那些可再生的
-文件 ,比如网络数据请求 .因此 ,应用程序通常还需要负责删除这些文件 .
-Preferences 应用程序的偏好设置文件 . 我们使用 NSUserDefaults 写的设置数据都会保存到
-该目录下的一个 plist 文件中 它会被 iTunes 同步 3. tmp
-各种临时文件 , 保存应用再次启动时不需要的文件 将其删除 ,因为该目录下的东西随时有可能被系统清除
-统磁盘存储空间不足的时候
-.而且 ,当应用不在需要这些文件时应主动 ,目前已知的一种可能清理的原因是系
-二十 . plist 和 pct 文件的好处 ?
-plist 文件以便用来储存数组或者字典 ,它是 iOS 中特有的存储方式 .它可以将数据与代码隔离开 , 更便于数据的管理和展示 .
-pch 里面可以保存一些全局的宏和头文件 .
-pct 是预编译头文件 , 其中存放有工程中已有编译的部分代码 编译这些代码 .
-pct 头文件的内容能被项目中的其他所有源文件共享访问 存放一些全局的宏 (整个项目都用得上的宏 )
-用来包含一些全部的头文件 (整个项目都用得上的头文件 能自动打开或者关闭日志的输出功能
-pct 弊端 : 每个文件都会导入 ,有效率问题 .
-; 在以后建立工程时就不用重新)
+
 16 什么时候用 delegate ，什么时候用 Notification ?答: delegate 针对 one-to-one 关系， 并且 reciever 可以返回值 给 sender ，notification 可以针对 one-to-one/many/none,reciever 无法返回值给 sender. 所以，delegate 用于 sender 希望接受到 reciever 的某个功能反馈值， notification 用于通知多个 object 某个事件。
 17 什么是 KVC 和 KVO ?答: KVC(Key-Value-Coding) 内部的实现:一个对象在调用 setValue 的时候，( 1)首先根据方法名找到运行方法的时候所需要的环境参数。( 2 )他
 会从自己 isa 体的方法实现。
@@ -7324,8 +7012,6 @@ iVar )，如果还没有找到，程序会继
 我在这想看到几件事情:
 #define 语法的基本知识(例如:不能以分号结束，括号的使用，等等) 懂得预处理器将为你计算常数表达式的值，因此，直接写出你是如何计算一年中有多少秒而不是计算出实际的值，是更清晰而 没有代价的。
 意识到这个表达式将使一个 16 位机的整型数溢出 -因此要用到长整型符号 L,告诉编译器这个常数是的长整型数。 如果你在你的表达式中用到 UL(表示无符号长整型) ，那么你有了一个好的起点。记住，第一印象很重要。
-10.写一” 标准”宏 MIN ，这个宏输入两个参数并返回较小的一个
-答: #define MIN(A,B) (( A ) <= (B) ? (A) : (B))
 
 11.数组和指针的区别
 ( 1)数组可以申请在栈区和数据区;指针可以指向任意类型的内存块
@@ -8176,12 +7862,6 @@ kvo 键 -值观察机制 Key-Value Observing :
 通过父类指针得到的几个对象， 都调用了父类中某个方法， 但实际上 在运行的时候，是执行的自己真实类中的方法。
 多态增强了软件的 灵活性 和重用性 。
 方法的重载也是多态的一种体现，但是在 OC 中，方法的参 数个数不同，方法名也不同，因此不符合方法重载的定义。
-********************************************
-数据存储
-在 IOS 中，少量的数据持久化可以使用属性列表、
-NSUserDefaults 、归档等;
-大量的数据持久化可以使用 SQLite 数据库、 Core Data 等，
-也可以使用 FMDB 第三方类库完成。
 ********************************************
 nsstring 拼接字符串，内部实现机制
 Objective C 中有很多不定参函数， 例如 NSLog(format, arg1, arg2) ， 还 有 字 符 串 或 数 组 在 构 造 时 所 用 的 [NSString
@@ -9070,96 +8750,6 @@ Xcode7.0以后：NSAppTransportSecurity->NSAllowsArbitraryLoads->YES
 4.KVC在网络请求中的应用
 5.进入VC以后怎么加载操作
 /******************************iOS进阶******************************/
-#App的主目录：沙盒机制NSHomeDirectory()
-概念：沙盒机制是一种安全体系，规定了应用程序只能在该应用创建的文件夹内读取文件，不可以
-访问其他地方的内容。所有的非代码文件都保存在这个地方：比如图片、声音、属性列表和文本文件等；
-沙盒中的文件：Documents(持久化数据)、Library(缓存)、tmp(临时文件)
-NSString *home = NSHomeDirectory(); //沙盒根目录
-NSString *documentPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject]; //获取Documents(持久化数据)
-NSString *libarayPath = [NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES) lastObject]; //获取Library(缓存)
-NSString *tempPath = NSTemporaryDirectory(); //获取tmp(临时文件)
-注意：1).每个应用程序都在自己的沙盒；
-2).不能随意跨越自己的沙盒去访问别的应用程序沙盒的内容；
-3).应用程序向外请求或接收数据都需要经过权限认证；
-
-#数据持久化的方法：存放在沙盒
-原因：通常程序在运行中或者程序结束以后，需要保存一些信息，比如登录信息，视频播放记录，收藏等；
-常见方法：
-1.文件操作：见FileViewController.h/m
-2.plist：属性列表文件-只能存储NSString/NSNumber/NSDate/NSArray/NSDictionary
-作用：对一些登录、注册和配置信息进行持久化存储；
-格式：xml语法；
-创建：Xcode创建/代码创建
-读取：需要时自行百度
-3.NSUserDefaults：见FileViewController.h/m
-4.归档/解归档：一种序列化与反序列化
-//归档
-//解归档
-https://www.jianshu.com/p/3e08fa21316d
-5.数据库：
-//sql语句：结构化查询语言
-1.创建表
-create table if not exists sso (
-id integer primary key autoincrement,//将id设为主键
-author text,//文本
-price real,//浮点型
-pages integer);//整型
-2.插入
-insert into sso (author,price,pages) values(?,?,?);
-3.更新
-update sso set price = ?,pages = ? where author = ?;
-4.删除
-delete from sso where pages > ?;
-5.查询
-select * from sso;
-//FMDB
-代码：SqliteViewController.h/m
-//MagicalRecord：
-一.Core Data：
-1.新建Core Data；
-2.新建表：写上需要存储的文件；
-3.关联生成属性类；
-二.导入数据：
-4.导入MagicalRecord；
-三.app启动：
-5.设置数据库存放的文件名；
-6.让Magical Record支持数据库版本管理；
-7.查询所有的数据库内容，如果有内容则送到数据源；
-if([MusicInfo MR_findAll].count) {
-    for(MusicInfo *music in [MusicInfo MR_findAll]) {
-        MusicInformation *musicInfo = [[MusicInformation alloc] init];
-        musicInfo.songUrl = music.songUrl;
-        musicInfo.songName = music.songName;
-        musicInfo.songId = music.songId;
-        musicInfo.userName = music.userName;
-        musicInfo.albumName = music.albumName;
-        musicInfo.albumPic = music.albumPic;
-        [[MusicManager sharedIntance].selectMusics addObject:musicInfo];//把对象加到数据源
-    }
-}
-四.app杀掉：
-8.删除数据库里的表，将数据源保存；
-for(MusicInfo *music in [MusicInfo MR_findAll]) {
-    [music MR_deleteEntity];//删除数据表
-}
-[[NSManagedObjectContext MR_defaultContext] MR_saveToPersistentStoreAndWait];
-9.新建数据库的表，将数据源所有内容放到数据库，保存；
-for(MusicInformation *newMusic in [MusicManager sharedIntance].selectMusics) {
-    MusicInfo *zNewMusic = [MusicInfo MR_createEntity];//新建数据表
-    zNewMusic.songName = newMusic.songName;
-    zNewMusic.songUrl = newMusic.songName;
-    zNewMusic.songId = newMusic.songId;
-    zNewMusic.userName = newMusic.userName;
-    zNewMusic.albumName = newMusic.albumName;
-    zNewMusic.albumPic = newMusic.albumPic;
-}
-/*
-1.数据的增删改查
-2.多表的链接查询
-3.数据回滚
-*/
-http://hao.jobbole.com/magicalrecord/
-
 #通知中心：WMGameProxy直接看代码
 定义：每个App都有一个通知中心，专门负责协助不同对象之间的消息通信
 //创建消息对象
@@ -9576,18 +9166,6 @@ tcp/ip协议，层次结构：应用层/传输层/网络层/数据链路层/物�
 数据链路层：提供介质访问和链路管理
 物理层：物理设备标准
 
-//产生死锁的原因：
-死锁：多个进程在执行过程中，因为资源竞争而造成的阻塞现象；
-1.互斥条件：xxx
-2.请求和保持条件：xxx
-3.不剥夺条件：xxx
-4.环路等待条件：xxx
-//处理死锁的办法：
-1.预防死锁：通过设置一些限制条件，去破坏产生死锁的必要条件；
-2.避免死锁：在资源分配过程中，使用某种方法避免系统进入不安全的状态，从而避免发生死锁；
-3.检测死锁：允许死锁的发生，但是通过系统的检测之后，采取一些措施，将死锁清除掉；
-4.解除死锁：该方法与检测死锁配合使用；
-
 //静态数据类型和动态数据类型的区别：
 1.静态数据类型的特点：在编译期就明确变量的类型、可以访问属性和方法；
 2.动态数据类型的特点：在编译期不清楚变量的类型、运行期才知道真实类型；
@@ -9638,11 +9216,6 @@ https://www.jianshu.com/p/2e1b3f54b4f3
 
 通常发送者和接收者的关系是直接的一对多的关系。
 notification :消息的发送者告知接收者事件已经发生或者将要发生，仅此而已，接收 者并不能反过来影响发送者的行为。通常发送者和接收者的关系是间接的多对多关系。
-
-3、iOS有哪些数据持久化方式?
-答:四种:属性列表、对象归档、 SQLite3 和Core Data 。
-4、Objective-C 如何对内存管理的 , 说说你的看法和解决方法?
-答: Objective-C 的内存管理主要有三种方式 ARC(自动内存计数)、手动内存计数、内 存池。解决方法的话:谁持有，谁释放。
 
 答:当一个视图控制器被创建，并在屏幕上显示的时候。代码的执行顺序 // 视图显示在屏幕上的顺序
 1、 alloc

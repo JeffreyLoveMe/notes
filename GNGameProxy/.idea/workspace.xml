@@ -2,13 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="16e435bf-91d0-4784-a0da-dec4003c7039" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/2020年最新JAVA学习路线图.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GNGameProxy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GNGameProxy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../WMGameProxy/WMGameProxy.xcodeproj/project.pbxproj" beforeDir="false" afterPath="$PROJECT_DIR$/../WMGameProxy/WMGameProxy.xcodeproj/project.pbxproj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../WMGameProxy/WMGameProxy/SYGameProxy.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../WMGameProxy/WMGameProxy/SYGameProxy.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../WMGameProxy/WMGameProxy/SyGameProxy.c" beforeDir="false" afterPath="$PROJECT_DIR$/../WMGameProxy/WMGameProxy/SyGameProxy.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../WMGameProxy/WMGameProxy/SySkillViewController.m" beforeDir="false" afterPath="$PROJECT_DIR$/../WMGameProxy/WMGameProxy/SySkillViewController.m" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../donew_index/html/demo/demo_37.html" beforeDir="false" afterPath="$PROJECT_DIR$/../donew_index/html/demo/demo_37.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../donew_index/html/demo/demo_41.html" beforeDir="false" afterPath="$PROJECT_DIR$/../donew_index/html/demo/demo_41.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../WMGameProxy/WMGameProxy/WMThreadViewController.m" beforeDir="false" afterPath="$PROJECT_DIR$/../WMGameProxy/WMGameProxy/WMThreadViewController.m" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../donew_index/html/html_jQuery.html" beforeDir="false" afterPath="$PROJECT_DIR$/../donew_index/html/html_jQuery.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -20,6 +19,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -33,6 +33,7 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
@@ -51,6 +52,17 @@
     <configuration name="GNGameProxy" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="GNGameProxy" />
       <module name="GNGameProxy" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -103,6 +115,8 @@
       <workItem from="1604723572469" duration="1185000" />
       <workItem from="1605075407489" duration="509000" />
       <workItem from="1605087867782" duration="159000" />
+      <workItem from="1605523977912" duration="858000" />
+      <workItem from="1605579255609" duration="878000" />
     </task>
     <servers />
   </component>

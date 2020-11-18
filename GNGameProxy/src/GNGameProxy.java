@@ -175,6 +175,7 @@ public class GNGameProxy {
         boolean a9 = true; // 没有明确指定大小
 
         // 隐式类型转换 - 自动类型转换（系统会自动将"小类型"->"大类型"，不会损失精度）/"大类型"->"小类型"可能会损失精度 - 报错
+        // byte/short/char - int - long - float - double
         int a10 = 10;
         byte a11 = 4;
         a10 = a10 + a11;
@@ -197,6 +198,13 @@ public class GNGameProxy {
 //        byte a18 = a16 + a17; // 报错
         // Java编译器有常量优化机制
         byte a19 = 3 + 4;
+
+        // 字符和字符串参与运算
+        System.out.println('a' + 1); // 98 - 因为有ASCII码表, 'a'字符对应97
+        System.out.println('a' + 1 + "hello"); // 98hello - 任何数据类型用"+"与字符串相连接都会产生新的字符串
+        System.out.println("5 + 5 = " + 5 + 5); // 5 + 5 = 55;
+        System.out.println("5 + 5 = " + (5 + 5)); // 5 + 5 = 10;
+
 
 
 
