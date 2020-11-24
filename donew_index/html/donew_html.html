@@ -55,6 +55,22 @@
 <html lang="en">
 <!-- 2.头标签 -->
 <head>
+    <!--
+        问题：IE8以下的浏览器不支持h5标签
+        解决办法：引入html5shiv.js文件
+     -->
+    <!-- 
+        条件注释：只有IE可以识别 
+        l - less小
+        t - than比
+        e - equal等于
+        g - great更大
+     -->
+     <!--[if lte ie 8]>
+        <script src="../js/html5shiv/html5shiv.min.js"></script>
+     <![endif]-->
+
+    <!-- 用于描述网页的元信息 -->
     <!-- 编码格式 -->
     <!-- UTF-8 - 通用字符集 -->
     <meta charset="UTF-8">
@@ -66,17 +82,36 @@
     <!-- <meta http-equiv="refresh" content="5;http://www.itcast.com"> -->
     <!-- xxx -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- 链接外部’样式表文件/.css‘ -->
+    <!-- 链接外部"样式表文件/.css" -->
     <link rel="stylesheet" href="../css/login.css">
     <!-- 网页顶部小图标/"favicon.ico" - 前端的习惯命名 -->
     <link rel="icon" href="../image/jd_icon.png">
     <!-- 3.标题标签 -->
     <title>html</title>
-    <!-- ！！！超链接优化写法！！！ -->
+    <!-- ！！！超链接优化写法！！！-->
     <base target="_black">
 </head>
 
 <body>
+    <!-- 
+        html版本对比
+        // HTML4.1
+        结构 - html4.1
+        样式 - css2
+        行为 - js
+        // HTML5 - HTML4的升级版本（狭义）/浏览器技术发展的一个阶段：HTML5 + CSS3 + JS-API（广义）
+        结构 - html5
+        样式 - css3
+        行为 - js API增强（地理定位、web存储、拖拽）
+     -->
+
+    <!-- 
+        关于HTML5
+         1.更简洁、2.书写更宽松（单标签不用写关闭符号、双标签省略标签）
+         2.使用HTML5更有语义化，有利于SEO（用法与div一致）
+         3.IE8以下的浏览器不支持HTML5和CSS3（引入html5shiv.js文件）
+     -->
+
     <!-- 4.主体标签 -->
     <!-- tab按钮可以补全代码 -->
     <div>14期霸气</div>
@@ -285,29 +320,32 @@
     <!-- 
         GET - 通过地址栏传输信息/明文/安全性较差
         POST - 通过文件传递信息/非明文/安全性较高
+        novalidate - 不验证（只能加在form上）
      -->
     <fieldset>
-        <form action="login.php" method="POST">
+        <form action="login.php" method="POST" novalidate>
             <!-- 文本输入框 -->
             <!-- 
+                type - 类型
+                placeholder - 提示文字
                 maxlength - 限制输入字符的长度
                 readonly - 设置输入框为“只读状态”/不能输入字符
                 disabled - 设置输入框为“未激活状态”/不能输入字符
+                autofocus - 自动获取焦点
+                autocomplete - 自动填充（on - 开启/默认，off - 取消自动提示）
+                required - 必填
+                
                 name - 标识输入框
                 value - 输入框的值
              -->
-            用户名：<input type="text" maxlength="6" name="userName" value="大前端" readonly disabled>
+            用户名：<input type="text" placeholder="请输入用户名" maxlength="6" name="userName" value="大前端" autocomplete="on" readonly disabled autofocus required>
             <br>
             <br>
             <!-- 密码输入框 -->
             <!-- 
-                maxlength - 限制输入字符的长度
-                readonly - 设置输入框为“只读状态”/不能输入字符
-                disabled - 设置输入框为“未激活状态”/不能输入字符
-                name - 标识输入框
-                value - 输入框的值
+                pattern - 自定义正则验证
              -->
-            密&nbsp;码：<input type="password">
+            密&nbsp;码：<input type="password" pattern="1\d{10}">
             <br>
             <input type="submit">
             <br>
@@ -325,12 +363,18 @@
             <input type="date">
             <!-- 时间控件 -->
             <input type="time">
-            <!-- 邮件控件 -->
+            <!-- 邮件控件：可以自动判断输入的是否为email -->
             <input type="email">
             <!-- 数字控件 -->
             <input type="number" step="5">
             <!-- 滑块控件 -->
-            <input type="range" step="50">
+            <input type="range" name="range" step="50" value="100" min="0" max="300">
+            <!-- 电话控件 -->
+            <input type="tel">
+            <!-- 搜索控件 -->
+            <input type="search">
+            <!-- 颜色控件 -->
+            <input type="color">
         </form>
     </fieldset>
 
@@ -373,7 +417,10 @@
         <textarea name="" id="" cols="30" rows="10"></textarea>
 
         <!-- 22.文件上传控件 -->
-        <input type="file">
+        <!-- 
+            multiple - 多选
+         -->
+        <input type="file" multiple>
         <!-- 23.文件提交：可以实现提交功能 -->
         <input type="submit">
         <!-- 24.普通按钮：一般配合js使用/不可以实现提交功能 -->
@@ -384,13 +431,121 @@
         <input type="reset">
     </fieldset>
 
+    <!-- 27.数据列表标签 -->
+    <!-- 普通输入框 -->
+    <input type="text" list="car">
+    <!-- 数据列表标签 -->
+    <datalist id="car">
+        <option>宝马</option>
+        <option>宝马</option>
+        <option>宝马</option>
+        <option>宝马</option>
+        <option>宝马</option>
+    </datalist>
+    <!-- 输出信息 - 定义不同类型的输出 -->
+    <label for="">
+        推荐人：<output>春哥</output>
+    </label>
+    <!-- // 生成密钥 - 用于表单安全传输
+    <label for="">
+        <keygen/>
+    </label> -->
     <!-- 
-        27.标签语义化
-        1>.概念 - 根据内容的结构化来选择适合的标签
-        2>.意义 - 1.网页结构合理/2.有利于SEO/3.便于团队开发和维护
-        3>.好的语义化网站标准 - 去掉样式表文件以后结构依旧清晰
-        4>.怎么做 - 1.尽可能少的使用无语义的标签div/span | 2.div/p之间尽量使用p
+        value - 当前数值
+        max - 最大值
+        min - 最小值
+        low - 小于该值就警告
+        high - 大于该值就会警告
      -->
+    <label for="#">
+        度量器：<meter value="50" max="100" min="0" low="30" high="80"></meter>
+    </label>
+    <!-- 
+        value - 当前数值
+        max - 最大值
+     -->
+    <progress value="40" max="100"></progress>
+
+    <!-- 
+        28.多媒体
+        1>.html5之前 - 在网页上播放多媒体必须依赖第三方插件（mediaplay、快播、flash插件）
+     -->
+     <!-- 
+         1>.音频
+         src - 来源
+         autoplay - 自动播放
+         controls - 控制条
+         loop - 循环播放
+      -->
+     <!-- <audio src="../image/See You Again.mp3" autoplay controls></audio> -->
+     <audio controls loop>
+        <source src="../image/donew.mp3">
+        <source src="../image/donew.ogg">
+        <source src="../image/donew.wav">
+        抱歉，你的浏览器不支持音频。
+     </audio>
+     <!-- 
+         2>.视频
+         src - 来源
+         autoplay - 自动播放
+         controls - 控制条
+         loop - 循环播放
+      -->
+      <!-- <video src="../image/movie.mp4" autoplay controls></video> -->
+    <video controls autoplay width="1000">
+        <source src="../image/movie.mp4">
+        <source src="../image/movie.ogg">
+        <source src="../image/movie.webM">
+        抱歉，你的浏览器不支持视频。
+    </video>
+
+    <!-- 
+        29.标签语义化
+        1>.概念 - 根据内容的结构化来选择适合的标签
+        2>.意义 - 1.网页结构合理、2.有利于seo、3.便于团队开发和维护
+        3>.好的语义化网站标准 - 去掉样式表文件以后结构依旧清晰
+        4>.怎么做 - p（段落）、h1（标题）、div/span（可以放任何内容）
+     -->
+
+    <!-- 
+        30.HTML5新增部分有语义的div
+     -->
+    <header>header</header>
+    <nav>nav</nav>
+    <section>
+        <aside>侧边栏</aside>
+        <article>文章</article>
+    </section>
+    <footer>底部</footer>
+
+    <!-- 
+        31.DOM拓展
+        1>.document对象/文档对象 - 在浏览器中打开一个页面以后，浏览器首先会解析我们的网页，把解析的数据存放在一个DOM对象中document.getElementById("box");
+        2>.在H5中DOM新增的功能 - 与jQuery获取方式类似（不需要导入jquery）
+        $("#box");
+     -->
+    <div class="box" id="box" data-content="abc" data-my-name="xwj"></div>
+    <script type="text/javascript">
+        var box = document.getElementById("box");
+        // 只会获取到符合条件的第一个元素
+        var box1 = document.querySelector("#box");
+        // 操作类名
+        box1.className = "ex-box"; // 修改类名（类名会覆盖）
+        box1.classList.add("active"); // 添加类名（类名不会覆盖）
+        box1.classList.remove("active"); // 删除类名
+        if (box1.classList.contains("active")) {
+            // 是否包含active
+        }
+        box.classList.toggle("active"); // 切换类名
+        // 获取到符合条件的所有元素
+        var box2 = document.querySelectorAll("#box");
+        box2[2].style.background = "red";
+        // 自定义属性 - 给标签添加自定义属性必须以'data-'开头
+        console.log(box1.dataset["content"]);
+        box1.dataset["content"] = "abc";
+        console.log(box1.dataset["myName"]); // 驼峰命名
+        box1.dataset["myName"] = "cfj";
+    </script>
 </body>
 
 </html>

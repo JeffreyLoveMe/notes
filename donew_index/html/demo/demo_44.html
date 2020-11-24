@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>网页经典布局</title>
+    <style type="text/css">
+        * {
+            padding: 0;
+            margin: 0 auto;
+        }
+        .header {
+            width: 1000px;
+            height: 80px;
+            background: pink;
+        }
+        .nav {
+            width: 1000px;
+            height: 50px;
+            background: yellow;
+        }
+        .section {
+            width: 1000px;
+            height: 400px;
+        }
+        .section .left {
+            float: left;
+            width: 400px;
+            height: 400px;
+            background: red;
+        }
+        .section .right {
+            float: right;
+            width: 600px;
+            height: 400px;
+            background: green;
+        }
+        .footer {
+            width: 1000px;
+            height: 200px;
+            background: black;
+        }
+    </style>
+</head>
+<body>
+    <div class="header"></div>
+    <div class="nav"></div>
+    <div class="section">
+        <div class="left"></div>
+        <div class="right"></div>
+    </div>
+    <div class="footer"></div>
+</body>
+</html>

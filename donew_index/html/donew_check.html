@@ -29,8 +29,12 @@
             /* 基础属性 - start */
             /* 宽度 */
             width: 100px;
+            max-width: 100px;
+            min-width: 50px;
             /* 高度 */
             height: 100px;
+            max-height: 100px;
+            min-height: 50px;
             /* 
             内容颜色 
             rgb(255, 255, 255)
@@ -153,10 +157,15 @@
             边框 - solid实线/dotted点线/dashed虚线
             */
             border: solid 1px red;
+            /* 圆形 */
+            border-radius: 50%;
             /* 内边距 */
             padding: 10px;
             /* 外边距 */
             margin: 20px;
+            /* 透明度 - 可以给盒子设置半透明，但是会影响内部子盒子（子盒子会继承opacity，再给子盒子设置opacity无效） */
+            opacity: 1;
+            background: transparent;
             /* 盒子模型 - end */
         }
     </style>

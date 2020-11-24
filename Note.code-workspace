@@ -22,5 +22,6 @@
 		"jslint.exclude": {
 		
 		},
+		"eslint.lintTask.enable": true,
     }
 }
