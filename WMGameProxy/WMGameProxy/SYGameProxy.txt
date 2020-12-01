@@ -2246,8 +2246,8 @@ Singleton 了，用的越多对水平就越表示怀疑。对设计模式自信�
 12.如果每个 View 上都想增加一个时间播放控件，如何实现? ---新浪微博
 13.利用 UIScrollView 缩放性，如何实现地图上商家地理位置的动态显示 14.运行时的工作原理， OC动态行 ---腾讯，百度，新浪微博
 15.AFN 与 asi 的本质区别 ---腾讯，百度，新浪微博(主要问底层实现) 16.clayer 的坐标与 frame 的坐标如何转化 ---腾讯，百度，新浪微博
-17.循环引用 ---腾讯，百度，新浪微博 18.runloop 原理---腾讯，百度，新浪微博
----腾讯
+17.循环引用 ---腾讯，百度，新浪微博
+18.runloop 原理---腾讯，百度，新浪微博
 
 3.下面程序有什么错误
 for(int i =0; i< someLageNumber; i++) {
@@ -2266,13 +2266,9 @@ for(int i =0; i< someLageNumber; i++) {
 14、delegate和notification区别，分别在什么情况下使用？
 15.单项链表逆序
 
-const int a;
-const int *a;
-int * const a;
-const int * const a;
-       写出各语句的功能
-    •    有integer :5,6,10,34,25,用NSArray实现逆序
-    •    NSThread  NSLock 等实现线程锁，即当一个线程说话时锁定另一个线程，说完后再解锁
+写出各语句的功能
+有integer :5,6,10,34,25,用NSArray实现逆序
+NSThread  NSLock 等实现线程锁，即当一个线程说话时锁定另一个线程，说完后再解锁
 
 3、tableView加载大量图片时应该注意什么？
     应该使用多线程和异步加载数据
@@ -2398,22 +2394,7 @@ id a = [_notifcation object];
         }
 }
 
-5、创建一个线程，并写出线程执行函数
-- (void)updateImageForCellAtIndexPath:(NSIndexPath *)indexPath
-{
-    NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
-    UIImage *image = [self getImageForCellAtIndexPath:indexPath];
-    UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
-    [cell.imageView performSelectorOnMainThread:@selector(setImage:) withObject:image waitUntilDone:NO];
-    [pool release];
-}
-然后再新开一个线程去做这件事情
-- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    [NSThread detachNewThreadSelector:@selector(updateImageForCellAtIndexPath:) toTarget:self withObject:indexPath];
-}
-
-AsyncSocket套接字
+0.AsyncSocket套接字
 Socket描述了一个IP、端口对。它简化了程序员的操作，知道对方的IP以及PORT就可以给对方发送消息，再由服务器端来处理发送的这些消息。所以，Socket一定包含了通信的双发，即客户端（Client）与服务端（server）。
 1）服务端利用Socket监听端口；
 2）客户端发起连接；
@@ -2422,7 +2403,7 @@ Socket描述了一个IP、端口对。它简化了程序员的操作，知道对
 
 1套接字（socket）概念
 套接字（socket）是通信的基石，是支持TCP/IP协议的网络通信的基本操作单元。
-应 用层通过传输层进行数据通信时，TCP会遇到同时为多个应用程序进程提供并发服务的问题。多个TCP连接或多个应用程序进程可能需要通过同一个 TCP协议端口传输数据。为了区别不同的应用程序进程和连接，许多计算机操作系统为应用程序与TCP／IP协议交互提供了套接字(Socket)接口。应 用层可以和传输层通过Socket接口，区分来自不同应用程序进程或网络连接的通信，实现数据传输的并发服务。
+应用层通过传输层进行数据通信时，TCP会遇到同时为多个应用程序进程提供并发服务的问题。多个TCP连接或多个应用程序进程可能需要通过同一个TCP协议端口传输数据。为了区别不同的应用程序进程和连接，许多计算机操作系统为应用程序与TCP／IP协议交互提供了套接字(Socket)接口。应用层可以和传输层通过Socket接口，区分来自不同应用程序进程或网络连接的通信，实现数据传输的并发服务。
 2 建立socket连接
 建立Socket连接至少需要一对套接字，其中一个运行于客户端，称为ClientSocket，另一个运行于服务器端，称为ServerSocket。
 套接字之间的连接过程分为三个步骤：服务器监听，客户端请求，连接确认。

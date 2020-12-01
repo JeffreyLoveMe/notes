@@ -411,68 +411,108 @@ public class GNGameProxy {
          * System.out.println("hello java");
          */
 
-        System.out.println("-----这是分割线-----");
+        sum(10, 20);
 
+        // 数组
+        // 1.为什么需要数组 - 可以存储相同数据类型的集合（这点与js不一样）
+        // 2.数组可以存储基本数据类型、也可以存储引用数据类型（这点与Objective-C不一样）
+        // 3.一维数组
+        /*
+        格式：数据类型[] 数组名 = new 数据类型[数组长度];
+        // 左边
+        int - 数据类型
+        [] - 几个[]就代表是几维数组
+        array_00 - 数组名（标识符）
+        // 右边
+        new - 关键字
+        int - 数据类型
+        [5] - [数组长度]
+        */
+        int[] array_00 = new int[5];
+        // 4.数组的初始化 - 为数组开辟连续的内存空间，并为每个元素赋值
+        // 1>.动态初始化 - 指定长度，由系统给出初始化值
+        // 整数类型（byte/short/int/long）默认为0 | 浮点类型（float/double）默认为0.0 | 布尔类型（boolean）默认为false | 字符类型（char）默认为'\u0000'
+        int[] array_01 = new int[5];
+        System.out.println("array_01[0] = " + array_01[0]);
+        System.out.println("array_01[1] = " + array_01[1]);
+        System.out.println("array_01[2] = " + array_01[2]);
+        System.out.println("array_01[3] = " + array_01[3]);
+        System.out.println("array_01[4] = " + array_01[4]);
+        System.out.println(array_01);
+        // 2>.静态初始化 - 给出初始化值，由系统指定长度
+        // 第一种方法：可以先声明再赋值
+        // ！！！第二个[]不允许有数字！！！
+        int[] array_02 = new int[]{1, 2, 3, 4, 5};
+        // 第二种方法：必须声明并赋值
+        int[] array_03 = {1, 2, 3, 4, 5};
 
-
+        // java中的内存分配
+        // 1.内存空间划分
+        // 栈 - 存储"局部变量（定义在方法声明和方法中的变量）"
+        // 堆 - 存储"new出来的数组和对象"
+        // 方法区（代码区） - 存储源代码
+        // 本地方法区 - 与系统有关
+        // 寄存器 - 给cpu使用
+        // 2.内存图解
+        // 1>.图解一个数组
+//        // main方法压栈（"局部变量array"在方法中）
+//        public static void main(String[] args) {
+//            // 遇到new在堆中开辟连续的内存空间（0x0011）
+//            // 将"内存空间地址0x0011"赋值给"局部变量array"
+//            int[] array = new int[5];
+//            // 修改堆中相关数值 - 栈中的"局部变量array"指向堆
+//            array[0] = 10;
+//            array[1] = 20;
+//        }
+        // 2>.图解两个数组
+//        // main方法压栈（"局部变量array"在方法中）
+//        public static void main(String[] args) {
+//            // 遇到new在堆中开辟连续的内存空间（0x0011）
+//            // 将"内存空间地址0x0011"赋值给"局部变量array"
+//            int[] array = new int[5];
+//            // 修改堆中相关数值 - 栈中的"局部变量array"指向堆
+//            array[0] = 10;
+//            array[1] = 20;
+//
+//            System.out.println(array);
+//            System.out.println(array[0]);
+//            System.out.println(array[1]);
+//
+//            System.out.println("-----------------------------------");
+//
+//            // 遇到new在堆中开辟连续的内存空间（0x0012）
+//            // 将"内存空间地址0x0012"赋值给"局部变量newArray"
+//            int[] newArray = new int[5];
+//            // 修改堆中相关数值 - 栈中的"局部变量newArray"指向堆
+//            newArray[0] = 10;
+//            newArray[1] = 20;
+//
+//            System.out.println(newArray);
+//            System.out.println(newArray[0]);
+//            System.out.println(newArray[1]);
+//        }
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    // 方法概述
+    // 1.概述 - 完成特定功能的代码块
+    // 2.好处 - 提高代码复用性
+    /*
+    // 修饰符 - public/protected/private | static
+    // 返回值类型 - void/int/String...
+    // 方法名 - 符合命名规则即可
+    // 形式参数 - 用于接收实际参数
+    // 参数类型 - int/String...
+    // 参数1 - 变量名
+    修饰符 返回值类型 方法名(参数类型 参数1, 参数类型 参数2) {
+        // 完成特定功能的代码块
+        return 返回值;
+    }
+    */
+    // 3>.方法不调用不执行
+    public static int sum(int x, int y) {
+        return x + y;
+    }
+    // 4>.方法重载（js不存在方法重载）- 在同一个类中，方法名相同，参数列表不同（与返回值无关）
+    // 重载分类 - 参数个数不同、参数类型不同（参数顺序不同（开发中基本不使用））
+    // 区别于"重写" - 在不同类中，子类可以重新实现父类的方法（返回值、方法名、参数列表完全一样）
 }

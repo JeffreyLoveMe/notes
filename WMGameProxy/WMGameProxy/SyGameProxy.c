@@ -91,13 +91,13 @@ int getMax(int m, int n);
  5>.C语言的标准 - ANSI C->C99->C11
  */
 
-//// main函数
-//// 一般需要将主要的 ( main函数/生命周期函数放在最前面 )
-//// 系统在启动程序的时候会自动调用main函数
-//// main函数只能由系统调用，不能手动调用
-//// argc：系统传递进来的参数个数，默认是1
-//// argv[]：系统传递进来的参数实际值，默认程序的名称
-//// 怎么添加参数：WMGameProxy -> EditScheme -> Run -> Arguments
+// main函数
+// 一般需要将主要的 ( main函数/生命周期函数放在最前面 )
+// 系统在启动程序的时候会自动调用main函数
+// main函数只能由系统调用，不能手动调用
+// argc：系统传递进来的参数个数，默认是1
+// argv[]：系统传递进来的参数实际值，默认程序的名称
+// 怎么添加参数：WMGameProxy -> EditScheme -> Run -> Arguments
 //int main(int argc, const char * argv[]) {
 //    printf("Hello World!\n");  // 调用系统函数 / \n默认换行
 //    call(); // 调用自定义函数

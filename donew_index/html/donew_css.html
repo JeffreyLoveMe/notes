@@ -468,42 +468,160 @@
         }
          */
 
-        /* 
-        背景属性
-        background-color - 背景颜色
-        background-image - 背景图片
-        background-repeat - 背景平铺 | repeat默认/no-repeat不平铺/repeat-x沿x轴平铺/repeat-y沿y轴平铺
-        background-position - 背景定位 | left/right/top/center/bottom
-        1>.只写“一个方位值”：另外“一个方位值”默认居中
-        // 上下默认居中
-        background-position: left;
-        // 左右默认居中    
-        background-position: top;
-        2>.写“两个方位值”：不考虑顺序
-        // left/center/right - 水平
-        // top/center/bottom - 垂直
-        background-position: left top;
-        3>.写“两个具体值”：第一份代表水平方向/第二个代表垂直方向
-        // 水平20px 垂直30px
-        boxbackground-position: 20px 30px;
-        background-attachment - 背景是否滚动 ｜ scroll滚动/默认 - 以元素定位/fixed固定 - 以浏览器定位
+        /* // 背景属性
         div {
+            // 一、基础属性
+            // 背景颜色
             background-color: #009900;
+            // 背景图片
             background-image: url("jd_icon.png");
+            // 背景平铺
+            // repeat默认/no-repeat不平铺/repeat-x沿x轴平铺/repeat-y沿y轴平铺
             background-repeat: no-repeat;
+            // 背景定位 | left/right/top/center/bottom
+            // 只写“一个方位值”：另外“一个方位值”默认居中
             // 上下默认居中
             background-position: left;
-            background-position: 20px 30px;
+            // 左右默认居中    
+            background-position: top;
+            写“两个方位值”：不考虑顺序
+            // left/center/right - 水平
+            // top/center/bottom - 垂直
+            background-position: left top;
+            // 写“两个具体值”：第一份代表水平方向/第二个代表垂直方向
+            // 水平20px 垂直30px
+            boxbackground-position: 20px 30px;
+            // 背景是否滚动 ｜ scroll滚动/默认 - 以元素定位/fixed固定 - 以浏览器定位
             background-attachment: fixed;
-            // 背景属性连写
+            // 二、背景属性连写
             // 1>.顺序没有要求
             // 2>.background-image不能省略，其他可以省略
-            background: red url("jd_icon.png") no-repeat bottom fixed;
+            // 3>.可以给盒子加多背景，多个背景使用","隔开
+            background: red url("jd_icon.png") no-repeat bottom fixed, red url("jd_icon.png") no-repeat bottom fixed;
             // 简写成立
             background: red;
-        }
-         */
+            // 三、背景的大小
+            // 1>.宽度和高度
+            background-size: 50px 50px;
+            background-size: 10% 10%;
+            // 2>.cover - 完全覆盖盒子（等比例放大、会超出）
+            // contain - 最大化等比例显示在盒子中（不能保证可以铺满盒子）
+            background-size: cover;
+            // 四、背景原点 - 控制背景图片从什么地方开始显示
+            // border-box - 从边框区域开始平铺
+            // padding-box - 默认（不包含边框的盒子内部）
+            // content-box - 从内容区域开始平铺
+            background-origin: content-box;
+            // 五、背景裁剪
+            // border-box - 从边框区域开始裁剪
+            // padding-box - 从“不包含边框的盒子内部”开始裁剪
+            // content-box - 从内容区域开始裁剪
+            background-clip: padding-box;
+            // 六、渐变
+            // 1>.线性渐变
+            // left - 方向
+            // yellow - 起始颜色
+            // red - 终止颜色
+            background-image: linear-gradient(to left, yellow, red);
+            // 默认方向从上向下
+            background-image: linear-gradient(yellow, red);
+            // 45度方向开始渐变
+            background-image: linear-gradient(45deg, yellow, red);
+            // 制定过渡标准 - 可以代码制作斑马线
+            background-image: linear-gradient(to right, yellow 0%, red 40%, blue 100%);
+            // 2>.径向渐变
+            // left top - 中心的位置
+            // yellow - 起始颜色
+            // green - 终止颜色
+            background-image: radial-gradient(at left top, yellow, green);
+            background-image: radial-gradient(at 50px 50px, yellow, green);
+            // 100px - 辐射半径
+            background-image: radial-gradient(100px at center, yellow, green);
+            // 3.过渡属性 - 可以为一个元素在不同状态（:hover）之间切换的时候定义不同的变化效果/必须结合":hover等"使用
+            // 过渡属性
+            transition-property: all;
+            // 过渡持续时间
+            transition-duration: 4s;
+            // 运动属性
+            // ease - 减速
+            // ease-in - 加速
+            // ease-out - 减速
+            // ease-in-out - 先加速再减速
+            // linear - 匀速
+            transition-timing-function: linear;
+            // 简写
+            transition: width 2s, background-color 2s;
+            // all - 所有属性都发生过渡
+            // 4s - 过渡持续时间
+            // linear - 匀速/线性
+            // 1s - 延迟刷新时间
+            transition: all 4s linear 1s;
+            // 4.2d转换
+            transform: translate(-100px, 100px) rotate(45deg);
+            transform-origin: left center;
+            // 5.3d转换
+            // 透视 - 加给变换的父盒子
+            // 透视 - 设置的是用户的眼睛距离平面的距离（近大远小）
+            // 透视效果只是视觉上的呈现，并不是真正的3D
+            // 属性值越大，立体感越小
+            perspective: 500px;
+        } */
 
+        /* CSS3中动画的使用 - 先定义再使用（类似js中的函数） */
+        /* 
+        定义动画
+        donew - 动画名
+         */
+        @keyframes donew {
+            from {
+                /* 初始状态 */
+            }
+            to {
+                /* 结束状态 */
+            }
+        }
+        /* 定义多组动画 */
+        @keyframes changmeng {
+            0% {
+
+            }
+            25% {
+
+            }
+            50% {
+
+            }
+            75% {
+
+            }
+            100% {
+
+            }
+        }
+        /* 
+        调用动画 - 前两个属性是必须项且顺序不能改变
+        animation: 动画名 持续时间 (执行次数 动画方向 运动曲线 延迟执行)
+         */
+        div {
+            /* 动画名 */
+            animation-name: donew;
+            /* 持续时间 */
+            animation-duration: 2s;
+            /* 执行次数 - 无数次infinite */
+            animation-iteration-count: 3;
+            /* 动画方向 - 正向normal、反向alternate */
+            animation-direction: normal;
+            /* 动画延迟执行 */
+            animation-delay: 1s;
+            /* 简写 */
+            animation: donew 2s infinite alternate linear 3 1s;
+            /* 设置动画结束盒子的状态 - 保持动画结束后的状态forwards、保持动画开始前的状态backwards */
+            animation-fill-mode: backwards;
+            /* 运动曲线 - 减速ease、加速ease-in、减速ease-out、先加速再减速ease-in-out、匀速linear */
+            /* steps(3) - 分步执行 */
+            animation-timing-function: steps(3);
+        }
+        
         /* 
         CSS的三大特性
         1>.层叠性 - 当"多个同类型样式表"作用于"同一个标签"时样式发生冲突，总是执行后面的样式 -> 就近原则（与浏览器解析代码的顺序有关/与调用顺序无关）
@@ -658,6 +776,22 @@
              margin-left:-250px;
          }
           */
+
+        /* 
+        私有化前缀 - css3浏览器支持程度差，需要添加私有化前缀
+        使用场景 - 如果某个属性没有效果则考虑加上“私有化前缀”，如果“私有化前缀”也无法解决问题建议不要使用该属性
+        */
+        div {
+            /* 谷歌浏览器内核 / Safari */
+            background: -webkit-linear-gradient(left, red, blue);
+            /* 火狐浏览器内核 */
+            background: -moz-linear-gradient(left, red, blue);
+            /* IE浏览器内核 */
+            background: -ms-linear-gradient(left, red, blue);
+            /* 欧朋浏览器内核 */
+            background: -o-linear-gradient(left, red, blue);
+            background: linear-gradient(left, red, blue);
+        }
     </style>
 </head>
 
@@ -738,6 +872,69 @@
          14期无敌
      </div> -->
 
+     <!-- 边框圆角 -->
+     <!-- <div style="width: 400px; 
+     height: 400px; 
+     background: red;
+      /* 四个角 */
+     border-radius: 50%;
+     /* 左上/右下 左下/右上 */
+     border-radius: 20px 60px;
+     /* 左上 左下/右上 右下 */
+     border-radius: 20px 30px 40px;
+     /* 从“左上”开始顺时针赋值，如果当前位置没有值取对角的值 */
+     border-radius: 60px 60px 60px 60px;
+     /*
+     60px - 水平方向
+     120px - 垂直方向
+      */
+     border-top-left-radius: 60px 120px;
+     border-top-right-radius: 60px;
+     border-bottom-right-radius: 60px;
+     border-bottom-left-radius: 60px;
+     /* 简化 - 垂直半径/水平半径 */
+     border-radius: 60px 60px 60px 60px/120px 120px 120px 120px;
+     border-radius: 60px/120px;
+     /* 椭圆 */
+     border-radius: 400px/200px">
+        边框圆角
+    </div> -->
+
+    <!-- 边框阴影 - 48:21 -->
+    <!-- <div style="width: 100px;
+    height: 100px;
+    /* 
+    3px - 水平位移
+    4px - 垂直位移
+    5px - 模糊程度
+    6px - 阴影面积大小
+    red - 阴影颜色
+    inset - 内阴影（默认是外阴影，不需要写会报错）
+     */
+    box-shadow: 3px 4px 5px 6px red inset;">
+        边框阴影
+    </div> -->
+
+    <!-- 
+        边框图片
+     -->
+    <!-- /* 边框图片的来源 */
+    <div style="border-image-source: url('../image/five.jpg');
+    /* ？？？图片边框的裁剪？？？ */
+    border-image-slice: 27 27 27 27;
+    /* 图片边框的宽度 */
+    border-image-width: 29px;
+    /* 
+    图片边框的平铺
+    repeat - 正常平铺（可能会显示不完整）
+    round - 平铺（保证图片完整）
+    stretch - 拉伸显示
+     */
+    border-image-repeat: stretch;
+    ">
+    边框图片
+    </div> -->
+
     <!-- 
          边框合并 - 适用于表格的边框合并
          collapse/ke'la'p's; - 边框合并
@@ -795,13 +992,17 @@
     <!-- 
      内边距撑大盒子问题
      1>盒子宽度 = 定义的宽度 + 2 * 边框宽度 + 左右内边距
-     1>盒子高度 = 定义的高度 + 2 * 边框宽度 + 上下内边距
+     2>盒子高度 = 定义的高度 + 2 * 边框宽度 + 上下内边距
+     content-box - 从内容开始计算/外加模式/默认值
+     padding-box - 从内边距开始计算
+     border-box - 从边框开始计算/内减模式
+     3>.box-sizing: border-box; // 从边框开始计算“宽度&高度” = 300px（设置该属性可以不撑大盒子）
       -->
     <!-- <div style="width: 300px;
      height: 150px;
      padding-left: 100px;
      padding-top: 75px;
-     background-color: pink;">
+     background-color: pink; box-sizing: border-box;">
          <div style="width: 300px;
          height: 150px;
          background-color: red;">

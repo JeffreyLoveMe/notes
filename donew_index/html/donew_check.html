@@ -107,11 +107,26 @@
              font-style font-weight font-size/line-height font-family
               */
             font: italic 700 40px/400px "/5FAE/8F6F/96C5/9ED1";
+            /* 
+            文字阴影 - 多个阴影效果并列书写，使用","隔开
+            3px - 水平位移（向右）
+            4px - 垂直位移（向下）
+            5px - 模糊程度
+            red - 阴影颜色
+             */
+            text-shadow: 3px 4px 5px red, 6px 7px 8px green;
             /* 文字属性 - end */
 
             /* 背景属性 - start */
-            /* 背景颜色 */
-            background-color: rgba(255, 0, 0, 1);
+            /* 透明度 - 可以给盒子设置半透明，但是会影响内部子盒子（子盒子会继承opacity，再给子盒子设置opacity无效） */
+            opacity: 1;
+            /* 可以单独设置透明度，但是无法改变透明的值 */
+            background: transparent;
+            /* 背景颜色 - 可以设置透明度 */
+            /* r - red | g - green | b - blue | a - alpha */
+            background-color: rgba(255, 0, 0, 0.3);
+            /* h - 色调、0-360 | s - 饱和度、0 - 100% | l - 亮度、0 - 100% | a - alpha、0-1 */
+            background-color: hsla(0, 50%, 50%, 0.3);
             /* 背景图片 - 不要忘记"" */
             background-image: url("../image/swk.jpg");
             /* 
@@ -163,9 +178,6 @@
             padding: 10px;
             /* 外边距 */
             margin: 20px;
-            /* 透明度 - 可以给盒子设置半透明，但是会影响内部子盒子（子盒子会继承opacity，再给子盒子设置opacity无效） */
-            opacity: 1;
-            background: transparent;
             /* 盒子模型 - end */
         }
     </style>
