@@ -428,7 +428,9 @@ public class GNGameProxy {
         int - 数据类型
         [5] - [数组长度]
         */
+        // oc的数组"@[]"
         int[] array_00 = new int[5];
+        int array_000[] = new int[5];
         // 4.数组的初始化 - 为数组开辟连续的内存空间，并为每个元素赋值
         // 1>.动态初始化 - 指定长度，由系统给出初始化值
         // 整数类型（byte/short/int/long）默认为0 | 浮点类型（float/double）默认为0.0 | 布尔类型（boolean）默认为false | 字符类型（char）默认为'\u0000'
@@ -445,6 +447,32 @@ public class GNGameProxy {
         int[] array_02 = new int[]{1, 2, 3, 4, 5};
         // 第二种方法：必须声明并赋值
         int[] array_03 = {1, 2, 3, 4, 5};
+        // 5.异常
+//        // 1>.java.lang.ArrayIndexOutOfBoundsException数组索引越界异常（访问了数组中不存在的索引）
+//        System.out.println(array_03[10]);
+//        // 2>.java.lang.NullPointerException空指针异常（数组已经不再指向堆内存，还继续使用数组名访问元素）
+//        // oc没有空指针异常
+//        array_03 = null;
+//        System.out.println(array_03[0]);
+        // 6.遍历
+        int[] array_04 = {1, 2, 3, 4, 5};
+        for (int i = 0; i < array_04.length; i++) {
+            System.out.println(array_04[i]);
+        }
+        for (int element: array_04) {
+            System.out.println(element);
+        }
+        // 多个引用指向同一块内存
+        array_04 = array_03;
+        // 7.二维数组
+        // [3] - 二维数组中有3个一维数组
+        // [2] - 一维数组中有2个元素
+        int[][] array_05 = new int[3][2];
+        int[] array_005[] = new int[3][2];
+        int array_0005[][] = new int[3][2];
+        System.out.println(array_05); // 二维数组
+        System.out.println(array_05[0]); // 二维数组红的第一个一维数组
+        System.out.println(array_05[0][0]); // 二维数组中的第一个一维数组的第一个元素
 
         // java中的内存分配
         // 1.内存空间划分

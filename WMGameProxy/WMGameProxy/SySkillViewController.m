@@ -1032,6 +1032,10 @@ NSFileHandle *readWriteHandle = [NSFileHandle fileHandleForUpdatingAtPath:path]
     app.statusBarStyle = UIStatusBarStyleLightContent;
     // 打开其他App
     [app openURL:[NSURL URLWithString:@"https://www.baidu.com"]];
+    // 打电话
+    [app openURL:[NSURL URLWithString:@"tel://15601749931"]];
+    // 发短信
+    [app openURL:[NSURL URLWithString:@"sms://15601749931@163.com"]];
     // App很容易受到打扰
     // 来电、锁屏
 }

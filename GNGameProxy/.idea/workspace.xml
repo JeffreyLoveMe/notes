@@ -3,11 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="16e435bf-91d0-4784-a0da-dec4003c7039" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/src/GNGameProxy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GNGameProxy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../WMGameProxy/WMGameProxy/SYGameProxy.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../WMGameProxy/WMGameProxy/SYGameProxy.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../WMGameProxy/WMGameProxy/SyGameProxy.c" beforeDir="false" afterPath="$PROJECT_DIR$/../WMGameProxy/WMGameProxy/SyGameProxy.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../donew_index/html/donew_check.html" beforeDir="false" afterPath="$PROJECT_DIR$/../donew_index/html/donew_check.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../donew_index/html/donew_css.html" beforeDir="false" afterPath="$PROJECT_DIR$/../donew_index/html/donew_css.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../donew_index/html/donew_review.html" beforeDir="false" afterPath="$PROJECT_DIR$/../donew_index/html/donew_review.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Java试题.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/src/Java试题.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../WMGameProxy/WMGameProxy/SySkillViewController.m" beforeDir="false" afterPath="$PROJECT_DIR$/../WMGameProxy/WMGameProxy/SySkillViewController.m" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../WMGameProxy/WMGameProxy/WMNetworkViewController.m" beforeDir="false" afterPath="$PROJECT_DIR$/../WMGameProxy/WMGameProxy/WMNetworkViewController.m" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,6 +32,7 @@
   <component name="PropertiesComponent">
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
@@ -116,42 +115,17 @@
       <workItem from="1606448887629" duration="6587000" />
       <workItem from="1606704246264" duration="4940000" />
       <workItem from="1606792206678" duration="872000" />
+      <workItem from="1606815520571" duration="642000" />
+      <workItem from="1606818243629" duration="537000" />
+      <workItem from="1606875659299" duration="651000" />
+      <workItem from="1606877193649" duration="51000" />
+      <workItem from="1606878309928" duration="7266000" />
+      <workItem from="1606898485782" duration="500000" />
+      <workItem from="1606986274926" duration="714000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
-  </component>
-  <component name="WindowStateProjectService">
-    <state width="1362" height="231" key="GridCell.Tab.0.bottom" timestamp="1602468258774">
-      <screen x="0" y="23" width="1440" height="877" />
-    </state>
-    <state width="1362" height="231" key="GridCell.Tab.0.bottom/0.23.1440.877/-1876.23.1876.1177@0.23.1440.877" timestamp="1602468258774" />
-    <state width="1362" height="231" key="GridCell.Tab.0.center" timestamp="1602468258773">
-      <screen x="0" y="23" width="1440" height="877" />
-    </state>
-    <state width="1362" height="231" key="GridCell.Tab.0.center/0.23.1440.877/-1876.23.1876.1177@0.23.1440.877" timestamp="1602468258773" />
-    <state width="1362" height="231" key="GridCell.Tab.0.left" timestamp="1602468258772">
-      <screen x="0" y="23" width="1440" height="877" />
-    </state>
-    <state width="1362" height="231" key="GridCell.Tab.0.left/0.23.1440.877/-1876.23.1876.1177@0.23.1440.877" timestamp="1602468258772" />
-    <state width="1362" height="231" key="GridCell.Tab.0.right" timestamp="1602468258773">
-      <screen x="0" y="23" width="1440" height="877" />
-    </state>
-    <state width="1362" height="231" key="GridCell.Tab.0.right/0.23.1440.877/-1876.23.1876.1177@0.23.1440.877" timestamp="1602468258773" />
-    <state x="-1476" y="400" key="SettingsEditor" timestamp="1606704686425">
-      <screen x="-1867" y="25" width="1867" height="1175" />
-    </state>
-    <state x="216" y="23" key="SettingsEditor/0.23.1440.877/-1876.23.1876.1177@0.23.1440.877" timestamp="1601024955630" />
-    <state x="187" y="26" key="SettingsEditor/0.23.1440.877/-1877.23.1877.1177@0.23.1440.877" timestamp="1601030525029" />
-    <state x="-1476" y="400" key="SettingsEditor/0.25.1440.875/-1867.25.1867.1175@-1867.25.1867.1175" timestamp="1606704686425" />
-    <state x="187" y="28" key="SettingsEditor/0.25.1440.875/-1870.25.1870.1175@0.25.1440.875" timestamp="1606444623655" />
-    <state x="187" y="28" key="SettingsEditor/0.25.1440.875/-1871.25.1871.1175@0.25.1440.875" timestamp="1606445241168" />
-    <state x="-1481" y="400" key="SettingsEditor/0.25.1440.875/-1873.25.1873.1175@-1873.25.1873.1175" timestamp="1606474939468" />
-    <state x="411" y="213" key="run.anything.popup" timestamp="1606215647649">
-      <screen x="0" y="25" width="1440" height="875" />
-    </state>
-    <state x="411" y="211" key="run.anything.popup/0.23.1440.877/-1877.23.1877.1177@0.23.1440.877" timestamp="1604312019928" />
-    <state x="411" y="213" key="run.anything.popup/0.25.1440.875/-1871.25.1871.1175@0.25.1440.875" timestamp="1606215647649" />
   </component>
 </project>
