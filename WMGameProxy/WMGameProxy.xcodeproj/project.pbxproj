@@ -125,7 +125,8 @@
 		3394874623F11C5700A2C525 /* SyCustomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3394874523F11C5700A2C525 /* SyCustomCell.m */; };
 		339A3D8022BBBBC9007DD37D /* SyGameProxy.c in Sources */ = {isa = PBXBuildFile; fileRef = 339A3D7F22BBBBC9007DD37D /* SyGameProxy.c */; };
 		339C0A9F23C6167000C3A144 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 339C0A9D23C6167000C3A144 /* SceneDelegate.m */; };
-		339D69F0242F449200619804 /* iOS开发工程师-谢吴军.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 339D69EF242F449200619804 /* iOS开发工程师-谢吴军.pdf */; };
+		339CB3E2258329E70020F115 /* 斗牛DoNew - iOS笔试题.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 339CB3E1258329E70020F115 /* 斗牛DoNew - iOS笔试题.pdf */; };
+		339CB3EF258389280020F115 /* 斗牛DoNew - iOS面试题库.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 339CB3EE258389280020F115 /* 斗牛DoNew - iOS面试题库.pdf */; };
 		33A1B06924291731007248A3 /* 新建xxx.framework第五步.png in Resources */ = {isa = PBXBuildFile; fileRef = 33A1B06324291730007248A3 /* 新建xxx.framework第五步.png */; };
 		33A1B06A24291731007248A3 /* 新建xxx.framework第二步.png in Resources */ = {isa = PBXBuildFile; fileRef = 33A1B06424291730007248A3 /* 新建xxx.framework第二步.png */; };
 		33A1B06B24291731007248A3 /* 新建xxx.framework第六步.png in Resources */ = {isa = PBXBuildFile; fileRef = 33A1B06524291730007248A3 /* 新建xxx.framework第六步.png */; };
@@ -326,7 +327,8 @@
 		339A3D7F22BBBBC9007DD37D /* SyGameProxy.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = SyGameProxy.c; sourceTree = "<group>"; };
 		339C0A9D23C6167000C3A144 /* SceneDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SceneDelegate.m; sourceTree = "<group>"; };
 		339C0A9E23C6167000C3A144 /* SceneDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SceneDelegate.h; sourceTree = "<group>"; };
-		339D69EF242F449200619804 /* iOS开发工程师-谢吴军.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "iOS开发工程师-谢吴军.pdf"; sourceTree = "<group>"; };
+		339CB3E1258329E70020F115 /* 斗牛DoNew - iOS笔试题.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "斗牛DoNew - iOS笔试题.pdf"; sourceTree = "<group>"; };
+		339CB3EE258389280020F115 /* 斗牛DoNew - iOS面试题库.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "斗牛DoNew - iOS面试题库.pdf"; sourceTree = "<group>"; };
 		33A1B06324291730007248A3 /* 新建xxx.framework第五步.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "新建xxx.framework第五步.png"; sourceTree = "<group>"; };
 		33A1B06424291730007248A3 /* 新建xxx.framework第二步.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "新建xxx.framework第二步.png"; sourceTree = "<group>"; };
 		33A1B06524291730007248A3 /* 新建xxx.framework第六步.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "新建xxx.framework第六步.png"; sourceTree = "<group>"; };
@@ -553,9 +555,10 @@
 			isa = PBXGroup;
 			children = (
 				3366E8282430561C00820298 /* MyPlayground.playground */,
-				339D69EF242F449200619804 /* iOS开发工程师-谢吴军.pdf */,
 				33A1B073242A0899007248A3 /* iOS高级经典面试.pdf */,
 				3366E826242F6F3900820298 /* BAT面试资料全集.pdf */,
+				339CB3E1258329E70020F115 /* 斗牛DoNew - iOS笔试题.pdf */,
+				339CB3EE258389280020F115 /* 斗牛DoNew - iOS面试题库.pdf */,
 				33AC9E8D242B61A100B28AB5 /* Runtime.pdf */,
 				330490E624484F7E003B2439 /* iap支付价格等级.jpg */,
 				3359FE76241F3E850014C82C /* 大神班课程大纲.png */,
@@ -815,7 +818,6 @@
 				3359FE94241F3E870014C82C /* UINavigationController的层级结构.png in Resources */,
 				3359FEAB241F3E870014C82C /* UIView常见属性和方法.png in Resources */,
 				3342DB26254965B300B5D240 /* 新版iOS设备尺寸（更新于2020年）.png in Resources */,
-				339D69F0242F449200619804 /* iOS开发工程师-谢吴军.pdf in Resources */,
 				33B10E742422963900C6E8C7 /* 新建xxx.a第一步.png in Resources */,
 				3366E8462431296B00820298 /* 树的基本概念.png in Resources */,
 				33A1B06D24291731007248A3 /* 新建xxx.framework第一步.png in Resources */,
@@ -835,6 +837,7 @@
 				3359FEBF241F3E870014C82C /* 常见证书问题_01.png in Resources */,
 				3359FED5241FE1150014C82C /* 苹果账号后台.png in Resources */,
 				33302F71242B10F200C53F13 /* 静态库:动态库链接方式.png in Resources */,
+				339CB3E2258329E70020F115 /* 斗牛DoNew - iOS笔试题.pdf in Resources */,
 				33068EC022AE665600D044EE /* Assets.xcassets in Resources */,
 				3359FEAE241F3E870014C82C /* Sy-项目添加类前缀.png in Resources */,
 				33385166246950C8006D458E /* 真机调试 - 自动生成证书.png in Resources */,
@@ -919,6 +922,7 @@
 				3359FE92241F3E870014C82C /* 导出ipa.png in Resources */,
 				3359FEAA241F3E870014C82C /* 给文件名（类名）加前缀.png in Resources */,
 				3359FED6241FE1150014C82C /* 填写App的基本信息.png in Resources */,
+				339CB3EF258389280020F115 /* 斗牛DoNew - iOS面试题库.pdf in Resources */,
 				3359FEC7241F3E870014C82C /* 事件传递示例-第一步.png in Resources */,
 				3359FEA2241F3E870014C82C /* 项目基本配置.png in Resources */,
 				33E15543246D5FC000216E08 /* iap的逻辑流程.png in Resources */,

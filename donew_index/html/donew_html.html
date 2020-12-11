@@ -1,7 +1,7 @@
-<!DOCTYPE html>
+<!DOCTYPE html> <!--声明文档类型-->
 <!--
     1.快捷键
-    1>.command+C/V/X/A/S/Z - 复制/粘贴/剪切/全选/保存/撤销
+    1>.command+C/V/X/A/S/Z - 复制/粘贴/剪切/全选/保存/撤销一步
 -->
 
 <!--
@@ -27,14 +27,14 @@
 
 <!--
     5.认识浏览器
-    1>.概述 - 一个可以上网的客户端/IE/Firefox/Chrome(ke'lao'mo)/Safari
+    1>.概述 - 一个可以上网的客户端（软件）- IE/Firefox/Chrome(ke'lao'mo)/Safari
     2>.默认字体 - 宋体/微软雅黑
     3>.浏览器内核（渲染引擎）- 决定浏览器如何显示网页内容和页面格式信息
     4>.兼容性 - 渲染引擎是兼容性问题出现的根本原因
 -->
 
 <!--
-    6.协议 - scheme://host.domain:port/path/filename
+    6.url协议 - scheme://host.domain:port/path/filename
     scheme - 因特网服务类型/http/https
     host - 主机/www
     domain - 因特网域名/不包括www/do'mei'n
@@ -81,7 +81,7 @@
     <!-- 网页重定向 -->
     <!-- <meta http-equiv="refresh" content="5;http://www.itcast.com"> -->
     <!-- xxx -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
     <!-- 链接外部"样式表文件/.css" -->
     <link rel="stylesheet" href="../css/login.css">
     <!-- 网页顶部小图标/"favicon.ico" - 前端的习惯命名 -->
@@ -91,7 +91,7 @@
     <!-- ！！！超链接优化写法！！！-->
     <base target="_black">
 </head>
-
+<!-- 4.主体标签 -->
 <body>
     <!-- 
         html版本对比
@@ -112,7 +112,6 @@
          3.IE8以下的浏览器不支持HTML5和CSS3（引入html5shiv.js文件）
      -->
 
-    <!-- 4.主体标签 -->
     <!-- tab按钮可以补全代码 -->
     <div>14期霸气</div>
 
@@ -167,36 +166,35 @@
     H<sub>2</sub>O
 
     <!-- 
-            10.图片标签 
-            1>.src - 来源
-            2>.alt - 替换文本
-            3>.title - 显示文本/鼠标放在图片上显示的文字
-            4>.width - 图片宽度
-            5>.height - 图片高度
+        10.图片标签 
+        1>.src - 来源
+        2>.alt - 替换文本/o't
+        3>.title - 显示文本/鼠标放在图片上显示的文字
+        4>.width - 图片宽度
+        5>.height - 图片高度
         -->
     <!-- 
-            两个都不写 - 按原始图显示
-            只写一个width/height - 等比例缩放/不会变形
-            两个都写 - 可能会变形
-         -->
+        两个都不写 - 按原始图显示
+        只写一个width/height - 等比例缩放/不会变形
+        两个都写 - 可能会变形
+        -->
     <!-- 
-             1.相对路径 - 从当前文件出发找到其他文件
-             1>.文件和图片在同一个文件夹（目录）- 直接写文件名
-             2>.文件和图片在下一级文件夹（目录）- 文件夹名称/文件名（'/'表示进入下一个文件夹）
-             3>.文件和图片在上一级文件夹（目录）- ../文件名（'../'表示跳出文件夹）
-          -->
-          <!-- alt - o't -->
+        1.相对路径 - 从当前文件出发找到其他文件
+        1>.文件和图片在同一个文件夹（目录）- 直接写文件名
+        2>.文件和图片在下一级文件夹（目录）- 文件夹名称/文件名（'/'表示进入下一个文件夹）
+        3>.文件和图片在上一级文件夹（目录）- ../文件名（'../'表示跳出文件夹）
+        -->
     <img src="../image/swk.jpg" alt="林志玲" title="我的女神" width="300" height="300" /> <br/>
     <!-- 
-            2.绝对路径 - 从我的电脑出发（基本不使用）
-         -->
+        2.绝对路径 - 从我的电脑出发（基本不使用）
+        -->
 
     <!-- 
-            11.超链接标签
-            href - 去往的路径（跳转的页面）- 必写属性
-            title - 提示文本 - 鼠标放在链接上显示的文字
-            target - 页面打开方式（_self - 关闭自身页面打开超链页面/_black - 自身页面不关闭打开超链页面）
-          -->
+        11.超链接标签
+        href - 去往的路径（跳转的页面）- 必写属性
+        title - 提示文本 - 鼠标放在链接上显示的文字
+        target - 页面打开方式（_self - 关闭自身页面打开超链页面/_black - 自身页面不关闭打开超链页面）
+        -->
     <a href="https://www.baidu.com" title="提示文本" target="_blank">百度一下</a> <br/>
     <!-- 2.超链接到锚点 -->
     <a href="#sd">锚点</a>
@@ -214,14 +212,14 @@
         &lt; - 小于号/small
         &gt; - 大于号/big
         &copy; - ©
-     -->
+        -->
     <a href="#">空&nbsp;&lt;&gt;格</a>
 
     <!-- 
         13.列表
-     -->
+        -->
     <!-- 无序列表 -->
-    <ul>
+    <ul type="disc">
         <!-- 清除列表项符号 -->
         <li style="list-style: none;">安徽省</li>
         <li>安徽省</li>
@@ -254,7 +252,7 @@
         15.页面滚动效果
         behavior - 设置滚动的方式
         direction - 设置滚动的方向
-     -->
+        -->
     <marquee behavior="scroll" direction="down">14期威武</marquee>
 
     <!-- 
@@ -263,9 +261,9 @@
         width - 宽度 - 列平分大小/会因为cellpadding被撑开
         height - 高度 - thead、tfoot默认自适应/tbody会根据高度撑开（平分）
         cellspacing - 单元格之间的距离（上下左右、边框和cell之间也会有间隔）
-        cellpadding - 内边距（内容距边框的距离）- 默认垂直居中、从左边开始。当“内容+cellpadding * 2”没有超过cell宽度，左边 == cellpadding，右边不管；当“内容+cellpadding * 2”超过cell宽度，左边 == cellpadding，右边 == cellpadding（宽度很扩大）/上下也是
+        cellpadding - 内边距（内容距边框的距离）- 默认垂直居中、从左边开始。当“内容+cellpadding * 2”没有超过cell宽度，左边 == cellpadding，右边不管；当“内容+cellpadding * 2”超过cell宽度，左边 == cellpadding，右边 == cellpadding（宽度会扩大）/上下也是
         align - 表格整体对齐方式
-     -->
+        -->
     <!-- 缩写 - “table>tr*3>td*3 + 回车键” -->
     <!-- 表格细线(直接设置不行可以取巧) - 使用背景绿色/设置cellspacing = 1/不需要border -->
     <table border="1" width="600" height="300" cellspacing="10" cellpadding="10" align="center" bgcolor="yellow" bordercolor="red">
@@ -321,8 +319,9 @@
         GET - 通过地址栏传输信息/明文/安全性较差
         POST - 通过文件传递信息/非明文/安全性较高
         novalidate - 不验证（只能加在form上）
-     -->
+        -->
     <fieldset>
+        <!-- 表单域 -->
         <form action="login.php" method="POST" novalidate>
             <!-- 文本输入框 -->
             <!-- 
@@ -334,17 +333,14 @@
                 autofocus - 自动获取焦点
                 autocomplete - 自动填充（on - 开启/默认，off - 取消自动提示）
                 required - 必填
-                
                 name - 标识输入框
                 value - 输入框的值
-             -->
+                -->
             用户名：<input type="text" placeholder="请输入用户名" maxlength="6" name="userName" value="大前端" autocomplete="on" readonly disabled autofocus required>
             <br>
             <br>
             <!-- 密码输入框 -->
-            <!-- 
-                pattern - 自定义正则验证
-             -->
+            <!-- pattern - 自定义正则验证 -->
             密&nbsp;码：<input type="password" pattern="1\d{10}">
             <br>
             <input type="submit">
@@ -383,11 +379,12 @@
         <!-- legend - lei'j'end -->
         <legend>分组名称</legend>
         <!-- 19.下拉列表 -->
-        <!-- multiple - 多选 -->
+        <!-- multiple/mo'ti'p - 多选 -->
         <select multiple>
             <!-- 分组 -->
-            <!-- option - ou'tion -->
+            <!-- opt - o'k't -->
             <optgroup label="北京市">
+                <!-- option - ou'p'tion -->
                 <option>下拉列表选项01</option>
                 <option>下拉列表选项02</option>
                 <option>下拉列表选项03</option>
@@ -411,15 +408,15 @@
 
         <!-- 21.多行文本框 -->
         <!-- 
-        cols - 最大可输入列数
-        rows - 最大可输入行数
+        cols/kou'z - 最大可输入列数
+        rows/rou'z - 最大可输入行数
         -->
         <textarea name="" id="" cols="30" rows="10"></textarea>
 
         <!-- 22.文件上传控件 -->
         <!-- 
-            multiple - 多选
-         -->
+        multiple - 多选
+        -->
         <input type="file" multiple>
         <!-- 23.文件提交：可以实现提交功能 -->
         <input type="submit">
@@ -443,7 +440,7 @@
         <option>宝马</option>
     </datalist>
     <!-- 输出信息 - 定义不同类型的输出 -->
-    <label for="">
+    <label for="box">
         推荐人：<output>春哥</output>
     </label>
     <!-- // 生成密钥 - 用于表单安全传输
@@ -456,20 +453,20 @@
         min - 最小值
         low - 小于该值就警告
         high - 大于该值就会警告
-     -->
-    <label for="#">
+        -->
+    <label for="box">
         度量器：<meter value="50" max="100" min="0" low="30" high="80"></meter>
     </label>
     <!-- 
         value - 当前数值
         max - 最大值
-     -->
+        -->
     <progress value="40" max="100"></progress>
 
     <!-- 
         28.多媒体
         1>.html5之前 - 在网页上播放多媒体必须依赖第三方插件（mediaplay、快播、flash插件）
-     -->
+        -->
      <!-- 
          1>.音频
          src - 来源
@@ -505,11 +502,11 @@
         2>.意义 - 1.网页结构合理、2.有利于seo、3.便于团队开发和维护
         3>.好的语义化网站标准 - 去掉样式表文件以后结构依旧清晰
         4>.怎么做 - p（段落）、h1（标题）、div/span（可以放任何内容）
-     -->
+        -->
 
     <!-- 
         30.HTML5新增部分有语义的div
-     -->
+        -->
     <header>header</header>
     <nav>nav</nav>
     <section>
@@ -523,7 +520,7 @@
         1>.document对象/文档对象 - 在浏览器中打开一个页面以后，浏览器首先会解析我们的网页，把解析的数据存放在一个DOM对象中document.getElementById("box");
         2>.在H5中DOM新增的功能 - 与jQuery获取方式类似（不需要导入jquery）
         $("#box");
-     -->
+        -->
     <div class="box" id="box" data-content="abc" data-my-name="xwj"></div>
     <script type="text/javascript">
         var box = document.getElementById("box");

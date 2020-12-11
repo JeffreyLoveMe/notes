@@ -3,9 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="16e435bf-91d0-4784-a0da-dec4003c7039" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/src/GNGameProxy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GNGameProxy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Java试题.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/src/Java试题.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../WMGameProxy/WMGameProxy/SySkillViewController.m" beforeDir="false" afterPath="$PROJECT_DIR$/../WMGameProxy/WMGameProxy/SySkillViewController.m" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../WMGameProxy/WMGameProxy/WMNetworkViewController.m" beforeDir="false" afterPath="$PROJECT_DIR$/../WMGameProxy/WMGameProxy/WMNetworkViewController.m" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../donew_index/html/donew_html.html" beforeDir="false" afterPath="$PROJECT_DIR$/../donew_index/html/donew_html.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../donew_index/html/donew_review.html" beforeDir="false" afterPath="$PROJECT_DIR$/../donew_index/html/donew_review.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -122,6 +121,10 @@
       <workItem from="1606878309928" duration="7266000" />
       <workItem from="1606898485782" duration="500000" />
       <workItem from="1606986274926" duration="714000" />
+      <workItem from="1607308893908" duration="3925000" />
+      <workItem from="1607397073564" duration="5590000" />
+      <workItem from="1607484962481" duration="8449000" />
+      <workItem from="1607567370168" duration="1249000" />
     </task>
     <servers />
   </component>

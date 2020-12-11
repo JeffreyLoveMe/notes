@@ -1,5 +1,5 @@
 import java.util.Scanner; // 导入包中的类
-
+// 测试类 - 包含主函数、"测试类的类名"必须与"当前文件名"一致
 public class GNGameProxy {
     /**
     * 计算机概述
@@ -415,7 +415,7 @@ public class GNGameProxy {
 
         // 数组
         // 1.为什么需要数组 - 可以存储相同数据类型的集合（这点与js不一样）
-        // 2.数组可以存储基本数据类型、也可以存储引用数据类型（这点与Objective-C不一样）
+        // 2.数组（引用数据类型）可以存储基本数据类型、也可以存储引用数据类型（这点与Objective-C不一样）
         // 3.一维数组
         /*
         格式：数据类型[] 数组名 = new 数据类型[数组长度];
@@ -433,7 +433,7 @@ public class GNGameProxy {
         int array_000[] = new int[5];
         // 4.数组的初始化 - 为数组开辟连续的内存空间，并为每个元素赋值
         // 1>.动态初始化 - 指定长度，由系统给出初始化值
-        // 整数类型（byte/short/int/long）默认为0 | 浮点类型（float/double）默认为0.0 | 布尔类型（boolean）默认为false | 字符类型（char）默认为'\u0000'
+        // 整数类型（byte/short/int/long）默认为0 | 浮点类型（float/double）默认为0.0 | 布尔类型（boolean）默认为false | 字符类型（char）默认为'\u0000' | 引用类型默认为null
         int[] array_01 = new int[5];
         System.out.println("array_01[0] = " + array_01[0]);
         System.out.println("array_01[1] = " + array_01[1]);
@@ -455,6 +455,7 @@ public class GNGameProxy {
 //        array_03 = null;
 //        System.out.println(array_03[0]);
         // 6.遍历
+        // 数组的最大索引：array_04.length - 1
         int[] array_04 = {1, 2, 3, 4, 5};
         for (int i = 0; i < array_04.length; i++) {
             System.out.println(array_04[i]);
@@ -465,14 +466,23 @@ public class GNGameProxy {
         // 多个引用指向同一块内存
         array_04 = array_03;
         // 7.二维数组
+        // 1>.概述
         // [3] - 二维数组中有3个一维数组
         // [2] - 一维数组中有2个元素
-        int[][] array_05 = new int[3][2];
+        int[][] array_05 = new int[3][2]; // 推荐使用
         int[] array_005[] = new int[3][2];
         int array_0005[][] = new int[3][2];
         System.out.println(array_05); // 二维数组
         System.out.println(array_05[0]); // 二维数组红的第一个一维数组
         System.out.println(array_05[0][0]); // 二维数组中的第一个一维数组的第一个元素
+        // 初始化 - 这是一个二维数组
+        int[][] array_06 = {{1, 2, 3}, {4, 5}, {6, 7, 8}};
+        // 2>.遍历
+        for (int i = 0; i < array_06.length; i++) {
+            for (int j = 0; j < array_06[i].length; j++) {
+                System.out.println(array_06[i][j]);
+            }
+        }
 
         // java中的内存分配
         // 1.内存空间划分
@@ -519,6 +529,61 @@ public class GNGameProxy {
 //            System.out.println(newArray[0]);
 //            System.out.println(newArray[1]);
 //        }
+        // 3.图解二维数组
+//        // main方法压栈（"局部变量array"在方法中）
+//        public static void main(String[] args) {
+//            // 遇到new在堆中开辟连续的内存空间（0x0011）- 存放3个一维数组地址（默认为null）
+//            // 遇到new在堆中开辟连续的内存空间（0x0012）- 存放一维数组元素的地址
+//            // 0x0011指向0x0012
+//            int[][] array = new int[3][2];
+//
+//            // 栈中的"局部变量newArray"指向堆
+//            System.out.println(array); // 打印二维数组
+//            System.out.println(array[0]); // 打印二维数组中第一个一维数组
+//            System.out.println(array[0][0]); // 打印二维数组中第一个一维数组的第一个元素
+//        }
+
+        // Java代码规范
+        // 1.类名、接口名 - 一个单词首字母大写，多个单词每个首字母大写
+        // 2.方法名、变量名 - 一个单词全部小写，多个单词从第二个单词首字母大写（驼峰命名法）
+        // 3.'{}'成对出现，'{'在该行代码的最后，'}'在该行代码的后面
+        // 4.'{'前面有空格
+        // 5.语句块、方法中间加空格
+
+        // 面向对象
+        // 1.学习编程的目的 - 用计算机语言描述日常生活中实物
+        // 2.面向对象的三大特性
+        // 1>.封装
+        // 一、概念 - 隐藏对象的属性和实现细节，仅对外提供公共访问方式
+        // 二、好处 - 1、提高代码复用性/2、提高安全性
+        // 三、原则 - 1、将不需要对外的内容隐藏起来/2、隐藏属性，仅提供公共对外访问方式
+        // 2>.继承
+        // 3>.多态
+        // 3.定义类
+        Phone p = new Phone();
+        p.brand = "苹果";
+        p.price = 7999;
+        p.call();
+        p.sendMessage();
+        p.playGame();
+        // 4.成员变量和局部变量的区别
+        // 成员变量 - 定义在"类中方法外"/位于堆内存/随着对象的创建而存在，随着对象的销毁而消失/有默认初始化值
+        // 局部变量 - 定义在"方法上&方法内"/位于栈内存/随着方法的调用而存在，随着方法的调用完毕而消失/没有初始化值（必须先定义赋值才能使用）
+        // 5.匿名对象
+        new Phone().price = 123; // 匿名对象可以调用属性，没有意义
+        new Phone().call(); // 匿名对象可以调用方法，有意义（如果对同一个方法进行多次调用不能使用匿名对象）
+        method(new Phone()); // 匿名对象可以当做参数传递
+
+        TestPhone t = new TestPhone();
+        t.setBrand("苹果");
+        t.setPrice(7999);
+        System.out.println(t.getBrand() + "手机");
+        t.sendMsg();
+    }
+
+    public static void method(Phone p) {
+        p.brand = "hw";
+        p.price = 8999;
     }
 
     // 方法概述
@@ -544,3 +609,91 @@ public class GNGameProxy {
     // 重载分类 - 参数个数不同、参数类型不同（参数顺序不同（开发中基本不使用））
     // 区别于"重写" - 在不同类中，子类可以重新实现父类的方法（返回值、方法名、参数列表完全一样）
 }
+
+// 定义一个手机类
+class Phone {
+    // 属性
+    public String brand;
+    public int price;
+    // 权限修饰符
+    // public公有 - 被修饰的成员可以在程序中访问
+    // protected受保护 - 被修饰的成员只能在本包中访问
+    // private私有 - 可以修饰成员变量和成员方法（被修饰的成员只能在本类中访问）
+    private String color;
+
+    // 对外提供公共的访问方式
+    // IDEA自动生成：右键 - Generate... - 全选
+    public void setColor(String color) {
+//        // 就近原则
+//        color = color;
+        // this可以调用"成员方法"和"成员变量"，代表"当前对象（调用者）的引用"
+        // 与oc一样
+        this.color = color;
+    }
+
+    public String getColor() {
+        return color;
+    }
+
+    // 方法
+    public void call() {
+        System.out.println("打电话");
+    }
+
+    public void sendMessage() {
+        System.out.println("发信息");
+    }
+
+    public void playGame() {
+        System.out.println("打游戏");
+    }
+}
+
+
+class TestPhone {
+    private String brand;
+    private int price;
+
+    public void setBrand(String brand) {
+        this.brand = brand;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
+    }
+
+    public String getBrand() {
+        return brand;
+    }
+
+    public int getPrice() {
+        return price;
+    }
+
+    public void sendMsg() {
+        System.out.println(this.brand + "手机，价格为" + this.price + "，可以发信息");
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
