@@ -79,7 +79,12 @@ public class GNGameProxy {
     /*2>.多行注释 - 不可以嵌套*/
     /**
      * 3>.文档注释 - 不可以嵌套
+     * @author xiewujun
+     * @version v1.0
+     * @param array（形式参数的变量名称）
+     * @return 函数运行完成返回的数据
      */
+    // javadoc -d api -version -author -ArrayTool.java
     // 4>.注释是一个程序猿必须要具备的编程习惯
     // 5>.初学者可以先写注释再写代码
     // 6>.注释可以帮助我们排查错误 - 初级排错方式/有一定效果
@@ -105,10 +110,14 @@ public class GNGameProxy {
      * 4>.常量 - 所有字母大写，以'_'隔开/MAX_VALUE
      */
 
-    /**
-     * 主方法
-     * @param args
-     */
+    /*
+    主方法
+    public - 被JVM调用，权限需要足够大
+    static - 被JVM调用，不需要创建对象
+    void - 被JVM调用，不需要任何的返回值
+    main - 默认规定的（只有这样写才能被JVM识别）
+    String[] args - 接收键盘录入的数据
+    */
     public static void main(String[] args) { // 这是主方法（程序的入口）
         // 我的第一个程序
         System.out.println("我的第一个程序");
@@ -488,7 +497,7 @@ public class GNGameProxy {
         // 1.内存空间划分
         // 栈 - 存储"局部变量（定义在方法声明和方法中的变量）"
         // 堆 - 存储"new出来的数组和对象"
-        // 方法区（代码区） - 存储源代码
+        // 方法区（代码区/静态区） - 存储源代码
         // 本地方法区 - 与系统有关
         // 寄存器 - 给cpu使用
         // 2.内存图解
@@ -560,7 +569,7 @@ public class GNGameProxy {
         // 2>.继承
         // 3>.多态
         // 3.定义类
-        Phone p = new Phone();
+        Phone p = new Phone(); // 创建对象的时候默认会调用构造方法
         p.brand = "苹果";
         p.price = 7999;
         p.call();
@@ -573,15 +582,79 @@ public class GNGameProxy {
         new Phone().price = 123; // 匿名对象可以调用属性，没有意义
         new Phone().call(); // 匿名对象可以调用方法，有意义（如果对同一个方法进行多次调用不能使用匿名对象）
         method(new Phone()); // 匿名对象可以当做参数传递
+        // 6.构造方法
+//        // 构造方法不能用对象调用
+//        p.Phone();
+        // 有参构造函数
+        Phone p1 = new Phone("hw", 100, "黑色");
+        p1.sendMessage();
+        // 7.给成员变量赋值
+        // 1>.构造方法 - 给属性进行初始化
+        // 2>.setXxx方法 - 修改属性值（使用率更高）
+        /*
+        8.创建一个对象的步骤：
+        1>.xxx.class加载进入内存（进入方法区）
+        2>.main压栈（声明"xxx类型对象"）
+        3>.堆内存创建对象（对象属性默认初始化值）
+        4>.构造方法压栈（初始化对象属性）
+        5>.构造方法弹栈
+        6>.将对象的地址值赋值给"xxx类型对象"
+        */
+        /*
+        9.static关键字
+        1.特点
+        1>.随着类的加载而加载，先于对象存在
+        2>.被类的所有对象共享（被static修饰的成员位于方法区）
+        3>.可以通过类名调用（也可以通过对象名调用）
+        2.注意事项
+        1>.静态方法中没有this关键字（静态方法随着类的加载而加载，this随着对象的创建而存在）
+        2>.静态方法只能访问静态成员方法和静态成员变量（静态只能访问静态）
+        3.静态变量和成员变量的区别
+        1>.静态变量属于类（类变量），成员变量属于对象（对象变量）
+        2>.静态变量存储于方法区中的静态区，成员变量存储于内存
+        3>.静态变量随着类的加载而加载（随着类的销毁而销毁），成员变量随着对象的创建而创建（随着对象的销毁而销毁）
+        4>.静态变量可以通过类名调用（也可以通过对象调用），成员变量只能通过对象名调用
+        */
+        // 0.0 <= 随机数 < 1.0
+        Math.random();
 
-        TestPhone t = new TestPhone();
-        t.setBrand("苹果");
-        t.setPrice(7999);
-        System.out.println(t.getBrand() + "手机");
-        t.sendMsg();
+        // 代码块
+        // 1>.概念 - 在java中，使用{}括起来的代码被称为代码块
+        // 2>.分类 - 局部代码块、构造代码块、静态代码块、同步代码块
+        // a.局部代码块 - 出现在方法中，限定变量的生命周期，及时释放提高内存利用率
+        // b.构造代码块（初始化块） - 出现在类中方法外，多个构造方法中重复的代码存在在一起，每次调用构造方法直接执行
+        // c.静态代码块 - 出现在类中方法外，static修饰，用于给类进行初始化，类加载的时候执行（只执行一次）
+
+        // 继承extends
+        // 1>.概念 - 让类与类之间产生关系（子类和父类）
+        // 2>.好处 - 1.提高了代码的复用性；2.提高了代码的维护性；3.让类与类之间产生关系（多态的前提）
+        // 3>.弊端 - 提高了代码的耦合性
+        // 4>.开发原则 - 高内聚（自己完成某件事的能力），低耦合（类与类的关系）
+        // 5>.特点
+        // a.Java只支持单继承，不支持多继承（C++支持多继承）
+        // b.Java支持多层继承
+        // 6>.注意事项
+        // a.子类只能继承父类所有非私有的成员（成员方法和成员变量）
+        // b.子类不能继承父类的构造方法（可以通过super去访问父类构造方法）
+        // c.不要为了部分功能而刻意使用继承
+    }
+
+    // b.构造代码块（初始化块） - 出现在类中方法外，多个构造方法中重复的代码存在在一起，每次调用构造方法直接执行
+    {
+       System.out.println("构造代码块");
+    }
+
+    // c.静态代码块 - 出现在类中方法外，static修饰，用于给类进行初始化，类加载的时候执行（优先于方法执行、只执行一次）
+    static {
+        System.out.println("静态代码块");
     }
 
     public static void method(Phone p) {
+        // a.局部代码块 - 出现在方法中，限定变量的生命周期，及时释放提高内存利用率
+        {
+            int x = 10;
+            System.out.println(x);
+        }
         p.brand = "hw";
         p.price = 8999;
     }
@@ -635,6 +708,33 @@ class Phone {
         return color;
     }
 
+    // 构造方法
+    // 1.概念 - 给对象的属性进行初始化
+    /*
+    构造方法的特点 - ！！！此处与oc不一样！！！
+    a.方法名与类名完全一致（大小写也要一致）
+    b.没有具体的返回值
+    c.没有返回值类型（连void也没有）
+    d.不能用对象调用
+     */
+    public Phone() {
+        this.brand = "苹果";
+        this.price = 123;
+        this.color = "红色";
+//        return; // 默认也会有return语句
+    }
+    // 构造方法的重载（在同一个类中，方法名相同，参数列表不同，与返回值无关）
+    /*
+    构造方法的注意事项
+    a.如果我们没有给出构造方法，系统会自动提供一个无参构造方法
+    b.如果我们给出了构造方法，系统不会再提供默认的无参构造方法（如果需要使用无参构造方法必须自定义 - ！！！建议永远自定义无参构造方法！！！）
+    */
+    public Phone(String brand, int price, String color) {
+        this.brand = brand;
+        this.price = price;
+        this.color = color;
+    }
+
     // 方法
     public void call() {
         System.out.println("打电话");
@@ -650,50 +750,25 @@ class Phone {
 }
 
 
-class TestPhone {
-    private String brand;
-    private int price;
 
-    public void setBrand(String brand) {
-        this.brand = brand;
+class ArrayTool {
+    // 如果一个类中所有的方法都是静态方法，我们需要私有构造函数，防止外部创建对象
+    private ArrayTool() {
+
     }
 
-    public void setPrice(int price) {
-        this.price = price;
-    }
-
-    public String getBrand() {
-        return brand;
-    }
-
-    public int getPrice() {
-        return price;
-    }
-
-    public void sendMsg() {
-        System.out.println(this.brand + "手机，价格为" + this.price + "，可以发信息");
+    public static int MaxElement(int[] args) {
+        int maxElement = -1;
+        if (args.length > 0) {
+            maxElement = args[0];
+        }
+        for (int i = 0; i < args.length; i++) {
+            if (maxElement < args[i]) {
+                maxElement = args[i];
+            }
+        }
+        return maxElement;
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 

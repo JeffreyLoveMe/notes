@@ -2,8 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="16e435bf-91d0-4784-a0da-dec4003c7039" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../donew_index/html/donew_demo.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GNGameProxy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GNGameProxy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../donew_index/html/donew_html.html" beforeDir="false" afterPath="$PROJECT_DIR$/../donew_index/html/donew_html.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../donew_index/html/donew_css.html" beforeDir="false" afterPath="$PROJECT_DIR$/../donew_index/html/donew_css.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../donew_index/html/donew_review.html" beforeDir="false" afterPath="$PROJECT_DIR$/../donew_index/html/donew_review.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -22,6 +23,9 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
+  <component name="ProblemsViewState">
+    <option name="selectedIndex" value="1" />
+  </component>
   <component name="ProjectId" id="1hoPCEQsfDJWIwayMwO84MML99o" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
@@ -38,7 +42,7 @@
     <property name="project.structure.last.edited" value="Global Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="reference.idesettings.emmet" />
+    <property name="settings.editor.selected.configurable" value="Errors" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -125,10 +129,22 @@
       <workItem from="1607397073564" duration="5590000" />
       <workItem from="1607484962481" duration="8449000" />
       <workItem from="1607567370168" duration="1249000" />
+      <workItem from="1607778306348" duration="2853000" />
+      <workItem from="1607912919957" duration="8803000" />
+      <workItem from="1607998818003" duration="1096000" />
+      <workItem from="1608022965346" duration="3580000" />
+      <workItem from="1608090191024" duration="286000" />
+      <workItem from="1608090504271" duration="4619000" />
+      <workItem from="1608201235558" duration="2000000" />
+      <workItem from="1608517321836" duration="746000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>
