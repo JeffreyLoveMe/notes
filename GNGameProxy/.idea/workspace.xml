@@ -2,9 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="16e435bf-91d0-4784-a0da-dec4003c7039" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../donew_index/html/donew_demo.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/GNGameDemo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../donew_index/css/donew_init.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../donew_index/image/s_tiyu.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GNGameProxy.iml" beforeDir="false" afterPath="$PROJECT_DIR$/GNGameProxy.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GNGameProxy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GNGameProxy.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../donew_index/html/donew_css.html" beforeDir="false" afterPath="$PROJECT_DIR$/../donew_index/html/donew_css.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../donew_index/html/donew_demo.html" beforeDir="false" afterPath="$PROJECT_DIR$/../donew_index/html/donew_demo.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../donew_index/html/donew_review.html" beforeDir="false" afterPath="$PROJECT_DIR$/../donew_index/html/donew_review.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -15,8 +19,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="HTML File" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -34,6 +38,10 @@
   </component>
   <component name="PropertiesComponent">
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="Downloaded.Files.Path.Enabled" value="false" />
+    <property name="Repository.Attach.Annotations" value="false" />
+    <property name="Repository.Attach.JavaDocs" value="false" />
+    <property name="Repository.Attach.Sources" value="false" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
@@ -49,7 +57,14 @@
       <recent name="$PROJECT_DIR$/src" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.GNGameDemo">
+    <configuration name="GNGameDemo" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="GNGameDemo" />
+      <module name="GNGameProxy" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="GNGameProxy" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="GNGameProxy" />
       <module name="GNGameProxy" />
@@ -59,6 +74,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.GNGameDemo" />
         <item itemvalue="Application.GNGameProxy" />
       </list>
     </recent_temporary>
@@ -136,7 +152,11 @@
       <workItem from="1608090191024" duration="286000" />
       <workItem from="1608090504271" duration="4619000" />
       <workItem from="1608201235558" duration="2000000" />
-      <workItem from="1608517321836" duration="746000" />
+      <workItem from="1608517321836" duration="4564000" />
+      <workItem from="1609126171751" duration="617000" />
+      <workItem from="1609145487498" duration="27000" />
+      <workItem from="1609150942685" duration="2520000" />
+      <workItem from="1609209454556" duration="974000" />
     </task>
     <servers />
   </component>

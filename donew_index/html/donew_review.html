@@ -57,7 +57,84 @@
             */
             background-attachment: scroll;
             background: red url("../image/jd_green.png") no-repeat fixed left center;
+
+            /*边框*/
+            border-top-color: red;
+            /*
+            solid - 实线
+            dotted - 点线
+            dashed - 虚线
+            */
+            border-top-style: solid;
+            border-top-width: 5px;
+            /*border-top: pink dashed 5px;*/
+            /*border: yellow dotted 5px;*/
+
+            /*边框圆角*/
+            border-top-left-radius: 60px;
+            border-top-left-radius: 60px 120px;
+            border-radius: 100px;
+            /*左上/右下 右上/左下*/
+            border-radius: 60px 100px;
+            /*左上 右上/左下 右下*/
+            border-radius: 60px 50px 100px;
+            /*左上 右上 右下 左下*/
+            border-radius: 60px 100px 50px 40px;
+            border-radius: 60px/120px;
+            border-radius: 60px 100px 50px 40px/60px 100px 50px 40px;
+            /*椭圆*/
+            border-radius: 400px/200px;
+            /*
+            边框合并
+            collapse - 合并
+            separate - 不合并
+            inherit - 与父视图一致
+            */
+            border-collapse: inherit;
+
+            /*内边距*/
+            /*padding-top: 10px;*/
+            /*padding-left: 10px;*/
+            /*padding-right: 10px;*/
+            /*padding-bottom: 10px;*/
+            /*上下左右*/
+            padding: 10px;
+            /*上下 左右*/
+            padding: 10px 10px;
+            /*上 左右 下*/
+            padding: 10px 10px 10px;
+            /*上右下左*/
+            padding: 10px 10px 10px 10px;
+
+            /*外边距*/
+            /*margin-top: 10px;*/
+            /*margin-left: 10px;*/
+            /*margin-right: 10px;*/
+            /*margin-bottom: 10px;*/
+            margin: 10px;
+            margin: 10px 10px;
+            margin: 10px 10px 10px;
+            margin: 10px 10px 10px 10px;
         }
+        .first {
+            width: 100px;
+            height: 100px;
+            float: left;
+            background: red;
+        }
+        .second {
+            width: 200px;
+            height: 200px;
+            background: pink;
+        }
+
+        /*
+        讲完了相对定位  我们开始讲绝对定位的问题
+        1。元素托裱
+        2。绝对定位是从浏览器出发
+        3。自身出发的。不会脱标
+        4。固定定位（固定）
+        */
     </style>
 </head>
 <body>
@@ -95,11 +172,18 @@
 <!--css三大特性-->
 <!--链接伪类-->
 <!--背景属性-->
-
-<!--以下是第五天的内容-->
 <!--行高-->
 <!--盒子模型-->
+<!--css初始化-->
+<!--三种布局技术：文档流布局、浮动布局、定位布局-->
 
+<!--定位的盒子居中显示-->
+<!--标签包含规范-->
+<!--规避脱标流-->
+<!--css的可见性-->
+<!--css内容移除-->
+<!--css精灵图-->
+<!--emmet快捷键-->
 
 <!--
 

@@ -1,3 +1,5 @@
+import org.jetbrains.annotations.NotNull;
+
 import java.util.Scanner; // 导入包中的类
 // 测试类 - 包含主函数、"测试类的类名"必须与"当前文件名"一致
 public class GNGameProxy {
@@ -626,7 +628,7 @@ public class GNGameProxy {
         // c.静态代码块 - 出现在类中方法外，static修饰，用于给类进行初始化，类加载的时候执行（只执行一次）
 
         // 继承extends
-        // 1>.概念 - 让类与类之间产生关系（子类和父类）
+        // 1>.概念 - 让类与类之间产生关系（子类和父类）/遵循"就近原则"
         // 2>.好处 - 1.提高了代码的复用性；2.提高了代码的维护性；3.让类与类之间产生关系（多态的前提）
         // 3>.弊端 - 提高了代码的耦合性
         // 4>.开发原则 - 高内聚（自己完成某件事的能力），低耦合（类与类的关系）
@@ -637,9 +639,12 @@ public class GNGameProxy {
         // a.子类只能继承父类所有非私有的成员（成员方法和成员变量）
         // b.子类不能继承父类的构造方法（可以通过super去访问父类构造方法）
         // c.不要为了部分功能而刻意使用继承
+        // 7>.this和super的区别
+        // this - 代表当前对象的引用（谁调用代表谁）/既可以调用本类，也可以调用父类
+        // super - 代表当前对象父类的引用/只能调用父类
     }
 
-    // b.构造代码块（初始化块） - 出现在类中方法外，多个构造方法中重复的代码存在在一起，每次调用构造方法直接执行
+    // b.构造代码块（初始化块） - 出现在类中方法外，多个构造方法中重复的代码存在在一起，每次调用构造方法前直接执行
     {
        System.out.println("构造代码块");
     }
@@ -649,7 +654,7 @@ public class GNGameProxy {
         System.out.println("静态代码块");
     }
 
-    public static void method(Phone p) {
+    public static void method(@NotNull Phone p) {
         // a.局部代码块 - 出现在方法中，限定变量的生命周期，及时释放提高内存利用率
         {
             int x = 10;
@@ -718,6 +723,14 @@ class Phone {
     d.不能用对象调用
      */
     public Phone() {
+        // 概述 - 这是一条语句，如果不写系统默认会加上
+        // 作用 - 访问父类的空参构造方法
+        // 为什么 - 因为子类会继承父类中的数据（可能还会使用父类数据），所以子类初始化之前必须完成父类的初始化
+        super();
+        // 2.如果父类没有空参构造方法我们可以通过this解决
+        // 必须放在第一条语句
+//        this("", 18, ""); // 调用本类的有参构造
+
         this.brand = "苹果";
         this.price = 123;
         this.color = "红色";
@@ -730,6 +743,10 @@ class Phone {
     b.如果我们给出了构造方法，系统不会再提供默认的无参构造方法（如果需要使用无参构造方法必须自定义 - ！！！建议永远自定义无参构造方法！！！）
     */
     public Phone(String brand, int price, String color) {
+        // 1.如果父类没有空参构造方法我们可以通过super解决
+        // 必须放在第一条语句
+//        super(brand, price, color); // 调用父类的有参构造
+
         this.brand = brand;
         this.price = price;
         this.color = color;
