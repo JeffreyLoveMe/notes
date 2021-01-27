@@ -22,6 +22,12 @@
 		"jslint.exclude": {
 		
 		},
+		// CSS class selector 'xxx' not found
+		"css.validation": {
+			"id": false,
+			"class": false
+		},
 		"eslint.lintTask.enable": true,
+		"http.proxyAuthorization": null,
     }
 }

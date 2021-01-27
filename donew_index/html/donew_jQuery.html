@@ -11,7 +11,7 @@
             background: pink;
         }
     </style>
-    <script src="../js/jquery/jquery-3.5.1.js"></script>
+    <script src="../js/jquery/jquery-3.5.1.min.js"></script>
     <script src="../js/demo/review.js"></script>
     <script type="text/javascript">
         // jQuery概述 - j'kwa'ri
@@ -245,12 +245,12 @@
 
         });
         // 2>.滑入滑出动画 - 可以将"slideDown <---> slideUp <---> slideToggle"
-        jqDiv.slideDown(); // 滑入动画 - 用法一（常用）
-        jqDiv.slideDown(2000); // 滑入动画的时间(ms) - 用法二
-        jqDiv.slideDown("slow"); // 滑入动画 - 用法三 / slow慢 === 600ms | normal正常 === 400ms | fast快 === 200ms
-        jqDiv.slideToggle(2000, function () {
-            console.log("动画执行完毕");
-        }); // 滑入动画完毕执行函数 - 用法四（常用）
+        // jqDiv.slideDown(); // 滑入动画 - 用法一（常用）
+        // jqDiv.slideDown(2000); // 滑入动画的时间(ms) - 用法二
+        // jqDiv.slideDown("slow"); // 滑入动画 - 用法三 / slow慢 === 600ms | normal正常 === 400ms | fast快 === 200ms
+        // jqDiv.slideToggle(2000, function () {
+        //     console.log("动画执行完毕");
+        // }); // 滑入动画完毕执行函数 - 用法四（常用）
         // 模拟
         jqDiv.animate({
             "height": 0
@@ -258,12 +258,12 @@
 
         });
         // 3>.淡入淡出动画 - 可以将"fadeIn <---> fadeOut <---> fadeToggle"/通过控制“透明度”（0 - 全透明 ｜ 1 - 全不透明）
-        jqDiv.fadeIn(); // 淡入动画 - 用法一（常用）
-        jqDiv.fadeIn(2000); // 淡入动画的时间(ms) - 用法二
-        jqDiv.fadeIn("slow"); // 淡入动画 - 用法三 / slow慢 === 600ms | normal正常 === 400ms | fast快 === 200ms
-        jqDiv.fadeToggle(2000, function () {
-            console.log("动画执行完毕");
-        }); // 淡入动画完毕执行函数 - 用法四（常用）
+        // jqDiv.fadeIn(); // 淡入动画 - 用法一（常用）
+        // jqDiv.fadeIn(2000); // 淡入动画的时间(ms) - 用法二
+        // jqDiv.fadeIn("slow"); // 淡入动画 - 用法三 / slow慢 === 600ms | normal正常 === 400ms | fast快 === 200ms
+        // jqDiv.fadeToggle(2000, function () {
+        //     console.log("动画执行完毕");
+        // }); // 淡入动画完毕执行函数 - 用法四（常用）
         jqDiv.fadeTo(1000, 0.5, function () {
             console.log("动画执行完毕");
         }); // 毫秒值、不透明度、函数

@@ -26,7 +26,7 @@
         js介绍 - https://koudashijie.com
         1.概念 - js是一款运行在客户端的网页编程语言/脚本语言
         2.组成部分 - ECMAScript(js标准) + DOM(文档对象模型 - 通过js操作网页元素) + BOM(浏览器对象模型 - 通过api操作浏览器)
-        3.特点 - 简单易用、解释执行（对应于'编译执行'）、基于对象
+        3.特点 - 简单易用、解释执行：一行一行解析，解析一行执行一行（对应于'编译执行：编译成机器语言，然后一行一行执行'）、基于对象
         4.作用 - 页面特效（pc端的网页特效）/移动端/异步网络交互/服务端开发nodejs
         5.注意 - js和java没有关系 ｜ js标准 - ECMAScript标准/（2015年6月发布ES6/ECMAScript-6）
         */
@@ -94,6 +94,15 @@
             var g = 1, h = 2, i = 1;
         }
 
+        // 字面量 - 常量/固定的值/也是使用var修饰（这点区别于swift）
+        var width = 100;
+
+        // 变量的命名规则 - 以“字母、下划线(_/$)”开头，只能包含“数字、字母、下划线”
+        // 支持中文（不推荐使用）、不能使用特殊符号
+        // 不能使用‘关键字’作为标识符、可以使用‘保留关键字’作为标识符（不推荐）
+        // js严格区分大小写/变量长度不超过255个字符
+        // 推荐使用“驼峰命名” - getElementById
+
         // 预解析
         // 1>.原理 - js的解析器在页面加载的时候，首先检查页面的语法错误，把变量声明提升起来
         // 2>.作用 - 查看语法错误/变量声明提升和函数整体提升
@@ -142,15 +151,6 @@
         // }
         // 5>.面试题 - 见demo_20.html
 
-        // 字面量 - 常量/固定的值/也是使用var修饰（这点区别于swift）
-        var width = 100;
-
-        // 变量的命名规则 - 以“字母、下划线(_/$)”开头，只能包含“数字、字母、下划线”
-        // 支持中文（不推荐使用）、不能使用特殊符号
-        // 不能使用‘关键字’作为标识符、可以使用‘保留关键字’作为标识符（不推荐）
-        // js严格区分大小写/变量长度不超过255个字符
-        // 推荐使用“驼峰命名” - getElementById
-
         // 数据类型
         // 一、简单数据类型 - 没法绑定属性和方法
         // 1>.Number - 数字类型（包含‘正数、负数、小数’）/表示的数字有范围
@@ -184,7 +184,7 @@
         // 了解内容 - 数据传递的时候经常需要通过编码后再传递，接收以后还需要反编码回来
         alert(encodeURIComponent(a5)); // 编码 - 将字符串做为URI组件
         alert(decodeURIComponent(a5)); // 解码 - 将字符串做为URI组件
-        alert(a5.concat(a6)); // 连接两个字符串（返回新字符串、a5/a6不会被修改）
+        alert(a5.concat("xwj")); // 连接两个字符串（返回新字符串、a5不会被修改）
         // 字符串的截取
         var x1 = "I Love Js";
         // slice()
@@ -192,8 +192,7 @@
         alert(x1.slice(2, 5)); // 从第2位开始截取到第5位（包左不包右）
         alert(x1.slice(-3)); // 截取最后3个
         alert(x1.slice(5, 2)); //空字符串
-        // sub
-        alert(x1.sub(2)); // 从第2位开始截取到最后
+        // substr
         alert(x1.substr(2, 5)); // 从第2位开始截取5位
         alert(x1.substr(-3)); // 截取最后3个
         // substring
@@ -299,8 +298,8 @@
         alert(b0 != b1); // false
         // "比较运算符(全等===)"既要判断内容是否相同，又需要判断数据类型是否相同
         // “不全等!==”既要判断内容是否相同，又需要判断数据类型是否相同
-        alert(b0 === b1); // false
-        alert(b0 !== b1); // true
+        alert(b1 === b2); // false
+        alert(b1 !== b2); // true
         // 六、逗号运算符
         var c1 = 1, c2 = 2, c3 = 3;
         // 七、三元运算符 - 表达式结果为true执行“结果1”，结果为false执行“结果2”
@@ -343,7 +342,7 @@
         // 第三种方式 - 整数数字类型字符串转换结果为整数数字/数字开头的字符串转换结果为前面的数字/非数字开头的字符串转换结果为NaN
         alert(parseFloat(b5)); // 与parseInt()效果一致
         alert(typeof(parseFloat(b5)));
-        alert(parseInt(b8)); // ‘小数字符串’转换结果为原数字
+        alert(parseFloat(b8)); // ‘小数字符串’转换结果为原数字
         // 三、转布尔类型 - 数字和字符串转换结果为true ｜ 0/""/null/false/undefined/NaN转换结果为false
         alert(Boolean(b3)); // true
         alert(typeof(Boolean(b3)));
@@ -570,6 +569,7 @@
         // 1.创建一个构造函数 - 类似其他语言中的类
         function Student(name) {
             // this指代new出来的对象 - https://www.jianshu.com/p/554917dc1692
+            // this只能出现在函数中；谁调用函数this就指向谁
             this.name = name;
             this.say = function () {
                 console.log(this.name + "你好");
@@ -604,7 +604,7 @@
             }
         };
         console.log(json.length); // undefined - json没有长度
-        // 遍历对象 - 不能使用for循环（因为对象没有长度）
+        // 遍历json - 不能使用for循环（因为对象没有长度）
         for (var key in json) {
             console.log(key);
             console.log(json[key]);
@@ -695,15 +695,11 @@
         array04.unshift("name"); // 队列操作 - 往数组最前面添加新元素、返回数组长度
         array04.push("xwj");  // 栈操作 - 往数组最后面添加新元素、返回数组长度
         // 4>.删除元素
-        array04.shift("name"); // 队列操作 - 删除数组最前面的元素、返回最后一项
-        array04.pop("xwj");  // 栈操作 - 删除数组最后面的元素、返回最后一项
+        array04.shift(); // 队列操作 - 删除数组最前面的元素、返回最后一项
+        array04.pop();  // 栈操作 - 删除数组最后面的元素、返回最后一项
         // 5>.数组排序
         array04.reverse(); // 翻转数组 - 原数组也改变，返回新数组
         array04.sort();  // 根据字符排序 - 功能很强大（能够对数字和字母进行排序）、只可以对第一位排序
-        array04.sort(function (a,b) {
-            return a - b;  // 升序
-            return b - a;  // 降序
-        }); // 可以设置排序规则 - 底层是“冒泡排序”
         // 6>.数组操作
         // 1.数组连接
         var array04 = [12, 14, 18, "吴军"];
@@ -771,13 +767,13 @@
         var separatorString01 = array07.join(); // 以","连接
         var separatorString02 = array07.join(""); // 用空字符串连接
         var separatorString03 = array07.join("&"); // 用&连接
-        alert(typeof(separatorString));
+        alert(typeof(separatorString01));
         // 9>.伪数组和arguments
         function getArray(a, b) {
             // 只能在函数中使用：代表实参的数组
             console.log(arguments);
             // 伪数组：不能修改长度的数组（可以修改元素，不能修改长度）
-            arguments.push(1); // 报错 - 表面是数组实际不是数组
+            // arguments.push(1); // 报错 - 表面是数组实际不是数组
             arguments[0] = 0;  // 可以修改元素
             console.log(arguments);
             console.log(getArray.length); // 形参个数

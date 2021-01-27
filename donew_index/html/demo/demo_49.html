@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript">
+        /*
+        需求：输入某年某月某日，判断这一天是这一年的第几天？（考虑闰年）
+        */
+        function getDay(year, month, day) {
+            var isRun = ((year % 4 === 0) && (year % 100 !== 0)) || (year % 400 === 0)
+            var monthArray = []
+            if (isRun) {
+                // 闰年
+                monthArray = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+            } else {
+                // 非闰年
+                monthArray = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+            }
+            for (var index = 0; index < month - 1; index++) {
+                day = day + monthArray[index]
+            }
+            return day
+        }
+        alert(getDay(2020, 2, 28))
+    </script>
+</head>
+<body>
+
+</body>
+</html>

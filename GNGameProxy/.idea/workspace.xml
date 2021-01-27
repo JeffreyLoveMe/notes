@@ -2,14 +2,29 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="16e435bf-91d0-4784-a0da-dec4003c7039" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/GNGameDemo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../donew_index/css/donew_init.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../donew_index/image/s_tiyu.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GNGameProxy.iml" beforeDir="false" afterPath="$PROJECT_DIR$/GNGameProxy.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/demo/GNGameDemo_01.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/多态内存图.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../donew_index/html/demo/demo_45.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../donew_index/html/demo/demo_46.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../donew_index/html/demo/demo_47.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../donew_index/html/demo/demo_48.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../donew_index/html/demo/demo_49.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../donew_index/image/big_icon.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../donew_index/image/r1_c1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../donew_index/image/r1_c3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../donew_index/image/r2_c1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../donew_index/image/r2_c2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../donew_index/image/vip_icon.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../donew_index/image/weibo_icon.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GNGameDemo.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GNGameProxy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GNGameProxy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Note.code-workspace" beforeDir="false" afterPath="$PROJECT_DIR$/../Note.code-workspace" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../donew_index/html/donew_css.html" beforeDir="false" afterPath="$PROJECT_DIR$/../donew_index/html/donew_css.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../donew_index/html/donew_demo.html" beforeDir="false" afterPath="$PROJECT_DIR$/../donew_index/html/donew_demo.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../donew_index/html/donew_dom.html" beforeDir="false" afterPath="$PROJECT_DIR$/../donew_index/html/donew_dom.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../donew_index/html/donew_js基础.html" beforeDir="false" afterPath="$PROJECT_DIR$/../donew_index/html/donew_js基础.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../donew_index/html/donew_review.html" beforeDir="false" afterPath="$PROJECT_DIR$/../donew_index/html/donew_review.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../donew_index/html/html_jQuery.html" beforeDir="false" afterPath="$PROJECT_DIR$/../donew_index/html/donew_jQuery.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,6 +35,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="HTML File" />
+        <option value="JavaFXApplication" />
         <option value="Class" />
       </list>
     </option>
@@ -27,11 +43,18 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
-  <component name="ProblemsViewState">
-    <option name="selectedIndex" value="1" />
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
   </component>
   <component name="ProjectId" id="1hoPCEQsfDJWIwayMwO84MML99o" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -47,6 +70,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Global Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -57,14 +81,7 @@
       <recent name="$PROJECT_DIR$/src" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.GNGameDemo">
-    <configuration name="GNGameDemo" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="GNGameDemo" />
-      <module name="GNGameProxy" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager">
     <configuration name="GNGameProxy" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="GNGameProxy" />
       <module name="GNGameProxy" />
@@ -74,7 +91,6 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.GNGameDemo" />
         <item itemvalue="Application.GNGameProxy" />
       </list>
     </recent_temporary>
@@ -157,6 +173,28 @@
       <workItem from="1609145487498" duration="27000" />
       <workItem from="1609150942685" duration="2520000" />
       <workItem from="1609209454556" duration="974000" />
+      <workItem from="1609300251247" duration="100000" />
+      <workItem from="1609300381659" duration="1919000" />
+      <workItem from="1609384804668" duration="45000" />
+      <workItem from="1609384875471" duration="319000" />
+      <workItem from="1609725117064" duration="194000" />
+      <workItem from="1609754864040" duration="2595000" />
+      <workItem from="1609819565536" duration="48000" />
+      <workItem from="1609819638826" duration="1179000" />
+      <workItem from="1609907068248" duration="543000" />
+      <workItem from="1610105561317" duration="139000" />
+      <workItem from="1610105704548" duration="15000" />
+      <workItem from="1610105739262" duration="14000" />
+      <workItem from="1610447034157" duration="1925000" />
+      <workItem from="1610532890671" duration="2572000" />
+      <workItem from="1610621020323" duration="678000" />
+      <workItem from="1610941350482" duration="529000" />
+      <workItem from="1610941894266" duration="974000" />
+      <workItem from="1611023242189" duration="1000000" />
+      <workItem from="1611116513635" duration="4040000" />
+      <workItem from="1611562234674" duration="6748000" />
+      <workItem from="1611628628330" duration="2653000" />
+      <workItem from="1611721533139" duration="2345000" />
     </task>
     <servers />
   </component>

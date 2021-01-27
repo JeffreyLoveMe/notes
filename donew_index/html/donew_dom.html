@@ -47,7 +47,7 @@
         onclick - 鼠标单击
         ondblclick - 鼠标双击
         onkeyup - 按下并释放键盘上的一个键
-        onchange - 本文内容或者下拉菜单内容发生改变
+        onchange - 文本内容或者下拉菜单内容发生改变
         onfocus - 获取焦点（文本框获得鼠标光标）
         onblur - 失去焦点（文本框失去鼠标光标）/bu'le'r
         onmouseover - 鼠标悬停（鼠标停在元素上方）
@@ -96,26 +96,19 @@
          * 参数3 - 可选（true - 事件在捕获阶段执行/false默认 - 事件在冒泡阶段执行）
          */
         a1.addEventListener("click", test); // 火狐/谷歌/IE9+
-        // a1.attachEvent("onclick", test); // IE6/7/8 - 目前已经不需要兼容
         // 兼容写法
-        EventListen = {
-            /**
-             * @param {string} str
-             * @param {Function} func
-             * @param {HTMLElement} element
-             */
-            addEvent: function (str,func,element) {
-                if (element.addEventListener) {
-                    element.addEventListener(str, func, element);
-                } else if (a1.attachEvent) {
-                    a1.attachEvent("on" + str, func);
-                } else {
-                    element["on" + str] = func;
-                }
+        /**
+         * @param {String} str
+         * @param {Function} func
+         * @param {HTMLElement} element
+         */
+         function addEvent(str, func, element) {
+            if (element.addEventListener) {
+                element.addEventListener(str, func);
+            } else {
+                element["on" + str] = func;
             }
         }
-        // 3>.事件驱动程序 - 对样式和html的操作（DOM操作）
-        // 可以操作标签的属性和样式
 
         // // ？？？事件监听原理？？？
         // function eventTest(str, func, element) {
@@ -225,7 +218,7 @@
             return siblingElements;
         }
         // 注意 - 节点的访问关系都是属性｜节点的操作都是函数
-        // 7.操作节点 - demo_31.html ｜ demo_32.html ｜ demo_34.html
+        // 6.操作节点 - demo_31.html ｜ demo_32.html ｜ demo_34.html
         // 可以通过js操作html写网页（不需要在手动写html）
         // 创建节点
         var a17 = document.createElement("div");
@@ -235,7 +228,7 @@
         a1.appendChild(a17);
         // 插入节点
         // 在a16节点（参考节点）之前插入a17节点（新节点）
-        a1.insertBefore(a17, a16);
+        a1.insertBefore(a17, a16[0]);
         // 如果参考节点为null则会在节点最后插入一个节点
         a1.insertBefore(a17, null);
         // 删除节点
@@ -249,7 +242,7 @@
         // true - 深复制（复制节点及其所有子节点）
         // false - 浅复制（复制节点本身，不复制子节点）/默认
         var a18 = a17.cloneNode(true);
-        // 8.操作节点属性 - IE6、7不支持（不考虑IE8以下的方式）
+        // 7.操作节点属性 - IE6、7不支持（不考虑IE8以下的方式）
         /*
         <div class="box" style="width: 100px;height: 100px;background: pink;">
         </div>
