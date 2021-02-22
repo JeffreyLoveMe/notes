@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>美女相册</title>
+    <style type="text/css">
+        * {
+            padding: 0;
+            margin: 0;
+            background: pink;
+        }
+        ul, li {
+            list-style: none;
+        }
+        .clearfix:after {
+            content: '.';
+            display: block;
+            height: 0;
+            line-height: 0;
+            visibility: hidden;
+            clear: both;
+        }
+        .clearfix {
+            zoom: 1;
+        }
+        h2, a, ul, div>img, p {
+            margin-top: 10px;
+            margin-left: 20px;
+        }
+        a:link {
+            display: block;
+            color: orange;
+            text-decoration: none;
+        }
+        ul>li {
+            float: left;
+        }
+        ul>li>img {
+            margin: 10px;
+            width: 100px;
+            height: 62px;
+        }
+        #first_image {
+            margin-left: 0;
+        }
+        div>img {
+            width: 400px;
+            height: 250px;
+        }
+    </style>
+    <script type="text/javascript">
+        window.onload = function () {
+            var imgs = document.getElementsByTagName("img")
+            var p = document.getElementsByTagName("p")[0]
+            for (let i = 0; i < (imgs.length - 1); i++) {
+                imgs[i].onclick = function () {
+                    imgs[imgs.length - 1].src = "../../image/beautyImage/" + (i + 1) + ".jpg"
+                    if (i === 0) {
+                        p.innerText = "美女A"
+                    } else if (i === 1) {
+                        p.innerText = "美女B"
+                    } else if (i === 2) {
+                        p.innerText = "美女C"
+                    } else if (i === 3) {
+                        p.innerText = "美女D"
+                    }
+                 }
+            }
+        }
+    </script>
+</head>
+<body>
+    <!--1.拿到设计图-->
+    <!--2.搭建框架-->
+    <h2>美女画廊</h2>
+    <a href="javascript:;">注册</a>
+    <ul class="clearfix">
+        <li>
+            <img id="first_image" src="../../image/beautyImage/1-small.jpg" alt="美女A">
+        </li>
+        <li>
+            <img src="../../image/beautyImage/2-small.jpg" alt="美女">
+        </li>
+        <li>
+            <img src="../../image/beautyImage/3-small.jpg" alt="美女C">
+        </li>
+        <li>
+            <img src="../../image/beautyImage/4-small.jpg" alt="美女D">
+        </li>
+    </ul>
+    <div>
+        <img src="../../image/beautyImage/placeholder.png" alt="大图">
+    </div>
+    <p>请选择一个图片</p>
+</body>
+</html>

@@ -652,6 +652,56 @@ public class GNGameProxy {
         Override重写 - 在不同类中，子类可以重新实现父类的方法（返回值、方法名、参数列表完全一样）
         Overload重载 - 参数个数不同 OR 参数类型不同（参数顺序不同（开发中基本不使用））/与返回值无关（可以改变返回值类型）
         */
+
+        // 创建内部类对象
+        // 1>.普通内部类：外部类名.内部类名 对象名 = new 外部类名.new 内部类名()
+        // InterDemo.Inner io = new InterDemo().new Inner();
+        // 2>.静态内部类：外部类名.内部类名 对象名 = 外部类名.内部类对象
+        // InterDemo.Innering io = new InterDemo.Innering();
+        // 3>.局部内部类 - 只能在方法内部访问
+
+        // 常见API（应用程序编程接口）
+        // 一、.Object类
+        // 1>.Java类层次结构的根类，所有类都直接或间接继承该类
+        // 2>.public Object() { // 构造方法 }
+        Object obj = new Object();
+        // 3>.返回对象的哈希码值（默认根据对象的地址来计算）
+        // a.不同对象，hashCode()一般不相同；用一个对象，hashCode()肯定相同
+        // b.返回的不是对象的实际地址值（可以理解为逻辑地址值）
+        // c.返回int类型
+        obj.hashCode();
+        // 4>.返回对象的运行时类
+        // a.返回Class类型（字节码文件）
+        obj.getClass();
+        // b.获取对象的真实类的全名称（类名）
+        obj.getClass().getName();
+        // 5>.toString()
+        /*
+        // 源码
+        // 没有意义，一般要重写
+        public String toString() {
+            // 类名 @ hashCode的十六进制表现形式
+            return getClass().getName() + "@" + Integer.toHexString(hashCode());
+        }
+        */
+        obj.toString();
+        // 6>.equals()
+        // a.判断两个对象是否相等
+        /*
+        // b.源码
+        // 没有意义，一般要重写
+        public boolean equals(Object obj) {
+            // 比较对象的地址值，没有什么意义，需要重写
+            // 在开发中，我们一般比较对象的属性值（我们一般认为相同属性是同一个对象）
+            return (this == obj);
+        }
+        */
+        // c."==和equals()"有什么区别
+        // 1."=="是比较运算符（既可以比较基本数据类型，也可以比较引用数据类型）
+        // 2."==和equals()"没有重写之前是一样的（比较地址值）
+        obj.equals(obj);
+
+        // 二、String类
     }
 
     // b.构造代码块（初始化块） - 出现在类中方法外，多个构造方法中重复的代码存在在一起，每次调用构造方法前直接执行
@@ -731,7 +781,7 @@ public class GNGameProxy {
     // 抽象类和抽象方法
     // 1>.概念 - 抽象类和抽象方法必须使用abstract修饰
     // 2>.抽象类
-    abstract class Test {
+    public abstract class Test {
         // 抽象类的成员变量（既可以是常量，也可以是变量）；abstract不能修饰成员变量
         int num = 10;
         final int SUM = 100;
@@ -831,8 +881,6 @@ public class GNGameProxy {
     // c.抽象修饰符 - abstract
 }
 
-
-
 // 接口
 // 1>.概念 - 对外提供规则的都是接口
 // 2>.接口特点
@@ -903,7 +951,101 @@ class InterDemo implements Inter, DoubleInter {
 
     @Override
     public void print() {
+        Inner i = new Inner();
+        i.method();
 
+    }
+
+    // 内部类
+    // 1>.概念 - 在类中定义的类叫做内部类
+    // 2>.外部类要访问内部类的成员必须创建对象（外部类名.内部类名 对象名 = new 外部类名.new 内部类名();）
+    // 3>.成员内部类
+    public int num = 10;
+    private class Inner {
+        // 3>.内部类可以访问外部类的成员（包括private）
+        public int num = 20;
+        public void method() {
+            int num = 30;
+            System.out.println(num); // 30
+            System.out.println(this.num); // 20
+            // 内部类之所以可以获取到外部类的成员，是因为内部类可以获取到外部类的引用（外部类.this）
+            System.out.println(InterDemo.this.num); // 10
+        }
+    }
+    // 成员内部类被私有外部不能调用，内部可以调用
+    // 外部想要调用需要定义方法对外
+    public void getMethod() {
+        Inner i = new Inner();
+        i.method();
+    }
+    // 4>.静态内部类
+    static class Innering {
+        // 可以定义对象方法
+        public void method() {
+
+        }
+        // 可以定义静态方法
+        public static void log() {
+
+        }
+    }
+    // 5>.局部内部类
+    public void show() {
+        final int num = 10;
+        class Inner {
+            public void print() {
+                // 局部内部类访问局部变量必须用final修饰（jdk1.8以后不加final也可以）
+                // 1>.因为如果不使用final修饰，num会随着方法的弹栈而销毁，这时候"局部内部类对象"还没有销毁
+                // 2>.使用final修饰的局部变量在类加载的时候会进入常量池，即使方法弹栈常量也不会消失
+                System.out.println(num);
+            }
+        }
+        // 局部内部类只能在其所在的方法中访问
+        Inner i = new Inner();
+        i.print();
+    }
+    // 6>.匿名内部类（局部内部类的一种/内部类的简化写法）
+    // 1>.前提：存在一个类或者接口（具体类、抽象类）
+    // 2>.本质："继承该类/实现该接口的子类"匿名对象
+    // 3>.应用：匿名内部类可以当做参数传递（将匿名内部类看作一个对象）
+    public void showLog() {
+        // 实现DoubleInter接口/"继承某类"
+        // 整个代表"DoubleInter的子类对象"
+        new DoubleInter() {
+            @Override
+            public void print() {
+
+            }
+
+            @Override
+            public void log() {
+
+            }
+        }.log();
+        // ！！！匿名内部类调用多次方法的时候不使用，太麻烦！！！
+        // 父类引用指向子类对象
+        DoubleInter doubleInter = new DoubleInter() {
+            @Override
+            public void print() {
+
+            }
+
+            @Override
+            public void log() {
+
+            }
+
+            public void logger() {
+
+            }
+        };
+        doubleInter.print();
+        doubleInter.log();
+        // 弊端
+        // 会报错：编译看父类
+        // 无法向下转型：因为没有子类类型
+        // doubleInter.logger();
+        // 4>.面试题（查看微信截图补全）
     }
 }
 

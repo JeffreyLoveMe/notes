@@ -2,29 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="16e435bf-91d0-4784-a0da-dec4003c7039" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/demo/GNGameDemo_01.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/多态内存图.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../donew_index/html/demo/demo_45.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../donew_index/html/demo/demo_46.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../donew_index/html/demo/demo_47.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../donew_index/html/demo/demo_48.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../donew_index/html/demo/demo_49.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../donew_index/image/big_icon.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../donew_index/image/r1_c1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../donew_index/image/r1_c3.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../donew_index/image/r2_c1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../donew_index/image/r2_c2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../donew_index/image/vip_icon.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../donew_index/image/weibo_icon.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GNGameDemo.java" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/../donew_index/html/demo/demo_50.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../donew_index/image/beautyImage/1-small.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../donew_index/image/beautyImage/1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../donew_index/image/beautyImage/2-small.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../donew_index/image/beautyImage/2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../donew_index/image/beautyImage/3-small.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../donew_index/image/beautyImage/3.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../donew_index/image/beautyImage/4-small.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../donew_index/image/beautyImage/4.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../donew_index/image/beautyImage/placeholder.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GNGameProxy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GNGameProxy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Note.code-workspace" beforeDir="false" afterPath="$PROJECT_DIR$/../Note.code-workspace" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../donew_index/html/donew_css.html" beforeDir="false" afterPath="$PROJECT_DIR$/../donew_index/html/donew_css.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../donew_index/html/donew_demo.html" beforeDir="false" afterPath="$PROJECT_DIR$/../donew_index/html/donew_demo.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../donew_index/html/donew_dom.html" beforeDir="false" afterPath="$PROJECT_DIR$/../donew_index/html/donew_dom.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../donew_index/html/donew_js基础.html" beforeDir="false" afterPath="$PROJECT_DIR$/../donew_index/html/donew_js基础.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../donew_index/html/donew_review.html" beforeDir="false" afterPath="$PROJECT_DIR$/../donew_index/html/donew_review.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../donew_index/html/html_jQuery.html" beforeDir="false" afterPath="$PROJECT_DIR$/../donew_index/html/donew_jQuery.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -195,6 +185,13 @@
       <workItem from="1611562234674" duration="6748000" />
       <workItem from="1611628628330" duration="2653000" />
       <workItem from="1611721533139" duration="2345000" />
+      <workItem from="1611831144667" duration="309000" />
+      <workItem from="1612170436267" duration="3705000" />
+      <workItem from="1612260806250" duration="1039000" />
+      <workItem from="1612331701479" duration="6492000" />
+      <workItem from="1612491308520" duration="4813000" />
+      <workItem from="1612757851976" duration="28000" />
+      <workItem from="1612757902925" duration="5693000" />
     </task>
     <servers />
   </component>
