@@ -2,19 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="16e435bf-91d0-4784-a0da-dec4003c7039" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../donew_index/html/demo/demo_50.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../donew_index/image/beautyImage/1-small.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../donew_index/image/beautyImage/1.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../donew_index/image/beautyImage/2-small.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../donew_index/image/beautyImage/2.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../donew_index/image/beautyImage/3-small.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../donew_index/image/beautyImage/3.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../donew_index/image/beautyImage/4-small.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../donew_index/image/beautyImage/4.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../donew_index/image/beautyImage/placeholder.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GNGameProxy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GNGameProxy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../donew_index/html/donew_demo.html" beforeDir="false" afterPath="$PROJECT_DIR$/../donew_index/html/donew_demo.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../donew_index/html/donew_review.html" beforeDir="false" afterPath="$PROJECT_DIR$/../donew_index/html/donew_review.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/demo/GNGameDemo_01.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/demo/GNGameDemo_01.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,14 +53,28 @@
     <property name="project.structure.last.edited" value="Global Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="Errors" />
+    <property name="restartRequiresConfirmation" value="false" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.GNGameDemo_01">
+    <configuration name="GNGameDemo_01" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="demo.GNGameDemo_01" />
+      <module name="GNGameProxy" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="demo.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="GNGameProxy" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="GNGameProxy" />
       <module name="GNGameProxy" />
@@ -82,6 +85,7 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.GNGameProxy" />
+        <item itemvalue="Application.GNGameDemo_01" />
       </list>
     </recent_temporary>
   </component>
@@ -192,6 +196,18 @@
       <workItem from="1612491308520" duration="4813000" />
       <workItem from="1612757851976" duration="28000" />
       <workItem from="1612757902925" duration="5693000" />
+      <workItem from="1613966128423" duration="913000" />
+      <workItem from="1613967964876" duration="252000" />
+      <workItem from="1613968313442" duration="14296000" />
+      <workItem from="1614220446955" duration="8381000" />
+      <workItem from="1614306406910" duration="474000" />
+      <workItem from="1614309199236" duration="7425000" />
+      <workItem from="1614567118084" duration="873000" />
+      <workItem from="1614568482551" duration="4678000" />
+      <workItem from="1614656611999" duration="1040000" />
+      <workItem from="1614673768162" duration="599000" />
+      <workItem from="1614674401715" duration="296000" />
+      <workItem from="1614674702121" duration="4039000" />
     </task>
     <servers />
   </component>

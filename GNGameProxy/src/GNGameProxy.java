@@ -1,4 +1,8 @@
 import org.jetbrains.annotations.NotNull;
+import sun.jvm.hotspot.tools.SysPropsDumper;
+
+import java.util.Arrays;
+import java.util.Locale;
 import java.util.Scanner; // 导入java.util包中的Scanner类（推荐使用）
 //import java.util.*; // 导入java.util包下面所有的类（不推荐使用）
 // 测试类 - 包含主函数、"测试类的类名"必须与"当前文件名"一致
@@ -701,7 +705,285 @@ public class GNGameProxy {
         // 2."==和equals()"没有重写之前是一样的（比较地址值）
         obj.equals(obj);
 
-        // 二、String类
+        // 二、Scanner类
+        Scanner sc = new Scanner(System.in); // 键盘录入
+        if (sc.hasNextInt()) { // 输入是否为整数（可能会抛出异常）
+            int i = sc.nextInt(); // 键盘录入一个整数，存储在i中
+        } else {
+            System.out.println("输入类型错误");
+        }
+        String s = sc.nextLine(); // 键盘录入什么都可以
+        // 问题：sc.nextInt()和sc.nextLine()同时存在不行？？？
+        // 1.创建两个Scanner对象...浪费空间
+        // 2.全部使用sc.nextLine()...后续将整数字符串转换成整数
+
+        // 三、String类
+        // 1>.字符串概述
+        // a.字符串是常量，一旦被赋值就不能被改变
+        String s1 = "abc";
+        // b.当把"def"赋值给s2，原来的"abc"就变成了垃圾
+        s1 = "def";
+        // c.重写了该方法，返回该对象本身
+        s1.toString();
+        // 2>.构造方法
+        // a.第一种
+        String s2 = new String();
+        // b.第二种：字节数组转换成字符串/解码
+        byte[] array_0000 = {97, 98, 99};
+        String s3 = new String(array_0000);
+        // c.第三种：字符数组转换成字符串
+        char[] array_0001 = {'a', 'b', 'c'};
+        s3 = new String(array_0001);
+        // 3>.常见面试题
+        // a.第一题
+        // 常量池：常量池中没有这个字符串对象就创建一个该对象，如果有直接使用即可
+        String s4 = "abc";
+        String s5 = "abc";
+        // 判断地址
+        System.out.println(s4 == s5); // true
+        // 判断字符序列
+        System.out.println(s4.equals(s5)); // true
+        // b.第二题
+        String s6 = new String("abc"); // 该语句创建2个对象（常量池中创建一个对象/堆内存中创建一个对象）
+        // c.第三题
+        System.out.println(s4 == s6); // false
+        System.out.println(s4.equals(s6)); // true
+        // d.第四题
+        String s7 = "a" + "b" + "c";
+        String s8 = "abc";
+        System.out.println(s7 == s8); // true（java中有常量优化机制）
+        System.out.println(s7.equals(s8)); // true
+        // e.第五题
+        String s9 = "ab";
+        String s10 = "abc";
+        String s11 = s9 + "c";
+        System.out.println(s10 == s11); // false
+        System.out.println(s10.equals(s11)); // true
+        // 4>.常用判断方法
+        String s12 = "abc";
+        String s13 = "def";
+        System.out.println(s12.equals(s13)); // 判断字符串内容是否相同（区分大小写）
+        System.out.println(s12.equalsIgnoreCase(s13)); // 判断字符串内容是否相同（不区分大小写）
+        System.out.println(s12.contains(s13)); // 判断s12中是否包含s13
+        System.out.println(s12.startsWith("abc")); // 判断s12是否以"abc"开头
+        System.out.println(s12.endsWith("abc")); // 判断s12是否以"abc"结尾
+        System.out.println(s12.isEmpty()); // 判断s12是否为空
+        String s14 = null;
+        System.out.println(s14.isEmpty()); // java.lang.NullPointerException空指针异常
+        /*
+        注意：""和null的区别？？？
+        a>.""是字符串常量，同时也是一个String类对象（可以调用String类对象）
+        b>.null是空常量，不能调用任何方法（会出现java.lang.NullPointerException空指针异常）/null可以给任意引用数据类型赋值
+        */
+        // 5>.常用获取方法
+        String s15 = "abc";
+        int length = s15.length(); // 获取字符串长度
+        System.out.println("你好，世界！！！".length()); // 8
+        char c = s15.charAt(2); // 根据索引获取对应位置字符
+        int index = s15.indexOf('a'); // 从前往后查找：指定'字符/字符串'第一次出现的索引
+        s15.lastIndexOf('a'); // 从后往前查找：指定'字符/字符串'第一次出现的索引
+        int specifiedIndex = s15.indexOf("a", 2); // 从前往后查找：指定'字符/字符串'从指定位置后第一次出现的索引
+        s15.lastIndexOf('a', 2); // 从后往前查找：指定'字符/字符串'从指定位置后第一次出现的索引
+        // s15不会改变（一旦被赋值就不能被改变）
+        // s16会改变
+        String s16 = s15.substring(2); // 从指定位置开始截取字符串，默认到末尾
+        s15.substring(2, 3); // 从指定位置截取字符串到指定位置（包含头部不包含尾部）
+        // 6>.字符串遍历
+        for (int i = 0; i < s15.length(); i++) {
+            char c1 = s15.charAt(i);
+            System.out.println(c1);
+        }
+        for (int i = 0; i < s15.toCharArray().length; i++) {
+
+        }
+        // 7>.字符串转换方法
+        String s17 = "ABCDEFG1234567890@#$%^";
+        // 通过GBK码表将字符串转换成字节数组（编码 - 把我们可以"看得懂的"转换成计算机可以"看得懂的"）
+        byte[] array_07 = s17.getBytes();
+        // 将字符串转换成字符数组
+        char[] array_08 = s17.toCharArray();
+        // 把字符数组转换成字符串
+        // 内部实现：使用构造方法
+        String s18 = String.valueOf(array_08);
+        // 将'int类型'转换成字符串
+        s18 = String.valueOf(1);
+        Phone p2 = new Phone();
+        // 将'Object类型'转换成字符串
+        // 内部实现：调用toString()方法
+        s18 = String.valueOf(p2);
+        // 将字符串转换成小写
+        String s19 = "HEIMA";
+        String s20 = s19.toLowerCase();
+        // 将字符串转换成大写
+        s19 = s20.toUpperCase();
+        // 字符串与任意类型拼接（功能更强大）
+        String s21 = s19 + s20;
+        // 拼接字符串（必须传入字符串）
+        s21 = s19.concat(s20);
+        // 8>.字符串其他方法
+        String s22 = "heima";
+        // 使用'a'替换'e'
+        String s23 = s22.replace('e', 'a');
+        // 使用'a'替换不存在的'z'，保留原字符串不变
+        String s24 = s22.replace('z', 'a');
+        // 字符串替换
+        String s25 = s22.replaceAll("hei", "hao");
+        // 去除两端的空格
+        String s26 = "  avc 12FF  ";
+        String s27 = s26.trim(); // "avc 12FF"
+        // 按照字典顺序比较两个字符串
+        // 按照码表值比较
+        System.out.println(s25.compareTo(s26));
+        System.out.println(s25.compareToIgnoreCase(s26));
+
+        // 四、StringBuffer类（线程安全的可变字符序列）
+        // 线程安全的效率慢/"StringBuilder效率高，不同步"
+        // 1>.构造方法
+        // StringBuffer是字符缓冲区，当new的时候是在堆内存中创建一个对象（底层是一个长度为16的字符数组）
+        StringBuffer sb_00 = new StringBuffer();
+        System.out.println(sb_00.length()); // 0/容器中的字符个数（实际值）
+        System.out.println(sb_00.capacity()); // 16/容器的初始容量（理论值）
+
+        StringBuffer sb_01 = new StringBuffer(10);
+        System.out.println(sb_01.length()); // 0/容器中的字符个数（实际值）
+        System.out.println(sb_01.capacity()); // 10/容器的初始容量（理论值）
+
+        StringBuffer sb_02 = new StringBuffer("heima");
+        System.out.println(sb_02.length()); // 5/容器中的字符个数（实际值）
+        System.out.println(sb_02.capacity()); // 5 + 16 = 21/容器的初始容量（理论值）
+        // 2>.增删改查
+        // a.添加：可变的字符序列，都是操作同一个对象（不会重新创建对象，会不断向原缓冲区添加字符）
+        StringBuffer sb_03 = new StringBuffer();
+        StringBuffer sb_04 = sb_03.append(true);
+        StringBuffer sb_05 = sb_03.append("heima");
+        StringBuffer sb_06 = sb_03.append(sb_02);
+        System.out.println(sb_03.toString()); // trueheimaheima
+        System.out.println(sb_04.toString()); // trueheimaheima
+        System.out.println(sb_05.toString()); // trueheimaheima
+        System.out.println(sb_06.toString()); // trueheimaheima
+        // b.插入
+        // 在指定位置添加元素，如果没有指定位置的索引会报"索引越界异常"
+        sb_03.insert(3, "hao"); // truhaoeheimaheima
+        // c.删除
+        sb_03.deleteCharAt(4); // 通过index删除元素（如果没有指定位置的索引会报"java.lang.ArrayIndexOutOfBoundsException字符串越界异常"）
+        sb_03.delete(0, 2); // 包含头，不包含尾/[0, 2)
+        sb_03.delete(0, sb_03.length()); // 清空缓冲区
+        // sb_03 = new StringBuffer(); // 不能使用该方法清空缓冲区
+        // d.替换
+        sb_03.replace(0, 3, "baima");
+        // e.反转
+        sb_03.reverse();
+        // f.截取 - 不再返回StringBuffer
+        String s28 = sb_03.substring(2);
+        s28 = sb_03.substring(2, 5); // 包含头，不包含尾/[2, 5)
+        System.out.println(s28);
+        System.out.println(sb_03); // 此处sb_03没有改变
+        // 3>.StringBuffer和String之间的相互转换
+        // a.String -> StringBuffer
+        StringBuffer sb_07 = new StringBuffer("heima"); // 通过构造方法
+        StringBuffer sb_08 = new StringBuffer();
+        sb_08.append("heima"); // 通过append()方法
+        // b.StringBuffer -> String
+        StringBuffer sb_09 = new StringBuffer("heima");
+        String s29 = new String(sb_09); // 通过构造方法
+        String s30 = sb_09.toString(); // 通过toString()方法
+        String s31 = sb_09.substring(0, 3); // 通过substring(start, end)方法
+        // 4>.StringBuffer和StringBuilder的区别
+        // a.StringBuffer出现于jdk1.0，线程安全，效率低
+        // b.StringBuilder出现于jdk1.5，线程不安全，效率高
+        // c.String是不可变字符串序列，StringBuffer是可变字符序列
+        // 5>.String和StringBuffer作为参数传递
+        // a.基本数据类型的值传递 - 不改变其值
+        String s32 = "heima";
+        // String类虽然是引用数据类型，但是作为参数传递时和基本数据类型一样
+        change(s32);
+        System.out.println(s32); // heima
+        // b.引用数据类型的值传递 - 改变其值
+        StringBuffer sb_10 = new StringBuffer("heima");
+        change(sb_10);
+        System.out.println(sb_10); // heimaitcase
+
+        // Arrays类
+        int[] array = {22, 33, 55, 11, 44};
+        // 数组转字符串
+        Arrays.toString(array); // [22, 33, 55, 11, 44]
+        // 排序
+        Arrays.sort(array); // [11, 22, 33, 44, 55]
+        // 二分查找
+        int[] sortArray = {11, 22, 33, 44, 55};
+        Arrays.binarySearch(sortArray, 22); // 1
+        Arrays.binarySearch(sortArray, 55); // 4
+        Arrays.binarySearch(sortArray, 66); // (-插入点 - 1) = -6
+        /*
+        private static int binarySearch(int[] a, int fromIndex, int toIndex, int key) {
+            int low = fromIndex;
+            int high = toIndex - 1;
+
+            while (low <= high) {
+                int mid = (low + high) >>> 1;
+                int midVal = a[mid];
+
+                if (midVal < key) {
+                    low = mid + 1;
+                } else if (midVal > key) {
+                    high = mid - 1;
+                } else {
+                    return mid; // key found
+                }
+            }
+
+            return -(low + 1);  // key not found.
+        }
+        */
+
+        // 基本类型包装类
+        // 1>.为什么会有基本数据类型包装类？
+        // * 将基本数据类型封装成对象的好处在于可以在对象中定义更多方法操作该数据
+        // 2>.常用操作：用于基本数据类型与字符串之间的转换
+        /*
+        3>.基本数据类型与包装类的对应关系
+        byte        Byte
+        short       Short
+        int         Integer
+        long        Long
+        float       Float
+        double      Double
+        char        Character
+        boolean     Boolean
+        */
+        // 4>.Integer类
+        // a.构造方法
+        Integer integer_00 = new Integer(12);
+        Integer integer_01 = new Integer("12");
+//        Integer integer_02 = new Integer("abc"); // 数字格式异常java.lang.NumberFormatException
+        // b.int可以表示的最大值和最小值
+        System.out.println(Integer.MAX_VALUE); // int可以表示的最大值/2^31 - 1
+        System.out.println(Integer.MIN_VALUE); // int可以表示的最小值/-2^31
+        // 5>.String和int之间相互转换
+        // 一、int -> String
+        // a.第一种方式（推荐使用）
+        int a28 = 100;
+        String s33 = a28 + "";
+        System.out.println(s33);
+        // b.第二种方式（推荐使用）
+        String s34 = String.valueOf(a28);
+        System.out.println(s34);
+        // c.第三种方式
+        Integer integer_03 = new Integer(a28);
+        String s35 = integer_03.toString();
+        System.out.println(s35);
+        // d.第四种方式
+        String s36 = Integer.toString(a28);
+        // 二、String -> int
+        // 04:30
+    }
+
+    public static void change(String s) {
+        s = s + "itcase";
+    }
+
+    public static void change(StringBuffer sb) {
+        sb = sb.append("itcase");
     }
 
     // b.构造代码块（初始化块） - 出现在类中方法外，多个构造方法中重复的代码存在在一起，每次调用构造方法前直接执行
@@ -953,7 +1235,6 @@ class InterDemo implements Inter, DoubleInter {
     public void print() {
         Inner i = new Inner();
         i.method();
-
     }
 
     // 内部类
