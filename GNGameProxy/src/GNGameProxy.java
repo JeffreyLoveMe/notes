@@ -1,9 +1,13 @@
 import org.jetbrains.annotations.NotNull;
 import sun.jvm.hotspot.tools.SysPropsDumper;
 
-import java.util.Arrays;
-import java.util.Locale;
-import java.util.Scanner; // 导入java.util包中的Scanner类（推荐使用）
+import java.math.BigDecimal;
+import java.math.BigInteger;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.*;
+
 //import java.util.*; // 导入java.util包下面所有的类（不推荐使用）
 // 测试类 - 包含主函数、"测试类的类名"必须与"当前文件名"一致
 public class GNGameProxy {
@@ -124,7 +128,7 @@ public class GNGameProxy {
     main - 默认规定的（只有这样写才能被JVM识别）
     String[] args - 接收键盘录入的数据
     */
-    public static void main(String[] args) { // 这是主方法（程序的入口）
+    public static void main(String[] args) throws ParseException { // 这是主方法（程序的入口）
         // 我的第一个程序
         System.out.println("我的第一个程序");
 
@@ -948,7 +952,7 @@ public class GNGameProxy {
         long        Long
         float       Float
         double      Double
-        char        Character
+        char        Character/没有parseXxx()
         boolean     Boolean
         */
         // 4>.Integer类
@@ -975,7 +979,175 @@ public class GNGameProxy {
         // d.第四种方式
         String s36 = Integer.toString(a28);
         // 二、String -> int
-        // 04:30
+        // a.第一种方式
+        String s37 = "200";
+        Integer integer_04 = new Integer(s); // String -> Integer
+        int a29 = integer_04.intValue(); // Integer -> int
+        // b.第二种方式（推荐使用）
+        int a30 = Integer.parseInt(s37); // 200
+        boolean isShow = Boolean.parseBoolean(s37); // false
+        // 6>.JDK5.0的新特性
+        // 一、JDK5.0之前
+        // a>.装箱：把基本类型转换为包装类类型
+        int a31 = 100;
+        Integer integer_05 = new Integer(a31);
+        // b>.拆箱：把包装类类型转换为基本类型
+        int a32 = integer_05.intValue();
+        // 二、JDK5.0之后
+        // a>.自动装箱：把基本类型转换为包装类类型
+        Integer integer_06 = 100;
+        // b>.自动拆箱：把包装类类型转换为基本类型
+        int a34 = integer_06 + 200;
+        // 三、注意事项
+        // Integer integer_07 = null;
+        // java.lang.NullPointerException空指针异常（null不能去调用方法...这点区别于oc）
+        // int a35 = integer_07 + 100;
+        // 7>.面试题
+        // byte取值范围：-128 - 127
+        // 如果在byte取值范围内，自动装箱就不会新创建对象，而是从常量池中取值
+        Integer i1 = new Integer(127);
+        Integer i2 = new Integer(127);
+        System.out.println(i1 == i2); // false
+        System.out.println(i1.equals(i2)); // true
+
+        Integer i3 = new Integer(128);
+        Integer i4 = new Integer(128);
+        System.out.println(i3 == i4); // false
+        System.out.println(i3.equals(i4)); // true
+
+        Integer i5 = 127;
+        Integer i6 = 127;
+        System.out.println(i5 == i6); // true
+        System.out.println(i5.equals(i6)); // true
+
+        Integer i7 = 128;
+        Integer i8 = 128;
+        System.out.println(i7 == i8); // false
+        System.out.println(i7.equals(i8)); // true
+
+        // 正则表达式
+        // 1>.概念：一个用来描述或者匹配一系列符合某个语法规则的字符串的单个字符串
+        // 2>.规则：参考百度
+        // a.a，b，c其中单个字符
+        String regex = "[abc]"; // []代表单个字符
+        System.out.println("a".matches(regex));
+        // b.任何单个字符除掉a，b，c
+        regex = "[^abc]";
+        System.out.println("a".matches(regex)); // false
+        System.out.println("ef".matches(regex)); // false
+        // c.a到z或者A到Z（两头字母包括在内）
+        regex = "[a-zA-Z]";
+        // d.分割、替换、分组、获取
+
+        // Math类
+        // 1>.概述：包含用于执行基本数学运算的方法
+        System.out.println(Math.PI); // 圆周率
+        System.out.println(Math.abs(-10)); // 取绝对值
+        // 天花板函数（向上取整）
+        System.out.println(Math.ceil(13.3)); // 14.0
+        System.out.println(Math.ceil(13.99)); // 14.0
+        System.out.println(Math.ceil(-13.3)); // -13.0
+        // 地板函数（向下取整）
+        System.out.println(Math.floor(13.3)); // 13.0
+        System.out.println(Math.floor(13.99)); // 13.0
+        System.out.println(Math.floor(-13.3)); // -14.0
+        // 获取最大值
+        System.out.println(Math.max(10, 20)); // 20
+        // 获取最小值
+        System.out.println(Math.min(10, 20)); // 10
+        // 2的3次方
+        System.out.println(Math.pow(2, 3)); // 2.0 ^ 3.0
+        // 生成0.0 - 1.0之间的小数（随机数）
+        System.out.println(Math.random());
+        // 四舍五入
+        System.out.println(Math.round(13.4)); // 13
+        // 开平方
+        System.out.println(Math.sqrt(4)); // 根号4
+
+        // Random类
+        Random r1 = new Random();
+        System.out.println(r1.nextInt(100)); // 生成int类型随机数：[0 100)
+
+        // System类
+        // 一个源文件中可以有多个外部类（实际开发中一个文件只写一个类），只能有一个外部类使用public
+        System.gc(); // 运行垃圾回收器：调用finalize()方法
+        System.exit(0); // 退出JVM：非0状态属于异常终止
+        System.currentTimeMillis(); // 时间戳：当前时间与1970年1月1日之间的毫秒数
+        // copy数组
+        int[] src = {11, 22, 33, 44, 55};
+        int[] dest = new int[8];
+        System.arraycopy(src, 0, dest, 0, src.length);
+
+        // BigInteger类：可以表示很大很大的整数（精确的表示整数）
+        // int弊端：有范围
+//        int num1 = 1234567890987654321;
+        // long弊端：有范围
+//        long num2 = 123456789098765432101234567890L;
+        BigInteger bigInteger_01 = new BigInteger("123456789098765432101234567890");
+        BigInteger bigInteger_02 = new BigInteger("2");
+        bigInteger_01.add(bigInteger_02); // +
+        bigInteger_01.subtract(bigInteger_02); // -
+        bigInteger_01.multiply(bigInteger_02); // *
+        bigInteger_01.divide(bigInteger_02); // /
+        BigInteger[] array_09 = bigInteger_01.divideAndRemainder(bigInteger_02); // 取除数和余数
+
+        // BigDecimal类：精确的表示小数
+        // 1>.开发中不推荐使用（不够精确）
+//        BigDecimal bigDecimal_01 = new BigDecimal(2.0);
+//        BigDecimal bigDecimal_02 = new BigDecimal(1.1);
+//        System.out.println(bigDecimal_01.subtract(bigDecimal_02));
+        // 2>.通过构造中传入字符串的方式（推荐使用）
+        BigDecimal bigDecimal_03 = new BigDecimal("2.0");
+        BigDecimal bigDecimal_04 = new BigDecimal("1.1");
+        bigDecimal_03.add(bigDecimal_04); // +
+        bigDecimal_03.subtract(bigDecimal_04); // -
+        bigDecimal_03.multiply(bigDecimal_04); // *
+        bigDecimal_03.divide(bigDecimal_04); // /
+        // 3>.推荐使用（底层与方法2一致）
+        BigDecimal bigDecimal_05 = BigDecimal.valueOf(2.0);
+        BigDecimal bigDecimal_06 = BigDecimal.valueOf(1.1);
+
+        // Date类：该类中很多方法由Calendar类实现
+        Date d1 = new Date(); // 表示当前时间
+        // 获取当前时间的时间戳
+        d1.getTime();
+        System.currentTimeMillis();
+        // 设置毫秒值，改变时间对象
+        d1.setTime(1000);
+        Date d2 = new Date(0); // 1970年01月01日 08:00
+
+        // SimpleDateFormat类：DateFormat类的子类
+        // 1>.DateFormat类
+        /*
+        DateFormat dateFormat = new DateFormat(); // 抽象类不能被实例化
+        */
+        // 等同于DateFormat df1 = new SimpleDateFormat();
+        DateFormat df1 = DateFormat.getDateInstance(); // 父类引用指向子类对象
+        // 2>.日期对象 -> 时间字符串
+        // h - 12小时制
+        // H - 24小时制
+        Date d3 = new Date();
+        SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy年MM月dd日 HH:mm:ss");
+        sdf1.format(d3);
+        // 2>.时间字符串 -> 日期对象
+        String s38 = "2000-08-08 12:00:00";
+        SimpleDateFormat sdf2 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        Date d4 = sdf2.parse(s38);
+
+        // Calendar类
+        // 抽象类不能被实例化
+        Calendar calendar_01 = Calendar.getInstance(); // 父类引用指向子类对象
+        calendar_01.get(Calendar.YEAR); // 获取年
+        calendar_01.get(Calendar.MONTH); // 获取月（从0开始）
+        calendar_01.get(Calendar.DAY_OF_MONTH); // 一月中的第几天
+        // 此处可以通过自定义方法修改成我们常用的样子（周一是第一天，周日是最后一天）
+        calendar_01.get(Calendar.DAY_OF_WEEK); // 一周中的第几天（周日是第一天，周六是最后一天）
+        // 加一年
+        calendar_01.add(Calendar.YEAR, 1);
+        // 设置为2000年
+        calendar_01.set(Calendar.YEAR, 2000);
+        calendar_01.set(2000, 8, 8); // 2000-09-08
+
     }
 
     public static void change(String s) {
@@ -1335,6 +1507,14 @@ class Person {
 
     public void speakBusiness() {
         System.out.println("谈生意");
+    }
+
+    // 系统会主动调用
+    @Override
+    protected void finalize() throws Throwable {
+        super.finalize();
+
+        System.out.println("垃圾被回收");
     }
 }
 

@@ -12,6 +12,13 @@ public class GNGameDemo_01 {
         simulationLogin();
 
         convertString();
+
+        /*
+        校验QQ号：
+        1.长度必须是5-15位
+        2.0不能开头
+        3.必须是数字
+        */
     }
 
     /*

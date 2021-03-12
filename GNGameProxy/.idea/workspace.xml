@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="16e435bf-91d0-4784-a0da-dec4003c7039" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/Java技术点.xmind" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GNGameProxy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GNGameProxy.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/demo/GNGameDemo_01.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/demo/GNGameDemo_01.java" afterDir="false" />
     </list>
@@ -208,6 +209,14 @@
       <workItem from="1614673768162" duration="599000" />
       <workItem from="1614674401715" duration="296000" />
       <workItem from="1614674702121" duration="4039000" />
+      <workItem from="1614740069519" duration="5084000" />
+      <workItem from="1615196272310" duration="1363000" />
+      <workItem from="1615261180143" duration="2098000" />
+      <workItem from="1615286431540" duration="412000" />
+      <workItem from="1615368074524" duration="1490000" />
+      <workItem from="1615369858929" duration="2535000" />
+      <workItem from="1615427922629" duration="8059000" />
+      <workItem from="1615534635524" duration="671000" />
     </task>
     <servers />
   </component>
