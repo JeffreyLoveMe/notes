@@ -14,10 +14,10 @@
  上午 9:00-12:00 | 下午 14:00-18:00 | 晚上 19:30-21:30 | 最晚不能超过凌晨两点
  2>.学习内容：
  基础班( 1个月 )：C语言 | Objective-C
- 就业班( 4个月 )：iOS开发 ｜ swift语言 | HTML | React Native
+ 就业班( 4个月 )：iOS开发 + swift语言 + HTML  + flutter
  3>.学习方法：
  1).专心听讲：注重听懂、理解
- 2).建议准备笔记本：记录重点
+ 2).建议准备笔记本：记录重点（不懂的也要记录下来）
  3).先自己解决 -> 百度 -> 谷歌
  */
 
@@ -30,18 +30,19 @@
  4).什么是操作系统 - 直接运行在硬件上的最基本的系统软件，其他软件必须依赖操作系统才能运行
  5).iOS(基于UNIX、不开源、AppStore)/Android(基于Linux的虚拟机、开源、GooglePlay)
  2>.准备：
- 1).编程语言 - C语言 > Objective-C > swift/C++
+ 1).编程语言 - C语言 > Objective-C > swift > C++（可选）
  2).开发工具 - Xcode
  3).电脑系统 - MacOS
  4).真机设备 - iphone/ipad
  5).iOS证书 - 调试证书/发布证书
+ 6>.Mac设备：iMac、MacBook Pro、 MacBook Air、Mac Pro、Mac mini
  3>.Apple硬件：
  1).iPhone - 2007年发布iphone1/2008年发布iphone2(3G)
  2).iPad - 2010年发布iPad1(大概一年发布一款)
  3).ipad mini - 2012年发布iPad mini1
  4).ipod Touch - 没有打电话功能的iphone
  5).Apple TV - 需要翻墙(国内被小米模仿)
- 4>.Mac系统/基于Unix内核：
+ 4>.Mac系统 - 基于Unix内核的图形化操作系统
  1).Dock工具栏 - 应用程序列表(默认位于屏幕下方)
  2).系统偏好设置 - windows的控制面板
  3).safari浏览器 - windows的IE浏览器

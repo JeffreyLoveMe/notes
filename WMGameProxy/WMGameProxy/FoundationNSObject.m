@@ -673,9 +673,14 @@
     NSArray *array = @[null, @(12)];
     NSLog(@"%@", [array description]);
 //    /**
-//     nil-对象指针为空
-//     Nil-类指针为空
 //     NULL-基本类型指针为空
+//     int *p = NULL;
+//     nil-对象指针为空
+//     id obj = nil;
+//     Nil-Class变量为空
+//     Class class = Nil;
+//     NSNull - 数组/字典中占位（空元素）
+//     [NSNull null]; // 创建表示空的对象
 //     */
 //    NSMutableDictionary *dict = [[NSMutableDictionary alloc]init];
 //    // 空指针不能加入到数组和字典
@@ -689,7 +694,9 @@
 // NSData/二进制数据
 -(void)showDate {
     // 1.NSDate的创建和基本概念
-    // 获取当前时间/以格林尼治时间为准
+    // 获取当前时间
+    // 系统记录的时间为北京时间，但是打印出来的始终为格林尼治时间
+    // 如果需要打印出来的是北京时间，可以将"NSDate -> NSString"
     NSDate *now = [NSDate date];
 //    // 在 now 的基础上追加 10 秒
 //    NSDate *date = [now dateByAddingTimeInterval:10];
@@ -735,6 +742,7 @@
     // 通过 “时间戳” 创建一个 “NSDate”
     NSDate *date4 = [NSDate dateWithTimeIntervalSince1970:0];
     // 获取日期的时间戳
+    // NSTimeInterval == double
     NSTimeInterval t0 = [date1 timeIntervalSince1970];
     // 明天到现在的 “i秒数”
     NSTimeInterval t1 = [date2 timeIntervalSinceNow];

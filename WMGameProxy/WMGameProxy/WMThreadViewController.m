@@ -35,7 +35,7 @@
     /**
      第一个参数 - self目标对象
      第二个参数 - 方法选择器/调用的方法
-     第三个参数 - 调用的方法需要传递的参数
+     第三个参数 - 调用的方法需要传递的参数（最多只有一个）
      */
     // 1.新建New
     NSThread *threadA = [[NSThread alloc]initWithTarget:self selector:@selector(run:) object:@"ABC"];
@@ -48,8 +48,7 @@
      */
     // 线程的优先级越高 -> CPU调度的概率越高
     threadA.threadPriority = 1.0;
-    // 立即启动线程
-    // 默认是暂停
+    // 立即启动线程 - 默认是暂停
     // 2.就绪Runnable->运行Running
     // 线程任务执行完毕会自动进入死亡状态
     [threadA start];
@@ -81,6 +80,9 @@
     if ([mainThread isMainThread]) {
         NSLog(@"当前线程是主线程");
     }
+    // 结束当前线程
+    [NSThread exit];
+    // 输出当前方法名（必须在方法内部使用）
     NSLog(@"输出当前方法名%s", __FUNCTION__);
 }
 -(void)run:(NSString *)param {

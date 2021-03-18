@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="16e435bf-91d0-4784-a0da-dec4003c7039" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Java技术点.xmind" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GNGameProxy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GNGameProxy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/demo/GNGameDemo_01.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/demo/GNGameDemo_01.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../donew_index/html/donew_html.html" beforeDir="false" afterPath="$PROJECT_DIR$/../donew_index/html/donew_html.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../donew_index/html/donew_review.html" beforeDir="false" afterPath="$PROJECT_DIR$/../donew_index/html/donew_review.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -217,6 +216,9 @@
       <workItem from="1615369858929" duration="2535000" />
       <workItem from="1615427922629" duration="8059000" />
       <workItem from="1615534635524" duration="671000" />
+      <workItem from="1615774203527" duration="1864000" />
+      <workItem from="1615948653397" duration="81000" />
+      <workItem from="1615948790802" duration="667000" />
     </task>
     <servers />
   </component>

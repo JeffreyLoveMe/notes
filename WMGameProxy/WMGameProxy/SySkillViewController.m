@@ -674,7 +674,7 @@ NSFileHandle *readWriteHandle = [NSFileHandle fileHandleForUpdatingAtPath:path]
 
 #pragma mark - block
 // 1.block是iOS中一种比较特殊的数据类型/官方特别推荐使用
-// 2.用来保存 “代码段”，在恰当的时候再取出来调用/类似于函数/效率高
+// 2.用来保存 “代码块”，在恰当的时候再取出来调用/类似于函数/效率高
 -(void)shouBlock {
     // 3.block的基本写法
     // 1).无参数无返回值

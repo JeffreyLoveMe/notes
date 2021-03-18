@@ -832,124 +832,6 @@ XPath语法的使用
 作用：快速的锁定某一级的节点。可以免去一层层复杂的节点搜索
 XPath 使用路径表达式来选取 XML 文档中的节点或节点集。节点是通过沿着路径 (path) 或者步 (steps) 来选取的。掌握MVC设计模式
 
-1.选择器
-#import <Foundation/Foundation.h>
-
-@interface Person : NSObject
-
-@property NSInteger num;
-@property NSString *name;
-@property NSInteger age;
-
--(BOOL)shortreules:(Person*)person;
-
-@end
-
-
-#import "Person.h"
-
-@implementation Person
-
--(BOOL)shortreules:(Person *)person {
-    BOOL a=self.age>person.age;
-    if(self.age==person.age) {
-        if(NSOrderedDescending==[self.name compare:person.name])
-            a=YES;
-    }
-    return a;
-}
-
-@end
-
-
-#import <Foundation/Foundation.h>
-#import "Person.h"
-        int main(int argc, const char * argv[]) {
-            @autoreleasepool {
-                Person *person1=[[Person alloc]init];
-                person1.num=001;
-                person1.name=@"xiaoming";
-                person1.age=12;
-                
-                Person *person2=[[Person alloc]init];
-                person2.num=002;
-                person2.name=@"xiaohong";
-                person2.age=12;
-                
-                Person *person3=[[Person alloc]init];
-                person3.num=003;
-                person3.name=@"hanmeimei";
-                person3.age=12;
-                
-                NSMutableArray *arr=[[NSMutableArray alloc]initWithObjects:person1,person2,person3, nil];
-                SEL sel=@selector(shortreules:);
-                //NSArray *arr1 = [arr sortedArrayUsingSelector:sel];
-                
-                [arr sortUsingSelector:sel];
-                for (Person *person in arr) {
-                    NSLog(@"学号：%lu 姓名：%@ 年龄：%lu",person.num,person.name,person.age);
-                }
-            }
-    return 0;
-}
-
-
-2.文件NSFileManager
-#import <Foundation/Foundation.h>
-
-#define PATH @"/Users/qianfeng/Desktop/文件/文件/main.m"
-
-int main(int argc, const char * argv[]) {
-    @autoreleasepool {
-        //创建文件管理单例对象
-        //NSFileManager *file = [NSFileManager defaultManager];
-        NSError *error = nil;
-        
-        NSFileManager *manager=[[NSFileManager alloc]init];
-        /*浅度遍历
-        NSArray *arr =  [file contentsOfDirectoryAtPath:PATH error:&error];
-        if (error != nil) {
-            NSLog(@"%@",error);
-        }
-        NSLog(@"%@",arr);
-        
-         深度遍历
-       arr = [file subpathsOfDirectoryAtPath:PATH error:&error];
-       NSLog(@"%@",arr);*/
-        
-        //判断文件是否存在
-        NSLog(@"%d",[manager fileExistsAtPath:PATH]);
-        
-        //创建文件
-        NSString *str=@"飞流直下三千尺";
-        
-        NSData *data=[str dataUsingEncoding:NSUTF8StringEncoding];
-        
-        [manager createFileAtPath:PATH contents:data attributes:nil];/*参数1：创建文件的路径
-                   参数2：内容，如果nil表示创建一个内容为空的文件。
-                   参数3：nil表示采用默认的设置
-                   如果文件已经存在，会覆盖原来文件*/
-        
-       NSString *fromPath =@"/Users/qianfeng/Desktop/文件/文件/main.m";
-        
-       NSString *toPath =@"/Users/qianfeng/Desktop/文件/Manager.h";
-      
-        [manager copyItemAtPath:fromPath toPath:toPath error:&error];
-
-        [manager moveItemAtPath:fromPath toPath:toPath error:&error];
-        
-        [manager removeItemAtPath:@"/Users/qianfeng/Desktop/文件/Manager.h" error:nil];
-        
-        //获取文件属性,返回的是字典
-      NSDictionary *dic=[manager attributesOfItemAtPath:@"/Users/qianfeng/Desktop/文件/文件/main.m" error:nil];
-        for(NSString *key in dic) {
-            NSLog(@"%@",[dic objectForKey:key]);
-        }
-    }
-    return 0;
-}
-
-
 3.文件NSHandle
 #define PATH @"/Users/qianfeng/Desktop/文件/文件/main.m"
 
@@ -4133,12 +4015,6 @@ B.错
 A.是
 B.否
 答案：A
-[单选]下面关于线程管理B.错误的是____
-A.GCD在后端管理着一个线程池
-B.NSOperationQueue是A.对NSthread的更高层的封装
-C.NSThread需要自己管理线程的生命周期
-D.GCD可以根据不同优先级分配线程
-答案：B
 
 [单选]floatx与“零值”比较的if语句为？
 A.if(x==0)

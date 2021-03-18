@@ -26,6 +26,7 @@
 		330C15C922F801F700CD84CA /* SySkillViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 330C15C822F801F700CD84CA /* SySkillViewController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		331309052420A7DE0014CC7E /* WMPushViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 331309042420A7DE0014CC7E /* WMPushViewController.m */; };
 		331309072421EB520014CC7E /* 线程状态.png in Resources */ = {isa = PBXBuildFile; fileRef = 331309062421EB510014CC7E /* 线程状态.png */; };
+		3314DE0C260208AF009650CC /* WMGameProxyDemo.m in Sources */ = {isa = PBXBuildFile; fileRef = 3314DE0B260208AF009650CC /* WMGameProxyDemo.m */; };
 		3324C82024260DD100766248 /* TestFight添加测试人员.png in Resources */ = {isa = PBXBuildFile; fileRef = 3324C81F24260DD100766248 /* TestFight添加测试人员.png */; };
 		3324C8222427B39800766248 /* 从应用A跳转到应用B.png in Resources */ = {isa = PBXBuildFile; fileRef = 3324C8212427B39800766248 /* 从应用A跳转到应用B.png */; };
 		3324D54B22DED4BF0066241F /* WMWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3324D54A22DED4BF0066241F /* WMWebViewController.m */; };
@@ -211,6 +212,8 @@
 		331309032420A7DE0014CC7E /* WMPushViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WMPushViewController.h; sourceTree = "<group>"; };
 		331309042420A7DE0014CC7E /* WMPushViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WMPushViewController.m; sourceTree = "<group>"; };
 		331309062421EB510014CC7E /* 线程状态.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "线程状态.png"; sourceTree = "<group>"; };
+		3314DE0A260208AF009650CC /* WMGameProxyDemo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WMGameProxyDemo.h; sourceTree = "<group>"; };
+		3314DE0B260208AF009650CC /* WMGameProxyDemo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WMGameProxyDemo.m; sourceTree = "<group>"; };
 		3324C81F24260DD100766248 /* TestFight添加测试人员.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TestFight添加测试人员.png"; sourceTree = "<group>"; };
 		3324C8212427B39800766248 /* 从应用A跳转到应用B.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "从应用A跳转到应用B.png"; sourceTree = "<group>"; };
 		3324D54922DED4BF0066241F /* WMWebViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WMWebViewController.h; sourceTree = "<group>"; };
@@ -434,6 +437,7 @@
 			children = (
 				33ADF8CC240CC4BF0041F19A /* Res */,
 				33ADF8CD240CC5280041F19A /* Libs */,
+				3314DE092602087B009650CC /* Demo */,
 				33068F1322AE67DB00D044EE /* WMGameProxy.txt */,
 				3372CD532325F92400E7307B /* SYGameProxy.txt */,
 				33068EF122AE670200D044EE /* WMGame.swift */,
@@ -513,6 +517,15 @@
 				33068EDC22AE665600D044EE /* Info.plist */,
 			);
 			path = WMGameProxyUITests;
+			sourceTree = "<group>";
+		};
+		3314DE092602087B009650CC /* Demo */ = {
+			isa = PBXGroup;
+			children = (
+				3314DE0A260208AF009650CC /* WMGameProxyDemo.h */,
+				3314DE0B260208AF009650CC /* WMGameProxyDemo.m */,
+			);
+			path = Demo;
 			sourceTree = "<group>";
 		};
 		3366E82D24310A1F00820298 /* FMDB */ = {
@@ -1036,6 +1049,7 @@
 				33068EB822AE665000D044EE /* AppDelegate.m in Sources */,
 				3366E84224310A2000820298 /* FMDatabasePool.m in Sources */,
 				33ADF8D1240CC5280041F19A /* UIImage+animatedGIF.m in Sources */,
+				3314DE0C260208AF009650CC /* WMGameProxyDemo.m in Sources */,
 				339A3D8022BBBBC9007DD37D /* SyGameProxy.c in Sources */,
 				3324D54B22DED4BF0066241F /* WMWebViewController.m in Sources */,
 				3309077A242472950029DB9F /* WMRuntimeViewController.m in Sources */,
