@@ -71,10 +71,8 @@
         NSLog(@"尚未安装App");
     }
     
-    /**
-     4.打电话、发短信、发邮件
-     1>.https://blog.csdn.net/cc1991_/article/details/74990013
-     */
+//    4.打电话、发短信、发邮件
+//    1>.https://blog.csdn.net/cc1991_/article/details/74990013
 }
 
 /**
@@ -91,6 +89,7 @@
  https://www.cnblogs.com/xubojoy/p/3885932.html
  https://blog.csdn.net/qq_28009573/article/details/77744001
  */
+
 /**
  3.第三方登录 - 基于OAuth2.0协议构建的OAuth2.0授权登录系统
  1>.微信登录：只提供原生登录方式(必须安装客户端)，所有使用之前必须判断；

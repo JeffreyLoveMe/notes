@@ -21,8 +21,8 @@
 		33068EED22AE66CB00D044EE /* WMGameProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 33068EEC22AE66CB00D044EE /* WMGameProxy.m */; };
 		33068EF022AE66EC00D044EE /* WMController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33068EEF22AE66EC00D044EE /* WMController.swift */; };
 		33068EF222AE670200D044EE /* WMGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33068EF122AE670200D044EE /* WMGame.swift */; };
-		33068F1422AE67DB00D044EE /* WMGameProxy.txt in Resources */ = {isa = PBXBuildFile; fileRef = 33068F1322AE67DB00D044EE /* WMGameProxy.txt */; };
 		3309077A242472950029DB9F /* WMRuntimeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 33090779242472950029DB9F /* WMRuntimeViewController.m */; };
+		3309A9AB2604906000F1DF3C /* WMGameProxy.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3309A9AA2604906000F1DF3C /* WMGameProxy.txt */; };
 		330C15C922F801F700CD84CA /* SySkillViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 330C15C822F801F700CD84CA /* SySkillViewController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		331309052420A7DE0014CC7E /* WMPushViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 331309042420A7DE0014CC7E /* WMPushViewController.m */; };
 		331309072421EB520014CC7E /* 线程状态.png in Resources */ = {isa = PBXBuildFile; fileRef = 331309062421EB510014CC7E /* 线程状态.png */; };
@@ -204,9 +204,9 @@
 		33068EEE22AE66EB00D044EE /* WMGameProxy-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "WMGameProxy-Bridging-Header.h"; sourceTree = "<group>"; };
 		33068EEF22AE66EC00D044EE /* WMController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WMController.swift; sourceTree = "<group>"; };
 		33068EF122AE670200D044EE /* WMGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WMGame.swift; sourceTree = "<group>"; };
-		33068F1322AE67DB00D044EE /* WMGameProxy.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = WMGameProxy.txt; sourceTree = "<group>"; };
 		33090778242472950029DB9F /* WMRuntimeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WMRuntimeViewController.h; sourceTree = "<group>"; };
 		33090779242472950029DB9F /* WMRuntimeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WMRuntimeViewController.m; sourceTree = "<group>"; };
+		3309A9AA2604906000F1DF3C /* WMGameProxy.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = WMGameProxy.txt; sourceTree = "<group>"; };
 		330C15C722F801F700CD84CA /* SySkillViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SySkillViewController.h; sourceTree = "<group>"; };
 		330C15C822F801F700CD84CA /* SySkillViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SySkillViewController.m; sourceTree = "<group>"; };
 		331309032420A7DE0014CC7E /* WMPushViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WMPushViewController.h; sourceTree = "<group>"; };
@@ -438,8 +438,8 @@
 				33ADF8CC240CC4BF0041F19A /* Res */,
 				33ADF8CD240CC5280041F19A /* Libs */,
 				3314DE092602087B009650CC /* Demo */,
-				33068F1322AE67DB00D044EE /* WMGameProxy.txt */,
 				3372CD532325F92400E7307B /* SYGameProxy.txt */,
+				3309A9AA2604906000F1DF3C /* WMGameProxy.txt */,
 				33068EF122AE670200D044EE /* WMGame.swift */,
 				33068EEF22AE66EC00D044EE /* WMController.swift */,
 				339A3D7E22BBBBC9007DD37D /* SyGameProxy.h */,
@@ -913,6 +913,7 @@
 				3359FE9C241F3E870014C82C /* 项目的基本部署.png in Resources */,
 				3359FEBD241F3E870014C82C /* UIKit.png in Resources */,
 				3366E8472431296B00820298 /* 遍历树.png in Resources */,
+				3309A9AB2604906000F1DF3C /* WMGameProxy.txt in Resources */,
 				3359FE9E241F3E870014C82C /* Zapfino.ttf in Resources */,
 				3359FEA8241F3E870014C82C /* 时间格式说明符对照统一表.png in Resources */,
 				3359FE93241F3E870014C82C /* 常见系统库01.png in Resources */,
@@ -925,7 +926,6 @@
 				33F72D92242ED44A0024A889 /* MRC代码转换ARC.png in Resources */,
 				33F72D90242ED4460024A889 /* Instruments的使用.png in Resources */,
 				3359FEB8241F3E870014C82C /* 生命周期方法.png in Resources */,
-				33068F1422AE67DB00D044EE /* WMGameProxy.txt in Resources */,
 				3359FEA0241F3E870014C82C /* ProvincesAndCities.plist in Resources */,
 				3359FE97241F3E870014C82C /* 快捷键.png in Resources */,
 				3359FEB1241F3E870014C82C /* C:OC学习路线&重难点.png in Resources */,

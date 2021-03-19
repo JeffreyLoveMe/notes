@@ -441,7 +441,7 @@
         NSLog(@"这里可以改变坐标/色彩/透明度");
     }];
     [UIView animateWithDuration:2 animations:^{
-        // 这里还可以设置形变属性
+        // ！！！这里还可以设置形变属性！！！
         NSLog(@"这里可以改变坐标/色彩/透明度");
     } completion:^(BOOL finished) {
         // 动画完成时需要的执行

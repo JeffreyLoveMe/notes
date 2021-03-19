@@ -3,12 +3,9 @@
 作者：谢吴军
 */
 /**************************计算机基础**************************/
-//开班须知
-//iOS开发
 //MAC常用快捷键
 //XCode快捷键
 //常用终端命令
-//vi编译器
 //计算机常识
 //进制转换
 //原码/补码/反码
@@ -29,36 +26,21 @@
 //循环语句
 //一维数组
 //二维数组
-//冒泡排序
-//选择排序
-//快速排序
-//堆排序
-//插入排序
-//希尔排序
-//归并排序
-//二分查找
-//函数
-//局部变量/全局变量
-//内存管理
-//字符串
+//排序 - 冒泡排序、选择排序、快速排序、堆排序、插入排序、希尔排序、归并排序、二分查找
 //预处理指令 - 宏/条件编译/头文件导入
-//指针
-//结构体
-//枚举
-//共用体
 /**************************Objective-C基础**************************/
 //认识Objective-C语言
 //面向对象OOP
 //主头文件
 //类
-//对象方法/类方法
+//对象方法、类方法
 //单例模式
 //类工厂方法
 //构造方法
 //多态和虚方法
 //工厂类
 //权限修饰
-//重写和重载的区别
+//重写、重载
 //NSObject
 //NSString
 //NSArray
@@ -78,8 +60,8 @@
 //异常处理
 //通知中心
 //协议和代理
-//购物车系统 - xx
-//“抽象工厂”模式 - xx
+//购物车系统
+//“抽象工厂”模式
 //类的消息机制
 //内存管理
 //MRC/ARC混合编程
@@ -89,7 +71,7 @@
 //RunLoop
 //Runtime
 /**************************UI基础**************************/
-//认识UI(User Interface)
+//认识UI
 //Apple设备（尺寸、分辨率、坐标）
 //iOS的坐标体系
 //UIApplication
@@ -97,7 +79,7 @@
 //AppDelegate
 //UIWindow
 //UIViewController的生命周期
-//状态栏
+//iOS状态栏
 //TabBarController
 //UINavigationController
 //UIView
@@ -121,26 +103,26 @@
 //UIPickerView
 //UIDatePicker
 //UITableView
-//UICollectionView - 自定义UICollectionViewFlowLayout
+//UICollectionView（自定义UICollectionViewFlowLayout）
 //UIPageController
 //UIMenuController菜单
-//UIAlertController警告框 - iOS8.0以上推荐使用 - UIViewControlelr的子类
+//UIAlertController警告框（iOS8.0以上推荐使用“UIViewControlelr子类”）
 //UIWebView/WKWebView
-//UIRefreshControl - 下拉刷新控件、不能上拉加载
-//UIImagePickerController - x
-//UIPopoverContrller - x
-//UIActivityViewController - x
-//UIStackView - x
-//UIPasteboard - xx
-//UIToolBar - 工具条：可以实现毛玻璃效果
-//UINavigationBar - 导航条：44px
-//NSShadow阴影 - xx
-//富文本 - xx
+//UIRefreshControl（下拉刷新控件、不能上拉加载）
+//UIImagePickerController
+//UIPopoverContrller
+//UIActivityViewController
+//UIStackView
+//UIPasteboard
+//UIToolBar（工具条：可以实现毛玻璃效果）
+//UINavigationBar（导航条：44px）
+//NSShadow阴影
+//富文本
 //Gif动画
 //帧动画
 //渐变动画
-//核心动画 - xx
-//转场动画 - x
+//核心动画
+//转场动画
 //UIViewController之间的传值（三种）
 //NSTimer定时器
 //Xib
@@ -149,16 +131,15 @@
 //AutoLayout自动布局
 //代码实现AutoLayout
 //VFL实现AutoLayout
-/**************************网络基础**************************/
 //网络概述
-//json解析 - xx
-//xml解析 - xx
-//xPath - xx
-//socket通信 - xx
+//json解析
+//xml解析
+//xPath
+//socket通信
 //NSURLConnection
 //NSURLSession
-//AFNetWorking开发 - xx
-//网络安全（抓包+MD5+https）- xx
+//AFNetWorking开发
+//网络安全（抓包+MD5+https）
 /**************************swift基础**************************/
 //怎么导入框架
 //swift简介
@@ -183,87 +164,43 @@
 //单例
 //枚举
 //动态库
+//RxSwift
 /**************************项目实战**************************/
 //项目部署（图标/启动页面/App名称/网络请求设置）
 //程序启动原理
 //沙盒机制NSHomeDirectory()
-//数据持久化 - xx
+//数据持久化
 //多线程
-//地图LBS - xx
-//多语言（en/tw/hk/cn） - xx
-//多媒体（图片/音频/视频/直播） - xx
+//地图LBS
+//多语言（en/tw/hk/cn）
+//多媒体（图片/音频/视频/直播）
 //应用间跳转
-//三方登录、分享 - xx
-//三方支付、内购 - xx
-//断点续传 - xx
-//“原生”与“js交互” - xx
+//三方登录、分享
+//三方支付、内购
+//断点续传
+//“原生”与“js交互”
 //Objective-C和Swift混合编程
-//二维码 - x
-//图文混排 - xx
-//传感器 - x
-//AR - x
-//近景通讯技术（蓝牙） - x
-//iPad开发 - xx
-//svn/git/CocoaPods - xx
+//二维码
+//图文混排
+//传感器
+//近景通讯技术（蓝牙）
+//iPad开发
+//svn/git/CocoaPods
 //应用发布（打包测试/ TestFlight/ 企业包/ AppStore/ 广告植入）
 //组件化（静态库）
-//消息推送/本地推送 - xx
-//即时通讯IM - xx
-//画折线图 - x
-//正则表达式 - x
-//谓词NSPredicate - x
-//iOS9.0 - iOS13.0新特性 - xx
-//Xcode7.0 - Xcode11.0新特性 - xx
+//消息推送/本地推送
+//即时通讯IM
+//折线图
+//正则表达式
+//谓词NSPredicate
+//iOS9.0 - iOS14.0新特性
+//Xcode7.0 - Xcode12.0新特性
 //Instruments
-//Xcode编译原理 - x
-//LLVM项目 - x
-//Clang编译器 - x
-//ReactiveCocoa - x
-//Scrumj敏捷开发 - x
-//链式编程思想 - x
-//RxSwift - x
-/**************************实用技术(swift版本)**************************/
-/*
-0.简历上提及的知识点
-Objective-C/swift混合开发
-静态库开发
-mvc/mvvm模式
-自定义UI控件
-懒加载
-多线程
-block
-runtime
-runloop
-内存管理
-AutoLayout
-上架/分发/打包
-消息机制（KVO/KVC/通知/代理）
-网络开发
-数据持久化
-svn、git、CocoaPods
-AFNetWorking、SDWebImage、MJRefresh、SnapKit
-第三方登录
-社会化分享
-极光推送
-“原生”与“js交互”
-LBS - x
-iOS动画 - x
-*/
-/*
-//有时间需要加强的知识点
-多语言
-二维码
-通讯录
-分享
-第三方登录
-支付
-极光推送
-即时通讯
-多媒体
-地图
-iPad开发
-实现画折线图
-*/
+//Xcode编译原理
+//LLVM项目
+//Clang编译器
+//ReactiveCocoa链式编程思想
+//Scrumj敏捷开发
 /**************************补充部分**************************/
 //“原生” 与 “js交互”
 1>.iOS与H5的交互
@@ -394,7 +331,34 @@ http://code4app.com - code4App
 NO1 - iOS开发工程师->iOS开发主管->iOS开发leader/移动端开发leader->大前端开发leader/副研发总监->CTO->联合创始人
 NO2 - iOS开发工程师->iOS开发主管->iOS开发leader/移动端开发leader -> CEO/创始人
 
-基础架构（组件化）/设计模式/音视频/跨平台
+//简历上提及的知识点
+Objective-C/swift混合开发
+静态库开发
+mvc、mvvm模式
+自定义UI控件
+懒加载
+多线程
+block
+runtime
+runloop
+内存管理
+AutoLayout
+上架、分发、打包
+消息机制（KVO、KVC、通知、代理）
+网络开发
+数据持久化
+svn、git、CocoaPods
+AFNetWorking、SDWebImage、MJRefresh、SnapKit
+第三方登录
+社会化分享
+极光推送
+“原生”与“js交互”
+LBS
+iOS动画
+基础架构（组件化）
+设计模式
+音视频
+跨平台
 
 //知识点速查
 Res - 资源文件/常见问题截图

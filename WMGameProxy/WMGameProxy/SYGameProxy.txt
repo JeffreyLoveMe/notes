@@ -3169,42 +3169,6 @@ A. 需要 B. 不需要 C.都可以
 1.5 ，设置每个 cell 的 opaque 属性。 1.6，尽量返回每行固定的 height 。
 1.7 ，在每个 cell 减少图形效果。 1.8 ，分段加载数据。
 
- UIView Animations 动画 :
-[UIView beginAnimations:@"animationID" context:nil];
-[UIView setAnimationDuration:0.5f];
-[UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
-[UIView setAnimationRepeatAutoreverses:NO]; // 以下四种效果
-/*
-[UIView setAnimationTransition:UIViewAnimationTransitionFlipFromLeft forView:self.view cache:YES];//oglFlip, fromLeft
-[UIView setAnimationTransition:UIViewAnimationTransitionFlipFromRight forView:self.view cache:YES];//oglFlip, fromRight
-[UIView setAnimationTransition:UIViewAnimationTransitionCurlUp forView:self.view cache:YES];
-[UIView setAnimationTransition:UIViewAnimationTransitionCurlDown forView:self.view cache:YES];
-*/
-// 你自己的操作
-[UIView commitAnimations];
-1.2 、 CATransition
-CATransition *animation = [CATransitionanimation]; animation.duration = 0.5f;
-animation.timingFunction =UIViewAnimationCurveEaseInOut; animation.fillMode = kCAFillModeForwards;
-animation.type = kCATransitionMoveIn;
-animation.subtype = kCATransitionFromTop; [self.window.layeraddAnimation:animationforKey:@"animation"];
- //自己的操作
-1.3 、 UIView animateWithDuration
-方法 : +(void)animateWithDuration:(NSTimeInterval)duration
-animations:(void (^)(void))animations;
-+ (void)animateWithDuration:(NSTimeInterval)duration
-animations:(void (^)(void))animations completion:(void (^)(BOOL finished))completion; // 多一个动画结束后可以执行的操作 .
-[UIView animateWithDuration:1.25 animations:^{
-CGAffineTransform newTransform = CGAffineTransformMakeScale(1.2, 1.2);
-[firstImageView setTransform:newTransform];
-[secondImageView setTransform:newTransform];}
-completion:^(BOOL finished){
-[UIView animateWithDuration:1.2 animations:^{
-//自己的操作 } completion:^(BOOL finished){
-}];
-17, 定制化 view
-需要自己自己继承自 cocoa touch 提供的丰富的类。如(
-UIView ， UiScrollView ， UITableView 等等)。需要重载实现 drawRect ，touch 事件， init ，initFrame 等方法。
-
 24. 通知消息和代理的区别 通知:分为本地和远程通知。接受通知的接受者需要进行注册改通知。这样通知被
 NSNotificationCenter 发送出来后会被注册的接受者所接受。 远程通知需要借助苹果的 服务器去实现通知的中转。
 代理: 把某个对象要做的事情委托给别的对象去做。 两者区别:

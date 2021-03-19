@@ -56,9 +56,10 @@
         // 设置密抄
         [controller setBccRecipients:@[@"1822512598@qq.com"]];
         // 设置邮件的正文内容/是否为HTML格式
-        [controller setMessageBody:@"邮件的正文内容" isHTML:false];
+        [controller setMessageBody:@"邮件的正文内容" isHTML:NO];
+//        [controller setMessageBody:@"这里填写html代码块" isHTML:YES];
         // 弹出邮件发送视图
-        [self presentViewController:controller animated:true completion:nil];
+        [self presentViewController:controller animated:YES completion:nil];
     } else {
         NSLog(@"----");
     }
