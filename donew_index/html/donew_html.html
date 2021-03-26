@@ -80,8 +80,6 @@
     <meta name="description" content="传智播客专注Java培训,Android培训,iOS培训">
     <!-- 网页重定向 -->
     <!-- <meta http-equiv="refresh" content="5;http://www.itcast.com"> -->
-    <!-- xxx -->
-    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
     <!-- 链接外部"样式表文件/.css" -->
     <link rel="stylesheet" href="../css/login.css">
     <!-- 网页顶部小图标/"favicon.ico" - 前端的习惯命名 -->
@@ -200,8 +198,6 @@
     <a href="#sd">锚点</a>
     <!-- 空链 - 经常使用（以后会使用js操作超链接的点击事件而这样通常会填写空链） -->
     <a href="#">空链</a>
-    <!-- 链接到压缩包 - 不推荐使用 -->
-    <a href="#">下载压缩包</a>
 
     <!-- 
         12.特殊标记
@@ -218,7 +214,12 @@
     <!-- 
         13.列表
         -->
-    <!-- 无序列表 -->
+    <!--
+        无序列表
+        square - 小方块
+        disc - 实心小圆圈
+        circle - 空心小圆圈
+       -->
     <ul type="disc">
         <!-- 清除列表项符号 -->
         <li style="list-style: none;">安徽省</li>
@@ -227,8 +228,11 @@
         <li>安徽省</li>
         <li>安徽省</li>
     </ul>
-    <!-- 有序列表 -->
-    <!-- start - 开始项 -->
+    <!--
+        有序列表
+        type="1,a,A,i,I"
+        start - 开始项
+         -->
     <ol type="a" start="3">
         <li>安徽省</li>
         <li>安徽省</li>
@@ -244,16 +248,19 @@
         <dd>解释标题3</dd>
     </dl>
 
+    <!-- 了解即可 - start -->
     <!-- 14.嵌入标签（了解） -->
     <!-- embed = in'bed -->
-    <embed src="../image/donew.mp3" type="" width="100px" height="50px">
+    <!-- hidden - 隐藏播放器（不隐藏mp3） -->
+    <embed src="../image/donew.mp3" type="" width="100px" height="50px" hidden="hidden">
 
-    <!-- 
+    <!--
         15.页面滚动效果
         behavior - 设置滚动的方式
         direction - 设置滚动的方向
         -->
     <marquee behavior="scroll" direction="down">14期威武</marquee>
+    <!-- 了解即可 - end -->
 
     <!-- 
         16.表格的标准结构

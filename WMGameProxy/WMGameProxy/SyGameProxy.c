@@ -87,23 +87,26 @@ int getMax(int m, int n);
  1>.C语言程序是由很多 “程序段” 组成的
  2>.C语言每条语句后面 + ";"
  3>.有且仅有一个 “main()函数”
- 4>.'\n' - 换行、其它语言一样适用
- 5>.C语言的标准 - ANSI C->C99->C11
+ 4>.C语言的标准 - ANSI C->C99->C11
  */
 
 // main函数
-// 一般需要将主要的 ( main函数/生命周期函数放在最前面 )
-// 系统在启动程序的时候会自动调用main函数
+// 一般需要将主要的函数（main函数/生命周期函数）放在最前面
+// 系统在启动程序的时候会自动调用main函数（默认只能有一个main函数）
 // main函数只能由系统调用，不能手动调用
 // argc：系统传递进来的参数个数，默认是1
 // argv[]：系统传递进来的参数实际值，默认程序的名称
 // 怎么添加参数：WMGameProxy -> EditScheme -> Run -> Arguments
-//int main(int argc, const char * argv[]) {
-//    printf("Hello World!\n");  // 调用系统函数 / \n默认换行
-//    call(); // 调用自定义函数
-//    int result = getMax(10, 11);
-//    return 0;
-//}
+int main(int argc, const char * argv[]) {
+    // 调用系统函数
+    // '\n'默认换行
+    printf("Hello World!\n");
+    // 调用自定义函数
+    call();
+    int result = getMax(10, 11);
+    printf("%d", result);
+    return 0;
+}
 
 /**
  C语言的执行流程 - 编写程序->将自定义函数进行编译->目标文件/C语言函数库进行链接->可执行文件->运行
@@ -112,21 +115,57 @@ int getMax(int m, int n);
 /**
  3.C语言关键字
  1>.定义：被C语言赋予特殊含义的单词
- 2>.特征：全部小写/在Xcode中显示不同的颜色/一共32个/不能做为标识符
- 3>.分类：流程控制关键字+数据类型关键字/unsigned、signed
- // goto - 保留关键字
- auto double int struct break else long switch
- case enum register typedef char extern return
- union const float short unsigned continue for
- signed void default goto sizeof volatile do if while static
+ 2>.特征：全部小写（严格区分大小写）、不能做为标识符、在Xcode中显示不同的颜色、一共32个
+ 3>.分类：流程控制关键字+数据类型关键字（unsigned、signed）
+ 4>.数据类型关键字
+ - 基本数据类型关键字
+ void - 无返回值类型
+ char - 字符串数据（整型的一种）
+ int - 整型
+ float - 单精度浮点型
+ double - 双精度浮点型
+ - 类型修饰
+ short - 短整型数据
+ long - 长整型数据
+ signed - 有符号整型数据
+ unsigned - 无符号整型数据
+ - 复杂类型
+ struct - 结构体
+ union - 共用体
+ enum - 枚举
+ typedef - 声明类型的别名
+ sizeof - 特定类型/特定类型变量的大小
+ - 存储级别
+ auto - xxx
+ static - 静态变量
+ register - xxx
+ extern - 指定对应变量为外部变量
+ const - 定义常量
+ volatile - xxx
+ 5>.流程控制关键字
+ - 跳转结构
+ return - 返回
+ continue - 结束当前循环，开始下次循环
+ break - 跳出当前循环
+ goto - 无条件跳转语句
+ - 分支结构
+ if - xxx
+ else - xxx
+ switch - xxx
+ case - xxx
+ default - xxx
+ - 循环结构
+ for - xxx
+ do - xxx
+ while - xxx
  */
 
 /**
  4.标识符
  1>.概念：程序员自己在项目中起的名字/不能与关键字同名
- 2>.命名规则：
+ 2>.命名规则（必须遵守）：
  1).定义：由字母、数字、下划线组成/严格区分大小写、不能以数字开头 - 必须遵守
- 3>.命名规范：
+ 3>.命名规范（可以不遵守）：
  1).有意义的名字
  2).驼峰命名（除首单词以外其他单词首字母大写）sendMessage - 非必须遵守（也可以send_message）
  4>.常见命名：
@@ -144,10 +183,11 @@ int getMax(int m, int n);
 // */
 // 项目注释
 /**
- @class - 哪个类
- @param - 参数
- @author - 作者
- @date - 日期
+ @class 哪个类
+ @param 方法的参数
+ @author 作者
+ @date 日期
+ @version 版本
  */
 
 /**
@@ -162,7 +202,7 @@ int getMax(int m, int n);
  4).字符串常量 - "ADC"
  5.构造类型 - 数组/结构体/枚举/共用体
  6.指针类型
- 7.空类型Void
+ 7.空类型void
  */
 
 /**
@@ -171,8 +211,8 @@ int getMax(int m, int n);
  short sum = 10; int sum = 15; long sum = 100;
  signed有符号整型/ unsigned无符号整型
  2>.实型常量(小数)
- float sum = 5.2f; //单精度
- double sum = 88.8; //双精度 - 默认情况
+ float sum = 5.2f; //单精度（后面加一个f）
+ double sum = 88.8; //双精度（默认情况）
  3>.字符型常量 - 普通字符/转义字符
  char sum = 'a' //''只能存放单个字符
  char sum = '13' //错误 - 13是由2个字符组成
@@ -185,7 +225,7 @@ int getMax(int m, int n);
 
 /**
  8.变量 - 可以改变的量
- 1>.使用变量之前必须先定义变量/申请一块存储空间
+ 1>.使用变量之前必须先定义变量（申请一块存储空间）
  int sum; //定义变量：分配唯一的存储空间/申请一块存储空间
  sum = 9; //给变量赋值：给存储空间存储数据/变量的第一次赋值称为初始化init/使用变量之前必须init、不然存储的都是垃圾数据
  int value,number; //连续定义：开辟两块存储空间/声明的时候就会开辟存储空间
@@ -197,7 +237,7 @@ int getMax(int m, int n);
  //部分初始化：value没有init/number = 10
  int value,number = 10;
  2>.作用域 - 从 "定义的那一行" 开始直到 “大括号 / return”结束/ 一对 "{}" 可以看做一个 "存储空间"
- 1).局部变量：定义在{//...}内部的变量、必须init、存储在栈内存
+ 1).局部变量：定义在{//...}内部的变量、必须先init再使用、存储在栈内存
  2).全局变量：定义在所有函数外部的变量、不能定义的同时init、存储在静态区
  3).作用域结束：变量销毁/内存管理
  3>.内存分析：
@@ -215,7 +255,7 @@ int getMax(int m, int n);
 
 /**
  9.printf()函数/scanf()函数
- 1>.printf()函数 / 输出函数
+ 1>.printf()函数：输出函数
  1).格式符：%i/d（整数）、%f（浮点数）、%c（字符）、%lf（double）、%.mf（保留小数点后m位）
  2).指定位宽：%mf、%mi //m就是位宽(占据几列)/默认右对齐、左边补空格
  int number = 99;
@@ -225,21 +265,23 @@ int getMax(int m, int n);
  printf("%05i",number); //宽度不够补0、超出按照实际输出/宽度够直接显示/0表示补充0、5表示占5列
  printf("%.2f",value); //保留两位小数
  printf("%.*f",n,value); //！！！保留n位小数！！！
- //怎么计算有效位数？？？从第一位开始 - 例如'3.1415926'从'3'开始
- 2>.scanf()函数 / 输入函数/ 阻塞式函数/ 敲击\n告诉系统输入完毕/ 不能加文字性说明
+ // 从第一位开始算起/ float有效位数为7位(系统固定)/ double有效位数位15位，数据超出有效位数就会出现垃圾数据
+ // 怎么计算有效位数？？？从第一位开始 - 例如'3.1415926'从'3'开始
+ float value1 = 3.1415926525
+ printf("%.10f",value); /默认情况保留6位
+ 2>.scanf()函数：输入函数/ 阻塞式函数/ 敲击'\n'告诉系统输入完毕/ 不能加文字性说明
  int number; //定义number接收数据
  printf("请输入一个数据：")
  scanf("%i",&number); //必须加上&
  scanf("%i,%i",&num1,&num2); //什么情况下，scanf()函数自动终止？？？xxx
- 实现原理 - scanf()函数只要输入缓冲区中有内容，就不会要求用户输入数据
- 3>.有效位数 - 从第一位开始算起/ float有效位数为7位(系统固定)/ double有效位数位15位
+ 实现原理 - scanf()函数只要输入缓冲区中有内容（空格如果不是%c就会被忽略），就不会要求用户输入数据
  */
 
 /**
  10.运算符
- 1>.算术运算符：+|-|*|/|%  //！！！参与运算的操作数类型和结果的类型肯定一致！！！
+ 1>.算术运算符：+|-|*|/|%  //！！！C语言中规定，参与运算的操作数类型和结果的类型肯定一致！！！
  result = 1 + 3 + 6 * 5 / 3; //result = 14/优先级：*|/ > +|-
- result = -10 % 3; //result = -1/result正负性取决于左边的操作数/%只能用于整型
+ result = -10 % 3; //result = -1/result正负性取决于左边的操作数/！！！%只能用于整型！！！
  result = 2 % 9; //result = 2/%左边小于右边则结果为左边
  1).自动类型转换(隐式转化)/"大类型"->"小类型"可能会损失精度
  int num = 10.8; //int占4个字节/double占8个字节
@@ -269,7 +311,7 @@ int getMax(int m, int n);
  6>.关系运算符：>|<|>=|<=|==|!=/C语言规定：非0即真、0为假/“>|<|>=|<=”优先级大于“==|!=”
  a = 10, b = 5; // "="/"=="的区别
  int result = a > b; // a>b吗？
- 7>.逻辑运算符：&&、||、!/C语言规定所有的数值都有真假性/非0即真
+ 7>.逻辑运算符：&&、||、!/C语言规定所有的数值都有真假性（非0即真）
  int sum = a && b; // 与
  int sum = a || b; // 或
  int sum = !a; // 从右至左
@@ -312,7 +354,7 @@ int getMax(int m, int n);
         // else会匹配离它最近的一个未匹配的if
     }
  }
- 2>.switch语句：C语言中'条件表达式'的返回值只支持整数（字符、枚举）/switch的效率理论上比if高/注意格式
+ 2>.switch语句：C语言中'条件表达式'的返回值只支持整数（字符、枚举），不支持字符串/switch的效率理论上比if高/注意格式
  //！！！执行代码1、执行代码2、执行代码3只会执行一个！！！
  switch (条件表达式) {
  //case不能重复/不能放置变量/没有if灵活
@@ -348,6 +390,7 @@ int getMax(int m, int n);
     count++; // 计数器思想
  } while(表达式)
  3>.for()语句 - 最常使用的循环语句/推荐使用
+ // ！！！循环增量为局部变量！！！
  for(初始表达式1, 初始表达式2, 初始表达式3;条件表达式;循环增量表达式1, 循环增量表达式2, 循环增量表达式3) {
     //循环体
  }
