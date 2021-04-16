@@ -541,92 +541,6 @@ int main(int argc, const char * argv[]) {
 
 char * MyStr2(char * str,char c);
 
-2.结构体
-定义：相同或不同数据类型变量的集合
-1.结构体的定义
-struct data {
-    int a;
-    char c;
-    short b;
-};
- 
-#include <stdio.h>
-//结构体定义用struct关键字，结构体名字为data
-//结构体命名遵循标示符的定义
-//定义一个结构体后，一个新的数据类型诞生了，结构体是自定义的数据类型
-//结构体的声明一般放在头文件内，或者 .c 文件的最上面(放在include定义的下面，放在所有函数的上面)
-struct data {
-    //{}里是定义结构体的成员变量，成员变量可以有无数个，成员变量的数据类型可以相同或不同
-    //结构体的成员变量也叫做结构体的属性
-    int i;
-    char c;
-    short b;
-};
-
-//结构体取别名
-//方式1：在定义结构体时直接取别名，用typedef关键字
-//如下定义相当于给struct student取别名为stu
-typedef struct student {
-    int age;
-    char name[10];
-    int num;
-}stu;
-
-//方式2：定义结构体之后，另起一行取别名
-struct class {
-    int a;
-    short b;
-};
-//完成给struct class取别名为cla
-typedef struct class  cla;
-
-int main(int argc, const char * argv[]) {
-    // insert code here...
-    //定义一个结构体类型的变量d(也叫做创建一个结构体对象d)
-    //struct data是一个结构体类型，相当于int
-    //结构体变量也叫做结构体对象
-    struct data d;
-    //结构体的初始化
-    //结构体初始化要分别对每个成员变量进行初始化
-    struct data d1 = {5,'a',3};
-    
-    int a;
-    a = 3;
-    
-    //结构体对象的赋值
-    //通过对象访问结构体成员变量用 . 进行访问
-    struct data d2;
-    d2.i = 4;
-    d2.c = 'x';
-    d2.b = 3;
-    
-    //结构体指针
-    int *p;
-    p = &a;
-    *p = 4;
-    
-    //定义一个结构体指针
-    struct data *pst;
-    pst = &d2;
-
-    //结构体指针通过 -> 来访问成员变量
-    pst->i = 5;
-    pst->c = 't';
-    
-    //结构体数组
-    int arr[5];
-    
-    //定义一个长度为5的结构体数组
-    struct data sct[5];
-    
-    //通过结构体数组访问成员变量
-    sct[0].i = 7;
-    sct[0].c = 'u';
-    sct[3].i = 6;
-    
-    return 0;
-}
-
 1.什么是XML？
 extensible Markup Language   可扩展性标记语言
 特点：1.可扩展性   2.标记
@@ -3487,12 +3401,13 @@ session，用于替
 2、GET请求能够被缓存， POST请求不能被缓存 3、GET 请求对数据大小有限制， POST没有大小限制
 4、使用 GET请求，参数会显示出来，而 POST则不会， POST更安全一些 5、GET 的效率要高于 POST，因为 POST多了一步解析二进制参数的过程 如何选择: 如果数据是中文数据而且是非敏感数据应该使用 GET，如果数据中包 含用户的隐私信息 (账户、密码
 等)尽量使用 POST
-一零零、 iOS的远程消息推送 (Push)是怎么实现的?
-1、[Client App] 注册消息推送 ( 通过设备唯一标示 UDID 和应用的唯一标示 Bundle ID) ;
-2、[Client App] 跟[APNS Service]要 deviceToken, Client App 接收 deviceToken; 3、[Client App] 将 deviceToken 发送给 [Provider]Push 服务端程序;
-4、当 Push 服务端程序满足发送消息条件时， [Provider] 将 deviceToken 和消息 体等打包向 [APNS Service]发送消息;
-5、[APNS Service]会利用 deviceToken 找到对应的 [Client App] 并将消息体传达 . 一零一、逻辑运算和位运算的区别?
 
+iOS的远程消息推送 (Push)是怎么实现的?
+1、[Client App] 注册消息推送 ( 通过设备唯一标示 UDID 和应用的唯一标示 Bundle ID) ;
+2、[Client App] 跟[APNS Service]要 deviceToken, Client App 接收 deviceToken;
+3、[Client App] 将 deviceToken 发送给 [Provider]Push 服务端程序;
+4、当 Push 服务端程序满足发送消息条件时， [Provider] 将 deviceToken 和消息 体等打包向 [APNS Service]发送消息;
+5、[APNS Service]会利用 deviceToken 找到对应的 [Client App] 并将消息体传达
 
 // 数据持久化
 1、 NSKeyedArchiver 采用归档的形式存储 ( 常用于 NSString, NSDictionary,
@@ -7815,51 +7730,6 @@ ASCII码：字符型常量的整数表示形式，每个字符都对应一个ASC
 %lf     //double型
 %.mf    //保留小数点后m位
 %c      //字符型格式符
-
-#数组：
-定义：一组有序数据的集合；
-特点：每个元素具有相同的数据类型；
-1).一维数组：下标从0开始，到n－1结束
-格式：int array[5];
-int //定义一个长度为5的数组
-array //数组名
-5  //数组长度
-array[0]...array[4] //数组元素
-//初始化
-int array[5]={1,2,3,4,5};//完全初始化
-int array[5]={1,2,3};//部分初始化，剩下元素默认为0
-//数组的访问越界
-array[5]=4;
-2).二维数组：
-定义：元素是一维数组的数组称为二维数组；
-格式：int array [3][4];//3代表横行X轴,4代表竖行Y轴
-//初始化：3行4列
-int array[3][4]={
-    {1,2,3,4},
-    {2,3,4,5},
-    {3,4,5,6},
-};
-
-#指针：
-定义：变量的地址(唯一标识一块内存的索引)；
-int a;//a变量名、&a变量地址
-int *p;//定义一个指针变量p：p指针变量名、*指向
-指针变量p的作用：用来存储地址；
-*p：指p指向的内容；
-p = &a;//将整型变量a的地址赋给指针变量p
-*p = a;//*p是p指向的变量
-int *p;//变量p是int*类型、int是p指向变量的基类型
-int *p = NULL;//指针变量p初始化为空、不能使用空指针
-int *p;//未初始化的指针称为野指针、不能使用野指针
-printf("&a=%p",&a);//输出变量a的地址：％p地址格式符
-注意：1.定义指针时，一定要初始化为空；
-2.指针做为参数或者已经赋值，则无需初始化为空；
-3.使用指针前，一定要给指针赋值；
-4.使用指针时，一定要判空；
-if(p == NULL) {
-    return;
-}
-//指针大小：固定4个字节-因为地址在内存中都是以整型的方式分配的
 
 #数组和指针：
 概述：数组名作为函数参数，代表数组的首地址；
