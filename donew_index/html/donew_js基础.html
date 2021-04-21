@@ -213,12 +213,14 @@
         // undefined与任何数值计算都是NaN
         var a8;
         alert(a8); // undefined
-        // 二复杂数据类型 - Object（function/Array/Date）
+        // 二、复杂数据类型 - Object（function/Array/Date）
         // 1>.null - 变量未引用（值为空）/变量在内存中不存在（类似于Objective-C中的nil）/属于复杂数据类型（object）
         // null和任何数值计算null都可以当作'0'处理
         // 作用 - 销毁变量
         var a9 = null;
         alert(a9);
+        // 2>.Array
+
         
         // 运算符
         // 一、算术运算符 - +｜-｜*｜/｜% / 优先级 - 先计算()、在计算*/、后计算+-
@@ -260,7 +262,6 @@
         // 0作为除数的时候结果为Infinity(无穷大)/Infinity是数字类型
         // -Infinity(无穷小)
         var a26 = a23 / 0; // Infinity
-        // 4>.%
         // 二、赋值运算符 - +=|-=|*=|/=
         var a27 = 5;
         var a28 = 8;
@@ -357,7 +358,7 @@
         alert(typeof(b13)); // number
         alert(typeof(b12)); // string
 
-        // if语句 - 与其他语言一致
+        // if语句（与其他语言一致）
         // 推荐使用'==='
         var b14 = 12;
         var b15 = 15;
@@ -611,13 +612,6 @@
         }
         // 7>.伪代码 - class类（js中没有类的概念/ES6中也开始引入类的概念）
 
-        // 进制转换
-        // 1>.任意进制转换十进制 - parseInt
-        var c8 = parseInt(10, 2); // “二进制10”转换成“十进制”
-        // 2>.十进制转换任意进制 - toString
-        var c9 = 7;
-        var c10 = c9.toString(2); // “十进制7”转换成“二进制”
-
         // 数据类型的传递和存储
         // 1>.简单数据类型 - 值类型
         var d1 = 1;  // 入栈区 - 开辟空间0x100
@@ -664,7 +658,7 @@
         alert(Math.max(x1, y1)); // 最大值
         alert(Math.min(x1, y1)); // 最小值
         alert(Math.pow(x1, y1)); // x1^y1
-        alert(Math.random());   // 返回“0 - 1的随机数”/不包括”0和1“ - 常用
+        alert(Math.random());   // 返回“0 - 1的随机数”/不包括“0和1” - 常用
         alert(Math.round(x1));  // 四舍五入取整/-15.5四舍五入为-15
         alert(Math.PI); // 返回圆周率
 
@@ -796,7 +790,7 @@
         }
         alert(bubbleSortArray);
 
-        // 4.RegExp对象 - 正则表达式/ri'gek'sp
+        // 4.RegExp对象 - 正则表达式/ri'ga:k'sp
 
         // 5.Error对象 - 错误对象
 

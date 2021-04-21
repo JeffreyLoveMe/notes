@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style type="text/css">
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        div.box {
+            height: 74px;
+            background: url("../../image/wechat_body_bg.jpg");
+        }
+        ul li {
+            list-style: none;
+            float: left;
+        }
+        ul li a {
+            display: inline-block;
+            height: 33px;
+            margin: 10px;
+            padding-left: 17px;
+            color: white;
+            background: url("../../image/wechat_navigation_bg.png") 0 -192px;
+            text-decoration: none;
+        }
+        ul li a span {
+            display: inline-block;
+            height: 33px;
+            line-height: 33px;
+            padding-right: 17px;
+            background: url("../../image/wechat_navigation_bg.png") right -192px;
+        }
+    </style>
+</head>
+<body>
+<!--
+滑动门
+1>.概念 - 元素大小随着文字的增大而增大
+2>.key - 1、必须包含行内元素（元素可以随着文字的增大而增大）/2、不能设置盒子的宽度（如果需要撑大盒子必须设置padding）/高度可以随意设置
+-->
+    <div class="box">
+        <ul>
+            <li>
+                <a href="#">
+                    <span>首页</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <span>下载吧</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <span>公共平台</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+</body>
+</html>

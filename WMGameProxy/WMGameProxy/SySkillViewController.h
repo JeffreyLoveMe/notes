@@ -13,7 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @class SySkillViewController;
 /// 1.定义协议protocol
-// 协议本身不是类，类似 java 中的接口
+// 协议本身不是类，类似java中的接口
 // 作用：给类增加方法（外部可以用类的对象调用该协议方法）
 // 规范方法的声明：可以实现多继承和对象间通信
 /**
@@ -24,7 +24,7 @@ NS_ASSUME_NONNULL_BEGIN
  4.一个类可以遵循一个或者多个协议
  */
 // 可以实现多继承：相同类型可以使用“继承”，不同类型可以使用“协议”
-// ！！！"协议protocol" 可以直接使用 “模版” 创建/类似 "类别 Category"！！！
+// ！！！"协议protocol" 可以直接使用“模版”创建/类似"类别Category"！！！
 // 协议也可以再遵循协议
 /// 2.协议的作用
 // 1.类型限定
@@ -44,13 +44,13 @@ NS_ASSUME_NONNULL_BEGIN
 @end
 
 @interface SySkillViewController : UIViewController
-// 委托方：持有协议/该类就是委托方
-// 使用 weak 防止内存泄漏？？？说明原因？？？/会被赋值成xxx
-// 代理方：遵从协议、实现方法
+// 委托方：持有协议，该类就是委托方
+// 使用weak防止内存泄漏？？？说明原因？？？/会被赋值成xxx
+// 代理方：遵从协议，实现方法
 // 持有协议的id指针
 // 不能 retain
 // 如果有 * 在 <> 外面
-// 为什么使用 id？？？（任何遵循 SySkillViewControllerProtocol 的类都可以做为我的代理）
+// 为什么使用id？？？（任何遵循SySkillViewControllerProtocol的类都可以做为我的代理）
 @property (weak, nonatomic) id <SySkillViewControllerProtocol> delegate;
 
 // 1.定义block - 怎么 “声明block” 就怎么 “定义block” / 以后使用直接使用 “myBlock”

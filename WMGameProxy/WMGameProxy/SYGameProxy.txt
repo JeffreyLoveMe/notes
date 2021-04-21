@@ -338,18 +338,6 @@ https://blog.csdn.net/mangosnow/article/details/37054765#0-qzone-1-85099-d020d2d
 #iOS11/12新特性：
 https://www.jianshu.com/p/39a5aee18778
 
-1.二维数组
-1）定义：元素是一维数组的数组称为二维数组
-int arr[4][4];
-2）二维数组的初始化
-int arr[4][4]={   {1,2,3,4},
-               {2,3,4,5},
-               {3,4,5,6},
-               {4,5,6,7} };
-3）二维数组的赋值
-arr[0][0] = 4;
-arr[2][1] = 4;
-
 1.指针
 1）指针就是变量的地址；地址就是唯一标识一块内存的索引
 int  a;
@@ -1199,21 +1187,6 @@ int main(int argc, const char * argv[]) {
     return 0;
 }
 
-//AFNetworking：
-1.概述：2.0使用的是NSURLConnection、3.0使用NSURLSession；
-2.代码：NetworkViewController.h/m
-注意：不要在子线程中更新UI；
-//利用KVO、KVC进行网络请求：参考2015-10-13
-1.新建数据模型PostInfo.h/m
-2.新建数据源：必须初始化
-3.设置单例：全局使用
-3.监测数据源变化：KVO
-4.新建下拉控件：进入VC->开始下拉加载->网络请求：改变数据源->加载UITableView
-5.在View中更新UI
-代码：NetworkViewController.h/m
-//设置应用支持https
-Xcode7.0以后：NSAppTransportSecurity->NSAllowsArbitraryLoads->YES
-
 #网络编程需要掌握的内容：NO
 0.实时监测网络变化
 1.数据请求、数据上传、下载
@@ -1326,10 +1299,6 @@ CGFloat/Float之间的区别？
 5.尽量不要动态add/remove子控件、可以在init()中就加载完毕，然后通过hidden控制显示/隐藏；
 6.使用调试工具分析问题；
 
-赶集网的面试：1.传值 2.推送 3.数据存储 4.代理/单例
-第一轮：推送机制->多线程->开发流程
-第二轮：支付
-
 1.读写文件的例子？
 2.读写数据库的例子？
 3.异步加载网络图片的例子？
@@ -1383,8 +1352,6 @@ UITableView调用reloadData()会发生什么问题？
 例1.有两张表，用户表(Z_User)和黑名单表(Z_Blackuser)，userid是Z_User的
 主键，Z_BlackUser的外键。现在需要查询用户表中不在黑名单表中的数据，请写出sql语句。
 
-请描述一下你的iOS应用开发流程？
-
 //UI问题
 layer和UIView、UIWindow的区别是什么？
 
@@ -1394,11 +1361,6 @@ layer和UIView、UIWindow的区别是什么？
 1.什么是视图？
 2.使用索引查询一定可以提高查询性能呢？为什么？
 3.内联接和外联接的区别？
-
-//类方法
-1.类方法随着类的加载而加载、所以类方法不能访问成员变量、
-self在对象方法中代表对象、self在类方法中代表类、
-self.age = 10代表set方法[self setAge:10];
 
 1.解释一下block、使用block应该注意什么;
 2.block的用法？
@@ -1447,25 +1409,9 @@ Xcode支持在一个工程里面新建多个项目
 你项目有哪些不足？如果是现在给你修改、你可以怎么修改？
 Xcode有哪些可以改进的地方、你最爱使用什么方法检查某种新技术是否好用？
 
-### 项目细节
-1.自己的事情自己做：
-1).业务参数最好在model中先处理好，直接赋值
-2).View需要改变状态最好在View内部先处理好逻辑，外部使用数据去驱动
-
 swift中enum/struct都是比类更厉害
 
 App中哪些需要存放在本机|App中的缓存机制
-
-constrain to magins //没有作用：为了plus/iPhone X布局尽量到中间
-
-- 创建UILabel/UIButton有固定方法(不使用系统方法)；
-- 封装可以使用的BadgeView；
-- 学习snapkit使用方法；
-
-## snapkit中有三个方法
-- makeConstraints  //设置布局
-- remakeConstraints  //移除以前的布局、重新布局
-- updateConstraints //更新布局
 /***********************json按页下载数据******************************/
 //1.声明当前页数、总页数
 self.page = 1
@@ -1484,22 +1430,11 @@ self.maxPage = self.maxPage(byTotalSize: model.total, pageSize: model.size)
 /////CommunityCommentDetailController.swift
 15.什么是"Jenkins"/TabBar这么实现动画效果/hook
 
-1. 一般项目都是使用cocoaPods管理：更加方便；
-2. 一般使用Assets管理图片：自己试试；
-3. 一般技术用来看后台接口的工具App是什么？？？
-4. 一般App不需要什么都写在服务端
-5. //这个坐标是在哪里开始算起的：状态栏？导航栏头部、导航栏底部
-    _topView = [[UIView alloc]initWithFrame:CGRectMake(0, 20, self.view.frame.size.width, 40)];
-read Base value to memory
-
 App哪些信息需要存储在本地：可能会涉及到多表查询
 
 学会了怎么设置cell自适应：配合设置控件高度为0一起使用；/需要预估高度/可以把内部的高度传出来
 
 YYText怎么使用、有什么作用？？？
-
-//使用SnapKit给控件添加约束常见错误：https://blog.csdn.net/Haikuotiankong11111/article/details/51800761
-1.简单的约束冲突不能有：比如控制了左边和把右边就不能在设置宽度
 
 iOS中关于图片缓存和缓存cell的高度
 
@@ -1536,21 +1471,12 @@ git上面的：stash
 fir的使用：怎么使用
 一般公司打包：怎么打包
 
-SnapKit布局：我们不用按顺序布局|可以直接先布局底下的样式、再布局上部的样式
-
-可以规定约束的优先级
-
 // 组件化开发实践
 https://www.jianshu.com/p/f472fa9f0616
-
-swift中一般都需要init|对于Int等数据类型、默认赋值等于-1
-为什么是-1呢？？？？因为-1代表着不正确
 
 找问题一定要从外向内找、找不到在找旁边的
 千万不要还没有找进去  就开始在旁边找
 这样很能迷失方向：让人很烦躁、不安   然后找不到答案、一定要静下心来
-
-写代码一定要细心  超级细心
 
 pod repo update // 更新电脑本地保存的版本库中的版本信息
 
@@ -1569,9 +1495,6 @@ OC怎么处理网络请求：
 // 将一个图片位于什么部位开始拉伸(以原点为中心点)
 // 返回一个UIImage
 UIImage.resiezableImage(with: UIImage(named: "calendar_bg_white"), edgeInsets: UIEdgeInsets(top: 0.5, left: 0.5, bottom: 0.5, right: 0.5))
-
-每次写代码如果有疑问  或者测试改了代码   都需要做标记：// FIXME  然后最重要的是
-必须在发版的时候全局搜索FIXME
 
 1.严格按照设计稿设计UI
 2.一般设置UI的时候一定要想到怎么当文字过长会怎么样
@@ -1605,12 +1528,6 @@ UIImage.resiezableImage(with: UIImage(named: "calendar_bg_white"), edgeInsets: U
 必须使用数组去接受-> 然后外层也必须使用数组来接受：可以直接等于
 
 swift中main函数消失：https://blog.csdn.net/zhao18933/article/details/46640657
-
-1.修复线上bug/增加线上内容...base分支
-2.新功能/新需求_01...新建分支 <br>
-3.新功能/新需求_02...新建分支 <br>
-4.新功能/新需求_03...新建分支 <br>
-发版本...把1，2，3，4合并到发版分支->新建v3.3.x发版本分支
 
 国际化：文字的国际化、图片的国际化
 
@@ -7943,41 +7860,6 @@ Demo：新建demo，包含Model、Manager、View、Controller？？？
 功能：1.可以实现私有方法；
 2.可以声明私有成员变量；
 
-#点语法：为了让程序设计简单化
-//点语法在等号左边就是set方法，点语法在等号右边就是get方法
-[xiaoming setName:@""];==xiaoming.name = @"";
-NSString *name = [xiaoming getName];==NSString *name = xiaoming.name;
-注意：1.点语法只是访问set/get方法，不是使用成员变量；
-2.点语法是一个编译器的特性：会在程序翻译成二进制的时候，自动转换成set/get方法；
-3.真正OC语法：self->_age = 15;
-代码：WMBook.h/m
-
-#继承：派生
-定义：父类的属性(不包括私有)和方法，子类可以直接获取，叫做继承；子类在父类的基础上，创建自己的属性和方法，叫做派生；
-提示：每个类中都有一个[super class]指针指向自己的父类；
-Objective-C语言只支持单继承；
-好处：1.创建大量的相似类的时候，可以节省工作量；
-2.建立了类与类之间的联系；
-缺点：耦合性太强；
-格式：
-//子类可以使用父类的所有方法，访问父类非私有的成员变量
-@interface 子类名 : 父类
-@end
-继承在内存中的体现：
-子类继承父类以后，子类对象的构成：
-1.父类的字段和方法；
-2.子类自己独有的字段和方法；
-super：子类在重写父类方法时，想要保留父类的一些行为
-
-#多态：同一个接口不同的实现，父类的指针创建子类的对象
-//重写：重新实现一遍父类的方法，子类最终执行子类重写以后的方法
-//重载：在一个类中定义多个同名的方法，要求每个方法具有不同的参数类型和个数；
-注意：Objective-C语言没有严格的方法重载；
-//实现条件
-1.有继承关系；
-2.有重写；
-3.父类的指针指向子类的对象；
-
 #虚方法：
 定义：调用方法的时候，不看指针看对象，对象的地址指向什么对象就调用什么方法；
 好处：可以描述不同事物被相同的事件触发，产生不同的响应；
@@ -8078,41 +7960,7 @@ ARC中的strong相当于MRC中的retain；
 4.父类遵循某个协议，那么子类也遵循该协议；
 5.协议的应用场景：类型限定？？？
 遵从协议：见BaseViewController.h/m
-
-#代理delegate：
-1.定义：代理是实现两个类的对象间通信的一种机制；
-2.委托方：持有协议的id指针，可以使用协议；
-@property (weak,nonatomic) id <CLGODelegate> delegate;//代理对象使用weak，防止内存泄露
-3.代理方：遵从协议，实现协议中的方法；
-4.怎么实现代理回调？--见NBSDK；
 /******************************网络基础******************************/
-#异步网络请求：
-//分类：
-网络请求：get
-网络上传：post
-下载：NO
-//原生网络请求：
-CFNetwork：纯C语言
-NSURLConnection：iOS7.0被废弃
-NSURLSession：NO
-https://www.jianshu.com/p/b0ddadd34037
-//ASIHttpRequest：不在更新
-//MKNetworkKit：简单易用，使用者较少
-//AFNetworking：
-1.概述：2.0使用的是NSURLConnection、3.0使用NSURLSession；
-2.代码：NetworkViewController.h/m
-注意：不要在子线程中更新UI；
-//利用KVO、KVC进行网络请求：参考2015-10-13
-1.新建数据模型PostInfo.h/m
-2.新建数据源：必须初始化
-3.设置单例：全局使用
-3.监测数据源变化：KVO
-4.新建下拉控件：进入VC->开始下拉加载->网络请求：改变数据源->加载UITableView
-5.在View中更新UI
-代码：NetworkViewController.h/m
-//设置应用支持https
-Xcode7.0以后：NSAppTransportSecurity->NSAllowsArbitraryLoads->YES
-
 #网络编程需要掌握的内容：NO
 0.实时监测网络变化
 1.数据请求、数据上传、下载
@@ -8202,12 +8050,6 @@ SEL s1 = @selector(onClick:);
 3.增加模型属性，在模型属性set方法中设置数据到子控件；
 代码：见WMGame
 
-#UILabel的包裹模式：自适应
-特点：UILabel的高度是随着文字内容的增加而拉伸的；
-应用：评论/朋友圈等；
-步骤：1.设置UILabel的位置(x,y);
-2.设置UILabel的最大宽度；
-
 #跳转：
 1).模态方式：见WidgetViewController.h/m->TimeViewController.h/m
 基本方式传值：OK
@@ -8223,12 +8065,6 @@ block传值：实现回调
 注意：UITabBarControllerDelegate很重要
 代码：见AppDelegate.h/m
 注意：1.把导航控制器UINavigationController添加到分栏控制器UITabBarControllerDelegate；
-
-#UIScrollView：滚动视图
-定义：能够滚动的视图控件，用来展示大量的内容；
-代码：ScrollViewController.h/m；
-注意：1.不要通过索引subviews数组访问scrollView子控件；
-2.contentOffset&contentSize的区别？
 
 #数据源：
 实质：数据源实质就是一个数组(NSArray、NSMutableArray)；
@@ -8528,15 +8364,6 @@ TCP连接只能支持点对点，UDP支持交互通信；
 //Internet采用哪种网络协议？该协议的主要层次结构？
 tcp/ip协议，层次结构：应用层/传输层/网络层/数据链路层/物理层
 
-//OSI七层网络模型：
-应用层：为应用程序提供服务
-表示层：数据格式转化、数据加密
-会话层：建立、管理和维护会话
-传输层：建立、管理和维护端到端的连接
-网络层：IP选址及路由选择
-数据链路层：提供介质访问和链路管理
-物理层：物理设备标准
-
 //静态数据类型和动态数据类型的区别：
 1.静态数据类型的特点：在编译期就明确变量的类型、可以访问属性和方法；
 2.动态数据类型的特点：在编译期不清楚变量的类型、运行期才知道真实类型；
@@ -8546,12 +8373,6 @@ tcp/ip协议，层次结构：应用层/传输层/网络层/数据链路层/物�
 //[self class]|[self superclass]：
 1.[self class]获取当前方法调用者的类；
 2.[self superclass]获取当前方法调用者的父类；
-//const和宏的区别：swift没有宏
-1.编译时刻：const：编译、宏：预编译(Xcode打开项目的时候读条阶段)
-2.编译检查：const有编译检查、宏没有编译检查
-3.宏的好处：const不可以定义函数|方法、宏可以定义函数|方法
-4.宏的坏处：大量使用宏导致预编译时间过长
-blog：大量使用宏导致内存爆增！错误
 //block怎么会导致循环引用：
 xxx
 //简述远程推送的步骤：

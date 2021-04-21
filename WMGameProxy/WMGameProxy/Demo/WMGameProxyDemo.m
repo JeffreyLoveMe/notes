@@ -12,7 +12,7 @@
 
 // 1.根据对象中的某个属性对数组中的对象进行排序
 -(void)compareObject {
-//    // 需要在某个对象中实现onCompare:方法
+//    // 需要在该对象中实现onCompare:方法
 //    NSMutableArray *array = [[NSMutableArray alloc] init];
 //    [array sortUsingSelector:@selector(onCompare:)];
 }

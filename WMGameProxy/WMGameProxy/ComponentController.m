@@ -54,7 +54,7 @@
  7.alpha
  */
 -(void)setupView {
-//    // 坐标系
+//    // 坐标系 - ？？？有导航栏"原点(0, 0)"和没有导航栏"原点(0, 0)"分别在什么位置？？？
 //    CGPoint point = CGPointMake(100, 100); // 坐标 - 保存坐标x,y
 //    CGSize size = CGSizeMake(100, 100);  // 尺寸 - 保存尺寸
 //    CGRect rect = CGRectMake(100, 100, 100, 100); // 矩形 - 保存坐标 + 尺寸
@@ -185,11 +185,12 @@
 
 #pragma mark - UILabel文本框
 -(void)setupLabel {
-    /// UILabel的包裹模式
-    // UILabel的高度是随着文字内容的增加而拉伸
+    /// UILabel的包裹模式 - UILabel的高度是随着文字内容的增加而拉伸
+    // 1.设置UILabel的位置(x, y)
+    // 2.设置UILabel的最大宽度
     UILabel *label = [[UILabel alloc]init];
     label.frame = CGRectMake(100, 100, 100, 50);
-    // 会先将 label 从别的父视图移除
+    // 会先将label从别的父视图移除
     [self.view addSubview:label];
     label.backgroundColor = UIColor.whiteColor;
     label.text = @"hello world";
@@ -1579,6 +1580,21 @@ UIWindow -> UITabBarController -> UINavigationController -> ChildViewControllers
     [picker dismissViewControllerAnimated:YES completion:^{
         
     }];
+}
+
+
+#pragma mark - Masonry/SnapKit
+-(void)setupMasory {
+    // 设置布局 - makeConstraints
+    
+    // 重新布局（移除以前的布局）- remakeConstraints
+    
+    // 更新布局 - updateConstraints
+    
+    // 设置约束的优先级
+    // 只要保证View已经add的情况下，我们不用按顺序布局（可以直接先布局底下的样式，再布局上部的样式）
+    
+    // 约束冲突 - https://blog.csdn.net/Haikuotiankong11111/article/details/51800761
 }
 
 
