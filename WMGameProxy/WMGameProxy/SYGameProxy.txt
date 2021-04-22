@@ -124,16 +124,6 @@ PostStore类网络请求完成，需要告诉VC网络请求操作完成；
 #像素和点之间的转换：效果图上标注的怎么转换？
 https://blog.csdn.net/ridxmc/article/details/51346472
 
-#实现画折线图：利用第三方库
-1.加入tk库文件；
-2.添加QuartzCore.framework；
-
-#多语言：en/tw/cn
-定义：根据用户设置的Language and Region Format(语言和区域格式)修改应用
-本地化信息(语言、货币、日期格式等)；
-http://www.cocoachina.com/ios/20170122/18609.html //特别详细
-https://www.jianshu.com/p/c7a6408410aa
-
 #基于位置的服务LBS：
 //系统定位
 1.导入MapKit.framework，创建MKMapView
@@ -320,21 +310,6 @@ https://blog.csdn.net/wujakf/article/details/80223046
 //iPad项目开发总结
 https://www.jianshu.com/p/522c8993572b
 /******************************补充知识点******************************/
-#正则表达式：
-代码：NewNetworkViewController.h/m
-搜索NSRegularExpression
-
-#谓词： NSPredicate
-概念：OC中谓词操作是针对于数组类型的，这样的好处是我们可以不需要编写很多代码就可以去操作数组、过滤数据；
-NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF CONTAINS[c] %@",searcgString];
-_ArrM = [NSMutableArray arrayWithArray:[_Arr filteredArrayUsingPredicate:predicate];//过滤数据
-
-#DrawRect：NO
-概念：Quartz 2D是一个基于CoreGraphics框架来实现的二维绘制引擎，同时支持iOS和Mac系统；
-作用：绘制图形、线、三角形、圆、弧形；绘制文字；绘制/生成pdf；截图/裁剪图片；自定义UI；
-https://blog.csdn.net/potato512/article/details/56845385
-https://blog.csdn.net/mangosnow/article/details/37054765#0-qzone-1-85099-d020d2d2a4e8d1a374a433f596ad1440
-
 #iOS11/12新特性：
 https://www.jianshu.com/p/39a5aee18778
 
@@ -1256,9 +1231,7 @@ struct ListNode {
 }
 这段代码有什么问题？会不会导致内存泄漏(多线程)/在内存紧张的设备上做大循环时
 
-
 17.NSString *name; [name release]; // 执行代码会出现什么结果？简述原因
-
 
 14.程序运行报错：请找出错误并改正
 #include <stdio.h>
@@ -3738,12 +3711,6 @@ B.1
 C.2
 D.3
 答案：C
-[多选]关于NSOperationqueue的说法，正确的是？
-A.主要用于多线程并发处理
-B.它是一个队列，有严格的先进先出
-C.它不会遵守严格的先进先出
-D.NSOperationQueue可以通过调整权重来调整队列的执行顺序
-答案：ACD
 [多选]为什么说Object-C是runtimelanguage?
 A.将数据类型的确定由编译时，推迟到了运行时
 B.运行时机制使我们直到运行时才去决定一个A.对象的类别，以及调用该类别A.对象指定方法。
@@ -3893,19 +3860,6 @@ C.parser:didStartElement:namespaceURI:qualifiedName:attributes
 D.parser:didEndElement:namespaceURI:qualifiedName
 E.parserDidEndDocument
 答案：ABCDE
-[多选]（iOS开发选做）实现多线程都有哪几种方法？
-A.使用@synchronized(self)
-B.使用GCD
-C.使用NSOperationQueue
-D.使用@thread
-答案：ABC
-[多选]一次鼠标单击会产生下列哪些事件：_____
-A.onmousemove
-B.Onmousedown
-C.Onmouseup
-D.onclick
-E.onmouseover
-答案：BCD
 [多选]UIView的以下哪些属性是Animatable的：_____
 A.backgroundColor
 B.opaque
@@ -4030,13 +3984,6 @@ tableViewController 也不能放吧，
 答案:简便构造方法一般由 CocoaTouch 框架提供，如NSNumber
 的 + numberWithBool: + numberWithChar: + numberWithDouble: + numberWithFloat: + numberWithInt:
 Foundation 下大部分类均有简便构造方法， 我们可以通过简便构 造方法，获得系统给我们创建好的对象，并且不需要手动释放。
-13. 谈谈对 Block 的理解 ?并写出一个使用 Block 执行UIVew 动 画?
-答案: Block 是可以获取其他函数局部变量的匿名函数，其不但 方便开发，并且可以大幅提高应用的执行效率 (多核心 CPU 可直接处
-理Block指令)
-[UIView transitionWithView:self.view duration:0.2
-options:UIViewAnimationOptionTransitionFlipFromLeft
-animations:^{ [[blueViewController view] removeFromSuperview]; [[self view] insertSubview:yellowViewController.view atIndex:0]; }
-completion:NULL];
 14. 多线程是什么
 多线程是个复杂的概念， 按字面意思是同步完成多项任务， 提高
 了资源的使用效率，从硬件、操作系统、应用软件不同的角度去看， 多线程被赋予不同的内涵， 对于硬件，现在市面上多数的 CPU都是多 核的，多核的 CPU运算多线程更为出色 ;从操作系统角度，是多任务， 现在用的主流操作系统都是多任务的，可以一边听歌、一边写博客 ; 对于应用来说，多线程可以让应用有更快的回应， 可以在网络下载时， 同时响应用户的触摸操作。在 iOS 应用中，对多线程最初的理解，就 是并发，它的含义是原来先做烧水，再摘菜，再炒菜的工作，会变成 烧水的同时去摘菜，最后去炒菜。
@@ -4067,10 +4014,6 @@ block 的使用:block 在copy 时都会对 block 内部用到的对象进行强�
 对于 main queue 就是在主线程中的，因此一定会在主线程中执行。 获取 main queue 就可以了，不需要我们创建，获取方式通过调用方 法 dispatchgetmain_queue 来获取。 7、头文件中声明的成员变量(不是属性)，外部可直接访问么? 参考答案: 外部不能直接访问头文件所声明的成员变量，需要提供成员变量的 getter 方法才能在外部访问。 而属性已经直接给我们自动生成了 方法，因此外部可以直接访问属性。
 getter
 
-8、TCP和UDP 的区别是什么?
-参考答案:
-TCP:面向连接、传输可靠(保证数据正确性， 保证数据顺序传输) 、 用于传输大量数据 (流模式 )、速度慢，建立连接需要开销较多 (时间， 系统资源 )。
-UDP :面向非连接、传输不可靠、用于传输少量数据 (数据包模式 )、 速度快，传输的是报文。
 9、MD5 和Base64 的区别是什么，各自使用场景是什么?
 参考答案:
 做过加密相关的功能的，几乎都会使用到 MD5 和 Base64 ，它们两者 在实际开发中是最常用的。
@@ -4165,14 +4108,6 @@ obj = [obj initWIthCString: nullTerminatedCString encoding:
 encoding];
 return AUTORELEASE(obj);
 }
-2. 写一个委托 Delegate 的 interface 答:
-@protocol MyDelegate;
-@class MyClass ;
-@interface MyClass: NSObject {
-id <MyDelegate> delegate; }
-// 委托方法 @protocol MyDelegate
-- (void)didJobs:(NSArray *)args;
-@end
 
 13. 关于自定义 Cell 中，图片下载用到的方法 ?
 如果有添加了第三方库 SDWebImage/AFNetWorkin，g可以使用 UIImageView的 类别方法 setImageWithURL:直接异步加载，如果没有的话可以使用 NSURLConnection发起 request 请求，或者使用 ASI将下载请求添加到下载队 列中，将图片下载之后，在回调方法里，回调主线程，设置图片。
@@ -4659,12 +4594,6 @@ BOOL isSuccess = [manager createDirectoryAtPath:?lePath
 withIntermediateDirectories:YES attributes:nil error:nil] ; NSLog(@"%@", isSuccess ? @" 创建成功 " : @"创建失败 ");
 }
 
-68.UIButton 的 ?父类是什么? 答: UIControl
-69.请解释 ?一下Interface Bulder 的作 ?用以及NIB ?文件的概念 答:
-Interface Builder (IB)是Mac OS X 平台下 ?用于设计和测试 ?用户界 ?G面U(I) 的应 ?用程序。为了 ?生成图形界 ?面IB，并不是必需的，实际上 Mac OS X 下所有 的?用户界 ?面元素都可以使 ?用代码直接 ?生成;IB但能够使开发者简单快捷的开发 出符合 Mac OS X human-interface guidelines 的 GUI 。通常你只需要通过简单 的拖拽( drag-n-drop )操作来构建图形界 ?面就可以了。
-
-?工程中的可视化 ?文件的后缀是.xib，但是当程序编译之后，存储到包中， XIB?文
-件后缀编程 .nib 。简称 NIB ?文件。
 70.选项卡 (Tab Bar) 和?工具栏(Toolbar) 分别是什么 ?两者之间 有何共 同点和不同点
 答:
 Toolbar:提供 ?一种机制来显 ?示?一个 ?工具栏，在屏幕的底部和 ?支持显 ?示和选择的 ?工具栏项?U?目IBarButtonItem 的实例)。
@@ -4704,18 +4633,11 @@ NSDistributedLock ，分布锁， ?文件?方式实现，可以跨进程
 - (void)earnMoney;
 - (void)makeFood:(NSString *)foodName;
 @end
-76.UITableview 的执 ?行流程是怎么样的? 答:
-1、numberOfSectionsInTableView:
-?一直得不到释放了，此时
-2、heightForHeaderInSection 3、heightForFooterInSection
-4、numberOfRowsInSection 5、heightForRowAtIndexPath ，?行?高， 6、cellForRowAtIndexPath : 7、willDisplayCell
-，section 次数 ，section 次数
-，?行数
+
 77.简述 XMPP 中有哪些节点，各个节点分别有什么作 ?用? 答:
 常?用的节点有IQ, Message, Presence;
 IQ: Info/Query( 信息与查询 ), 它为 XMPP 通信提供请求与响应机制。
 Message: 消息节点 , ?一种基本推送消息 ?方法，它不要求响应。 Presence: ?用来表明 ?用户的状态，如:online 、 away 、 dnd( 请勿打扰 )等。
-26
 
 78.使?用AVPlayer 播放视频时，视频监听的 AVPlayerItem 状态有 ?几
 种，分别是什么及作 ?用? 答:
@@ -4778,14 +4700,13 @@ UDP 提供的是非面向连接的、不可 简单的说， TCP 注重数据安�
 [person release];retain count 1
 [person release];retain count = 0
 
-8、Category(类别)、 Extension(扩展)和继承的区别 9、为什什么代理理要⽤用weak?代理理的delegate和dataSource有什什么区别?block和代理理 的区别?
+9、为什什么代理理要⽤用weak?代理理的delegate和dataSource有什什么区别?block和代理理 的区别?
 10、id和NSObject*的区别
 14、UIView和 CALayer是什什么关系?
 17、KVO基本原理理?
 18、Swift 下的如何使⽤用 KVC?
 19、:Swift有哪些模式匹配?
-37、 不不要阻塞主线程 38、谈谈你对多线程开发的理理解?ios中有⼏几种实现多线程的⽅方法? 39、进程和线程的区别?同步异步的区别?并⾏行行和并发的区别?
-41、iOS 中的多线程 42、内存管理理的⼏几条原则时什什么?按照默认法则.那些关键字⽣生成的对象 需要⼿手动释放?在和property结合的时候怎样有效的避免内存泄露露?谁申请，谁释放
+ 42、内存管理的几条原则是什么?按照默认法则.那些关键字⽣生成的对象 需要⼿手动释放?在和property结合的时候怎样有效的避免内存泄露露?谁申请，谁释放
 
 48、1.什什么⽅方式可以看到上架App的头⽂文件? 2.阅读过哪些框架的源码?能说说它的架构⽅方式吗 49、iOS iAP内购审核可能失败的问题 50、IAP内购中虚拟货币导致审核⽆无法通过的问题?
 
@@ -4798,23 +4719,6 @@ d. 从引⽤用计数表中删除废弃对象的地址为键值的记录
 在swift官⽅方教程中有这样⼀一句句话:
 “Structures and enumerations are value types. By default, the properties of a value type cannot be modified from within its instance methods.”
 ⼤大致意思就是说，虽然结构体和枚举可以定义⾃自⼰己的⽅方法，但是默认情况下，实例例⽅方 法中是不不可以修改值类型的属性。
-
-//// 1. 在结构体的实例例⽅方法⾥里里⾯面修改属性 struct Persion {
-var name = ""
-mutating func modify(name:String) {
-self.name = name }
-}
-/// 2. 在协议⾥里里⾯面， 如何继承的结构体或枚举类型，想要改遍属性值， 必须添加 mutating
-protocol Persionprotocol {
-var name : String {get}
-mutating func modify(name:String)
-
-}
-struct Persion : Persionprotocol {
-var name = ""
-mutating func modify(name:String) {
-self.name = name }
-}
 
 4、UIView和 CALayer是什什么关系?
 UIView 显示在屏幕上归功于 CALayer，通过调⽤用 drawRect ⽅方法来渲染⾃自身的内容， 调节 CALayer 属性可以调整 UIView 的外观，UIView 继承⾃自 UIResponder，⽐比起 CALayer 可以响应⽤用户事件，Xcode6 之后可以⽅方便便的通过视图调试功能查看图层之 间的关系。
@@ -4851,8 +4755,6 @@ __unsafe_unretained Class super_class;
 第⼀一个成员是 receiver, 类似于上⾯面的 objc_msgSend 函数第⼀一个参数 self. 第⼆二个成员是记录当前类的⽗父类是什什么，告诉程序从⽗父类中开始找⽅方法，找到⽅方法 后，最后内部是使⽤用 objc_msgSend(objc_super->receiver, @selector(class))去调 ⽤用，此时已经和[self class]调⽤用相同了了，故上述输出结果仍然返回 Son objc Runtime 开源代码对- (Class)class ⽅方法的实现
 -(Class)class {
 return object_getClass(self); }
-6、@synthesize 和 @dynamic 分别有什什么作⽤用? @property有两个对应的词，⼀一个是@synthesize(合成实例例变量量)，⼀一个是 @dynamic。
-如果@synthesize和@dynamic都没有写，那么默认的就是 @synthesize var = _var; // 在类的实现代码⾥里里通过 @synthesize 语法可以来指定实例例变量量的名字。
 
 8、、Category(类别)、 Extension(扩展)和继承的区别
 区别:
@@ -5155,15 +5057,10 @@ App上架后，如何修改app上显示的公司名称? 1.先修改开发者账�
 另外就是在审核期间不不能有可以兑换在appStore可购买的商品，的任意活动或者兑 换码，这个也是苹果不不允许的。因为这个也会影响苹果的收⼊入。
 另外就是可能有⼈人会在苹果审核之后隐藏ipa⽀支付，此处提醒下，苹果会扫描你的 app代码中是否有⽀支付宝，微信等关于⽀支付的字段。使⽤用开关加h5的⽅方式可以通过审 核，但是此处也有⻛风险，⻛风险就是⼀一旦被发现，可能的结果就是苹果直接封掉账号。 app⽆无法使⽤用。
 
-北风网 iOS 面试题库(五)
 一、 用一个属性引用 UI 控件的时候为什么可以用 weak?
 controller 是被系统用强指针引用者， 只要它存在， 那么里面的子控件也就存在， controller
 强引用着它的 view controller ，又强引用着它的数组对象 subviews ，数组对象又强引用着 它所包含的数组内容，那么创建出来的一个 UI 控件将其加入 subviews 的时候，那么就会 被一个强指针所引着它
 对于内存的合理使用， 当我们需要控件的时候就已经有一个强引用在引用着它， 我们就不必 再弄一个强指针来强引用它;当我们不需要的时候， weak 直接释放掉，用 strong 的话就 还会保留它，这就占着内存了 .
-二、 UITableView 性能优化的原理
-iOS 设备内存有限，如果使用 UIT ableView 显示非常多的数据，就需要非常多的 UI TableViewcell
-那么设备的内存就会耗尽，解决该问题就需重用 UITableView 对象。 当滚动出列表的时候，部分 UIT ableViewCell 会移出窗口， UITableView 会将窗口外的 UITableVIewcell 放入一个对象缓存池中;
-当 UITableView 要求 dataSource 返回 UITableView 时， dataSource 会先查看缓存池 中是否有未使用的 UITableViewCell ，有就用新的数据配置这个 UITableViewCell 重新使 用到窗口，这就避免了重新创建对象。
 三、什么是抽象类?有什么作用 ?能实例化吗 ?
 1 、抽象类: abstract 修饰，它只能用来作父类，本身并没有生成实例的能力
 它将一类最公有的属性和方法抽取出来抽象类是将类共有的方法抽取出来， 声明为抽象方法 , 抽象方法只有声明没有具体的实现 , 拥有抽象方法的类就是抽象类 ; 这样新增一种类型时候 只需要继承抽象类，实现抽象方法就可以了，降低了实现新类的难度。
@@ -5278,7 +5175,7 @@ cocoa 中所有的类都是 NSObject 的子类，多继承在这里是用 protoc
 setter getter
 是否是原子操作， atomic 表示
 2、设置 NSZombieEnabled
-这是一个 “EXC_BAD_ACCE”SS 错误。我们打开 XCode 的选项: “NSZombieEnabled” 。在 crash 时可
+这是一个 EXC_BAD_ACCESS 错误。我们打开 XCode 的选项: “NSZombieEnabled” 。在 crash 时可
 能会给你更多的一些提示信息。
 3，分析内存泄露 (shift+command+b)
 app 不 crash 了，那看看有没有内存泄露。用 XCode 的 Analyze 就能分析到哪里有内存泄露
@@ -5505,6 +5402,7 @@ Foundation 下大部分类均有简便构造方法， 我们可以通过简便�
 答案: NSManagedobjectContext 对象负责应用和数据库之间的交互。
 49. 和 coredata 一起有哪几种持久化存储机制 ?
 答案:存入到文件、 存入到 NSUserDefaults( 系统 plist 文件中 ) 、存入到 Sqlite 文件数据库
+
 50. 谈谈对 Block 的理解 ?并写出一个使用 Block 执行 UIVew动画 ?
 答案: Block 是可以获取其他函数局部变量的匿名函数，其不但方便开发，并且可 以大幅提高应用的执行效率 ( 多核心 CPU可直接处理 Block 指令 )
 [UIView transitionWithView:self.view
@@ -6478,7 +6376,7 @@ Foundation 下大部分类均有简便构造方法，我们可以通过简便构
 
 11.UIView 的动画效果有那些?
 答案:有很多，如 UIViewAnimationOptionCurveEaseInOut UIViewAnimationOptionCurveEaseIn
-UIViewAnimationOptionCurveEaseOu t UIViewAnimationOptionTransitionFlipFromLeft UIViewAnimationOptionTransitionFlipFromRight UIViewAnimationOptionTransitionCurlUpUIViewAnimationOptionTransitionCurlDown
+UIViewAnimationOptionCurveEaseOut UIViewAnimationOptionTransitionFlipFromLeft UIViewAnimationOptionTransitionFlipFromRight UIViewAnimationOptionTransitionCurlUpUIViewAnimationOptionTransitionCurlDown
 如何使用可见该博文
 12.在 iPhone 应用中如何保存数据?
 答案:有以下几种保存机制:
@@ -8093,12 +7991,6 @@ self.dataArr; //每次使用均会调用-(NSArray *)dataArr;
 取，如果没有我们在创建。
 //代码：见WaterFall
 
-#父子控制器：多控制器管理
-概述：利用普通UIViewController也可以管理子控制器；
-//正好相反的操作
-[self.view addSubview:_topLineVc.view];
-[_societyVc.view removeFromSuperview];
-
 #像素和点之间的转换：效果图上标注的怎么转换？
 https://blog.csdn.net/ridxmc/article/details/51346472
 
@@ -8216,58 +8108,6 @@ https://blog.csdn.net/u010407865/article/details/62886943
 https://www.jianshu.com/p/9f757a09eacd
 //Swift工程调用Objective-C代码
 https://blog.csdn.net/pjk1129/article/details/39644477
-/******************************实战操作******************************/
-#CocoaPods：https://segmentfault.com/a/1190000011428874
-//安装Cocoapods
-1.安装Ruby
-1>安装RVM:
-curl -L get.rvm.io | bash -s stable
-rvm -v
-2>安装homebrew:
-/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-brew -v
-3>安装xcode command line:
-xcode-select --install
-xcode-select -v
-4>安装ruby:
-rvm list known
-rvm install 2.4.0
-ruby -v
-2.安装Cocoapods
-sudo gem install cocoapods
-教程：https://blog.csdn.net/zhanglizhi111/article/details/76657982
-//使用Cocoapods
-cd ./project
-pod init
-pod install --no-repo-update
-#Podfile
-platform :ios, '8.0'
-target '项目名' do
-use_frameworks!
-pod 'NSLogger'
-pod 'AFNetworking'
-pod 'FMDB'
-pod 'UICKeyChainStore'
-pod 'SCLAlertView-Objective-C'
-pod 'FTIndicator/FTProgressIndicator'
-pod 'FTIndicator/FTToastIndicator'
-pod 'IQKeyboardManager'
-pod 'MKDropdownMenu'
-pod 'CLGO', :git => 'ssh://git@git.changmeng.com/ios/sdk.v3.8.git', :branch => 'appstore-bt'
-end
-pod update --no-repo-update
-//升级本机pod库
-pod repo update master
-//编写podspec文件：NO
-//利用CocoaPods创建静态库：NO
-//新建静态库
-https://segmentfault.com/a/1190000011428874
-//打包静态库
-#sudo gem install cocoapods-packager
-#cd ./CLGO.podspec
-#pod package CLGO.podspec --force --verbose //常规打包
-#pod package CLGO.podspec --force --no-mangle --verbose //含.a的打包
-http://www.jianshu.com/p/605350a7b1dd
 /******************************补充知识点******************************/
 #PCH文件：参考Res/项目中常见的文件(PCH)
 

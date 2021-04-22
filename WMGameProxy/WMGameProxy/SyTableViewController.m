@@ -126,6 +126,11 @@
 }
 
 
+/*
+ 执行流程：
+ numberOfSectionsInTableView -> heightForHeaderInSection -> heightForFooterInSection ->
+ numberOfRowsInSection -> heightForRowAtIndexPath -> cellForRowAtIndexPath -> willDisplayCell
+ */
 #pragma mark - UITableViewDelegate, UITableViewDataSource
 /// UITableViewDataSource
 // 调用顺序
@@ -141,9 +146,9 @@
     return 10;
 }
 // 3.赋值
-// 只要一个 cell 出现在视野范围内就会调用一次该方法
-// 缓存池中 cell 的值还是老的
-// 去缓存池中拿到 cell 必须要改数据
+// 只要一个cell出现在视野范围内就会调用一次该方法
+// 缓存池中cell的值还是老的
+// 去缓存池中拿到cell必须要改数据
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     /// 第一种方式：无需注册
     // 静态局部变量
@@ -247,7 +252,7 @@
 }
 
 
-// http://blog.sina.com.cn/s/blog_12ff4f7900102vjro.html - 仿 QQ 折叠
+// http://blog.sina.com.cn/s/blog_12ff4f7900102vjro.html - 仿QQ折叠
 /**
  默认 tableView.editing = false;
  左滑 tableView.editing = true;

@@ -30,6 +30,7 @@
 		3324C82024260DD100766248 /* TestFight添加测试人员.png in Resources */ = {isa = PBXBuildFile; fileRef = 3324C81F24260DD100766248 /* TestFight添加测试人员.png */; };
 		3324C8222427B39800766248 /* 从应用A跳转到应用B.png in Resources */ = {isa = PBXBuildFile; fileRef = 3324C8212427B39800766248 /* 从应用A跳转到应用B.png */; };
 		3324D54B22DED4BF0066241F /* WMWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3324D54A22DED4BF0066241F /* WMWebViewController.m */; };
+		332561D02631837C00362E11 /* CocoaPodsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 332561CF2631837C00362E11 /* CocoaPodsViewController.m */; };
 		33264F10242B4E0400199DBD /* WMRunLoopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 33264F0F242B4E0400199DBD /* WMRunLoopViewController.m */; };
 		33302F6F242B10ED00C53F13 /* 静态库:动态库常见错误.png in Resources */ = {isa = PBXBuildFile; fileRef = 33302F6E242B10ED00C53F13 /* 静态库:动态库常见错误.png */; };
 		33302F71242B10F200C53F13 /* 静态库:动态库链接方式.png in Resources */ = {isa = PBXBuildFile; fileRef = 33302F70242B10F200C53F13 /* 静态库:动态库链接方式.png */; };
@@ -218,6 +219,8 @@
 		3324C8212427B39800766248 /* 从应用A跳转到应用B.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "从应用A跳转到应用B.png"; sourceTree = "<group>"; };
 		3324D54922DED4BF0066241F /* WMWebViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WMWebViewController.h; sourceTree = "<group>"; };
 		3324D54A22DED4BF0066241F /* WMWebViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WMWebViewController.m; sourceTree = "<group>"; };
+		332561CE2631837C00362E11 /* CocoaPodsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CocoaPodsViewController.h; sourceTree = "<group>"; };
+		332561CF2631837C00362E11 /* CocoaPodsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CocoaPodsViewController.m; sourceTree = "<group>"; };
 		33264F0E242B4E0400199DBD /* WMRunLoopViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WMRunLoopViewController.h; sourceTree = "<group>"; };
 		33264F0F242B4E0400199DBD /* WMRunLoopViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WMRunLoopViewController.m; sourceTree = "<group>"; };
 		33302F6E242B10ED00C53F13 /* 静态库:动态库常见错误.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "静态库:动态库常见错误.png"; sourceTree = "<group>"; };
@@ -476,6 +479,8 @@
 				33ED93DF22F12E77006ABD28 /* ComponentController.m */,
 				3324D54922DED4BF0066241F /* WMWebViewController.h */,
 				3324D54A22DED4BF0066241F /* WMWebViewController.m */,
+				332561CE2631837C00362E11 /* CocoaPodsViewController.h */,
+				332561CF2631837C00362E11 /* CocoaPodsViewController.m */,
 				33A8FD7822D481B4004AECBA /* SyTableViewController.h */,
 				33A8FD7922D481B4004AECBA /* SyTableViewController.m */,
 				33A8FD7B22D48237004AECBA /* SyCollectionViewController.h */,
@@ -1065,6 +1070,7 @@
 				339C0A9F23C6167000C3A144 /* SceneDelegate.m in Sources */,
 				33ED93E022F12E77006ABD28 /* ComponentController.m in Sources */,
 				3366E82C2431089D00820298 /* WMSqlViewController.m in Sources */,
+				332561D02631837C00362E11 /* CocoaPodsViewController.m in Sources */,
 				3366E84324310A2000820298 /* FMResultSet.m in Sources */,
 				3366E83F24310A2000820298 /* FMDatabaseQueue.m in Sources */,
 				3366E84024310A2000820298 /* FMDatabaseAdditions.m in Sources */,
