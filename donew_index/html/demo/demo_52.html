@@ -1,0 +1,319 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>尚合导航</title>
+    <!--
+    1、css初始化：我们需要保存一份css初始化的文件以后项目中使用
+     -->
+    <link rel="stylesheet" href="../../css/donew_init.css">
+    <!-- 项目中css书写位置 -->
+    <style type="text/css">
+        /* 2、清除浮动 */
+        .left-float {
+            float: left;
+        }
+        .right-float {
+            float: right;
+        }
+        .clearfix:after {
+            content: ".";
+            display: block;
+            height: 0;
+            line-height: 0;
+            visibility: hidden;
+            clear: both;
+        }
+        .clearfix {
+            zoom: 1;
+        }
+        /* 顶部 */
+        .top {
+            width: 980px;
+            height: 62px;
+            margin: 0 auto;
+        }
+        .top .logo {
+            width: 179px;
+            height: 39px;
+            margin-top: 20px;
+            background: url("../../image/svmv/logo.jpg") no-repeat;
+        }
+        .input input[type="text"] {
+            height: 32px;
+            margin-top: 20px;
+            border: 0 none;
+            outline-style: none; /*清除轮廓线*/
+            background: url("../../image/svmv/search2.jpg") no-repeat right;
+        }
+        /* 导航 */
+        .top-nav {
+            border-top: 1px solid #e1e1e1;
+            background: url("../../image/svmv/nav_bg.png");
+        }
+        .top-nav .nav-content {
+            width: 980px;
+            margin: 0 auto;
+        }
+        .nav-content ul li {
+            float: left;
+        }
+        .nav-content ul li a {
+            display: inline-block;
+            height: 55px;
+            color: #000000;
+            font-weight: 700;
+            line-height: 55px;
+            padding: 0 36px;
+            text-decoration: none;
+            background: url("../../image/svmv/nav_bg_line.png") no-repeat right top;
+        }
+        .nav-content ul li a:hover {
+             color: #7CB609;
+         }
+        /* 正文 */
+        .content {
+            width: 980px;
+            height: 597px;
+            margin: 0 auto;
+            background: url("../../image/svmv/banner.jpg") no-repeat;
+        }
+        /* 公告 */
+        .announcement {
+            width: 980px;
+            height: 29px;
+            margin: 0 auto;
+        }
+        .announcement .news {
+            height: 29px;
+            line-height: 29px;
+        }
+        .announcement .share {
+            height: 16px;
+            margin-top: 6px;
+        }
+        /* 提示 */
+        .tip {
+            width: 980px;
+            margin: 15px auto;
+        }
+        .new-pub {
+            margin-top: 13px;
+            margin-left: 6px;
+            color: #7AB800;
+        }
+        .new-pub img {
+            vertical-align: middle;
+        }
+        /* 新品发布 */
+        div.new-product {
+            width: 310px;
+            height: 224px;
+            position: relative;
+            border: 1px solid #E4E4E4;
+            margin-right: 12px;
+        }
+        .new-product .left-pic {
+            width: 11px;
+            height: 19px;
+            position: absolute;
+            left: 23px;
+            top: 120px;
+            background: red;
+            background: url("../../image/svmv/left.png") no-repeat;
+        }
+        .new-product .center-pic {
+            width: 205px;
+            height: 149px;
+            position: absolute;
+            left: 53px;
+            top: 50px;
+            background: red;
+            background: url("../../image/svmv/home_hot_01.png") no-repeat;
+        }
+        .new-product .right-pic {
+            width: 11px;
+            height: 19px;
+            position: absolute;
+            right: 23px;
+            top: 120px;
+            background: url("../../image/svmv/right.png") no-repeat;
+        }
+        /* 新闻中心 */
+        div.new-center {
+            width: 330px;
+            height: 224px;
+            border: 1px solid #E4E4E4;
+            margin-right: 12px;
+        }
+        .new-center ul {
+            margin: 10px 18px 0 18px;
+        }
+        .new-center ul li {
+            height: 27px;
+            line-height: 27px;
+            border-bottom: 1px dashed #DCDCDC;
+        }
+        /* 技术支持 */
+        div.tech-support {
+            width: 310px;
+            height: 224px;
+            border: 1px solid #E4E4E4;
+        }
+        .tech-support .tech-support-pub {
+            height: 12px;
+            border-left: 3px solid #7AB800;
+            margin-top: 10px;
+            margin-left: 28px;
+            padding-left: 5px;
+            line-height: 12px;
+        }
+        .tech-support p {
+            margin-top: 30px;
+            margin-left: 28px;
+        }
+        /* 底部 */
+        div.about-us {
+            height: 181px;
+            background: #2d2d2d;
+            border-bottom: 1px dashed #414141;
+        }
+        .about-us ul {
+            width: 980px;
+            margin: 0 auto;
+        }
+        .about-us ul li a {
+            display: inline-block;
+            height: 45px;
+            padding: 10px 10px;
+            color: white;
+            text-decoration: none;
+        }
+        div.address {
+            height: 45px;
+            text-align: center;
+            padding: 30px;
+            background: #2d2d2d;
+        }
+    </style>
+</head>
+<body>
+    <!-- 顶部 -->
+    <div class="top clearfix">
+        <div class="logo left-float"></div>
+        <div class="input right-float">
+            <input type="text" value="请输入...">
+        </div>
+    </div>
+    <!-- 导航 -->
+    <div class="top-nav">
+        <div class="nav-content">
+            <!-- 伪元素清除浮动：给父盒子添加 -->
+            <ul class="clearfix">
+                <li>
+                    <a href="#">首页</a>
+                </li>
+                <li>
+                    <a href="#">智能手机</a>
+                </li>
+                <li>
+                    <a href="#">平板电脑</a>
+                </li>
+                <li>
+                    <a href="#">配件</a>
+                </li>
+                <li>
+                    <a href="#">服务支持</a>
+                </li>
+                <li>
+                    <a href="#">关于尚合</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!-- 正文 -->
+    <div class="content"></div>
+    <!-- 公告 -->
+    <div class="announcement clearfix">
+        <div class="news left-float">
+            最新公告：尚合Aone智能手机入网证已获取工信部门审批下发。
+        </div>
+        <div class="share right-float">
+            <img src="../../image/svmv/zone.png">
+            <img src="../../image/svmv/weibo.png">
+            <img src="../../image/svmv/xinlang.png">
+            <img src="../../image/svmv/renren.png">
+        </div>
+    </div>
+    <!-- 提示 -->
+    <div class="tip clearfix">
+        <!-- 新品发布 -->
+        <div class="new-product left-float">
+            <div class="new-pub">
+                <img src="../../image/svmv/o.jpg">
+                <span>新品发布</span>
+            </div>
+            <div class="left-pic left-float"></div>
+            <div class="center-pic left-float"></div>
+            <div class="right-pic left-float"></div>
+        </div>
+        <!-- 新闻中心 -->
+        <div class="new-center left-float">
+            <div class="new-pub">
+                <img src="../../image/svmv/o.jpg">
+                <span>新闻中心</span>
+            </div>
+            <ul>
+                <li>致歉公告</li>
+                <li>首批尚合Aonet已全部售馨!</li>
+                <li>【媒体报导】国产高性价比 尚合Aonet四核手机评测</li>
+                <li>我司产品已经通过了国家强制性产品3C认证</li>
+                <li>尚合Aone智能手机入网证已经获工信部门审批下发</li>
+                <li>我司通过ISO9001:2008国际质量管理体系认证</li>
+            </ul>
+        </div>
+        <!-- 技术与支持 -->
+        <div class="tech-support left-float">
+            <div class="new-pub">
+                <img src="../../image/svmv/o.jpg">
+                <span>技术与支持</span>
+            </div>
+            <div class="tech-support-pub">售后服务</div>
+            <div class="tech-support-pub">投诉与建议</div>
+            <div class="tech-support-pub">联保网点</div>
+            <div class="tech-support-pub">常见问题FAQ</div>
+            <p>
+                深圳市汇聚众合科技发展有限公司
+                <br>
+                服务热线：400-633-7922
+            </p>
+        </div>
+    </div>
+    <!-- 底部 -->
+    <div class="bottom-content">
+        <div class="about-us">
+            <ul>
+                <li class="left-float">
+                    <a href="#">返回首页</a>
+                </li>
+                <li class="left-float">
+                    <a href="#">意见反馈</a>
+                </li>
+                <li class="left-float">
+                    <a href="#">帮助中心</a>
+                </li>
+                <li class="left-float">
+                    <a href="#">关于我们</a>
+                </li>
+            </ul>
+        </div>
+        <div class="address">
+            <p>深圳市汇聚众合科技发展有限公司</p>
+            <p>服务热线：400-633-7922</p>
+        </div>
+    </div>
+</body>
+</html>

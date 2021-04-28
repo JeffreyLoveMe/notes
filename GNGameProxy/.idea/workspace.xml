@@ -2,8 +2,28 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="16e435bf-91d0-4784-a0da-dec4003c7039" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../donew_index/html/donew_html.html" beforeDir="false" afterPath="$PROJECT_DIR$/../donew_index/html/donew_html.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../donew_index/html/donew_review.html" beforeDir="false" afterPath="$PROJECT_DIR$/../donew_index/html/donew_review.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../donew_index/html/demo/demo_52.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../donew_index/html/demo/demo_53.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../donew_index/html/demo/demo_54.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../donew_index/image/svmv/21.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../donew_index/image/svmv/banner.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../donew_index/image/svmv/home_hot_01.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../donew_index/image/svmv/icon_0.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../donew_index/image/svmv/index_161-175.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../donew_index/image/svmv/left.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../donew_index/image/svmv/logo.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../donew_index/image/svmv/nav_bg-line.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../donew_index/image/svmv/nav_bg.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../donew_index/image/svmv/o.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../donew_index/image/svmv/renren.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../donew_index/image/svmv/right.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../donew_index/image/svmv/search2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../donew_index/image/svmv/weibo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../donew_index/image/svmv/xinlang.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../donew_index/image/svmv/zone.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../donew_index/html/demo/demo_19.html" beforeDir="false" afterPath="$PROJECT_DIR$/../donew_index/html/demo/demo_19.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../donew_index/html/donew_demo.html" beforeDir="false" afterPath="$PROJECT_DIR$/../donew_index/html/donew_demo.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../donew_index/html/donew_js基础.html" beforeDir="false" afterPath="$PROJECT_DIR$/../donew_index/html/donew_js基础.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -219,6 +239,7 @@
       <workItem from="1615774203527" duration="1864000" />
       <workItem from="1615948653397" duration="81000" />
       <workItem from="1615948790802" duration="667000" />
+      <workItem from="1619348851966" duration="2445000" />
     </task>
     <servers />
   </component>

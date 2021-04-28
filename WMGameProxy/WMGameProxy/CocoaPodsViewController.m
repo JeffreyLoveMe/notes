@@ -56,6 +56,10 @@
      # pod package CLGO.podspec --force --verbose // 常规打包
      # pod package CLGO.podspec --force --no-mangle --verbose // 含.a的打包
      */
+#pragma mark - 面试题
+    // 1.pod update/pod install的区别？
+    // 2.pod update/pod update --verbose --no-repo-update的区别？
+    // 3.Podfile.lock是什么意思？
 }
 
 -(void)git {

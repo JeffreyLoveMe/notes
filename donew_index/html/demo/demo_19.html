@@ -11,13 +11,15 @@
         2>.使用js写出九九乘法表
         3>.根据结构补充js代码
         */
-        document.write("<table border=\"1\">");
-        for (let i = 0; i < 9; i++) {
+        document.write("<table border=\"1\" cellspacing=\"0\">");
+        for (let i = 1; i < 10; i++) {
             document.write("<tr>");
-            for (let j = 0; j < (i + 1); j++) {
-                document.write("<td>");
-                document.write((j + 1) + "*" + (i + 1) + "=" + (j + 1) * (i + 1));
-                document.write("</td>");
+            for (let j = 0; j < i; j++) {
+                // 这样写无效
+                document.write("<td>j + 1 + \"*\" + i + \"=\" + (j + 1) * i</td>");
+                // document.write("<td>")
+                // document.write(j + 1 + "*" + i + "=" + (j + 1) * i);
+                // document.write("</td>");
             }
             document.write("</tr>");
         }
