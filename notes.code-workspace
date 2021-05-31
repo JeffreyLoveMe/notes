@@ -1,0 +1,30 @@
+{
+	"folders": [
+		{
+			"name": "donew_index",
+			"path": "donew_index"
+		},
+		{
+			"name": "flutter_shop",
+			"path": "flutter_shop"
+		},
+		{
+			"name": "document",
+			"path": "../document"
+		}
+	],
+	"settings": {
+		"workbench.colorCustomizations": {
+			"[One Dark Pro]": {
+				"activityBar.activeBackground": "#F0543E",
+				"activityBar.background": "#F0543E",
+				"activityBar.foreground": "#000000",
+				"titleBar.activeBackground": "#F0543E",
+				"titleBar.inactiveBackground": "#F0543E"
+			},
+			"activityBar.background": "#3F2907",
+			"titleBar.activeBackground": "#593A09",
+			"titleBar.activeForeground": "#FEFAF3"
+		}
+	}
+}

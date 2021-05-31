@@ -71,6 +71,7 @@
 //     2.类的第零个属性就是isa属性
 //     */
 //    WMGameProxy *wm = [[WMGameProxy alloc]init];
+//    [wm performSelector:@selector(test)]; // oc没有真正的私有（使用该方法可以访问私有方法）
 //    /**
 //     不推荐使用 new
 //     1.为WMGameProxy类创建出来的对象分配存储空间 + alloc()方法/1.开辟存储空间；2.将所有属性设置为0

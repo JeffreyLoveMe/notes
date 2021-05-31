@@ -38,6 +38,7 @@
 		33385166246950C8006D458E /* 真机调试 - 自动生成证书.png in Resources */ = {isa = PBXBuildFile; fileRef = 33385165246950C8006D458E /* 真机调试 - 自动生成证书.png */; };
 		3342DB26254965B300B5D240 /* 新版iOS设备尺寸（更新于2020年）.png in Resources */ = {isa = PBXBuildFile; fileRef = 3342DB25254965B300B5D240 /* 新版iOS设备尺寸（更新于2020年）.png */; };
 		334757E4247CC9AD00EBF4EC /* 提交AppStore选项参考.png in Resources */ = {isa = PBXBuildFile; fileRef = 334757E3247CC9AD00EBF4EC /* 提交AppStore选项参考.png */; };
+		33507D982660936900AC455C /* WMSocketViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 33507D972660936900AC455C /* WMSocketViewController.m */; };
 		3359FE8E241F3E870014C82C /* iphone设备各种空间尺寸.png in Resources */ = {isa = PBXBuildFile; fileRef = 3359FE52241F3E830014C82C /* iphone设备各种空间尺寸.png */; };
 		3359FE8F241F3E870014C82C /* 下拉加载范例.png in Resources */ = {isa = PBXBuildFile; fileRef = 3359FE53241F3E830014C82C /* 下拉加载范例.png */; };
 		3359FE90241F3E870014C82C /* iOS学习路线图.png in Resources */ = {isa = PBXBuildFile; fileRef = 3359FE54241F3E830014C82C /* iOS学习路线图.png */; };
@@ -229,6 +230,8 @@
 		33385165246950C8006D458E /* 真机调试 - 自动生成证书.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "真机调试 - 自动生成证书.png"; sourceTree = "<group>"; };
 		3342DB25254965B300B5D240 /* 新版iOS设备尺寸（更新于2020年）.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "新版iOS设备尺寸（更新于2020年）.png"; sourceTree = "<group>"; };
 		334757E3247CC9AD00EBF4EC /* 提交AppStore选项参考.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "提交AppStore选项参考.png"; sourceTree = "<group>"; };
+		33507D962660936900AC455C /* WMSocketViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WMSocketViewController.h; sourceTree = "<group>"; };
+		33507D972660936900AC455C /* WMSocketViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WMSocketViewController.m; sourceTree = "<group>"; };
 		3359FE52241F3E830014C82C /* iphone设备各种空间尺寸.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iphone设备各种空间尺寸.png"; sourceTree = "<group>"; };
 		3359FE53241F3E830014C82C /* 下拉加载范例.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "下拉加载范例.png"; sourceTree = "<group>"; };
 		3359FE54241F3E830014C82C /* iOS学习路线图.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iOS学习路线图.png"; sourceTree = "<group>"; };
@@ -479,6 +482,8 @@
 				33ED93DF22F12E77006ABD28 /* ComponentController.m */,
 				3324D54922DED4BF0066241F /* WMWebViewController.h */,
 				3324D54A22DED4BF0066241F /* WMWebViewController.m */,
+				33507D962660936900AC455C /* WMSocketViewController.h */,
+				33507D972660936900AC455C /* WMSocketViewController.m */,
 				332561CE2631837C00362E11 /* CocoaPodsViewController.h */,
 				332561CF2631837C00362E11 /* CocoaPodsViewController.m */,
 				33A8FD7822D481B4004AECBA /* SyTableViewController.h */,
@@ -1062,6 +1067,7 @@
 				33B10E572422424500C6E8C7 /* WMJumpViewController.m in Sources */,
 				331309052420A7DE0014CC7E /* WMPushViewController.m in Sources */,
 				3366E84124310A2000820298 /* FMDatabase.m in Sources */,
+				33507D982660936900AC455C /* WMSocketViewController.m in Sources */,
 				33B10E542422300400C6E8C7 /* WMNetworkViewController.m in Sources */,
 				3394874623F11C5700A2C525 /* SyCustomCell.m in Sources */,
 				337358A22400EECF000507CC /* SyPostItem.m in Sources */,

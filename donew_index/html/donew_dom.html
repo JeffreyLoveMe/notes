@@ -61,7 +61,7 @@
         // 第一种方式 - 该方法绑定事件会被层叠掉
         // 1.匿名函数
         a1.onclick = function () {
-            // 3>.书写事件驱动程序 - 可以操作标签的属性和样式
+            // 3>.书写事件驱动程序（对样式和html的操作）
             // 1.操作样式 - 事件源.style.样式 = "";
             // 只能获取行内式（不能获取内嵌式｜外链式）/样式少的时候使用（样式多的时候使用className）/value为字符串（没有设置为""）/命名规则为驼峰命名（与css不一样/background-color）
             // typeof(a1.style); - object
@@ -97,11 +97,6 @@
          */
         a1.addEventListener("click", test); // 火狐/谷歌/IE9+
         // 兼容写法
-        /**
-         * @param {String} str
-         * @param {Function} func
-         * @param {HTMLElement} element
-         */
          function addEvent(str, func, element) {
             if (element.addEventListener) {
                 element.addEventListener(str, func);
@@ -142,7 +137,7 @@
         // btn.detachEvent("onclick", test);
 
         // onload事件
-        // 触发 - 页面加载完毕（文本和图片）
+        // 触发 - 页面（文本和图片）加载完毕
         // 作用 - 为保证js操作元素的时候元素已经定义（js的加载顺序导致如果元素定义靠后会先加载script）
         window.onload = function () {
             // 代码块
@@ -238,7 +233,7 @@
         // node - 指代节点
         // node.parentNode.removeChild(node);
         a1.parentNode.removeChild(a1);
-        // 复制节点 - 最高不要操作含有id的节点（因为一个页面中id是唯一的）
+        // 复制节点 - 最好不要操作含有id的节点（因为一个页面中id是唯一的）
         // true - 深复制（复制节点及其所有子节点）
         // false - 浅复制（复制节点本身，不复制子节点）/默认
         var a18 = a17.cloneNode(true);

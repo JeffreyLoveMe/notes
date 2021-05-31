@@ -6,7 +6,9 @@
 //  Copyright © 2019 zali. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>  // 由于继承 NSObject、所以导入 Foundation
+// 由于继承NSObject、所以导入Foundation
+// import可以防止重复导入
+#import <Foundation/Foundation.h>
 #import "SyPostItem.h"
 
 NS_ASSUME_NONNULL_BEGIN
@@ -18,10 +20,12 @@ NS_ASSUME_NONNULL_BEGIN
  4>.数据类型：BOOL/SEL/null
  5>.C语言/int <==> OC语言/NSInteger <==> swift语言/Int
  */
+
+// 面向对象编程是把问题中拥有相同属性的东西建立一个类，然后创建类的对象
+// 面向对象编程注重生活逻辑、面向过程编程注重数学逻辑
 /**
  2.面向对象OOP - 把问题里拥有相同属性的东西建立一个类
- 1>.封装：利用类将数据和基于数据的操作封装在一起，数据被保护在类的内部，系统的其它部分只有通过被授权的操作
- 才可以访问数据；将不需要对外提供的内容隐藏起来：把属性隐藏起来，提供公共方法对外访问
+ 1>.封装：利用类将数据和基于数据的操作封装在一起，数据被保护在类的内部，系统的其它部分只有通过被授权的操作才可以访问数据；将不需要对外提供的内容隐藏起来：把属性隐藏起来，提供公共方法对外访问
  2>.继承/派生：1.继承：父类的属性（成员变量：不包括私有）和方法（对象方法 & 类方法），子类可以直接获取；2.派生：子类保持父类中的行为和属性，新增其它功能（对象方法 & 类方法可以重写、属性不能重写）；3.提示：每个类都有一个 "[self superclass]指针" 指向自己父类（OC只支持单继承）；4.好处：1).创建大量类抽取重复代码；2).建立类与类之间的关系；3).耦合性（依赖性）太强；
  3>.多态：程序中可以有同名的不同方法共存，利用子类对父类方法的覆盖和重载在同一个类中定义多个同名的方法来实现；
  */
@@ -32,6 +36,7 @@ NS_ASSUME_NONNULL_BEGIN
  1>.避免每次使用都需要导入一众对应的头文件
  2>.主头文件的名称都和工具箱的名称相同
  */
+
 /**
  4.类class：属性 + 行为（谁最清楚这个行为，那么行为就属于谁）
  1>.定义：具有相同和相似性质对象的抽象就是类；对象的抽象就是类，类的具体化就是对象（堆内存）
@@ -59,24 +64,24 @@ NS_ASSUME_NONNULL_BEGIN
     // 存储在堆区（当前对象对应的堆的存储空间中）：不会被自动释放（程序员手动释放）
     /// Objective-C语言修饰符
     // 修饰范围：从出现的位置到第二个修饰符出现或者遇到 "}"
-    @private  // 私有成员：只能被本类访问、不能被子类访问、不能被外部访问
+    @private  // 私有成员：只能被本类访问、不能被子类访问、不能被外部访问（虽然不能访问但是还可以查看，如果不想让其查看可以直接定义在.m中）
     NSString *_name;
     @protected  // 受保护的属性：默认属性、可以被本类访问、也能为子类访问、不能被外部访问
     NSString *_age;
     @public   // 公共成员：能被本类访问、能为子类访问、能被外部访问
     NSString *_height;
-    @package  // 只能在当前框架中才能被访问
+    @package  // 只能在当前包中才能被访问（在当前包中相当于@public、在非当前包中相当于@private）
 }
 /// @property编译器指令
-// 如果类中成员方法太多： setter/getter方法非常臃肿
-// 1.让编译器自动声明 “setter/getter方法”/2.生成_sdk成员变量
+// 如果类中成员方法太多，setter/getter方法非常臃肿
+// 1.让编译器自动声明“setter/getter方法”/2.生成_sdk成员变量
 // 持有的对象sdk引用计算 + 1
 // 通过自动释放池管理内存
-// 如果重写 setter/getter方法 则以重写的为主 / @property就不会（自动声明 setter/getter 方法 / 生成 _sdk 成员变量）
+// 如果重写setter/getter方法，则以重写的为主/@property就不会（自动声明setter/getter方法/生成_sdk成员变量）
 // 自动生成的变量 _sdk 是私有变量
 @property (strong, nonatomic) NSString *sdk;
 // @synthesize编译器指令（孙色size）
-// 让编译器自动实现 setter/getter方法 | Xcode4.6以后可以省略
+// 让编译器自动实现setter/getter方法（Xcode4.6以后可以省略）
 // atomic原子性：对当前属性进行加锁、线程安全、消耗性能、访问速度慢/默认
 // nonatomic非原子性：不加锁、线程不安全、访问速度快
 @property (strong, atomic) NSString *publishName;
@@ -84,12 +89,12 @@ NS_ASSUME_NONNULL_BEGIN
 // 这里不需要加 *
 // NSInteger的含义？？？
 @property (assign, nonatomic) NSInteger publishAge;
-// readonly只读：只生成 getter 方法
+// readonly只读：只生成getter方法
 // readwrite缺省
 @property (readonly, strong, nonatomic) NSString *GameKey;
 /// 可以增强代码的可读性
-// 给 getter 方法取别名
-// 一般使用于BOOL：改成 isXxx
+// 给getter方法取别名
+// 一般使用于BOOL：改成isXxx
 @property (getter = myWeight) NSInteger weight;
 // 给 setter 方法取别名
 // 一般不使用
@@ -129,11 +134,14 @@ nonnull修饰属性位于 (nonnull, strong, nonatomic)/nonnull修饰形参位于
  */
 +(__kindof WMGameProxy *)WMGameProxy;
 
+#pragma mark - 这是一个注释（可以用来分割功能点）
 /// 定义方法/行为
 // 冒号也是方法名的一部分
 // 定义在.h文件中的方法都会公有的、不能使用 @private/@protected/@public 修饰
 // 对象方法：只能被对象名调用
 // 方法属于类
+// ⚠️在oc中“()”只有一个作用：括住数据类型
+// 对象作为参数传递是地址传递
 -(void)loginWithGameId:(NSString *)gameId GameKey:(NSString *)gameKey;
 
 /**
@@ -145,7 +153,7 @@ nonnull修饰属性位于 (nonnull, strong, nonatomic)/nonnull修饰形参位于
 +(instancetype)getInstance;
 
 /**
- 6.类工厂方法
+ 6.类工厂方法 - 用于快速创建对象的类方法
  1>.一定是类方法+
  2>.方法名称以 “类名” 开头/首字母小写
  3>.一定有返回值id/instancetype

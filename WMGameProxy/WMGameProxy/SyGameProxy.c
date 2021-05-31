@@ -628,8 +628,7 @@ void changeAddress(int *p) {
 }
 
 // 4.指针
-void createAddress() {
-    //
+void createAddress(void) {
     /**
      1.定义指针变量
      int - 表示指针变量能够保存什么类型的变量地址/指针变量是什么类型将来就只能保存什么类型的地址
