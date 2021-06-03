@@ -6,28 +6,28 @@
     <title>Bom</title>
     <script type="text/javascript">
         // BOM - 浏览器对象模型
-        // window对象
-        // 1.window对象是js的顶级对象 ｜ 所有定义在全局作用域中的变量、函数都会变成window对象的属性和方法 ｜ window对象下的属性和方法调用的时候可以省略window
-        // 2.https://www.cnblogs.com/lowerma/p/10968829.html
+        // 一、window对象 - https://www.cnblogs.com/lowerma/p/10968829.html
+        // 1.window对象是js的顶级对象
+        // 2.所有定义在全局作用域中的变量、函数都会变成window对象的属性和方法
+        // 3.window对象下的属性和方法调用的时候可以省略window
         window.alert("123");
         var x = 1;
         alert(window.x);
-        // 3.开发关闭网页
         /**
-         * 打开网页
+         * 4.打开网页
          * https://www.baidu.com - 跳转的方向
          * _self - 是否打开新窗口
          * 123 - 新窗口参数
          */
         // window.open("https://www.baidu.com", "_self", "123");
-        // 关闭网页
+        // 5.关闭网页
         // window.close();
 
-        // document - DOM
+        // 二、document - DOM
 
-        // frames/f'rim'z - 先不讲
+        // 三、frames/f'rim'z - 先不讲
 
-        // history - 历史记录管理
+        // 四、history - 历史记录管理
         // 后退
         history.back(); 
         history.go(-1); // 0是刷新
@@ -35,7 +35,7 @@
         history.forward();
         history.go(1);
 
-        // location
+        // 五、location
         // 1.概念 - 相当于浏览器地址栏
         // 2.作用 - 可以将url解析成独立的片段
         // 3.案例 - 查找不到某页面回到特定页面
@@ -50,11 +50,11 @@
             console.log(location.search); // 查询字符串
         }, 1000);
 
-        // navigator - 可以获取客户端的一些信息
+        // 六、navigator - 可以获取客户端的一些信息
         console.log(navigator.userAgent); // UA
         console.log(navigator.platform);  // 浏览器支持的系统
 
-        // screen/s'kri'n - 先不讲
+        // 七、screen/s'kri'n - 先不讲
 
         // 定时器
         // 1.setInterval() - 循环定时器（循环执行）/interval - in'ter'vo

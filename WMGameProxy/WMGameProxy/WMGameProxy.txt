@@ -235,8 +235,6 @@ https://blog.csdn.net/pjk1129/article/details/39644477
 //工具网站：
 https://soft.macx.cn
 https://xclient.info
-https://www.macbed.com
-http://down.applex.net/macosx/software.html
 
 ///常见系统库
 //1.基础框架

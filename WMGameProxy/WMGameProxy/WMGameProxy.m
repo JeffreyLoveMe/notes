@@ -147,7 +147,7 @@
     /**
      [self class] - 获取当前方法调用者的类
      [self superclass] - 获取当前方法调用者的父类
-     super - 仅仅是一个编译指示器/只要编译器看到 super 就会让 “当前对象” 去调用 “父类方法”
+     super - 仅仅是一个编译指示器/只要编译器看到super就会让“当前对象”去调用“父类方法”
      [super class] - 让当前类的对象去调用父类的方法
      */
     // [self class] == [super class] = WMGameProxy
@@ -194,6 +194,7 @@
 //    return [[[self alloc]init] autorelease];
 }
 +(instancetype)wmGameProxyWithSdk:(NSString *)sdk {
+    // 父类指针指向子类对象
     WMGameProxy *p = [[self alloc] init];
     p.sdk = sdk;
     return p;
@@ -254,9 +255,10 @@
  2.不修改原有类的基础上给已有的类/系统原生类增加方法：组件化基础
  3.可以对类的方法进行分类管理：将类的实现分散到多个不同的文件和框架中
  // 2.注意
- 1.类别中不能添加成员变量
+ 1.类别中不能添加成员变量（在分类@property只能生成setter/getter方法的声明，不会生成setter/getter方法的实现和私有的成员变量）
  2.使用类别必须导入类别头文件
- 3.父类类别中的方法子类也可以使用
+ 3.父类类别中的方法子类也可以使用（可以在分类中访问原有类中.h中的属性、分类和原有类中的方法同名会优先调用分类中的方法）
+ 4.如果多个分类和原有类都有同名方法，则调用该方法的顺序由编译器决定（会执行最后一个参与编译的分类中的方法）
  */
 // 类扩展/匿名类别
 // 1.当定义不想对外公开一些类的方法和属性时可以使用类扩展
@@ -274,7 +276,7 @@
 
 // 不会输出 "self" / 死循环
 // NSLog()输出<类名:地址>/<Person: 0x100202310>
-// 输出 self 就是调用 [self description]
+// 输出self就是调用[self description];
 - (NSString *)description {
     // 调用方法
     // 先从自己类中找 -> 再去父类中找

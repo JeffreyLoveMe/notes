@@ -769,6 +769,7 @@
         var separatorString03 = array07.join("&"); // 用&连接
         alert(typeof(separatorString01));
         // 9>.伪数组和arguments
+        // https://www.cnblogs.com/xufeng1994/p/10223046.html
         function getArray(a, b) {
             // 只能在函数中使用：代表实参的数组
             console.log(arguments);
@@ -779,6 +780,7 @@
             console.log(getArray.length); // 形参个数
             console.log(arguments.length); // 实参个数
             console.log(arguments.callee); // 代表整个函数（函数名）（包括注释）
+            Array.from(arguments); // 伪数组 -> 真数组
         }
         // 10>.冒泡排序 - 此处以后使用java写
         var bubbleSortArray = [6, 1, 2, 7, 9, 3, 4, 5, 10, 8];

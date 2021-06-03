@@ -44,7 +44,7 @@
 // 4.动画
 // 5.停靠模式
 /*
- 总结一下 UIView 的属性：基础控件都可以使用
+ 总结一下UIView的属性：基础控件都可以使用
  1.subviews
  2.superview
  3.tag
@@ -74,19 +74,19 @@
     /// 结构体
     // 结构体是值传递
     // 类是对象传递
-    // 怎么改变控件的 frame
+    // 怎么改变控件的frame（改变尺寸：中心点不变，向四周延伸）
     // https://www.jianshu.com/p/b6ddfdef4147
     CGRect tempRect = view.frame;
-    tempRect.origin.x = 100;  // 改变 x
-    tempRect.origin.y += 100; // 改变 y
-    tempRect.size.height += 50; // 改变 height
-    tempRect.size.width += 50;  // 改变 width
+    tempRect.origin.x = 100;  // 改变x
+    tempRect.origin.y += 100; // 改变y
+    tempRect.size.height += 50; // 改变height
+    tempRect.size.width += 50;  // 改变width
     view.frame = tempRect;
     // 可以控制尺寸
     // 不可以控制位置
-    // 以自己左上角为坐标原点 - x 和 y 永远为0
+    // 以自己左上角为坐标原点 - x和y永远为0
     view.bounds = CGRectMake(0, 0, 100, 50);
-//    // 表示 view 与 self.view 大小一样
+//    // 表示view与self.view大小一样
 //    view.frame = self.view.bounds;
     // 可以控制位置
     // 控件的中心点：以父控件左上角为坐标原点
@@ -95,8 +95,8 @@
     // 获取父视图对象：一个视图最多只有一个父视图
     // 一旦一个视图被添加到一个父视图上就会从上一个父视图移除
     // 移动父视图的时候子视图也会一起移动
-    UIView *superView = [view superview];
-    // 打印 CGRect
+    UIView *superView = view.superview;
+    // 打印CGRect
     NSLog(@"%@", NSStringFromCGRect(superView.bounds));
     NSLog(@"%@", NSStringFromCGPoint(superView.center));
     // 获取最大值/最小值
@@ -107,6 +107,14 @@
     CGRectGetMidY(view.frame);
     CGRectGetMinX(view.frame);
     CGRectGetMinY(view.frame);
+//    // 设置frame的方式
+//    // 第一种 - 直接设置
+//    view.frame = CGRectMake(0, 0, 100, 100);
+//    // 第二种 - 根据图片大小设置
+//    UIImage *image = [UIImage imageNamed:@""];
+//    view.frame = CGRectMake(0, 0, image.size.width, image.size.height);
+//    // 第三种
+//    view.frame = view.bounds;
     /// 背景颜色
     // 这个已经封装
     //设置RGBA颜色
@@ -118,12 +126,12 @@
     // 如果设置为0则不响应事件：所以一般不设置View透明度、而设置View背景透明度
     view.alpha = 0;
     // 根据内容（图片/文字）计算出最优size
-    // 根据最优 size 改变自己的 size
+    // 根据最优size改变自己的size
     [self.view sizeToFit];
     
     // 获取子控件对象：一个视图可以有多个子视图
-    // 在 xib 中只有 UIView 可以承载子视图
-    NSArray *subViews = [view subviews];
+    // 在xib中只有UIView可以承载子视图
+    NSArray *subViews = view.subviews;
     // 如果父视图隐藏，子视图也会隐藏
     // 设置父视图alpha = 0.5/子视图alpha = 0.8，则真实alpha = 0.5 * 0.8 = 0.4
     // 一般我们是相对父视图布局：所以父视图移动，子视图跟着移动
@@ -198,9 +206,9 @@
     // 添加 "Zapfino.ttf字体"
     label.font = [UIFont fontWithName:@"Zapfino" size:20];
     /*
-     NSTextAlignmentRight
-     NSTextAlignmentCenter
-     NSTextAlignmentLeft
+     NSTextAlignmentRight - 居右
+     NSTextAlignmentCenter - 居中
+     NSTextAlignmentLeft - 居左
      */
     label.textAlignment = NSTextAlignmentCenter;
     // 自适应宽度：字体会缩小/不会放大
@@ -209,8 +217,17 @@
     // ！！！父控件隐藏会导致所有的子控件都隐藏！！！
     label.hidden = false;
     // 指定label的行数
+    // numberOfLines == 0表示无限行
     label.numberOfLines = 0;
-    // 指定换行模式
+    /*
+     // 指定换行模式
+     NSLineBreakByWordWrapping - 单词包裹
+     NSLineBreakByCharWrapping - 字符包裹
+     NSLineBreakByClipping
+     NSLineBreakByTruncatingHead
+     NSLineBreakByTruncatingTail
+     NSLineBreakByTruncatingMiddle
+     */
     label.lineBreakMode = NSLineBreakByWordWrapping;
     // 设置文字的最大宽度
     // 让 UILabel 能够计算出自己最真实的尺寸
@@ -224,7 +241,14 @@
 
 #pragma mark - 阴影
 -(void)setupShadow {
-    
+    UILabel *label = [[UILabel alloc]init];
+    label.frame = CGRectMake(100, 100, 100, 50);
+    // 阴影颜色
+    label.shadowColor = UIColor.grayColor;
+    // 偏移量
+    // 负值 - 向左边、向下走
+    // 正值 - 向右走、向上走
+    label.shadowOffset = CGSizeMake(100, 100);
 }
 
 
@@ -342,14 +366,14 @@
     // 该方法只能加载占用内存小的图片：因为这种方式加载的图片会一直保存在内存中，不会释放
     // Assets.xcassets中的图片只能通过该方法设置，默认就有缓存
     // 一般经常使用的图片会通过该方式加载
-    // png不需要后缀
+    // png不需要后缀（jpg必须加后缀）
     UIImage *image0 = [UIImage imageNamed:@"image_demo"];
     // 打印图片大小
     NSLog(@"%@", NSStringFromCGSize(image0.size));
     /// 如果图片占用内存较大：使用下列方法（没有缓存）
     // 会从内存中释放
     // 一般不经常使用的图片会通过该方式加载
-    // 进入 "资源包" 获取资源
+    // 进入"资源包"获取资源
     NSString *path = [[NSBundle mainBundle] pathForResource:@"image_demo" ofType:@"png"];
     NSData *data = [NSData dataWithContentsOfFile:path];
     // 方法一
@@ -380,7 +404,7 @@
     imageView.clipsToBounds = YES;  // 裁减超出部分
     /*
      填充模式：
-     UIViewContentModeRedraw -重新绘制（核心动画 drawRect）
+     UIViewContentModeRedraw -重新绘制（核心动画drawRect）
      UIViewContentModeScaleToFill -拉伸填满/默认/不会超出：图片会变形
      UIViewContentModeScaleAspectFit -按比例填充/宽或高一边靠近/不会超出
      UIViewContentModeScaleAspectFill -按比例填满/宽和高全部靠近/会超出
@@ -400,7 +424,7 @@
     toolBar.alpha = 0.5;
     [imageView addSubview:toolBar];
     
-    // 动画部分 - start //
+    // 动画部分 - start
     // 1.帧动画
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"DOVE/image_bg.jpg"]];
     // 1).拿到数组
@@ -467,7 +491,7 @@
     
     // 4.转场动画
     
-    // 动画部分 - end //
+    // 动画部分 - end
 }
 
 -(void)addRoundCorner {
@@ -1453,7 +1477,7 @@
     navigationController.toolbar.translucent = NO;
     navigationController.toolbar.tintColor = UIColor.yellowColor;
     // 继承 UIView
-    [self.navigationController setToolbarHidden:NO animated:YES];  // 设置 UIToolBar工具条 是否隐藏
+    [self.navigationController setToolbarHidden:NO animated:YES];  // 设置"UIToolBar工具条"是否隐藏
     if (self.navigationController.toolbarHidden) {
         // UIToolBar工具条是否隐藏
     }
@@ -1600,7 +1624,7 @@ UIWindow -> UITabBarController -> UINavigationController -> ChildViewControllers
 
 #pragma mark - XIB
 -(void)setupXib {
-//    // 通过 xib 新建 UIViewController
+//    // 通过xib新建UIViewController
 //    SySkillViewController *controller = [[SySkillViewController alloc]initWithNibName:@"SySkillViewController" bundle:nil];
     
     /// 第一种方式：创建一个 xib
@@ -1609,17 +1633,17 @@ UIWindow -> UITabBarController -> UINavigationController -> ChildViewControllers
     NSArray *nibs = [[NSBundle mainBundle] loadNibNamed:@"xib名称" owner:nil options:nil];
     UIView *customView = nibs.firstObject;
     NSLog(@"%@", customView);
-    // 第二种方式：创建一个 xib
+    // 第二种方式：创建一个xib
     UINib *nib = [UINib nibWithNibName:@"xib名称" bundle:nil];
     UIView *view = [nib instantiateWithOwner:nil options:nil].firstObject;
     NSLog(@"%@", view);
-    // xib不支持 [[XMGShopView alloc]init] 创建
-    // xib创建的UIView不进入 -(instancetype)init {} 方法
-    // xib创建的UIView进入 -(instancetype)initWithCoder:(NSCoder *)aDecoder{} 方法
-    // 用代码给 "xib创建的子控件" 添加子控件需要先唤醒
+    // xib不支持[[XMGShopView alloc]init]创建
+    // xib创建的UIView不进入"-(instancetype)init{}方法"
+    // xib创建的UIView进入"-(instancetype)initWithCoder:(NSCoder *)aDecoder{}方法"
+    // 用代码给"xib创建的子控件"添加子控件需要先唤醒
     
     // Segue
-    // xxx 需要在 xib 中设置
+    // xxx需要在xib中设置
     [self performSegueWithIdentifier:@"xxx" sender:nil];
     /**
      1.command + D可以在 xib 中复制控件
@@ -1628,7 +1652,7 @@ UIWindow -> UITabBarController -> UINavigationController -> ChildViewControllers
 }
 // 准备跳转前调用
 // 这样就可以实现跳转
-// 一般不使用 xib 做跳转
+// 一般不使用xib做跳转
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
 //    NSLog(@"%@=====%@", segue.destinationViewController, segue.sourceViewController);
 //    SySkillViewController *controller = (SySkillViewController *)segue.destinationViewController;

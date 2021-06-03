@@ -2001,16 +2001,6 @@ Object-c中创建一个工程需要用到那两个框架？
 写出下面a的含义：
  int a，int *a，int a[10]，int *a[10]，int (*a)[10]， int (*a)(int)， int (*a[10])(int);
 
-1、如何定义实现notification，参数如何传递？
-[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeLabel:) name:@"changeLabel" object:nil];
-
-- (void)changeLabel:(nsnotifcation *)_notification
-{
-id a = [_notifcation object];
-}
-
-用的时候[[NSNotificationCenter defaultCenter] postNotificationName:@"changeLabel"  object:self];
-
 3、用换行符合并字符串
     NSString * str1 = @"asdfas";
        NSString * str2 = @"zxcv";
@@ -2274,10 +2264,6 @@ kvo:键值观察机制，他提供了观察某一属性变化的方法，极大�
 [cpp]
 [self addObserver:self forKeyPath:@"highlighted" options:0 context:nil];
 
-7.oc中可修改和不可以修改类型。
-答案：可修改不可修改的集合类。这个我个人简单理解就是可动态添加修改和不可动态添加修改一样。
-比如NSArray和NSMutableArray。前者在初始化后的内存控件就是固定不可变的，后者可以添加等，可以动态申请新的内存空间。
-
 9.通知和协议的不同之处？
 答案：协议有控制链(has-a)的关系，通知没有。
 首先我一开始也不太明白，什么叫控制链（专业术语了~）。但是简单分析下通知和代理的行为模式，我们大致可以有自己的理解
@@ -2380,40 +2366,8 @@ NSLog( @"手机有货，这个价钱卖你了，发货中 !!" ); }
 buyIphone 是声明的委托中必须实现的方法，那么就一
 就 ok 啦。这样是不是也模拟了多继承呢?通过委托，其实你也就摆脱了去考虑多继承方面的事情，从而关注当前类。 汗，一道题才写了一半，下一篇继续。。。。手打字酸了!
 
-亲，开发一个 ios 应用没那么容易 .!
-开发之前需要仔细考虑的 别做拍脑瓜的决策，在开工之前你需要考虑的比你想象的要多。我通常会帮助或者指导客户把以下几个要素都过一
-遍:
-一:和客户谈他们的移动应用，最让我吃惊的是他们从来没有想过支撑一个 iPhone 应用运行，背后需要涉及到的
-方方面面。他们想象中的 iPhone 是独立存在于这个宇宙的，是如此的简单，以至于他们要我很快就给出一个项目预算 报价，而不用讨论诸多细节。我问他们:“你们是否考虑过后台服务器的事情?你们的应用需要和后端服务器做数据通 讯?” 什么，听不懂?好吧，我用地球人的语言再把这个问题讲一遍:“你们的应用不是需要用户注册嘛，你们考虑 过把用户的数据存放在哪里了吗?我们需要一个地方去保存这些以后会用到的数据。” 第一次碰到这样的客户时，哥 简直就怒了。后来我发现这不是客户的错:我是搞编程的， CS 架构对我来说就像吃饭睡觉一样是不假思索的东西，而 我的客户尽是些高富帅，他们懂个毛 CS 架构!
-所以，如果你不大懂技术，那请仔细听我说:如果你想做的移动应用需要用户注册和登录，或者你想随时控制移动 应用的一些输出，甚至是你仅仅是需要一个用户反馈意见调查表这么简单的功能，那么，你得搞一台后端服务器。
-二:好了，现在你知道你需要一台后端服务器。同时你还需要想办法让你的 iOS 应用和你的服务器能够对话，就 是相互间接收数据什么的。不，这个问题不是简答靠什么标准的即插即用的东东就能解决的，不是你们想象的那样!所
-有的东西都需要定制化开发，这就好比发明一门语言:你希望你的服务器和你的应用之间能够通过一种语言沟通，但是 你不希望其他人听得懂这门语言。
-用行话说这就是制定服务器端 API 接口，或简称 API 。这些 API 应该在开发 iPhone 客户端之前就到位了。为什 么?因为你必须先规定好一门语言的单词和语法，然后才能用这门语言说话吧!?好了，这就带出了第三点—如何开发
-这些 API 。
-三: API 的成功定制是项目成功的一半(反之亦然)，所以千万不要掉以轻心。你要考虑你的业务数据模型、业务 流程、调用业务需要提供的参数、特定事件发生时数据间该如何互动等等。简单来说，我们要做的就是开发一个网站， 上门跑着你的业务流程，只不过这个网站的所有运行结果都不是通过网页形式展现出来，而是呈现在一行行的文本和数 字中。举个例子:一个登录成功的反馈页面仅仅包含 YES 一个单词。
-iPhone 应用需要访问这些预先定义好的接口，并且按预定义格式提供必要的输入(比如用户名和密码)，然后要 对服务器端的反馈( YES 或者 NO)做出解析处理。所以，没有什么移动应用能够自动的含有用户注册和登录功能。
-服务器端开发需要考虑的问题太多了: 选择服务器， 选择用什么语言开发， 主机放在哪里才能增加访问速度， 等等， 这里我就不展开了。 如果这一切对你来说很陌生， 那么你最好去问问团队里的技术负责人， 或者干脆让开发人员做决策。
-四: 所以，关于服务器端 API ，你或者让自己的技术团队把它开发好，再将完善的 API 文档交给 iPhone 应用开 发人员;或者你支付 iPhone 应用开发人员额外的报酬来搞定这些。你找的 iPhone 应用开发人员可能会服务器端开发 也可能不会。如果他会的话，我建议最好让他也同时负责服务器端开发，因为他最清楚 iPhone 应用中需要哪些服务器 端 API 。
-如果你的服务器端 API 已经存在了，那么除了向 iPhone 应用开发人员提供相关文档之外，你还要考虑让他能够 便捷的同服务器开发团队沟通，因为大多数情况下， iPhone 应用需要在已有 API 基础上增加一些新的接口。
-现在我们来看看 iPhone 应用开发本身
-扯了大半天，我们终于开始谈 iPhone 应用开发本身了。一般来说， iOS 平台上做所有事情都不能随心所欲。你最 好在开发人员写代码之前把所有的需求都确认好好。这和开发网站不一样，按照实现签订的合同开发 iOS 应用，开发 过程中对需求变更的容纳度可能很低:
-用户界面:无论你打算采用 iOS 标准界面还是自定义元素，在开发开始前一定要确认清楚，因为应用的程序架构 是根据界面和用户使用流程来设计的。一个很好的例子就是在界面底部使用了 iOS 标准的标签栏( Tab Bar )，此后如 果你想让标签栏里面的图标变成彩色的，这个代码改动量可没你想象的那么小!
-代码之间的耦合:如果是开发网站，你可以随意的添加一个页面或者一处链接。做 很多东西一开始都要设计好，后期的一处改动会牵连很多东西，具体原因是你无法理解的。
-再改动行不行?行!但必须小心。 这就像设计电路板一样， 如果你不小心把那根线搭错了，整块电路板就会不工作。 有人说架构优良的程序可以有很高的延展性，那纯属纸上谈兵。在 About 屏幕上添加一个电子邮件按钮可能只需要几
-iOS 应用就没有那么简单了， iOS 应用的代码写好之后，
-
-行代码的工作量，而添加一个转发到新浪微薄的按钮(译者注:原文是添加一个 Facebook Like )就完全不是那么简单 的事儿了!
-让一个 iPhone 应用同时也支持 iPad :如果要评选最坑爹“需求变更”，那么这个绝对是当之无愧的。理由很简 单:支持 iPad 根本不是 TMD 什么附加功能! iPad 应用基本上都比 iPhone 应用来得要复杂，界面设计和用户体验也 大不一样。我问你，制造一辆电动自行车，然后把它改装成一部烧汽油的摩托车，这能是一回事儿吗!?电动自行车跟 摩托车看起来是很像，但是制造它们完全是两码事。
-拿广受欢迎的 Facebook 官方应用来说，它的 iPhone 和 iPad 版本看似相似，实际用户操作流程完全不同。不仅 仅是界面上的不同会带来额外的工作，对后台服务器 API 的需求也可能不一样。拿我熟悉的一个应用 Denso 来说(我 熟悉它因为这是我开发的)，它的 iPad 版本比 iPhone 多了几个功能，这些都需要额外的服务器端 API 来支持。记 住， iPhone 和 iPad 应用的用户体验需求是完全不一样的。
-准备好开始了吗?
-希望此文能够帮助你和你的团队了解移动应用开发幕后的方方面面。除非你们要做一个像计算器那么简单的单机应 用，否则你们很难用极低的成本搞定。综上所述，如果你觉得外包成本太高，那你只好招人自己开发。
-当然，如果你决定了要外包移动应用开发，那么我还要提醒一点:公司政治。如果你是在一家大公司或者有着严格 制度的机构里面干活，那么帮助合同开发者搞定那些个规章制度上的繁文缛节，对你来说是非常重要的一项工作，必要 的时候甚至可以做一些政策上的变通。 我同几个大型企业客户接触过，当我要求看他们的服务器端数据接口的时候， 他们流露出很不安的表情。我想这或许是因为他们受制于公司规定而不能透露信息，这无可厚非;或者他们还没有想好 这种情况下该如何操作;或者他们的品牌制度蛋疼到需要在移动应用的每个屏幕上都摆着公司 logo !最终我没有和这
-样的企业客户合作，因为我无法想象如果有一天我需要增加一些服务器端 那将会是多么悲剧的事情。
-PS:开发移动应用很耗费时间，你最好有耐心。 英文原文: Kent Nguyen 编译:伯乐在线 – 陈远
-转自 :http://www.html5cn.org/article-2386-1.html
-英文原文: Dear business people, an iOS app actually takes a lot of work!
-API 接口的话，和他们的规章和流程折腾，
-Objective-C 学习笔记 :数据类型和表达式
+Objective-C 学习笔记 :
+数据类型和表达式
 1. 数据类型和常量 :
 在 Objective-c 中提供了 4 种基本的数据类型 :int float double 以及 char. 声明为 int 的变量只能用于保存整形值
 声明为 float 类型的变量可存储浮点类型值 ( 即包含小数位数 .).
@@ -2572,15 +2526,7 @@ Objective-C++ 扩展。
 
 23. 使用自动释放池( Use AutoRelease Pool )
 24. 缓存图像( Cache Images-Or not )
-25. 尽可能避免日期格式化器(
-39.UIScrollView 的 contentSize contentSize 表示 UIScrollView
-Avoid Date Formatters Where Possible )
-、contentOffSet 和 contentInset 属性的区别 滚动区域的大小。 UIScrollView 的 frame 属性在设置好了
-以后不会随内容的变化而变化。
-contentOffSet 表示是 UIScrollView 当前显示区域顶点相对于 frame 顶点的偏移量，一般用
-来设置 UIScrollView 显示的位置。
-contentInset 表示是 scrollview 的 contentView 的顶点相对于 scrollview 的位置，假设你
-的 contentInset = (0 ,100) ，那么你的 contentView 就是从 scrollview 的 (0 ,100) 开始显 示。一般都是( 0 ， 0 )表示从 scrollView 的开始显示。
+25. 尽可能避免日期格式化器
 
 40.IOS6 AutoLayout
 AutoLayout 是 IOS6 之后引进的自动布局功能，有点类型有 android 的相对布局属性。通过勾选 AutoLayout 设置各种 Constraint 约束来实现在不同设备和不同方向上的自动布局。 autosizing
@@ -2605,17 +2551,6 @@ NSAutoreleasePool * pool1 = [[NSAutoreleasePool alloc] init]; NSString *string =
 new/delete势必会造成内存空间的不连续 ,从而造成 大量的碎片 ,使程序效率降低。 对于栈来讲 ,则不会 存在这个问题 ,因为栈是先进后出的队列 ,他们是如
 此的一一对应 ,以至于永远都不可能有一个内存块 从栈中间弹出 (4)分配方式 :堆都是动态分配的 ,没 有静态分配的堆。 栈有2种分配方式 :静态分配和动 态分配。 静态分配是编译器完成 的,比如局部变量 的分配。动态分配由 alloc函数进行分配 ,但是栈 的动态分配和堆是不同的 ,他的动态分配是由编译 器 进行释放 ,无需我们手工实现。 (5)分配效率 :栈 是机器系统提供的数据结构 ,计算机会在底层对栈提供支持 :分配专门的寄存器存放栈的地址 ,压栈出 栈 都有专门的指令执行 ,这就决定了栈的效率比 较高。堆则是 C/C++函数库提供的 ,它的机制是很复 杂的。
 
-4、 写一个便利构造器
-+(id)Person {
-Person *person=[Person alloc]init]; return [person
-autorelease]; 备注:ARC时不用 autorelease }
-5、 截取字符串 ” 20 | http://www.baidu.com中, ”字| ” 符前面和后面的数据 ,分别输出它们。
-?? NSString * str = @"20 | http://www.baidu.com"; NSArray *array = [str
-componentsSeparatedByString:@"|"]; // 这是分别输 出的截取后的字符串
-for (int i = 0; i<[array count]; ++i)
-{ NSLog(@"%d=%@",i,[array objectAtIndex:i]);
-}
-
 7、简述你对 UIView 、UIWindow 和CALayer的理解 UIView: 属于 UIkit.framework 框架 ,负责渲染矩形区 域的内容 ,为矩形区域添加动画 ,响应区域的触摸事
 件,布局和管 理一个或多个子视图 UIWindow: 属 于UIKit.framework框架,是一种特殊的 UIView,通 常在一个程序中只会有一个 UIWindow, 但可以手 动创建多个 UIWindow, 同时加到程序里面。 UIWindow 在程序中主要起到三个作用 :
 1、作为容器 ,包含 app所要显示的所有视图 2、传 递触摸消息到程序中 view和其他对象 3、与 UIViewController 协同工作 ,方便完成设备方向旋转 的支持
@@ -2639,10 +2574,6 @@ obj = [obj initWithCString: nullTerminatedCString encoding: encoding]; return [o
 74、什么是序列化或者 Acrchiving,可以用来做什么 , 怎样与 copy结合 ,原理是什么 ?. 序列化就是 :归档
 
 75、runloop是什么 ?在主线程中的某个函数里调用 了异步函数 ,怎么样block当前线程 ,且还能响应当 前线程的timer事件 ,touch事件等 .---NSRunLoop,NSTimer 需 要自己实现 ----GCD 的返回主线程的方法 ,看前面的题runloop,正如其名称所示 ,是线程进入和被线程用 来响应事件以及调用事件处理函数的地方。 需要在 代码中使用控制语 句实现 run loop的循环 ,也就是 说 ,需要代码提供 while 或者 for 循环来驱动 run loop。在这个循环中 ,使用一个 runloop对象 [NSRunloop currentRunloop]执行接收消息 ,调用对 应的处理函数。
-
-6. 代理的作用? 答案:代理的目的是改变或传递控制链。允许一个类在某些特定时刻通知到其他类，而不需要获取到
-那些类的指针。可以减少框架复杂度。 7.oc 中可修改和不可以修改类型。
-答案:就是可动态添加修改和不可动态添加修改一样。 比如 NSArray 和 NSMutableArray 。前者在 初始化后的内存控件就是固定不可变的，后者可以添加等，可以动态申请新的内存空间。
 
 13 、什么是 Notification ?
 答:观察者模式， controller 向 defaultNotificationCenter 添加自己的 notification ，其他类注 册这个 notification 就可以收到通知，这些类可以在收到通知时做自己的操作(多观察者默认随机 顺序发通知给观察者们，而且每个观察者都要等当前的某个观察者的操作做完才能轮到他来操作，
@@ -2734,15 +2665,6 @@ http://www.cnblogs.com/scorpiozj/archive/2011/03/14/1983643.ht ml
 someKey 这个方法， 如果没找到， 会继续查找对象是否带有 someKey 这个实 例变量(iVar )，如果还没有找到，程序会继续试图调用 -(id) valueForUndefinedKey: 这个方法。 如果这个方法还是没有被实现的话， 程序 会抛出一个 NSUndefinedKeyException 异常错误。
 (cocoachina.com 注: Key-Value Coding 查找方法的时候，不仅仅会查找 someKey 这个方法，还会查找 getsomeKey 这个方法，前面加一个 get ，或者 _someKey 以及 _getsomeKey 这几种形式。 同时， 查找实例变量的时候也会不 仅仅查找 someKey 这个变量，也会查找 _someKey 这个变量是否存在。 )
 设计 valueForUndefinedKey: 方法的主要目的是当你使用 -(id)valueForKey 时，对象能够在错误发生前，有最后的机会响应这个请求。
-
-6. 对于语句 NSString* testObject = [[NSData alloc] init];testObject 在编译时和运行时分别时 什么类型的对象?
-7. 什么是安全释放?
-8. 为什么有些 4.0 独有的 objective - c 函数在 3.1 上运行时会报错 .而 4.0 独有的类在 3.1 上分配内存 时不会报错?分配的结果是什么?
-9. 为什么 4.0 独有的 c 函数在 3.1 的机器上运行不会报错 (在没有调用的情况下?) 在3.1 的机器上一运行就报错?
-10. 常见的 object-c 的数据类型有那些， 和 c 的 基本数据类型有什么区别?如: 11.property 中属性 retain,copy,assgin 的含义分别是什么?有什么区别?将其转换成
-而 4.0 独有的类名 nsinteger 和 int
-get /set方
-法怎么做?有什么注意事项?
 
 19. 什么是 KVO 和 KVC?
 20. 代理的作用 ?
@@ -3024,17 +2946,8 @@ application:didFinishLaunchingWithOptions: 方法，在该方法中创建窗口�
 3、别人调用框架的接口时提供的参数是否够用，调用起来是否简单
 4、当使用我的框架时要不要依赖其他的框架，请谈一谈构建框架
 
-一一五、App 需要加载大量的数据， 给服务器发送请求时， 服务器卡住了怎么解决?
+五、App 需要加载大量的数据， 给服务器发送请求时， 服务器卡住了怎么解决?
 1、设置请求超时 2、提示用户请求超时 3、根据用户操作再次请求数据
-
-一二六、写一个 NSString 类的实现?
-1 、 + (id)initWithCString:(const char *)nullTerminatedCString encoding:(NSStringEncoding)encoding;
-+ (id) stringWithCString: (const char*)nullTerminatedCString
-encoding: (NSStringEncoding)encoding {
-NSString *obj;
-obj = [self allocWithZone: NSDefaultMallocZone()];
-obj = [obj initWithCString: nullTerminatedCString encoding: encoding]; return AUTORELEASE(obj);
-}
 
 10.代理一般是什么时候用呢 ?
 答 :自身不做实际的事 ,要求其它类做。 代理也可用来传值。 代理的目的是改变或传递 控制链。 允许一个类在某些特定时刻通知到其他类， 而不需要获取到那些类的指针。 可以减 少框架复杂度。另外一点，代理可以理解为 java 中的回调监听机制的一种类似。
@@ -3158,7 +3071,6 @@ ClientSocket ，另一个运行于服务器端，称为 ServerSocket 。 套接�
 
 17 什么是 KVC 和 KVO ? 答: KVC(Key-Value-Coding) 内部的实现:一个对象在调用 setValue 的时候，(1)首先根据方法名找到运行方法的时候所需要的环 境参数。(2)他会 从自己 isa 指针结合环境参数，找到具体的方法实现的接口。 ( 3 )再直接查找得来的具体的 方法实现。 KVO ( Key-Value- Observing ):当观察者为一个对象的属性进行了注册，被观 察对象的 isa 指针被修改的时候， isa 指针就会指向一个中间类， 而不是真实的类。 所以 isa 指针其实不需要指向实例对象真实的类。 所以我们的程序最好不要依赖于 isa 指针。在调用 类的方法的时候，最好要明确对象实例的类名
 
-27代理的作用?答案: 代理的目的是改变或传递控制链。 允许一个类在某些特定时刻通知到其他类， 而不需要获取到那些类的指针。 可以减少框架复 杂度。另外一点，代理可以理解为 java 中的回调监听机制的一种类似。
 28oc 中可修改和不可以修改类型。答案:可修改不可修改的集合类。这个我个人简单理解就 是可动态添加修改和不可动态添加修改一样。 比如 NSArray 和 NSMutableArray 。前者在初 始化后的内存控件就是固定不可变的，后者可以添加等，可以动态申请新的内存空间
 29When we call objective c is runtime language what does it mean? 我们说的 oc 是动 态运行时语言是什么意思?答案:多态。 主要是将数据类型的确定由编译时，推迟到了运
 行时。 这个问题其实浅涉及到两个概念， 运行时和多态。 简单来说，运行时机制使我们直到 运行时才去决定一个对象的类别， 以及调用该类别对象指定方法。 多态: 不同对象以自己的 方式响应相同的消息的能力叫做多态。意思就是假设生物类( life )都用有一个相同的方法 -eat;那人类属于生物，猪也属于生物，都继承了 life 后，实现各自的 eat，但是调用是我们 只需调用各自的 eat 方法。也就是不同的对象以自己的方式响应了相同的消息(响应了 eat 这个选择器) 。因此也可以说，运行时机制是多态的基础? ~~~
@@ -3538,19 +3450,6 @@ D.ABNewPersonViewController
 引用计数 +0, 在函数出栈后释放 , 即相当于一个栈上的局部变量 . 当 然也可以通过 retain延长对象的生存期 .
 3. (NSAutoRealeasePool) 内存池:可以通过创建和释放内存池 控制内存申请和回收的时机 .
 解决:是由autorelease 加入系统内存池 , 内存池是可以嵌套的 , 每个内存池都需要有一个创建释放对 , 就像main函数中写的一样 . 使用也很简单 , 比如 [[[NSString alloc]initialWithFormat:@ ”Hey you! ”] autorelease], 即将一个 NSString 对象加入到最内层的系统内存池 , 当我们释放这个内存池时 , 其中的对象都会被释放 .
-
-16. 类别的作用 ? 继承和类别在实现中有何区别 ?
-答案: category 可以在不获悉，不改变原来代码的情况下往里
-面添加新的方法，只能添加，不能删除修改。
-并且如果类别和原来类中的方法产生名称冲突， 则类别将覆盖原 来的方法，因为类别具有更高的优先级。
-类别主要有 3个作用:
-(1) 将类的实现分散到多个不同文件或多个不同框架中。
-(2) 创建对私有方法的前向引用。
-(3) 向对象添加非正式协议。 继承可以增加，修改或者删除方法，并且可以增加属性。
-17. 类别和类扩展的区别。
-答案:category 和extensions 的不同在于 后者可以添加属性。 另
-外后者添加的方法是必须要实现的。
-extensions 可以认为是一个私有的 Category 。
 
 3. 关于多态性
 答案:多态，子类指针可以赋值给父类。 这个题目其实可以出到一切面向对象语言中，
@@ -3935,8 +3834,6 @@ release 消息的时候，考虑对象是否需要 release
 10、Object -c 的类可以多重继承么?可以实现多个接口 么?重写一个类的方式用继承好
 答案: Objective-c 只支持单继承，如果要实现多继承的话，可以通过类别和协议的方式来实现， cocoa 中所有的类都是 NSObject 的子类，多继承在这里是用 protocol 委托代理 来实现的。
 
-11 、代理的作用? 什么时候可以用代理
-答案: 代理的目的是改变或传递控制链。 允许一个类在某些特定时刻通知到其他类， 而不需要获 取到那些类的指针。可以减少框架复杂度。另外一点，代理可以理解为 java 中的回调监听机制 的一种类似。
 12、delegate 和 notification 区别 答案: Delegate:
 消息的发送者 (sender)告知接收者 (receiver) 某个事件将要发生， delegate 同意然然后发送者响应事 件， delegate 机制使得接收者可以改变发送者的行为。通常发送者和接收者的关系是直接的一对 多的关系。
 Notification:
@@ -4128,9 +4025,7 @@ Method swizzling 指的是改变 ?一个已存在的选择器对应的实现的�
 64.响应链 (Responder chain) 是什么 ?它是如何发挥作 ?用?的 答:
 dataSource 提供数据源， delegate 处理交 61.描述 ?一下runtime 的概念 ,message send 如果寻找不到相应的对
 然后需要设置两个必须的委托对象，互和界面设置。
-65. 如何获取项目根路,径并在其下创建一个名称为userData的目录？
-NSString *sandboxPath = NSHomeDirectory();
-// 创建 ?文件系统管理器
+// 创建文件系统管理器
 NSFileManager *manager = [NSFileManager defaultManager]; NSString *?lePath = [sandboxPath stringByAppendingPathComponent:@ “ userData"];
 if (![manager ?leExistsAtPath:?lePath]) {
 BOOL isSuccess = [manager createDirectoryAtPath:?lePath
@@ -4276,29 +4171,6 @@ grayCover = [[CALayer alloc]init]; grayCover.backgroudColor = [[UIColor blackCol
 补充部分:这部分有深度了了，⼤大致了了解⼀一下吧，UIView 的 layer 树形在系统内部被系 统维护着三份 copy
 1.逻辑树，就是代码⾥里里可以操纵的，例例如更更改 layer 的属性等等就在这⼀一份 2.动画树，这是⼀一个中间层，系统正是在这⼀一层上更更改属性，进⾏行行各种渲染操作。 3.显示树，这棵树的内容是当前正被显示在屏幕上的内容。这三棵树的逻辑结构都是 ⼀一样的，区别只有各⾃自的属性
 
-5、下⾯面的代码输出什什么?
-@implementation Son : Father - (id)init
-{
-self = [super init];
-if (self) {
-NSLog(@"%@", NSStringFromClass([self class]));
-NSLog(@"%@", NSStringFromClass([super class]));
-}
-return self;
-}
-@end
-答案:都输出 Son
-这个题⽬目主要是考察关于 objc 中对 self 和 super 的理理解:
-self 是类的隐藏参数，指向当前调⽤用⽅方法的这个类的实例例。⽽而 super 本质是⼀一个编译 器器标示符，和 self 是指向的同⼀一个消息接受者，当使⽤用 self 调⽤用⽅方法时，会从当前 类的⽅方法列列表中开始找，如果没有，就从⽗父类中再找;⽽而当使⽤用 super 时，则从⽗父类 的⽅方法列列表中开始找。然后调⽤用⽗父类的这个⽅方法调⽤用[self class] 时，会转化成
-objc_msgSend 函数id objc_msgSend(id self, SELop, ...)。 调⽤用[super class] 时 ，会转化成objc_msgSendSuper函数id objc_msgSendSuper(struct objc_super *super, SEL op, ...)。 第⼀一个参数是objc_super 这样⼀一个结构体，其定义如下
-struct objc_super {
-__unsafe_unretained id receiver;
-__unsafe_unretained Class super_class;
-};
-第⼀一个成员是 receiver, 类似于上⾯面的 objc_msgSend 函数第⼀一个参数 self. 第⼆二个成员是记录当前类的⽗父类是什什么，告诉程序从⽗父类中开始找⽅方法，找到⽅方法 后，最后内部是使⽤用 objc_msgSend(objc_super->receiver, @selector(class))去调 ⽤用，此时已经和[self class]调⽤用相同了了，故上述输出结果仍然返回 Son objc Runtime 开源代码对- (Class)class ⽅方法的实现
--(Class)class {
-return object_getClass(self); }
-
 8、、Category(类别)、 Extension(扩展)和继承的区别
 区别:
 1. 分类有名字，类扩展没有分类名字，是⼀一种特殊的分类。
@@ -4334,7 +4206,7 @@ _observer = [[NSNotificationCenter defaultCenter] addObserverForName:@"testKey"
 object:nil queue:nil
 usingBlock:^(NSNotification *note) { __typeof__(self) strongSelf = weakSelf;
 [strongSelf dismissModalViewControllerAnimated:YES]; }];
-self --> _observer --> block --> self 显然这也是⼀一个循环引⽤用。
+self --> _observer --> block --> self 显然这也是⼀一个循环引用。
 
 14、UIView和 CALayer是什什么关系?
 UIView 显示在屏幕上归功于 CALayer，通过调⽤用 drawRect ⽅方法来渲染⾃自身的内 容，调节 CALayer 属性可以调整 UIView 的外观，UIView 继承⾃自 UIResponder，⽐比 起CALayer 可以响应⽤用户事件，Xcode6 之后可以⽅方便便的通过视图调试功能查看图层 之间的关系。UIView 是 iOS 系统中界⾯面元素的基础，所有的界⾯面元素都继承⾃自它。 它内部是由Core Animation 来实现的，它真正的绘图部分，是由⼀一个叫 CALayer(Core Animation Layer)的类来管理理。UIView 本身，更更像是⼀一个 CALayer 的管理理器器，访问它的跟绘图和坐标有关的属性，如 frame，bounds 等，实际上内部 都是访问它所在 CALayer 的相关属性。UIView 有个 layer 属性，可以返回它的主 CALayer 实例例，UIView 有⼀一个layerClass⽅方法，返回主 layer所使⽤用的类，UIView 的 ⼦子类，可以通过重载这个⽅方法，来让 UIView 使⽤用不不同的 CALayer 来显示，如:
@@ -4852,10 +4724,6 @@ UDP 是User Datagram Protocol的简称， 中文名是用户数据包协议，�
      returnAUTORELEASE(obj);
 }
 
-56.objc的内存管理
-答：如果您通过分配和初始化（比如[[MyClass alloc] init]）的方式来创建对象，您就拥有这个对象，需要负责该对象的释放。这个规则在使用NSObject的便利方法new 时也同样适用。
-如果您拷贝一个对象，您也拥有拷贝得到的对象，需要负责该对象的释放。如果您保持一个对象，您就部分拥有这个对象，需要在不再使用时释放该对象。反过来，如果您从其它对象那里接收到一个对象，则您不拥有该对象，也不应该释放它（这个规则有少数的例外，在参考文档中有显式的说明）。
- 
 57.自动释放池是什么,如何工作？
 答：当您向一个对象发送一个autorelease消息时，Cocoa就会将该对象的一个引用放入到最新的自动释放池。它仍然是个正当的对象，因此自动释放池定义的作用域内的其它对象可以向它发送消息。当程序执行到作用域结束的位置时，自动释放池就会被释放，池中的所有对象也就被释放。
 1）ojc-c是通过一种"referring counting"(引用计数)的方式来管理内存的, 对象在开始分配内存(alloc)的时候引用计数为一,以后每当碰到有copy,retain的时候引用计数都会加一, 每当碰到release和autorelease的时候引用计数就会减一,如果此对象的计数变为了0, 就会被系统销毁.
@@ -5534,14 +5402,6 @@ view 从 nib 文件初始化时调用， loadView 在 controller 的 view 为 ni
 时候一个一个依次调用就可以了。
 面向对象是把构成问题事务分解成各个对象， 为了描叙某个事物在整个解决问题的步骤中的行为。;
 
-类别的作用?继承和类别在实现中有何区别?
-答案: category 可以在不获悉， 不改变原来代码的情况下往里面添加新的方法， 不能删除修改。
-并且如果类别和原来类中的方法产生名称冲突， 则类别将覆盖原来的方法， 高的优先级。
-类别主要有 3 个作用:
-(1) 将类的实现分散到多个不同文件或多个不同框架中。
-(2) 创建对私有方法的前向引用。
-(3) 向对象添加非正式协议。
-继承可以增加，修改或者删除方法，并且可以增加属性。
 25 .Difference between categories and extensions?
 只能添加，
 因为类别具有更
@@ -5757,91 +5617,6 @@ return NSUIntgerMax;
     在头文件中声明的全局变理，假定你将那个变写错了，那么在编译期间会报错，如
 果你
 用 extern 方式引用时，假定你犯了同样的错误，那么在编译期间不会报错，而接期间报错
-
-1、请你自我介绍一下你自己 ?
-回答提示: 一般人回答这个问题过于平常，只说姓名、年龄、爱 好、工作经验，这些在简
-历上都有。其实，企业最希望知道的是求职者能否胜任工作，包 括:最强的技能、最深入研究的知识领域、个性中最积极的部分、做 过的最成功的事，主要的成就等，这些都可以和学习无关，也可以和 学习有关，但要突出积极的个性和做事的能力，说得合情合理企业 才会相信。企业很重视一个人的礼貌，求职者要尊重考官，在回答每 个问题之后都说一句“谢谢”，企业喜欢有礼貌的求职者。
-2、你觉得你个性上最大的优点是什么 ?
-回答提示: 沉着冷静、条理清楚、立场坚定、顽强向上、乐于助 人和关心他人、适应能力和幽默感、乐观和友爱。我在 xxx 公司做 了两年项目，使我适合这份工作。
-3、说说你最大的缺点 ?
-回答提示: 这个问题企业问的概率很大， 通常不希望听到直接回 答的缺点是什么等，如果求职者说自己小心眼、爱忌妒人、非常懒、 脾气大、工作效率低，企业肯定不会录用你。绝对不要自作聪明地回
- 答“我最大的缺点是过于追求完美”， 有的人以为这样回答会显得自 己比较出色，但事实上，他已经岌岌可危了。企业喜欢求职者从自己
-的优点说起，中间加一些小缺点，最后再把问题转回到优点上，突出 优点的部分，企业喜欢聪明的求职者。
-4、你对加班的看法 ?
-回答提示: 实际上好多公司问这个问题，并不证明一定要加班，
-只是想测试你是否愿意为公司奉献。
-回答样本: 如果是工作需要我会义不容辞加班，我现在单身， 没 有任何家庭负担，可以全身心的投入工作。但同时，我也会提高工作 效率，减少不必要的加班。
-5、你对薪资的要求 ?
-回答提示: 如果你对薪酬的要求太低，那显然贬低自己的能力 ; 如果你对薪酬的要求太高，那又会显得你分量过重，公司受用不起。 一些雇主通常都事先对求聘的职位定下开支预算， 因而他们第一次提 出的价钱往往是他们所能给予的最高价钱， 他们问你只不过想证实一 下这笔钱是否足以引起你对该工作的兴趣。
- 回答样本一: 我对工资没有硬性要求， 我相信贵公司在处理我的 问题上会友善合理。我注重的是找对工作机会，所以只要条件公平，
-我则不会计较太多。
-回答样本二: 我受过系统的软件编程的训练， 不需要进行大量的 培训，而且我本人也对编程特别感兴趣。因此，我希望公司能根据我 的情况和市场标准的水平，给我合理的薪水。
-回答样本三: 如果你必须自己说出具体数目， 请不要说一个宽泛 的范围， 那样你将只能得到最低限度的数字。 最好给出一个具体的数 字，这样表明你已经对当今的人才市场作了调查， 知道像自己这样学 历的雇员有什么样的价值。
-6、在五年的时间内，你的职业规划 ?
-回答提示: 这是每一个应聘者都不希望被问到的问题， 但是几乎 每个人都会被问到，比较多的答案是“管理者”。但是近几年来，许 多公司都已经建立了专门的技术途径。 这些工作地位往往被称作“顾 问”、“参议技师”或“高级软件工程师”等等。当然，说出其他一 些你感兴趣的职位也是可以的， 比如产品销售部经理， 生产部经理等 一些与你的专业有相关背景的工作。 要知道， 考官总是喜欢有进取心 的应聘者，此时如果说“不知道”，或许就会使你丧失一个好机会。
- 最普通的回答应该是“我准备在技术领域有所作为”或“我希望能 按照公司的管理思路发展”。
-7、你朋友对你的评价 ?
-回答提示: 想从侧面了解一下你的性格及与人相处的问题。
-回答样本一: 我的朋友都说我是一个可以信赖的人。因为，我一 旦答应别人的事情，就一定会做到。如果我做不到，我就不会轻易许 诺。
-回答样本二: 我觉的我是一个比较随和的人， 与不同的人都可以 友好相处。在我与人相处时，我总是能站在别人的角度考虑问题。
-8、你还有什么问题要问吗 ?
-回答提示: 企业的这个问题看上去可有可无，其实很关键，企业
-不喜欢说“没问题”的人， 因为其很注重员工的个性和创新能力。 企 业不喜欢求职者问个人福利之类的问题， 如果有人这样问: 贵公司对 新入公司的员工有没有什么培训项目，我可以参加吗 ?或者说贵公司 的晋升机制是什么样的 ?企业将很欢迎，因为体现出你对学习的热情 和对公司的忠诚度以及你的上进心。
-9、如果通过这次面试我们单位录用了你，但工作一段时间却发 现你根本不适合这个职位，你怎么办 ?
- 回答提示: 一段时间发现工作不适合我，有两种情况:1如果你 确实热爱这个职业， 那你就要不断学习， 虚心向领导和同事学习业务
-知识和处事经验， 了解这个职业的精神内涵和职业要求， 力争减少差 距; 2你觉得这个职业可有可无，那还是趁早换个职业，去发现适 合你的，你热爱的职业，那样你的发展前途也会大点，对单位和个人 都有好处。
-10、在完成某项工作时，你认为领导要求的方式不是最好的， 自己还有更好的方法，你应该怎么做 ?
-回答提示: 1. 原则上我会尊重和服从领导的工作安排，同时私 底下找机会以请教的口吻， 婉转地表达自己的想法， 看看领导是否能 改变想法。 2如果领导没有采纳我的建议， 我也同样会按领导的要求 认真地去完成这项工作。3 . 还有一种情况，假如领导要求的方式违 背原则，我会坚决提出反对意见，如领导仍固执己见，我会毫不犹豫 地再向上级领导反映。
-11、如果你的工作出现失误， 给本公司造成经济损失， 你认为该 怎么办 ?
-回答提示: 1我本意是为公司努力工作，如果造成经济损失， 我 认为首要的问题是想方设法去弥补或挽回经济损失。 如果我无能力负 责，希望单位帮助解决。2分清责任，各负其责，如果是我的责任，
- 我甘愿受罚 ; 如果是一个我负责的团队中别人的失误，也不能幸灾 乐祸，作为一个团队，需要互相提携共同完成工作，安慰同事并且帮
-助同事查找原因总结经验。 3总结经验教训， 一个人的一生不可能不 犯错误， 重要的是能从自己的或者是别人的错误中吸取经验教训， 并 在今后的工作中避免发生同类的错误。 检讨自己的工作方法、 分析问 题的深度和力度是否不够，以致出现了本可以避免的错误。
-12、如果你做的一项工作受到上级领导的表扬，但你主管领 导却说是他做的，你该怎样 ?
-回答提示: 我首先不会找那位上级领导说明这件事， 我会主动找 我的主管领导来沟通， 因为沟通是解决人际关系的最好办法， 但结果
-会有两种: 1我的主管领导认识到自己的错误，我想我会视具体情 况决定是否原谅他。 2他更加变本加厉的来威胁我， 那我会毫不犹豫
-地找我的上级领导反映此事， 因为他这样做会造成负面影响， 对今后 的工作不利。
-13、谈谈你对跳槽的看法 ? 回答提示:1正常的“跳槽”能促进人才合理流动，应该支持。
-2频繁的跳槽对单位和个人双方都不利，应该反对。 14、工作中你难以和同事、上司相处，你该怎么办 ?
- 回答提示: 1我会服从领导的指挥，配合同事的工作。2我会从 自身找原因， 仔细分析是不是自己工作做得不好让领导不满意， 同事
-看不惯。 还要看看是不是为人处世方面做得不好， 如果是这样的话我 会努力改正。3如果我找不到原因，我会找机会跟他们沟通，请他 们指出我的不足，有问题就及时改正。4作为优秀的员工，应该时刻 以大局为重，即使在一段时间内，领导和同事对我不理解，我也会做 好本职工作，虚心向他们学习，我相信，他们会看见我在努力，总有 一天会对我微笑的。
-15、假设你在某单位工作，成绩比较突出，得到领导的肯定。 但同时你发现同事们越来越孤立你，你怎么看这个问题 ?你准备怎么 办?
-回答提示: 1成绩比较突出， 得到领导的肯定是件好事情， 以后 更加努力。2检讨一下自己是不是对工作的热心度超过同事间交往的 热心了，加强同事间的交往及共同的兴趣爱好。3工作中，切勿伤害 别人的自尊心4不再领导前拨弄是非
-16、你最近是否参加了培训课程 ?谈谈培训课程的内容。是公司 资助还是自费参加 ?
-回答提示: 公司组织参加，就是无限互联 iOS 培训课程 ( 可以多 谈谈自己学的技术 )。
- 17、你对于我们公司了解多少 ? 回答提示:在去公司面试前上网查一下该公司主营业务。 如回答:
-贵公司有意改变策略，加强与国外大厂的 OEM 合作，自有品牌的部 分则透过海外经销商。
-18、请说出你选择这份工作的动机 ?
-回答提示: 这是想知道面试者对这份工作的热忱及理解度， 并筛
-选因一时兴起而来应试的人， 如果是无经验者， 可以强调“就算职种 不同，也希望有机会发挥之前的经验”。
-19、你最擅长的技术方向是什么 ?
-回答提示: 说和你要应聘的职位相关的课程， 表现一下自己的热
-诚没有什么坏处。
-20、你能为我们公司带来什么呢 ?
-回答提示: 企业很想知道未来的员工能为企业做什么， 求职者应 再次重复自己的优势，然后说:“就我的能力，我可以做一个优秀的 员工在组织中发挥能力， 给组织带来高效率和更多的收益”。 企业喜 欢求职者就申请的职位表明自己的能力，比如申请营销之类的职位， 可以说:“我可以开发大量的新客户，同时，对老客户做更全面周到 的服务，开发老客户的新需求和消费。”等等。
- 21、最能概括你自己的三个词是什么 ?
-回答提示: 我经常用的三个词是:适应能力强， 有责任心和做事
-有始终，结合具体例子向主考官解释，
-22、你的业余爱好是什么 ?
-回答提示:找一些富于团体合作精神的， 这里有一个真实的故事: 有人被否决掉，因为他的爱好是深海潜水。主考官说:因为这是一项 单人活动，我不敢肯定他能否适应团体工作。
-23、作为被面试者给我打一下分 ?
-回答提示: 试着列出四个优点和一个非常非常非常小的缺点
-以抱怨一下设施，没有明确责任人的缺点是不会有人介意的 ) 。 24、你怎么理解你应聘的职位 ?
-回答提示: 把岗位职责和任务及工作态度阐述一下。 25、喜欢这份工作的哪一点 ?
-( 可
-回答提示: 相信其实大家心中一定都有答案了吧 ! 每个人的价值 观不同，自然评断的标准也会不同，但是，在回答面试官这个问题时 可不能太直接就把自己心理的话说出来， 尤其是薪资方面的问题， 不 过一些无伤大雅的回答是不错的考虑，如交通方便，工作性质及内
- 容颇能符合自己的兴趣等等都是不错的答案， 不过如果这时自己能仔 细思考出这份工作的与众不同之处，相信在面试上会大大加分。
-26、为什么要离职 ?
-回答提示: 1回答这个问题时一定要小心， 就算在前一个工作受 到再大的委屈，对公司有多少的怨言，都千万不要表现出来，尤其要 避免对公司本身主管的批评，避免面试官的负
-面情绪及印象。 建议此时最好的回答方式是将问题归咎在自己身 上，例如觉得工作没有学习发展的空间， 自己想在面试工作的相关产
-业中多加学习， 或是前一份工作与自己的生涯规划不合等等， 回答的 答案最好是积极正面的。2我希望能获得一份更好的工作，如果机 会来临，我会抓住。我觉得目前的工作，已经达到顶峰，即沒有升迁 机会。
-27、说说你对行业、技术发展趋势的看法 ?
-回答提示: 企业对这个问题很感兴趣， 只有有备而来的求职者能 够过关。求职者可以直接在网上查找对你所申请的行业部门的信息， 只有深入了解才能产生独特的见解。 企业认为最聪明的求职者是对所 面试的公司预先了解很多，包括公司各个部门，发展情况，在面试 回答问题的时候可以提到所了解的情况，企业欢迎进入企业的人是 “知己”，而不是“盲人”。
- 28、对工作的期望与目标何在 ? 回答提示:这是面试者用来评断求职者是否对自己有一定程度的
-期望、对这份工作是否了解的问题。 对于工作有确实学习目标的人通 常学习较快，对于新工作自然较容易进入状况，这时建议你，最好针 对工作的性质找出一个确实的答案，如业务员的工作可以这样回答: “我的目标是能成为一个超级业务员，将公司的产品广泛的推销出 去，达到最好的业绩成效 ; 为了达到这个目标，我一定会努力学习， 而我相信以我认真负责的态度，一定可以达到这个目标。 ”其他类 的工作也可以比照这个方式来回答， 只要在目标方面稍微修改一下就 可以了。
-29、说你的家庭 ? 回答提示:企业面试时询问家庭问题不是非要知道求职者家庭的
-情况，探究隐私， 企业不喜欢探究个人隐私，而是要了解家庭背景对 求职者的塑造和影响。 企业希望听到的重点也在于家庭对求职者的积 极影响。企业最喜欢听到的是:我很爱我的家庭，我的家庭一向很 和睦，虽然我的父亲和母亲都是普通人，但是从小，我就看到我父亲 起早贪黑，每天工作特别勤劳， 他的行动无形中培养了我认真负责的 态度和勤劳的精神。我母亲为人善良，对人热情，特别乐于助人，所 以在单位人缘很好，她的一言一行也一直在教导我做人的道理。 企业相信，和睦的家庭关系对一个人的成长有潜移默化的影响。
- 30、就你申请的这个职位，你认为你还欠缺什么 ? 回答提示:企业喜欢问求职者弱点， 但精明的求职者一般不直接
-回答。他们希望看到这样的求职者:继续重复自己的优势，然后说: “对于这个职位和我的能力来说， 我相信自己是可以胜任的， 只是缺 乏经验， 这个问题我想我可以进入公司以后以最短的时间来解决， 我 的学习能力很强， 我相信可以很快融入公司的企业文化， 进入工作状 态。”企业喜欢能够巧妙地躲过难题的求职者。
 
 1. iOS类是否可以多继承?如果没有， 那可以用其他方法实现吗?简述实现过程。 不可以，可以通过消息转发、 delegate 和 protocol 和类别来实现类似多继承。
 1. iOS本地数据存储都有哪几种方式? iOS如何实现复杂对象的存储? NSKeyedArchiver (归档)采用归档的形式来保存数据，该数据对象需要遵守
@@ -7207,31 +6982,6 @@ change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context {
 }
 代码：
 https://www.jianshu.com/p/742b4b248da9
-
-#选择器SEL：一个数据类型，内部是消息，类似于函数指针
-原理：Objective-C在编译的时候，会根据方法的名字(包括参数序列)，生成用来区分这个方法的唯一ID，这个ID就是SEL类型；
-作用：提高执行的效率、增强程序的灵活性；
-//创建
-@selector 方法选择器
-@selector (方法名)
-//获取
-SEL s1 = @selector(onClick:);
-//将一个字符串转换为一个SEL类型
-SEL s2 = NSSelectorFromString(@"onRun:");
-//执行SEL
-Dog *dog = [[Dog alloc]init];
-[dog performSelector:s1];
-[dog performSelector:@selector(setName:) withObject:@"Tom"];//最多支持两个参数
-//使用@selector对数组排序：
-代码：SelViewController.h/m
-//在ARC(自动内存管理)的条件下，使用选择器很可能会报警：参照该方式去除报警
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
-//执行代码
-Dog *dog = [[Dog alloc]init];
-SEL s1 = @selector(onClick:);
-[dog performSelector:@selector(setName:) withObject:@"Tom"];
-#pragma clang diagnostic pop
 /******************************UI基础******************************/
 #自定义控件：
 1.在initWithFrame:方法中添加子控件，提供便利构造方法；
@@ -7411,10 +7161,6 @@ https://blog.csdn.net/pjk1129/article/details/39644477
 NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF CONTAINS[c] %@",searcgString];
 _ArrM = [NSMutableArray arrayWithArray:[_Arr filteredArrayUsingPredicate:predicate];//过滤数据
 
-//控制器：凡是继承于UIViewController的对象都是控制器
-特点：每个控制器都有一个UIView、本身不可见、每个控制器都有一个UIView属性、管理一个软件界面
-//nil：0x0
-
 //获取当前时间
 NSString *currentTime = [NSString stringWithFormat@"%@",[NSDate date]];
 //隐藏NavigationBar
@@ -7555,3 +7301,335 @@ notification :消息的发送者告知接收者事件已经发生或者将要发
 出现内存警告在内存不足时执行，并对所有非当
 本视图的所有子视图将被销毁，以释放内存，此时开发者需要手动对 viewDidLoad 中创建的对象释放内存。
 因为当这个视图再次显示在屏幕上的时候， viewLoad 、 viewDidLoad 以便再次构造视图。
+
+
+
+/*
+ 
+ 在 IOS 中，少量的数据持久化可以使用属性列表、
+ NSUserDefaults 、归档等;
+ 大量的数据持久化可以使用 SQLite 数据库、 Core Data 等，
+ 也可以使用 FMDB 第三方类库完成。
+
+ 58. 常见的数据持久化方法有哪些？
+ 1.NSUserDefaults: ?用来保存应 ?用程序设置和属性、 ?用户保存的数据。 ?用户再次 打开程序或开机后这些数据仍然存在。 NSUserDefaults 可以存储的数据类型包
+ 括:NSData 、NSString 、NSNumber 、NSDate 、NSArray 、NSDictionary 。
+ 如果要存储其他类型，则需要转换为前 储。
+ ?面的类型，才能 ?用NSUserDefaults 存
+ 2.归档,反归档 3. ?文件读写 4.SQLite 5.CoreData
+
+
+ 1、 iOS 数据持久化存储方案有哪些?
+ 参考答案:
+ plist属性列表存储(如 NSUserDefaults )
+ 文件存储 (如二进制数据写入文件存储， 通过 NSFileManager 来操作 将下载起来的二进制数据写一篇文件中存储)
+ NSKeydeArchiver 归档存储，常见的是自动化归档 /解档处理，想要 学习如何通过 runtime 实现自动化归档 /解档，可
+ 数据库 SQLite3 存储(如 FMDB 、Core Data )
+ 2. 什么是数据持久化?简单谈一下你所了解的 中的数据持久化的方式。
+ 数据持久化就是将内存中的数据模型转换为存储模型 将存储模型转换为内存中的数据模型的统称 . 数据模型可以 是任何数据结构或对象模型 ,存储模型可以是关系模型、 XML 、 二进制流等。
+ 在 IOS 中，少量的数据持久化可以使用属性列表、 NSUserDefaults 、归档等;
+ 大量的数据持久化可以使用 SQLite 数据库、 CoreData 等， 也可以使用 FMDB 第三方类库完成。
+ 2.NSUserDefaults 适合存储轻量级的本地数据， 以键值对的形 式进行存储，只能存储基本的 OC 对象(不包括自定义的对象)。
+ NSUserDefaults 非常好用，并不需要用户在程序中设置 NSUserDefaults 的全局变量，需要在哪里使用 NSUserDefaults 的数据，那么就在哪里创建一个 NSUserDefaults 对象，然后进行读或者写操作。
+ 针对同一个关键字对应的对象或者数据，可以对它进行重写， 重写之后关键字就对应新的对象或者数据，旧的对象或者数 据会被自动清理。
+ NSUserDefaults 是典型的单例模式。
+ 3. ProtocolList属性列表，是一种用来存储串行化后的对象的文件。因为扩 展名为 plist ，因此通常被称为 plist 文件。
+ plist 文件通常用于储存用户设置，也可以用于存储捆绑的信 息，其内容为 xml 格式。它可以在程序运行期间动态的创建
+ 和读写，因此可以用于少量数据时候的数据持久化。
+ 3. 归档优缺点?
+  归档也叫序列化，是将文件存在硬盘，解档是从硬盘还原数 据。
+ 归档的形式来保存数据，只能一次性归档保存以及一次性解 压。所以只能针对小量数据，而且对数据操作比较笨拙，即 如果想改动数据的某一小部分，还是需要解压整个数据或者 归档整个数据。
+ 除了简单的归档，还可以实现对象的归档。对象归档是指对 象写入文件保存到硬盘上，当再次重写打开程序时，可以还
+ 原这些对象。可以实现对象序列化或者对象持久化。
+ 除了原有的 OC 对象以外，归档还可以对自定义的对象实现 归档，需要注意的是，自定义的归档对象必须要实现 NSCoding 协议，实现里面的解码和编码的方法。
+ 4. 什么是数据库?使用步骤?特点? 数据库是按照数据结构来组织、存储和管理数据的仓库。
+ SQLite 使用步骤:创建数据库、引入类库、获得沙盒路径、 创建或打开数据库
+ SQLite 比较原始，需要通过 sql 语句来创建表格，对数据进 行操作，用起来比较麻烦，但是可控性强。
+ //数据持久化
+ 1.NSCache和数据持久化使用场景有什么区别？
+ 2.常用的数据持久化方法有哪些？各自有什么利弊？
+ 13.iOS怎么做数据持久化？coredata/sqlite之间又什么联系？coredata是关系型数据库吗？
+ 
+ 29.iOS平台怎么做数据持久化
+ 1、NSUserDefaults
+ 2、Plist
+ 3、数据库
+ 4、文件保存
+ 5、归档与反归档
+ 31.iOS平台怎么做数据的持久化?Core Data和SQLite有无必然联系？Core Data是一个关系型数据库吗？
+ 答：iOS中可以有四种持久化数据的方式： 属性列表、对象归档、SQLite3和Core Data
+  Core data与sqlite还是有联系的，core data 是对sqlite的封装，因为sqlite是c语言的api，然而有人也需要obj-c 的api，所以有了 core data 另外，core data不仅仅是把c的api翻译成oc 的api，还提供了一些管理的功能，使用更加方便
+ Core Data不是一个关系型数据库，也不是关系型数据库管理系统(RDBMS)。虽然Core Dta支持SQLite作为一种存储类型，但它不能使用任意的SQLite数据库。Core Data在使用的过程种自己创建这个数据库。Core Data支持对一、对多的关系
+ 
+ 3、iOS有哪些数据持久化方式?
+ 答:四种:属性列表、对象归档、 SQLite3 和Core Data 。
+ 4、Objective-C 如何对内存管理的 , 说说你的看法和解决方法?
+ 答: Objective-C 的内存管理主要有三种方式 ARC(自动内存计数)、手动内存计数、内 存池。解决方法的话:谁持有，谁释放。
+ 
+ #App的主目录：沙盒机制NSHomeDirectory()
+ 概念：沙盒机制是一种安全体系，规定了应用程序只能在该应用创建的文件夹内读取文件，不可以
+ 访问其他地方的内容。所有的非代码文件都保存在这个地方：比如图片、声音、属性列表和文本文件等；
+ 沙盒中的文件：Documents(持久化数据)、Library(缓存)、tmp(临时文件)
+ NSString *home = NSHomeDirectory(); //沙盒根目录
+ NSString *documentPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject]; //获取Documents(持久化数据)
+ NSString *libarayPath = [NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES) lastObject]; //获取Library(缓存)
+ NSString *tempPath = NSTemporaryDirectory(); //获取tmp(临时文件)
+ 注意：1).每个应用程序都在自己的沙盒；
+ 2).不能随意跨越自己的沙盒去访问别的应用程序沙盒的内容；
+ 3).应用程序向外请求或接收数据都需要经过权限认证；
+
+ #数据持久化的方法：存放在沙盒
+ 原因：通常程序在运行中或者程序结束以后，需要保存一些信息，比如登录信息，视频播放记录，收藏等；
+ 常见方法：
+ 1.文件操作：见FileViewController.h/m
+ 2.plist：属性列表文件-只能存储NSString/NSNumber/NSDate/NSArray/NSDictionary
+ 作用：对一些登录、注册和配置信息进行持久化存储；
+ 格式：xml语法；
+ 创建：Xcode创建/代码创建
+ 读取：需要时自行百度
+ 3.NSUserDefaults：见FileViewController.h/m
+ 4.归档/解归档：一种序列化与反序列化
+ //归档
+ //解归档
+ https://www.jianshu.com/p/3e08fa21316d
+ 5.数据库：
+ //sql语句：结构化查询语言
+ 1.创建表
+ create table if not exists sso (
+ id integer primary key autoincrement,//将id设为主键
+ author text,//文本
+ price real,//浮点型
+ pages integer);//整型
+ 2.插入
+ insert into sso (author,price,pages) values(?,?,?);
+ 3.更新
+ update sso set price = ?,pages = ? where author = ?;
+ 4.删除
+ delete from sso where pages > ?;
+ 5.查询
+ select * from sso;
+ //FMDB
+ 代码：SqliteViewController.h/m
+ //MagicalRecord：
+ 一.Core Data：
+ 1.新建Core Data；
+ 2.新建表：写上需要存储的文件；
+ 3.关联生成属性类；
+ 二.导入数据：
+ 4.导入MagicalRecord；
+ 三.app启动：
+ 5.设置数据库存放的文件名；
+ 6.让Magical Record支持数据库版本管理；
+ 7.查询所有的数据库内容，如果有内容则送到数据源；
+ if([MusicInfo MR_findAll].count) {
+     for(MusicInfo *music in [MusicInfo MR_findAll]) {
+         MusicInformation *musicInfo = [[MusicInformation alloc] init];
+         musicInfo.songUrl = music.songUrl;
+         musicInfo.songName = music.songName;
+         musicInfo.songId = music.songId;
+         musicInfo.userName = music.userName;
+         musicInfo.albumName = music.albumName;
+         musicInfo.albumPic = music.albumPic;
+         [[MusicManager sharedIntance].selectMusics addObject:musicInfo];//把对象加到数据源
+     }
+ }
+ 四.app杀掉：
+ 8.删除数据库里的表，将数据源保存；
+ for(MusicInfo *music in [MusicInfo MR_findAll]) {
+     [music MR_deleteEntity];//删除数据表
+ }
+ [[NSManagedObjectContext MR_defaultContext] MR_saveToPersistentStoreAndWait];
+ 9.新建数据库的表，将数据源所有内容放到数据库，保存；
+ for(MusicInformation *newMusic in [MusicManager sharedIntance].selectMusics) {
+     MusicInfo *zNewMusic = [MusicInfo MR_createEntity];//新建数据表
+     zNewMusic.songName = newMusic.songName;
+     zNewMusic.songUrl = newMusic.songName;
+     zNewMusic.songId = newMusic.songId;
+     zNewMusic.userName = newMusic.userName;
+     zNewMusic.albumName = newMusic.albumName;
+     zNewMusic.albumPic = newMusic.albumPic;
+ }
+ 1.数据的增删改查
+ 2.多表的链接查询
+ 3.数据回滚
+ http://hao.jobbole.com/magicalrecord/
+
+文件操作
+1.数据持久化的方法
+通常程序在运行中或者程序结束之后，需要保存一些信息，而且需要持久化存储信息,比如登陆信息、视频播放记录、收藏记录等等,那么我们可以采用以下几种方式对数据进行持久化保存。1.文件    2.plist    3.数据库
+2.常用文件操作类
+1）NSFileManager（文件管理类）
+<1>创建文件管理器单例对象
+[NSFileManager defaultManager];
+
+<2>遍历目录下的内容
+//浅度遍历当前目录下的文件
+[manager contentsOfDirectoryAtPath:path error:&error]
+
+//深度遍历
+[manager subpathsOfDirectoryAtPath:path error:&error]
+
+<3>判断文件是否存在
+[manager fileExistsAtPath:path]
+
+<4>创建文件
+//创建文件
+参数1：创建文件的路径
+参数2：内容，如果nil表示创建一个内容为空的文件。
+参数3：nil表示采用默认的设置
+//如果文件已经存在，会覆盖原来文件。
+[manager createFileAtPath:path contents:data attributes:nil];
+    
+//创建目录
+参数1：文件夹路径
+参数2：是否有中间目录(YES针对所有的情况)
+参数3：nil表示采用默认设置
+参数4：错误
+
+//不会覆盖文件夹内容
+[manager createDirectoryAtPath:path withIntermediateDirectories:YES attributes:nil error:&error];
+
+<5>拷贝文件/目录
+//从哪个路径copy
+NSString *fromPath = @"/Users/qianfeng/Desktop/文件夹/testff.txt";
+//copy哪个路径
+NSString *toPath = @"/Users/qianfeng/Desktop/文件夹/新建文件夹/testff.txt";
+//如果文件已经存在是copy不成功的
+[manager copyItemAtPath:fromPath toPath:toPath error:&error];
+
+<6>移动文件/目录
+[manager moveItemAtPath:fromPath toPath:toPath error:&error];
+
+<7>删除文件/目录
+[manager removeItemAtPath:@"/Users/qianfeng/Desktop/文件夹/新建文件夹" error:nil]
+
+<8>获取文件属性    (返回的是字典)
+[manager attributesOfItemAtPath:@"/Users/qianfeng/Desktop/文件夹/testff.txt" error:nil];
+
+2.3 NSFileHandle（文件句柄类）
+对文件进行读写首先需要NSFileHandle打开文件,NSFileHandle对文件进行读写都是NSData类型的二进制数据.
+                
+<1>打开文件方法
+//以只读方式打开
+NSFileHandle *readOnlyHandle =  [NSFileHandle fileHandleForReadingAtPath:path]
+//以只写方式打开
+NSFileHandle *writeOnlyHandle = [NSFileHandle fileHandleForWritingAtPath:path]
+//以读写方式打开
+NSFileHandle *readWriteHandle = [NSFileHandle fileHandleForUpdatingAtPath:path]
+
+<2>读指定长度的数据（单位为字节)
+[readOnlyHandle readDataOfLength:5]或者 [readWriteHandle readDataOfLength:5]
+
+<3>从当前偏移量读到文件尾
+[readOnlyHandle readDataToEndOfFile];
+
+<4>设置文件偏移量（单位为字节)
+[readOnlyHandle seekToFileOffset:5];
+
+<5>将文件偏移量定位到文件尾
+[readOnlyHandle seekToEndOfFile];
+
+//如果希望这次写入的数据完全覆盖掉原有数据
+//常规做法，短的写入，无法覆盖长的数据
+//可以截断原来数据
+[readWriteHandle truncateFileAtOffset:0];
+//截断到0字节长，即清空原有数据。
+
+<6>写文件(不会覆盖的时候需要设置偏移量)
+//当前偏移量指到文件最后
+[readWriteHandle seekToEndOfFile];
+//写入数据
+[readWriteHandle writeData:data];
+
+[readWriteHandle writeData:[@"12345678945343543534543" dataUsingEncoding:NSUTF8StringEncoding]];
+
+ <7>关闭文件句柄
+//关闭文件句柄,关闭后(不需要)就不能再操作文件了
+[readOnlyHandle closeFile];
+[readWriteHandle closeFile];
+[writeOnlyHandle closeFile];
+ 
+ */
+
+
+/*
+ FIXME
+ 十七 . 应用程序的沙盒下 ,都有哪些文件夹 ?它们有什么特点 ?本地缓存一般存在哪个文件下?
+ 1 Documents
+ 将应用程序的数据文件保存在该目录下 .不过这些数据类型仅限于不可以再生的数据 ,可再生 的数据文件应该存在 LIbrary/Cache 下
+ 2 Library 它有两个子文件
+ caches 主要是缓存文件 ,用户使用过程中缓存都可以保存在这些目录中 .保存那些可再生的
+ 文件 ,比如网络数据请求 .因此 ,应用程序通常还需要负责删除这些文件 .
+ Preferences 应用程序的偏好设置文件 . 我们使用 NSUserDefaults 写的设置数据都会保存到
+ 该目录下的一个 plist 文件中 它会被 iTunes 同步 3. tmp
+ 各种临时文件 , 保存应用再次启动时不需要的文件 将其删除 ,因为该目录下的东西随时有可能被系统清除
+ 统磁盘存储空间不足的时候
+ .而且 ,当应用不在需要这些文件时应主动 ,目前已知的一种可能清理的原因是系
+ 二十 . plist 和 pct 文件的好处 ?
+ plist 文件以便用来储存数组或者字典 ,它是 iOS 中特有的存储方式 .它可以将数据与代码隔离开 , 更便于数据的管理和展示 .
+ pch 里面可以保存一些全局的宏和头文件 .
+ pct 是预编译头文件 , 其中存放有工程中已有编译的部分代码 编译这些代码 .
+ pct 头文件的内容能被项目中的其他所有源文件共享访问 存放一些全局的宏 (整个项目都用得上的宏 )
+ 用来包含一些全部的头文件 (整个项目都用得上的头文件 能自动打开或者关闭日志的输出功能
+ pct 弊端 : 每个文件都会导入 ,有效率问题 .
+ ; 在以后建立工程时就不用重新)
+
+ 94. 什么是沙盒模型?哪些操作是属于私有 api 范畴 ?
+  答:某个 iphone 工程进行文件操作有此工程对应的指定的位置，不能逾越。
+ iphone 沙箱模型的有四个文件夹 documents， tmp， app， Library ，永久数据存储一般放documents 文件夹，得到模拟器的路径的可使用 NSHomeDirectory() 方法。 Nsuserdefaults 保 存的文件在 tmp 文件夹里。
+
+ 2、沙盒的目录结构是怎样的?各自一般用于什么场合?
+ 参考答案:
+ Application :存放程序源文件，上架前经过数字签名，上架后不可修改
+ Documents: 保存运行时生成的需要持久化的数据 ,iTunes 同步 设备时会备份该目 录。例如 ,游戏应用可将游戏存档保存在该目录 tmp: 保存应 ?运行时所需的临时数据 ,使?完毕后再将相应的文件从 该目录删除。应用 没有运行时 ,系统也可能会清除该目录下的文件。 iTunes 同步设备时 不会备份该目录
+ Library/Caches: 保存应用运行时 ? 成的需要持久化的数据 ,iTunes 同 步设备时不会备份 该目录。?一般存储体积大、 不需要备份的非重要 数据，比如网络数据缓存存储到 Caches 下
+ Library/Preference: 保存应用的所有偏好设置，如 iOS 的Settings( 设 置) 应?会在该目录中查找应 ?的设置信息。iTunes同步设备时会备份 该目录
+
+
+ 对沙盒的理解
+ 每个 iOS 应用都被限制在“沙盒”中， 沙盒相当于一个加了仅主人可见权 限的文件夹， 及时在应用程序安装过程中， 系统为每个单独的应用程序生
+ 成它的主目录和一些关键的子目录。苹果对沙盒有几条限制 :
+ 1. 应用程序在自己的沙盒中运作，但是不能访问任何其他应用程序的沙盒;
+  2. 应用之间不能共享数据， 沙盒里的文件不能被复制到其他应用程序的文件夹中， 也不能把其他应用文件夹复制到沙盒中;
+ 3. 苹果禁止任何读写沙盒以外的文件， 禁止应用程序将内容写到沙盒以外的文件 夹中;
+ 4. 沙盒目录里有三个文件夹: Documents——存储;应用程序的数据文件，存储 用户数据或其他定期备份的信息; Library 下有两个文件夹， Caches存储应用程 序再次启动所需的信息， Preferences 包含应用程序的偏好设置文件，不可在这 更改偏好设置; temp存放临时文件即应用程序再次启动不需要的文件。
+ 获取沙盒根目录的方法，有几种方法:用 NSHomeDirectory 获取。 获取 Document路径:
+ NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,NSUserD omainMask,YES).
+
+ 9.iphone 应用程序的项目基本结构
+ classes: 里面存放 object-c 类源代码文件 ( 可以创建子文件夹来组织代码 );
+ other sources: 存放除 objective-c 类之外的源代码文件;
+ resources: 包含应用程序中的非代码文件 ( 因为应用程序只能在自己的沙盒中运行，不然找 不到 ) ;
+ Frameworks: 特殊的库，可以存放库、框架、图像、声音等资源;
+ Products :包含项目在编译时生成的应用程序 (xxx.app);
+ 10.Info.plist 文件里的 bundle identifier( 束标识符 ) 它是应用程序的唯一标识符，要始终配置，命名格式为:顶级 Internet 应用名称;
+ 域+.+公司名称 +.+
+
+ 77、什么是沙盒 ?沙盒包含哪些文件 ,描述每个文件 的使用场景。如何获取这些文件的路径 ?如何获取 应用程序包 中文件的路径 ?
+ 沙盒是某个 iphone工程进行文件操作有此工程对 应的指定的位臵 ,不能逾越。 包括 :四个文件
+ 夹:documents,tmp,app,Library。 手动保存的文件在 documents文件里。 Nsuserdefaults保存的文件在 tmp文件夹
+ Documents 目录:您应该将所有 de应用程序数据文 件写入到这个目录下。 这个目录用于存储用户数据
+ 或其它应该定期备 份的信息。AppName.app 目录: 这是应用程序的程序包目录 ,包含应用程序的本身。 由于应用程序必须经过签名 ,所以 您在运行时不 能对这个目录中的内容进行修改 ,否则可能会使应 用程序无法启动。 Library 目录 :这个目录下有两个 子目 录:Caches 和 PreferencesPreferences目录包 含应用程序的偏好设臵文件。 您不应该直接创建偏 好设臵文件 ,而是 应该使用 NSUserDefaults类来取 得和设臵应用程序的偏好 .Caches 目录用于存放 应用程序专用的支持文件 ,保存应用程 序再次启 动过程中需要的信息。 tmp 目录 :这个目录用于存 放临时文件 ,保存应用程序再次启动过程中不需要 的信息。
+ 获取这些目录路径的方法 : 1,获取家目录路径的
+ 函数 : NSString *homeDir =
+ NSHomeDirectory(); 2,获取 Documents目录路径的
+ 方法 : NSArray *paths =NSSearchPathForDirectoriesInDomains(NSDocum
+ entDirectory, NSUserDomainMask, YES); NSString *docDir = [paths
+ objectAtIndex:0]; 3,获取 Caches目录路径的方 法: NSArray *paths =
+ NSSearchPathForDirectoriesInDomains(NSCachesDi rectory, NSUserDomainMask, YES); NSString
+ *cachesDir = [paths objectAtIndex:0]; 4,获取 tmp目
+ 录路径的方法 : NSString *tmpDir =
+ NSTemporaryDirectory(); 5,获取应用程序程序包
+ 中资源文件路径的方法 : 例如获取程序包中一个
+ 图片资源 (apple.png)路径的方法 : NSString
+ *imagePath = [[NSBundle mainBundle] pathForResource:@ ” apple ” ofType:@ ” png ” ]; UIImage *appleImage = [[UIImage alloc]
+ initWithContentsOfFile:imagePath]; 代码中的 mainBundle类方法用于返回一个代表应用程序包的对象。
+ 沙盒目录结构是怎样的？各自用于那些场景？
+ * Application：存放程序源文件，上架前经过数字签名，上架后不可修改
+ * Documents：常用目录，iCloud备份目录，存放数据
+ * Library
+     * Caches：存放体积大又不需要备份的数据
+     * Preference：设置目录，iCloud会备份设置信息
+ * tmp：存放临时文件，不会被备份，而且这个文件下的数据有可能随时被清除的可能
+
+ */

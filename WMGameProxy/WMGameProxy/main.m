@@ -10,10 +10,10 @@
 #import "AppDelegate.h"
 #import "SySkillViewController.h"
 /// App启动原理
-// 1.执行 main 函数 - 由系统自动调用
-// 2.执行 UIApplicationMain：创建UIApplication对象，设置UIApplication代理
+// 1.执行main函数 - 由系统自动调用
+// 2.执行UIApplicationMain：创建UIApplication对象，设置UIApplication代理
 // 3.开启一个事件循环（主运行循环、保证App不退出）/死循环
-// 4.加载 info.plist 文件（判断 info.plist 文件中是否有 main 参数：是否加载 xib）
+// 4.加载info.plist文件（判断info.plist文件中是否有main参数：是否加载xib）
 // 5.应用程序启动完毕（通知 delegate）
 /*
  argc - 系统传递进来的参数个数/默认传入一个参数
