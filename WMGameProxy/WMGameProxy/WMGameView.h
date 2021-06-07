@@ -12,10 +12,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface WMGameView : UIView
 // 第一种方式
-// 可以通过 setter 设置数据
+// 可以通过setter设置数据
 @property (strong, nonatomic) UIImageView *icon;
 // 第二种方式
-// 通过 config 设置数据
+// 通过config设置数据
 @property (strong, nonatomic) UILabel *name;
 
 @end

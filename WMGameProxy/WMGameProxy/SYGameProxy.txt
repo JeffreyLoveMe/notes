@@ -1173,9 +1173,6 @@ int main(int argc, const char * argv[]) {
 你可以怎么做？/做过最得意的是什么项目?
 3.你通常用什么数据格式与服务端交互：json/xml|json、xml解析方式的底层是如何处理的？
 2.什么时候需要使用delegate/什么时候需要使用notification
-12.代理delegate/通知/block之间有什么区别？
-19.使用过哪些第三方库？jsonKit/AFNetworking/SnapKit/MJRefresh///要有针对性，涉及到每个方面；
-20.怎么实现UITableView的懒加载？
 21.iOS开发中常见的异常有哪些？
 22.什么时候使用栈/队列？什么时候使用链表/数组？
 34.性能优化：重点
@@ -1278,7 +1275,6 @@ UITableView调用reloadData()会发生什么问题？
 14. git rebase/git merge的区别？
 16. 数组指针/指针数组的区别？
 17. 三种动画？各种动画的区别联系？
-18. block的循环引用：渐变动画会出现循环引用吗？
 19. atomic一定是安全的吗？
 21. if(self=[super init]) { //...}为什么需要这样写？[super init]按照常理
 只是初始化父类的空间、为什么self可以调用子类的方法？
@@ -1313,9 +1309,6 @@ layer和UIView、UIWindow的区别是什么？
 2.使用索引查询一定可以提高查询性能呢？为什么？
 3.内联接和外联接的区别？
 
-1.解释一下block、使用block应该注意什么;
-2.block的用法？
-3.如何避免使用block引起循环引用问题？
 1.dispatch_get_current_queue会引起什么问题？死锁（原因？？？）
 1.CoreAnimation/CoreGraphics是否使用过？
 Xcode支持在一个工程里面新建多个项目
@@ -1619,8 +1612,7 @@ dispatch_semaphore_signal
 //@property (copy, nonatomic) NSString *name;
 
 1.WWDC是什么？你关注过哪些？
-7.数据保存怎么实现？
-8.block和gcd的并发执行
+7.数据保存怎么实现
 9.app的优化,你用什么工具去优化一个qpp,例如,例如一个页面,万一崩了,你用什么工具去查内存之类的状态
 10.你项目遇到的问题,怎么解决的
 11.你用过的认为好的app,为什么
@@ -1659,9 +1651,6 @@ ARC 通过什么方式帮助开发者管理内存?
 不手动指定 autoreleasepool 的前提下， 一个 autorealese 对象在什么时刻释放? (比 如在一个 vc 的 viewDidLoad 中创建)
 BAD_ACCESS 在什么情况下出现?
 苹果是如何实现 autoreleasepool 的?
-使用 block 时什么情况会发生引用循环，如何解决?
-在 block 内如何修改 block 外部变量?
-使用系统的某些 block api (如 UIView 的 block 版本写动画时) ，是否也考虑引用循 环问题?
 GCD 的队列( dispatch_queue_t)分哪两种类型?
 如何用 GCD 同步若干个异步调用? (如根据若干个 url 异步加载多张图片， 然后在都下载完成后合成一张整图)
 addObserver:forKeyPath:options:context: 实现哪个方法才能获得 KVO 回调?
@@ -1732,7 +1721,6 @@ Singleton 了，用的越多对水平就越表示怀疑。对设计模式自信�
   值转换成基本数据类型的值?
 5. IOS 中界面间传值的方式有哪些?
 6. OC中通知有哪几类?请简述苹果推送的流程?
-8. 什么是 block ? block 如何使用?
 程中使用非 ARC的类和开源框架?
 10.简要说明下 OC的延展和分类的作用和区别 11.OC中多线程的实现方式有哪些?如何实现在一个异步线程中使用一个定时器? 12. 请例举常用的网络请求开源框架、 JSON解析开源框架、 UI 开源框架。
 14. 请列举出你所知道的设计模式及各种设计模式的特点。
@@ -1820,7 +1808,6 @@ D．(100，80，60，90，120，130，110) 
 
 6.arc 中unsafe_unretained 是作用。一个@property (strong) NSString *string1 默认是什么操作。 
 8、多线程是什么，多线程同步是什么，异步？ 写一个NSOPENRATION队列，体现初始化和填入队列方法 
-9、block的作用，不用block可以用什么实现?
 10、在多线程中,下面代码有什么问题? 怎么改 
 interface a:NSobject { 
 NSmutableArray *array; 
@@ -2031,15 +2018,6 @@ Object-c中创建一个工程需要用到那两个框架？
         }
 }
 
-category 和 extension 的区别
-* 分类有名字，类扩展没有分类名字，是一种特殊的分类
-* 分类只能扩展方法（属性仅仅是声明，并没真正实现），类扩展可以扩展属性、成员变量和方法
-
-block和weak修饰符的区别？
-* __block不管是ARC还是MRC模式下都可以使用，可以修饰对象，也可以修饰基本数据类型
-* __weak只能在ARC模式下使用，只能修饰对象（NSString），不能修饰基本数据类型
-* block修饰的对象可以在block中被重新赋值，weak修饰的对象不可以
-
 KVO内部实现原理
 * KVO是基于runtime机制实现的
 * 当某个类的属性对象第一次被观察时，系统就会在运行期动态地创建该类的一个派生类，在这个派生类中重写基类中任何被观察属性的setter 方法。派生类在被重写的setter方法内实现真正的通知机制
@@ -2081,19 +2059,6 @@ apple用什么方式实现对一个对象的KVO？
 
 Size Classes 具体使用
 * 对屏幕进行分类
-UIView和CALayer是什么关系?
-* UIView显示在屏幕上归功于CALayer，通过调用drawRect方法来渲染自身的内容，调节CALayer属性可以调整UIView的外观，UIView继承自UIResponder，比起CALayer可以响应用户事件，Xcode6之后可以方便的通过视图调试功能查看图层之间的关系
-* UIView是iOS系统中界面元素的基础，所有的界面元素都继承自它。它内部是由Core Animation来实现的，它真正的绘图部分，是由一个叫CALayer(Core Animation Layer)的类来管理。UIView本身，更像是一个CALayer的管理器，访问它的跟绘图和坐标有关的属性，如frame，bounds等，实际上内部都是访问它所在CALayer的相关属性
-* UIView有个layer属性，可以返回它的主CALayer实例，UIView有一个layerClass方法，返回主layer所使用的类，UIView的子类，可以通过重载这个方法，来让UIView使用不同的CALayer来显示，如：
-- (class) layerClass {
-    // 使某个UIView的子类使用GL来进行绘制
-    return ([CAEAGLLayer class]);
-}
-
- UIView的CALayer类似UIView的子View树形结构，也可以向它的layer上添加子layer，来完成某些特殊的显示。例如下面的代码会在目标View上敷上一层黑色的透明薄膜。
-grayCover = [[CALayer alloc]init];
-grayCover.backgroudColor = [[UIColor blackColor]colorWithAlphaComponent:0.2].CGColor;
-[self.layer addSubLayer:grayCover];
 
 * 补充部分，这部分有深度了，大致了解一下吧，UIView的layer树形在系统内部被系统维护着三份copy
     * 逻辑树，就是代码里可以操纵的，例如更改layer的属性等等就在这一份
@@ -2119,29 +2084,21 @@ pushViewController和presentViewController有什么区别
     * self.view.layer.masksToBounds = YES;
 
 * 正确的解决方案：使用绘图技术 
-- (UIImage *)circleImage
-{
+- (UIImage *)circleImage{
     // NO代表透明
     UIGraphicsBeginImageContextWithOptions(self.size, NO, 0.0);
-
     // 获得上下文
     CGContextRef ctx = UIGraphicsGetCurrentContext();
-
     // 添加一个圆
     CGRect rect = CGRectMake(0, 0, self.size.width, self.size.height);
     CGContextAddEllipseInRect(ctx, rect);
-
     // 裁剪
     CGContextClip(ctx);
-
     // 将图片画上去
     [self drawInRect:rect];
-
     UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
-
     // 关闭上下文
     UIGraphicsEndImageContext();
-
     return image;
 }
 
@@ -2172,7 +2129,6 @@ UIGraphicsEndImageContext();
 设计个简单的图片内存缓存器
 * 类似上面SDWebImage实现原理即可
 * 一定要有移除策略：释放数据模型对象
-
 
 如何渲染UILabel的文字？
 * 通过NSAttributedString/NSMutableAttributedString（富文本）
@@ -2228,13 +2184,6 @@ OpenAL
 22. int  retVal=UIApplication(argc,argv,nil,nil):是什么意思
 
 对UIApplication对象进行了初始化，这个方法除了argc 和argv 参数外，另外这个函数还有2个两个字符串参数来识别UIApplication类和UIApplication代理类，在这里默认是2个nil,第一个参数为nil就默认把UIApplication类作为缺省值进行初始化，可以在这里不填nil而是使用自己定义的UIApplication子类。至于第二个参数nil就设置为nil就把模板生成的HelloWorldAppdelegate类作为默认值。
-
-23. 保存一个变量到本地，列举两个简单的方法
-    1，用NSUserDefaults存储小量数据
-    2，直接writeTofF ile
-    3，存数据库
-    4，归档
-    反正也没有什么钱（我怎么学会）
 
 29. XML有哪几种解析方式，他们各有什么优点
 答：有Sax和Dom两种解析方式，sax是逐行解析。dom是一次性全部加载xml文件，然后解析
@@ -2407,15 +2356,6 @@ OBJ 中存在两种特殊的格式，它们用于非十进制方式保存整数�
 1 rgbColor = 0xFFEF0D;
 16 为基数 ) 计数法里表示。
 
-34.UIscrollVew 用到了什么设计模式?还能再 组合模式 composition ，所有的 container view
-NSWindow对象作为结束，虽然其它对象也可以作为下一个响应者被加入
-foundation 库中找到类似的吗? 都用了这个模式
-观察者模式 observer ，所有的 UIResponder 都用了这个模式。
-模板 (Template) 模式，所有 datasource 和 delegate 接口都是模板模式的典型应用
-33. .timer 的间隔周期准吗?为什么?怎样实现一个精准的 timer?
-NSTimer 可以精确到 50-100 毫秒 .
-NSTimer 不是绝对准确的 , 而且中间耗时或阻塞错过下一个点 , 那么下一个点就 pass 过去了
-
 代理的作用? 答案:代理的目的是改变或传递控制链。允许一个类在某些特定时刻通知到其他类，而不需要获取到那些类的指针。可以减少框架复杂度。 另外一点，代理可以理解为 java 中的回调监听机制的一种类似。
 7.oc中可修改和不可以修改类型。
 答案:可修改不可修改的集合类。这个我个人简单理解就是可动态添加修改和不可动态添加修改一样。
@@ -2506,8 +2446,7 @@ category 可以在不获悉，不改变原来代码的情况下往里面添加�
 继承可以增加，修改或者删除方法，并且可以增加属性。
 category 和 extensions 的不同在于后者可以添加属性。另外后者添加的方法是必须要实 现的。
 extensions 可以认为是一个私有的 Category 。 29.CAlayer 介绍
-一个 UIView 包含 CALayer 树， CALayer 是一个数据模型。包含了一些用来显示的对象，
-在 UIView 的子类中都可以找到层这个组件， 层是位于固定的画布上的一个子片， 可以被覆 盖。层是彼此堆叠在一起的最终产生一个界面。除此之层可以包含多个层，通过层可以操 作位于此层上面的其他内容，例如旋转，动画，翻页等。
+
 30.ios 怎么实现多继承
 IOS 通过实现 protocol 委托代理，实现多个接口来实现多继承。
 
@@ -2550,11 +2489,6 @@ NSAutoreleasePool * pool1 = [[NSAutoreleasePool alloc] init]; NSString *string =
 (1)管理方式 :对于栈来讲 ,是由编译器自动管理 ,无 需我们手工控制 ;对于堆来说 ,释放工作由程序员控 制,容易产生 memory leak。 (2)申请大小 :能从栈获 得的空间较小 ,堆是向高地址扩展的数据结构 ,是不 连续的内存区域。堆的大小受限于计算机系统中 有效的虚拟内存。由此可见 ,堆获得的空间比较灵 活,也比较大。 (3)碎片问题 :对于堆来讲 ,频繁的
 new/delete势必会造成内存空间的不连续 ,从而造成 大量的碎片 ,使程序效率降低。 对于栈来讲 ,则不会 存在这个问题 ,因为栈是先进后出的队列 ,他们是如
 此的一一对应 ,以至于永远都不可能有一个内存块 从栈中间弹出 (4)分配方式 :堆都是动态分配的 ,没 有静态分配的堆。 栈有2种分配方式 :静态分配和动 态分配。 静态分配是编译器完成 的,比如局部变量 的分配。动态分配由 alloc函数进行分配 ,但是栈 的动态分配和堆是不同的 ,他的动态分配是由编译 器 进行释放 ,无需我们手工实现。 (5)分配效率 :栈 是机器系统提供的数据结构 ,计算机会在底层对栈提供支持 :分配专门的寄存器存放栈的地址 ,压栈出 栈 都有专门的指令执行 ,这就决定了栈的效率比 较高。堆则是 C/C++函数库提供的 ,它的机制是很复 杂的。
-
-7、简述你对 UIView 、UIWindow 和CALayer的理解 UIView: 属于 UIkit.framework 框架 ,负责渲染矩形区 域的内容 ,为矩形区域添加动画 ,响应区域的触摸事
-件,布局和管 理一个或多个子视图 UIWindow: 属 于UIKit.framework框架,是一种特殊的 UIView,通 常在一个程序中只会有一个 UIWindow, 但可以手 动创建多个 UIWindow, 同时加到程序里面。 UIWindow 在程序中主要起到三个作用 :
-1、作为容器 ,包含 app所要显示的所有视图 2、传 递触摸消息到程序中 view和其他对象 3、与 UIViewController 协同工作 ,方便完成设备方向旋转 的支持
-CAlayer:属于 QuartzCore.framework,是用来绘制内 容的 ,对内容进行动画处理依赖与 UIView 来进行显 示,不能处 理用户事件。 UIView和CALayer是相互 依赖的 ,UIView 依赖 CALayer提供内容 ,CALayer依 赖 UIView 一共容器显示 绘制内容。 延伸 : UIViewController: 管理视图的几成熟 ,每个视图控 制器都有一个自带的视图 ,并且负责这个视图相关 的一切事务。方便 管理视图中的子视图 ,负责 model与view的通信 ;检测设备旋转以及内存警告 ; 是所有视图控制类的积累 ,定义了控制器 的基本 功能。
 
 27、什么是 Protocol?什么是代理 ?写一个委托的 interface?委托的 property声明用什么属性 ?为什么 ?
 Protocol:一个方法签名的列表 ,在其中可以定义若 干个方法。根据配臵 ,遵守协议的类 ,会实现这个协 议中的若干个方 法。
@@ -2634,16 +2568,6 @@ KVC(Key-Value-Coding) KVO (Key-Value-Observing ) 理解 KVC 与 KVO (键 -值-�
 )的方式来创建对象，您就拥
 NSObject 的便利方法 new 时也同样适
 
-2.CALayer 和 View 的关系
-一个 UIView 包含 CALayer 树， CALayer
-为啥离开团队?
-1. 针对第一个问题，可以看看下面的教程
-是一个数据模型，包含了一些用于显示的对象，但本
-身不用于显示。
-CALayer 相当于 photoshop 的一个层，很多动画可以通过设置 CALayer 来实现。据说有人用
-CALayer 显示图片来播放视频。
-Core animation 应该是用 CAlayer 来实现各种动画。
-
 用继承好还是分类好?为什么?
 7. 什么是安全释放?
 10. 异常 exception 怎么捕获?不同的 CPU 结构上开销怎样? C 中又什么类似的方法?
@@ -2698,12 +2622,7 @@ someKey 这个方法， 如果没找到， 会继续查找对象是否带有 som
 3、底层实现:自动释放池以栈的形式实现 :当你创建一个新的自动释放池时，它 将被添加到栈顶。当一个对象收到 autorelease 消息时 ,该对象会被添加到这个处 于栈顶的自动释放池中 ,当自动释放池被回收时 ,它们会从栈中被删除 , 并且会给 池子里面所有的对象都会做一次 release 操作。
 二十六、简要说明工厂方法?
 1、概念:在基类中定义创建对象的一个接口，让子类决定实例化哪个类。工厂 方法让一个类的实例化延迟到子类中进行 ，工厂方法要解决的问题是对象的创 建时机，它提供了一种扩展的策略，很好地符合了开放封闭原则。 2、何时使用:一个类不知道它所必须创建的对象的类时，一个类希望有它的子 类决定所创建的对象时
-三十、图层 CALayer 和 UIView 的区别?
-1、UIView 是 iOS系统中界面元素的基础，所有的界面元素都是继承自它。它本
-身完全是由 CoreAnimation 来实现的。真正的绘图部分，是由 CALayer类来管理。 UIView 本身更像是一个 CALayer 的管理器。
-2、UIView 继承结构为:UIResponder---------NSObject ，直接父类为 UIResponder， 直接父类是用来响应用户事件的，所以 UIView 可以响应用户事件
-CALayer 的继承结构为: NSObject，直接父类没有 UIResponder ，所以 CALayer 不能响应任何用户事件
-3、UIView 属于 UIKit 框架,CALayer属于 QuartzCore 框架 三十一、简要说明 GCD?
+三十一、简要说明 GCD?
 1、全称: Grand Central Dispatch ，纯 C 语言，提供了非常强大的函数 2、优势: a、是苹果公司为多核的并发运算提出的解决方法
 毁线程 ) 线程管理的代码
 b、会自动利用更多得 CPU内核(双核、四核 ) c、自动管理线程的生命周期 ( 创建线程、调度任务、销
@@ -2801,7 +2720,9 @@ TCP传输数据大小不受限， 所以对系统资源的要求要高于 UDP
 2、SQLite 的异步操作，使用串行队列顺序调度任务，保证数据的完整性 3、图像压缩，异步压缩，完成之后回调
 六十四、 load 和 initialize 的异同? 1、相同点:方法只会被调用一次 ( 开发者不主动调用的前提下 )
 2、不同点: A: load 是只要类所在文件被引用 (import) 的时候就会被调用 initialize 是在当前类第一次被执行到的时候会被调用
-B:若自身未定义 initialize 会沿用父类的方法， load 不会沿用 六十五、block 属性为什么用 copy?使用时应注意什么?使用场景?原理是什么?
+B:若自身未定义 initialize 会沿用父类的方法， load 不会沿用
+
+六十五、block 属性为什么用 copy?使用时应注意什么?使用场景?原理是什么?
 有什么优点?
 1、A:使用 copy 可以将 block 从栈区复制到堆区，因为栈区由系统管理，存在 栈区随时可能被回收，或是出作用域即被回收!
 B:block 用于保存代码，调用时才执行，但有时调用 block 时， block 中用到的其他对象可能已经被释放，使用 copy 可以保证调用 block 是外界对象
@@ -2873,42 +2794,6 @@ iOS的远程消息推送 (Push)是怎么实现的?
 4、当 Push 服务端程序满足发送消息条件时， [Provider] 将 deviceToken 和消息 体等打包向 [APNS Service]发送消息;
 5、[APNS Service]会利用 deviceToken 找到对应的 [Client App] 并将消息体传达
 
-// 数据持久化
-1、 NSKeyedArchiver 采用归档的形式存储 ( 常用于 NSString, NSDictionary,
-NSArray, NSData, NSNumber等类型 ) ，需遵守 NSCoding 协议 归档对象时:会调用 encodeWithCoder，一般在这个方法里面指定如何归档对象 中的每个实例变量 .可以使用 :encodeObject:forkey: 方法归档实例变量 解档对象时:会调用 initWithCoder ，一般在这个方法里面指定如何解码文件中 的数据为对象的实例变量 ,可以使用 decodeObject:forkey 方法解码实例变量
-2、NSUserDefaults 偏好设置存储，常见保存用户名和密码，一般需要调用 synchronize 方法强制写入
-存入:
-NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults]; [defaults setObject:@"JN521" forKey:@"username"];
-[defaults setFloat:18.0f forKey:@"text_size"]; [defaults setBool:YES forKey:@"auto_login"];
-读取:
-NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults]; NSString *username = [defaults stringForKey:@"username"];
-float textSize = [defaults floatForKey:@"text_size"];
-BOOL autoLogin = [defaults boolForKey:@"auto_login"];
-3、write 写入的形式永久保存到磁盘
-NSArray *docPath =
-[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,
-NSUserDomainMask, YES) objectAtIndex:0]; NSString
-stringByAppendingPathComponent:fileName] [data writeToFile:FileName atomically:YES];
-// 获取文件即将保存的路径 *FileName=[documentDirectory
-// 生成该路径下得文件 // 写入
-4、属性列表 (plist 存储 )属性列表是一种 XML 格式的文件 ,拓展名为 plist 如果 对象是 NSString, NSDictionary, NSArray, NSData, NSNumber 等类型,就可以使 用:writeToFile:atomiclly: 方法直接将对象写到属性列表文件中 .
-存入:
-// 将数据封装成字典
-NSMutableDictionary *dict = [NSMutableDictionary dictionary];
-[dict setObject:@"15013141314" forKey:@"phone"];
-[dict setObject:@"27" forKey:@"age"];
-// 将字典持久化到 Documents/stu.plist 文件中
-[dict writeToFile:path atomically:YES];
-读取:
-// 读取 Documents/stu.plist 的内容，实例化 NSDictionary NSDictionary *dict = [NSDictionary dictionaryWithContentsOfFile:path]; NSLog(@"phone:%@", [dict objectForKey:@"phone"]); NSLog(@"age:%@", [dict objectForKey:@"age"]);
-5、数据库存储 SQLite
-概念: SQLite 是一个进程内的库，本质上就是一个文件，是一个 SQL 数据库引擎
-特点:自给自足不需要外部依赖、无需单独服务器、零配置、轻量级、占用 资源少、处理速度快
-
-使用步骤:添加动态库 (libsqlite3.dylib) 、导头文件 sqlite3 、建立数据库、创 建数据表、利用 SQL 命令增删改查
-  优点:将网络数据存到本地不用每次都加载，减少网络流量开销，可对本地
-数据进行系统性查询
-SQLite 命令: INSERT增/UPDATE 改/DELETE 删/SELECT 查
 一零七、 block 在 ARC中和 MRC中的用法有什么区别 ,需要注意什么? 1、MRC中 block 默认在栈区， ARC中的 block 会被复制到堆区
 2、对于没有引用外部变量的 Block ，无论在 ARC 还是 MRC 下，类型都是 __NSGlobalBlock_，_这种类型的block可以理解成一种全局的block，不需要考 虑作用域问题。同时，对他进行 Copy 或者 Retain 操作也是无效的
 3、需要注意:循环引用
@@ -2920,14 +2805,10 @@ __bridge_transfer 后面跟 OC 对象，也会转让所有权 ,将 CF 对象转�
 一零九、简述客户端的缓存机制? 1、缓存可分为:内存数据缓存、数据库缓存、文件缓存
 2、步骤: A:每次想获取数据时，先检查内存是否有缓存 B:再检查本地是否有缓存 ( 数据库、沙盒 )
 C:最终发送网络请求去网络加载 D:将服务器返回的网络数据进行缓存以便再次使用
-一一零、怎么解决缓存池满的问题 (cell) ?
-1、一般情况下， ios 中不存在缓存池满的情况
-2、因为通常我们 ios 中开发，对象都是在需要的时候才会创建，有种常用的说话叫做懒加载，还有在 UITableView 中一般只会创建刚开始出现在屏幕中的 cell， 之后都是从缓存池里取， 不会在创建新对象。 缓存池里最多也就一两个对象， 缓
-存池满的这种情况一般在开发 java 中比较常见， java 中一般把最近最少使用的 对象先释放。
-一一一、 iOS7之前，后台执行内容有几种形式，都是什么?
+一、 iOS7之前，后台执行内容有几种形式，都是什么?
 1、一般的应用在进入后台的时候可以获取一定的时间来运行相关任务，也就是 说可以在后台运行一小段时间 (10s 左右 )
 2、后台播放音乐、后台 GPS跟踪、后台 voip 支持
-一一二、简单说明 App 的启动过程?
+二、简单说明 App 的启动过程?
 1、第一种情况:有 storyboard
 A:程序入口 main 函数
 B: UIApplicationMain ;创建 UIApplication 对象，创建 UIApplication 的
@@ -2939,9 +2820,9 @@ B: UIApplicationMain ;创建 UIApplication 对象，创建 UIApplication 的
 delegate 对象
 C:delegate 对象开始监听系统事件，程序启动完毕时调用代理的
 application:didFinishLaunchingWithOptions: 方法，在该方法中创建窗口，设置 根控制器，显示窗口
-一一三、有些图片加载的比较慢如何处理?
+三、有些图片加载的比较慢如何处理?
 1、图片下载要放下异步线程执行 2、图片下载过程中使用占位图片 3、如果图片较大，可以考虑使用断点下载
-一一四、 你实现过一个框架或者库以供别人使用么?如果有， 或者库时候的经验;如果没有，请设想和设计框架的 public 的 API，并指出大概 需要如何做、需要注意一些什么方面，来使别人容易地使用你的框架?
+四、 你实现过一个框架或者库以供别人使用么?如果有， 或者库时候的经验;如果没有，请设想和设计框架的 public 的 API，并指出大概 需要如何做、需要注意一些什么方面，来使别人容易地使用你的框架?
 1、提供给外界的接口功能是否充足够用 2、别人使用我的框架时能够根据类名方法名猜出大概能实现的功能
 3、别人调用框架的接口时提供的参数是否够用，调用起来是否简单
 4、当使用我的框架时要不要依赖其他的框架，请谈一谈构建框架
@@ -2953,12 +2834,6 @@ application:didFinishLaunchingWithOptions: 方法，在该方法中创建窗口�
 答 :自身不做实际的事 ,要求其它类做。 代理也可用来传值。 代理的目的是改变或传递 控制链。 允许一个类在某些特定时刻通知到其他类， 而不需要获取到那些类的指针。 可以减 少框架复杂度。另外一点，代理可以理解为 java 中的回调监听机制的一种类似。
 11.有关 copy 和 retain 的区别
 答: retain 是指针拷贝 ,copy 是内容拷贝
-
-17.谈谈 KVO and KVC? 答案:
-后者可以添加属性。
-Category 。
-kvc: 键 - 值编码是一种间接访问对象的属性使用字符串来标识属性，而不是通过调用 存取方法，直接或通过实例变量访问的机制。很多情况下可以简化程序代码。 apple 文档其实给了一个很好的例子。
-kvo: 键值观察机制，他提供了观察某一属性变化的方法，极大的简化了代码。具体用看 到嗯哼用到过的一个地方是对于按钮点击变化状态的的监控。
 
 2.SEL 和一个函数指针调用同一个方法的结果是不是相同
 答:得到了 SEL 变量之后 ,可以通过下面的调用来给一个对象发送消息 :
@@ -3023,8 +2898,6 @@ gzip/zip 压缩:当从服务端下载相关附件时，可以通过 gzip/zip 压
 
 16 什么时候用 delegate ，什么时候用 Notification ?答: delegate 针对 one-to-one 关系，并且 reciever 可以返回值 给sender ，notification 可 以针对 one-to-one/many/none,reciever 无法返回值给 sender. 所以，
 delegate 用于 sender 希望接受到 reciever 的某个功能反馈值， notification 用于通知多个 object 某个事件。
-
-17什么是 KVC 和KVO ? 答: KVC(Key-Value-Coding) 内部的实现: 一个对象在调用 setValue 的时候，( 1)首先根据方法名找到运行方 法的时候所需要的环 境参数。( 2)他会从自己 isa指针结合环境参 数，找到具体的方法实现的接口。( 3)再直接查找得来的具体的方 法实现。 KVO (Key-Value- Observing ):当观察者为一个对象的属 性进行了注册，被观察对象的 isa 指针被修改的时候， isa 指针就会指 向一个中间类，而不是真实的类。所以 isa 指针其实不需要指向实例 对象真实的类。所以我们的程序最好不要依赖于 isa 指针。在调用类 的方法的时候，最好要明确对象实例的类名
 
 47 HTTP 协议详解
 HTTP 是一个属于应用层的面向对象的协议，由于其简捷、快速的方
@@ -3095,8 +2968,7 @@ nil 和 C 语言的 NULL 相同，在 objc/objc.h 中定义。 nil 表示一个 
 Method (我们常说的方法)表示一种类型，这种类型与 selector 和实现 (implementation) 相关
 IMP 定义为 id (*IMP ) (id, SEL , , )。这样说来， IMP 是一个指向函数的指针，这个被指向 的函数包括 id( “ self ”指针 ) ，调用的 SEL (方法名) ，再加上一些其他参数 .说白了 IMP 就是实现方法。
 
-41 层和 UIView 的区别是什么?
-答:两者最大的区别是 ,图层不会直接渲染到屏幕上， UIView 是 iOS 系统中界面元素的基础， 所有的界面元素都是继承自它。它本身完全是由 CoreAnimation 来实现的。它真正的绘图 部分，是由一个 CALayer 类来管理。UIView 本身更像是一个 CALayer 的管理器。一个 UIView 上可以有 n 个 CALayer ，每个 layer 显示一种东西，增强 UIView 的展现能力。
+
 
 47HTTP 协议详解
 HTTP 是一个属于应用层的面向对象的协议，由于其简捷、快速的方式，适用于分布式超媒 体信息系统。目前在 WWW 中使用的是 HTTP/1.0 的第六版， HTTP/1.1 的规范化工作正在 进行之中。
@@ -3919,15 +3791,6 @@ Prefix.pch
 -(void)performSelectorOnMainThread:(SEL)aSelector withObject:(id)arg waitUntilDone:(BOOL)wait
 dispatch_async(dispatch_get_main_queue(), <#^(void)block#>) 6 数据存储的方式
 
-1 plist
-2 归档
-3 SOLite
-4CoreData
-7jason 解析遇到大量数据解析过程时，在内存上的优化办法
-利用 json 的反序列话的几个代理方法， 实现大数据的分割， 解析， 拼接，保存，从而降低内存的消耗。
-优化后台接口，使后台返回的数据大小更合理
-在APP 中，一般不会出现大数据，因此注意接口的优化，尽量不 要使用数据分割的方式，因为可能引起数据解析错误
-
 29. 请解释以下两种设计模式:工厂模式，单例模式
 31.在.m文件Class Extension中声明的私有方法，其他类能否调用若强行调用会发生什么?
 32.在调?用?支付宝接 ?口?支付p时ar，tner，seller，private分别是什么意思 ? 20 33.谈谈如何在 MVC模式中减轻 ViewController 的重量(减少代码) 20
@@ -4138,9 +4001,7 @@ UDP 提供的是非面向连接的、不可 简单的说， TCP 注重数据安�
 [person release];retain count 1
 [person release];retain count = 0
 
-9、为什什么代理理要⽤用weak?代理理的delegate和dataSource有什什么区别?block和代理理 的区别?
-10、id和NSObject*的区别
-14、UIView和 CALayer是什什么关系?
+9、为什什么代理理要⽤用weak?代理理的delegate和dataSource有什什么区别?block和代理的区别?
 17、KVO基本原理理?
 18、Swift 下的如何使⽤用 KVC?
 19、:Swift有哪些模式匹配?
@@ -4157,19 +4018,6 @@ d. 从引⽤用计数表中删除废弃对象的地址为键值的记录
 在swift官⽅方教程中有这样⼀一句句话:
 “Structures and enumerations are value types. By default, the properties of a value type cannot be modified from within its instance methods.”
 ⼤大致意思就是说，虽然结构体和枚举可以定义⾃自⼰己的⽅方法，但是默认情况下，实例例⽅方 法中是不不可以修改值类型的属性。
-
-4、UIView和 CALayer是什什么关系?
-UIView 显示在屏幕上归功于 CALayer，通过调⽤用 drawRect ⽅方法来渲染⾃自身的内容， 调节 CALayer 属性可以调整 UIView 的外观，UIView 继承⾃自 UIResponder，⽐比起 CALayer 可以响应⽤用户事件，Xcode6 之后可以⽅方便便的通过视图调试功能查看图层之 间的关系。
-UIView 是 iOS 系统中界⾯面元素的基础，所有的界⾯面元素都继承⾃自它。它内部是由 Core Animation 来实现的，它真正的绘图部分，是由⼀一个叫 CALayer(Core Animation Layer)的类来管理理。UIView 本身，更更像是⼀一个 CALayer 的管理理器器，访问它的跟绘图 和坐标有关的属性，如 frame，bounds 等，实际上内部都是访问它所在 CALayer 的 相关属性。
-UIView 有个 layer 属性，可以返回它的主 CALayer 实例例，UIView 有⼀一个layerClass
-var a a.operatorTion()方法，返回主 layer所使⽤用的类，UIView 的⼦子类，可以通过重载这个⽅方法，来让 UIView 使⽤用不不同的 CALayer 来显示，如:
-- (class) layerClass {
-// 使某个 UIView的⼦子类使⽤用 GL来进⾏行行绘制
-return ([CAEAGLLayer class]); }
-UIView 的 CALayer 类似 UIView 的⼦子 View 树形结构，也可以向它的 layer 上添加⼦子 layer，来完成某些特殊的显示。例例如下⾯面的代码会在⽬目标 View 上敷上⼀一层⿊黑⾊色的透 明薄膜。
-grayCover = [[CALayer alloc]init]; grayCover.backgroudColor = [[UIColor blackColor]colorWithAlphaComponent:0.2].CGColor; [self.layer addSubLayer:grayCover];
-补充部分:这部分有深度了了，⼤大致了了解⼀一下吧，UIView 的 layer 树形在系统内部被系 统维护着三份 copy
-1.逻辑树，就是代码⾥里里可以操纵的，例例如更更改 layer 的属性等等就在这⼀一份 2.动画树，这是⼀一个中间层，系统正是在这⼀一层上更更改属性，进⾏行行各种渲染操作。 3.显示树，这棵树的内容是当前正被显示在屏幕上的内容。这三棵树的逻辑结构都是 ⼀一样的，区别只有各⾃自的属性
 
 8、、Category(类别)、 Extension(扩展)和继承的区别
 区别:
@@ -4207,15 +4055,6 @@ object:nil queue:nil
 usingBlock:^(NSNotification *note) { __typeof__(self) strongSelf = weakSelf;
 [strongSelf dismissModalViewControllerAnimated:YES]; }];
 self --> _observer --> block --> self 显然这也是⼀一个循环引用。
-
-14、UIView和 CALayer是什什么关系?
-UIView 显示在屏幕上归功于 CALayer，通过调⽤用 drawRect ⽅方法来渲染⾃自身的内 容，调节 CALayer 属性可以调整 UIView 的外观，UIView 继承⾃自 UIResponder，⽐比 起CALayer 可以响应⽤用户事件，Xcode6 之后可以⽅方便便的通过视图调试功能查看图层 之间的关系。UIView 是 iOS 系统中界⾯面元素的基础，所有的界⾯面元素都继承⾃自它。 它内部是由Core Animation 来实现的，它真正的绘图部分，是由⼀一个叫 CALayer(Core Animation Layer)的类来管理理。UIView 本身，更更像是⼀一个 CALayer 的管理理器器，访问它的跟绘图和坐标有关的属性，如 frame，bounds 等，实际上内部 都是访问它所在 CALayer 的相关属性。UIView 有个 layer 属性，可以返回它的主 CALayer 实例例，UIView 有⼀一个layerClass⽅方法，返回主 layer所使⽤用的类，UIView 的 ⼦子类，可以通过重载这个⽅方法，来让 UIView 使⽤用不不同的 CALayer 来显示，如:
-- (class) layerClass {
-// 使某个 UIView的⼦子类使⽤用 GL来进⾏行行绘制 return ([CAEAGLLayer class]);
-}
-UIView 的 CALayer 类似 UIView 的⼦子 View 树形结构，也可以向它的 layer 上添加 ⼦子layer，来完成某些特殊的显示。例例如下⾯面的代码会在⽬目标 View 上敷上⼀一层⿊黑⾊色的 透明薄膜。
-grayCover = [[CALayer alloc]init]; grayCover.backgroudColor = [[UIColor blackColor]colorWithAlphaComponent:0.2].CGColor; [self.layer addSubLayer:grayCover];
-补充部分:这部分有深度了了，⼤大致了了解⼀一下吧，UIView 的 layer 树形在系统内部被系 统维护着三份 copy1.逻辑树，就是代码⾥里里可以操纵的，例例如更更改 layer 的属性等等就 在这⼀一份2.动画树，这是⼀一个中间层，系统正是在这⼀一层上更更改属性，进⾏行行各种渲染 操作。3.显示树，这棵树的内容是当前正被显示在屏幕上的内容。这三棵树的逻辑结 构都是⼀一样的，区别只有各⾃自的属性
 
 16、main()之前的过程有哪些?
 1)dyld 开始将程序⼆二进制⽂文件初始化
@@ -4617,11 +4456,6 @@ tableview 实现联动滚动。
 2. 其实最好的做法在 scrollview 上使用 3 个复用队列 ,如果一种一个 cell 超过屏幕 ,不能 release, 而是把它 回收到复用队列中 , 如果要创建一个 cell, 首先从复用队列中取一个 , 然后使用。
 8. 做过的项目是否涉及网络访问功能，使用什么对象完成网络功能? 答案: ASIHTTPRequest 与 NSURLConnection
 
-11.coredata 有哪几种持久化存储机制?
-答案: coredatat 提供以下几种存储机制: XML (iOS 系统不支持) ,自动存储 ,SQLite, 内存存储。
-补充说明:这个问题问的是， coredate 框架的存储机制，平时使用 coredata 时，更多关注的是 managed 的对象，这里是 coerdata 框架的存储实现细节。 BTW: 其他常用的持久化存储方法:存入到文
-件、 存入到 NSUserDefaults (系统 plist 文件中)。
-16.如果我们不创建内存池，是否有内存池提供给我们?
 答案 :界面线程维护着自己的内存池，用户自己创建的数据线程，则需要创建该线程的内存池
 17.什么时候需要在程序中创建内存池?
 答案:用户自己创建的数据线程，则需要创建该线程的内存池 18.When retain count increase? 什么时候内存计数会增加?
@@ -4811,8 +4645,6 @@ Foundation 下大部分类均有简便构造方法， 我们可以通过简便�
 答案: NSManagedObject 是 NSObject 的子类 ，也是 coredata 的重要组成部分， 它 是一个通用的类 , 实现了 core data 模型层所需的基本功能，用户可通过子类化 NSManagedObject，建立自己的数据模型。
 47. 什么是 NSManagedobjectContext?
 答案: NSManagedobjectContext 对象负责应用和数据库之间的交互。
-49. 和 coredata 一起有哪几种持久化存储机制 ?
-答案:存入到文件、 存入到 NSUserDefaults( 系统 plist 文件中 ) 、存入到 Sqlite 文件数据库
 
 50. 谈谈对 Block 的理解 ?并写出一个使用 Block 执行 UIVew动画 ?
 答案: Block 是可以获取其他函数局部变量的匿名函数，其不但方便开发，并且可 以大幅提高应用的执行效率 ( 多核心 CPU可直接处理 Block 指令 )
@@ -5037,24 +4869,7 @@ TCP 提供的是面向连接的、可靠的数据流传输，而 UDP 提供的�
 流媒体数据，完成快速接受之目的。 93. fmdb 框架
 答:数据库框架，对 sqllite 的数据操作进行了封装，使用着可把精力都放在 sql语句上面。 94. 320 框架
 答: ui 框架，导入 320 工程作为框架包如同添加一个普通框架一样。 cover(open) flower 框架 (2d 仿射技术 )，内部核心类是 CATransform3D.
-107. UIView 与 CLayer 有什么区别? 答:
-1).UIView 是 iOS 系统中界面元素的基础，所有的界面元素都是继承自它。它本身完全是
-由 CoreAnimation 来实现的。它真正的绘图部分，是由一个 CALayer 类来管理。 UIView
-本身更像是一个 CALayer 的管理器，访问它的跟绘图和跟坐标有关的属性。 2).UIView 有个重要属性 layer ，可以返回它的主 CALayer 实例。
-3).UIView 的 CALayer 类似 UIView 的子 View 树形结构， 也可以向它的 layer 上添加子 layer ，来完成某些特殊的表示。即 CALayer 层是可以嵌套的。
-4).UIView 的 layer 树形在系统内部，被维护着三份 copy 。分别是逻辑树，这里是代码可 以操纵的;动画树，是一个中间层，系统就在这一层上更改属性，进行各种渲染操作;显示
-树，其内容就是当前正被显示在屏幕上得内容。
-5).动画的运作:对 UIView 的 subLayer (非主 Layer )属性进行更改，系统将自动进行 动画生成，动画持续时间的缺省值似乎是 0.5 秒。
- 6).坐标系统: CALayer 的坐标系统比 UIView 多了一个 anchorPoint 属性，使用 CGPoint
-结构表示， 值域是 0~1 ，是个比例值。 这个点是各种图形变换的坐标原点， 同时会更改 的 position 的位置，它的缺省值是 {0.5,0.5} ，即在 layer 的中央。
-layer
-7). 渲染:当更新层，改变不能立即显示在屏幕上。当所有的层都准备好时，可以调用 setNeedsDisplay 方法来重绘显示。
-8). 变换:要在一个层中添加一个 3D 或仿射变换，可以分别设置层的 transform affineTransform 属性。
-或
-9).变形: Quartz Core 的渲染能力，使二维图像可以被自由操纵，就好像是三维的。 以在一个三维坐标系中以任意角度被旋转， 缩放和倾斜。 CATransform3D 的一套方法提供
-了一些魔术般的变换效果。
 108. Quatrz 2D 的绘图功能的三个核心概念是什么并简述其作用。 答:上下文:主要用于描述图形写入哪里; 路径:是在图层上绘制的内容; 状态:用于保存配置变换的值、填充和轮廓， alpha 值等。
- 
 ios类是否可以多继承？如果没有，那可以用其他方法实现吗？简述实现过程。
 没有用catogory 和 extension 可以实现
 堆和栈的区别？
@@ -5073,8 +4888,6 @@ UIImage初始化一张图片有几种方法？简述各自的优缺点。
 这段代码有什么问题,如何修改
 截取字符串”20 | http://www.baidu.com”中，”|”字符前面和后面的数据，分别输出它们。
 用obj-c写一个冒泡排序
-简述你对UIView、UIWindow和CALayer的理解
-写一个完整的代理，包括声明，实现
 分析json、xml的区别？json、xml解析方式的底层是如何处理的？
 ViewController 的 didReceiveMemoryWarning 是在什么时候被调用的？默认的操作是什么?
 面向对象的三大特征，并作简单的介绍
@@ -5355,20 +5168,6 @@ image.size.height * image.size.width * image.scale * image.scale
 十五、 ios允许最近本地通知数量最大为多少?
 通知完一定要取消 , iOS 最多允许最近本地通知数量是 64 个 ,超过限制的本地通知将被忽略。
 结语 :与 SDWebImage 相关的面试题差不多就这么多了 有遗漏的或者有错误的地方，欢迎小伙伴们在北风社区进行补充和斧正。
-CALayer 和 UIView 的区别联系
-(1) UIView 是 UIKIt 的只能在 iOS 使用 , CALayer 是 QuartzCore 的 iOS 和 mac os 通用 (2) CALayer 比 UIView 更加轻量级 ,但是可以实现同样的效果
-(3)UIView 的 CALayer 类似 UIView 的子 View 树形结构
-(4)UIView 比 CALayer 多了一个事件处理功能 ,也就是说 UIView 能处理用户触摸
-( 5) UIView 有个重要的属性 layer, 可以返回它的主 CALayer 实例 .CALayer *layer = myView.layer
-(6)坐标系统 : CALayer 的坐标系统比 UIView 多了一个 anchorPoint 属性
-(7) UIView 是 iOS 系统中界面的基本元素 ,所有的界面元素都是继承自它 .它本身完全是由
-CoreAnimation 来实现的 .它真正的绘图部分 ,是由一个 CALayer 类来管理的 .UIView 本身更像 是一个 CALayer 的管理权 ,访问它的跟绘图和跟坐标有关的属性 ,如 frame,bounds 等 ,实际上内
-部都是在访问它所包含的 CALayer 的相关属性 .
-layer 可以设置圆角显示 cornerRadius 也可以设置阴影 shadowColor 但是如果 layer 中某个
-layer 设置了圆角 中所有 layer 的阴影效果将都不显示 .因此要死设置有圆角还要阴影 ,可以 做两个 UIView 重叠 ,一个 layer 显示圆角一个 layer 显示阴影
-( 8)渲染:当更新层 改变不能立即显示在屏幕上 .当所有的层都准备好时 , 可以调用 setNeedsDisplay 方法来重绘显示 .
-( 9 )变换:要在一个层中添加一个 3D 或仿射变换 , 可以分别设置层的 transform 或者 affineTransform 属性
-( 10 )变形: Quartz Core 的渲染能力 使二维图像可以被自由的操纵 ,就像是三维的 .图像可 以在一个三维坐标系中以任意的角度被旋转 缩放 和倾斜 .CATransform3D 的一套方法提供 了一些魔术般的效果。
 四. 简要说明什么时候使用继承 ,什么时候使用类别
 在 OC 中 ,一个类继承另一个类 ,就是继承了父类所有的属性和方法 ,并且可以扩充自己的属性 而类别是在不改变原有类的基础上进行方法扩充 ;
 因此 ,根据开发需求 ,如果这个类需要扩充属性 ,或者需要重写系统的类的某些方法 ,用继承 ;如 果只是对一个类扩充接口和模块 , 使用类别更加方便 .
@@ -5473,9 +5272,6 @@ nil 和 C 语言的 NULL 相同，在 objc/objc.h 中定义。 nil 表示一个 
 Method (我们常说的方法)表示一种类型，这种类型与 selector 和实现 (implementation) 相关
 
 IMP 定义为 id (* IMP ) ( id, SEL , ⋯)。这样说来， IMP 是一个指向函数的指针，这个被指向 的函数包括 id( ―self ‖指针 ) ，调用的 SEL (方法名)，再加上一些其他参数 . 说白了 IMP 就是 实现方法。
-41 层和 UIView 的区别是什么?
-答:两者最大的区别是 , 图层不会直接渲染到屏幕上， UIView 是 iOS 系统中界面元素的基础， 所有的界面元素都是继承自它。它本身完全是由 CoreAnimation 来实现的。它真正的绘图 部分，是由一个 CALayer 类来管理。UIView 本身更像是一个 CALayer 的管理器。一个 UIView 上可以有 n 个 CALayer ，每个 layer 显示一种东西，增强 UIView 的展现能力。
-
 44. 可扩展标记语言 extensible markup language;XML
 2. 用于标记电子文件使其具有结构性的标记语言，可以用来标记数据、定义数据类型，是一
 种允许用户对自己的标记语言进行定义的源语言。
@@ -5625,10 +5421,6 @@ NSCoding协议，并且该对象对应的类必须提供 encodeWithCoder: 和ini
 2. Write 写入方式:永久保存在磁盘中。
 3. SQLite ( FMDB 、 CoreData )
 NSCoding + NSKeyedArchiver 实现复杂对象的存储。
-
-2. 简述你对 UIView 、UIWindow和 CALayer的理解
-UIView 继承于 UIResponder, UIResponder 继承于 NSObject,UIView 可以响应
-用户事件。 CALayer 继承于 NSObject ，所以 CALayer 不能响应事件。 UIView 构建界 面 ,UIView 侧重于对内容的管理， CALayer 侧重于对内容的绘制。 UIView 是用来显 示内容的，可以处理用户事件; CALayer 是用来绘制内容的， 对内容进行动画处理， 依赖与 UIView 来进行显示，不能处理用户事件。
 
 1. 什么是 Protocol?什么是代理?写一个委托的 interface?委托的 property声明 用什么属性?为什么? 协议提供了一组方法，但是并不负责实现，如果一个 类遵循了某个协议，并且实现了协议里面的方法，那么我们称这个类就是遵 循了某个协议的代理。属性的声明使用 assign ，防止出现循环引用的问题。
 1. 分别描述类别(categorie)s和延展(extensions)是什么?以及两者的区别? 继承和类别在实现中有何区别?为什么 Category只能为对象添加方法， 却不能 添加成员变量?
@@ -5813,16 +5605,6 @@ viewDidAppear 当视图添加到窗口中以后或者上层视图移出图层后
 答 : 实 现 简 单 的 表 格 显 示 需 要 设 置 UITableView 的 dataSource 和 delegate 属 性 ， 实 现 UITableViewDataSource 和 UITableViewDelegate 协议。
 37. Cocoa Touch提供了哪几种 Core Animation 过渡类型( 10 分)?
 答: Cocoa Touch 提供了 4 种 Core Animation 过渡类型，分别为:交叉淡化、推挤、显示和覆盖。
-38. UIView 与 CLayer 有什么区别( 10 分)?
-答: 1. UIView 是 iOS 系统中界面元素的基础，所有的界面元素都是继承自它。它本身完全是由 CoreAnimation 来实现的。它真 正的绘图部分，是由一个 CALayer 类来管理。 UIView 本身更像是一个 CALayer 的管理器，访问它的跟绘图和跟坐标有关的属 性。
-
-2. UIView 有个重要属性 layer ，可以返回它的主 CALayer 实例。
-3. UIView 的 CALayer 类似 UIView 的子 View 树形结构，也可以向它的 layer 上添加子 layer ，来完成某些特殊的表示。 即 CALayer 层是可以嵌套的。
-4. UIView 的 layer 树形在系统内部，被维护着三份 copy 。分别是逻辑树，这里是代码可以操纵的;动画树，是一个中间层，系 统就在这一层上更改属性，进行各种渲染操作;显示树，其内容就是当前正被显示在屏幕上得内容。
-5. 动画的运作:对 UIView 的 subLayer (非主 Layer )属性进行更改，系统将自动进行动画生成，动画持续时间的缺省值似乎 是 0.5 秒。
-6. 坐标系统: CALayer 的坐标系统比 UIView 多了一个 anchorPoint 属性，使用 CGPoint 结构表示，值域是 0~1 ，是个比例值。 这个点是各种图形变换的坐标原点，同时会更改 layer 的 position 的位置，它的缺省值是 {0.5,0.5} ，即在 layer 的中央。
-7. 渲染:当更新层，改变不能立即显示在屏幕上。当所有的层都准备好时，可以调用 setNeedsDisplay 方法来重绘显示。 8. 变换:要在一个层中添加一个 3D 或仿射变换，可以分别设置层的 transform 或 affineTransform 属性。
-9. 变形: Quartz Core的渲染能力，使二维图像可以被自由操纵，就好像是三维的。图像可以在一个三维坐标系中以任意角度被 旋转，缩放和倾斜。 CATransform3D 的一套方法提供了一些魔术般的变换效果。
 39.链表翻转。
 40. 链表逆序(C语言)(10分)。
 链表逆序就是把一个链表按照原来的链接顺序逆序实现(也就是将头变成尾，尾变成头) 。 编程思路:其实最关键的是先通过原来的链接顺序找到下个节点，然后再把前个节点反序。
@@ -6180,18 +5962,6 @@ block ，不阻塞当前线程 通过 queue来控制 block执行的线程。主�
 TCP提供的是面向连接的、可靠的数据流传输，而 UDP提供的是非面向 连接的、不可靠的数据流传输。
 简单的说， TCP注重数据安全，而 UDP数据传输快点，但安全性一般
 
-107. UIView 与CLayer 有什么区别?
-1).UIView 是 iOS 系统中界面元素的基础，所有的界面元素都是继承 自它。它本身完全是由 CoreAnimation 来实现的。它真正的绘图部分，
-是由一个 CALayer 类来管理。 UIView 本身更像是一个 CALayer 的 管理器，访问它的跟绘图和跟坐标有关的属性。
-2).UIView 有个重要属性 layer ，可以返回它的主 CALayer 实例。 3).UIView 的 CALayer 类似 UIView 的子 View 树形结构，也可以向
-它的 layer 上添加子 layer ，来完成某些特殊的表示。即 CALayer 层 是可以嵌套的。
-4).UIView 的 layer 树形在系统内部，被维护着三份 copy 。分别是逻 辑树，这里是代码可以操纵的;动画树，是一个中间层，系统就在这 一层上更改属性，进行各种渲染操作;显示树，其内容就是当前正被 显示在屏幕上得内容。
-5).动画的运作:对 UIView 的 subLayer (非主 Layer )属性进行更改， 系统将自动进行动画生成，动画持续时间的缺省值似乎是 0.5 秒。
-6).坐标系统: CALayer 的坐标系统比 UIView 多了一个 anchorPoint 属性，使用 CGPoint 结构表示，值域是 0~1 ，是个比例值。这个点是 各种图形变换的坐标原点，同时会更改 layer 的 position 的位置，它 的缺省值是 {0.5,0.5} ，即在 layer 的中央。
-7).渲染:当更新层，改变不能立即显示在屏幕上。当所有的层都准备 好时，可以调用 setNeedsDisplay方法来重绘显示。
-8).变换:要在一个层中添加一个 3D 或仿射变换，可以分别设置层的 transform 或affineTransform 属性。
-9).变形: Quartz Core 的渲染能力，使二维图像可以被自由操纵，就 好像是三维的。图像可以在一个三维坐标系中以任意角度被旋转，缩 放和倾斜。 CATransform3D 的一套方法提供了一些魔术般的变换效果。
-
 110. 使用 AVAudioPlayer 类调用哪个框架、使用步骤? 答: AVFoundation.framework
 步骤:配置 AVAudioPlayer 对象;
 实现 AVAudioPlayer 类的委托方法;
@@ -6479,17 +6249,6 @@ kvo 键 -值观察机制 Key-Value Observing :
 键值对改变通知的观察者，极大的简化了代码。 kvc 键 -值编码 Key-Value Coding :
 是一种间接访问对象的属性。使用字符串来标识属性，而不 是通过调用存取方法，直接或通过实例变量访问的机制。
 
-代理模式 代理的目的是改变或传递控制链。
-允许一个类在某些特定时刻通知到其他类，而不需要获取到 那些类的指针。可以减少框架复杂度。
-应用场景: 当一个类的某些功能需要由别的类实现，但是又 不确定由哪个类实现，可以使用代理实现。
-实例: tableview 、 Scrollview 等中的 delegete ⋯
- ********************************************
- 解释一下多态
-多态:用父类指针指向子类的对象。 通过不同的对象调用相
-同的名称的方法，却产生不同的结果。
-通过父类指针得到的几个对象， 都调用了父类中某个方法， 但实际上 在运行的时候，是执行的自己真实类中的方法。
-多态增强了软件的 灵活性 和重用性 。
-方法的重载也是多态的一种体现，但是在 OC 中，方法的参 数个数不同，方法名也不同，因此不符合方法重载的定义。
 ********************************************
 nsstring 拼接字符串，内部实现机制
 Objective C 中有很多不定参函数， 例如 NSLog(format, arg1, arg2) ， 还 有 字 符 串 或 数 组 在 构 造 时 所 用 的 [NSString
@@ -6939,49 +6698,6 @@ ARC中的strong相当于MRC中的retain；
 4.父类遵循某个协议，那么子类也遵循该协议；
 5.协议的应用场景：类型限定？？？
 遵从协议：见BaseViewController.h/m
-/******************************iOS进阶******************************/
-#KVC/KVO：
-//KVC：键值编码(key-value-coding)
-#作用：间接访问属性的方法
-1.给对象赋值：[VC setValue:@"XWJ" forKey:@"name"];
-2.通过键值路径获取属性的值：NSString *name = [VC valueForKey:@"name"];
-NSString *name = [VC valueForKeyPath:@"name"];
-3.字典转型Model：setValuesForKeysWithDictionary
-NSDictionary *dic = @{
-                        @"name":@"XWJ",
-                        @{@"age",@"18"},
-                    };//定义字典
-PersonModel *p = [[PersonModel alloc]init];//创建模型
-[p setValuesForKeysWithDictionary:dic];//字典转模型
-注意：1.字典的key和Model的属性必须一一对应，否则会报错；
-//KVO：键值观察者
-#作用：用于监听对象属性的改变
-1.下拉刷新/上拉加载监听UIScrollView的contentoffsize；
-2.webview混排监听contentsize；
-3.监听模型属性实时更新UI；
-#步骤：
-/**
-给对象的属性添加观察者：
-self.post-被观察者
-self-观察者
-array-属性
-*/
-[self.post addObserver:self forKeyPath:@"array" options:NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld context:NULL];
-//给可变数组添加属性：
-[[self mutableArrayValueForKeyPath:@"array"] addObject:@2];
-//NSMutableSet==>[self mutableSetValueForKeyPath:@"可变集合属性名"];
-//如果属性改变，自动调用方法：
--(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object
-change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context {
-    NSLog(@"new:%@",change[@"new"]);
-    NSLog(@"old:%@",change[@"old"]);
-}
-//取消监听：
--(void)dealloc {
-    [self.post removeObserver:self forKeyPath:@"name"];
-}
-代码：
-https://www.jianshu.com/p/742b4b248da9
 /******************************UI基础******************************/
 #自定义控件：
 1.在initWithFrame:方法中添加子控件，提供便利构造方法；
@@ -7010,19 +6726,6 @@ block传值：实现回调
 Model类必须是单例：全局都可能使用这个Model；
 VC需要网络请求，可以委托(PostStore类)来进行网络请求；
 PostStore类网络请求完成，需要告诉VC网络请求操作完成；
-
-#懒加载：用到的时候再加载、全局只加载一次
-定义：在开发中，程序启动的时候不加载资源，只有在运行中需要资源的时候，再去加载这些资源；
-好处：1.不必将创建对象的代码全部写在viewDidLoad()中，代码的可读性强；
-2.每个属性的getter方法中分别负责各自的实例化处理，只有真正需要资源的时候，才会加载资源，节省了内存资源；
-//实现：重写getter方法
--(NSArray *)dataArr {
-    if (_dataArr == nil) {  //这里不能使用self.dataArr：循环引用
-        self.dataArr = @[@"",@"",@""];
-    }
-    return dataArr;
-}
-self.dataArr; //每次使用均会调用-(NSArray *)dataArr;
 
 #瀑布流：
 //实现原理：
@@ -7165,9 +6868,6 @@ _ArrM = [NSMutableArray arrayWithArray:[_Arr filteredArrayUsingPredicate:predica
 NSString *currentTime = [NSString stringWithFormat@"%@",[NSDate date]];
 //隐藏NavigationBar
 [self.navigationController setNavigationBarHidden:YES animated:YES];
-//plist转NSArray
-NSString *path = [[NSBundle mainBundle] pathForResource:@"Flower" ofType:@"plist"];
-NSArray *array = [NSArray arrayWithContentsOfFile:path];
 //跳转：隐藏TabBar
 TestViewController *vc = [[TestViewController alloc] init];
 vc.hidesBottomBarWhenPushed = YES;
@@ -7214,110 +6914,13 @@ https://www.jianshu.com/p/68e12b966d86
 作用：绘制图形、线、三角形、圆、弧形；绘制文字；绘制/生成pdf；截图/裁剪图片；自定义UI；
 https://blog.csdn.net/potato512/article/details/56845385
 https://blog.csdn.net/mangosnow/article/details/37054765#0-qzone-1-85099-d020d2d2a4e8d1a374a433f596ad1440
-/******************************面试部分******************************/
-#Instruments：NO
-
-#Interface Builder介绍：用来管理xib、storyboard
-
-//UITableView的性能：cell的复用机制
-移动设备的内存有限，如果使用一个cell就创建一个cell对象将会耗尽设备的内存。解决该问题需要引入
-cell的复用机制：当UITableView发生滚动的时候，部分cell会移出窗口，这时候系统会将窗口外的
-cell放入cell对象池中，等待复用。当UITableView要求dataSource返回cell的时候，dataSource
-会首先查看cell对象池，返回cell对象池中未使用的cell给UITableView，从而避免创建新cell对象。
-//http/https的区别：
-http协议是明文协议、https是添加了加密和认证的协议
-//常见的网络协议：
-http协议、https协议、TCP/IP协议、FTP协议
-//TCP/UDP的区别：
-TCP是面向连接的，提供可靠的服务，UDP是无连接的，尽最大努力交付，不保证可靠服务；
-TCP通过校验、重传控制、确认应答实现可靠传输，UDP具有较好的实时性；
-TCP连接只能支持点对点，UDP支持交互通信；
-//Internet采用哪种网络协议？该协议的主要层次结构？
-tcp/ip协议，层次结构：应用层/传输层/网络层/数据链路层/物理层
-
-//静态数据类型和动态数据类型的区别：
-1.静态数据类型的特点：在编译期就明确变量的类型、可以访问属性和方法；
-2.动态数据类型的特点：在编译期不清楚变量的类型、运行期才知道真实类型；
-
-//为什么加上__block就可以在block内部修改变量：
-因为没有添加__block是值传递、加上__block是地址传递；
-//[self class]|[self superclass]：
-1.[self class]获取当前方法调用者的类；
-2.[self superclass]获取当前方法调用者的父类；
-//block怎么会导致循环引用：
-xxx
-//简述远程推送的步骤：
-我们一般利用第三方极光推送完成远程推送功能：
-1.登录苹果开发者后台，创建项目推送证书；
-2.登录极光推送后台，上传证书，创建应用；
-3.获取到AppKey、导入必要类库、按照开发文档操作；
-//第三方登录总结：
-xxx
-//社会化分享总结：
-1.对于系统自带的分享：如果是分享到短信、邮箱,需要导入MessageUI系统库,然后创建分
-享;如果是分享到新浪微博、腾讯微博,需要导入Social系统库,然后分享创建。优点：不需要集
-成第三方库,不需要App Key;缺点：页面简单,不能自定制；
-2.对于第三方分享：一般使用shareSDK，首先进入shareSDK官网获取App Key，集成shareSDK，
-想要分享至哪些平台就去相应开放平台申请AppKey和AppSecret，然后按照文档构建分享内容。
-//RSA加密算法：公钥加密算法
-RSA加密算法除了可加密、解密之外，还可用来作签名校验：简单的说,RSA会生成一个私钥和
-一个公钥，私钥你应该独自保管，公钥你可以分发出去；做签名验证时,你可以用私钥对需要传输
-的数据做签名加密，生成一个签名值，之后分发数据,接收方通过公钥对签名值做校验，如果一致
-则认为数据无篡改。
-//参考：
-http://blog.csdn.net/leaf8742
-https://www.jianshu.com/p/1a94498de7f4
-https://www.jianshu.com/p/2e1b3f54b4f3
-
-2、数组是将元素在内存中连续存放，由于每个元素占用内存相同，可以通过下标迅速 访问数组中任何元素。链表恰好相反，其中的元素在内存中不是顺序存储的，而是通过 存在元素中的指针联系到一起。
-3、发送同步请求，程序将停止用户交互，直至服务器返回数据完成，才可以进行下一 步操作。而发送异步请求不会阻塞主线程，会建立一个新的线程来操作，之后程序可以 继续运行。
-4、autorelease 只是把 Object 放入了当前的 autorelease pool 中，当它被释放时，其中 的所有 Object 都会被调用 Release 。
-5、作为 Objective-C 导入头文件的关键字， #import<> 用来包含系统的头文件， #import ”” 用来包含用户头文件。
-三、简述题(每题 4分，共 20分)
-1、delegate 和notification 有什么区别，什么情况下使用?
-答: delegate :消息的发送者( sender )告知接收者( receiver )某个事件将要发生， delegate 同意然后发送者响应事件， delegate 机制使得接收者可以改变发送者的行为。
-
-通常发送者和接收者的关系是直接的一对多的关系。
-notification :消息的发送者告知接收者事件已经发生或者将要发生，仅此而已，接收 者并不能反过来影响发送者的行为。通常发送者和接收者的关系是间接的多对多关系。
-
-答:当一个视图控制器被创建，并在屏幕上显示的时候。代码的执行顺序 // 视图显示在屏幕上的顺序
-1、 alloc
-2、 init (initWithNibName) 3 、 viewload
-有使用 xib 文件创建视图。 4、viewDidLoad
-他控件。
-5、viewWillAppear 在屏幕上。
-6、 viewDidAppear
-// 视图将被从屏幕上移除的顺序
-1、 viewWillDisappear
-2、 viewDidDisappear
-3、dealloc 创建的对象进行释放。
-4、viewDidUnload 前显示的 controller 执行。
-创建对象，分配空间。 初始化对象 , 初始化数据。
-从 nib 载入视图 , 这一步不需要去干涉。除非没
-加载完毕，可以进行自定义数据以及动态创建其
-视图将出现在屏幕之前，马上这个视图即将显示
-视图已在屏幕上渲染完成。
-视图将被从屏幕上移除之前执行。 视图已经被从屏幕上移除。 视图被销毁，此时需要在 init 和viewDidLoad 中
-出现内存警告在内存不足时执行，并对所有非当
-本视图的所有子视图将被销毁，以释放内存，此时开发者需要手动对 viewDidLoad 中创建的对象释放内存。
-因为当这个视图再次显示在屏幕上的时候， viewLoad 、 viewDidLoad 以便再次构造视图。
-
 
 
 /*
- 
  在 IOS 中，少量的数据持久化可以使用属性列表、
  NSUserDefaults 、归档等;
  大量的数据持久化可以使用 SQLite 数据库、 Core Data 等，
  也可以使用 FMDB 第三方类库完成。
-
- 58. 常见的数据持久化方法有哪些？
- 1.NSUserDefaults: ?用来保存应 ?用程序设置和属性、 ?用户保存的数据。 ?用户再次 打开程序或开机后这些数据仍然存在。 NSUserDefaults 可以存储的数据类型包
- 括:NSData 、NSString 、NSNumber 、NSDate 、NSArray 、NSDictionary 。
- 如果要存储其他类型，则需要转换为前 储。
- ?面的类型，才能 ?用NSUserDefaults 存
- 2.归档,反归档 3. ?文件读写 4.SQLite 5.CoreData
-
 
  1、 iOS 数据持久化存储方案有哪些?
  参考答案:
@@ -7350,21 +6953,10 @@ notification :消息的发送者告知接收者事件已经发生或者将要发
  2.常用的数据持久化方法有哪些？各自有什么利弊？
  13.iOS怎么做数据持久化？coredata/sqlite之间又什么联系？coredata是关系型数据库吗？
  
- 29.iOS平台怎么做数据持久化
- 1、NSUserDefaults
- 2、Plist
- 3、数据库
- 4、文件保存
- 5、归档与反归档
  31.iOS平台怎么做数据的持久化?Core Data和SQLite有无必然联系？Core Data是一个关系型数据库吗？
  答：iOS中可以有四种持久化数据的方式： 属性列表、对象归档、SQLite3和Core Data
   Core data与sqlite还是有联系的，core data 是对sqlite的封装，因为sqlite是c语言的api，然而有人也需要obj-c 的api，所以有了 core data 另外，core data不仅仅是把c的api翻译成oc 的api，还提供了一些管理的功能，使用更加方便
  Core Data不是一个关系型数据库，也不是关系型数据库管理系统(RDBMS)。虽然Core Dta支持SQLite作为一种存储类型，但它不能使用任意的SQLite数据库。Core Data在使用的过程种自己创建这个数据库。Core Data支持对一、对多的关系
- 
- 3、iOS有哪些数据持久化方式?
- 答:四种:属性列表、对象归档、 SQLite3 和Core Data 。
- 4、Objective-C 如何对内存管理的 , 说说你的看法和解决方法?
- 答: Objective-C 的内存管理主要有三种方式 ARC(自动内存计数)、手动内存计数、内 存池。解决方法的话:谁持有，谁释放。
  
  #App的主目录：沙盒机制NSHomeDirectory()
  概念：沙盒机制是一种安全体系，规定了应用程序只能在该应用创建的文件夹内读取文件，不可以
@@ -7551,7 +7143,6 @@ NSFileHandle *readWriteHandle = [NSFileHandle fileHandleForUpdatingAtPath:path]
  
  */
 
-
 /*
  FIXME
  十七 . 应用程序的沙盒下 ,都有哪些文件夹 ?它们有什么特点 ?本地缓存一般存在哪个文件下?
@@ -7631,5 +7222,129 @@ NSFileHandle *readWriteHandle = [NSFileHandle fileHandleForUpdatingAtPath:path]
      * Caches：存放体积大又不需要备份的数据
      * Preference：设置目录，iCloud会备份设置信息
  * tmp：存放临时文件，不会被备份，而且这个文件下的数据有可能随时被清除的可能
+ 
+ // 数据持久化
+1、 NSKeyedArchiver 采用归档的形式存储 ( 常用于 NSString, NSDictionary,
+NSArray, NSData, NSNumber等类型 ) ，需遵守 NSCoding 协议 归档对象时:会调用 encodeWithCoder，一般在这个方法里面指定如何归档对象 中的每个实例变量 .可以使用 :encodeObject:forkey: 方法归档实例变量 解档对象时:会调用 initWithCoder ，一般在这个方法里面指定如何解码文件中 的数据为对象的实例变量 ,可以使用 decodeObject:forkey 方法解码实例变量
+2、NSUserDefaults 偏好设置存储，常见保存用户名和密码，一般需要调用 synchronize 方法强制写入
+存入:
+NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults]; [defaults setObject:@"JN521" forKey:@"username"];
+[defaults setFloat:18.0f forKey:@"text_size"]; [defaults setBool:YES forKey:@"auto_login"];
+读取:
+NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults]; NSString *username = [defaults stringForKey:@"username"];
+float textSize = [defaults floatForKey:@"text_size"];
+BOOL autoLogin = [defaults boolForKey:@"auto_login"];
+3、write 写入的形式永久保存到磁盘
+NSArray *docPath =
+[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,
+NSUserDomainMask, YES) objectAtIndex:0]; NSString
+stringByAppendingPathComponent:fileName] [data writeToFile:FileName atomically:YES];
+// 获取文件即将保存的路径 *FileName=[documentDirectory
+// 生成该路径下得文件 // 写入
+4、属性列表 (plist 存储 )属性列表是一种 XML 格式的文件 ,拓展名为 plist 如果 对象是 NSString, NSDictionary, NSArray, NSData, NSNumber 等类型,就可以使 用:writeToFile:atomiclly: 方法直接将对象写到属性列表文件中 .
+存入:
+// 将数据封装成字典
+NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+[dict setObject:@"15013141314" forKey:@"phone"];
+[dict setObject:@"27" forKey:@"age"];
+// 将字典持久化到 Documents/stu.plist 文件中
+[dict writeToFile:path atomically:YES];
+读取:
+// 读取 Documents/stu.plist 的内容，实例化 NSDictionary NSDictionary *dict = [NSDictionary dictionaryWithContentsOfFile:path]; NSLog(@"phone:%@", [dict objectForKey:@"phone"]); NSLog(@"age:%@", [dict objectForKey:@"age"]);
+5、数据库存储 SQLite
+概念: SQLite 是一个进程内的库，本质上就是一个文件，是一个 SQL 数据库引擎
+特点:自给自足不需要外部依赖、无需单独服务器、零配置、轻量级、占用 资源少、处理速度快
 
+使用步骤:添加动态库 (libsqlite3.dylib) 、导头文件 sqlite3 、建立数据库、创 建数据表、利用 SQL 命令增删改查
+  优点:将网络数据存到本地不用每次都加载，减少网络流量开销，可对本地
+数据进行系统性查询
+SQLite 命令: INSERT增/UPDATE 改/DELETE 删/SELECT 查
  */
+
+/******************************面试部分******************************/
+#Instruments：NO
+
+#Interface Builder介绍：用来管理xib、storyboard
+
+//UITableView的性能：cell的复用机制
+移动设备的内存有限，如果使用一个cell就创建一个cell对象将会耗尽设备的内存。解决该问题需要引入
+cell的复用机制：当UITableView发生滚动的时候，部分cell会移出窗口，这时候系统会将窗口外的
+cell放入cell对象池中，等待复用。当UITableView要求dataSource返回cell的时候，dataSource
+会首先查看cell对象池，返回cell对象池中未使用的cell给UITableView，从而避免创建新cell对象。
+//http/https的区别：
+http协议是明文协议、https是添加了加密和认证的协议
+//常见的网络协议：
+http协议、https协议、TCP/IP协议、FTP协议
+//TCP/UDP的区别：
+TCP是面向连接的，提供可靠的服务，UDP是无连接的，尽最大努力交付，不保证可靠服务；
+TCP通过校验、重传控制、确认应答实现可靠传输，UDP具有较好的实时性；
+TCP连接只能支持点对点，UDP支持交互通信；
+//Internet采用哪种网络协议？该协议的主要层次结构？
+tcp/ip协议，层次结构：应用层/传输层/网络层/数据链路层/物理层
+
+//静态数据类型和动态数据类型的区别：
+1.静态数据类型的特点：在编译期就明确变量的类型、可以访问属性和方法；
+2.动态数据类型的特点：在编译期不清楚变量的类型、运行期才知道真实类型；
+
+//为什么加上__block就可以在block内部修改变量：
+因为没有添加__block是值传递、加上__block是地址传递；
+//[self class]|[self superclass]：
+1.[self class]获取当前方法调用者的类；
+2.[self superclass]获取当前方法调用者的父类；
+//block怎么会导致循环引用：
+xxx
+//简述远程推送的步骤：
+我们一般利用第三方极光推送完成远程推送功能：
+1.登录苹果开发者后台，创建项目推送证书；
+2.登录极光推送后台，上传证书，创建应用；
+3.获取到AppKey、导入必要类库、按照开发文档操作；
+//第三方登录总结：
+xxx
+//社会化分享总结：
+1.对于系统自带的分享：如果是分享到短信、邮箱,需要导入MessageUI系统库,然后创建分
+享;如果是分享到新浪微博、腾讯微博,需要导入Social系统库,然后分享创建。优点：不需要集
+成第三方库,不需要App Key;缺点：页面简单,不能自定制；
+2.对于第三方分享：一般使用shareSDK，首先进入shareSDK官网获取App Key，集成shareSDK，
+想要分享至哪些平台就去相应开放平台申请AppKey和AppSecret，然后按照文档构建分享内容。
+//RSA加密算法：公钥加密算法
+RSA加密算法除了可加密、解密之外，还可用来作签名校验：简单的说,RSA会生成一个私钥和
+一个公钥，私钥你应该独自保管，公钥你可以分发出去；做签名验证时,你可以用私钥对需要传输
+的数据做签名加密，生成一个签名值，之后分发数据,接收方通过公钥对签名值做校验，如果一致
+则认为数据无篡改。
+//参考：
+http://blog.csdn.net/leaf8742
+https://www.jianshu.com/p/1a94498de7f4
+https://www.jianshu.com/p/2e1b3f54b4f3
+
+2、数组是将元素在内存中连续存放，由于每个元素占用内存相同，可以通过下标迅速 访问数组中任何元素。链表恰好相反，其中的元素在内存中不是顺序存储的，而是通过 存在元素中的指针联系到一起。
+3、发送同步请求，程序将停止用户交互，直至服务器返回数据完成，才可以进行下一 步操作。而发送异步请求不会阻塞主线程，会建立一个新的线程来操作，之后程序可以 继续运行。
+4、autorelease 只是把 Object 放入了当前的 autorelease pool 中，当它被释放时，其中 的所有 Object 都会被调用 Release 。
+5、作为 Objective-C 导入头文件的关键字， #import<> 用来包含系统的头文件， #import ”” 用来包含用户头文件。
+三、简述题(每题 4分，共 20分)
+1、delegate 和notification 有什么区别，什么情况下使用?
+答: delegate :消息的发送者( sender )告知接收者( receiver )某个事件将要发生， delegate 同意然后发送者响应事件， delegate 机制使得接收者可以改变发送者的行为。
+
+通常发送者和接收者的关系是直接的一对多的关系。
+notification :消息的发送者告知接收者事件已经发生或者将要发生，仅此而已，接收 者并不能反过来影响发送者的行为。通常发送者和接收者的关系是间接的多对多关系。
+
+答:当一个视图控制器被创建，并在屏幕上显示的时候。代码的执行顺序 // 视图显示在屏幕上的顺序
+1、 alloc
+2、 init (initWithNibName) 3 、 viewload
+有使用 xib 文件创建视图。 4、viewDidLoad
+他控件。
+5、viewWillAppear 在屏幕上。
+6、 viewDidAppear
+// 视图将被从屏幕上移除的顺序
+1、 viewWillDisappear
+2、 viewDidDisappear
+3、dealloc 创建的对象进行释放。
+4、viewDidUnload 前显示的 controller 执行。
+创建对象，分配空间。 初始化对象 , 初始化数据。
+从 nib 载入视图 , 这一步不需要去干涉。除非没
+加载完毕，可以进行自定义数据以及动态创建其
+视图将出现在屏幕之前，马上这个视图即将显示
+视图已在屏幕上渲染完成。
+视图将被从屏幕上移除之前执行。 视图已经被从屏幕上移除。 视图被销毁，此时需要在 init 和viewDidLoad 中
+出现内存警告在内存不足时执行，并对所有非当
+本视图的所有子视图将被销毁，以释放内存，此时开发者需要手动对 viewDidLoad 中创建的对象释放内存。
+因为当这个视图再次显示在屏幕上的时候， viewLoad 、 viewDidLoad 以便再次构造视图。

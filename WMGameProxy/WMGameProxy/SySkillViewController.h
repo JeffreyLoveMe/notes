@@ -53,7 +53,7 @@ NS_ASSUME_NONNULL_BEGIN
 // 为什么使用id？？？（任何遵循SySkillViewControllerProtocol的类都可以做为我的代理）
 @property (weak, nonatomic) id <SySkillViewControllerProtocol> delegate;
 
-// 1.定义block - 怎么 “声明block” 就怎么 “定义block” / 以后使用直接使用 “myBlock”
+// 1.定义block - 怎么“声明block”就怎么“定义block”/以后使用直接使用“myBlock”
 // block和delegate的区别 - block紧凑一些
 @property (strong, nonatomic) void (^myBlock)(BOOL isBlue);
 // 企业级开发一般不修改原有方法

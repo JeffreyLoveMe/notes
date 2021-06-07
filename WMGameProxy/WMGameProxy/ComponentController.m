@@ -191,6 +191,15 @@
 }
 
 
+#pragma mark - CLayer(Core Animation Layer)
+-(void)setupCALayer {
+    // UIView是iOS系统中UI元素的基础，它的绘图部分是由CALayer类来管理
+    // UIView有一个layer属性可以返回CALayer实例
+    // layerClass方法
+    // CALayer不能处理用户事件
+}
+
+
 #pragma mark - UILabel文本框
 -(void)setupLabel {
     /// UILabel的包裹模式 - UILabel的高度是随着文字内容的增加而拉伸
@@ -263,10 +272,11 @@
 -(void)setupButton {
 //    // 尽量使用快速定义方法、如果没有快速定义方法、再考虑init
 //    UIButton *btn = [[UIButton alloc]init];
+//    btn.buttonType = UIButtonTypeCustom; // 报错
     /// 工厂方法
     // 既可以显示文字也可以显示图片
     // 可以随时调整内部图片/文字的位置
-    // 通过重写 UIButton
+    // 通过重写UIButton（设置buttonType只能在初始化的时候设置）
     UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
     btn.frame = CGRectMake(100, 100, 100, 50);
     [self.view addSubview:btn];
@@ -275,10 +285,11 @@
      这个很重要：可以用来做很多事情
      UIControlStateNormal -正常状态/默认状态
      UIControlStateHighlighted -高亮状态/长按未松手
-     UIControlStateSelected -选择状态
      UIControlStateDisabled -禁用状态/不可以点击
+     UIControlStateSelected -选择状态
      */
     // 设置文字
+//    btn.titleLabel.text = "无效";
     [btn setTitle:@"普通" forState:UIControlStateNormal];
     [btn setTitle:@"高亮" forState:UIControlStateHighlighted];
     [btn setTitle:@"选择" forState:UIControlStateSelected];
@@ -289,6 +300,10 @@
     // 文字颜色
     [btn setTitleColor:UIColor.greenColor forState:UIControlStateNormal];
     btn.enabled = NO; // 非禁用状态
+    // 设置文字阴影颜色
+    [btn setTitleShadowColor:UIColor.whiteColor forState:UIControlStateNormal];
+    // 设置文字阴影偏移
+    btn.titleLabel.shadowOffset = CGSizeMake(3, 2);
     /// 背景颜色
     // 仅仅自定义类型有效
     btn.backgroundColor = UIColor.grayColor;
@@ -320,7 +335,7 @@
     btn.imageEdgeInsets = UIEdgeInsetsMake(-20, 0, 0, 0); // 图片
     btn.titleEdgeInsets = UIEdgeInsetsMake(-20, 0, 0, 0); // title
 //    // 获取属性
-//    // nullable -可以为空/可选类型
+//    // nullable - 可以为空/可选类型
 //    NSString *title = [btn titleForState:UIControlStateNormal];
 //    UIImage *image = [btn imageForState:UIControlStateNormal];
     // 点击事件：记下来就好
@@ -364,7 +379,7 @@
     /// 创建图片对象
     // 图片加载方式
     // 该方法只能加载占用内存小的图片：因为这种方式加载的图片会一直保存在内存中，不会释放
-    // Assets.xcassets中的图片只能通过该方法设置，默认就有缓存
+    // Assets.xcassets中的图片只能通过该方法设置（默认就有缓存）
     // 一般经常使用的图片会通过该方式加载
     // png不需要后缀（jpg必须加后缀）
     UIImage *image0 = [UIImage imageNamed:@"image_demo"];
@@ -522,7 +537,7 @@
     tf.adjustsFontSizeToFitWidth = true;
     // 开始编辑的时候清除文本框文字
     tf.clearsOnBeginEditing = true;
-    // 设置清除 UIButton
+    // 设置清除UIButton
     tf.clearButtonMode = UITextFieldViewModeAlways;
     // 设置键盘外观
     tf.keyboardAppearance = UIKeyboardAppearanceDark;

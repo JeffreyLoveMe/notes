@@ -208,7 +208,7 @@
 /// 0.为什么有 “数据持久化”？
 // 通常程序在运行中或者程序结束以后，需要保存一些信息（登录信息、播放记录）
 /// 1.“数据持久化” 存放的位置？
-// 数据存放在 “沙盒” 中
+// 数据存放在“沙盒”中
 /// 2.沙盒机制NSHomeDirectory()
 // 1>.定义 - “沙盒机制”是一种安全体系，规定了应用程序只能在该自己创建的文件夹内读取文件，不可以访问其他地方的内容。所有的非代码文件都保存在沙盒：比如图片、声音、属性列表和文本文件等；
 // Documents-保存应用程序运行时生成的需要持久化的数据（持久化数据/会备份）
@@ -251,7 +251,7 @@
 }
 // 1.Preference偏好设置
 // 保存一些简单数据
-// 不能保存自定义对象（自定义对象使用 “归档” 保存）
+// 不能保存自定义对象（自定义对象使用“归档”保存）
 -(void)showPreference {
     /// 写入数据
     // 实例化
@@ -268,28 +268,28 @@
     NSLog(@"%@===%d===%ld", value, shouldHide, count);
 }
 // 2.XML属性列表归档plist
-// 只能存放 NSString/NSNumber/NSDate/NSArray/NSDictionary
-// 不能保存自定义对象（自定义对象使用 “归档” 保存）
+// 只能存放NSString/NSNumber/NSDate/NSArray/NSDictionary
+// 不能保存自定义对象（自定义对象使用“归档”保存）
 // plist的手动创建（右键 -> New File -> Resource -> Property List）
 -(void)showPlist {
     /// 1.写入数据 myConfig.plist
-    // 把 NSDictionary/NSArray 写入到 myConfig.plist
+    // 把NSDictionary/NSArray写入到myConfig.plist
     NSArray *names = @[@"yjn", @"mj", @"gxq", @"nj"];
     NSString *documentPath = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,
                                             NSUserDomainMask, YES).firstObject;
     // 拼接一个文件名
-    NSString *filePath = [documentPath stringByAppendingPathComponent: @"myConfig.plist"];
+    NSString *filePath = [documentPath stringByAppendingPathComponent:@"myConfig.plist"];
     // 路径是沙盒路径
     [names writeToFile:filePath atomically:YES];
     
-    /// 2.获取 myConfig.plist 数据
+    /// 2.获取myConfig.plist数据
     // 获取文件路径
     NSString *path = [[NSBundle mainBundle] pathForResource:@"myConfig" ofType:@"plist"];
     // 通过路径转化数组（字典）
-    // 如果 root 是 dic 使用 NSMutableDictionary 接收
-    NSMutableDictionary *dic = [[NSMutableDictionary alloc]initWithContentsOfFile:path];
-    // 如果 root 是 Array 使用 NSMutableArray 接收
-    NSMutableArray *array = [[NSMutableArray alloc]initWithContentsOfFile:path];
+    // 1>.如果root是dic使用NSMutableDictionary接收
+    NSMutableDictionary *dic = [[NSMutableDictionary alloc] initWithContentsOfFile:path];
+    // 2>.如果root是Array使用NSMutableArray接收
+    NSMutableArray *array = [[NSMutableArray alloc] initWithContentsOfFile:path];
     NSLog(@"%@===%@", dic, array);
 }
 // 3.归档NSCoding
@@ -347,31 +347,33 @@
 
 
 #pragma mark - block
-// 1.block是iOS中一种比较特殊的数据类型/官方特别推荐使用
-// 2.用来保存 “代码块”，在恰当的时候再取出来调用/类似于函数/效率高
+// 1.概念：block是iOS中一种比较特殊的数据类型（官方特别推荐使用）
+// 2.作用：用来保存 “代码块”，在恰当的时候再取出来调用（类似于函数、效率高）
 -(void)shouBlock {
     // 3.block的基本写法
     // 1).无参数无返回值
     /**
-     void - 表示 myBlock 保存的代码没有返回值
-     (^myBlock) - 代表 myBlock 是一个 "block变量"，可以保存一段block代码
-     (void) - 表示 myBlock 保存的代码没有形参
+     void - 表示myBlock保存的代码没有返回值
+     (^myBlock) - 代表myBlock是一个"block变量"，可以保存一段block代码
+     (void) - 表示myBlock保存的代码没有形参
      */
     void (^myBlock)(void);
-    // 只能保存 “block代码段”
-    // ！！！如果没有 “形参” 的话 () 可以省略！！！
+    // 只能保存“block代码段”
+    // ！！！如果没有“形参”的话()可以省略！！！
     myBlock = ^(){
         NSLog(@"这是一个block");
     };
-    // 想要执行 “block保存的代码”，需要调用 block
+    // 想要执行“block保存的代码”，需要调用block
     myBlock();
+    
     // 2).无参数有返回值
-    // ！！！如果没有 “形参” 的话 () 可以省略！！！
+    // ！！！如果没有“形参”的话()可以省略！！！
     NSString* (^plus)(void);
     plus = ^ {
         return @"这是一个block";
     };
     plus();
+    
     // 3).有参数无返回值
     void (^add)(int, int);
     add = ^ (int value1, int value2){
@@ -385,21 +387,21 @@
     };
     sum(10, 20);
     
-    // 4.因为 block 是一种数据类型
-    // 1).先定义再初始化
+    // 4.block是一种数据类型
+    // 1>.先定义再初始化
     int (^log)(int, int);
     log = ^ (int value1, int value2){
         return value1 + value2;
     };
     log(10, 20);
-    // 2).定义的同时初始化
+    // 2>.定义的同时初始化
     int (^request)(int, int) = ^ (int value1, int value2){
         return value1 + value2;
     };
     request(10, 20);
     
-    // 5.利用 "typedef" 给 "block取别名"
-    // “block变量名” 就是别名
+    // 5.利用"typedef"给"block取别名"（因为block是一种数据类型）
+    // “block变量名”就是别名
     typedef int (^sumBlock)(int, int);
     sumBlock sumP = ^ (int value1, int value2){
         return value1 + value2;
@@ -407,13 +409,13 @@
     sumP(10, 20);
     
     // 6.block作为函数参数
-    // 普通数据类型作为函数参数只可以传递 “数字/字符串”
-    // block作为函数参数直接可以传递 “代码块”
+    // 普通数据类型作为函数参数只可以传递“数字/字符串”
+    // block作为函数参数直接可以传递“代码块”
     
     // 7.注意事项
     // 1).block中可以访问外部的变量
-    // 如果想要在 block 中修改外部变量的值，必须在外界变量前面加上 __block
-    // 如果在 block 中修改了外部变量的值，会影响到外部变量的值
+    // 如果想要在block中修改外部变量的值，必须在外界变量前面加上__block
+    // 如果在block中修改了外部变量的值，会影响到外部变量的值
     /**
      如果是局部变量 -> 值传递 -> 不能被内部修改/！！！什么修饰都不加不能被传递！！！
      如果是静态变量 / 全局变量 / __block -> 地址传递 -> 能够被内部修改
@@ -423,24 +425,24 @@
 //        // 2).block中可以定义和外界同名的变量/就近原则
 //        int m1 = 20;
         
-        // 3).默认情况下，不可以在 block 中修改外部的变量
-        // 因为 block 中的变量和外界的变量并不是同一个变量
-        // 如果 block 中访问到外界的变量会将外界的变量 copy 一份到堆内存
+        // 3).默认情况下，不可以在block中修改外部的变量
+        // 因为block中的变量和外界的变量并不是同一个变量
+        // 如果block中访问到外界的变量会将外界的变量copy一份到堆内存
         m1 = 30;
         NSLog(@"m1 = %d", m1);
     };
-    // 因为 block 使用外界的变量是 copy 的，所以此处修改变量值不会影响 block 中变量值
+    // 因为block使用外界的变量是copy的，所以此处修改变量值不会影响block中变量值
     m1 = 20;
     yourBlock();
     
     // 8.面试题
-    // 1>.block是存储在 “堆内存” 还是 “栈内存” 中
+    // 1>.block是存储在“堆内存”还是“栈内存”中
     /**
-     1.默认情况下 block 存储在栈中，如果对 block 进行一个 copy 操作就会转移到 堆中；
-     2.如果 block 在栈中访问了外部的对象，那么不会对外部的对象进行 retain 操作；
-     3.如果 block 在堆中访问了外部的对象，那么会对外部的对象进行 retain 操作；
+     1.默认情况下block存储在栈中，如果对block进行一个copy操作就会转移到 堆中；
+     2.如果block在栈中访问了外部的对象，那么不会对外部的对象进行retain操作；
+     3.如果block在堆中访问了外部的对象，那么会对外部的对象进行retain操作；
      */
-//    // 如果在 block 中访问外部的对象，一定需要给对象加上 __block，只要加上 __block 哪怕 block 在堆中也不会对外界的对象进行 retain 操作
+//    // 如果在block中访问外部的对象，一定需要给对象加上__block，只要加上__block哪怕block在堆中也不会对外界的对象进行retain操作
 //    WMGameProxy *wm = [WMGameProxy new];
 //    NSLog(@"retainCount = %lu", [wm retainCount]);
 //    void (^proxy)(void) = ^ {
@@ -452,7 +454,7 @@
     
     // 9.block的快捷方式 - inlineBlock
 }
-// 将 “void (^myBlock)(void)” 中 myBlock 取出来即可
+// 将 “void (^myBlock)(void)” 中myBlock取出来即可
 -(void)completeBlock:(void (^)(void))myBlock {
     // 代码块
     
@@ -462,7 +464,7 @@
 }
 // 内存管理
 -(void)setMemoryManager {
-    // 1>.block是不是一个对象？
+    // 1>.block是不是一个对象？？？
     // 是一个对象/需要管理内存
     // 2>.MRC
     // block代码块中引用外部局部变量 -> 栈
@@ -485,6 +487,7 @@
  1>.block为什么会导致循环引用？- block会对“代码块”中的强指针变量全部进行一次强引用
  __weak typeof(self) weakSelf = self;
  */
+// 渐变动画会出现循环引用吗？？？- 不会
 -(void)setCycle {
     // 指明  “self” 为 “弱指针变量”
     __weak typeof(self) weakSelf = self;
@@ -578,12 +581,12 @@
     WMGameProxy *wm = [[WMGameProxy alloc]init];
     wm.publishName = @"谢吴军";
     wm.publishAge = 18;
-    // 常规赋值的也可以使用 KVC 取到值
+    // 常规赋值的也可以使用KVC取到值
     NSLog(@"%@",[wm valueForKeyPath:@"publishName"]);
     // model -> NSDictionary
     NSDictionary *dict = [wm dictionaryWithValuesForKeys:@[@"publishName", @"publishAge"]];
     NSLog(@"%@", dict);
-    // 可以取出 “数组” 中所有对象的某个属性
+    // 可以取出“数组”中所有对象的某个属性
     NSArray *array = @[wm, wm, wm];
     NSArray *arrayPublishName = [array valueForKeyPath:@"publishName"];
     NSLog(@"%@", arrayPublishName);
@@ -591,60 +594,61 @@
     // key属性值千万不能写错、不然会崩溃
     [wm setValue:@"谢吴军" forKey:@"publishName"];
     // KVC可以自动类型转换
-    // 对于 “网络请求” 十分有用（我们不用特别关注后台返回的数据类型/只用保证 key 一致即可）
+    // 对于“网络请求”十分有用（我们不用特别关注后台返回的数据类型/只用保证key一致即可）
     [wm setValue:@"18" forKey:@"publishAge"];
     NSLog(@"%@===%ld", wm.publishName, (long)wm.publishAge);
-    // ‘forKeyPath’ 包含 ‘forKey’ 的功能/尽量使用 ‘forKeyPath’
-    // ‘forKeyPath’ 进行内部的点语法可以层层访问内部的属性
-    // “key” 必须在 “属性” 中找到、不然会崩溃
+    // ‘forKeyPath’包含‘forKey’的功能/尽量使用‘forKeyPath’
+    // ‘forKeyPath’进行内部的点语法可以层层访问内部的属性
+    // “key”必须在“属性”中找到、不然会崩溃
     [wm setValue:@"小陈" forKeyPath:@"item.name"];
     
     // 3.给数组赋值
     [[wm mutableSetValueForKeyPath:@"dateArray"] addObject:@"xwj"];
     [[wm mutableSetValueForKeyPath:@"dateArray"] removeObject:@"xwj"];
     
-    // 4.使用 KVC 给私有属性赋值
+    // 4.使用KVC给私有属性赋值
     // nbplus
     // 两种方式都可以
     [wm setValue:@"88" forKeyPath:@"_gameCount"];
     [wm setValue:@"88" forKeyPath:@"gameCount"];
     
     /**
-     KVC的底层原理/可以通过重写 “set方法” 做一些操作
-     1.查看当前 key 值的 set方法，如果有 set方法就会调用 set方法，给对应的属性赋值
-     2.如果没有 set方法 就会去查看是否有与 key值 相同并且带有下划线的成员属性，给对应的属性赋值
-     3.如果没有与 key值 相同并且带有下划线的成员属性，就会去查看有没有与 key值 相同名称的成员属性，给对应的属性赋值
-     4.如果还是没有找到会调用 “- (void)setValue:(nullable id)value forUndefinedKey:(NSString *)key” / 默认抛出异常
+     KVC的底层原理/可以通过重写“set方法”做一些操作
+     1.查看当前key值的set方法，如果有set方法就会调用set方法，给对应的属性赋值
+     2.如果没有set方法就会去查看是否有与key值相同并且带有下划线的成员属性，给对应的属性赋值
+     3.如果没有与key值相同并且带有下划线的成员属性，就会去查看有没有与key值相同名称的成员属性，给对应的属性赋值
+     4.如果还是没有找到会调用“- (void)setValue:(nullable id)value forUndefinedKey:(NSString *)key”/默认抛出异常
      */
 }
 // 2>.KVO - Key Value Observing/键值监听
 // 监听某个对象的属性变化
 /**
- ！！！可以监听 “系统类/比如 UIScrollView/UITableView ” 的一些属性去做一些特定操作！！！
- 比如有 contentOffset
+ ！！！可以监听“系统类/比如 UIScrollView/UITableView ”的一些属性去做一些特定操作！！！
+ 比如有contentOffset
  */
 -(void)showKVO {
     WMGameProxy *wm = [WMGameProxy new];
     // 1.先绑定监听器
     /**
-     给 "对象wm/被观察者" 绑定一个监听器（观察者）
+     给"对象wm/被观察者"绑定一个监听器（观察者）
      第一个参数 - 观察者
      第二个参数 - 需要监听的属性
      第三个参数 - 选项
      第四个参数 - XXX
      */
-    [wm addObserver:self forKeyPath:@"publishName" options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld context:nil];
+    [wm addObserver:self forKeyPath:@"publishName" options:NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld context:nil];
     // 2.再修改属性值
     wm.publishName = @"wj";
     wm.publishName = @"fj";
-    // 3.移除监听/一般写在 “dealloc方法”
+    // 3.移除监听/一般写在“dealloc方法”
+    // 现在可以不再写
     [wm removeObserver:self forKeyPath:@"publishName"];
 }
 /**
  当监听的属性值发生改变调用
- @param keyPath - 要改变的属性 / publishName
- @param object - 要改变的属性所属的对象 / wm地址
- @param change - 改变的内容 / NSDictionary / change[NSKeyValueChangeNewKey] / change[NSKeyValueChangeOldKey]
+ @param keyPath - 要改变的属性/publishName
+ @param object - 要改变的属性所属的对象/wm地址
+ @param change - 改变的内容/NSDictionary/change[NSKeyValueChangeNewKey]/change[NSKeyValueChangeOldKey]
  @param context - 上下文
  */
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context {
@@ -654,15 +658,15 @@
 
 #pragma mark - 懒加载
 // 0>.概念 - 在开发中程序启动的时候不加载资源，只有在运行中有需要的时候再去加载资源
-// 1>.格式 - 重写 "getter方法"/如果为空加载数据/如果不为空直接返回数据
+// 1>.格式 - 重写"getter方法"/如果为空加载数据/如果不为空直接返回数据
 // 2>.特点 - 用到的时候再加载/全局只会被加载一次/全局都可以使用
 /**
  3>.懒加载的好处：
- 1.不用将创建对象的代码写在 “viewDidLoad()” 中，代码的可读性更强
- 2.每个属性的 “getter方法” 分别负责各自的实例化处理，只有真正需要资源的时候才会加载，节省了内存
+ 1.不用将创建对象的代码写在“viewDidLoad()”中，代码的可读性更强
+ 2.每个属性的“getter方法”分别负责各自的实例化处理，只有真正需要资源的时候才会加载，节省了内存
  */
 - (NSArray *)dataArray {
-    // 不能使用 self
+    // 不能使用self（会导致死循环）
     if (_dataArray == nil) {
         _dataArray = @[@"", @"", @""];
     }

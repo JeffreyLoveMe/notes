@@ -84,7 +84,7 @@
     return self;
 }
 
-// 对象方法中访问当前对象的属性 _xxx
+// 对象方法中访问当前对象的属性_xxx
 -(void)loginWithGameId:(NSString *)gameId GameKey:(NSString *)gameKey {
     NSLog(@"login");
     // 最大浮点数 MAXFLOAT
@@ -111,6 +111,7 @@
  if ([obj isMemberOfClass:[Person class]]) {
      [obj eat];
  }
+ 面试题：id和NSObject *有什么区别？？？
  */
 // 2).instancetype
 // instancetype做为返回值赋值给一个其他类型会报警告（编译的时候可以判断对象的真实类型）
@@ -265,7 +266,7 @@
 // @interface SyPerson()
 // // 可以声明私有成员变量
 // @property (weak, nonatomic) UIImageView *iconImageView;
-// // 可以声明私有方法：声明和实现都在 “.m文件” 中
+// // 可以声明私有方法：声明和实现都在“.m文件”中
 // -(void)song;
 // @end
  /**
@@ -273,8 +274,13 @@
   2.明白类扩展就是匿名类别
   3.Category类别不能新增成员属性/类扩展既可以新增成员属性也可以新增成员方法
   */
+/**
+ category和extension的区别
+ 1.category有名字，extension没有名字
+ 2.category只能扩展方法（属性仅仅是声明，并没有真正实现）、extension可以扩展属性和成员方法
+ */
 
-// 不会输出 "self" / 死循环
+// 不会输出"self"/死循环
 // NSLog()输出<类名:地址>/<Person: 0x100202310>
 // 输出self就是调用[self description];
 - (NSString *)description {
@@ -291,9 +297,9 @@
     return [NSString stringWithFormat:@"%@", _height];
 }
 
-// 整型 NSInteger
-// 布尔类型 BOOL
-// 结构体 NSRange
+// 整型NSInteger
+// 布尔类型BOOL
+// 结构体NSRange
 -(void)showRange {
     NSRange range0 = {1,5};
     NSRange range1 = NSMakeRange(1, 5);

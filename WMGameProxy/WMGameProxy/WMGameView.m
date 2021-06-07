@@ -11,18 +11,18 @@
 @implementation WMGameView
 
 /// 1.通过该方法 init 控件
-// 然后直接 frame 在该方法中拿不到尺寸
+// 然后直接frame在该方法中拿不到尺寸
 - (instancetype)init {
     self = [super init];
     if (self) {
 //        [self layoutSubviews];
-        // 在这里 init
+        // 在这里init
     }
     return self;
 }
 
-/// 2.通过该方法 init 控件
-// 可以直接拿到 frame
+/// 2.通过该方法init控件
+// 可以直接拿到frame
 - (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
@@ -32,7 +32,7 @@
 }
 
 /// 当解析一个文件的时候会调用
-// 如果子控件从 xib 中创建则处于未唤醒状态
+// 如果子控件从xib中创建则处于未唤醒状态
 - (instancetype)initWithCoder:(NSCoder *)coder {
     self = [super initWithCoder:coder];
     if (self) {
@@ -42,16 +42,16 @@
     }
     return self;
 }
-/// 从 xib 中唤醒
-// 当 xib 加载完毕的时候调用
-// 添加 xib 中的子控件
+/// 从xib中唤醒
+// 当xib加载完毕的时候调用
+// 添加xib中的子控件
 - (void)awakeFromNib {
     [super awakeFromNib];
     // 后调用
     // 必须在这里操作子控件
 }
 
-/// 通过 "方法1" 只能在该方法中拿到 frame
+/// 通过"方法1"只能在该方法中拿到frame
 // 必须到这里布局子控件
 - (void)layoutSubviews {
     // 0.一定要调用super

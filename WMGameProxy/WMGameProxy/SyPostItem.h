@@ -12,16 +12,15 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface SyPostItem : NSObject <NSCopying>
 // 1.新建字段
-// 保持 "属性" 和 "字段" 保持一致
+// 保持"属性"和"字段"保持一致
 @property (strong, nonatomic) NSArray *citys;
 @property (strong, nonatomic) NSString *name;
 
 // 2.字典转模型
-// 在 controller 中可以通过 “循环” 创建出更多 model
-// 利用 model 可以实现数据源
--(instancetype)itemWithDict:(NSDictionary *)dic;
-
-+(instancetype)itemWithDict:(NSDictionary *)dic;
+// 在controller中可以通过“循环”创建出更多model
+// 利用model可以实现数据源
+-(instancetype)initWithDict:(NSDictionary *)dict;
++(instancetype)itemWithDict:(NSDictionary *)dict;
 
 +(instancetype)sharedInstance;
 

@@ -375,7 +375,7 @@
     NSArray *newArray01 = [array1 sortedArrayUsingSelector:@selector(compare:)];
     NSLog(@"%@", newArray01);
     /// ！！！必须掌握！！！
-    // 每次调用 block 都会取出数组中两个元素出来
+    // 每次调用block都会取出数组中两个元素出来
     // 可以对自定义对象的某个属性排序
     // 二分排序
     NSArray *newArray02 = [array1 sortedArrayWithOptions:NSSortStable usingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
@@ -385,7 +385,6 @@
     }];
     NSLog(@"%@", newArray02);
     
-
     /// 2).可变数组NSMutableArray：
     // 概念：数组的长度不确定
     // 数组元素：不能存放基本数据类型 (int/float) / 只能是对象的引用 (指针)
@@ -482,11 +481,11 @@
     /// 文件读写
     /**
      1.将数组写入到文件中
-     如果将一个数组写入到文件中之后本质上是一个 “XML文件”
-     “XML文件” 的l扩展名保存为 .plist
+     如果将一个数组写入到文件中之后本质上是一个“XML文件”
+     “XML文件”的扩展名保存为.plist
      */
-    // 如果数组中的元素是 “自定义对象” 不能使用该方法保存
-    // 保存 “自定义对象” 需要使用 “归档”
+    // 如果数组中的元素是“自定义对象”不能使用该方法保存
+    // 保存“自定义对象”需要使用“归档”
     NSArray *array = @[@"lnj", @"yz", @"xwj"];
     if ([array writeToFile:@"/Users/xiewujun/Desktop/abc.plist" atomically:YES]) {
         NSLog(@"写入成功");
