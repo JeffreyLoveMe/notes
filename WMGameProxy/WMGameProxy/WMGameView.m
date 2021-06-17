@@ -23,6 +23,7 @@
 
 /// 2.通过该方法init控件
 // 可以直接拿到frame
+// 调用[[xxx alloc]init]/[[xxx alloc]initWithFrame:xxx]都会调用该方法
 - (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
@@ -38,7 +39,7 @@
     if (self) {
         // 先调用
         // 这里还没有创建子控件
-        // 不要在这里操作子控件
+        // 不要在这里操作“xib中创建的子控件的子控件”（处于未唤醒状态）
     }
     return self;
 }
@@ -48,7 +49,7 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     // 后调用
-    // 必须在这里操作子控件
+    // 必须在这里操作“xib中创建的子控件的子控件”
 }
 
 /// 通过"方法1"只能在该方法中拿到frame
@@ -56,7 +57,7 @@
 - (void)layoutSubviews {
     // 0.一定要调用super
     [super layoutSubviews];
-    // 在这里布局
+    // ！！！在这里布局！！！
 }
 
 

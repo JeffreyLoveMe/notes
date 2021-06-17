@@ -1,7 +1,7 @@
 // https://www.yiibai.com/dart/dart_programming_data_types.html
 
 // dart语言简介
-// 1>.dart语言是一个由Google开发的通用编程语言。后来被Ecma（Ecma-408）批准为标准。用于构建web/服务器/桌面和移动应用
+// 1>.dart语言是一个由Google开发的通用编程语言。后来被Ecma（Ecma-408）批准为标准。用于构建web/服务器/桌面/移动应用
 // 2>.dart语言是一种面向对象的，类定义的，垃圾回收语言。使用C样式语法可以随意地转换成js
 // 3>.dart语言支持接口/mixin/抽象类/具体化泛型/静态类型
 
@@ -61,21 +61,21 @@ class Demo {
     // int s = 0.1;  // 不要把小数分配给整数（会抛出异常）
     print(sum);
 
-    // 二、字符串 - 可以使用''/ ""
+    // 二、字符串 - 可以使用''/""
     // dart语言中字符串是不可变的
     String c = '这是一个字符串';
     String d = '这也是一个字符串';
     // 虽然字符串不可变但是可以操作字符串返回新的字符串
     String c1 = c.trim(); // 删除字符串前后的空格
     List list = c1.split(','); // 分割字符串返回List
-    c.substring(1, 5); // 分割字符串(包含1，包含5？？？)
+    c.substring(1, 5); // 分割字符串(从0开始，包含1，不包含5)
     c1.toLowerCase(); // 将字符串全部小写
     c1.toUpperCase(); // 将字符串全部大写
     print(list);
     // 1>.字符串 -> 数字
     int e = int.parse(c);
     double f = double.parse(d);
-    // 2>.数字 -> 字符串？？？
+    // 2>.数字 -> 字符串
     String g = a.toString();
     String h = b.toString();
     String numString = sum.toString();
@@ -164,7 +164,7 @@ class Demo {
     gifts.length; // 返回映射中键值对的个数
     // 2>.第二种创建方式
     // 创建赋值 - 不推荐使用
-    var giftMaps = Map();
+    var giftMaps = new Map();
     giftMaps['key1'] = 'value1';
     giftMaps['key2'] = 'value2';
     giftMaps['key3'] = 'value3';
@@ -193,14 +193,14 @@ class Demo {
     print(obj);
   }
 
-  // 变量 - 使用变量之前必须先声明变量
-  // 变量存储对值的引用/dart语言支持类型检查
-  // 注意 - dart语言���一切皆对象/未初始化的变量默认为null/数字类型、布尔类型没有初始化都默认为null
+  // 变量
+  // 使用变量之前必须先声明变量/变量存储值的引用/dart语言支持类型检查
+  // 注意 - dart语言一切皆对象/未初始化的变量默认为null（数字类型、布尔类型没有初始化都默认为null）
   /*
    * 问题 - var/Object/dynamic都可以声明变量，它们的区别是什么？
    * var - 如果没有初始化值可以变成任何类型/如果有初始化值声明的变量类型固定不能改变
-   * Object - 动态任意类型/声明的变量类型可以改变/编辑的时候会检查类型
-   * dynamic - 动态任意类型/声明的变量类型可以改变/编译的时候不检查类型
+   * Object - 动态任意类型/声明的变量类型可以改变/编译的时候会检查类型
+   * dynamic/dai'na'mi'k - 动态任意类型/声明的变量类型可以改变/编译的时候不检查类型
    */
   void disVariable() {
     // 如果有初始化值声明的变量类型固定不能改变
@@ -225,10 +225,10 @@ class Demo {
     print('$name 今年 $age 岁，体重 $weight 身高 $height');
   }
 
-  // 常量 - 不可以修改/final、const关键字用于声明常量
+  // 常量 - 不可以修改/const、final关键字用于声明常量
   /*
-  final - xxx？？？
-  const - 表示编译时常量/值将在编译时确定
+  const - 表示编译期常量
+  final - 表示运行期常量（应用更广泛）
    */
   void disConstant() {
     // 一、final和const的相同点
@@ -303,35 +303,32 @@ class Demo {
     do {} while (m1 < m2);
   }
 
-  // 函数 - 可读/可维护/可重用代码的代码块
-  // Function - 函数也是对象/函数也是对象/函数也是对象
-  // 1>.普通函数
+  // 函数
+  // 1>.概念 - 可读/可维护/可重用代码的代码块
+  // 2>.注意点 - 函数也是对象/函数也是对象/函数也是对象
+  // 3>.普通函数
   void disNormal(int a, int b, int c) {
     int result = a + b + c;
     print(result);
   }
-
-  // 2>.可选位置参数 - ？？？
+  // 4>.可选函数
+  // 1.可选位置参数（必须按照位置，如果需要指定c则不能省略b）
   int disSum(int a, [int b, int c]) {
     return a + b + c;
   }
-
-  // 3>.可选命名参数 - 命名参数就是选填参数
-  // 命名参数最好给默认值
-  int disClick(int a, {int b = 1, int c = 1}) {
-    return a + b + c;
-  }
-
-  // 4>.带有默认值的可选函数 - 命名参数最好给默认值
+  // 2.带有默认值的可选位置参数
   int disDefault(int a, [int b = 1, int c = 2]) {
     return a + b + c;
   }
-
-  // 5>.递归函数hans
+  // 3.可选命名参数 - 命名参数就是选填参数（不用考虑b和c的顺序）
+  // 命名参数最好给默认值
+  int disClick(int a, {int b: 1, int c: 1}) {
+    return a + b + c;
+  }
+  // 5>.递归函数
   // 6>.Lambda函数 - 函数块只有一条语句
   void single() => print('Lambda函数');
-
-  // 匿名函数 - 没有方法名/必须用var/final修饰
+  // 7>.匿名函数 - 没有方法名/必须用var/final修饰
   /*
   两种形式
   1.() => xxx;
@@ -344,6 +341,7 @@ class Demo {
     // print('$name') - 代码块
     var mName = (name) => print('$name'); // 有参匿名函数
     var sName = () => print(''); // 无参匿名函数
+    // 8>.回调函数
     // 一个函数做为另一个函数参数
     // String - 函数返回类型/void可以省略
     // func - 函数名称/自定义 - 形参
@@ -351,7 +349,6 @@ class Demo {
     void sLogger(String func(string)) {
       func('1');
     }
-
     sLogger(mName);
     void state(String func()) {}
     state(sName);
@@ -399,7 +396,7 @@ class Demo {
     DateTime.fromMillisecondsSinceEpoch(15516161200000);
   }
 
-  // dart集合
+  // dart队列
   void disQueue() {
     Queue queue = new Queue();
     queue.addAll([12, 13, 14]);
@@ -469,7 +466,7 @@ class CustomException implements Exception {
 enum enumName { normalLoginType, phoneLoginType, codeLoginType }
 
 // 类
-// dart是一门面向��象的语言 - 支持面向对象编程
+// dart是一门面向对象的语言 - 支持面向对象编程
 // 声明一个类/dart不支持多继承/支持多重继承
 // 继承 - 子类可以继承父类除构造函数以外的所有属性和函数
 // dart支持方法重写

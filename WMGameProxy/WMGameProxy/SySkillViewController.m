@@ -57,7 +57,7 @@
     // ！！！ self.view还没有加载完成 ！！！
     /*
      底层原理：
-     先判断当前VC是不是从 storyboard 中加载的？？？
+     先判断当前VC是不是从storyboard中加载的？？？
      1.如果是：把storyboard中的view设置为self.view
      2.如果不是：创建一个空白的View
      */
@@ -109,6 +109,22 @@
     // 7.视图已经消失
 }
 
+#pragma mark - 设计模式
+-(void)showModel {
+    // 1.什么是设计模式 - 一套被反复使用的代码设计经验的总结
+    // 2.常见的设计模式 - 单例模式、工厂模式、代理模式
+    /**
+     3.单例模式
+     */
+    /**
+     3.工厂模式
+     1>.工厂方法 - 用来快速创建对象
+     2>.抽象工厂 - 抽象出来一个公共的父类（子类继承即可，不会使用父类创建对象）
+     */
+    /**
+     3.代理模式
+     */
+}
 
 #pragma mark - 定时器
 // 频繁的销毁和创建"定时器"
@@ -323,7 +339,7 @@
         [NSKeyedArchiver archiveRootObject:wm0 toFile:filePath];
     }
     // 解档
-    // 会调用 - (instancetype)initWithCoder:(NSCoder *)coder 方法
+    // 会调用“-(instancetype)initWithCoder:(NSCoder *)coder方法”
     if (@available(iOS 12.0, *)) {
         NSData *data = [[NSData alloc]initWithContentsOfFile:filePath];
         NSError *error;
@@ -348,7 +364,7 @@
 
 #pragma mark - block
 // 1.概念：block是iOS中一种比较特殊的数据类型（官方特别推荐使用）
-// 2.作用：用来保存 “代码块”，在恰当的时候再取出来调用（类似于函数、效率高）
+// 2.作用：用来保存“代码块”，在恰当的时候再取出来调用（类似于函数、效率高）
 -(void)shouBlock {
     // 3.block的基本写法
     // 1).无参数无返回值
@@ -422,7 +438,7 @@
      */
     __block int m1 = 10;
     void (^yourBlock)(void) = ^{
-//        // 2).block中可以定义和外界同名的变量/就近原则
+//        // 2).block中可以定义和外界同名的变量（就近原则）
 //        int m1 = 20;
         
         // 3).默认情况下，不可以在block中修改外部的变量
@@ -434,11 +450,12 @@
     // 因为block使用外界的变量是copy的，所以此处修改变量值不会影响block中变量值
     m1 = 20;
     yourBlock();
+    // cc -rewrite-objc xxx.m 转换成c++代码
     
     // 8.面试题
     // 1>.block是存储在“堆内存”还是“栈内存”中
     /**
-     1.默认情况下block存储在栈中，如果对block进行一个copy操作就会转移到 堆中；
+     1.默认情况下block存储在栈中，如果对block进行一个copy操作就会转移到堆中；
      2.如果block在栈中访问了外部的对象，那么不会对外部的对象进行retain操作；
      3.如果block在堆中访问了外部的对象，那么会对外部的对象进行retain操作；
      */
@@ -480,7 +497,7 @@
     // 3>.ARC
     // block代码块中引用外部局部变量 -> 堆
     // block代码块中没有引用外部局部变量 -> 全局区
-    // 最好使用 strong/不要使用 copy
+    // 最好使用strong/不要使用copy
 }
 /**
  什么是循环引用 - A引用B/B引用A导致A和B都不能够释放内存
@@ -590,6 +607,7 @@
     NSArray *array = @[wm, wm, wm];
     NSArray *arrayPublishName = [array valueForKeyPath:@"publishName"];
     NSLog(@"%@", arrayPublishName);
+    
     // 2.KVC赋值
     // key属性值千万不能写错、不然会崩溃
     [wm setValue:@"谢吴军" forKey:@"publishName"];
@@ -599,7 +617,8 @@
     NSLog(@"%@===%ld", wm.publishName, (long)wm.publishAge);
     // ‘forKeyPath’包含‘forKey’的功能/尽量使用‘forKeyPath’
     // ‘forKeyPath’进行内部的点语法可以层层访问内部的属性
-    // “key”必须在“属性”中找到、不然会崩溃
+    // “key”必须在“属性”中找到，不然会崩溃
+    [wm.item setValue:@"小陈" forKey:@"name"];
     [wm setValue:@"小陈" forKeyPath:@"item.name"];
     
     // 3.给数组赋值
@@ -623,7 +642,7 @@
 // 2>.KVO - Key Value Observing/键值监听
 // 监听某个对象的属性变化
 /**
- ！！！可以监听“系统类/比如 UIScrollView/UITableView ”的一些属性去做一些特定操作！！！
+ ！！！可以监听“系统类（比如UIScrollView/UITableView）”的一些属性去做一些特定操作！！！
  比如有contentOffset
  */
 -(void)showKVO {
@@ -634,7 +653,7 @@
      第一个参数 - 观察者
      第二个参数 - 需要监听的属性
      第三个参数 - 选项
-     第四个参数 - XXX
+     第四个参数 - nil
      */
     [wm addObserver:self forKeyPath:@"publishName" options:NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld context:nil];
     // 2.再修改属性值

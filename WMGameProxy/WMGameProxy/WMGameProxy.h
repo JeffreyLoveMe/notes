@@ -26,7 +26,7 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  2.面向对象OOP - 把问题里拥有相同属性的东西建立一个类
  1>.封装：利用类将数据和基于数据的操作封装在一起，数据被保护在类的内部，系统的其它部分只有通过被授权的操作才可以访问数据；将不需要对外提供的内容隐藏起来：把属性隐藏起来，提供公共方法对外访问
- 2>.继承/派生：1.继承：父类的属性（成员变量：不包括私有）和方法（对象方法 & 类方法），子类可以直接获取；2.派生：子类保持父类中的行为和属性，新增其它功能（对象方法 & 类方法可以重写、属性不能重写）；3.提示：每个类都有一个 "[self superclass]指针" 指向自己父类（OC只支持单继承）；4.好处：1).创建大量类抽取重复代码；2).建立类与类之间的关系；3).耦合性（依赖性）太强；
+ 2>.继承/派生：1.继承：父类的属性（成员变量：不包括私有）和方法（对象方法 & 类方法），子类可以直接获取；2.派生：子类保持父类中的行为和属性，新增其它功能（对象方法 & 类方法可以重写、属性不能重写）；3.提示：每个类都有一个"[self superclass]指针" 指向自己父类（OC只支持单继承）；4.好处：1).创建大量类抽取重复代码；2).建立类与类之间的关系；3).耦合性（依赖性）太强；
  3>.多态：程序中可以有同名的不同方法共存，利用子类对父类方法的覆盖和重载在同一个类中定义多个同名的方法来实现；
  */
 // 面向对象编程是把问题中拥有相同属性的东西建立一个类，然后创建类的对象
@@ -45,7 +45,7 @@ NS_ASSUME_NONNULL_BEGIN
  */
 
 /// .h文件用来声明类
-// NSObject是基类、顶级父类
+// NSObject是基类，顶级父类
 // 子类可以继承父类的所有方法和属性（私有属性虽然拥有但是不能访问/非私有属性才可以访问）
 // 父类的属性可以继承、但是方法只能通过super调用
 // WMGameProxy类名/类名必须大写
@@ -78,7 +78,7 @@ NS_ASSUME_NONNULL_BEGIN
 // 持有的对象sdk引用计算 + 1
 // 通过自动释放池管理内存
 // 如果重写setter/getter方法，则以重写的为主/@property就不会（自动声明setter/getter方法/生成_sdk成员变量）
-// 自动生成的变量 _sdk 是私有变量
+// 自动生成的变量_sdk是私有变量
 @property (strong, nonatomic) NSString *sdk;
 // @synthesize编译器指令（孙色size）
 // 让编译器自动实现setter/getter方法（Xcode4.6以后可以省略）
@@ -86,7 +86,7 @@ NS_ASSUME_NONNULL_BEGIN
 // nonatomic非原子性：不加锁、线程不安全、访问速度快
 @property (strong, atomic) NSString *publishName;
 // assign一般用于基础数据类型
-// 这里不需要加 *
+// 这里不需要加*
 // NSInteger的含义？？？
 @property (assign, nonatomic) NSInteger publishAge;
 // readonly只读：只生成getter方法
@@ -96,10 +96,10 @@ NS_ASSUME_NONNULL_BEGIN
 // 给getter方法取别名
 // 一般使用于BOOL：改成isXxx
 @property (getter = myWeight) NSInteger weight;
-// 给 setter 方法取别名
+// 给setter方法取别名
 // 一般不使用
 @property (setter = myHeight:) NSInteger mheight;
-// 多个属性使用 "," 隔开
+// 多个属性使用","隔开
 @property (setter = setUserName:, getter = getUserName, strong, nonatomic) NSString *mName;
 /**
  表示"可能为空" - 用于属性、参数、方法返回值/为了迎合 swift
@@ -107,8 +107,8 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @property (nullable, strong, nonatomic) SyPostItem *item;
 /**
-表示"不能为空" - 用于属性、参数、方法返回值/为了迎合 swift
-nonnull修饰属性位于 (nonnull, strong, nonatomic)/nonnull修饰形参位于(nonnull NSString *)
+ 表示"不能为空" - 用于属性、参数、方法返回值/为了迎合 swift
+ nonnull修饰属性位于 (nonnull, strong, nonatomic)/nonnull修饰形参位于(nonnull NSString *)
 */
 @property (nonnull, strong, nonatomic) NSString *resetName;
 /**
@@ -117,14 +117,14 @@ nonnull修饰属性位于 (nonnull, strong, nonatomic)/nonnull修饰形参位于
  nonatomic // 不加锁/访问速度快/多线程环境下不存在线程保护/非原子性
  2.赋值
  assign // 一般用于基本类型/直接赋值（默认）
- retain // 保留对象
+ retain  //  保留对象
  copy    // 拷贝对象/修饰字符串（不可变字符串可以直接使用strong）
  3.读写
- readwrite  // 生成 getter/setter 方法
- readonly   // 只生成 getter 方法
+ readwrite  // 生成“getter/setter方法”
+ readonly   // 只生成“getter方法”
  */
-// 如果想对传入的数据进行过滤需要重写 getter/setter 方法
-// 如果重写 getter/setter 方法，@property将不再生成 getter/setter 方法
+// 如果想对传入的数据进行过滤需要重写“getter/setter方法”
+// 如果重写“getter/setter方法”，@property将不再生成“getter/setter方法”
 @property (nonatomic, retain, readonly) NSString *userName;
 // 自定义泛型
 @property (strong, nonatomic) ObjectType obj;
@@ -137,15 +137,15 @@ nonnull修饰属性位于 (nonnull, strong, nonatomic)/nonnull修饰形参位于
 #pragma mark - 这是一个注释（可以用来分割功能点）
 /// 定义方法/行为
 // 冒号也是方法名的一部分
-// 定义在.h文件中的方法都会公有的、不能使用 @private/@protected/@public 修饰
-// 对象方法：只能被对象名调用
+// 定义在.h文件中的方法都会公有的、不能使用@private/@protected/@public修饰（这点与java等其他语言不同）
+// 对象方法：只能被对象名调用、以“-”开头
 // 方法属于类
 // ⚠️在oc中“()”只有一个作用：括住数据类型
 // 对象作为参数传递是地址传递
 -(void)loginWithGameId:(NSString *)gameId GameKey:(NSString *)gameKey;
 
 /**
- 5.类方法
+ 5.类方法 - 以“+”开头
  1>.概念：C++中的静态方法/不属于任何一个对象/通过类名调用，不需要创建对象/不能直接调用对象方法和成员变量
  2>.对一个功能模块留下简单的对外接口
  3>.类方法的执行效率比对象方法高：对象方法可以访问成员变量/类方法中不可以直接访问成员变量
@@ -173,7 +173,7 @@ nonnull修饰属性位于 (nonnull, strong, nonatomic)/nonnull修饰形参位于
 // 读取实例变量
 -(NSString * _Nonnull)getSdk;
 
-// 通过传入 NSDictionary 赋值模型
+// 通过传入NSDictionary赋值模型
 // 返回的 model 放在数组
 +(instancetype)gameWithDict:(NSDictionary *)dict;
 

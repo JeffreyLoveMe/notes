@@ -10,10 +10,11 @@
 #import "WMGameProxy.h"
 
 /// Foundation框架提供很多官方Api
-// 继承与 NSObject
-// iOS开发-Foundation框架 + UIKit框架
-// Mac开发-Foundation框架 + AppKit框架
-// 想要操作 Foundtion 框架最常使用的方法就是 Category
+// 继承与NSObject
+// iOS开发 - Foundation框架 + UIKit框架
+// Mac开发 - Foundation框架 + AppKit框架
+// 想要操作Foundtion框架最常使用的方法就是Category
+// 擅自修改Foundation框架会报错（比如"NSString has been modified"）/修改方式自行百度
 @implementation FoundationNSObject
 /// 0.NSObject
 // 一切类的基类：没有父类
@@ -34,7 +35,7 @@
     // 让执行过程停在此处
     [[NSRunLoop currentRunLoop] run];
     /// 两者有什么不同？？？
-    // 判断 “obj0对象” 是否 “NSObject类/子类” 创建
+    // 判断“obj0对象”是否“NSObject类/子类”创建
     if ([obj0 isKindOfClass:[NSObject class]]) {
         
     }
@@ -42,7 +43,7 @@
     if ([obj0 isMemberOfClass:[NSObject class]]) {
         
     }
-    /// 判断 obj0对象 中是否实现了 log方法
+    /// 判断“obj0对象”中是否实现了“log方法”
     // 包括父类继承下来的方法
     if ([obj0 respondsToSelector:@selector(log)]) {
         
@@ -55,33 +56,34 @@
 
 
 
-/// 1.NSString/NSMutableString/字符串
+/// 1.字符串 - NSString/NSMutableString
 -(void)showString {
     /// 1).不可变字符串
     /// 字符串的创建：有三种方式/每种方式创建存储的位置不一样
     // 只有官方类才能这样创建
     // 常量区的内容一定不一样
-    // 存储在常量区：多个内容相同的对象指向同一块存储空间 / str0 & str00 存储地址相同
+    // 存储在常量区：多个内容相同的对象指向同一块存储空间、str0&str00存储地址相同
     // 1.第一种创建方法
     NSString *str0 = @"iOS";
     NSString *str00 = @"iOS";
     // 这样不算修改：只能算变量重新赋值
     str0 = @"Android";
     str00 = @"Android";
+    // 2.第二种创建方法
     /// 通过一个字符串创建另一个字符串
     // 存储在堆区：多个内容相同的对象指向不同存储空间
-    // 2.第二种创建方法
     NSString *str1 = [[NSString alloc]initWithString:str0];
-    // 3.第三种创建方法
+    // 3.第三种创建方法（对第二种方式的封装）
+    // 存储在堆区：多个内容相同的对象指向不同存储空间
     // 类工厂方法 - 快速创建对象的方法
     // 用于给对象分配存储空间和初始化存储空间
     NSString *str2 = [NSString stringWithString:str1];
     NSLog(@"%@", str2);
     /**
      关于内存管理
-     1>.一般情况下只要通过 “alloc/第一种方式” 或者 “类工厂方法/第二种方式” 创建的对象每次都会在堆内存中开辟一块新的存储空间
-     2>.alloc - 需要手动 release/类工厂方法 - 99.9%是autorelease
-     3>.如果是通过 ‘alloc的initWithString方法’ 除外/因为该方法是通过复制返回一个字符串对象
+     1>.一般情况下只要通过“alloc”或者“类工厂方法”创建的对象每次都会在堆内存中开辟一块新的存储空间
+     2>.alloc - 需要手动release/类工厂方法 - 99.9%是autorelease
+     3>.如果是通过‘alloc的initWithString方法’除外（因为该方法是通过copy返回一个字符串对象）
      */
     // C语言字符串 <==> OC字符串
     NSString *str3 = [[NSString alloc]initWithUTF8String:"我是c语言字符串"];
@@ -89,7 +91,7 @@
     // 拼接字符串：很重要
     NSString *str4 = [[NSString alloc]initWithFormat:@"我是万能拼接字符串：%@", str3];
     // 字符串长度
-    // ！！！汉字长度也的是 “1”！！！
+    // ！！！汉字长度也的是“1”！！！
     NSUInteger str4Count = [str4 length];
     NSLog(@"%lu", (unsigned long)str4Count);
     // 通过索引获取相应字符
@@ -112,7 +114,7 @@
     } else {
         NSLog(@"不属于同一对象（地址不同）");
     }
-//    // 3.字符串比较
+//    // 3.字符串比较大小
 //    NSComparisonResult result0 = [str0 caseInsensitiveCompare:str1]; // 忽略大小写比较大小
     NSComparisonResult result = [str0 compare:str1];  // 直接比较
     switch (result) {
@@ -142,14 +144,19 @@
     [str0 uppercaseString]; // 字符串转化为大写
     [str0 lowercaseString]; // 字符串转化为小写
     [str0 capitalizedString]; // 字符串首字母转化为大写
+    // 3.C语言字符串 -> OC字符串
+    char *cStr = "xwj";
+    NSString *ocStr = [NSString stringWithUTF8String:cStr];
+    // 4.OC字符串 - C语言字符串
+    const char *cStr1 = [ocStr UTF8String]; // 常量接收
     /// 字符串的查找
     if ([str0 hasPrefix:@"http://"]) {
         NSLog(@"是一个以“http://”开头");
     } else if ([str0 hasSuffix:@".png"]) {
         NSLog(@"是一个以“.png”结尾");
     }
-    // 判断字符串中是否包含 “xxx”
-    // range.location 从 0 开始/ range.length 从 1 开始
+    // 判断字符串中是否包含“xxx”
+    // range.location从0开始/range.length从1开始
     NSString *str5 = @"www.iphone.com";
     NSRange range3 = [str5 rangeOfString:@"ios"]; // ！！！找到第一个就不再接着找！！！
     NSLog(@"location = %lu, length = %lu", range3.location, range3.length);
@@ -161,20 +168,19 @@
 //    // 从后想向前找
 //    NSRange range4 = [str0 rangeOfString:@"<" options:NSBackwardsSearch];
     /// 字符串的截取
-    // 从 0 开始
+    // 从0开始
     // 未修改原有字符串
-    NSString *subStr0 = [str0 substringFromIndex:1]; // 从字符串的指定位置截取到最后（包含 1）
-    NSString *subStr1 = [str0 substringToIndex:1];   // 从字符串的开始位置截取到指定位置（不包含 1）
+    NSString *subStr0 = [str0 substringFromIndex:1]; // 从字符串的指定位置截取到最后（包含1）
+    NSString *subStr1 = [str0 substringToIndex:1];   // 从字符串的开始位置截取到指定位置（不包含1）
 //    // 不常用
 //    NSRange range = {1, 4};  // 1.指定位置/2.需要截取的字符长度
-//     在 Objective-C 语言中结构体的创建基本都可以使用 NSMakeXxx(,)
+//    在Objective-C语言中结构体的创建基本都可以使用 NSMakeXxx(,)
     NSRange range = NSMakeRange(1, 4);
     NSString *subStr2 = [str0 substringWithRange:range]; // 截取指定位置字符串
     NSLog(@"%@,%@,%@", subStr0, subStr1, subStr2);
-    // 动态获取起始位置 & 动态获取长度
-    // 字符串替换
-    // A 被 B 替换
-    // 不会改变 str5
+    // 怎么做？？？ - ？？？动态获取起始位置/动态获取长度？？？
+    /// 字符串替换（A被B替换）
+    // 不会改变str5（全部是返回新字符串而不会修改原有字符串）
     NSString *str6 = [str5 stringByReplacingOccurrencesOfString:@"A" withString:@"B"];
     // 应用：去掉空格
     str6 = [str5 stringByReplacingOccurrencesOfString:@" " withString:@""];
@@ -199,7 +205,7 @@
     // 1.找到删除的范围
     // NSRange是一个结构体
     NSRange range0 = [mStr3 rangeOfString:@"222"];
-    NSRange range1 = {1, 2}; // { 位置 , 长度 }
+    NSRange range1 = {1, 2}; // {位置, 长度}
     // 2.！！！删除：开发中经常使用！！！
     // 返回删除以后的字符串为一个新字符串
     [mStr3 deleteCharactersInRange:range0];
@@ -209,9 +215,16 @@
     [mStr3 insertString:mStr2 atIndex:0];
     // 替换字符串
     // 返回替换以后的字符串为一个新字符串
-    // 没有 * 的属性一般为 枚举/如果不想使用枚举可以设置为 0
     [mStr3 replaceCharactersInRange:range1 withString:@"xxx"];
     [mStr3 stringByReplacingOccurrencesOfString:@"xwj" withString:@"xxx"];
+    // 没有*的属性一般为枚举/如果不想使用枚举可以设置为0（按照系统默认的方式执行）
+    /**
+     OccurrencesOfString - 需要替换的字符串
+     withString - 用什么替换
+     options - 搜索方式
+     range - 搜索的范围
+     */
+    [mStr3 replaceOccurrencesOfString:@"520" withString:@"530" options:0 range:range1];
     
     /// 3).字符串的读写
 //    // 一、第一种方式
@@ -219,22 +232,22 @@
 //     从文件中读取字符串
 //     第一个参数 - 文件路径/必须传 “绝对路径”
 //     第二个参数 - 编码/英文编码 - iOS-5988-1/中文 - GBK（一般填写UTF8）
-//     第三个参数 - 错误信息（如果有）/ &error表示 “两个 *”
+//     第三个参数 - 错误信息（如果有）/&error表示“两个 *”
 //     */
 //    NSString *filePath = @"/Users/xiewujun/Desktop/技术部-iOS开发组-第1周-周报.docx";
 //    NSError *error = nil;
 //    NSString *fileString = [NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:&error];
-//    NSLog(@"获取的字符串==%@/真正的错误原因==%@", fileString, [error localizedDescription]);
+//    NSLog(@"获取的字符串 == %@/真正的错误原因 == %@", fileString, [error localizedDescription]);
 //    /**
 //     将字符串写入到文件中
-//     第一个参数 - 文件路径/必须传 “绝对路径”
+//     第一个参数 - 文件路径/必须传“绝对路径”
 //     第二个参数 - YES(字符串写入文件过程中没有写完不会生成文件)/NO(字符串写入文件过程中没有写完会生成文件)
-//     第三个参数 - 错误信息（如果有）/ &error表示 “两个 *”
+//     第三个参数 - 错误信息（如果有）/ &error表示“两个 *”
 //     */
 //    [fileString writeToFile:filePath atomically:YES encoding:NSUTF8StringEncoding error:&error];
     
     // 二、第二种方式
-    // 该方法既可以加载 “本地资源” 也可以加载 ”网络资源“
+    // 该方法既可以加载“本地资源”也可以加载”网络资源“
     /**
     1.file:// - 协议头
     2.192.168.5.102 - 主机域名
@@ -248,17 +261,17 @@
      第二个参数 - 编码/英文编码 - iOS-5988-1/中文 - GBK（一般填写UTF8）
      第三个参数 - 错误信息（如果有）/ &error表示 “两个 *”
      */
-    // 创建 url
+    // 创建url
 //    // 第一种方式（手动）
-//    // 因为 url 不支持中文，如果包含中文则无法访问
+//    // 因为url不支持中文，如果包含中文则无法访问
 //    NSString *path = @"file://192.168.5.102/Users/xiewujun/Desktop/技术部-iOS开发组-第1周-周报.docx";
 ////    // 如果加载本机上资源，那么 url 中的主机地址可以省略
 ////    NSString *path = @"file:///Users/xiewujun/Desktop/技术部-iOS开发组-第1周-周报.docx";
-//    // 如果 path 包含中文需要手动给 path 进行转码
+//    // 如果path包含中文需要手动给path进行转码
 //    NSString *path = [path stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
 //    NSURL *url = [NSURL URLWithString:path];
-    // 第二种方式（推荐使用/自动 - 使用该方法就算 url 包含中文也可以进行访问，系统内部会自动对 url 的中文进行处理）
-    // 如果通过该方法 “创建url” 系统会自动添加 “协议头”（ file:// ）
+    // 第二种方式（推荐使用/自动 - 使用该方法就算url包含中文也可以进行访问，系统内部会自动对url的中文进行处理）
+    // 如果通过该方法“创建url”系统会自动添加“协议头”（ file:// ）
     NSString *filePath = @"192.168.5.102/Users/xiewujun/Desktop/技术部-iOS开发组-第1周-周报.docx";
     NSURL *url = [NSURL fileURLWithPath:filePath];
     NSError *error = nil;
@@ -266,9 +279,9 @@
     NSLog(@"获取的字符串==%@/真正的错误原因==%@", fileString, [error localizedDescription]);
     /**
      将字符串写入到文件中
-     第一个参数 - 文件路径/必须传 “绝对路径”
+     第一个参数 - 文件路径/必须传“绝对路径”
      第二个参数 - YES(字符串写入文件过程中没有写完不会生成文件)/NO(字符串写入文件过程中没有写完会生成文件)
-     第三个参数 - 错误信息（如果有）/ &error表示 “两个 *”
+     第三个参数 - 错误信息（如果有）/ &error表示“两个 *”
      */
     // 多次往同一个文件中写入内容，那么后一次会覆盖前一次
     [fileString writeToURL:url atomically:YES encoding:NSUTF8StringEncoding error:&error];
@@ -276,7 +289,7 @@
     /// 4).字符串和绝对路径
     // ！！！记住 - 字符串和路径之间有很多方法可以使用！！！
     // 1.判断是否为绝对路径
-    // 本质就是判断字符串是否以 “/” 开头
+    // 本质就是判断字符串是否以“/”开头
     NSString *str = @"/Users/xiewujun/Desktop/技术部-iOS开发组-第1周-周报.docx";
     if ([str isAbsolutePath]) {
         NSLog(@"绝对路径");
@@ -287,27 +300,27 @@
     NSString *newString = [str lastPathComponent];
     NSLog(@"%@", newString);
     // 3.删除文件路径中的最后一个目录
-    // 本质就是删除 “/XXX” 所有内容
+    // 本质就是删除“/XXX”所有内容
     newString = [str stringByDeletingLastPathComponent];
     // 4.给文件路径添加一个目录
-    // 本质就是在字符串的末尾加上一个 "/XXX"
-    // 如果路径后面已经有一个或者多个 “/” 都会把 “/” 删除
+    // 本质就是在字符串的末尾加上一个"/XXX"
+    // 如果路径后面已经有一个或者多个“/”都会把“/”删除
     newString = [str stringByAppendingPathComponent:@"xmg"];
     // 5.获取路径中文件的扩展名
-    // 本质就是从字符串的末尾开始截取到第一个 "."
+    // 本质就是从字符串的末尾开始截取到第一个"."
     newString = [str pathExtension];
     // 6.删除路径中文件的扩展名
-    // 本质就是从字符串的末尾开始查找第一个 "."，删除掉 “.” 和 “,” 后面的字符串
+    // 本质就是从字符串的末尾开始查找第一个"."，删除掉“.”和“,”后面的字符串
     newString = [str stringByDeletingPathExtension];
     // 7.给路径添加一个扩展名
-    // 本质就是在路径结尾添加 ".XXX"
+    // 本质就是在路径结尾添加".XXX"
     newString = [str stringByAppendingPathExtension:@"png"];
 }
 
 
 
-/// 2.NSArray/NSMutableArray/数组
-// 有序的对象集合：不能存放基本数据类型（如果需要存放只能通过 NSNumber、NSValue 进行数据的封装）
+/// 2.数组 - NSArray/NSMutableArray
+// 有序的对象集合：不能存放基本数据类型（如果需要存放只能通过NSNumber、NSValue进行数据的封装）
 // 有序、不唯一
 -(void)showArray {
     /// 1).不可变数组
@@ -317,22 +330,22 @@
     // 3.C数组是相同类型变量的有序集合，可以保存任意类型的数据
     // 4.NSArray下标越界不会有警告（运行直接会报错）
     /// 创建数组
-    // 使用数组之前必须 init
+    // 使用数组之前必须init
     // 1.创建空数组
     // 一般不会这样创建：因为这样创建出来的数组不可变而且又是空数组没有意义
     NSArray *array1 = [[NSArray array]init];
     NSArray *array2 = [NSArray array];
     // 2.指定对象创建数组
-    // 数组中 nil 就是结束符：遇到第一个 nil 数组就会结束
+    // 数组中nil就是结束符：遇到第一个nil数组就会结束
     // 可以存放不同数据类型？？？可以
     NSArray *array3 = [NSArray arrayWithObjects:@"xxx", @"yyy", nil]; // ！！！最常用！！！
     NSArray *array4 = [[NSArray alloc]initWithObjects:@"xxx",@"yyy", nil];
-    NSLog(@"%@", array4.description); // 以 ( 开头/ 以 ) 结尾
+    NSLog(@"%@", array4.description); // 以‘(’开头、以‘)’结尾
     // 3.指定数组创建数组
     NSArray *array5 = [[NSArray alloc]initWithArray:array1];
     NSArray *array6 = [NSArray arrayWithArray:array2];
     // 4.快速创建数组
-    NSArray *array7 = @[@(1),@(2)]; // 这样数字 int 就可以放入数组中、与 array4 是等价的
+    NSArray *array7 = @[@(1),@(2)]; // 这样数字int就可以放入数组中、与array4是等价的
     NSLog(@"%@ == %@ == %@ == %@ == %@", array3, array4, array5, array6, array7);
     /// 判断数组中是否包含某一个对象
     // 方法一
@@ -340,27 +353,27 @@
         // 找到
     }
     // 方法二
-    // 1.获取某个元素的 index
+    // 1.获取某个元素的index
     NSUInteger index = [array4 indexOfObject:@"xxx"];
     if (index == NSNotFound) {
         // 没有找到
     } else {
-//        // 2.通过 index 获取元素
+//        // 2.通过index获取元素
 //        id obj = [array4 objectAtIndex:index];
 //        id obj = array4[index];
     }
     
-    /// NSString 和 NSArray 之间的转化
-    // 将数组中的字符串用 , 连接
+    /// NSString和NSArray之间的转化
+    // 将数组中的字符串用,连接
     // 要求：数组中的元素必须全部是字符串
     NSString *str0 = [array4 componentsJoinedByString:@","]; // 数组->字符串
     // 将字符串分割创建数组
-    // 原字符串不变（ str0 不变）
+    // 原字符串不变（str0不变）
     NSArray *componentArray = [str0 componentsSeparatedByString:@","]; // 字符串->数组
     NSLog(@"%@", componentArray);
     
     // 数组中第一个元素、最后一个元素
-    // 这里 NSString 可以改成 id
+    // 这里NSString可以改成id
     NSString *firstStr = [array4 firstObject];
     NSString *lastStr = [array4 lastObject];
     NSLog(@"%@===%@", firstStr, lastStr);
@@ -370,7 +383,7 @@
     
     // 数组排序
     // 1.使用方法对数组元素排序
-    // 数组元素必须是 Foundation 框架中的对象
+    // 数组元素必须是Foundation框架中的对象
     // 自定义对象不能排序
     NSArray *newArray01 = [array1 sortedArrayUsingSelector:@selector(compare:)];
     NSLog(@"%@", newArray01);
@@ -387,8 +400,8 @@
     
     /// 2).可变数组NSMutableArray：
     // 概念：数组的长度不确定
-    // 数组元素：不能存放基本数据类型 (int/float) / 只能是对象的引用 (指针)
-    // 继承 NSArray
+    // 数组元素：不能存放基本数据类型(int/float)/只能是对象的引用(指针)
+    // 继承NSArray
     // 1.创建空数组
     NSMutableArray *mArray1 = [[NSMutableArray alloc]init]; // 默认会开辟多个（具体几个不知道）
     NSMutableArray<WMGameProxy *> *mArray2 = [NSMutableArray array]; // 类工厂方法
@@ -401,14 +414,14 @@
 //    NSMutableArray *arrM = @[@"", @""];
     // 数组允许数组重复
     NSMutableArray *mArray4 = [NSMutableArray arrayWithObjects:@"data",@"data", nil];
-    NSMutableArray *mArray5 = [NSMutableArray arrayWithCapacity:5]; // 默认会开辟 5 个（超过 5 个会自动增大）
+    NSMutableArray *mArray5 = [NSMutableArray arrayWithCapacity:5]; // 默认会开辟5个（超过5个会自动增大）
     
     // 添加元素
     // 添加在最后一个元素后面
     [mArray1 addObject:@"data1"];
     // 添加数组
-    // 将 “数组mArray1” 元素取出来添加到 “数组mArray5” 中
-    // 不是将 “数组mArray1” 加到 “数组mArray5” 中
+    // 将“数组mArray1”元素取出来添加到“数组mArray5”中
+    // 不是将“数组mArray1”加到“数组mArray5”中
     [mArray5 addObjectsFromArray:mArray1];
     // 插入一个元素
     [mArray3 insertObject:@"data1" atIndex:1];
@@ -444,7 +457,7 @@
         NSLog(@"%@", [mArray3 objectAtIndex:index]);
     }
     // 2.快速遍历
-    // 增加 for 循环
+    // 增加for循环
     for (NSString *obj in mArray3) {
         NSLog(@"%@", obj);
     }
@@ -456,9 +469,10 @@
         }
         NSLog(@"obj = %@, idx = %lu", obj, (unsigned long)idx);
     }];
-    // 4.枚举器法
+    // 4.枚举器法 - NSEnumerator
     // 获取一个枚举器
     NSEnumerator *enumerator = [mArray3 objectEnumerator];
+    // 指向下一个元素
     while ([enumerator nextObject]) {
         
     }
@@ -471,9 +485,9 @@
         [mArray3 addObject:obj];
     }
     
-//    // 让数组中的每个元素都调用 isOneway 方法
-//    // 如果数组中某个元素没有 isOneway 方法就会报错
-//    // 最多只可以传递 1 个参数
+//    // 让数组中的每个元素都调用isOneway方法
+//    // 如果数组中某个元素没有isOneway方法就会报错
+//    // 最多只可以传递1个参数
 //    // 数组中的对象必须是相同类型，不然会报错
 //    [mArray3 makeObjectsPerformSelector:@selector(isOneway)];
 //    [mArray3 makeObjectsPerformSelector:@selector(isOneway:) withObject:@"lnj"];
@@ -496,27 +510,26 @@
 
 
 
-/// 3.NSDictionary/NSMutableDictionary/字典
-// dictionary的数据是无序的
+/// 3.字典 - NSDictionary/NSMutableDictionary
+// 字典dictionary的数据是无序的
 // 字典：任何类型的对象地址构成键值对的集合结构
-// 键值对 key/value 必须一一对应
-// key必须保持唯一
+// 键值对key/value必须一一对应（key必须保持唯一）
 -(void)showDictionary {
     /// 1).不可变字典
-    // 创建 NSDictionary
+    // 创建NSDictionary
     NSDictionary *dic0 = [[NSDictionary alloc]init];
 //    NSDictionary *dic = [NSDictionary dictionary];
-    // 全部是 ","
+    // 全部是","
     NSDictionary *dic1 = [[NSDictionary alloc]initWithObjectsAndKeys:
                           @"key0", @"value0",
                           @"key1", @"value1",
                           nil];
     // 优化语法
-    // 不能创建 NSMutableDictionary
+    // 不能创建NSMutableDictionary
     NSDictionary *dic2 = @{@"key0":@"value0", @"key1":@"value1",
                            @"key2":@"value2", @"key3":@"value3",
                            @"key4":@"value4"};
-    // 获取 value
+    // 获取value
     NSString *value0 = [dic1 objectForKey:@"key0"];
     NSLog(@"obj = %@", dic1[@"key0"]);
     // 返回键值总数
@@ -529,16 +542,16 @@
     NSLog(@"%lu==%@==%@==%@==%@==%@", (unsigned long)count, value0, keys, values,[dic1 objectForKey:@"key0"], dic1[@"key1"]);
     
     /// 2).可变字典
-    // 如果 key 同名则后面的会覆盖前面的
+    // 如果key同名则后面的会覆盖前面的
     NSMutableDictionary *mDict = [[NSMutableDictionary alloc]init];
     // 重置字典
     [mDict setDictionary:dic2];
-    // 将 dic2 中所有的数据添加到 mDict 中
-    // 相同 key 的元素在字典中不能重复添加：会被覆盖
+    // 将dic2中所有的数据添加到 mDict 中
+    // 相同key的元素在字典中不能重复添加：会被覆盖
     [mDict addEntriesFromDictionary:dic2];
     // 修改、添加
     [mDict setObject:@"key1" forKey:@"value"];
-    // 根据 key 删除数据
+    // 根据key删除数据
     [mDict removeObjectForKey:@"key1"];
     // 全部删除
     [mDict removeAllObjects];
@@ -695,20 +708,20 @@
     // 1.NSDate的创建和基本概念
     // 获取当前时间
     // 系统记录的时间为北京时间，但是打印出来的始终为格林尼治时间
-    // 如果需要打印出来的是北京时间，可以将"NSDate -> NSString"
+    // 如果需要打印出来的是北京时间，可以将"NSDate->NSString"
     NSDate *now = [NSDate date];
-//    // 在 now 的基础上追加 10 秒
+//    // 在now的基础上追加10秒
 //    NSDate *date = [now dateByAddingTimeInterval:10];
 //    NSLog(@"data = %@", date);
     // 2.获取当前所处的时区
     NSTimeZone *zone = [NSTimeZone systemTimeZone];
-    // 获取 “当前时区” 和 “指定时间” 的时间差
+    // 获取“当前时区”和“指定时间”的时间差
     NSUInteger secondCount = [zone secondsFromGMTForDate:now];
     NSLog(@"secondCount = %lu", (unsigned long)secondCount);
-    // 3.当前时间 / 北京东八区
+    // 3.当前时间/北京东八区
     NSDate *currentDate = [now dateByAddingTimeInterval:secondCount];
     // 4.时间格式化
-    // 创建 “时间格式化对象”
+    // 创建“时间格式化对象”
     NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
     // 按照什么格式
     /**

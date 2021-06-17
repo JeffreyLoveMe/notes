@@ -174,7 +174,7 @@
     // 0.5 -相对于水平x方向缩放的比例
     // 2 -相对于垂直y方向缩放的比例
     view.transform = CGAffineTransformMakeScale(0.5, 2);
-    // 相对于 superView 进行形变
+    // 相对于superView进行形变
     view.transform = CGAffineTransformScale(superView.transform, 0.5, 2);
     // 二、旋转形变
     // 参数是弧度
@@ -307,7 +307,7 @@
     /// 背景颜色
     // 仅仅自定义类型有效
     btn.backgroundColor = UIColor.grayColor;
-    /// 设置button图像：内容图像
+    /// 设置button图像：内容图像（如果想修改布局需要重写UIButton的方法）
     // 1.只有图片/文字居中显示在button中央位置
     // 2.如果按钮足够大、同时设置文字和图片、文字/图片会并列显示
     // 3.如果按钮不够大、优先显示图像
@@ -315,7 +315,7 @@
     // 如果按钮小于图片会拉伸按钮
     [btn setImage:[UIImage imageNamed:@"image_demo"] forState:UIControlStateNormal];
     /// 设置背景图像
-    // 1.创建 UIImage 对象
+    // 1.创建UIImage对象
     UIImage *bgImage = [UIImage imageNamed:@"image_demo"];
     /// 2.返回一张受保护而且拉伸的图片
     // 第一种方式
@@ -469,20 +469,19 @@
 //    [imageView stopAnimating];
     
     // 2.渐变动画
-    // 只能修改关于坐标系的属性、色彩和透明度
-    // 第一种方式：通过 delegate/先不实现
-    // 第二种方式：通过 block
-    // 这里不会引起循环引用：为什么？组织一下语言
+    // 只能修改“坐标系的属性、色彩、透明度”
+    // 第一种方式：通过delegate（先不实现）
+    // 第二种方式：通过block
+    // 不会引起循环引用：为什么？组织一下语言
     // 目前有三种形式：应用也很多
     // 支持嵌套
-    // 不会发生循环引用
     [UIView animateWithDuration:2 animations:^{
         // 这里还可以设置形变属性
-        NSLog(@"这里可以改变坐标/色彩/透明度");
+        NSLog(@"这里可以改变“坐标/色彩/透明度”");
     }];
     [UIView animateWithDuration:2 animations:^{
         // ！！！这里还可以设置形变属性！！！
-        NSLog(@"这里可以改变坐标/色彩/透明度");
+        NSLog(@"这里可以改变“坐标/色彩/透明度”");
     } completion:^(BOOL finished) {
         // 动画完成时需要的执行
         if (finished) {
@@ -491,9 +490,15 @@
     }];
     // UIViewAnimationOptions - 动画属性设置
     // https://www.jianshu.com/p/ec73573e112a
+    /**
+     UIViewAnimationOptionCurveEaseInOut - 动画开始结束比较慢，中间比较快
+     UIViewAnimationOptionCurveEaseIn - 动画开始比较慢
+     UIViewAnimationOptionCurveEaseOut - 动画结束比较慢
+     UIViewAnimationOptionCurveLinear - 线性
+     */
     [UIView animateWithDuration:2 delay:0.5 options:UIViewAnimationOptionOverrideInheritedCurve animations:^{
         // 1.这里还可以设置形变属性
-        NSLog(@"这里可以改变坐标/色彩/透明度");
+        NSLog(@"这里可以改变“坐标/色彩/透明度”");
         // 2.如果使用 masonry 则需要 [xxx layoutIfNeeded];
     } completion:^(BOOL finished) {
         if (finished) {
@@ -556,7 +561,7 @@
     // 结束编辑实际就是失去"第一响应者"
     [tf becomeFirstResponder];
     // 可以达到 delegate 一样的效果
-    // 监听文本改变
+    // 监听文本改变（也可以使用delegate）
     [tf addTarget:self action:@selector(editDidChanged:) forControlEvents:UIControlEventEditingChanged];
     /// 自定义清除按钮
     UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 20, 20)];
@@ -597,9 +602,12 @@
 }
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
     /// 点击 return 的时候调用该方法
-    // 放弃第一响应者
-    // 退出键盘
+    // 第一种方式：放弃第一响应者（退出键盘）
     [textField resignFirstResponder];
+//    // 第二种方式
+//    [textField endEditing:YES];
+//    // 第三种方式（常用）
+//    [self.view endEditing:YES];
     return true;
 }
 - (BOOL)textFieldShouldClear:(UITextField *)textField {
@@ -607,12 +615,13 @@
     return YES;
 }
 /// ！！！重点！！！
-// 当 textField 文字发生改变就会调用该方法
+// 当textField文字发生改变就会调用该方法
 // 拦截用户输入
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
     // 是否允许改变文本框内容
-    // 是否允许 string 去改变文本框内容
-    return YES;
+    // 是否允许string去改变文本框内容
+    return YES; // 允许输入
+//    return NO; // 禁止输入
 }
 
 
@@ -682,7 +691,7 @@
 // 允许用户通过捏合手势缩放内容
 // 用来滚动的视图，可以用来展示大量内容
 // UIView不具备滚动功能
-// ！！！不要通过索引去访问 UIScrollView 子控件！！！
+// ！！！不能用索引去查找UIScrollView的子控件（位置不确定）！！！
 -(void)setupScrollView {
     /// UIScrollView不可滚动的原因有哪些？？？
     // 1.没有设置contentSize
@@ -691,20 +700,21 @@
     UIScrollView *scrollView = [[UIScrollView alloc]initWithFrame:self.view.bounds];
     scrollView.delegate = self;
     scrollView.backgroundColor = UIColor.grayColor; // 设置颜色
-//    scrollView.clipsToBounds = YES;  // 默认该属性为 YES
+//    scrollView.clipsToBounds = YES;  // 默认该属性为YES（超出边框的内容会隐藏）
     /// 可视范围： scrollView的尺寸
     /// 内容实际大小
     // 可滚动尺寸： contentSize的尺寸 - scrollView的尺寸
     // 不可以滚动： contentSize的尺寸 <= scrollView的尺寸
-    scrollView.contentSize = CGSizeMake([[UIScreen mainScreen] bounds].size.width * 2, [[UIScreen mainScreen] bounds].size.height);  // 设置内容大小（左右滚动）/这里 [[UIScreen mainScreen] bounds].size.height 也可以设置为0
-    scrollView.contentSize = CGSizeMake([[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height * 2);  // 设置内容大小（上下滚动）/这里 [[UIScreen mainScreen] bounds].size.width 也可以设置为0
-    // 结构体 x|y
+    scrollView.contentSize = CGSizeMake([[UIScreen mainScreen] bounds].size.width * 2, [[UIScreen mainScreen] bounds].size.height);  // 设置内容大小（左右滚动）/这里[[UIScreen mainScreen] bounds].size.height也可以设置为0
+    scrollView.contentSize = CGSizeMake([[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height * 2);  // 设置内容大小（上下滚动）/这里[[UIScreen mainScreen] bounds].size.width也可以设置为0
+    // 结构体x|y
     // 内容偏移量 = UIScrollView左上角 - 内容左上角
     // 可以控制滚动的位置
-    scrollView.contentOffset = CGPointZero; // 内容偏移量：内容和控件的距离/记录滚动的位置
+    scrollView.contentOffset = CGPointZero; // 内容偏移量：内容和控件的距离（设置UIScrollView滚动的位置）
     // 增加额外滚动区域
-    // 凡是在导航条下面的 UIScrollView 默认会设置偏移量
-    // 可以通过 self.automaticallyAdjustsScrollViewInsets = NO; 设置
+    // 凡是在导航条下面的UIScrollView默认会设置偏移量
+    // 可以通过self.automaticallyAdjustsScrollViewInsets = NO;设置
+    // 参考 - UIScrollView的常见属性.png
     scrollView.contentInset = UIEdgeInsetsMake(10, 10, 10, 10);  // 内边距 - cell到边的距离
     // 不要自动设置偏移量
     /**
@@ -726,12 +736,12 @@
     // 设置隐藏滚动条
     scrollView.showsVerticalScrollIndicator = NO;
     scrollView.showsHorizontalScrollIndicator = NO;
-    scrollView.scrollEnabled = true; // 设置是否可以滚动
+    scrollView.scrollEnabled = true; // 设置是否可以滚动（设置为NO则UIScrollView不能滚动）
     scrollView.scrollsToTop = true;  // 是否滚动到顶部
-    scrollView.userInteractionEnabled = NO; // 是否可以响应与用户的交互
-    scrollView.alwaysBounceHorizontal = YES; // 水平方向不管有没有设置 contentSize，总有弹簧效果
-    scrollView.alwaysBounceVertical = YES; // 垂直方向不管有没有设置 contentSize，总有弹簧效果
-    // UIScrollView通过 delegate 对 ComponentController 弱引用
+    scrollView.userInteractionEnabled = NO; // 是否可以响应与用户的交互（设置为NO则UIScrollView不能滚动）
+    scrollView.alwaysBounceHorizontal = YES; // 水平方向不管有没有设置contentSize，总有弹簧效果
+    scrollView.alwaysBounceVertical = YES; // 垂直方向不管有没有设置contentSize，总有弹簧效果
+    // UIScrollView通过delegate对ComponentController弱引用
     // ComponentController对UIScrollView强引用（这里只是一个局部变量）
     scrollView.delegate = self;
     //！！！以下一般不设置！！！//
@@ -756,21 +766,20 @@
     }
 }
 #pragma mark - UIScrollViewDelegate
-/// 1 & 2 & 4 -可以唯一确定上滑/下滑
+/// 1&2&4 -可以唯一确定上滑/下滑
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView {
     // 1.不管怎么操作-只要拥有偏移量就执行
     // 实时监测滚动变化
 }
-/// 2 & 4 -可以唯一确定停止滚动
+/// 2&4 -可以唯一确定停止滚动
 -(void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
     // 2.已经停止拖拽的时候执行
     if (decelerate == NO) {
-        // 没有减速
-        // 表示已经停止滚动
-        // 4 & 5不会执行
+        // 没有减速（表示已经停止滚动）
+        // 4&5不会执行
     } else {
-        // 停止拖拽：会减速
-        // 4 & 5会执行
+        // 停止拖拽，由于惯性会减速（表示没有停止滚动）
+        // 4&5会执行
     }
 }
 - (void)scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset {
@@ -795,15 +804,15 @@
 //！！！以下处理缩放逻辑！！！//
 - (UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView {
     // 2.设置对哪个视图缩放、返回缩放的视图对象
-    // ！！！不能用索引去查找 UIScrollView 的子控件！！！
-    // 所以此处写法有问题
+    // ！！！不能用索引去查找UIScrollView的子控件（位置不确定）！！！
+    // FIXME - 所以此处写法有问题
     return scrollView.subviews.firstObject;
 }
 - (void)scrollViewWillBeginZooming:(UIScrollView *)scrollView withView:(UIView *)view {
     // 将要开始缩放
 }
 - (void)scrollViewDidZoom:(UIScrollView *)scrollView {
-    // 已经开始缩放/正在缩放
+    // 已经开始缩放（正在缩放）
 }
 - (void)scrollViewDidEndZooming:(UIScrollView *)scrollView withView:(UIView *)view atScale:(CGFloat)scale {
     // 已经结束缩放
@@ -1638,11 +1647,14 @@ UIWindow -> UITabBarController -> UINavigationController -> ChildViewControllers
 
 
 #pragma mark - XIB
+// 1>.概念 - 可视化文件，可以通过拖拽进行界面布局，实质是一个xml文件
+// 2>.特征 - 只可以显示一个视图，在创建视图的时候可以同时创建（无需关联）
 -(void)setupXib {
-//    // 通过xib新建UIViewController
+//    // 3>.通过xib新建UIViewController
 //    SySkillViewController *controller = [[SySkillViewController alloc]initWithNibName:@"SySkillViewController" bundle:nil];
     
-    /// 第一种方式：创建一个 xib
+    // 4>.获取xib
+    // 第一种方式：创建一个xib
     // 拿到的可能多个
     // 默认选中第一个
     NSArray *nibs = [[NSBundle mainBundle] loadNibNamed:@"xib名称" owner:nil options:nil];
@@ -1652,10 +1664,15 @@ UIWindow -> UITabBarController -> UINavigationController -> ChildViewControllers
     UINib *nib = [UINib nibWithNibName:@"xib名称" bundle:nil];
     UIView *view = [nib instantiateWithOwner:nil options:nil].firstObject;
     NSLog(@"%@", view);
-    // xib不支持[[XMGShopView alloc]init]创建
-    // xib创建的UIView不进入"-(instancetype)init{}方法"
-    // xib创建的UIView进入"-(instancetype)initWithCoder:(NSCoder *)aDecoder{}方法"
-    // 用代码给"xib创建的子控件"添加子控件需要先唤醒
+    
+    // 5>.注意事项
+    // 1、xib不支持[[xxx alloc]init]创建（就算已经关联View）
+    // 2、xib创建的UIView不进入"-(instancetype)init{}方法"
+    // 3、xib创建的UIView进入"-(instancetype)initWithCoder:(NSCoder *)aDecoder{}方法"/"-(void)awakeFromNib方法"
+    // 4、用代码给"xib创建的子控件"添加子控件需要先唤醒
+    
+    // 6>.xib的加载原理
+    
     
     // Segue
     // xxx需要在xib中设置

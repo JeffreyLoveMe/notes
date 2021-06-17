@@ -57,6 +57,11 @@ NS_ASSUME_NONNULL_BEGIN
  NSData *data = [NSData dataWithContentsOfURL:url];
  //异步下载：开辟新线程负责下载，主线程不会卡死，当子线程完成，回调主线程
  */
+/**
+ 7.加密算法
+ MD5 - 不可逆摘要算法
+ Base64 - 可逆加密算法
+ */
 @interface WMNetworkViewController : UIViewController
 
 @end

@@ -109,6 +109,7 @@
 		3359FEDA241FEC120014C82C /* 部署注意点_00.png in Resources */ = {isa = PBXBuildFile; fileRef = 3359FED9241FEC120014C82C /* 部署注意点_00.png */; };
 		3359FEDC241FEC1A0014C82C /* 部署注意点_01.png in Resources */ = {isa = PBXBuildFile; fileRef = 3359FEDB241FEC1A0014C82C /* 部署注意点_01.png */; };
 		3361E41A230A43EA00A03B7D /* DOVE.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 3361E419230A43EA00A03B7D /* DOVE.bundle */; };
+		33626FCB266F2A21008DC936 /* weather.json in Resources */ = {isa = PBXBuildFile; fileRef = 33626FCA266F2A21008DC936 /* weather.json */; };
 		33646DC023FFD4A700CE99CF /* WMMemoryManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 33646DBF23FFD4A700CE99CF /* WMMemoryManager.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		3366E827242F6F3900820298 /* BAT面试资料全集.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 3366E826242F6F3900820298 /* BAT面试资料全集.pdf */; };
 		3366E82C2431089D00820298 /* WMSqlViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3366E82B2431089D00820298 /* WMSqlViewController.m */; };
@@ -141,6 +142,7 @@
 		33A8FD7D22D48237004AECBA /* SyCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 33A8FD7C22D48237004AECBA /* SyCollectionViewController.m */; };
 		33AC9E8E242B61A100B28AB5 /* Runtime.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 33AC9E8D242B61A100B28AB5 /* Runtime.pdf */; };
 		33AD3E38236062830092C389 /* NSString+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 33AD3E37236062830092C389 /* NSString+Extension.m */; };
+		33ADA9C32670BFCD00B6C132 /* area.xml in Resources */ = {isa = PBXBuildFile; fileRef = 33ADA9C22670BFCD00B6C132 /* area.xml */; };
 		33ADF8D1240CC5280041F19A /* UIImage+animatedGIF.m in Sources */ = {isa = PBXBuildFile; fileRef = 33ADF8D0240CC5280041F19A /* UIImage+animatedGIF.m */; };
 		33B10E4F2422265600C6E8C7 /* NBSDK接口协议.html in Resources */ = {isa = PBXBuildFile; fileRef = 33B10E4E2422265600C6E8C7 /* NBSDK接口协议.html */; };
 		33B10E512422272500C6E8C7 /* 华为编程规范.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 33B10E502422272500C6E8C7 /* 华为编程规范.pdf */; };
@@ -303,6 +305,7 @@
 		3359FED9241FEC120014C82C /* 部署注意点_00.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "部署注意点_00.png"; sourceTree = "<group>"; };
 		3359FEDB241FEC1A0014C82C /* 部署注意点_01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "部署注意点_01.png"; sourceTree = "<group>"; };
 		3361E419230A43EA00A03B7D /* DOVE.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = DOVE.bundle; sourceTree = "<group>"; };
+		33626FCA266F2A21008DC936 /* weather.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = weather.json; sourceTree = "<group>"; };
 		33646DBE23FFD4A700CE99CF /* WMMemoryManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WMMemoryManager.h; sourceTree = "<group>"; };
 		33646DBF23FFD4A700CE99CF /* WMMemoryManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WMMemoryManager.m; sourceTree = "<group>"; };
 		3366E826242F6F3900820298 /* BAT面试资料全集.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "BAT面试资料全集.pdf"; sourceTree = "<group>"; };
@@ -352,6 +355,7 @@
 		33AC9E8D242B61A100B28AB5 /* Runtime.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = Runtime.pdf; sourceTree = "<group>"; };
 		33AD3E36236062830092C389 /* NSString+Extension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+Extension.h"; sourceTree = "<group>"; };
 		33AD3E37236062830092C389 /* NSString+Extension.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+Extension.m"; sourceTree = "<group>"; };
+		33ADA9C22670BFCD00B6C132 /* area.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = area.xml; sourceTree = "<group>"; };
 		33ADF8CF240CC5280041F19A /* UIImage+animatedGIF.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+animatedGIF.h"; sourceTree = "<group>"; };
 		33ADF8D0240CC5280041F19A /* UIImage+animatedGIF.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+animatedGIF.m"; sourceTree = "<group>"; };
 		33B10E4E2422265600C6E8C7 /* NBSDK接口协议.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "NBSDK接口协议.html"; sourceTree = "<group>"; };
@@ -378,6 +382,7 @@
 		33F72D8D242ED4420024A889 /* 图片加载.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "图片加载.png"; sourceTree = "<group>"; };
 		33F72D8F242ED4460024A889 /* Instruments的使用.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Instruments的使用.png"; sourceTree = "<group>"; };
 		33F72D91242ED44A0024A889 /* MRC代码转换ARC.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MRC代码转换ARC.png"; sourceTree = "<group>"; };
+		33F874092678877F008B73A6 /* SyStudyProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SyStudyProtocol.h; sourceTree = "<group>"; };
 		3D3D3EDD51B0F251CBF64154 /* Pods_WMGameProxy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WMGameProxy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3ECEA7B1BF7650220E4B5C11 /* Pods-WMGameProxy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WMGameProxy.debug.xcconfig"; path = "Target Support Files/Pods-WMGameProxy/Pods-WMGameProxy.debug.xcconfig"; sourceTree = "<group>"; };
 		407416DA15016E2C557ADCE1 /* Pods_WMGameProxyTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WMGameProxyTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -500,6 +505,7 @@
 				33068EE922AE66A800D044EE /* MainController.m */,
 				33AD3E36236062830092C389 /* NSString+Extension.h */,
 				33AD3E37236062830092C389 /* NSString+Extension.m */,
+				33F874092678877F008B73A6 /* SyStudyProtocol.h */,
 				33F67EDB2304F98D006F7DD6 /* WMGameProxy.pch */,
 				33068EEE22AE66EB00D044EE /* WMGameProxy-Bridging-Header.h */,
 				33068EBC22AE665000D044EE /* Main.storyboard */,
@@ -679,6 +685,8 @@
 				33302F6E242B10ED00C53F13 /* 静态库:动态库常见错误.png */,
 				33302F70242B10F200C53F13 /* 静态库:动态库链接方式.png */,
 				3359FE88241F3E860014C82C /* 学历.png */,
+				33626FCA266F2A21008DC936 /* weather.json */,
+				33ADA9C22670BFCD00B6C132 /* area.xml */,
 				33B10E4E2422265600C6E8C7 /* NBSDK接口协议.html */,
 				3359FE62241F3E840014C82C /* Zapfino.ttf */,
 				3359FE63241F3E840014C82C /* image_demo.png */,
@@ -902,12 +910,14 @@
 				3359FED8241FE1150014C82C /* 创建App.png in Resources */,
 				33A1B06E24291731007248A3 /* 新建xxx.framework第三步.png in Resources */,
 				3359FEC0241F3E870014C82C /* 通过Xcode获取UDID.png in Resources */,
+				33626FCB266F2A21008DC936 /* weather.json in Resources */,
 				3359FEBB241F3E870014C82C /* error_调用一个野指针.png in Resources */,
 				33F72D8E242ED4420024A889 /* 图片加载.png in Resources */,
 				3359FEB5241F3E870014C82C /* 常见系统库00.png in Resources */,
 				3359FEB7241F3E870014C82C /* 常见bug_01.png in Resources */,
 				3359FEB6241F3E870014C82C /* LaunchScreen简介.png in Resources */,
 				33B10E512422272500C6E8C7 /* 华为编程规范.pdf in Resources */,
+				33ADA9C32670BFCD00B6C132 /* area.xml in Resources */,
 				33A1B074242A0899007248A3 /* iOS高级经典面试.pdf in Resources */,
 				3359FEB9241F3E870014C82C /* info.plist简介.png in Resources */,
 				33B10E792422964800C6E8C7 /* 新建xxx.a第二步.png in Resources */,

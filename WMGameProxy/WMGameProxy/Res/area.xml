@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root name="中国">
+  <province name="天津市" postcode="120000" >
+    <city name="市辖区" postcode="120100" >
+        <area name="和平区" postcode="120101" />
+        <area name="河东区" postcode="120102" />
+        <area name="河西区" postcode="120103" />
+        <area name="南开区" postcode="120104" />
+        <area name="河北区" postcode="120105" />
+        <area name="红桥区" postcode="120106" />
+        <area name="塘沽区" postcode="120107" />
+        <area name="汉沽区" postcode="120108" />
+        <area name="大港区" postcode="120109" />
+        <area name="东丽区" postcode="120110" />
+        <area name="西青区" postcode="120111" />
+        <area name="津南区" postcode="120112" />
+        <area name="北辰区" postcode="120113" />
+        <area name="武清区" postcode="120114" />
+        <area name="宝坻区" postcode="120115" />
+    </city>
+  </province>
+</root>

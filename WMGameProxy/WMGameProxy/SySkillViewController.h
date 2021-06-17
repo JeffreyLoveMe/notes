@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SyStudyProtocol.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -18,20 +19,23 @@ NS_ASSUME_NONNULL_BEGIN
 // 规范方法的声明：可以实现多继承和对象间通信
 /**
  协议的注意点：
- 1.只声明方法：不实现方法/也不能实现属性
+ 1.只声明方法（不实现方法/也不能实现属性）
  2.遵从协议的所有类（拥有协议中所有的方法声明）必须导入协议头文件
  3.父类遵循某个协议子类也自动遵循该协议
  4.一个类可以遵循一个或者多个协议
  */
 // 可以实现多继承：相同类型可以使用“继承”，不同类型可以使用“协议”
-// ！！！"协议protocol" 可以直接使用“模版”创建/类似"类别Category"！！！
+// ！！！"协议protocol"可以直接使用“模版”创建（类似"类别Category"）！！！
 // 协议也可以再遵循协议
 /// 2.协议的作用
-// 1.类型限定
-// 遵循某个协议的不同对象可以放在同一个数组中
-// 遵循某个协议但不实现该协议中的方法的对象被调用会报错/需要做判断
+// 1.类型限定 - Student<SyStudyProtocol> *s = [[Student alloc]init];（注意格式）
+// 1>.遵循某个协议的不同对象可以放在同一个数组中
+// 2>.遵循某个协议但不实现该协议中的方法的对象调用协议中的方法会报错（需要做判断）
+//if (self.wife respondsToSelector:@selector(study:)) {
+//    [self.wife study:one];
+//}
 // 2.代理delegate
-@protocol SySkillViewControllerProtocol <NSObject>
+@protocol SySkillViewControllerProtocol <NSObject, SyStudyProtocol> // NSObject也是协议、协议也可以再遵循协议
 // 必须实现协议（缺省）
 // Objective-C不实现会报警告⚠️
 // swift中不实现会直接报错
@@ -48,8 +52,8 @@ NS_ASSUME_NONNULL_BEGIN
 // 使用weak防止内存泄漏？？？说明原因？？？/会被赋值成xxx
 // 代理方：遵从协议，实现方法
 // 持有协议的id指针
-// 不能 retain
-// 如果有 * 在 <> 外面
+// 不能retain
+// 如果有*在<>外面
 // 为什么使用id？？？（任何遵循SySkillViewControllerProtocol的类都可以做为我的代理）
 @property (weak, nonatomic) id <SySkillViewControllerProtocol> delegate;
 

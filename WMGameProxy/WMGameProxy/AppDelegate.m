@@ -48,12 +48,13 @@
     // self.window.windowLevel
     self.window.rootViewController = navigationController;
     
-//    /// 通过 UIStoryboard 加载程序
+//    /// 通过UIStoryboard加载程序
 //    UIStoryboard *sb = [UIStoryboard storyboardWithName:@"main" bundle:nil];
-//    // 加载箭头指向的 UIStoryboard
+//    // 加载箭头指向的UIStoryboard
 //    self.window.rootViewController = [sb instantiateInitialViewController];
-//    // 加载指定 UIStoryboard
+//    // 加载指定UIStoryboard
 //    self.window.rootViewController = [sb instantiateViewControllerWithIdentifier:@"main"];
+//    // ？？？通过Segue实现页面的跳转？？？
     
     /// 显示 UIWindow
     // 1.将当前 self.window 设置成当前App主窗口：这样在别的控制器就可以通过 [UIApplication sharedApplication].keyWindow 取到
@@ -83,7 +84,7 @@
 //    /// "调用方法"在OC中叫做"发送消息"
 //    // ？？？OC中调用方法的原理？？？
 //    [wm setSdk:@"sdk"];
-//    NSString *sdk = wm.sdk; // 点语法就是调用 setter / getter方法
+//    NSString *sdk = wm.sdk; // 点语法就是调用“setter/getter方法”
     
     return YES;
 }
