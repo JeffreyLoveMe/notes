@@ -326,7 +326,7 @@
     /// 1).不可变数组
     // OC数组和C数组有什么区别？
     // 1.NSArray是一个类：任意类型对象地址的集合
-    // 2.NSArray不能存放简单的基本数据类型（int、float、NSInteger）
+    // 2.NSArray不能直接存放简单的基本数据类型（int、float、double、char、enum、struct、NSInteger）
     // 3.C数组是相同类型变量的有序集合，可以保存任意类型的数据
     // 4.NSArray下标越界不会有警告（运行直接会报错）
     /// 创建数组
@@ -393,7 +393,7 @@
     // 二分排序
     NSArray *newArray02 = [array1 sortedArrayWithOptions:NSSortStable usingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
         NSLog(@"obj1 = %@, obj2 = %@", obj1, obj2);
-        // 这里也可以让 “对象的属性” 相互比较
+        // 这里也可以让“对象的属性”相互比较
         return obj1 > obj2;
     }];
     NSLog(@"%@", newArray02);
@@ -485,7 +485,7 @@
         [mArray3 addObject:obj];
     }
     
-//    // 让数组中的每个元素都调用isOneway方法
+//    // 让数组中的每个元素都调用isOneway方法（发送消息）
 //    // 如果数组中某个元素没有isOneway方法就会报错
 //    // 最多只可以传递1个参数
 //    // 数组中的对象必须是相同类型，不然会报错
@@ -546,7 +546,7 @@
     NSMutableDictionary *mDict = [[NSMutableDictionary alloc]init];
     // 重置字典
     [mDict setDictionary:dic2];
-    // 将dic2中所有的数据添加到 mDict 中
+    // 将dic2中所有的数据添加到mDict中
     // 相同key的元素在字典中不能重复添加：会被覆盖
     [mDict addEntriesFromDictionary:dic2];
     // 修改、添加
@@ -837,7 +837,84 @@
 
 /// 11.NSFileManager
 -(void)showFileManager {
+    // 创建文件管理单例对象
+    NSFileManager *manager = [NSFileManager defaultManager];
     
+    
+    
+//    //创建文件管理单例对象
+//    //NSFileManager *file = [NSFileManager defaultManager];
+//    NSError *error = nil;
+//
+//    NSFileManager *manager=[[NSFileManager alloc]init];
+//    /*浅度遍历
+//    NSArray *arr =  [file contentsOfDirectoryAtPath:PATH error:&error];
+//    if (error != nil)
+//    {
+//        NSLog(@"%@",error);
+//    }
+//    NSLog(@"%@",arr);
+//
+//     深度遍历
+//   arr = [file subpathsOfDirectoryAtPath:PATH error:&error];
+//   NSLog(@"%@",arr);*/
+//
+//    //判断文件是否存在
+//    NSLog(@"%d",[manager fileExistsAtPath:PATH]);
+//
+//    //创建文件
+//    NSString *str=@"飞流直下三千尺";
+//
+//    NSData *data=[str dataUsingEncoding:NSUTF8StringEncoding];
+//
+//    [manager createFileAtPath:PATH contents:data attributes:nil];/*参数1：创建文件的路径
+//               参数2：内容，如果nil表示创建一个内容为空的文件。
+//               参数3：nil表示采用默认的设置
+//               如果文件已经存在，会覆盖原来文件*/
+//
+//   NSString *fromPath =@"/Users/qianfeng/Desktop/文件/文件/main.m";
+//
+//   NSString *toPath =@"/Users/qianfeng/Desktop/文件/Manager.h";
+//
+//    [manager copyItemAtPath:fromPath toPath:toPath error:&error];
+//
+//    [manager moveItemAtPath:fromPath toPath:toPath error:&error];
+//
+//    [manager removeItemAtPath:@"/Users/qianfeng/Desktop/文件/Manager.h" error:nil];
+//
+//    //获取文件属性,返回的是字典
+//  NSDictionary *dic=[manager attributesOfItemAtPath:@"/Users/qianfeng/Desktop/文件/文件/main.m" error:nil];
+//    for(NSString *key in dic)
+//    {
+//        NSLog(@"%@",[dic objectForKey:key]);
+//    }
+    
+//    // 创建文件系统管理器
+//    NSFileManager *manager = [NSFileManager defaultManager]; NSString *?lePath = [sandboxPath stringByAppendingPathComponent:@ “ userData"];
+//    if (![manager ?leExistsAtPath:?lePath]) {
+//    BOOL isSuccess = [manager createDirectoryAtPath:?lePath
+//    withIntermediateDirectories:YES attributes:nil error:nil] ; NSLog(@"%@", isSuccess ? @" 创建成功 " : @"创建失败 ");
+//    }
+    
+//    // xxx
+//    NSString *documentsDirectory = [paths objectAtIndex:];
+//    // 创建文件系统管理器
+//    NSFileManager *fileManager = [[NSFileManageralloc] init];
+//    // 判断 userData 目录是否存在
+//    if(![fileManagerfileExistsAtPath:[NSStringstringWithFormat:@
+//    // 不存在 , 创建一个 userData 目录
+//    [fileManagercreateDirectoryAtPath:[NSStringstringWithFormat:@ ”%@/userData ”,documentsDirectory]withIntermediateDir ectories:falseattributes:nilerror:nil];
+//    }
+//
+//    73. 获取项目根路径，并在其下创建一个名称为 userData 的目录。
+//    // 获取根路径
+//    NSArray *paths=NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,NSUserDomainMask,YES); NSString*documentsDirectory = [paths objectAtIndex:];
+//    // 创建文件系统管理器
+//    NSFileManager *fileManager= [[NSFileManageralloc] init];
+//    // 判断 userData 目录是否存在
+//    if(![fileManagerfileExistsAtPath:[NSStringstringWithFormat:@
+//    // 不存在 , 创建一个 userData 目录
+//    [fileManagercreateDirectoryAtPath:[NSStringstringWithFormat:@ ”%@/userData ”,documentsDirectory]withIntermediateDir ectories:falseattributes:nilerror:nil];
 }
 
 @end

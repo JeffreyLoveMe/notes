@@ -311,22 +311,25 @@ class Demo {
     int result = a + b + c;
     print(result);
   }
-  // 4>.可选函数
+  // 4>.可选参数
   // 1.可选位置参数（必须按照位置，如果需要指定c则不能省略b）
   int disSum(int a, [int b, int c]) {
+    disNormal(1, 2, 3);
     return a + b + c;
   }
   // 2.带有默认值的可选位置参数
   int disDefault(int a, [int b = 1, int c = 2]) {
+    disSum(1);
     return a + b + c;
   }
   // 3.可选命名参数 - 命名参数就是选填参数（不用考虑b和c的顺序）
   // 命名参数最好给默认值
-  int disClick(int a, {int b: 1, int c: 1}) {
+  int disClick(int a, {int b = 1, int c = 1}) {
+    disClick(1, b: 1, c: 2);
     return a + b + c;
   }
-  // 5>.递归函数
-  // 6>.Lambda函数 - 函数块只有一条语句
+  // 5>.递归函数 - 自己调用自己
+  // 6>.Lambda函数/lan'b'da - 函数块只有一条语句
   void single() => print('Lambda函数');
   // 7>.匿名函数 - 没有方法名/必须用var/final修饰
   /*
@@ -346,18 +349,16 @@ class Demo {
     // String - 函数返回类型/void可以省略
     // func - 函数名称/自定义 - 形参
     // string - 函数入参/自定义
-    void sLogger(String func(string)) {
+    void sLogger(String func(name)) {
       func('1');
     }
     sLogger(mName);
     void state(String func()) {}
     state(sName);
-
-    // 函数别名/闭包 - 返回一个函数/函数也是一个对象
+    // 9>.函数别名/闭包 - 返回一个函数/函数也是一个对象
     Function makeAdd(int a, int b) {
       return (int y) => a + y;
     }
-
     // 接收一个函数
     var addFunc = makeAdd(10, 12);
     // 打印结果
@@ -466,17 +467,17 @@ class CustomException implements Exception {
 enum enumName { normalLoginType, phoneLoginType, codeLoginType }
 
 // 类
-// dart是一门面向对象的语言 - 支持面向对象编程
-// 声明一个类/dart不支持多继承/支持多重继承
-// 继承 - 子类可以继承父类除构造函数以外的所有属性和函数
-// dart支持方法重写
+// 1>.概述 - dart语言是一门面向对象的语言（支持面向对象编程）
+// 2>.特点 - 封装、继承（dart不支持多继承，只支持多重继承/子类可以继承父类除构造函数以外的所有属性和函数）、多态
+// 3>.新建类
 class Test extends Demo {
   // 成员变量
   String name = 'wy';
-  // 静态变量
+  // 静态成员变量
   static int age = 12;
-  // ‘_’表示私有
+  // 私有成员变量（'_'表示私有）
   String _method;
+  // 私有方法
   void _disAdd() {
     _method = 'wy';
     print(_method);
@@ -507,6 +508,14 @@ class Test extends Demo {
   Test() : super() {
     print('');
   }
+
+  // 静态函数 - 需要类名调用
+  static void disTest() {
+    // 状态 - 描述对象
+    // 行为 - 描述对象可以执行的操作
+    // 标识 - 将对象与一组类似对象区分开来的唯一值
+  }
+  
   // 使用这些方法
   void disDemo() {
     // 0>.super - 直接调用父类方法
@@ -522,13 +531,6 @@ class Test extends Demo {
     test._disAdd();
     // 4.调用静态函数
     Test.disTest();
-  }
-
-  // 静态函数 - 需要类名调用
-  static void disTest() {
-    // 状态 - 描述对象
-    // 行为 - 描述对象可以执行的操作
-    // 标识 - 将对象与一组类似对象区分开来的唯一值
   }
 }
 
@@ -609,7 +611,7 @@ Future<String> getData() async {
  4>.将下载完成的flutterSDK放在某个位置（例如 - /Applications/flutter）
  二、开始配置环境变量
  1>.vim ~/.bash_profile
- 2>.写入一下语句
+ 2>.写入以下语句
  '''
  // 配置环境变量
  export PATH=/Applications/flutter/bin:$PATH

@@ -1279,7 +1279,6 @@ Singleton 了，用的越多对水平就越表示怀疑。对设计模式自信�
 13.利用 UIScrollView 缩放性，如何实现地图上商家地理位置的动态显示 14.运行时的工作原理， OC动态行 ---腾讯，百度，新浪微博
 15.AFN 与 asi 的本质区别 ---腾讯，百度，新浪微博(主要问底层实现) 16.clayer 的坐标与 frame 的坐标如何转化 ---腾讯，百度，新浪微博
 17.循环引用 ---腾讯，百度，新浪微博
-18.runloop 原理---腾讯，百度，新浪微博
 
 3.下面程序有什么错误
 for(int i =0; i< someLageNumber; i++) {
@@ -2003,8 +2002,6 @@ obj = [obj initWithCString: nullTerminatedCString encoding: encoding]; return [o
 }
 
 74、什么是序列化或者 Acrchiving,可以用来做什么 , 怎样与 copy结合 ,原理是什么 ?. 序列化就是 :归档
-
-75、runloop是什么 ?在主线程中的某个函数里调用 了异步函数 ,怎么样block当前线程 ,且还能响应当 前线程的timer事件 ,touch事件等 .---NSRunLoop,NSTimer 需 要自己实现 ----GCD 的返回主线程的方法 ,看前面的题runloop,正如其名称所示 ,是线程进入和被线程用 来响应事件以及调用事件处理函数的地方。 需要在 代码中使用控制语 句实现 run loop的循环 ,也就是 说 ,需要代码提供 while 或者 for 循环来驱动 run loop。在这个循环中 ,使用一个 runloop对象 [NSRunloop currentRunloop]执行接收消息 ,调用对 应的处理函数。
 
 13 、什么是 Notification ?
 答:观察者模式， controller 向 defaultNotificationCenter 添加自己的 notification ，其他类注 册这个 notification 就可以收到通知，这些类可以在收到通知时做自己的操作(多观察者默认随机 顺序发通知给观察者们，而且每个观察者都要等当前的某个观察者的操作做完才能轮到他来操作，
@@ -3299,14 +3296,9 @@ Method swizzling 指的是改变 ?一个已存在的选择器对应的实现的�
 (dispatch table )中选择器到最终函数间的映射关系。 63.Cocoa Touch 包含什么 ? 不包含什么 ?
 参考链接: http://blog.csdn.net/iukey/article/details/7666430
 64.响应链 (Responder chain) 是什么 ?它是如何发挥作 ?用?的 答:
-dataSource 提供数据源， delegate 处理交 61.描述 ?一下runtime 的概念 ,message send 如果寻找不到相应的对
+dataSource 提供数据源， delegate 处理交
+61.描述 ?一下runtime 的概念 ,message send 如果寻找不到相应的对
 然后需要设置两个必须的委托对象，互和界面设置。
-// 创建文件系统管理器
-NSFileManager *manager = [NSFileManager defaultManager]; NSString *?lePath = [sandboxPath stringByAppendingPathComponent:@ “ userData"];
-if (![manager ?leExistsAtPath:?lePath]) {
-BOOL isSuccess = [manager createDirectoryAtPath:?lePath
-withIntermediateDirectories:YES attributes:nil error:nil] ; NSLog(@"%@", isSuccess ? @" 创建成功 " : @"创建失败 ");
-}
 
 70.选项卡 (Tab Bar) 和?工具栏(Toolbar) 分别是什么 ?两者之间 有何共 同点和不同点
 答:
@@ -4087,7 +4079,6 @@ http :请求头、相应头、请求体、相应体
 40.什么是序列化或者 Acrchiving, 可以用来做什么 ,怎样与 copy结合,
 原理是什么 ?.
 42.在iphone上有两件事情要做 ,请问是在一个线程里按顺序做效率 高还是两个线程里做效率高?为什么?
-43.runloop 是什么?在主线程中的某个函数里调用了异步函数，怎么 样 block 当前线程 ,且还能响应当前线程的 timer 事件， touch 事件等 .
 UNIX 主要支持三种通信方式:
 1. 基本通信:主要用来协调进程间的同步和互斥 (1) 锁文件通信
 通信的双方通过查找特定目录下特定类型的文件
@@ -4188,7 +4179,6 @@ What is lazy loading?
 分别描述类别（categories）和延展（extensions）是什么？以及两者的区别？继承和类别在实现中有何区别？为什么Category只能为对象添加方法，却不能添加成员变量？
 谈谈你对MVC的理解？为什么要用MVC？在Cocoa中MVC是怎么实现的？你还熟悉其他的OC设计模式或别的设计模式吗？
 如监测系统键盘的弹出
-举出5个以上你所熟悉的ios  sdk库有哪些和第三方库有哪些？
 如何将产品进行多语言发布？
 如何将敏感字变成**
 objc中的减号与加号代表什么？
@@ -4842,26 +4832,7 @@ iOS 中可以有四种持久化数据的方式:属性列表、对象归档、
 SQLite 作为一种存储类型，但它不能使用任意的 SQLite 数据库。 Core Data 在使用的过程种自己创建这个数据库。 Core Data 支 持对一、对多的关系。
 61. obj-c 有多重继承么 ? 如果没有什么替代方法 ?
 cocoa中所有的类都是 NSObject 的子类， 多继承在这里是用 protocol 委托代理来实现的。 你不用去考虑繁琐的多继承， 虚基类 的概念。
-// xxx
-NSString *documentsDirectory = [paths objectAtIndex:];
-// 创建文件系统管理器
-NSFileManager *fileManager = [[NSFileManageralloc] init];
-// 判断 userData 目录是否存在
-if(![fileManagerfileExistsAtPath:[NSStringstringWithFormat:@
-// 不存在 , 创建一个 userData 目录
-[fileManagercreateDirectoryAtPath:[NSStringstringWithFormat:@ ”%@/userData ”,documentsDirectory]withIntermediateDir ectories:falseattributes:nilerror:nil];
-}
 
-73. 获取项目根路径，并在其下创建一个名称为 userData 的目录。
-// 获取根路径
-NSArray *paths=NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,NSUserDomainMask,YES); NSString*documentsDirectory = [paths objectAtIndex:];
-// 创建文件系统管理器
-NSFileManager *fileManager= [[NSFileManageralloc] init];
-// 判断 userData 目录是否存在
-if(![fileManagerfileExistsAtPath:[NSStringstringWithFormat:@
-// 不存在 , 创建一个 userData 目录
-[fileManagercreateDirectoryAtPath:[NSStringstringWithFormat:@ ”%@/userData ”,documentsDirectory]withIntermediateDir ectories:falseattributes:nilerror:nil];
-}
 
 24.TCP/UDP 区别联系
 TCP---传输控制协议 ,提供的是面向连接、可靠的字节流服务。当客户
@@ -5645,15 +5616,6 @@ union date {
 查看所有图书信息
 Demo：新建demo，包含Model、Manager、View、Controller？？？
 
-#类扩展/匿名类别：声明和实现均在.m文件中
-定义：可以定义不想对外公开的类的属性/方法；
-格式：
-@interface WMPayInfo()
--(void)show;
-@end
-功能：1.可以实现私有方法；
-2.可以声明私有成员变量；
-
 #虚方法：
 定义：调用方法的时候，不看指针看对象，对象的地址指向什么对象就调用什么方法；
 好处：可以描述不同事物被相同的事件触发，产生不同的响应；
@@ -5776,22 +5738,6 @@ block传值：实现回调
 Model类必须是单例：全局都可能使用这个Model；
 VC需要网络请求，可以委托(PostStore类)来进行网络请求；
 PostStore类网络请求完成，需要告诉VC网络请求操作完成；
-
-#瀑布流：
-//实现原理：
-我们利用多个UITableView联动就可以实现瀑布流效果：调用UIScrollView的代理方法
-让多个UITableView的偏移量都等于UIScrollView的偏移量实现联动，当一个cell超过屏
-幕，我们不要release，而是回收到复用队列，然后在创建cell的时候首先去复用队列中
-取，如果没有我们在创建。
-//代码：见WaterFall
-/////////////////////////////////////////////////////////////////
-#瀑布流怎么理解和实现的
-1. 如果简单的来说 , 用 3 个 tableview 就可以实现瀑布流 ,3 个tableview 实现联动滚动。
-2. 其实最好的做法在 scrollview 上使用 3 个复用队列 ,如果一种一个 cell 超过屏幕 ,不能 release, 而是把它 回收到复用队列中 , 如果要创建一个 cell, 首先从复用队列中取一个 , 然后使用。
-/////////////////////////////////////////////////////////////////
-#瀑布流的理解
-首先图片的宽度都是一样的， 1. 将图片等比例压缩，让图片不变形; 2. 计算图片最低应该摆放的位置， 哪一列低就放在哪; 3. 进行最优排列， 在 ScrollView 的基础上添加两个 tableView ，然后将之前所计算的 scrollView 的高度通过 tableView 展示出来。
-如何使用两个 TableView 产生联动:将两个 tableView 的滚动事件禁止掉， 最外层 scrollView 滚动时将两个 TableView 跟着滚动，并且更改 contentOffset ，这样产生效果滚动的两个 tableView 。
 
 #像素和点之间的转换：效果图上标注的怎么转换？
 https://blog.csdn.net/ridxmc/article/details/51346472

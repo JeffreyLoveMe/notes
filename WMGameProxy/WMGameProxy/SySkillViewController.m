@@ -17,6 +17,9 @@
 @property (strong, nonatomic) NSArray *dataArray;
 
 @property (strong, nonatomic) void(^block)(void);
+// 这里使用weak/strong都可以
+// 因为此处有一个看不到的强指针引用
+@property (weak, nonatomic) NSTimer *timer;
 
 @end
 
@@ -131,7 +134,7 @@
 // https://blog.csdn.net/zhuzhihai1988/article/details/7742881
 -(void)createTimer {
     /// 创建定时器
-    // NSTimer可以直接用 weak
+    // NSTimer可以直接用weak
     // 定时器会在 1s 以后开始
     // 第一种方式 - 需要加入到NSRunLoop中
     NSTimer *timer = [NSTimer timerWithTimeInterval:2.0 target:self selector:@selector(onTimer:) userInfo:nil repeats:YES];
@@ -139,17 +142,19 @@
 //    // 这种创建方式定时器在UI界面滑动的时候也是不工作 - 需要重新添加
 //    NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(onTimer:) userInfo:nil repeats:YES];
     // 解决定时器在主线程不工作的原因
-    // ！！！主线程无论在处理什么操作都会抽时间处理 NStimer！！！
+    // ！！！主线程无论在处理什么操作都会抽时间处理NSTimer！！！
     // ？？？有点不太明白？？？
     [[NSRunLoop mainRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];
     // 立即开始
     [timer fire];
-    // 停止定时器
-    // NSTimer 停止以后就不能再使用（需要再重新创建一个）
-    [timer invalidate];
+//    // 停止定时器
+//    // NSTimer停止以后就不能再使用（需要再重新创建一个）
+//    [timer invalidate];
+//    // 如果self持有timer则需要再加上这句话（存在循环引用）
+//    timer = nil;
     // 开启定时器
     // 骚操作
-    timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(onTimer:)
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(onTimer:)
                                            userInfo:@"123" repeats:YES];
 }
 -(void)onTimer:(NSTimer *)timer {
@@ -1137,6 +1142,18 @@
     wm.obj = @"哈哈";
 }
 // 注意 - 在数组中，一般用可变数组添加方法泛型才会生效，如果使用不可变数组，泛型没有效果
+
+
+#pragma mark - LLDB
+-(void)showLLDB {
+    
+}
+
+
+#pragma mark - metal
+-(void)showMetal {
+    
+}
 
 
 #pragma mark - 系统相关

@@ -336,4 +336,7 @@
     
 }
 
+//怎么实现瀑布流？
+//使用多个UITableView联动（调用UIScrollView的代理方法让“多个UITableView的偏移量”等于“UIScrollView的偏移量”实现联动）
+
 @end

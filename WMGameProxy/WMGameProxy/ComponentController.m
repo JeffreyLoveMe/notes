@@ -730,7 +730,7 @@
         self.automaticallyAdjustsScrollViewInsets = NO;
     }
     scrollView.bounces = NO;  // 设置是否反弹
-    scrollView.pagingEnabled = YES; // 设置按页滚动（以 UIScrollView 尺寸为一页）
+    scrollView.pagingEnabled = YES; // 设置按页滚动（以UIScrollView尺寸为一页）
     scrollView.indicatorStyle = UIScrollViewIndicatorStyleWhite; // 设置滚动条样式
     scrollView.scrollIndicatorInsets = UIEdgeInsetsMake(0, 0, 0, 30); // 一般不需要设置
     // 设置隐藏滚动条
